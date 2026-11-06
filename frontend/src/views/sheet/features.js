@@ -1,0 +1,343 @@
+// Pestaña «Rasgos»: índice + buscador, rasgos raciales, dotes y, por clase,
+// fundamentos, subclase, tabla de progresión y línea temporal de rasgos.
+
+import { html, raw, richText } from '../../ui/dom.js';
+import { classFeatures } from '../../domain/rules.js';
+import { parseTraitSections, parseClassBasics, proseToHtml, plainText } from '../../domain/text-format.js';
+import { getFeat, getRace, getEpicBoon, data } from '../../data/index.js';
+import { ABILITY_LABEL, CLASS_ICONS, CLASS_SECTIONS } from '../../domain/constants.js';
+import { textArea } from './common.js';
+
+const CLAMP_CHARS = 420;
+const norm = (s) => String(s ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+
+/** Texto de datos → HTML seguro con párrafos y listas. */
+const prose = (text) => richText(proseToHtml(text));
+
+function searchAttr(...parts) {
+  return raw(`data-search-text="${norm(parts.map(plainText).join(' ')).replace(/"/g, '')}"`);
+}
+
+/** Bloque de texto largo que se recorta con «Leer más». */
+function clampable(text, { className = '' } = {}) {
+  const long = plainText(text).length > CLAMP_CHARS;
+  return html`<div class="clampable ${long ? 'is-clamped' : ''}">
+    <div class="rich ${className}">${prose(text)}</div>
+    ${long ? html`<button type="button" class="link-btn clampable__toggle" data-expand aria-expanded="false">Leer más</button>` : ''}
+  </div>`;
+}
+
+function editToggle(ctx, key, editing, label = 'Editar') {
+  if (ctx.readOnly) return '';
+  return html`<button type="button" class="btn btn--ghost btn--sm" data-action="toggle-trait-edit" data-target="${key}" aria-pressed="${editing}">${editing ? '✓ Listo' : `✎ ${label}`}</button>`;
+}
+
+function sectionHead({ id, icon, eyebrow, title, actions = '' }) {
+  return html`<header class="traits-section__head">
+    <span class="traits-section__icon" aria-hidden="true">${icon}</span>
+    <div class="traits-section__titles">
+      ${eyebrow ? html`<p class="eyebrow">${eyebrow}</p>` : ''}
+      <h3 class="traits-section__title" id="${id}-title">${title}</h3>
+    </div>
+    ${actions ? html`<div class="row">${actions}</div>` : ''}
+  </header>`;
+}
+
+// ── Raza ─────────────────────────────────────────────────────────────────
+
+function traitCard(t) {
+  return html`<article class="trait-card" ${searchAttr(t.title, t.body, ...t.children)}>
+    ${t.title ? html`<h4 class="trait-card__title">${t.title}</h4>` : ''}
+    ${t.body ? clampable(t.body) : ''}
+    ${t.children.length ? html`<ul class="trait-card__list">${t.children.map((c) => html`<li>${richText(c)}</li>`)}</ul>` : ''}
+  </article>`;
+}
+
+function raceSection(ctx) {
+  const c = ctx.character;
+  const race = getRace(c.race.key);
+  const editing = ctx.ui.traitsEdit.has('race');
+  const sections = parseTraitSections(c.notes.raceTraits);
+  const speed = ctx.sheet.speeds.filter((s) => s.value !== null);
+  const restore = race && c.notes.raceTraits.trim() !== (race.info ?? '').trim();
+
+  let body;
+  if (editing) {
+    body = html`<div class="stack stack--sm">
+      ${textArea(ctx, { label: 'Rasgos raciales (texto)', path: 'notes.raceTraits', rows: 12 })}
+      <p class="field__hint">Consejo: empieza cada rasgo con «♻ Nombre. Descripción» para que se muestre como tarjeta.</p>
+      ${restore ? html`<div><button type="button" class="btn btn--ghost btn--sm" data-action="restore-race-traits">↺ Restaurar el texto original de la raza</button></div>` : ''}
+    </div>`;
+  } else if (!sections.length) {
+    body = html`<p class="muted">${c.race.key ? 'No hay rasgos raciales anotados.' : 'Elige una raza en la pestaña «Progresión».'}</p>`;
+  } else {
+    body = sections.map((s) => html`<div class="traits-group">
+      ${s.heading && sections.length > 1 ? html`<h4 class="traits-group__heading">${s.heading}</h4>` : ''}
+      ${s.items.length ? html`<div class="trait-grid">${s.items.map(traitCard)}</div>` : ''}
+      ${s.notes.length ? html`<div class="trait-notes rich" ${searchAttr(...s.notes)}>${prose(s.notes.join('\n'))}</div>` : ''}
+    </div>`);
+  }
+
+  return html`<section class="traits-section" id="tr-race" aria-labelledby="tr-race-title">
+    ${sectionHead({
+      id: 'tr-race', icon: '🧬', eyebrow: 'Raza',
+      title: c.race.key ?? 'Sin raza',
+      actions: c.race.key ? editToggle(ctx, 'race', editing) : '',
+    })}
+    ${race ? html`<div class="chips chips--static">
+      ${speed.map((s) => html`<span class="badge">${s.label} ${s.value} pies</span>`)}
+      ${ctx.sheet.languages.fixed.length ? html`<span class="badge">Idiomas: ${[...ctx.sheet.languages.fixed, ...ctx.sheet.languages.chosen].join(', ')}</span>` : ''}
+      ${ctx.sheet.hp.tough ? html`<span class="badge badge--gold">${data.raceBadges[c.race.key]?.texto ?? 'Dureza'}</span>` : ''}
+    </div>` : ''}
+    ${body}
+  </section>`;
+}
+
+// ── Trasfondo ────────────────────────────────────────────────────────────
+
+function backgroundSection(ctx) {
+  const def = ctx.sheet.background;
+  if (!def) return '';
+  const items = [
+    def.feature?.text ? { title: def.feature.name || 'Rasgo del trasfondo', body: def.feature.text, children: [] } : null,
+    def.skills.length ? { title: 'Habilidades', body: def.skills.join(', '), children: [] } : null,
+    def.tools.length ? { title: 'Herramientas', body: def.tools.join(', '), children: [] } : null,
+  ].filter(Boolean);
+  return html`<section class="traits-section" id="tr-background" aria-labelledby="tr-background-title">
+    ${sectionHead({ id: 'tr-background', icon: '📜', eyebrow: 'Trasfondo', title: def.name || 'Trasfondo' })}
+    ${def.description ? html`<div ${searchAttr(def.name, def.description)}>${clampable(def.description)}</div>` : ''}
+    ${items.length ? html`<div class="trait-grid">${items.map(traitCard)}</div>` : ''}
+  </section>`;
+}
+
+// ── Dotes ────────────────────────────────────────────────────────────────
+
+function featsSection(ctx) {
+  const feats = ctx.sheet.feats.map((f) => ({
+    name: f.name, text: getFeat(f.name)?.habilidad ?? 'Dote no encontrada en los datos actuales.',
+    tags: [{ raza: 'Dote racial', trasfondo: 'Del trasfondo' }[f.source] ?? `Nivel ${f.level}`, f.ability ? `${ABILITY_LABEL[f.ability]} +1` : null], epic: false,
+  }));
+  const boons = ctx.character.epicBoons.map((b) => ({
+    name: b.name, text: getEpicBoon(b.name)?.habilidad ?? '', tags: ['Épica', b.ability ? `${ABILITY_LABEL[b.ability]} +1` : null], epic: true,
+  }));
+  const all = [...feats, ...boons];
+  if (!all.length) return '';
+  return html`<section class="traits-section" id="tr-feats" aria-labelledby="tr-feats-title">
+    ${sectionHead({ id: 'tr-feats', icon: '✦', eyebrow: 'Dotes y bendiciones', title: `${all.length} ${all.length === 1 ? 'dote' : 'dotes'}` })}
+    <div class="trait-grid">
+      ${all.map((f) => html`<article class="trait-card ${f.epic ? 'trait-card--epic' : ''}" ${searchAttr(f.name, f.text)}>
+        <h4 class="trait-card__title">${f.name}</h4>
+        <div class="chips chips--static">${f.tags.filter(Boolean).map((t) => html`<span class="badge ${f.epic ? 'badge--gold' : 'badge--accent'}">${t}</span>`)}</div>
+        ${clampable(f.text)}
+      </article>`)}
+    </div>
+  </section>`;
+}
+
+// ── Clase ────────────────────────────────────────────────────────────────
+
+function basicsPanel(ctx, f) {
+  const key = `class:${f.classKey}`;
+  const editing = ctx.ui.traitsEdit.has(key);
+  const text = ctx.character.notes.classNotes[f.classKey] ?? '';
+  const basics = parseClassBasics(text);
+  return html`<div class="class-block">
+    <div class="class-block__head">
+      <h4 class="class-block__title">Fundamentos de la clase</h4>
+      ${editToggle(ctx, key, editing)}
+    </div>
+    ${editing
+      ? textArea(ctx, { label: `Atributos y competencias de ${f.className}`, path: `notes.classNotes.${f.classKey}`, rows: 12 })
+      : basics.length
+        ? html`<dl class="basics" ${searchAttr(text)}>${basics.map((b) => html`<div class="basics__row">
+            <dt>${b.label || '—'}</dt>
+            <dd>${b.value ? html`<span>${b.value}</span>` : ''}
+              ${b.items.length ? html`<ul class="basics__list">${b.items.map((i) => html`<li>${i.label ? html`<strong>${i.label}:</strong> ` : ''}${i.value}</li>`)}</ul>` : ''}
+            </dd>
+          </div>`)}</dl>`
+        : html`<p class="muted">Sin datos de fundamentos para esta clase.</p>`}
+  </div>`;
+}
+
+function progressionTable(f) {
+  if (!f.table) return '';
+  return html`<div class="class-block">
+    <div class="class-block__head"><h4 class="class-block__title">Progresión</h4></div>
+    <div class="table-wrap"><table class="table progression-table">
+      <thead><tr><th class="num" scope="col">Nivel</th>${f.table.columns.map((c) => html`<th class="num" scope="col">${c}</th>`)}</tr></thead>
+      <tbody>${f.table.rows.map((r) => html`<tr class="${r.level === f.level ? 'is-current' : ''}" ${r.level === f.level ? raw('aria-current="true"') : ''}>
+        <td class="num">${r.level}</td>${f.table.columns.map((c) => html`<td class="num">${r[c] || '—'}</td>`)}
+      </tr>`)}</tbody>
+    </table></div>
+  </div>`;
+}
+
+function featureCard(item, subName) {
+  return html`<article class="feature-card ${item.sub ? 'feature-card--sub' : ''}" ${searchAttr(item.title, item.text)}>
+    <header class="feature-card__head">
+      <h5 class="feature-card__title">${item.title || 'Rasgo'}</h5>
+      ${item.sub ? html`<span class="badge badge--accent">${subName ?? 'Subclase'}</span>` : ''}
+    </header>
+    ${clampable(item.text)}
+  </article>`;
+}
+
+/** Agrupa niveles consecutivos sin rasgos para no llenar la línea temporal de vacíos. */
+function timelineEntries(f) {
+  const entries = [];
+  for (const l of f.levels) {
+    const items = [...l.features.map((x) => ({ ...x, sub: false })), ...l.subFeatures.map((x) => ({ ...x, sub: true }))];
+    if (items.length) { entries.push({ type: 'level', level: l.level, items }); continue; }
+    const kind = l.defined ? 'empty' : 'missing';
+    const last = entries.at(-1);
+    if (last?.type === kind && last.to === l.level - 1) last.to = l.level;
+    else entries.push({ type: kind, from: l.level, to: l.level });
+  }
+  return entries;
+}
+
+function timeline(f) {
+  const entries = timelineEntries(f);
+  const range = (e) => (e.from === e.to ? `Nivel ${e.from}` : `Niveles ${e.from}–${e.to}`);
+  const next = f.next && [...f.next.features, ...f.next.subFeatures].length ? f.next : null;
+  return html`<div class="class-block">
+    <div class="class-block__head"><h4 class="class-block__title">Rasgos por nivel</h4></div>
+    <ol class="timeline">
+      ${entries.map((e) => (e.type === 'level'
+        ? html`<li class="timeline__item ${e.level === f.level ? 'is-current' : ''}" data-level-entry>
+            <div class="timeline__marker" aria-hidden="true"><small>Nv</small>${e.level}</div>
+            <div class="timeline__content">
+              <p class="timeline__label">Nivel ${e.level}${e.level === f.level ? html` <span class="badge badge--gold">Actual</span>` : ''}</p>
+              ${e.items.map((i) => featureCard(i, f.subclass?.name ?? f.subclassLabel))}
+            </div>
+          </li>`
+        : html`<li class="timeline__item timeline__item--gap" data-level-entry>
+            <div class="timeline__marker timeline__marker--gap" aria-hidden="true">·</div>
+            <p class="timeline__gap">${range(e)} · ${e.type === 'missing' ? 'datos pendientes de cargar' : 'sin rasgos nuevos'}</p>
+          </li>`))}
+      ${next ? html`<li class="timeline__item timeline__item--next" data-level-entry>
+          <div class="timeline__marker timeline__marker--next" aria-hidden="true"><small>Nv</small>${next.level}</div>
+          <div class="timeline__content">
+            <details class="disclosure disclosure--ghost" data-key="next:${f.classKey}">
+              <summary>Próximo nivel: ${[...next.features, ...next.subFeatures].map((i) => i.title).filter(Boolean).join(' · ') || `nivel ${next.level}`}</summary>
+              <div class="disclosure__body">${[...next.features.map((x) => ({ ...x, sub: false })), ...next.subFeatures.map((x) => ({ ...x, sub: true }))].map((i) => featureCard(i, f.subclass?.name))}</div>
+            </details>
+          </div>
+        </li>` : ''}
+    </ol>
+  </div>`;
+}
+
+function classSection(ctx, f) {
+  const id = `tr-class-${f.classKey}`;
+  if (f.missing) {
+    return html`<section class="traits-section" id="${id}" aria-labelledby="${id}-title">
+      ${sectionHead({ id, icon: '❔', eyebrow: 'Clase', title: f.className })}
+      <p class="callout callout--warning">Esta clase no existe en los datos actuales; sus rasgos no se pueden mostrar.</p>
+    </section>`;
+  }
+  const gained = f.levels.reduce((n, l) => n + l.features.length + l.subFeatures.length, 0);
+  const hp = ctx.sheet.hp.perLevel.filter((p) => p.classKey === f.classKey).reduce((s, p) => s + p.total, 0);
+  return html`<section class="traits-section traits-section--class" id="${id}" aria-labelledby="${id}-title">
+    <header class="class-hero">
+      <span class="class-hero__emblem" aria-hidden="true">${CLASS_ICONS[f.classKey] ?? '⚔️'}</span>
+      <div class="class-hero__titles">
+        <p class="eyebrow">Clase · ${CLASS_SECTIONS[f.section] ?? 'Suplemento'}</p>
+        <h3 class="traits-section__title" id="${id}-title">${f.className} <span class="badge badge--gold">Nivel ${f.level}</span></h3>
+        ${f.summary ? html`<p class="class-hero__summary">${f.summary}</p>` : ''}
+      </div>
+      <dl class="class-hero__stats">
+        <div><dt>Dado de golpe</dt><dd>d${f.hitDie}</dd></div>
+        <div><dt>PG de la clase</dt><dd>${hp}</dd></div>
+        <div><dt>Rasgos</dt><dd>${gained}</dd></div>
+        <div><dt>${f.subclassLabel}</dt><dd>${f.subclass?.name ?? (f.subclassLevel && f.level < f.subclassLevel ? `Nivel ${f.subclassLevel}` : '—')}</dd></div>
+        ${f.classDc ? html`<div title="8 + competencia + ${f.classDc.ability}"><dt>${f.classDc.name}</dt><dd>${f.classDc.value}</dd></div>` : ''}
+      </dl>
+    </header>
+    ${f.subclass ? html`<div class="subclass-card" ${searchAttr(f.subclass.name, f.subclass.description)}>
+      <p class="eyebrow">${f.subclassLabel}</p>
+      <h4 class="subclass-card__title">${f.subclass.name}</h4>
+      ${clampable(f.subclass.description.replace(/^✦[^\n]*\n/, ''))}
+    </div>` : ''}
+    <div class="class-columns">
+      ${basicsPanel(ctx, f)}
+      ${progressionTable(f)}
+    </div>
+    ${timeline(f)}
+    ${f.missingLevels.length ? html`<p class="callout callout--warning">Faltan datos de ${f.className} para ${f.missingLevels.length === 1 ? 'el nivel' : 'los niveles'} ${f.missingLevels.join(', ')}. Consulta el manual o a tu DM.</p>` : ''}
+  </section>`;
+}
+
+// ── Índice y página ──────────────────────────────────────────────────────
+
+function nav(ctx, classes) {
+  const links = [
+    { href: '#tr-race', label: ctx.character.race.key ? `🧬 ${ctx.character.race.key}` : '🧬 Raza' },
+    ...(ctx.sheet.background ? [{ href: '#tr-background', label: '📜 Trasfondo' }] : []),
+    ...(ctx.sheet.feats.length || ctx.character.epicBoons.length ? [{ href: '#tr-feats', label: '✦ Dotes' }] : []),
+    ...classes.map((f) => ({ href: `#tr-class-${f.classKey}`, label: `${CLASS_ICONS[f.classKey] ?? '⚔️'} ${f.className} ${f.level}` })),
+  ];
+  return html`<nav class="traits-nav" aria-label="Índice de rasgos">
+    <p class="traits-nav__title">En esta página</p>
+    <ul>${links.map((l) => html`<li><a href="${l.href}" data-trait-link>${l.label}</a></li>`)}</ul>
+  </nav>`;
+}
+
+export function renderFeatures(ctx) {
+  const classes = classFeatures(ctx.character);
+  return html`<div class="traits-layout">
+    ${nav(ctx, classes)}
+    <div class="traits-main">
+      <div class="traits-search">
+        <label class="visually-hidden" for="trait-search">Buscar rasgo</label>
+        <input id="trait-search" class="input" type="search" placeholder="Buscar rasgo, dote o competencia…" value="${ctx.ui.traitsQuery}" data-trait-search autocomplete="off">
+        <p class="traits-search__status muted" data-trait-status aria-live="polite"></p>
+      </div>
+      ${raceSection(ctx)}
+      ${backgroundSection(ctx)}
+      ${featsSection(ctx)}
+      ${classes.length
+        ? classes.map((f) => classSection(ctx, f))
+        : html`<div class="empty-state"><h2>Sin rasgos de clase</h2><p>Sube a nivel 1 en «Progresión» para ver los rasgos de tu clase.</p></div>`}
+    </div>
+  </div>`;
+}
+
+/** Filtra tarjetas por texto sin volver a renderizar (conserva el foco). */
+export function applyTraitFilter(root, query) {
+  const q = norm(query.trim());
+  const cards = root.querySelectorAll('[data-search-text]');
+  let shown = 0;
+  for (const el of cards) {
+    const match = !q || el.dataset.searchText.includes(q);
+    el.hidden = !match;
+    if (match) shown++;
+    if (q && match) {
+      for (const box of el.querySelectorAll('.clampable.is-clamped')) {
+        box.classList.remove('is-clamped');
+        const btn = box.querySelector('[data-expand]');
+        if (btn) { btn.textContent = 'Leer menos'; btn.setAttribute('aria-expanded', 'true'); }
+      }
+    }
+  }
+  for (const entry of root.querySelectorAll('[data-level-entry]')) {
+    entry.hidden = Boolean(q) && !entry.querySelector('[data-search-text]:not([hidden])');
+  }
+  for (const section of root.querySelectorAll('.traits-section')) {
+    section.classList.toggle('is-filtered-out', Boolean(q) && !section.querySelector('[data-search-text]:not([hidden])'));
+  }
+  const status = root.querySelector('[data-trait-status]');
+  if (status) status.textContent = q ? (shown ? `${shown} resultado(s) para «${query.trim()}»` : `Sin resultados para «${query.trim()}»`) : '';
+}
+
+export const featuresActions = {
+  'restore-race-traits': (ed) => ed.update((c) => { c.notes.raceTraits = getRace(c.race.key)?.info ?? ''; }, { structural: true }),
+  'toggle-trait-edit': (ed, el) => {
+    const key = el.dataset.target;
+    if (ed.ui.traitsEdit.has(key)) ed.ui.traitsEdit.delete(key);
+    else ed.ui.traitsEdit.add(key);
+    ed.rerender({ keepScroll: true });
+    if (ed.ui.traitsEdit.has(key)) ed.root.querySelector(`#tr-${key === 'race' ? 'race' : `class-${key.slice(6)}`} textarea`)?.focus();
+  },
+};
+

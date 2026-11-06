@@ -1,0 +1,23 @@
+{
+  "name": "agarias-dnd-frontend",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "description": "Stories of Agarias — creador y gestor de personajes de D&D 5e (frontend).",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "fake-indexeddb": "^6.2.7",
+    "jsdom": "^26.1.0",
+    "vite": "^8.0.0",
+    "vitest": "^5.1.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

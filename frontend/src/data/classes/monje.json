@@ -1,0 +1,171 @@
+{
+  "nombre": "Monje",
+  "claseName": "monje",
+  "seccion": "manual",
+  "dadoDeGolpe": 8,
+  "nivelesDeAumento": [
+    4,
+    8,
+    12,
+    16,
+    19
+  ],
+  "conjurador": false,
+  "niveles": {
+    "1": {
+      "descripcion": "Maestro del cuerpo y la energía interior, capaz de hazañas sobrenaturales.",
+      "descripcionLarga": "El Monje disciplina su mente y su cuerpo hasta convertirlos en armas perfectas. Canaliza su energía vital para realizar proezas que rozan lo imposible: velocidad inhumana, golpes devastadores y control absoluto del equilibrio físico. No depende de armaduras ni hechizos, sino de control interior.",
+      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Fuerza, Constitución.\n❖ Tus puntos de golpe es:\n    :: Tu dado de PG es: 1d12. 12 + Constitución.\n    :: Además, por cada nivel por encima de 1, obtienes 1d12 de PG + Constitución.\n❖ Competencias:\n    :: Armadura: Armadura ligera, armadura media, escudos.\n    :: Armas: Armas simples, armas marciales.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge dos de entre Atletismo, Intimidación, Naturaleza, Percepción, Supervivencia y Trato de Animales.\n❖ Equipos. Comienzas con el siguiente equipo, además del otorgado por tu trasfondo:\n    :: (a) una gran hacha o (b) cualquier arma marcial cuerpo a cuerpo.\n    :: (a) dos hachas de mano o (b) cualquier arma simple.\n    :: Un equipo de explorador y cuatro jabalinas.\n    :: Monedas de Oro: 2d4 x 10.",
+      "informacionNivel": "✦  ✦\n\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n\n✦  ✦"
+    },
+    "2": {
+      "informacionNivel": "Rasgo: Defensa temeraria"
+    },
+    "3": {
+      "informacionNivel": "Rasgo: Defensa temeraria",
+      "subClase": {
+        "senda1": {
+          "subNombre": "",
+          "subDescripcion": "✦  ✦",
+          "subNivel": {
+            "3": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "6": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "10": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "14": {
+              "infoSubNivel": "✦  ✦"
+            }
+          }
+        },
+        "senda2": {
+          "subNombre": "",
+          "subDescripcion": "✦  ✦",
+          "subNivel": {
+            "3": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "6": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "10": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "14": {
+              "infoSubNivel": "✦  ✦"
+            }
+          }
+        },
+        "senda3": {
+          "subNombre": "",
+          "subDescripcion": "✦  ✦",
+          "subNivel": {
+            "3": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "6": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "10": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "14": {
+              "infoSubNivel": "✦  ✦"
+            }
+          }
+        },
+        "senda4": {
+          "subNombre": "",
+          "subDescripcion": "✦  ✦",
+          "subNivel": {
+            "3": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "6": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "10": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "14": {
+              "infoSubNivel": "✦  ✦"
+            }
+          }
+        },
+        "senda5": {
+          "subNombre": "Estilo del Borracho Errante",
+          "subDescripcion": "✦ ESTILO BORRACHO ERRANTE ✦\nEl Monje no lucha con rabia ni con cálculo frío: lucha con el fluir del bambú y la embriaguez del alma. Entre risas, cánticos y tragos, sus enemigos caen sin entender lo que pasó.",
+          "subNivel": {
+            "3": {
+              "infoSubNivel": "✦ Senda del Néctar Sagrado ✦\nA nivel 3, cuando usas Ráfaga de Golpes, puedes elegir ganar uno de los siguientes efectos hasta el final de tu turno:\n♻ Brisa del Bambú: Tu velocidad aumenta en 10 pies y puedes atravesar el espacio de criaturas sin provocar ataques de oportunidad.\n♻ Fortaleza del Licor: Ganas resistencia al daño contundente, cortante y perforante hasta el final del turno.\n\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n\n✦ Golpe al Ki Fluyente ✦\nA nivel 3, cuando realizas un ataque desarmado como parte de tu acción de Ráfaga de Golpes, puedes gastar 1 punto de Ki para intentar interrumpir el Flujo de energía interna de tu oponente.\n\nEl objetivo debe ser una criatura que tenga sangre o flujo vital (no funciona en no-muertos, constructos o limos).\n\nEl objetivo debe realizar una tirada de salvación de Constitución contra tu CD de salvación de Ki.\n♻ Si falla, queda Paralizado hasta el final de su siguiente turno.\n♻ Si tiene éxito, no ocurre nada adicional.\n\nSolo puedes aplicar Golpe al Ki Fluyente una vez por turno, incluso si realizas múltiples ataques.\n\nCuando alcanzas el nivel 5 de Monje, no obtienes el característico “Golpe Aturdidor” del Monje base. En su lugar, Golpe al Ki Fluyente mejora automáticamente para que puedas aplicarlo con cualquier ataque desarmado (no solo con Ráfaga de Golpes), manteniendo las mismas condiciones, costes y limitaciones."
+            },
+            "6": {
+              "infoSubNivel": "✦ Embriaguez Controlada ✦\nA nivel 6, como acción adicional, puedes gastar 1 punto de Ki para beber un trago rápido y obtener uno de estos beneficios durante 1 minuto:\n♻ Golpe Fuerte: +2 a tiradas de ataque con armas cuerpo a cuerpo (o ataques desarmados).\n♻ Reflejos de Búho: +2 a la CA.\n♻ Paso Nebuloso: Puedes usar tu reacción para imponerte ventaja en una tirada de salvación de Destreza o Sabiduría.\n\nPuedes usar esta acción un número de veces igual a tu modificador de Sabiduría por descanso largo."
+            },
+            "11": {
+              "infoSubNivel": "✦ Vientre de Hierro ✦\nAl nivel 11, eres inmune a la condición de Envenenado. Además, cuando una criatura te cause daño, puedes usar tu reacción para devolverle parte del golpe. El atacante recibe un total de daño igual a tu dado de Artes Marciales + tu modificador de Sabiduría.\n\nSe interpreta como que absorbes el golpe, te tambaleas y devuelves una bofetada cargada de Ki embriagado."
+            },
+            "17": {
+              "infoSubNivel": "✦ Danza Celestial ✦\nA nivel 17, como acción, puedes gastar 4 puntos de Ki para entrar en un estado de trance borracho durante 1 minuto. Mientras dure este estado:\n♻ Puedes realizar un ataque adicional cuando tomes la acción de Ataque (tienes un Ataque Extra por turno).\n♻ Tu velocidad aumenta en +10 pies.\n♻ Obtienes ventaja en todas las tiradas de Destreza y de ataque cuerpo a cuerpo.\n♻ Al final de cada uno de tus turnos, recuperas 3 puntos de golpe si has realizado al menos un ataque ese turno.\n\nUna vez que uses esta característica, no puedes volver a usarla hasta que termines un descanso largo."
+            }
+          }
+        }
+      }
+    },
+    "4": {
+      "informacionNivel": "✦  ✦"
+    },
+    "5": {
+      "informacionNivel": "✦  ✦"
+    },
+    "6": {
+      "informacionNivel": "✦  ✦"
+    },
+    "7": {
+      "informacionNivel": "✦  ✦"
+    },
+    "8": {
+      "informacionNivel": "✦  ✦"
+    },
+    "9": {
+      "informacionNivel": "✦  ✦"
+    },
+    "10": {
+      "informacionNivel": "✦  ✦"
+    },
+    "11": {
+      "informacionNivel": "✦  ✦"
+    },
+    "12": {
+      "informacionNivel": "✦  ✦"
+    },
+    "13": {
+      "informacionNivel": "✦  ✦"
+    },
+    "14": {
+      "informacionNivel": "✦  ✦"
+    },
+    "15": {
+      "informacionNivel": "✦  ✦"
+    },
+    "16": {
+      "informacionNivel": "✦  ✦"
+    },
+    "17": {
+      "informacionNivel": "✦  ✦"
+    },
+    "18": {
+      "informacionNivel": "✦  ✦"
+    },
+    "19": {
+      "informacionNivel": "✦  ✦"
+    },
+    "20": {
+      "informacionNivel": "Rasgo: Defensa temeraria"
+    }
+  }
+}

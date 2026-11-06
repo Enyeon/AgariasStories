@@ -1,0 +1,162 @@
+{
+  "nombre": "Tiznado",
+  "claseName": "tiznado",
+  "seccion": "agarias",
+  "dadoDeGolpe": 8,
+  "nivelesDeAumento": [
+    4,
+    8,
+    12,
+    16,
+    19
+  ],
+  "conjurador": "alternativo",
+  "niveles": {
+    "1": {
+      "descripcion": "Portador de Runas antiguas que manipula poder ancestral grabado en su esencia.",
+      "descripcionLarga": "El Tiznado canaliza Runas, fragmentos de un orden antiguo que trasciende reinos y eras. Las inscribe en armas, armaduras o en su propio cuerpo, alterando la realidad a través de símbolos primordiales. Cada Runa es poder, cada combinación una estrategia. No lanza magia convencional: invoca legado.",
+      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Fuerza, Constitución.\n❖ Tus puntos de golpe es:\n    :: Tu dado de PG es: 1d12. 12 + Constitución.\n    :: Además, por cada nivel por encima de 1, obtienes 1d12 de PG + Constitución.\n❖ Competencias:\n    :: Armadura: Armadura ligera, armadura media, escudos.\n    :: Armas: Armas simples, armas marciales.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge dos de entre Atletismo, Intimidación, Naturaleza, Percepción, Supervivencia y Trato de Animales.\n❖ Equipos. Comienzas con el siguiente equipo, además del otorgado por tu trasfondo:\n    :: (a) una gran hacha o (b) cualquier arma marcial cuerpo a cuerpo.\n    :: (a) dos hachas de mano o (b) cualquier arma simple.\n    :: Un equipo de explorador y cuatro jabalinas.\n    :: Monedas de Oro: 2d4 x 10.",
+      "infoBlock": {
+        "blockUno": {
+          "name": "",
+          "titleName": "✦  ✦",
+          "descripcion": ""
+        },
+        "blockDos": {
+          "name": "",
+          "titleName": "✦  ✦",
+          "descripcion": ""
+        },
+        "blockTres": {
+          "name": "",
+          "titleName": "✦  ✦",
+          "descripcion": "",
+          "tablaClase": {
+            "encabezado": [
+              "",
+              "",
+              ""
+            ],
+            "filas": [
+              [
+                ""
+              ],
+              [
+                ""
+              ],
+              [
+                ""
+              ],
+              [
+                ""
+              ],
+              [
+                ""
+              ],
+              [
+                ""
+              ],
+              [
+                ""
+              ],
+              [
+                ""
+              ]
+            ]
+          }
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "",
+          ""
+        ],
+        "filas": [
+          [
+            "",
+            ""
+          ]
+        ]
+      }
+    },
+    "2": {
+      "informacionNivel": "Rasgo: Defensa temeraria"
+    },
+    "3": {
+      "informacionNivel": "Rasgo: Defensa temeraria",
+      "subClase": {
+        "senda1": {
+          "subNombre": "Hebra Paradoja",
+          "subNivel": {
+            "3": {
+              "infoSubNivel": "Rasgo: Rabia"
+            },
+            "6": {
+              "infoSubNivel": "Rasgo: Rabia"
+            },
+            "10": {
+              "infoSubNivel": "Rasgo: Rabia"
+            },
+            "14": {
+              "infoSubNivel": "Rasgo: Rabia"
+            }
+          }
+        },
+        "senda2": {
+          "subNombre": "Hebra Error",
+          "subNivel": {
+            "3": {
+              "infoSubNivel": "Rasgo: Rabia"
+            },
+            "6": {
+              "infoSubNivel": "Rasgo: Rabia"
+            },
+            "10": {
+              "infoSubNivel": "Rasgo: Rabia"
+            },
+            "14": {
+              "infoSubNivel": "Rasgo: Rabia"
+            }
+          }
+        },
+        "senda3": {
+          "subNombre": "Hebra Virus",
+          "subNivel": {
+            "3": {
+              "infoSubNivel": "Rasgo: Rabia"
+            },
+            "6": {
+              "infoSubNivel": "Rasgo: Rabia"
+            },
+            "10": {
+              "infoSubNivel": "Rasgo: Rabia"
+            },
+            "14": {
+              "infoSubNivel": "Rasgo: Rabia"
+            }
+          }
+        },
+        "senda4": {
+          "subNombre": "Hebra .exe",
+          "subNivel": {
+            "3": {
+              "infoSubNivel": "Rasgo: Rabia"
+            },
+            "6": {
+              "infoSubNivel": "Rasgo: Rabia"
+            },
+            "10": {
+              "infoSubNivel": "Rasgo: Rabia"
+            },
+            "14": {
+              "infoSubNivel": "Rasgo: Rabia"
+            }
+          }
+        }
+      }
+    },
+    "20": {
+      "informacionNivel": "Rasgo: Defensa temeraria"
+    }
+  }
+}

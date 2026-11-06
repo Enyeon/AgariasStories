@@ -1,0 +1,337 @@
+{
+  "nombre": "Anomalía",
+  "claseName": "anomalia",
+  "seccion": "agarias",
+  "dadoDeGolpe": 6,
+  "nivelesDeAumento": [
+    4,
+    8,
+    12,
+    16,
+    19
+  ],
+  "conjurador": true,
+  "attribute": "inteligencia",
+  "niveles": {
+    "1": {
+      "descripcion": "Ser alterado por fallos de la realidad que manifiesta anomalías como si fueran magia.",
+      "descripcionLarga": "Animalía no lanza conjuros: la realidad se desajusta a su alrededor. Su cuerpo es una grieta viviente, un error persistente en las leyes naturales. Extremidades que cambian, energía que se filtra, fenómenos imposibles que brotan como reflejos instintivos. No estudia, no pacta, no hereda: es una anomalía consciente.",
+      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Fuerza, Constitución.\n❖ Tus puntos de golpe es:\n    :: Tu dado de PG es: 1d12. 12 + Constitución.\n    :: Además, por cada nivel por encima de 1, obtienes 1d12 de PG + Constitución.\n❖ Competencias:\n    :: Armadura: Armadura ligera, armadura media, escudos.\n    :: Armas: Armas simples, armas marciales.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge dos de entre Atletismo, Intimidación, Naturaleza, Percepción, Supervivencia y Trato de Animales.\n❖ Equipos. Comienzas con el siguiente equipo, además del otorgado por tu trasfondo:\n    :: (a) una gran hacha o (b) cualquier arma marcial cuerpo a cuerpo.\n    :: (a) dos hachas de mano o (b) cualquier arma simple.\n    :: Un equipo de explorador y cuatro jabalinas.\n    :: Monedas de Oro: 2d4 x 10.",
+      "infoBlock": {
+        "blockUno": {
+          "name": "",
+          "titleName": "✦  ✦",
+          "descripcion": ""
+        },
+        "blockDos": {
+          "name": "",
+          "titleName": "✦  ✦",
+          "descripcion": ""
+        },
+        "blockTres": {
+          "name": "",
+          "titleName": "✦  ✦",
+          "descripcion": "",
+          "tablaClase": {
+            "encabezado": [
+              "",
+              "",
+              ""
+            ],
+            "filas": [
+              [
+                ""
+              ],
+              [
+                ""
+              ],
+              [
+                ""
+              ],
+              [
+                ""
+              ],
+              [
+                ""
+              ],
+              [
+                ""
+              ],
+              [
+                ""
+              ],
+              [
+                ""
+              ]
+            ]
+          }
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "",
+          ""
+        ],
+        "filas": [
+          [
+            "",
+            ""
+          ]
+        ]
+      }
+    },
+    "2": {
+      "informacionNivel": "✦  ✦"
+    },
+    "3": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "",
+          "titleName": "✦  ✦",
+          "descripcion": ""
+        },
+        "blockDos": {
+          "name": "",
+          "titleName": "✦  ✦",
+          "descripcion": ""
+        },
+        "blockTres": {
+          "name": "",
+          "titleName": "✦  ✦",
+          "descripcion": "",
+          "tablaClase": {
+            "encabezado": [
+              "",
+              "",
+              ""
+            ],
+            "filas": [
+              [
+                ""
+              ],
+              [
+                ""
+              ],
+              [
+                ""
+              ],
+              [
+                ""
+              ],
+              [
+                ""
+              ],
+              [
+                ""
+              ],
+              [
+                ""
+              ],
+              [
+                ""
+              ]
+            ]
+          }
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "",
+          ""
+        ],
+        "filas": [
+          [
+            "",
+            ""
+          ]
+        ]
+      },
+      "subClase": {
+        "senda1": {
+          "subNombre": "Hebra Paradoja",
+          "subDescripcion": "✦  ✦",
+          "subNivel": {
+            "3": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "6": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "10": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "14": {
+              "infoSubNivel": "✦  ✦"
+            }
+          }
+        },
+        "senda2": {
+          "subNombre": "Hebra Error",
+          "subDescripcion": "✦  ✦",
+          "subNivel": {
+            "3": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "6": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "10": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "14": {
+              "infoSubNivel": "✦  ✦"
+            }
+          }
+        },
+        "senda3": {
+          "subNombre": "Hebra Virus",
+          "subDescripcion": "✦  ✦",
+          "subNivel": {
+            "3": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "6": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "10": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "14": {
+              "infoSubNivel": "✦  ✦"
+            }
+          }
+        },
+        "senda4": {
+          "subNombre": "Hebra .exe",
+          "subDescripcion": "✦  ✦",
+          "subNivel": {
+            "3": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "6": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "10": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "14": {
+              "infoSubNivel": "✦  ✦"
+            }
+          }
+        }
+      }
+    },
+    "4": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "",
+          "titleName": "✦  ✦",
+          "descripcion": ""
+        },
+        "blockDos": {
+          "name": "",
+          "titleName": "✦  ✦",
+          "descripcion": ""
+        },
+        "blockTres": {
+          "name": "",
+          "titleName": "✦  ✦",
+          "descripcion": "",
+          "tablaClase": {
+            "encabezado": [
+              "",
+              "",
+              ""
+            ],
+            "filas": [
+              [
+                ""
+              ],
+              [
+                ""
+              ],
+              [
+                ""
+              ],
+              [
+                ""
+              ],
+              [
+                ""
+              ],
+              [
+                ""
+              ],
+              [
+                ""
+              ],
+              [
+                ""
+              ]
+            ]
+          }
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "",
+          ""
+        ],
+        "filas": [
+          [
+            "",
+            ""
+          ]
+        ]
+      }
+    },
+    "5": {
+      "informacionNivel": "✦  ✦"
+    },
+    "6": {
+      "informacionNivel": "✦  ✦"
+    },
+    "7": {
+      "informacionNivel": "✦  ✦"
+    },
+    "8": {
+      "informacionNivel": "✦  ✦"
+    },
+    "9": {
+      "informacionNivel": "✦  ✦"
+    },
+    "10": {
+      "informacionNivel": "✦  ✦"
+    },
+    "11": {
+      "informacionNivel": "✦  ✦"
+    },
+    "12": {
+      "informacionNivel": "✦  ✦"
+    },
+    "13": {
+      "informacionNivel": "✦  ✦"
+    },
+    "14": {
+      "informacionNivel": "✦  ✦"
+    },
+    "15": {
+      "informacionNivel": "✦  ✦"
+    },
+    "16": {
+      "informacionNivel": "✦  ✦"
+    },
+    "17": {
+      "informacionNivel": "✦  ✦"
+    },
+    "18": {
+      "informacionNivel": "✦  ✦"
+    },
+    "19": {
+      "informacionNivel": "✦  ✦"
+    },
+    "20": {
+      "informacionNivel": "✦  ✦"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+# ── API (compartir personajes) ───────────────────────────────────────────
+# Cuando tengas el backend publicado, BORRA la línea «api-no-disponible» y
+# DESCOMENTA la siguiente, cambiando la URL por la de tu backend:
+# /api/*  https://TU-BACKEND.example.com/api/:splat  200
+/api/*  /api-no-disponible.json  404
+
+# ── Aplicación (las rutas /editar/..., /personaje/... las resuelve la app) ──
+/*  /index.html  200

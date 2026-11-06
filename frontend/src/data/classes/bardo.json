@@ -1,0 +1,244 @@
+{
+  "nombre": "Bardo",
+  "claseName": "bardo",
+  "seccion": "manual",
+  "dadoDeGolpe": 8,
+  "nivelesDeAumento": [
+    4,
+    8,
+    12,
+    16
+  ],
+  "conjurador": true,
+  "attribute": "carisma",
+  "niveles": {
+    "1": {
+      "descripcion": "Artista arcano que manipula la magia a través del arte, la palabra y la emoción.",
+      "descripcionLarga": "El Bardo entiende que la realidad vibra. La música, la poesía y el relato no son entretenimiento: son herramientas para alterar lo que existe. Inspira aliados, desarma enemigos y reescribe el ánimo del campo de batalla. Su magia fluye desde la creatividad y el ingenio. Es diplomático, espía, sabio y provocador. Donde otros lanzan fuego, él altera voluntades.",
+      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Fuerza, Constitución.\n❖ Tus puntos de golpe es:\n    :: Tu dado de PG es: 1d12. 12 + Constitución.\n    :: Además, por cada nivel por encima de 1, obtienes 1d12 de PG + Constitución.\n❖ Competencias:\n    :: Armadura: Armadura ligera, armadura media, escudos.\n    :: Armas: Armas simples, armas marciales.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge dos de entre Atletismo, Intimidación, Naturaleza, Percepción, Supervivencia y Trato de Animales.\n❖ Equipos. Comienzas con el siguiente equipo, además del otorgado por tu trasfondo:\n    :: (a) una gran hacha o (b) cualquier arma marcial cuerpo a cuerpo.\n    :: (a) dos hachas de mano o (b) cualquier arma simple.\n    :: Un equipo de explorador y cuatro jabalinas.\n    :: Monedas de Oro: 2d4 x 10.",
+      "informacionNivel": "✦  ✦\n\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n\n✦  ✦"
+    },
+    "2": {
+      "informacionNivel": "✦  ✦",
+      "infoBlock": {
+        "blockUno": {
+          "name": "",
+          "titleName": "✦  ✦",
+          "descripcion": ""
+        },
+        "blockDos": {
+          "name": "",
+          "titleName": "✦  ✦",
+          "descripcion": ""
+        },
+        "blockTres": {
+          "name": "",
+          "titleName": "✦  ✦",
+          "descripcion": ""
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "",
+          ""
+        ],
+        "filas": [
+          [
+            "",
+            ""
+          ]
+        ]
+      }
+    },
+    "3": {
+      "informacionNivel": "✦  ✦",
+      "infoBlock": {
+        "blockUno": {
+          "name": "",
+          "titleName": "✦  ✦",
+          "descripcion": ""
+        },
+        "blockDos": {
+          "name": "",
+          "titleName": "✦  ✦",
+          "descripcion": ""
+        },
+        "blockTres": {
+          "name": "",
+          "titleName": "✦  ✦",
+          "descripcion": ""
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "",
+          ""
+        ],
+        "filas": [
+          [
+            "",
+            ""
+          ]
+        ]
+      },
+      "subClase": {
+        "senda1": {
+          "subNombre": "Hebra Paradoja",
+          "subDescripcion": "✦  ✦",
+          "subNivel": {
+            "3": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "6": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "10": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "14": {
+              "infoSubNivel": "✦  ✦"
+            }
+          }
+        },
+        "senda2": {
+          "subNombre": "Hebra Error",
+          "subDescripcion": "✦  ✦",
+          "subNivel": {
+            "3": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "6": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "10": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "14": {
+              "infoSubNivel": "✦  ✦"
+            }
+          }
+        },
+        "senda3": {
+          "subNombre": "Hebra Virus",
+          "subDescripcion": "✦  ✦",
+          "subNivel": {
+            "3": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "6": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "10": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "14": {
+              "infoSubNivel": "✦  ✦"
+            }
+          }
+        },
+        "senda4": {
+          "subNombre": "Hebra .exe",
+          "subDescripcion": "✦  ✦",
+          "subNivel": {
+            "3": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "6": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "10": {
+              "infoSubNivel": "✦  ✦"
+            },
+            "14": {
+              "infoSubNivel": "✦  ✦"
+            }
+          }
+        }
+      }
+    },
+    "4": {
+      "informacionNivel": "✦  ✦",
+      "infoBlock": {
+        "blockUno": {
+          "name": "",
+          "titleName": "✦  ✦",
+          "descripcion": ""
+        },
+        "blockDos": {
+          "name": "",
+          "titleName": "✦  ✦",
+          "descripcion": ""
+        },
+        "blockTres": {
+          "name": "",
+          "titleName": "✦  ✦",
+          "descripcion": ""
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "",
+          ""
+        ],
+        "filas": [
+          [
+            "",
+            ""
+          ]
+        ]
+      }
+    },
+    "5": {
+      "informacionNivel": "✦  ✦"
+    },
+    "6": {
+      "informacionNivel": "✦  ✦"
+    },
+    "7": {
+      "informacionNivel": "✦  ✦"
+    },
+    "8": {
+      "informacionNivel": "✦  ✦"
+    },
+    "9": {
+      "informacionNivel": "✦  ✦"
+    },
+    "10": {
+      "informacionNivel": "✦  ✦"
+    },
+    "11": {
+      "informacionNivel": "✦  ✦"
+    },
+    "12": {
+      "informacionNivel": "✦  ✦"
+    },
+    "13": {
+      "informacionNivel": "✦  ✦"
+    },
+    "14": {
+      "informacionNivel": "✦  ✦"
+    },
+    "15": {
+      "informacionNivel": "✦  ✦"
+    },
+    "16": {
+      "informacionNivel": "✦  ✦"
+    },
+    "17": {
+      "informacionNivel": "✦  ✦"
+    },
+    "18": {
+      "informacionNivel": "✦  ✦"
+    },
+    "19": {
+      "informacionNivel": "✦  ✦"
+    },
+    "20": {
+      "informacionNivel": "✦  ✦"
+    }
+  },
+  "pericias": {
+    "3": 2,
+    "10": 2
+  }
+}

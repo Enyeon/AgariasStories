@@ -1,0 +1,609 @@
+{
+  "Acechador": {
+    "requisito": {
+      "destreza": 13
+    },
+    "habilidad": "Eres un experto en ocultarte en las sombras.\nGanas los siguientes beneficios:\n♻ Puedes intentar esconderte cuando estás en penumbra de la criatura de la cual te estás ocultando.\n♻ Cuando estás escondido de una criatura y fallas con un arma a distancia, hacer el ataque no delatará tu posición.\n♻ La luz tenue no supone una desventaja para tus tiradas de Sabiduría (Percepción) si estas se basan en la vista."
+  },
+  "Actor": {
+    "aumentarStat": {
+      "carisma": 1
+    },
+    "habilidad": "Eres experimentado en la imitación y en el arte del drama.\nGanas los siguientes beneficios:\n♻ Aumenta tu puntuación de Carisma en 1, hasta un máximo de 20.\n♻ Tienes ventaja en las tiradas de Carisma (Engañar) y Carisma (Interpretar) cuando intentas hacerte pasar por otra persona.\n♻ Puedes imitar el habla de otra persona o los sonidos hechos por otras criaturas. Debes haber oído a la persona hablar, o haber escuchado a la criatura haber hecho el sonido, por al menos un minuto. Una tirada exitosa de Sabiduría (Averiguar Intenciones) contra tu tirada de Carisma (Engañar) permite a alguien o algo que escucha determinar que el efecto es falso."
+  },
+  "Adepto elemental": {
+    "requisito": {
+      "conjurador": true
+    },
+    "habilidad": "Consigues un poder elemental para tus conjuros.\nGanas los siguientes beneficios:\n♻ Cuando obtienes esta dote, elige uno de los siguientes tipos de daño: ácido, frío, fuego, relámpago, vacío o trueno.\n♻ Los hechizos que lanzas ignoran la resistencia al daño del tipo elegido. Además, cuando tiras daño por un hechizo que lanzas que inflige daño de ese tipo, puedes tratar cualquier 1 en un dado de daño como un 2.\n♻ Puedes seleccionar esta dote varias veces. Cada vez que lo hagas, deberás elegir un tipo de daño diferente."
+  },
+  "Adepto marcial": {
+    "habilidad": "Tienes entrenamiento marcial que te permite realizar maniobras especiales de combate.\nObtienes los siguientes beneficios:\n♻ Aprendes dos maniobras de tu elección entre las disponibles para el arquetipo de Maestro de batalla en la clase Guerrero. Si una maniobra que usas requiere que tu objetivo haga una tirada de salvación para resistir los efectos de la maniobra, la CD de la tirada de salvación es igual a 8 + tu bonificador de competencia + tu modificador de Fuerza o Destreza (a tu elección).\n♻ Obtienes un dado de superioridad, que es un d6 (este dado se suma a cualquier dado de superioridad que tengas de otra fuente). Este dado se usa para alimentar tus maniobras. Un dado de superioridad se gasta cuando lo usas. Recuperas tus dados de superioridad gastados cuando terminas un descanso corto o largo."
+  },
+  "Adepto Metamágico": {
+    "requisito": {
+      "conjurador": true
+    },
+    "habilidad": "Has aprendido a ejercer tu voluntad sobre tus hechizos para alterar su funcionamiento.\nGanas los siguientes beneficios:\n♻ Aprendes dos opciones metamágicas de tu elección de la clase de hechicero. Solo puedes usar una opción metamágica en un hechizo cuando lo lanzas, a menos que la opción diga lo contrario. Cada vez que alcanzas un nivel que otorga la característica de mejora de la puntuación de habilidad, puedes reemplazar una de estas opciones metamágicas con otra de la clase de hechicero.\n♻ Obtienes 2 puntos de hechicería para gastar en Metamagia (estos puntos se agregan a cualquier punto de hechicería que tengas de otra fuente, pero solo se pueden usar en Metamagia). Recuperas todos los puntos de hechicería gastados cuando finalizas un descanso prolongado."
+  },
+  "Adepto sobrenatural": {
+    "requisito": {
+      "conjurador": true
+    },
+    "habilidad": "Aprendiste tradiciones para invocar sobrenaturales criautras.\nGanas los siguientes beneficios:\n♻ Al estudiar la tradición oculta, aprendes una opción de Invocación sobrenatural de tu elección de la clase de brujo. Tu habilidad para lanzar conjuros para la invocación es Inteligencia, Sabiduría o Carisma (elige cuando selecciones esta dote). Si la invocación tiene un requisito previo de cualquier tipo, puedes elegir esa invocación solo si eres un brujo que cumple con el requisito previo.\n♻ Siempre que ganes un nivel, puedes reemplazar la invocación con otra de la clase brujo."
+  },
+  "Alerta": {
+    "habilidad": "Siempre atento al peligro.\nOtendrá los siguientes beneficios:\n♻ Obtienes una bonificación de +5 a la iniciativa.\n♻ No puedes ser sorprendido mientras estás consciente.\n♻ Otras criaturas no ganan ventaja en las tiradas de ataque contra ti como resultado de no ser vistas por ti."
+  },
+  "Alta Magia Elfica": {
+    "requisito": {
+      "raza": "Elfo"
+    },
+    "agregado": {
+      "conjurador": true
+    },
+    "habilidad": "Como elfo, te entrenas con la mágia típica de tu raza.\nGanas los siguientes beneficios:\n♻ Aprendes más de la magia típica de los elfos oscuros. Aprendes el conjuro detectar magia y puedes lanzarlo a voluntad, sin gastar un espacio de conjuro. También aprendes levitar y disipar magia, cada uno de los cuales puedes lanzar una vez sin gastar un espacio de hechizo. Recuperas la habilidad de lanzar esos dos hechizos de esta manera cuando terminas un descanso prolongado. Carisma es tu habilidad de lanzamiento de hechizos para los tres hechizos."
+  },
+  "Asesino de magos": {
+    "habilidad": "Has practicado técnicas útiles en el combate cuerpo a cuerpo contra lanzadores de hechizos.\nObteniendo los siguientes beneficios:\n♻ Cuando una criatura a 5 pies (1 Casilla) de ti lanza un hechizo, puedes usar tu reacción para hacer un ataque de arma cuerpo a cuerpo contra esa criatura.\n♻ Cuando dañas a una criatura que se está concentrando en un hechizo, esa criatura tiene desventaja en la tirada de salvación que hace para mantener su concentración.\n♻ Tienes ventaja en las tiradas de salvación contra hechizos lanzados por criaturas a 5 pies (1 Casilla) de ti."
+  },
+  "Atacante salvaje": {
+    "habilidad": "Has practicado técnicas útiles en el combate cuerpo a cuerpo.\nObteniendo los siguientes beneficios:\nUna vez por turno, cuando tiras daño para un ataque con arma cuerpo a cuerpo, puedes volver a tirar los dados de daño del arma y usar cualquiera de los dos totales."
+  },
+  "Atleta": {
+    "habilidad": "Ha realizado un extenso entrenamiento físico.\nObtener los siguientes beneficios:\n♻ Aumenta tu Fuerza o Destreza en 1, hasta un máximo de 20.\n♻ Cuando está boca abajo, pararse usa solo 5 pies (1 Casilla) de su movimiento.\n♻ Escalar no te cuesta movimiento extra.\n♻ Puedes hacer un salto de longitud corriendo o un salto de altura corriendo después de moverte solo 5 pies (1 Casilla) a pie, en lugar de 10 pies (2 casillas)."
+  },
+  "Cargador": {
+    "habilidad": "Has entrenado tu fuerza para cargar contra alguien.\nObtener los siguientes beneficios:\n♻ Cuando usas tu acción para Correr (dash), puedes usar una acción adicional para hacer un ataque con un arma cuerpo a cuerpo o para empujar (shove) a una criatura.\n♻ Si te mueves al menos 10 pies (2 casillas) en línea recta inmediatamente antes de realizar esta acción adicional, obtienes una bonificación de +5 a la tirada de daño del ataque (si eliges hacer un ataque cuerpo a cuerpo y golpear) o empujas al objetivo hasta 10 pies (2 casillas). lejos de ti (si eliges empujar y tienes éxito).\n"
+  },
+  "Combatiente montado": {
+    "habilidad": "Eres un enemigo peligroso al que enfrentar mientras estás montado. Mientras estás montado y no estás incapacitado.\nObtienes los siguientes beneficios:\n♻ Tienes ventaja en las tiradas de ataque cuerpo a cuerpo contra cualquier criatura desmontada que sea más pequeña que tu montura.\n♻ Puedes forzar un ataque dirigido a tu montura para que te apunte a ti.\n♻ Si tu montura está sujeta a un efecto que le permite hacer una tirada de salvación de Destreza para recibir solo la mitad del daño, en cambio no recibe daño si tiene éxito en la tirada de salvación, y solo la mitad del daño si falla."
+  },
+  "Constitución infernal": {
+    "aumentarStat": {
+      "constitucion": 1
+    },
+    "requisito": {
+      "raza": "Tiflin"
+    },
+    "habilidad": "La sangre diabólica corre fuerte en ti, desbloqueando una resistencia similar a la que poseen algunos demonios.\nObtienes los siguientes beneficios:\n♻ Aumenta tu puntuación de Constitución en +1, hasta un máximo de 20.\n♻ Tienes resistencia al daño por frío y veneno.\n♻ Tienes ventaja en las tiradas de salvación contra el envenenamiento (poisoned)."
+  },
+  "Cortador": {
+    "aumentarStatOpcional": [
+      {
+        "fuerza": 1
+      },
+      {
+        "destreza": 1
+      }
+    ],
+    "habilidad": "Ha aprendido dónde cortar para obtener los mejores resultados.\nOtorga los siguientes beneficios:\n♻ Aumenta tu Fuerza o Destreza en 1, hasta un máximo de 20.\n♻ Una vez por turno, cuando golpeas a una criatura con un ataque que inflige daño cortante, puedes reducir la velocidad del objetivo en 10 pies (2 casillas) hasta el comienzo de tu próximo turno.\n♻ Cuando consigues un golpe crítico que inflige daño cortante a una criatura, la hieres gravemente. Hasta el comienzo de tu próximo turno, el objetivo tiene desventaja en todas las tiradas de ataque."
+  },
+  "Curador": {
+    "habilidad": "Eres un médico capaz, lo que te permite curar heridas rápidamente y hacer que tus aliados vuelvan a la lucha.\nObtienes los siguientes beneficios:\n♻ Cuando usas el equipo de sanador para estabilizar a una criatura moribunda, esa criatura también recupera 1 punto de golpe.\n♻ Como acción, puedes gastar un uso del equipo de sanador para atender a una criatura y restaurarle 1d6 + 4 puntos de golpe, más puntos de golpe adicionales iguales al número máximo de Dados de Golpe de la criatura. La criatura no puede recuperar puntos de golpe con esta dote nuevamente hasta que termine un descanso corto o largo."
+  },
+  "Chef": {
+    "aumentarStatOpcional": [
+      {
+        "constitucion": 1
+      },
+      {
+        "sabiduria": 1
+      }
+    ],
+    "habilidad": "El tiempo dedicado a dominar las artes culinarias ha valido la pena.\nOtorga los siguientes beneficios:\n♻ Aumenta tu Constitución o Sabiduría en 1, hasta un máximo de 20.\n♻ Obtienes competencia con los utensilios de cocina si aún no los tienes.\n♻ Como parte de un breve descanso, puedes cocinar alimentos especiales, siempre que tengas a mano los ingredientes y los utensilios de cocina. Puedes preparar suficiente de esta comida para un número de criaturas igual a 4 + tu bonificador de competencia. Al final del breve descanso, cualquier criatura que coma la comida y gaste uno o más Dados de Golpe para recuperar puntos de golpe, recupera 1d8 puntos de golpe extra.\n♻ Con una hora de trabajo o cuando terminas un descanso prolongado, puedes cocinar una cantidad de delicias igual a tu bonificación de competencia. Estas golosinas especiales duran 8 horas después de ser hechas. Una criatura puede usar una Acción Adicional para comer una de esas golosinas para ganar puntos de golpe temporales iguales a tu bonificación de competencia."
+  },
+  "Desvanecerse": {
+    "aumentarStatOpcional": [
+      {
+        "inteligencia": 1
+      },
+      {
+        "destreza": 1
+      }
+    ],
+    "requisito": {
+      "raza": "Dracónido"
+    },
+    "habilidad": "Tu gente es inteligente, con un don para la magia de ilusión. Has aprendido un truco mágico para desvanecerte cuando sufres daño.\nObtienes los siguientes beneficios:\n♻ Aumenta tu Destreza o Inteligencia en 1, hasta un máximo de 20.\n♻ Inmediatamente después de recibir daño, puedes usar una reacción para volverte invisible mágicamente hasta el final de tu próximo turno o hasta que ataques, inflijas daño u obligues a alguien a hacer una tirada de salvación. Una vez que usas esta habilidad, no puedes volver a hacerlo hasta que termines un descanso corto o largo."
+  },
+  "Don del Dragón Cromático": {
+    "requisito": {
+      "raza": "Dracónido"
+    },
+    "habilidad": "Has manifestado algo del poder de los dragones cromáticos.\nOtorgándote los siguientes beneficios:\n♻ Infusión cromática. Como acción adicional, puedes tocar un arma simple o marcial e infundirla con uno de los siguientes tipos de daño: ácido, frío, fuego, relámpago o veneno. Durante el minuto siguiente, el arma inflige 1d4 de daño adicional del tipo elegido cuando impacta. Después de usar esta acción adicional, no puedes volver a hacerlo hasta que finalices un descanso prolongado.\n♻ Resistencia reactiva. Cuando recibes daño por ácido, frío, fuego, rayos o veneno, puedes usar tu reacción para darte resistencia a esa instancia de daño. Puedes usar esta reacción un número de veces igual a tu bonificador de competencia, y recuperas todos los usos gastados cuando finalizas un descanso prolongado."
+  },
+  "Don del Dragón Gema": {
+    "aumentarStatOpcional": [
+      {
+        "inteligencia": 1
+      },
+      {
+        "sabiduria": 1
+      },
+      {
+        "carisma": 1
+      }
+    ],
+    "requisito": {
+      "raza": "Dracónido"
+    },
+    "habilidad": "Has manifestado algo del poder de los dragones de gemas.\nOtorgándote los siguientes beneficios:\n♻ Aumento de puntuación de habilidad. Aumenta tu Inteligencia, Sabiduría o Carisma en 1, hasta un máximo de 20.\n♻ Represalia telequinética. Cuando recibes daño de una criatura que está a 10 pies (2 casillas) de ti, puedes usar tu reacción para emanar energía telequinética. La criatura que te hizo daño debe hacer una tirada de salvación de Fuerza (la CD es igual a 8 + tu bonificador de competencia + el modificador de habilidad de la puntuación incrementada por esta dote). Si falla, la criatura recibe 2d8 puntos de daño por fuerza y es empujada hasta 10 pies (2 casillas) de ti. Con una salvación exitosa, la criatura recibe la mitad del daño y no es empujada. Puedes usar esta reacción un número de veces igual a tu bonificador de competencia, y recuperas todos los usos gastados cuando finalizas un descanso prolongado."
+  },
+  "Don del Dragón Metálico": {
+    "requisito": {
+      "raza": "Dracónido"
+    },
+    "habilidad": "Has manifestado algo del poder de los dragones metálicos.\nOtorgándote los siguientes beneficios:\n♻ Sanación dracónica. Aprendes el hechizo de curar heridas. Puedes lanzar este hechizo sin gastar un espacio de hechizo. Una vez que lanzas este hechizo de esta manera, no puedes volver a hacerlo hasta que termines un descanso prolongado. También puedes lanzar este hechizo usando los espacios de hechizo que tienes. La habilidad de lanzamiento de hechizos del hechizo es Inteligencia, Sabiduría o Carisma cuando lo lanzas con esta dote (elige cuando obtienes la dote).\n♻ Alas protectoras. Puedes manifestar alas protectoras que pueden protegerte a ti o a otros. Cuando tú u otra criatura que puedas ver a 5 pies (1 Casilla) de ti sea golpeado por una tirada de ataque, puedes usar tu reacción para manifestar alas espectrales desde tu espalda por un momento. Otorgas una bonificación a la CA del objetivo igual a tu bonificación de competencia contra esa tirada de ataque, lo que podría hacer que falle. Puedes usar esta reacción un número de veces igual a tu bonificador de competencia, y recuperas todos los usos gastados cuando finalizas un descanso prolongado."
+  },
+  "Dos Armas": {
+    "habilidad": "Dominas la lucha con dos armas.\nObtienes los siguientes beneficios:\n♻ Obtienes una bonificación de +1 a la CA mientras empuñas un arma cuerpo a cuerpo separada en cada mano.\n♻ Puedes usar la lucha con dos armas incluso cuando las armas cuerpo a cuerpo de una mano que empuñas no son ligeras.\n♻ Puede sacar o guardar dos armas de una mano cuando normalmente podría sacar o guardar solo una."
+  },
+  "Duelista Defensivo": {
+    "requisito": {
+      "destreza": 13
+    },
+    "habilidad": "Has aprendido a manejar dos armas.\nObtienes los siguientes beneficios:\n♻ Cuando empuñas un arma sutil (finnese) con la que eres competente y otra criatura te golpea con un ataque cuerpo a cuerpo, puedes usar tu reacción para agregar tu bonificación de competencia a tu CA para ese ataque, lo que podría hacer que el ataque no te alcance."
+  },
+  "Duradero": {
+    "aumentarStat": {
+      "constitucion": 1
+    },
+    "habilidad": "Resistente y resiliente.\nObtiene los siguientes beneficios:\n♻ Aumenta tu puntuación de Constitución en 1, hasta un máximo de 20.\n♻ Cuando lanzas un Dado de Golpe para recuperar puntos de golpe, el número mínimo de puntos de golpe que recuperas de la tirada es igual al doble de tu modificador de Constitución (mínimo de 2)."
+  },
+  "Duro": {
+    "habilidad": "Has entrenado tu cuerpo a tal punto, que tu piel parece de acero.\nObteniendo los siguientes beneficios:\n♻ Tu máximo de puntos de vida aumenta en una cantidad igual al doble de tu nivel cuando obtienes esta dote. Siempre que ganes un nivel a partir de entonces, tu máximo de puntos de golpe aumenta en 2 puntos de golpe adicionales."
+  },
+  "Envenenador": {
+    "habilidad": "Puedes preparar y entregar venenos mortales.\nOtorgándote los siguientes beneficios:\n♻ Cuando haces una tirada de daño que inflige daño por veneno, ignora la resistencia al daño por veneno.\n♻ Puedes aplicar veneno a un arma o munición como una acción adicional, en lugar de una acción.\n♻ Obtienes competencia con el kit de envenenador si aún no lo tienes. Con una hora de trabajo usando un equipo de envenenador y gastando 50 po en materiales, puedes crear un número de dosis de veneno potente igual a tu bonificador de competencia. Una vez aplicado a un arma o munición, el veneno conserva su potencia durante 1 minuto o hasta que golpeas con el arma o la munición. Cuando una criatura recibe daño del arma recubierta o de la munición, esa criatura debe tener éxito en una tirada de salvación de Constitución CD 14 o recibir 2d8 daños por veneno y quedar envenenada hasta el final de tu próximo turno."
+  },
+  "Experto en ballestas": {
+    "habilidad": "Gracias a una extensa práctica con la ballesta.\nObtienes los siguientes beneficios:\n♻ Ignoras la calidad de carga de las ballestas con las que eres experto.\n♻ Estar a menos de 5 pies (1 Casilla) de una criatura hostil no supone una desventaja en tus tiradas de ataque a distancia.\n♻ Cuando usas la acción Atacar y atacas con un arma de una mano, puedes usar una acción adicional para atacar con una ballesta de mano que estás sosteniendo."
+  },
+  "Experto en habilidades": {
+    "aumentarStatOpcional": [
+      {
+        "fuerza": 1
+      },
+      {
+        "destreza": 1
+      },
+      {
+        "constitucion": 1
+      },
+      {
+        "inteligencia": 1
+      },
+      {
+        "sabiduria": 1
+      },
+      {
+        "carisma": 1
+      }
+    ],
+    "habilidad": "Has perfeccionado tu competencia con habilidades particulares.\nOtorgándote los siguientes beneficios:\n♻ Aumenta una puntuación de características de tu elección en 1, hasta un máximo de 20.\n♻ Obtienes competencia en una habilidad de tu elección.\n♻ Elige una habilidad en la que tengas competencia. Obtienes Pericia con esa habilidad, lo que significa que tu bonificación de competencia se duplica para cualquier prueba de habilidad que hagas con ella. La habilidad que elijas debe ser una que no se esté beneficiando de una función, como Pericia, que duplique tu bonificación por competencia.",
+    "pericias": 1
+  },
+  "Explorador de mazmorras": {
+    "habilidad": "Alerta de las trampas ocultas y las puertas secretas que se encuentran en muchas mazmorras.\nObtienes los siguientes beneficios:\n♻ Tienes ventaja en las pruebas de Sabiduría (Percepción) e Inteligencia (Investigación) realizadas para detectar la presencia de puertas secretas.\n♻ Tienes ventaja en las tiradas de salvación hechas para evitar o resistir las trampas.\n♻ Tienes resistencia al daño infligido por las trampas.\n♻ Viajar a un ritmo rápido no impone la penalización normal de -5 en tu puntuación pasiva de Sabiduría (Percepción)."
+  },
+  "Fortaleza enana": {
+    "requisito": {
+      "raza": "Enano"
+    },
+    "aumentarStat": {
+      "constitucion": 1
+    },
+    "habilidad": "Tienes la sangre de los héroes enanos corriendo por tus venas.\nObtienes los siguientes beneficios:\n♻ Aumenta tu puntuación de Constitución en 1, hasta un máximo de 20.\n♻ Cada vez que realizas la acción de Esquivar en combate, puedes gastar un Dado de Golpe para curarte. Tira el dado, suma tu modificador de Constitución y recupera una cantidad de puntos de golpe igual al total (mínimo de 1)."
+  },
+  "Francotirador de hechizos": {
+    "requisito": {
+      "conjurador": true
+    },
+    "habilidad": "Has aprendido técnicas para mejorar tus ataques con ciertos tipos de hechizos.\nObteniendo los siguientes beneficios:\n♻ Cuando lanzas un hechizo que requiere que hagas una tirada de ataque, el alcance del hechizo se duplica.\n♻ Tus ataques de hechizos a distancia ignoran la cobertura media y la cobertura de tres cuartos.\n♻ Aprendes un cantrip que requiere una tirada de ataque. Elige el cantrip de la lista de conjuros de bardo, clérigo, druida, hechicero, brujo o mago. Tu habilidad para lanzar conjuros para este cantrip depende de la lista de conjuros que elijas: carisma para bardo, hechicero o brujo; Sabiduría para clérigo o druida; o Inteligencia para asistente."
+  },
+  "Fuertemente blindado": {
+    "aumentarStat": {
+      "fuerza": 1
+    },
+    "habilidad": "Te has entrenado para dominar el uso de armaduras pesadas.\nObteniendo los siguientes beneficios:\n♻ Aumenta tu puntuación de Fuerza en 1, hasta un máximo de 20.\n♻ Obtienes competencia con armadura pesada.\n\n♻ Prerrequisito: Competencia con armadura media."
+  },
+  "Furia": {
+    "aumentarStatOpcional": [
+      {
+        "fuerza": 1
+      },
+      {
+        "constitucion": 1
+      }
+    ],
+    "requisito": {
+      "raza": "Jötunn"
+    },
+    "habilidad": "Tu Furia arde sin descanso.\nObtienes los siguientes beneficios:\n♻ Aumenta tu Fuerza o Constitución en 1, hasta un máximo de 20.\n♻ Cuando golpeas con un ataque usando un arma marcial o simple, puedes tirar uno de los dados de daño del arma una vez más y agregarlo como daño extra del tipo de daño del arma. Una vez que usas esta habilidad, no puedes volver a usarla hasta que termines un descanso corto o largo."
+  },
+  "Grito Primitivo": {
+    "requisito": {
+      "subClase": "senda1"
+    },
+    "habilidad": "Grito Primitivo.\nGanas los siguientes beneficios:\n♻ Cuando el Bersérker entra en Furia, puede emitir un Grito Primitivo como una acción adicional. Este grito es una manifestación brutal de su rabia ancestral, resonando en el alma de todos los enemigos cercanos.\n:: Área de efecto: 30 pies (6 casillas) a la redonda.\n:: Tirada de salvación: Sabiduría (CD = 8 + tu Fuerza + tu Constitución).\n:: Efecto: Las criaturas hostiles que fallen la tirada de salvación quedan provocadas por ti hasta el final de tu siguiente turno. Mientras estén afectadas por el Grito Primitivo, las criaturas tienen desventaja en ataques contra criaturas que no sean tú, y no puede alejarse voluntariamente de ti, a menos que supere una tirada de salvación de Sabiduría al inicio de su próximo turno."
+  },
+  "Habilidoso": {
+    "habilidad": "Adquieres competencia en cualquier combinación de tres habilidades o herramientas de tu elección."
+  },
+  "Hoja de renacido": {
+    "aumentarStatOpcional": [
+      {
+        "fuerza": 1
+      },
+      {
+        "destreza": 1
+      }
+    ],
+    "habilidad": "Eres descendiente de un maestro de la cimitarra de doble hoja, y parte de ese dominio te ha sido transmitido.\nObtienes los siguientes beneficios:\n♻ Aumenta tu Fuerza o Destreza en 1, hasta un máximo de 20.\n♻ Mientras sostienes una cimitarra de doble hoja con las dos manos, obtienes una bonificación de +1 a la Clase de Armadura.\n♻ Una cimitarra de doble hoja tiene la propiedad de sutileza cuando la empuñas."
+  },
+  "Iniciado en Combate": {
+    "habilidad": "Tu entrenamiento marcial te ha ayudado a desarrollar un estilo particular de lucha.\nObteniendo los siguientes beneficios:\n♻ Aprendes una opción de estilo de lucha de tu elección de la clase de guerrero. Si ya tienes un estilo, el que elijas debe ser diferente.\n♻ Cada vez que alcanzas un nivel que otorga la función Mejora de puntuación de habilidad, puedes reemplazar el estilo de lucha de esta dote con otro de la clase de guerrero que no tienes.\n\n♻ Prerrequisito: Competencia con un arma marcial."
+  },
+  "Iniciado Mágico": {
+    "agregado": {
+      "conjurador": true
+    },
+    "habilidad": "Te has entrenado para dominar el uso de algunas magias de otros dominios.\nObteniendo los siguientes beneficios:\n♻ Elige una clase: bardo, clérigo, druida, hechicero, brujo o mago. Aprendes dos cantrips de tu elección de la lista de hechizos de esa clase.\n♻ Además, elige un hechizo de primer nivel para aprender de esa misma lista. Usando esta dote, puedes lanzar el hechizo una vez en su nivel más bajo, y debes terminar un descanso prolongado antes de poder lanzarlo de esta forma nuevamente.\n♻ Tu habilidad para lanzar hechizos para estos hechizos depende de la clase que elijas: carisma para bardo, hechicero o brujo; Sabiduría para clérigo o druida; o Inteligencia para asistente."
+  },
+  "Lanzador de rituales": {
+    "requisitoO": {
+      "inteligencia": 13,
+      "sabiduria": 13
+    },
+    "agregado": {
+      "conjurador": true
+    },
+    "habilidad": "Has aprendido una serie de hechizos que puedes lanzar como rituales.\nObteniendo los siguientes beneficios:\n♻ Estos hechizos están escritos en un libro de rituales, que debes tener a mano mientras lanzas uno de ellos.\n♻ Cuando eliges esta dote, adquieres un libro de rituales que contiene dos hechizos de primer nivel de tu elección. Elige una de las siguientes clases: bardo, clérigo, druida, hechicero, brujo o mago. Debes elegir tus hechizos de la lista de hechizos de esa clase, y los hechizos que elijas deben tener la etiqueta ritual. La clase que elijas también determina tu capacidad de lanzamiento de hechizos para estos hechizos: carisma para bardo, hechicero o brujo; Sabiduría para clérigo o druida; o Inteligencia para asistente.\n♻ Si te encuentras con un hechizo en forma escrita, como un pergamino de hechizos mágicos o un libro de hechizos de un mago, es posible que puedas agregarlo a tu libro de rituales. El hechizo debe estar en la lista de hechizos de la clase que elijas, el nivel del hechizo no puede ser superior a la mitad de tu nivel (redondeado hacia arriba) y debe tener la etiqueta de ritual. El proceso de copiar el conjuro en tu libro de rituales lleva 2 horas por nivel del conjuro y cuesta 50 po por nivel. El costo representa los componentes materiales que gastas mientras experimentas con el hechizo para dominarlo, así como las tintas finas que necesitas para grabarlo."
+  },
+  "Líder inspirador": {
+    "requisito": {
+      "carisma": 13
+    },
+    "habilidad": "Puedes pasar 10 minutos inspirando a tus compañeros, reforzando su determinación de luchar. Cuando lo hagas, elige hasta seis criaturas amistosas (que puedes incluirte a ti mismo) dentro de un radio de 30 pies (6 casillas) de ti que puedan verte u oírte y que puedan entenderte. Cada criatura puede ganar puntos de golpe temporales iguales a tu nivel + tu modificador de Carisma. Una criatura no puede volver a ganar puntos de golpe temporales con esta dote hasta que haya terminado un descanso breve o prolongado."
+  },
+  "Ligeramente blindado": {
+    "aumentarStatOpcional": [
+      {
+        "fuerza": 1
+      },
+      {
+        "destreza": 1
+      }
+    ],
+    "habilidad": "Te has entrenado para dominar el uso de armaduras ligeras.\nObteniendo los siguientes beneficios:\n♻ Aumenta tu Fuerza o Destreza en 1, hasta un máximo de 20.\n♻ Obtienes competencia con armadura ligera."
+  },
+  "Lingüista": {
+    "aumentarStat": {
+      "inteligencia": 1
+    },
+    "languageElection": 3,
+    "habilidad": "Has estudiado idiomas y códigos.\nObteniendo los siguientes beneficios:\n♻ Aumenta tu puntuación de Inteligencia en 1, hasta un máximo de 20.\n♻ Aprendes tres idiomas de tu elección.\n♻ Puede crear hábilmente cifrados escritos. Otros no pueden descifrar un código que creas a menos que les enseñes, tienen éxito en una prueba de Inteligencia (CD igual a tu puntuación de Inteligencia + tu bonificador de competencia), o usan magia para descifrarlo."
+  },
+  "Luchador": {
+    "requisito": {
+      "fuerza": 13
+    },
+    "habilidad": "Has desarrollado las habilidades necesarias para defenderte en espacios cerrados.\nObteniendo los siguientes beneficios:\n♻ Tienes ventaja en las tiradas de ataque contra una criatura a la que estás agarrando.\n♻ Puedes usar tu acción para tratar de inmovilizar a una criatura agarrada por ti. Para hacerlo, haz otra prueba de agarre. Si tienes éxito, tanto tú como la criatura quedan inmovilizados hasta que finaliza el agarre."
+  },
+  "Llamas de Phlegethos": {
+    "requisito": {
+      "raza": "Tiflin"
+    },
+    "aumentarStatOpcional": [
+      {
+        "inteligencia": 1
+      },
+      {
+        "carisma": 1
+      }
+    ],
+    "habilidad": "Aprendes a invocar el fuego del infierno para cumplir tus órdenes.\nObteniendo los siguientes beneficios:\n♻ Aumenta tu Inteligencia o Carisma en 1, hasta un máximo de 20.\n♻ Cuando tiras daño de fuego para un hechizo que lanzas, puedes repetir cualquier tirada de 1 en los dados de daño fuego, pero debes usar la nueva tirada, incluso si es otro 1.\n♻ Cada vez que lanzas un hechizo que inflige daño de fuego, puedes hacer que las llamas te envuelvan hasta el final de tu próximo turno. Las llamas no te hacen daño ni a ti ni a tus pertenencias, y arrojan una luz brillante hasta 30 pies (6 casillas) y una luz tenue hasta 30 pies (6 casillas) adicionales. Mientras las llamas estén presentes, cualquier criatura a 5 pies (1 Casilla) de ti que te golpee con un ataque cuerpo a cuerpo recibe 1d4 puntos de daño por fuego."
+  },
+  "Maestro de armaduras medianas": {
+    "habilidad": "Has practicado moverte con armadura media.\nObteniendo los siguientes beneficios:\n♻ Llevar una armadura media no supone una desventaja en tus pruebas de Destreza (Sigilo).\n♻ Cuando usas armadura media, puedes agregar 3, en lugar de 2, a tu CA si tienes una Destreza de 16 o más.\n\n♻ Prerrequisito: Competencia con armadura media."
+  },
+  "Maestro de armaduras pesadas": {
+    "aumentarStat": {
+      "fuerza": 1
+    },
+    "habilidad": "Puedes usar tu armadura para desviar golpes que matarían a otros.\nObteniendo los siguientes beneficios:\n♻ Aumenta tu puntuación de Fuerza en 1, hasta un máximo de 20.\n♻ Mientras llevas una armadura pesada, el daño contundente, perforante y cortante que recibes de los ataques no mágicos se reduce en 3.\n\n♻ Prerrequisito: Competencia con armadura pesada."
+  },
+  "Maestro de Armas": {
+    "aumentarStatOpcional": [
+      {
+        "fuerza": 1
+      },
+      {
+        "destreza": 1
+      }
+    ],
+    "habilidad": "Has practicado extensamente con una variedad de armas.\nObteniendo los siguientes beneficios:\n♻ Aumenta tu Fuerza o Destreza en 1, hasta un máximo de 20.\n♻ Obtienes competencia con cuatro armas de tu elección. Cada una debe ser un arma simple o marcial."
+  },
+  "Maestro de Armas de Asta": {
+    "habilidad": "Puedes mantener a raya a tus enemigos con armas de alcance.\nObteniendo los siguientes beneficios:\n♻ Cuando realizas la acción de Ataque y atacas solo con una guja, una alabarda, un bastón o una lanza, puedes usar una acción adicional para realizar un ataque cuerpo a cuerpo con el extremo opuesto del arma; este ataque usa el mismo modificador de habilidad que el ataque principal. El dado de daño del arma para este ataque es un d4, y el ataque inflige daño contundente.\n♻ Mientras empuñas una guja, una alabarda, una pica, un bastón o una lanza, otras criaturas provocan un ataque de oportunidad tuyo cuando entran en el alcance que tienes con esa arma."
+  },
+  "Maestro de Armas Pesadas": {
+    "habilidad": "Has aprendido a poner el peso de un arma a tu favor, dejando que su impulso potencie tus golpes.\nObteniendo los siguientes beneficios:\n♻ En tu turno, cuando consigas un golpe crítico con un arma cuerpo a cuerpo o reduzcas a una criatura a 0 puntos de golpe con uno, puedes realizar un ataque con un arma cuerpo a cuerpo como acción adicional.\n♻ Antes de realizar un ataque cuerpo a cuerpo con un arma pesada con la que seas competente, puedes optar por recibir una penalización de -5 a la tirada de ataque. Si el ataque impacta, sumas +10 al daño del ataque."
+  },
+  "Maestro del escudo": {
+    "habilidad": "Usas escudos no solo para protección sino también para atacar.\nObtienes los siguientes beneficios mientras empuñas un escudo:\n♻ Si realizas la acción de Ataque en tu turno, puedes usar una acción adicional para tratar de empujar a una criatura a 5 pies (1 Casilla) de ti con tu escudo.\n♻ Si no estás incapacitado, puedes añadir el bonificador de CA de tu escudo a cualquier tirada de salvación de Destreza que hagas contra un hechizo u otro efecto dañino que solo te afecte a ti.\n♻ Si estás sujeto a un efecto que te permite hacer una tirada de salvación de Destreza para recibir solo la mitad del daño, puedes usar tu reacción para no recibir daño si tienes éxito en la tirada de salvación, interponiendo tu escudo entre tú y la fuente del efecto."
+  },
+  "Magia de los elfos silvanos": {
+    "requisito": {
+      "raza": "Elfo"
+    },
+    "agregado": {
+      "conjurador": true
+    },
+    "habilidad": "Aprendes la magia de los bosques primitivos, que son venerados y protegidos por tu gente.\nObteniendo los siguientes beneficios:\n♻ Aprendes un truco de druida de tu elección. También aprendes los hechizos de zancada larga y pasar sin rastro, cada uno de los cuales puedes lanzar una vez sin gastar un espacio de hechizo. Recuperas la habilidad de lanzar estos dos hechizos de esta manera cuando terminas un descanso prolongado. La sabiduría es tu habilidad para lanzar hechizos para los tres hechizos."
+  },
+  "Mago de Combate": {
+    "requisito": {
+      "conjurador": true
+    },
+    "habilidad": "Has practicado lanzar hechizos en medio del combate.\nObteniendo los siguientes beneficios:\n♻ Tienes ventaja en las tiradas de salvación de Constitución que haces para mantener tu concentración en un hechizo cuando recibes daño.\n♻ Puedes realizar los componentes somáticos de los hechizos incluso cuando tienes armas o un escudo en una o ambas manos.\n♻ Cuando el movimiento de una criatura hostil provoca un ataque de oportunidad tuyo, puedes usar tu reacción para lanzar un hechizo a la criatura, en lugar de hacer un ataque de oportunidad. El hechizo debe tener un tiempo de lanzamiento de 1 acción y debe tener como objetivo solo a esa criatura."
+  },
+  "Mente aguda": {
+    "aumentarStat": {
+      "inteligencia": 1
+    },
+    "habilidad": "Tienes una mente que puede rastrear el tiempo, la dirección y los detalles con una precisión asombrosa.\nObteniendo los siguientes beneficios:\n♻ Aumenta tu puntuación de Inteligencia en 1, hasta un máximo de 20.\n♻ Siempre sabes en qué dirección está el norte.\n♻ Siempre sabes el número de horas que faltan para el próximo amanecer o atardecer.\n♻ Puede recordar con precisión cualquier cosa que haya visto u oído en el último mes."
+  },
+  "Merodeador": {
+    "requisito": {
+      "destreza": 13
+    },
+    "habilidad": "Eres experto en escabullirte entre las sombras.\nObteniendo los siguientes beneficios:\n♻ Puedes intentar esconderte cuando estés ligeramente oscurecido por la criatura de la que te estás escondiendo.\n♻ Cuando estás escondido de una criatura y fallas con un ataque con arma a distancia, hacer el ataque no revela tu posición.\n♻ La luz tenue no supone una desventaja en tus pruebas de Sabiduría (Percepción) basadas en la vista."
+  },
+  "Miedo de dragón": {
+    "requisito": {
+      "raza": "Dracónido"
+    },
+    "aumentarStatOpcional": [
+      {
+        "fuerza": 1
+      },
+      {
+        "constitucion": 1
+      },
+      {
+        "carisma": 1
+      }
+    ],
+    "habilidad": "Cuando estás enojado, irradias amenaza.\nObteniendo los siguientes beneficios:\n♻ Aumenta tu Fuerza, Constitución o Carisma en 1, hasta un máximo de 20.\n♻ En lugar de exhalar energía destructiva, puedes gastar un uso de tu rasgo Arma de aliento para rugir, obligando a cada criatura de tu elección a 30 pies (6 casillas) de ti a realizar una tirada de salvación de Sabiduría (CD 8 + tu bonificador de competencia + tu modificador de Carisma). Un objetivo tiene éxito automáticamente en la salvación si no puede oírte ni verte. En una salvación fallida, un objetivo se asusta de ti durante 1 minuto. Si el objetivo asustado sufre algún daño, puede repetir la tirada de salvación, poniendo fin al efecto sobre sí mismo si tiene éxito."
+  },
+  "Moderadamente blindado": {
+    "habilidad": "Te has entrenado para dominar el uso de armaduras y escudos medios\nObteniendo los siguientes beneficios:\n♻ Aumenta tu Fuerza o Destreza en 1, hasta un máximo de 20.\n♻ Obtienes competencia con armadura media y escudos.\n\n♻ Prerrequisito: Competencia con armadura ligera."
+  },
+  "Móvil": {
+    "habilidad": "Eres excepcionalmente rápido y ágil.\nObteniendo los siguientes beneficios:\n♻ Tu velocidad aumenta en 10 pies (2 casillas).\n♻ Cuando usas la acción Correr, el terreno difícil no te cuesta movimiento extra en ese turno.\n♻ Cuando haces un ataque cuerpo a cuerpo contra una criatura, no provocas ataques de oportunidad de esa criatura durante el resto del turno, tanto si golpeas como si no."
+  },
+  "Observante": {
+    "aumentarStatOpcional": [
+      {
+        "inteligencia": 1
+      },
+      {
+        "sabiduria": 1
+      }
+    ],
+    "pasiva": {
+      "Percepción": 5,
+      "Investigación": 5
+    },
+    "habilidad": "Al darte cuenta rápidamente de los detalles de tu entorno.\nObteniendo los siguientes beneficios:\n♻ Aumenta tu Inteligencia o Sabiduría en 1, hasta un máximo de 20.\n♻ Si puedes ver la boca de una criatura mientras habla un idioma que entiendes, puedes interpretar lo que dice leyendo sus labios.\n♻ Tienes una bonificación de +5 en tus puntuaciones pasivas de Sabiduría (Percepción) e Inteligencia pasiva (Investigación)."
+  },
+  "Peleador de taberna": {
+    "aumentarStatOpcional": [
+      {
+        "fuerza": 1
+      },
+      {
+        "constitucion": 1
+      }
+    ],
+    "habilidad": "Acostumbrado a peleas duras y violentas usando cualquier arma que esté a mano.\nObteniendo los siguientes beneficios:\n♻ Aumenta tu Fuerza o Constitución en 1, hasta un máximo de 20.\n♻ Eres competente con armas improvisadas.\n♻ Tu golpe desarmado usa un d4 para daño.\n♻ Cuando golpeas a una criatura con un golpe desarmado o un arma improvisada en tu turno, puedes usar una acción adicional para intentar agarrar al objetivo."
+  },
+  "Perforador": {
+    "aumentarStatOpcional": [
+      {
+        "fuerza": 1
+      },
+      {
+        "destreza": 1
+      }
+    ],
+    "habilidad": "Has logrado una precisión penetrante en combate.\nObteniendo los siguientes beneficios:\n♻ Aumenta tu Fuerza o Destreza en 1, hasta un máximo de 20.\n♻ Una vez por turno, cuando golpeas a una criatura con un ataque que inflige daño perforante, puedes volver a tirar uno de los dados de daño del ataque y debes usar la nueva tirada.\n♻ Cuando obtienes un golpe crítico que inflige daño perforante a una criatura, puedes tirar un dado de daño adicional para determinar el daño perforante adicional que recibe el objetivo."
+  },
+  "Piel de dragón": {
+    "requisito": {
+      "raza": "Dracónido"
+    },
+    "aumentarStatOpcional": [
+      {
+        "fuerza": 1
+      },
+      {
+        "constitucion": 1
+      },
+      {
+        "carisma": 1
+      }
+    ],
+    "habilidad": "Manifiestas escamas y garras que recuerdan a tus ancestros Draconianos.\nObteniendo los siguientes beneficios:\n♻ Aumenta tu Fuerza, Constitución o Carisma en 1, hasta un máximo de 20.\n♻ Tus escamas se endurecen. Mientras no llevas armadura, puedes calcular tu CA como 13 + tu modificador de Destreza. Puedes usar un escudo y aun así obtener este beneficio.\n♻ Te crecen garras retráctiles en las puntas de los dedos. Extender o retraer las garras no requiere ninguna acción. Las garras son armas naturales que puedes usar para realizar ataques sin armas. Si golpeas con ellos, infliges un daño cortante igual a 1d4 + tu modificador de Fuerza, en lugar del daño contundente normal de un ataque sin armas."
+  },
+  "Precisión élfica": {
+    "requisito": {
+      "raza": "Elfo"
+    },
+    "aumentarStatOpcional": [
+      {
+        "destreza": 1
+      },
+      {
+        "inteligencia": 1
+      },
+      {
+        "sabiduria": 1
+      },
+      {
+        "carisma": 1
+      }
+    ],
+    "habilidad": "La precisión de los elfos es legendaria, especialmente la de los arqueros y hechiceros elfos. Tienes una puntería asombrosa con ataques que dependen de la precisión en lugar de la fuerza bruta.\nObteniendo los siguientes beneficios:\n♻ Aumenta tu Destreza, Inteligencia, Sabiduría o Carisma en 1, hasta un máximo de 20.\n♻ Siempre que tengas ventaja en una tirada de ataque usando Destreza, Inteligencia, Sabiduría o Carisma, puedes volver a tirar uno de los dados una vez."
+  },
+  "Prodigio": {
+    "languageElection": 1,
+    "habilidad": "Tienes un don para aprender cosas nuevas.\nObteniendo los siguientes beneficios:\n♻ Obtienes competencia en una habilidad de tu elección, competencia con una herramienta de tu elección y la fluidez en un idioma de tu elección.\n♻ Elige una habilidad en la que tengas dominio. Obtienes Pericia con esa habilidad, lo que significa que tu bonificación de competencia se duplica para cualquier prueba de habilidad que hagas con ella. La habilidad que elijas debe ser una que no se esté beneficiando de un Rasgo, como Pericia, que duplique tu bonificación por competencia.",
+    "pericias": 1
+  },
+  "Resiliente": {
+    "aumentarStatOpcional": [
+      {
+        "fuerza": 1
+      },
+      {
+        "destreza": 1
+      },
+      {
+        "constitucion": 1
+      },
+      {
+        "inteligencia": 1
+      },
+      {
+        "sabiduria": 1
+      },
+      {
+        "carisma": 1
+      }
+    ],
+    "habilidad": "Elige una puntuación de habilidad.\nObteniendo los siguientes beneficios:\n♻ Aumenta la puntuación de cualquier habilidad elegida en 1, hasta un máximo de 20.\n♻ Obtienes competencia en las tiradas de salvación usando la habilidad elegida."
+  },
+  "Sanguinario elemental": {
+    "requisito": {
+      "conjurador": true
+    },
+    "aumentarStat": {
+      "inteligencia": 1
+    },
+    "habilidad": "Dominas los vínculos entre sangre y magia elemental.\nGanas los siguientes beneficios:\n♻ Aumenta tu puntuación de Inteligencia en +1, hasta un máximo de 20.\n♻ Puedes convertir parte del daño que infliges con hechizos en daño de tipo sangre.\n♻ Una vez por descanso largo, puedes lanzar un hechizo sin componentes materiales si está relacionado con agua, fuego, aire o tierra."
+  },
+  "Segunda oportunidad": {
+    "aumentarStatOpcional": [
+      {
+        "destreza": 1
+      },
+      {
+        "constitucion": 1
+      },
+      {
+        "carisma": 1
+      }
+    ],
+    "habilidad": "La fortuna te favorece cuando alguien intenta golpearte.\nObteniendo los siguientes beneficios:\n♻ Aumenta tu Destreza, Constitución o Carisma en 1, hasta un máximo de 20.\n♻ Cuando una criatura que puedes ver te golpea con una tirada de ataque, puedes usar tu reacción para obligar a esa criatura a repetir la tirada. Una vez que usas esta habilidad, no puedes volver a usarla hasta que hagas una tirada de iniciativa al comienzo del combate o hasta que termines un descanso corto o largo."
+  },
+  "Centinela": {
+    "habilidad": "Has dominado técnicas para aprovechar cada apertura en la guardia de cualquier enemigo.\nObteniendo los siguientes beneficios:\n♻ Cuando golpeas a una criatura con un ataque de oportunidad, la velocidad de la criatura se vuelve 0 por el resto del turno.\n♻ Las criaturas provocan ataques de oportunidad de tu parte incluso si realizan la acción de Destrabarse antes de dejar tu alcance.\n♻ Cuando una criatura a 5 pies (1 Casilla) de ti realiza un ataque contra un objetivo que no seas tú (y ese objetivo no tiene esta dote), puedes usar tu reacción para realizar un ataque con arma cuerpo a cuerpo contra la criatura atacante."
+  },
+  "Telepatico": {
+    "aumentarStatOpcional": [
+      {
+        "inteligencia": 1
+      },
+      {
+        "sabiduria": 1
+      },
+      {
+        "carisma": 1
+      }
+    ],
+    "habilidad": "Despiertas la capacidad de conectarte mentalmente con los demás.\nObteniendo los siguientes beneficios:\n♻ Aumenta tu Inteligencia, Sabiduría o Carisma en 1, hasta un máximo de 20.\n♻ Puedes hablar telepáticamente a cualquier criatura que puedas ver a 60 pies (12 casillas) de ti. Tus declaraciones telepáticas están en un idioma que conoces, y la criatura te entiende solo si conoce ese idioma. Tu comunicación no le da a la criatura la capacidad de responderte telepáticamente.\n♻ Puedes lanzar el hehizo detección de pensamientos, que no requiere espacio de hechizo ni componentes, y debes terminar un descanso prolongado antes de poder lanzarlo de esta manera nuevamente. Tu habilidad para lanzar hechizo es la habilidad incrementada por esta dote. Si tienes espacios de hechizos de nivel 2 o superior, puedes lanzar este hechizo con ellos."
+  },
+  "Telequinetico": {
+    "aumentarStatOpcional": [
+      {
+        "inteligencia": 1
+      },
+      {
+        "sabiduria": 1
+      },
+      {
+        "carisma": 1
+      }
+    ],
+    "agregado": {
+      "conjurador": true
+    },
+    "habilidad": "Aprendes a mover las cosas con la mente.\nObteniendo los siguientes beneficios:\n♻ Aumenta tu Inteligencia, Sabiduría o Carisma en 1, hasta un máximo de 20.\n♻ Aprendes el cantrip mano del mago. Puedes lanzarlo sin componentes verbales o somáticos, y puedes hacer que la mano espectral sea invisible. Si ya conoces este hechizo, su alcance aumenta en 30 pies (6 casillas) cuando lo lanzas. Tu habilidad para lanzar conjuros es la habilidad incrementada por esta dote.\n♻ Como acción adicional, puedes intentar empujar telequinéticamente a una criatura que puedas ver a 30 pies (6 casillas) de ti. Cuando lo haces, el objetivo debe tener éxito en una tirada de salvación de Fuerza (CD 8 + tu bonificador de competencia + el modificador de habilidad de la puntuación incrementada por esta dote) o debe moverse 5 pies (1 Casilla) hacia ti o lejos de ti. Una criatura puede fallar voluntariamente esta salvación."
+  },
+  "Teletransportación Feerica": {
+    "requisito": {
+      "raza": "Elfo"
+    },
+    "aumentarStatOpcional": [
+      {
+        "inteligencia": 1
+      },
+      {
+        "carisma": 1
+      }
+    ],
+    "languageAprender": "Sylvan",
+    "habilidad": "Tu estudio de la tradición de los altos elfos ha desbloqueado un poder feérico que pocos elfos poseen.\nObteniendo los siguientes beneficios:\n♻ Basándote en tu ascendencia feerica, puedes caminar momentáneamente a través de Feywild para acortar tu camino de un lugar a otro.\n♻ Aumenta tu Inteligencia o Carisma en 1, hasta un máximo de 20.\n♻ Aprendes a hablar, leer y escribir Sylvan.\n♻ Aprendes el conjuro paso brumoso (misty step) y puedes lanzarlo una vez sin gastar un espacio de conjuro. Recuperas la habilidad de lanzarlo de esta manera cuando terminas un descanso corto o largo. La inteligencia es tu capacidad de lanzamiento de hechizos para este hechizo."
+  },
+  "Tirador de primera": {
+    "habilidad": "Has dominado las armas a distancia y puedes hacer disparos que otros encuentran imposibles.\nObteniendo los siguientes beneficios:\n♻ Atacar a larga distancia no supone una desventaja en las tiradas de ataque con armas a distancia.\n♻ Tus ataques con armas a distancia ignoran la cobertura media y las tres cuartas partes de cobertura.\n♻ Antes de realizar un ataque con un arma a distancia con la que seas competente, puedes optar por recibir una penalización de -5 a la tirada de ataque. Si el ataque impacta, sumas +10 al daño del ataque."
+  },
+  "Tocado por las Hadas": {
+    "aumentarStatOpcional": [
+      {
+        "inteligencia": 1
+      },
+      {
+        "sabiduria": 1
+      },
+      {
+        "carisma": 1
+      }
+    ],
+    "agregado": {
+      "conjurador": true
+    },
+    "habilidad": "Tu exposición a la magia de Feywild te ha cambiado.\nObteniendo los siguientes beneficios:\n♻ Aumenta tu Inteligencia, Sabiduría o Carisma en 1, hasta un máximo de 20.\n♻ Aprendes el hechizo paso brumoso (misty step) y un hechizo de nivel 1 a tu elección. El hechizo de primer nivel debe ser de la escuela de magia de adivinación o encantamiento. Puedes lanzar cada uno de estos hechizos sin gastar un espacio de hechizo. Una vez que lanzas cualquiera de estos hechizos de esta manera, no puedes volver a lanzar ese hechizo de esta manera hasta que termines un descanso prolongado. También puedes lanzar estos hechizos usando espacios de hechizo que tengas del nivel apropiado. La habilidad de lanzamiento de hechizos de estos hechizos es la habilidad aumentada por esta dote."
+  },
+  "Tocado por la Sombra": {
+    "aumentarStatOpcional": [
+      {
+        "inteligencia": 1
+      },
+      {
+        "sabiduria": 1
+      },
+      {
+        "carisma": 1
+      }
+    ],
+    "agregado": {
+      "conjurador": true
+    },
+    "habilidad": "Tu exposición a la magia de Shadowfell te ha cambiado.\nObteniendo los siguientes beneficios:\n♻ Aumenta tu Inteligencia, Sabiduría o Carisma en 1, hasta un máximo de 20.\n♻ Aprendes el hechizo invisibilidad y un hechizo de nivel 1 a tu elección. El hechizo de primer nivel debe ser de la escuela de magia de ilusión o nigromancia. Puedes lanzar cada uno de estos hechizos sin gastar un espacio de hechizo. Una vez que lanzas cualquiera de estos hechizos de esta manera, no puedes volver a lanzar ese hechizo de esta manera hasta que termines un descanso prolongado. También puedes lanzar estos hechizos usando espacios de hechizo que tengas del nivel apropiado. La capacidad de lanzamiento de hechizos de los hechizos es la capacidad aumentada por esta dote."
+  },
+  "Triturador": {
+    "aumentarStatOpcional": [
+      {
+        "fuerza": 1
+      },
+      {
+        "constitucion": 1
+      }
+    ],
+    "habilidad": "Tienes práctica en el arte de aplastar a tus enemigos.\nObteniendo los siguientes beneficios:\n♻ Aumenta tu Fuerza o Constitución en 1, hasta un máximo de 20.\n♻ Una vez por turno, cuando golpeas a una criatura con un ataque que inflige daño contundente, puedes empujarla 5 pies (1 Casilla) a un espacio desocupado, siempre que el objetivo no sea más de un tamaño mayor que tú.\n♻ Cuando obtienes un golpe crítico que inflige daño contundente a una criatura, las tiradas de ataque contra esa criatura se realizan con ventaja hasta el comienzo de tu siguiente turno."
+  }
+}

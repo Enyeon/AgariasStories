@@ -1,0 +1,22 @@
+# Dependencias y builds
+node_modules/
+frontend/dist/
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+
+# Configuración local y secretos
+.env
+*.env.local
+**/client_secret*.json
+
+# Base de datos local
+backend/data/
+
+# Sistema / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log

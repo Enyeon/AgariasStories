@@ -1,0 +1,144 @@
+{
+  "acolito": {
+    "name": "Acólito",
+    "source": "Reglas 2024 (SRD 5.2)",
+    "description": "Dedicabas tu vida al servicio de un templo enclavado en un pueblo o apartado en un bosquecillo sagrado. En él, realizabas ceremonias en honor a un dios o panteón. Servías a las órdenes de un sacerdote y estudiaste la religión. Gracias a la tutela de ese sacerdote y a tu propia devoción, también aprendiste a canalizar un ápice de poder divino al servicio de tu lugar de culto y de la gente que rezaba en él.",
+    "abilityOptions": [
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": "Iniciado Mágico",
+    "skills": [
+      "Perspicacia",
+      "Religión"
+    ],
+    "tools": [
+      "Suministros de calígrafo"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "Suministros de calígrafo, libro (de oraciones), pergamino (10 hojas), símbolo sagrado, túnica y 8 po"
+      },
+      {
+        "label": "B",
+        "text": "50 po"
+      }
+    ]
+  },
+  "criminal": {
+    "name": "Criminal",
+    "source": "Reglas 2024 (SRD 5.2)",
+    "description": "Te buscabas la vida en los callejones oscuros, birlando carteras o robando en comercios. Quizás formabas parte de una pequeña banda de malhechores con ideas afines y dispuestos a echarse una mano. O puede que fueras un lobo solitario que se desmarcaba del gremio de ladrones local y de otros delincuentes más temibles.",
+    "abilityOptions": [
+      "destreza",
+      "constitucion",
+      "inteligencia"
+    ],
+    "feat": "Alerta",
+    "skills": [
+      "Juego de Manos",
+      "Sigilo"
+    ],
+    "tools": [
+      "Herramientas de ladrón"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "2 dagas, herramientas de ladrón, 2 bolsas, palanqueta, ropas de viaje y 16 po"
+      },
+      {
+        "label": "B",
+        "text": "50 po"
+      }
+    ]
+  },
+  "sabio": {
+    "name": "Sabio",
+    "source": "Reglas 2024 (SRD 5.2)",
+    "verify": true,
+    "description": "Pasaste tus años de formación entre bibliotecas, maestros y manuscritos, estudiando el saber del multiverso.",
+    "abilityOptions": [
+      "constitucion",
+      "inteligencia",
+      "sabiduria"
+    ],
+    "feat": "Iniciado Mágico",
+    "skills": [
+      "Conocimiento Arcano",
+      "Historia"
+    ],
+    "tools": [
+      "Suministros de calígrafo"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "Bastón, suministros de calígrafo, libro (de historia), pergamino (8 hojas), túnica y 8 po"
+      },
+      {
+        "label": "B",
+        "text": "50 po"
+      }
+    ]
+  },
+  "soldado": {
+    "name": "Soldado",
+    "source": "Reglas 2024 (SRD 5.2)",
+    "verify": true,
+    "description": "Te entrenaste para la guerra desde joven y conoces la disciplina, las armas y la vida en campaña.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion"
+    ],
+    "feat": "Atacante salvaje",
+    "skills": [
+      "Atletismo",
+      "Intimidación"
+    ],
+    "tools": [
+      "Juego (a elegir)"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "Lanza, arco corto, 20 flechas, juego (el mismo que la competencia), kit de sanador, carcaj, ropas de viaje y 14 po"
+      },
+      {
+        "label": "B",
+        "text": "50 po"
+      }
+    ]
+  },
+  "solitario": {
+    "name": "Solitario",
+    "source": "Agarias",
+    "pending": true,
+    "description": "Trasfondo de Agarias (del proyecto original). Aún no tiene reglas definidas: usa «Personalizar» para completarlo.",
+    "abilityOptions": [],
+    "feat": null,
+    "skills": [],
+    "tools": [],
+    "languages": 0,
+    "equipment": []
+  },
+  "huerfano": {
+    "name": "Huérfano",
+    "source": "Agarias",
+    "pending": true,
+    "description": "Trasfondo de Agarias (del proyecto original). Aún no tiene reglas definidas: usa «Personalizar» para completarlo.",
+    "abilityOptions": [],
+    "feat": null,
+    "skills": [],
+    "tools": [],
+    "languages": 0,
+    "equipment": []
+  }
+}

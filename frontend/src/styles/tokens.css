@@ -1,0 +1,66 @@
+/* Tokens de diseño: cambia aquí la paleta y la escala para toda la app. */
+:root {
+  color-scheme: dark;
+
+  --bg: #0f1116;
+  --bg-elevated: #151821;
+  --surface: #1a1e28;
+  --surface-2: #222736;
+  --surface-3: #2b3142;
+  --border: #2f3547;
+  --border-strong: #454d66;
+
+  --text: #ebe8e1;
+  --text-muted: #a3abbd;
+  --text-faint: #7b8398;
+
+  --accent: #a78bfa;          /* violeta arcano */
+  --accent-strong: #8b5cf6;
+  --accent-contrast: #12091f;
+  --accent-soft: rgb(167 139 250 / 0.14);
+  --gold: #e3b45a;
+  --gold-soft: rgb(227 180 90 / 0.14);
+  --success: #34d399;
+  --success-soft: rgb(52 211 153 / 0.14);
+  --warning: #fbbf24;
+  --warning-soft: rgb(251 191 36 / 0.14);
+  --danger: #f87171;
+  --danger-strong: #dc2626;
+  --danger-soft: rgb(248 113 113 / 0.14);
+  --info: #60a5fa;
+
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.375rem;
+  --fs-2xl: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  --fs-3xl: clamp(1.75rem, 1.3rem + 2vw, 2.6rem);
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 16px;
+  --shadow: 0 6px 24px rgb(0 0 0 / 0.35);
+  --shadow-lg: 0 20px 60px rgb(0 0 0 / 0.55);
+  --focus-ring: 0 0 0 3px rgb(167 139 250 / 0.55);
+
+  --header-h: 64px;
+  --content-max: 1200px;
+  --transition: 160ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --transition: 0ms; }
+}

@@ -1,0 +1,649 @@
+{
+  "nombre": "Shadow Knight",
+  "claseName": "shadow",
+  "seccion": "agarias",
+  "nivelesDeAumento": [
+    4,
+    8,
+    12,
+    16,
+    19
+  ],
+  "conjurador": false,
+  "dadoDeGolpe": 6,
+  "niveles": {
+    "1": {
+      "descripcion": "Combatiente umbrío que convierte las sombras de sus enemigos caídos en soldados.",
+      "descripcionLarga": "El Shadow no solo derrota a sus enemigos: los conserva. Extrae su sombra, fragmento residual de voluntad y memoria, y la ata a su servicio. Cuanto mayor la batalla, más oscura su legión. Es un líder, un general, un comandante del vacío que camina erguido y detrás de él es seguido por siluetas que obedecen su voluntad.",
+      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Destreza o Inteligencia y Carisma.\n❖ Tus puntos de golpe es:\n    :: Tu dado de PG es: 1d6. 6 + Constitución.\n    :: Además, por cada nivel por encima de 1, obtienes 1d6 de PG + Constitución.\n❖ Competencias:\n    :: Armadura: Competencia con armaduras ligeras.\n    :: Armas: Competencia con dagas y espadas.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge tres entre Atletismo, Acrobacias, Intimidación, Perspicacia, Sigilo y Engañar.\n❖ Equipos. Comienzas con el siguiente equipo, además del otorgado por tu trasfondo:\n    :: (a) peto de cuero o (b) armadura cuero tachonado (si el DM lo permite).\n    :: (a) x2 Dagas o (b) una espada.\n    :: (a) paquete de explorador, (b) paquete de explorador de mazmorras o (c) paquete de ladrón.\n    :: Un mapa de la Región.\n    :: Monedas de Oro: 4d4 x 10.",
+      "infoCubo": {
+        "columnas": [
+          "Sombras activas",
+          "Sombras reservadas",
+          "Radio de presencia"
+        ],
+        "filas": [
+          [
+            "1",
+            "2",
+            "500 m"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Iluminación y Sombras",
+          "titleName": "✦ ILUMINACIÓN Y SOMBRAS ✦",
+          "descripcion": "A menos que una característica indique lo contrario, Shadow Knight utiliza las categorías de iluminación estándar de 5e:\n\n<ul><li><b>Luz brillante</b></li><li><b>Penumbra</b></li><li><b>Oscuridad</b></li></ul>\n\nCuando una característica requiera que exista una sombra válida, una zona de <b>penumbra u oscuridad</b> es suficiente, pero se requiere estar adyacente a un objeto Mediano o mayor que proyecte sombra para que cuente como penumbra.\n\nUna zona bajo <b>luz brillante</b> no puede utilizarse como fuente de sombra para las características del Shadow Knight, salvo que exista una sombra claramente definida que el DM considere suficiente."
+        },
+        "blockDos": {
+          "name": "Reanimar Sombras",
+          "titleName": "✦ REANIMAR SOMBRAS ✦",
+          "descripcion": "<b>Intentos:</b> 1 por criatura\n<b>Condición:</b> Superar una CD igual a la <b>CR de la criatura</b>\n<b>Sombras activas / reservadas:</b> según la tabla de progresión\n\n<b>Sombra Inicial.</b> Al comenzar la campaña, puedes tener una sombra de <b>CR 1/8</b> como compañera inicial. Esta sombra es de <b>Calidad Blanca</b> y debe respetar las reglas indicadas en el apartado <b>«Calidad de las Sombras»</b>.\n\nTu poder te permite arrancar la sombra de una criatura y convertirla en una extensión de tu voluntad.\n\nCuando se reduzca a una criatura a <b>0 PG</b>, puedes usar tu <b>acción</b> para intentar reanimar su sombra. La criatura debe poseer una sombra que pueda ser manipulada.\n\nRealiza una prueba de <b>Carisma o Sabiduría + tu Bonificador Competencia</b> contra una CD igual a la <b>CR de la criatura derrotada</b>.\n\nSi tienes éxito, la criatura se convierte en una <b>Sombra bajo tu control</b>.\n\nSi fallas, esa criatura no puede volver a ser objetivo de <i>Reanimar Sombras</i> mediante este intento.\n\nUna vez que una criatura se convierte en sombra, su cuerpo deja de ser necesario: la sombra es una entidad independiente formada por oscuridad y conserva parte de los instintos y habilidades que poseía en vida. Por ende, algunas cualidades de las criaturas se pierden."
+        },
+        "blockTres": {
+          "name": "Una sombra no es perfecta",
+          "titleName": "✦ UNA SOMBRA NO ES PERFECTA ✦",
+          "descripcion": "Una sombra conserva <b>la esencia de la criatura original</b>, pero no todo su poder.\n\nCuando reanimas una criatura, utiliza su statblock original como referencia y aplica las reglas de esta sección.\n\nUna sombra conserva:\n\n<ul><li>Sus <b>puntuaciones de característica</b> originales.</li><li>Sus <b>velocidades</b> originales.</li><li>Sus <b>sentidos</b> originales.</li><li>Su <b>tamaño</b> original.</li><li>Su <b>CA</b> original.</li><li>Su <b>bonificador de competencia</b>, cuando corresponda.</li><li>Sus <b>armas y ataques característicos</b>, dentro de los límites de su Calidad.</li><li>Las armas que supiera utilizar o con las que tuviera competencia.</li><li>Los rasgos que representen una característica esencial de su forma de combatir.</li><li>Sus <b>Acciones de Recarga (5-6)</b> se puede usar 1 vez por combate.</li></ul>\n\nLa sombra <b>no conserva</b>:\n\n<ul><li>Bonificaciones procedentes de objetos mágicos o equipamiento externo.</li><li>Acciones de guarida.</li><li>Acciones legendarias.</li><li>Reacciones legendarias.</li><li>Resistencias, inmunidades o debilidades.</li><li>Regeneración.</li><li>Invocaciones de otras criaturas.</li><li>Efectos que creen otras criaturas permanentemente.</li><li>Efectos de control mental excesivamente poderosos.</li><li>Rasgos que dependan de condiciones especiales de la criatura original.</li><li>Cualquier habilidad que el DM considere que puede romper el funcionamiento normal de la clase.</li></ul>\n\nEl DM puede rechazar una habilidad concreta cuando considere que rompe esta regla, pero <b>no debería necesitar rediseñar toda la criatura</b>."
+        },
+        "blockCuatro": {
+          "name": "Calidad de las Sombras",
+          "titleName": "✦ CALIDAD DE LAS SOMBRAS ✦",
+          "descripcion": "La <b>Calidad</b> de una sombra depende del CR de la criatura que la originó.\n\n<table><thead><tr><th>Calidad</th><th>CR de origen</th><th>PG conservados</th><th>Habilidades</th><th>Acción</th><th>Reacción</th><th>Nv. máx. Conjuro</th></tr></thead><tbody><tr><td>Blanca</td><td>0–7</td><td>50%</td><td>1</td><td>1</td><td>—</td><td>1 y 2</td></tr><tr><td>Amarilla</td><td>8–15</td><td>55%</td><td>1</td><td>1</td><td>1</td><td>3</td></tr><tr><td>Naranja</td><td>16–22</td><td>60%</td><td>2</td><td>1</td><td>1</td><td>4</td></tr><tr><td>Roja</td><td>23–30</td><td>65%</td><td>2</td><td>2</td><td>1</td><td>4</td></tr></tbody></table>\n\nUna sombra puede conservar <b>un ataque o habilidad característico</b> por cada espacio de habilidad que tenga disponible.\n\nUna habilidad puede incluir una acción adicional o reacción propia de la criatura si el DM considera que forma parte de su estilo de combate.\n\n<h4>Ejemplos</h4>\n\nUn lobo podría conservar:\n\n<ul><li><b>Mordisco.</b></li><li><b>Olfato Agudo.</b></li></ul>\n\nUn dragón podría conservar:\n\n<ul><li><b>Mordisco.</b></li><li><b>Aliento de fuego.</b></li></ul>\n\nUna criatura voladora podría conservar:\n\n<ul><li><b>Vuelo.</b></li></ul>\n\nUn monstruo capaz de excavar podría conservar:\n\n<ul><li><b>Excavar.</b></li></ul>\n\nSin embargo, una sombra <b>no conserva automáticamente todas las características de la criatura original</b>. Al perder su cuerpo físico y convertirse en una manifestación de sombra, algunas de sus capacidades se pierden o se transforman.\n\nPor ello, las <b>resistencias, inmunidades, regeneración, acciones legendarias, acciones de guarida y otras características especiales</b> de la criatura original no se conservan, salvo que una regla de esta clase indique expresamente lo contrario.\n\nLa sombra conserva únicamente aquellas características que se indiquen en las reglas de <b>Reanimar Sombras</b> y las que sean necesarias para mantener la identidad y esencia de la criatura."
+        },
+        "blockCinco": {
+          "name": "Puntos de Golpe",
+          "titleName": "✦ PUNTOS DE GOLPE ✦",
+          "descripcion": "Cuando una criatura es reanimada, sus PG se reducen según su Calidad:\n\n<ul><li><b>Blanca:</b> 50% de los PG originales.</li><li><b>Amarilla:</b> 55%.</li><li><b>Naranja:</b> 60%.</li><li><b>Roja:</b> 65%.</li></ul>\n\nRedondea hacia abajo.\n\nLos PG de una sombra <b>no se recalculan mediante sus Dados de Golpe o modificador de Constitución</b>.\n\nCuando una sombra aumenta de Calidad, sus PG máximos pasan a utilizar el nuevo porcentaje correspondiente a sus <b>PG originales</b>.\n\n<b>Ejemplo:</b> Una criatura tenía 100 PG.\n\n<ul><li>Como sombra Blanca: 50 PG.</li><li>Si posteriormente se convierte en Amarilla: 55 PG.</li><li>Si posteriormente se convierte en Naranja: 60 PG.</li><li>Si posteriormente se convierte en Roja: 65 PG.</li></ul>\n\nEsto permite que todas las sombras sean fáciles de administrar sin necesidad de lanzar docenas de dados cada vez que evolucionan."
+        },
+        "blockSeis": {
+          "name": "Lanzadores de Conjuros",
+          "titleName": "✦ LANZADORES DE CONJUROS ✦",
+          "descripcion": "Una sombra que pertenecía a una criatura capaz de lanzar conjuros conserva una parte limitada de su magia.\n\nLa sombra puede conservar <b>conjuros</b> igual a la <i>\"Calidad de la Sombra\"</i> y que la criatura conociera o tuviera preparados.\n\nEl Shadow Knight puede elegir cuáles conserva cada vez que crea la sombra.\n\nLos conjuros conservados:\n\n<ul><li>Deben ser según al <b>Nv. máx. Conjuro</b> de la Tabla de Calidad de la Sombra.</li><li>Utilizan el modificador de característica, bonificador de ataque y CD originales de la criatura.</li><li>Funcionan normalmente, incluyendo sus componentes cuando sean necesarios.</li><li>Utilizan la acción indicada por el conjuro.</li></ul>\n\nLa sombra puede lanzar cada conjuro conservado <b>una vez</b>.\n\nUna vez utilizados, los conjuros se recuperan cuando el Shadow Knight termina un <b>descanso largo</b>.\n\nUna sombra nunca puede conservar:\n\n<ul><li>Conjuros de nivel 5 o superior.</li><li>Habilidades que permitan lanzar conjuros adicionales indefinidamente.</li><li>Invocaciones creadas mediante conjuros o habilidades.</li><li>Habilidades que permitan recuperar espacios de conjuro más de una vez.</li></ul>"
+        },
+        "blockSiete": {
+          "name": "Comportamiento de las Sombras",
+          "titleName": "✦ COMPORTAMIENTO DE LAS SOMBRAS ✦",
+          "descripcion": "Las sombras actúan <b>inmediatamente después del Shadow Knight</b> en su turno.\n\nNo necesitan recibir una acción del Shadow Knight para actuar.\n\nEl Shadow Knight puede darles órdenes como parte de su turno, sin gastar una acción.\n\nUna orden puede ser tan sencilla como:\n\n<i>Ataca a ese enemigo.</i>\n\n<i>Protégeme.</i>\n\n<i>Ve allí.</i>\n\n<i>Usa tu aliento.</i>\n\nSi una sombra no recibe una orden, actúa por instinto. Por defecto:\n\n1. Se protege a sí misma.\n2. Protege al Shadow Knight.\n3. Ataca al enemigo más cercano si no existe una amenaza inmediata.\n\nA discreción del DM, una sombra puede actuar de forma más autónoma cuando su Calidad sea suficientemente alta.\n\n<b>No necesita una iniciativa independiente</b>, salvo que hacerlo simplifique una situación concreta."
+        },
+        "blockOcho": {
+          "name": "Sombras Activas y Reservadas",
+          "titleName": "✦ SOMBRAS ACTIVAS Y RESERVADAS ✦",
+          "descripcion": "Una sombra puede encontrarse en uno de dos estados:\n\n<h4>Activa</h4>\n\nSe encuentra materializada en el mundo y puede combatir, explorar y utilizar sus habilidades.\n\n<h4>Reservada</h4>\n\nPermanece almacenada dentro de la sombra del Shadow Knight y no ocupa espacio físico en el mundo.\n\nEl número máximo de sombras <b>activas</b> y <b>reservadas</b> está indicado en la tabla de progresión de la clase.\n\nLiberar o guardar una sombra fuera de combate no requiere una acción.\n\nDurante el combate, sacar una sombra reservada requiere la acción indicada por la característica que permita invocarla.\n\nUna sombra reservada no puede actuar ni interactuar con el mundo hasta ser liberada."
+        },
+        "blockNueve": {
+          "name": "Derrota de una Sombra",
+          "titleName": "✦ DERROTA DE UNA SOMBRA ✦",
+          "descripcion": "Cuando una sombra llega a <b>0 PG</b>, su cuerpo se deshace en oscuridad.\n\nLa sombra queda <b>inactiva</b> y no puede volver a utilizarse hasta que el Shadow Knight termine un <b>descanso largo</b>.\n\nUna sombra destruida de esta manera <b>no puede ser reanimada desde el mismo enemigo otra vez</b>.\n\nEsto significa que perder una sombra es una consecuencia real, pero no obliga al jugador a perder para siempre una criatura que le costó conseguir."
+        },
+        "blockDiez": {
+          "name": "Elevación de la Calidad",
+          "titleName": "✦ ELEVACIÓN DE LA CALIDAD ✦",
+          "descripcion": "El Shadow Knight puede sacrificar sombras para fortalecer otra.\n\nEl proceso requiere <b>1 hora</b> y debe realizarse fuera de combate.\n\nLas sombras sacrificadas desaparecen permanentemente.\n\nPara elevar una sombra:\n\n<ul><li><b>Blanca → Amarilla:</b> sacrifica <b>4 sombras Blancas</b>.</li><li><b>Amarilla → Naranja:</b> sacrifica <b>6 sombras Amarillas</b>.</li><li><b>Naranja → Roja:</b> sacrifica <b>8 sombras Naranjas</b>.</li></ul>\n\nLa sombra que recibe la elevación aumenta su Calidad y utiliza inmediatamente el nuevo porcentaje de PG.\n\nAdemás, obtiene las capacidades adicionales indicadas en su nueva Calidad.\n\n<h4>Bonificaciones de Calidad</h4>\n\nAl alcanzar una nueva Calidad, la sombra obtiene:\n\n<b>Amarilla</b>\n\n<ul><li>+1 a una puntuación de característica a elección del Shadow Knight.</li></ul>\n\n<b>Naranja</b>\n\n<ul><li>+2 a una puntuación de característica a elección del Shadow Knight.</li></ul>\n\n<b>Roja</b>\n\n<ul><li>+4 a una puntuación de característica a elección del Shadow Knight.</li><li>Sus ataques se consideran mágicos.</li></ul>\n\nEstos aumentos no pueden elevar una puntuación por encima de <b>20</b>, exceptuando la calidad Roja, que su límite es <b>23</b>."
+        },
+        "blockOnce": {
+          "name": "Excepciones",
+          "titleName": "✦ EXCEPCIONES ✦",
+          "descripcion": "Algunas criaturas no pueden convertirse en sombras.\n\nNo pueden ser reanimadas criaturas que:\n\n<ul><li>No proyecten una sombra manipulable.</li><li>Sean entidades cuya existencia dependa exclusivamente de energía, luz o fenómenos similares.</li><li>Carezcan completamente de una forma física apropiada para ser convertida en sombra.</li></ul>\n\nEl DM puede determinar que una criatura concreta no sea válida si su naturaleza hace que la transformación carezca de sentido."
+        },
+        "blockDoce": {
+          "name": "Corazón de la Sombra",
+          "titleName": "✦ CORAZÓN DE LA SOMBRA ✦",
+          "descripcion": "Desde el instante en que el poder de las sombras despierta en tu sangre, tu cuerpo y tus sentidos comienzan a transformarse. Ya no percibes la oscuridad como un obstáculo, sino como una extensión de ti mismo.\n\n<b>Visión en la Sombra.</b> Si no posees visión en la oscuridad, la obtienes con un alcance de 60 pies. Si ya la posees, su alcance aumenta en 30 pies.\n\n<b>Voluntad Inquebrantable.</b> Mientras te encuentres en penumbra u oscuridad, no puedes quedar Asustado por medios mágicos.\n\n<b>Comunión de Sombras.</b> Puedes ver, escuchar y hablar a través de cualquier sombra bajo tu control que se encuentre dentro de tu <b>Radio de Presencia</b>."
+        },
+        "block13": {
+          "name": "Radio de Presencia",
+          "titleName": "✦ RADIO DE PRESENCIA ✦",
+          "descripcion": "Tu vínculo con las sombras se fortalece a medida que aumenta tu dominio sobre ellas.\n\n<table><thead><tr><th>Nivel</th><th>Radio de Presencia</th></tr></thead><tbody><tr><td>1–4</td><td>500 m</td></tr><tr><td>5–8</td><td>5 km</td></tr><tr><td>9–12</td><td>25 km</td></tr><tr><td>13–16</td><td>500 km</td></tr><tr><td>17–19</td><td>10.000 km</td></tr><tr><td>20</td><td>Todo el plano</td></tr></tbody></table>\n\n<b>Dentro de tu Radio de Presencia</b>, una sombra se encuentra plenamente vinculada a ti. Puedes comunicarte con ella, percibir a través de ella y utilizar normalmente sus capacidades.\n\n<b>Fuera de tu Radio de Presencia</b>, una sombra entra en un estado de <b>Vagancia</b>. Puede desplazarse, explorar y cumplir órdenes simples que hayas establecido previamente, pero no puede participar normalmente en combate ni utilizar sus capacidades ofensivas, salvo que una orden específica le permita defenderte de una amenaza directa contra ti."
+        },
+        "block14": {
+          "name": "Vagancia de las Sombras",
+          "titleName": "✦ VAGANCIA DE LAS SOMBRAS ✦",
+          "descripcion": "Una sombra en estado de Vagancia puede alejarse de ti y recorrer grandes distancias siempre que permanezca en el mismo plano de existencia.\n\nLas sombras no necesitan seguir los caminos ni desplazarse como una criatura normal. Pueden moverse principalmente durante la noche y deslizarse entre zonas de oscuridad y sombras proyectadas por criaturas, edificios, árboles u otros objetos.\n\nDurante el día, una sombra que se encuentre lejos de su amo debe permanecer oculta dentro de una sombra existente y no puede desplazarse libremente mientras esté expuesta a luz intensa.\n\nUna sombra en Vagancia puede cumplir órdenes simples, observar su entorno y esperar nuevas instrucciones. No puede iniciar combates ni utilizar libremente sus capacidades especiales mientras permanezca fuera del Radio de Presencia.\n\n<i>Con el tiempo, muchos Shadow Knights describen esta sensación como \"dejar de ver con los ojos, y empezar a ver con la sombra\".</i>"
+        }
+      }
+    },
+    "2": {
+      "infoCubo": {
+        "columnas": [
+          "Sombras activas",
+          "Sombras reservadas",
+          "Radio de presencia"
+        ],
+        "filas": [
+          [
+            "1",
+            "2",
+            "500 m"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Intercambio",
+          "titleName": "✦ INTERCAMBIO ✦",
+          "descripcion": "Has despertado la habilidad de Intercambio, una técnica que te permite cambiar de lugar con una sombra que controlas.\n\n<ul><li>Puedes usar una <b>acción adicional</b> para intercambiar tu posición con una de tus sombras dentro de <b>60 pies</b>. Si la sombra está más lejos, el intercambio requiere una <b>acción completa</b> y como máximo hasta <b>120 pies</b>.</li><li>Puedes usar esta habilidad un número de veces igual a <b>la mitad de tu bonificador de competencia</b> (mínimo 1) por descanso corto o largo.</li><li>No puedes usar esta habilidad si estás <b>incapacitado</b>.</li></ul>"
+        }
+      }
+    },
+    "3": {
+      "infoCubo": {
+        "columnas": [
+          "Sombras activas",
+          "Sombras reservadas",
+          "Radio de presencia"
+        ],
+        "filas": [
+          [
+            "1",
+            "2",
+            "500 m"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Manifestación de la Sombra",
+          "titleName": "✦ MANIFESTACIÓN DE LA SOMBRA ✦",
+          "descripcion": "El poder de las sombras no se manifiesta de la misma manera en todos los Shadow Knights. En algunos, se proyecta como armas y ataques que atraviesan grandes distancias; en otros, transforma el cuerpo en una criatura veloz y letal. Algunos concentran la oscuridad en golpes devastadores, mientras que otros desarrollan una sombra que reacciona instintivamente para protegerlos.\n\nAl alcanzar el nivel 3, elige una de las siguientes <b>Manifestaciones de la Sombra</b>. Esta elección determina cómo tu poder se expresa en combate.\n\nUna vez elegida una Manifestación, no puedes cambiarla salvo que el DM lo permita.\n\n<h4>CD de Manifestación de la Sombra</h4>\n\nCuando una Manifestación de la Sombra requiera una tirada de salvación, la CD se calcula de la siguiente manera:\n\n<b>CD de Manifestación de la Sombra = 8 + tu bonificador de competencia + tu modificador de Carisma o Sabiduría</b>\n\nTu poder de sombra nace de ti, y es tu fuerza de voluntad la que determina la dificultad de resistirse a sus efectos."
+        }
+      },
+      "subClase": {
+        "senda1": {
+          "subNombre": "Sombra Lejana",
+          "subDescripcion": "Tu poder se proyecta más allá de tu cuerpo, convirtiendo las armas y los ataques a distancia en extensiones de tu propia sombra.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Sombra Lejana",
+                  "subTitleName": "✦ SOMBRA LEJANA ✦",
+                  "subDescripcion": "<ul><li><b>Ataque desde las sombras.</b> Una vez por turno, cuando impactes con un ataque a distancia contra una criatura que se encuentre a más de 10 pies de ti, puedes infligir <b>1d6 de daño necrótico adicional</b> (2d6 al nivel 11 y 3d6 al 17).</li><li><b>Paso Umbrío.</b> Después de realizar un ataque a distancia, puedes desplazarte hasta <b>10 pies</b> sin provocar ataques de oportunidad, siempre que termines el movimiento en penumbra u oscuridad.</li><li><b>Visión Certera.</b> Cuando realizas un ataque a distancia contra una criatura que se encuentre en penumbra u oscuridad, puedes ignorar la cobertura media que tenga contra ese ataque.</li></ul>"
+                }
+              }
+            }
+          }
+        },
+        "senda2": {
+          "subNombre": "Sombra Ágil",
+          "subDescripcion": "Tu cuerpo se vuelve ligero e impredecible, como si estuviera formado parcialmente por oscuridad.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Sombra Ágil",
+                  "subTitleName": "✦ SOMBRA ÁGIL ✦",
+                  "subDescripcion": "<ul><li><b>Movimiento Sombrío.</b> Una vez por turno, cuando impactes a una criatura con un ataque cuerpo a cuerpo, puedes desplazarte hasta <b>10 pies</b> sin provocar ataques de oportunidad de esa criatura.</li><li><b>Cadena Umbría.</b> Cuando realizas un ataque cuerpo a cuerpo y golpeas a una criatura, puedes utilizar tu acción adicional para realizar un ataque cuerpo a cuerpo adicional contra esa misma criatura pero <i>sin bonificador de daño</i>. Si ambos ataques impactan durante el mismo turno, puedes mover hasta la mitad de tu velocidad sin provocar ataques de oportunidad.</li></ul>"
+                }
+              }
+            }
+          }
+        },
+        "senda3": {
+          "subNombre": "Sombra Pesada",
+          "subDescripcion": "Tu poder se concentra en tus ataques, aumentando su peso y fuerza hasta convertir cada impacto en una manifestación de oscuridad.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Sombra Pesada",
+                  "subTitleName": "✦ SOMBRA PESADA ✦",
+                  "subDescripcion": "<ul><li><b>Golpe Devastador.</b> Una vez por turno, cuando impactes con un ataque cuerpo a cuerpo utilizando un arma que no tenga la propiedad <b>Ligera</b>, puedes infligir <b>1d6 de daño necrótico adicional</b>.</li><li><b>Peso de la Oscuridad.</b> Una vez por turno, cuando impactes a una criatura Grande o menor con un ataque cuerpo a cuerpo, puedes obligarla a realizar una salvación de Fuerza contra tu <b>CD de Manifestación de la Sombra</b>.</li></ul>\n\nSi falla, puedes elegir uno de los siguientes efectos:\n\n<ul><li>Empujarla hasta <b>10 pies</b>.</li><li>Derribarla.</li></ul>\n\nUna criatura que supere esta salvación es inmune a este efecto hasta el comienzo de tu próximo turno."
+                }
+              }
+            }
+          }
+        },
+        "senda4": {
+          "subNombre": "Sombra Vacía",
+          "subDescripcion": "La oscuridad invade tu propio cuerpo y convierte tus extremidades en armas. No necesitas depender de un arma para canalizar tu poder.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Sombra Vacía",
+                  "subTitleName": "✦ SOMBRA VACÍA ✦",
+                  "subDescripcion": "<ul><li><b>Cuerpo de Sombra.</b> Tus ataques desarmados infligen <b>1d6 de daño contundente</b> (1d8 a nivel 11 y 1d10 al 17) y puedes utilizar Fuerza o Destreza, a tu elección, para las tiradas de ataque y daño. Además, tus ataques desarmados cuentan como <b>mágicos</b> a efectos de superar resistencias e inmunidades al daño no mágico.</li><li><b>Combate Encadenado.</b> Una vez por turno, cuando impactes con un ataque desarmado, puedes realizar un segundo ataque desarmado contra la misma criatura utilizando tu <b>acción adicional</b>.</li></ul>\n\nSi ambos ataques impactan durante el mismo turno, puedes obligar a la criatura a realizar una salvación de Fuerza contra tu <b>CD de Manifestación de la Sombra</b>. Si falla, queda <b>derribada</b>."
+                }
+              }
+            }
+          }
+        },
+        "senda5": {
+          "subNombre": "Sombra Guardiana",
+          "subDescripcion": "Tu sombra posee un instinto protector propio. Cuando estás en peligro, responde antes incluso de que puedas reaccionar.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Sombra Guardiana",
+                  "subTitleName": "✦ SOMBRA GUARDIANA ✦",
+                  "subDescripcion": "<ul><li><b>Defensa Umbría.</b> Mientras te encuentres en penumbra u oscuridad, obtienes un <b>+1 a la CA</b>.</li><li><b>Interposición Sombría.</b> Cuando una criatura que puedas ver te impacte con un ataque y tengas una de tus sombras a menos de <b>10 pies</b> de ti, puedes utilizar tu reacción para reducir el daño recibido en <b>1d8 + tu modificador de Destreza o Constitución</b>.</li></ul>\n\nSi reduces el daño a 0, puedes desplazarte hasta <b>10 pies</b> hacia un espacio desocupado adyacente a tu sombra sin provocar ataques de oportunidad.\n\nPuedes utilizar esta reacción un número de veces igual a tu <b>bonificador de competencia</b>, recuperando todos los usos al finalizar un descanso largo."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "4": {
+      "infoCubo": {
+        "columnas": [
+          "Sombras activas",
+          "Sombras reservadas",
+          "Radio de presencia"
+        ],
+        "filas": [
+          [
+            "1",
+            "2",
+            "500 m"
+          ]
+        ]
+      }
+    },
+    "5": {
+      "infoCubo": {
+        "columnas": [
+          "Sombras activas",
+          "Sombras reservadas",
+          "Radio de presencia"
+        ],
+        "filas": [
+          [
+            "2",
+            "4",
+            "5 km"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Ataque Extra",
+          "titleName": "✦ ATAQUE EXTRA ✦",
+          "descripcion": "Puedes atacar dos veces, en lugar de una, cuando realizas la acción de <b>Atacar</b> durante tu turno. O puedes manipular una de tus sombras para esta acción."
+        },
+        "blockDos": {
+          "name": "Cualidad",
+          "titleName": "✦ CUALIDAD ✦",
+          "descripcion": "A partir del <b>nivel 5</b>, tu vínculo con las sombras te permite hacer que incluso aquellas que permanecen en tu <b>Reserva</b> intervengan brevemente en el mundo que te rodea.\n\nElige <b>una Cualidad</b> de la lista siguiente. A nivel 12, puedes elegir una Cualidad adicional.\n\nNo puedes elegir la misma Cualidad más de una vez.\n\n<h4>Intervención de la Reserva</h4>\n\nAlgunas Cualidades te permiten \"llamar\" sombras que se encuentren en tu <b>Reserva</b> para realizar una intervención.\n\nUna sombra utilizada de esta manera no abandona realmente la Reserva ni aparece como una criatura completa. En su lugar, proyecta brevemente una manifestación de sí misma en el lugar indicado.\n\nUna intervención de la Reserva:\n\n<ul><li>No permite que la sombra sea atacada o reciba daño.</li><li>No permite que utilice sus ataques, características o habilidades propias.</li><li>No puede causar daño, salvo que una Cualidad indique expresamente lo contrario.</li><li>Desaparece inmediatamente después de realizar la intervención.</li><li>Sigue contando como una de tus sombras en Reserva.</li><li>Una vez usada una sombra de tu Reserva, no podrás usarla hasta después de un descanso largo.</li></ul>\n\nCada Cualidad puede utilizarse un número de veces igual a tu <b>Bonificador de Competencia</b>. Recuperas todos los usos al finalizar un <b>descanso largo</b>."
+        },
+        "blockTres": {
+          "name": "Atrapar desde las Sombras",
+          "titleName": "✦ ATRAPAR DESDE LAS SOMBRAS ✦",
+          "descripcion": "Como acción adicional, puedes llamar a 2 sombras de tu Reserva para hacer que una o varias manifestaciones sombrías intenten sujetar a una criatura que puedas ver a 30 pies de ti.\n\nSi alguna de las sombras utilizadas posee una capacidad propia que le permita <b>Apresar</b>, puedes utilizar esa capacidad como parte de esta intervención, aplicando sus propias reglas y CD.\n\nSi ninguna de las sombras posee una capacidad de Apresar, la criatura debe superar una tirada de salvación de Fuerza contra tu <b>CD de Manifestación de la Sombra</b>. Si falla, queda <b>Apresada</b> hasta el comienzo de tu siguiente turno.\n\nUna criatura de tamaño Enorme o superior es inmune a esta Cualidad, salvo que la capacidad de Apresar utilizada por una de las sombras indique que puede afectar a criaturas de ese tamaño."
+        },
+        "blockCuatro": {
+          "name": "Despistar al Enemigo",
+          "titleName": "✦ DESPISTAR AL ENEMIGO ✦",
+          "descripcion": "Cuando una criatura que puedas ver te tenga como objetivo, puedes utilizar tu <b>reacción</b> y llamar <b>1 sombra de tu Reserva</b>.\n\nUna manifestación sombría aparece momentáneamente junto a la criatura y realiza una interacción física para distraerla: tira de su brazo, golpea su arma, mueve un objeto cercano o interfiere de cualquier otra forma no dañina.\n\nLa criatura realiza el ataque contra ti con <b>desventaja</b>.\n\nSi el ataque falla, la próxima tirada de ataque que realices contra esa criatura antes del final de tu siguiente turno tiene <b>ventaja</b>."
+        },
+        "blockCinco": {
+          "name": "Manos de la Reserva",
+          "titleName": "✦ MANOS DE LA RESERVA ✦",
+          "descripcion": "Puedes llamar <b>1 sombra de tu Reserva</b> para realizar una <b>interacción física sencilla</b> a una distancia de hasta 30 pies.\n\nLa sombra puede, por ejemplo:\n\n<ul><li>abrir o cerrar una puerta;</li><li>tirar de una palanca;</li><li>recoger o mover un objeto;</li><li>apagar una llama;</li><li>tirar de una cuerda;</li><li>hacer ruido;</li><li>empujar un objeto pequeño;</li><li>manipular un mecanismo sencillo.</li></ul>\n\nLa intervención debe ser algo que una criatura pudiera realizar normalmente con sus manos y no puede causar daño directamente.\n\nNo puedes utilizar esta Cualidad para activar objetos mágicos, utilizar herramientas o realizar tareas que requieran una precisión o conocimiento que no poseas."
+        },
+        "blockSeis": {
+          "name": "Tirón desde las Sombras",
+          "titleName": "✦ TIRÓN DESDE LAS SOMBRAS ✦",
+          "descripcion": "Cuando una criatura que puedas ver se encuentre a 30 pies de ti y dentro de una zona de penumbra u oscuridad, puedes utilizar tu <b>acción adicional</b> y llamar <b>1 sombra de tu Reserva</b>.\n\nUna manifestación sombría emerge de una sombra cercana a la criatura y tira de ella.\n\nLa criatura debe superar una <b>tirada de salvación de Fuerza</b> contra tu <b>CD de Manifestación de la Sombra</b>.\n\nSi falla, puedes moverla hasta <b>10 pies</b> hacia un espacio desocupado que puedas ver. Este movimiento no provoca ataques de oportunidad.\n\nUna criatura de tamaño <b>Enorme o superior</b> es inmune a esta Cualidad, salvo que la capacidad de Mover utilizada por una de las sombras indique que puede afectar a criaturas de ese tamaño."
+        },
+        "blockSiete": {
+          "name": "Sombra Interceptora",
+          "titleName": "✦ SOMBRA INTERCEPTORA ✦",
+          "descripcion": "Cuando una criatura que puedas ver a 30 pies de ti se aleja 10 pies, puedes utilizar tu <b>reacción</b> y llamar <b>1 sombra de tu Reserva</b>.\n\nUna manifestación sombría aparece momentáneamente en su trayectoria e interfiere con su movimiento.\n\nLa criatura debe superar una <b>tirada de salvación de Fuerza</b> contra tu <b>CD de Manifestación de la Sombra</b>.\n\nSi falla, su velocidad se reduce en <b>10 pies</b> hasta el final de su turno."
+        },
+        "blockOcho": {
+          "name": "Marca de la Cacería",
+          "titleName": "✦ MARCA DE LA CACERÍA ✦",
+          "descripcion": "Como <b>acción adicional</b>, puedes llamar <b>1 sombra de tu Reserva</b> para hacer que una de ellas se manifieste brevemente junto a una criatura que puedas ver a 30 pies de ti y la toque.\n\nHasta el comienzo de tu siguiente turno, sabes la <b>dirección y distancia aproximada</b> de esa criatura mientras permanezca a menos de <b>120 pies de ti</b>, incluso si queda fuera de tu línea de visión.\n\nAdemás, la criatura no puede obtener ventaja contra ti por estar <b>oculta de tu vista</b> durante este tiempo."
+        },
+        "blockNueve": {
+          "name": "Deslizamiento Tenebroso",
+          "titleName": "✦ DESLIZAMIENTO TENEBROSO ✦",
+          "descripcion": "Puedes llamar <b>1 sombra de tu Reserva</b> para integrarla temporalmente a tu cuerpo, adoptando parte de sus propiedades de movimiento durante <b>10 minutos con concentración</b>.\n\nMientras dure este efecto:\n\n<ul><li>Si la sombra posee una <b>velocidad terrestre superior a la tuya</b>, tu velocidad terrestre aumenta hasta igualar la de la sombra.</li><li>Si la sombra posee una <b>velocidad de vuelo</b>, obtienes una velocidad de vuelo igual a la indicada por la sombra. No sus efectos como (Inmune al daño de caída, resistencia al viento, etc.).</li><li>Si la sombra posee una <b>velocidad de excavación</b>, puedes utilizarla para desplazarte bajo tierra.</li><li>Si la sombra posee cualquier otra velocidad de movimiento, puedes utilizarla de la misma manera, siempre que tu cuerpo sea capaz de realizar físicamente ese tipo de movimiento.</li></ul>\n\nLa sombra no se considera una criatura independiente mientras esté integrada en tu cuerpo y no puede ser objetivo de ataques o efectos.\n\nCuando transcurra la duración, la sombra regresa automáticamente a tu Reserva.\n\nAdemás, mientras te encuentres en <b>penumbra u oscuridad</b> y vinculada a una sombra, puedes ignorar el <b>terreno difícil</b>."
+        }
+      }
+    },
+    "6": {
+      "infoCubo": {
+        "columnas": [
+          "Sombras activas",
+          "Sombras reservadas",
+          "Radio de presencia"
+        ],
+        "filas": [
+          [
+            "2",
+            "4",
+            "5 km"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Guardia de Sombra",
+          "titleName": "✦ GUARDIA DE SOMBRA ✦",
+          "descripcion": "<b>Usos</b> Tu modificador de Carisma (mínimo 1) entre descansos largos\n<b>Activación</b> Reacción\n\nTu vínculo con las sombras que controlas se profundiza hasta el punto de que puedes interponerlas entre tú y el peligro. Cuando recibes daño y tienes una sombra a <b>5 pies</b> o menos de ti, puedes usar tu reacción para hacer que la sombra intercepte parte del golpe.\n\n<ul><li>La sombra absorbe <b>la mitad del daño</b> que ibas a recibir (redondeado hacia arriba); tú recibes la otra mitad.</li><li>El daño absorbido lo recibe la sombra directamente, pudiendo llegar a destruirla si supera sus puntos de golpe restantes.</li><li>No puedes usar esta habilidad si esa sombra ya te ha protegido de esta forma en este mismo turno.</li></ul>\n\n<i>Una sombra destruida de esta manera no puede ser reanimada de nuevo hasta después de un descanso largo (ver Reservar Sombras).</i>"
+        }
+      }
+    },
+    "7": {
+      "infoCubo": {
+        "columnas": [
+          "Sombras activas",
+          "Sombras reservadas",
+          "Radio de presencia"
+        ],
+        "filas": [
+          [
+            "2",
+            "4",
+            "5 km"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Intercambio a Larga Distancia",
+          "titleName": "✦ INTERCAMBIO A LARGA DISTANCIA ✦",
+          "descripcion": "A partir del <b>nivel 7</b>, tu dominio de las sombras permite que <b>Intercambio</b> trascienda las limitaciones de la proximidad.\n\nPuedes utilizar Intercambio con una sombra que se encuentre dentro de la distancia indicada por tu nivel en la tabla de <b>Radio de Presencia</b>.\n\nLa sombra debe encontrarse en un lugar al que haya llegado físicamente y debe existir una zona de sombra válida que permita realizar el intercambio.\n\nDe esta manera, una sombra que hayas enviado a otro lugar puede convertirse en un <b>punto de conexión</b> para ti. A medida que aumenta tu poder, la distancia deja de ser una barrera y tu ejército comienza a extender tu presencia mucho más allá de donde se encuentra tu cuerpo.\n\nAl alcanzar el <b>nivel 20</b>, mientras tú y la sombra se encuentren en el mismo plano de existencia, la distancia entre ambos deja de limitar Intercambio."
+        }
+      }
+    },
+    "8": {
+      "infoCubo": {
+        "columnas": [
+          "Sombras activas",
+          "Sombras reservadas",
+          "Radio de presencia"
+        ],
+        "filas": [
+          [
+            "2",
+            "4",
+            "5 km"
+          ]
+        ]
+      }
+    },
+    "9": {
+      "infoCubo": {
+        "columnas": [
+          "Sombras activas",
+          "Sombras reservadas",
+          "Radio de presencia"
+        ],
+        "filas": [
+          [
+            "2",
+            "4",
+            "25 km"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Cosecha de Esencia",
+          "titleName": "✦ COSECHA DE ESENCIA ✦",
+          "descripcion": "Al tirar iniciativa (sin gastar acción) marcas a una criatura. Si cae a 0 PG en ese combate, tienes ventaja en la tirada de <b>Reanimar</b> y un intento adicional."
+        }
+      }
+    },
+    "10": {
+      "infoCubo": {
+        "columnas": [
+          "Sombras activas",
+          "Sombras reservadas",
+          "Radio de presencia"
+        ],
+        "filas": [
+          [
+            "3",
+            "6",
+            "25 km"
+          ]
+        ]
+      }
+    },
+    "11": {
+      "infoCubo": {
+        "columnas": [
+          "Sombras activas",
+          "Sombras reservadas",
+          "Radio de presencia"
+        ],
+        "filas": [
+          [
+            "3",
+            "6",
+            "25 km"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Sombra Tentacular",
+          "titleName": "✦ SOMBRA TENTACULAR ✦",
+          "descripcion": "<i>De tu espalda surgen cuatro extremidades sombrías, alargadas y serpentinas, como brazos de un dios oscuro. Las usas para trepar, tomar, rasgar... y adherirte al alma de tus enemigos.</i>\n\nAl alcanzar el nivel 11, aprendes a manipular tu propia sombra con precisión anatómica, manifestando cuatro tentáculos sombríos que emergen de tu cuerpo y te rodean como extremidades adicionales.\n\n<h4>Propiedades de los Tentáculos</h4>\n\n<ul><li>Movilidad Extrema: Puedes usar tus tentáculos para agarrarte a superficies y elevarte verticalmente hasta 30 pies del suelo o sostenerte de estructuras altas por horas (Si tienes +1 en CON, eso equivale a 1h de uso).</li><li>Manipulación Limitada. Los tentáculos pueden:<ul><li>Abrir puertas, activar trampas, recoger objetos y accionar mecanismos.</li><li>Sostener objetos cuyo peso máximo no supere el doble de tu peso.</li><li>No pueden blandir armas ni lanzar hechizos.</li></ul></li><li>Ataque de Tentáculo: Usando una acción, puedes realizar ataques cuerpo a cuerpo con los tentáculos, usa tu modificador de Destreza, daño base: 1d8 daño necrótico (1d10 a nivel 17), alcance 10 pies.</li><li>No puedes usar más de dos tentáculos para ataques por turno.</li></ul>"
+        }
+      }
+    },
+    "12": {
+      "infoCubo": {
+        "columnas": [
+          "Sombras activas",
+          "Sombras reservadas",
+          "Radio de presencia"
+        ],
+        "filas": [
+          [
+            "3",
+            "6",
+            "25 km"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Cualidad adicional",
+          "titleName": "✦ CUALIDAD ADICIONAL ✦",
+          "descripcion": "Puedes elegir una <b>Cualidad</b> adicional de la lista del nivel 5. No puedes elegir la misma Cualidad más de una vez."
+        }
+      }
+    },
+    "13": {
+      "infoCubo": {
+        "columnas": [
+          "Sombras activas",
+          "Sombras reservadas",
+          "Radio de presencia"
+        ],
+        "filas": [
+          [
+            "3",
+            "6",
+            "500 km"
+          ]
+        ]
+      }
+    },
+    "14": {
+      "infoCubo": {
+        "columnas": [
+          "Sombras activas",
+          "Sombras reservadas",
+          "Radio de presencia"
+        ],
+        "filas": [
+          [
+            "3",
+            "6",
+            "500 km"
+          ]
+        ]
+      }
+    },
+    "15": {
+      "infoCubo": {
+        "columnas": [
+          "Sombras activas",
+          "Sombras reservadas",
+          "Radio de presencia"
+        ],
+        "filas": [
+          [
+            "4",
+            "8",
+            "500 km"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Absorción de Sombras",
+          "titleName": "✦ ABSORCIÓN DE SOMBRAS ✦",
+          "descripcion": "<b>Usos:</b> 3 usos entre descansos largos.\n\nComo <b>acción adicional</b>, puedes absorber las sombras que te rodean para restaurar tu vitalidad y fortalecer temporalmente tu cuerpo.\n\nNo puedes utilizar esta característica mientras te encuentres bajo <b>luz brillante</b>, ni puedes utilizar tu propia sombra como fuente.\n\nLa cantidad de energía que absorbes depende de la iluminación del espacio que ocupas:\n\n<ul><li><b>Penumbra:</b> recuperas <b>3d8 puntos de golpe</b>.</li><li><b>Oscuridad:</b> recuperas <b>6d8 puntos de golpe</b> y obtienes <b>6d8 puntos de golpe temporales</b> durante 10 minutos.</li></ul>\n\nAdemás, cuando utilizas esta característica mientras te encuentras en <b>oscuridad</b>, puedes elegir uno de los siguientes beneficios, que dura 10 minutos:\n\n<ul><li>Tu velocidad aumenta en <b>10 pies</b>.</li><li>Obtienes un bonificador de <b>+1 a la CA</b>.</li><li>Tienes ventaja en las pruebas de <b>Destreza (Sigilo)</b>.</li><li>No puedes ser detectado mediante medios de percepción visual mientras permanezcas en oscuridad, salvo que una criatura posea una capacidad que le permita percibir criaturas invisibles u ocultas de manera similar.</li></ul>\n\nUna vez utilizas uno de estos beneficios de la oscuridad, no puedes elegirlo nuevamente hasta terminar un descanso largo."
+        }
+      }
+    },
+    "16": {
+      "infoCubo": {
+        "columnas": [
+          "Sombras activas",
+          "Sombras reservadas",
+          "Radio de presencia"
+        ],
+        "filas": [
+          [
+            "4",
+            "8",
+            "500 km"
+          ]
+        ]
+      }
+    },
+    "17": {
+      "infoCubo": {
+        "columnas": [
+          "Sombras activas",
+          "Sombras reservadas",
+          "Radio de presencia"
+        ],
+        "filas": [
+          [
+            "4",
+            "8",
+            "10.000 km"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Abrazo de la Oscuridad",
+          "titleName": "✦ ABRAZO DE LA OSCURIDAD ✦",
+          "descripcion": "<b>Usos:</b> 1 uso entre descansos largos.\n\nComo <b>acción</b>, eliges una criatura que puedas ver a 60 pies de ti. Las sombras que te rodean responden a tu voluntad y convergen sobre ella desde todas las direcciones.\n\nLa criatura debe realizar una <b>tirada de salvación de Constitución</b> contra tu <b>CD de Manifestación de la Sombra</b>.\n\nLa criatura recibe <b>6d8 de daño necrótico</b> si se encuentra en penumbra, o <b>10d8 de daño necrótico</b> si se encuentra en oscuridad.\n\nRecuperas una cantidad de puntos de golpe igual a la <b>mitad del daño necrótico infligido</b>.\n\nSi la criatura falla la tirada de salvación, las sombras de tu Reserva se aferran a ella y la someten al <b>Abrazo de la Oscuridad</b> hasta el final de tu siguiente turno.\n\nMientras una criatura se encuentre bajo el Abrazo de la Oscuridad:\n\n<ul><li>Su <b>velocidad es 0</b>.</li><li>No puede realizar <b>reacciones</b>.</li><li>No puede beneficiarse de la condición <b>Invisible</b>.</li><li>Tienes conocimiento de la <b>ubicación exacta</b> de la criatura mientras permanezca a 60 pies de ti, aunque no puedas verla.</li><li>La criatura tiene <b>desventaja en las tiradas de ataque contra criaturas que no seas tú</b>.</li></ul>\n\nAl comienzo de tu siguiente turno, las sombras regresan a tu Reserva y el efecto termina.\n\nUna criatura que supere la tirada de salvación recibe la mitad del daño y no queda sometida al Abrazo."
+        }
+      }
+    },
+    "18": {
+      "infoCubo": {
+        "columnas": [
+          "Sombras activas",
+          "Sombras reservadas",
+          "Radio de presencia"
+        ],
+        "filas": [
+          [
+            "4",
+            "8",
+            "10.000 km"
+          ]
+        ]
+      }
+    },
+    "19": {
+      "infoCubo": {
+        "columnas": [
+          "Sombras activas",
+          "Sombras reservadas",
+          "Radio de presencia"
+        ],
+        "filas": [
+          [
+            "4",
+            "8",
+            "10.000 km"
+          ]
+        ]
+      }
+    },
+    "20": {
+      "infoCubo": {
+        "columnas": [
+          "Sombras activas",
+          "Sombras reservadas",
+          "Radio de presencia"
+        ],
+        "filas": [
+          [
+            "5",
+            "10",
+            "Todo el plano"
+          ]
+        ]
+      },
+      "requeridoTrue": {
+        "statAmount": {
+          "carisma": 2,
+          "choice": {
+            "count": 1,
+            "bonus": 2,
+            "allowedChoices": [
+              "destreza",
+              "inteligencia"
+            ]
+          }
+        },
+        "statMax": {
+          "activos": [
+            "fuerza",
+            "destreza",
+            "inteligencia"
+          ],
+          "stat": 25
+        }
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Dominio del Soberano",
+          "titleName": "✦ DOMINIO DEL SOBERANO ✦",
+          "descripcion": "<i><i>«De las profundidades más oscuras, invoco la noche eterna. Que mis sombras devoren toda luz y sumerjan a mis enemigos en la oscuridad.»</i></i>\n\nAl alcanzar el nivel 20, tu vínculo con las sombras alcanza su máxima expresión. Ya no eres simplemente alguien que controla sombras: eres el <b>Soberano de un ejército que existe más allá de la distancia, la luz y la muerte</b>."
+        },
+        "blockDos": {
+          "name": "Potenciación del Soberano",
+          "titleName": "✦ POTENCIACIÓN DEL SOBERANO ✦",
+          "descripcion": "Al obtener esta característica, elige una sombra bajo tu control.\n\nEsa sombra se convierte en uno de tus <b>Generales</b> y obtiene permanentemente uno de los siguientes beneficios:\n\n<ul><li>Aumenta en <b>2</b> una de sus puntuaciones de característica, hasta un máximo de 25.</li><li>Su bonificador de competencia aumenta en <b>1</b>.</li><li>Su velocidad aumenta en <b>10 pies</b>.</li><li>Obtiene una bonificación de <b>+1 a la CA</b>.</li></ul>\n\nUna sombra solo puede beneficiarse de esta característica una vez."
+        },
+        "blockTres": {
+          "name": "Activación del Dominio",
+          "titleName": "✦ ACTIVACIÓN DEL DOMINIO ✦",
+          "descripcion": "Una vez por descanso largo, puedes utilizar una <b>acción adicional</b> para activar tu Dominio del Soberano durante <b>1 minuto</b>.\n\nMientras el Dominio esté activo:\n\n<h4>Noche del Soberano</h4>\n\nUn aura de sombras se extiende hasta <b>60 pies</b> a tu alrededor.\n\nLa <b>luz brillante</b> dentro del aura se convierte en <b>penumbra</b>, y la <b>penumbra</b> se convierte en <b>oscuridad</b>.\n\nEsta oscuridad es mágica, pero tú y tus sombras podéis ver normalmente dentro de ella.\n\nAdemás, las sombras no pueden ser creadas ni eliminadas por fuentes de luz no mágicas mientras permanezcan dentro del aura.\n\n<h4>Ejército Omnipresente</h4>\n\nMientras el Dominio esté activo, puedes utilizar tus <b>Cualidades que requieran una sombra en Reserva</b> como si tuvieras <b>una sombra adicional disponible para realizar la intervención</b>, sin gastar una sombra de tu Reserva.\n\nEsta sombra adicional desaparece inmediatamente después de realizar la intervención.\n\nNo puedes utilizar esta propiedad para realizar una intervención que requiera más de una sombra.\n\n<h4>Legión del Soberano</h4>\n\nMientras tengas al menos una sombra activa a 30 pies o menos de ti, obtienes <b>media cobertura</b>.\n\nEsta cobertura no se acumula con otras fuentes de cobertura.\n\nAdemás, una vez por turno, cuando una criatura que puedas ver te impacte con un ataque a distancia o cuerpo a cuerpo, puedes utilizar tu <b>reacción</b> para hacer que una de tus sombras dentro del combate interfiera con el ataque.\n\n<h4>Voluntad del Ejército</h4>\n\nCuando una de tus sombras bajo tu control fuera a quedar reducida a <b>0 puntos de golpe</b>, puedes utilizar tu reacción para evitar que sea destruida.\n\nLa sombra queda en <b>1 punto de golpe</b> en su lugar.\n\nUna vez utilizas esta propiedad, no puedes volver a utilizarla hasta terminar un descanso largo."
+        },
+        "blockCuatro": {
+          "name": "Renacer de las Sombras",
+          "titleName": "✦ RENACER DE LAS SOMBRAS ✦",
+          "descripcion": "Mientras tu Dominio esté activo, cuando una de tus sombras sea destruida, puedes utilizar una <b>acción adicional</b> para devolverla inmediatamente a la existencia.\n\nLa sombra reaparece en un espacio desocupado que puedas ver a 30 pies de ti con <b>la mitad de sus puntos de golpe máximos</b>.\n\nUna sombra devuelta de esta manera:\n\n<ul><li>regresa con sus estadísticas normales;</li><li>conserva sus características y habilidades originales;</li><li>se considera una sombra activa;</li><li>no puede utilizarse nuevamente para esta característica hasta terminar un descanso largo.</li></ul>\n\nSolo puedes devolver <b>una sombra</b> a la existencia mediante esta característica por descanso largo.\n\nCuando el Dominio termina, las sombras que hayan sido devueltas de esta manera permanecen activas normalmente."
+        }
+      }
+    }
+  },
+  "subclaseNombre": "Manifestación de la Sombra",
+  "cdClase": {
+    "nombre": "CD de Manifestación",
+    "atributos": [
+      "carisma",
+      "sabiduria"
+    ]
+  }
+}

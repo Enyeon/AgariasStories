@@ -1,0 +1,27 @@
+{
+  "Enano de las Colinas": {
+    "icono": "⚒️",
+    "texto": "+1 PG (Dureza Enana)",
+    "clase": "badge-dureza"
+  },
+  "Enano (Kaladesh)": {
+    "icono": "⚒️",
+    "texto": "+1 PG (Dureza Enana)",
+    "clase": "badge-dureza"
+  },
+  "GA - Tribu del Pantano Fluido": {
+    "icono": "😸",
+    "texto": "+1 PG (Dureza Felina)",
+    "clase": "badge-dureza"
+  },
+  "Tortle (Terrestre)": {
+    "icono": "🐢",
+    "texto": "+1 PG (Dureza de Tortuga)",
+    "clase": "badge-dureza"
+  },
+  "Tortle (Acuática)": {
+    "icono": "🐢",
+    "texto": "+1 PG (Dureza de Tortuga)",
+    "clase": "badge-dureza"
+  }
+}

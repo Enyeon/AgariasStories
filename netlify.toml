@@ -1,0 +1,12 @@
+# Configuración de Netlify (despliegue del frontend desde GitHub).
+# Las reglas de redirección y cabeceras están en frontend/public/_redirects y
+# frontend/public/_headers para que funcionen también si subes la carpeta dist
+# arrastrándola a Netlify.
+
+[build]
+  base = "frontend"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"

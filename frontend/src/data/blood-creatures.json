@@ -1,0 +1,172 @@
+{
+  "latigo_sangriento": {
+    "name": "Látigo Sangriento",
+    "damage": "Cortante.",
+    "hpPercent": 50,
+    "attackName": "Latigazo",
+    "attack": "Un látigo de sangre ataca a 15 pies (3 casillas) de distancia causando 1d6 + modificador de Destreza igual al modificador de sabiduría del invocador (daño Cortante).",
+    "amplification": "El alcance del látigo aumenta a 25 pies (5 casillas) y su daño a 2d6. Además, el látigo puede envolver a un enemigo, reduciendo su velocidad a la mitad durante 1 turno si falla una tirada de Salvación de Fuerza (CD basada en el modificador de Sabiduría del invocador).",
+    "quirk": "——",
+    "requirement": "——"
+  },
+  "carcelero_carmesi": {
+    "name": "Carcelero Carmesí",
+    "damage": "Contundente.",
+    "hpPercent": 50,
+    "attackName": "Golpe cargado",
+    "attack": "Golpe con puños engrosados de sangre, causando 1d8 + modificador de Fuerza (daño contundente, cuerpo a cuerpo).",
+    "amplification": "El Carcelero puede apresar a un enemigo en una jaula de sangre sólida por 1 turno (el enemigo no puede moverse ni atacar a menos que supere una tirada de Salvación de Fuerza, CD igual al modificador de Sabiduría del invocador). Mientras un enemigo está atrapado, el Carcelero no puede atacar.",
+    "quirk": "——",
+    "requirement": "——"
+  },
+  "guadaña_escarlata": {
+    "name": "Guadaña Escarlata",
+    "damage": "Cortante.",
+    "hpPercent": 50,
+    "attackName": "Corte en espiral",
+    "attack": "Realiza un giro rápido con una guadaña de sangre, causando 1d10 + modificador de Fuerza (daño Cortante) a un solo enemigo.",
+    "amplification": "Su daño aumenta a 2d10, y el corte en espiral puede atacar a dos enemigos adyacentes al objetivo original. Sin embargo, si falla el ataque, la Guadaña Escarlata recibe 1d6 de daño de retroceso.",
+    "quirk": "Cuando golpea a un enemigo, tiene un 25% (1 en 1d4) de probabilidad de ignorar cualquier tipo de resistencia al daño cortante del enemigo.",
+    "requirement": "Cuerpo con sangre necesaria."
+  },
+  "bestia_golem": {
+    "name": "Bestia Golem",
+    "damage": "Contundente.",
+    "hpPercent": 50,
+    "attackName": "Embestida",
+    "attack": "La Bestia Golem embiste con su cuerpo masivo de sangre cristalizada, causando 2d6 + modificador de Fuerza (daño contundente, cuerpo a cuerpo).",
+    "amplification": "El daño de la embestida aumenta a 3d6, y al estar amplificada, puede derribar al enemigo si falla una tirada de Salvación de Fuerza (CD basada en el modificador de Fuerza del invocador).",
+    "quirk": "——",
+    "requirement": "——"
+  },
+  "rastreador_sangriento": {
+    "name": "Rastreador Sangriento",
+    "damage": "Perforante.",
+    "hpPercent": 50,
+    "attackName": "Mordida",
+    "attack": "El Rastreador muerde con afilados colmillos hechos de sangre endurecida, causando 1d8 + modificador de Destreza (daño perforante).",
+    "amplification": "La mordida del Rastreador causa una herida profunda que hace que el objetivo pierda 1d6 puntos de golpe adicionales al inicio de su próximo turno, a menos que realice una tirada de Salvación de Constitución (CD igual al modificador de Sabiduría del invocador).",
+    "quirk": "——",
+    "requirement": "——"
+  },
+  "sombra_perforante": {
+    "name": "Sombra Perforante",
+    "damage": "Perforante.",
+    "hpPercent": 50,
+    "attackName": "Lanza sangrienta",
+    "attack": "1d8 + modificador de Destreza igual al modificador de sabiduría del invocador (daño perforante, alcance 6 metros o cuerpo a cuerpo).",
+    "amplification": "El daño perforante aumenta a 2d8, y la lanza puede atravesar hasta dos enemigos en una línea recta. Si falla el ataque, el invocador sufre 1d4 de daño por retroceso.",
+    "quirk": "——",
+    "requirement": "——"
+  },
+  "cortacarne": {
+    "name": "Cortacarne",
+    "damage": "Cortante.",
+    "hpPercent": 50,
+    "attackName": "Corte letal",
+    "attack": "1d10 + modificador de Fuerza igual al modificador de sabiduría del invocador (daño cortante, cuerpo a cuerpo con garras afiladas).",
+    "amplification": "Aumenta su velocidad, permitiendo hacer dos ataques con 1d10 cada uno por turno. Si falla uno de los ataques, pierde 1d6 puntos de golpe por desangramiento.",
+    "quirk": "——",
+    "requirement": "——"
+  },
+  "rompehuesos": {
+    "name": "Rompehuesos",
+    "damage": "Contundente.",
+    "hpPercent": 50,
+    "attackName": "Golpe aplastante",
+    "attack": "2d6 + modificador de Fuerza (daño contundente, cuerpo a cuerpo con puños o martillo de sangre).",
+    "amplification": "Su tamaño y fuerza aumentan, incrementando el daño a 3d6. Al estar amplificado, puede atacar aliados si el invocador pierde el control.",
+    "quirk": "——",
+    "requirement": "——"
+  },
+  "vigia_de_la_sangre": {
+    "name": "Vigía de la Sangre",
+    "damage": "—— (Solo curación)",
+    "hpPercent": 50,
+    "attackName": "Sifón de vida",
+    "attack": "Cada turno, transfiere al invocador 1d8 + modificador de Sabiduría igual al modificador de sabiduría del invocador en puntos de golpe, pero pierde 1d6 puntos de golpe en el proceso.",
+    "amplification": "La curación aumenta a 2d8, pero la criatura muere al final del turno si se amplifica.",
+    "quirk": "Siempre actúa primero en la iniciativa, asegurando una curación rápida al invocador. No puede atacar.",
+    "requirement": "——"
+  },
+  "abisal_carmesi": {
+    "name": "Abisal Carmesí",
+    "damage": "Cortante.",
+    "hpPercent": 75,
+    "attackName": "Lluvia de cortes",
+    "attack": "Ataque en área (3 metros) con 2d8 + modificador de Fuerza igual al modificador de sabiduría del invocador (daño cortante).",
+    "amplification": "Desbloquea la habilidad de controlar espadas de sangre a distancia, permitiendo atacar hasta tres enemigos con 1d8 de daño cortante a cada uno. Si la voluntad de la criatura supera la del invocador, puede rebelarse y atacar indiscriminadamente.",
+    "quirk": "Cuando ataca, absorbe 1d4 puntos de vida de cada enemigo golpeado y transfiere esa cantidad al invocador.",
+    "requirement": "Amplificación necesaria."
+  },
+  "guardiana_del_alba_roja": {
+    "name": "Guardiana del Alba Roja",
+    "damage": "—— (Solo curación)",
+    "hpPercent": 50,
+    "attackName": "Protección Vital",
+    "attack": "Cada turno, transfiere 1d12 + modificador de Sabiduría en puntos de golpe al invocador, sacrificando 1d8 de su propia vida.",
+    "amplification": "Aumenta la cantidad curada a 2d12 y, mientras esté amplificada, puede actuar como un escudo viviente para el invocador, otorgándole ventaja en tiradas de Salvación de Destreza. Sin embargo, la Guardiana pierde vida equivalente al daño que reduce.",
+    "quirk": "Siempre actúa antes que el invocador en la iniciativa.",
+    "requirement": "Cuerpo con sangre necesaria."
+  },
+  "guardian_de_la_sangre_pura": {
+    "name": "Guardian de la Sangre Pura",
+    "damage": "Cortante.",
+    "hpPercent": 75,
+    "attackName": "Espada de sangre",
+    "attack": "Un ataque de cuerpo a cuerpo con una espada formada por sangre, causando 2d8 + modificador de Fuerza (daño cortante).",
+    "amplification": "Al usar la Amplificación, el Guardian de la Sangre Pura gana la habilidad de desviar un ataque dirigido al invocador. Una vez por turno, puede sacrificar su acción para redirigir un ataque hacia él, y si lo hace, aumenta su daño a 4d8 durante ese turno.",
+    "quirk": "Cada vez que el Guardian es atacado, puede aumentar su daño en 1d6 en su próximo ataque, hasta un máximo de 3d6 acumulados.",
+    "requirement": "Amplificación necesaria."
+  },
+  "verdugo_sangriento": {
+    "name": "Verdugo Sangriento",
+    "damage": "Cortante.",
+    "hpPercent": 50,
+    "attackName": "Hachazo mortal",
+    "attack": "Un hachazo de sangre que causa 1d12 + modificador de Fuerza (daño cortante).",
+    "amplification": "Su daño aumenta a 2d12, y si el Verdugo Sangriento derrota a un enemigo, su sed de sangre le permite atacar de nuevo ese turno.",
+    "quirk": "Si el Verdugo falla un ataque, entra en un frenesí que lo obliga a atacar automáticamente a la criatura más cercana, ya sea aliado o enemigo.",
+    "requirement": "Cuerpo con sangre necesaria."
+  },
+  "heraldo_del_caos": {
+    "name": "Héraldo del Caos",
+    "damage": "Perforante.",
+    "hpPercent": 75,
+    "attackName": "Danza de puñales",
+    "attack": "Ataques múltiples con puñales de sangre, causando 1d6 + modificador de Destreza por cada puñal lanzado, con un máximo de tres ataques.",
+    "amplification": "Con la Amplificación, el Héraldo del Caos puede lanzar un torrente de puñales que impactan a todos los enemigos en un radio de 3 metros, causando 3d6 de daño perforante. Sin embargo, el invocador debe realizar una tirada de salvación de Destreza (CD basada en el modificador de Sabiduría) o sufrir 1d6 de daño por retroceso.",
+    "quirk": "Cuando el Héraldo lanza su torrente de puñales, el invocador puede elegir sufrir la mitad del daño recibido con el Héraldo, en lugar de sufrirlo toso él mismo.",
+    "requirement": "Amplificación necesaria."
+  },
+  "coloso_de_sangre": {
+    "name": "Coloso de Sangre",
+    "damage": "Contundente.",
+    "hpPercent": 75,
+    "attackName": "Golpe telúrico",
+    "attack": "Un ataque devastador que causa 2d10 + modificador de Fuerza (daño contundente) al golpear el suelo, provocando ondas de choque.",
+    "amplification": "Al ser amplificado, el Coloso de Sangre puede derribar un área de 4 metros a su alrededor, haciendo que todos los enemigos en el área realicen una tirada de salvación de Destreza. Si fallan, reciben 4d10 de daño contundente y quedan aturdidos hasta el siguiente turno. Si tienen éxito, sufren la mitad del daño y no quedan aturdidos.",
+    "quirk": "Cada vez que el Coloso causa daño, recupera 1d10 de vida al absorber el dolor de sus enemigos.",
+    "requirement": "Amplificación necesaria."
+  },
+  "exorcista_carmesi": {
+    "name": "Exorcista Carmesí",
+    "damage": "—— (Habilidad de disipación)",
+    "hpPercent": 50,
+    "attackName": "Purga de Sangre",
+    "attack": "Como acción adicional, eliges una criatura que puedas ver a 30 pies (6 Casilas) de distancia que esté encantada, asustada o poseída. La criatura objetivo es liberada de esos efectos inmediatamente. Si la criatura tenía uno de estos efectos, tú recuperas puntos de vida iguales a 1d8 + tu modificador de Sangre Arcana.",
+    "amplification": "Cuando se usa la Amplificación, el ser responsable de encantar, asustar o poseer al objetivo sufre 3d6 de daño psíquico y debe realizar una tirada de salvación de Sabiduría. Si falla, queda aturdido hasta el final del siguiente turno del invocador.",
+    "quirk": "Si el Exorcista Carmesí libera a una criatura de uno de estos efectos (encantamiento, miedo o posesión), el invocador recupera 1d8 puntos de vida. Además, si se purgan dos o más criaturas en un solo turno, el invocador gana ventaja en su siguiente tirada de ataque.",
+    "requirement": "——"
+  },
+  "clon_carmesi": {
+    "name": "Aullido 'Clon Carmesí'",
+    "damage": "Se adapta al daño del invocador.",
+    "hpPercent": 50,
+    "attackName": "Reflejo Sangriento",
+    "attack": "El Clon Carmesí ataca con las mismas habilidades y técnicas que el portador, pero con solo la mitad de su daño y efectividad. Su ataque básico es el mismo que el del invocador, pero su daño se reduce a la mitad. (Excepto si está en su forma de Amplificación)",
+    "amplification": "Al usar la Amplificación, el Clon Carmesí obtiene todas las cualidades del portador al 100% (mismo daño y habilidades, menos la vida del portador en el momento de la invocación). Sin embargo, el Clon Carmesí desobedece y puede atacar a cualquier criatura (ya sea aliada o no - menos al invocador), una vez se invoque de esta forma.",
+    "quirk": "——",
+    "requirement": "Amplificación necesaria, y además el portador debe sacrificar la mitad de su vida actual para otorgarla al clon."
+  }
+}

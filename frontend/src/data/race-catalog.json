@@ -1,0 +1,284 @@
+[
+  {
+    "source": "Manual del Jugador",
+    "races": [
+      "Dracónido (Relámpago)",
+      "Dracónido (Frío)",
+      "Dracónido (Ácido)",
+      "Dracónido (Fuego)",
+      "Dracónido (Veneno)",
+      "Alto Elfo",
+      "Elfo del Bosque",
+      "Elfo (Draw)",
+      "Enano de las Colinas",
+      "Enano de las Montañas",
+      "Gnomo del Bosque",
+      "Gnomo de la Roca",
+      "Humano",
+      "Humano Variante",
+      "Mediano (Piesligeros)",
+      "Mediano (Fornido)",
+      "Mediano (Fantasagaz)",
+      "Mediano (Lotohogar)",
+      "Medio Elfo",
+      "Medio Orco",
+      "Tiflin"
+    ]
+  },
+  {
+    "source": "Guía del Dungeon Master",
+    "races": [
+      "Aasimar",
+      "Elfo (Eladrin Variante)"
+    ]
+  },
+  {
+    "source": "Guía de Monstruos de Volo",
+    "races": [
+      "Aasimar protector",
+      "Aasimar azote",
+      "Aasimar Caído",
+      "Bugbear",
+      "Firbolgs",
+      "Goblin",
+      "Hobgoblin",
+      "Hombres lagarto",
+      "Kenku",
+      "Kobold",
+      "Orco",
+      "Osgos",
+      "Tabaxi",
+      "Triton",
+      "Sirena",
+      "Yuan-Ti Purasangres"
+    ]
+  },
+  {
+    "source": "Enemigos de Mordenkainen",
+    "races": [
+      "Aasimar Celestial",
+      "Enano (Duergar)",
+      "Elfo (Eladrin)",
+      "Elfo del mar",
+      "Elfo (Shadar-kai)",
+      "Gith (Githyanki)",
+      "Gith (Githzerai)",
+      "Tiflin estandar",
+      "Tiflin feral",
+      "Tiflin (Asmodeo)",
+      "Tiflin (Baalzebub)",
+      "Tiflin (Mammon)",
+      "Tiflin (Mefistofeles)",
+      "Tiflin (Dispater)",
+      "Tiflin (Glasya)",
+      "Tiflin (Fierna)",
+      "Tiflin (Levistus)",
+      "Tiflin (Abisal)",
+      "Tiflin (Zariel)",
+      "Tortle (Terrestre)",
+      "Tortle (Semi-Terrestre)",
+      "Tortle (Acuática)"
+    ]
+  },
+  {
+    "source": "Compañero del Jugador de Mal Elemental",
+    "races": [
+      "Aracokras",
+      "Genasi Tierra",
+      "Genasi Aire",
+      "Genasi Agua",
+      "Genasi Fuego",
+      "Gnomo (Svirfneblin)",
+      "Goliath",
+      "Hobgoblin (Mal Elemental)"
+    ]
+  },
+  {
+    "source": "Guía del Aventurero de la Costa de la Espada",
+    "races": [
+      "Mediano (Sabio Fantasma)"
+    ]
+  },
+  {
+    "source": "Guía del Maestro de Gremios para Ravnica",
+    "races": [
+      "Centauros",
+      "Hibridos Simic",
+      "Loxodon",
+      "Minotauro",
+      "Vedalken"
+    ]
+  },
+  {
+    "source": "Eberron: Ascendiendo de la Última Guerra",
+    "races": [
+      "Cambiante (RLW)",
+      "Enano (Marca de Protección)",
+      "Elfo (Marca de Sombra)",
+      "Forjados de Guerra (Enviado)",
+      "Forjados de Guerra (Juggernaut)",
+      "Forjados de Guerra (Tirador escondido)",
+      "Gnomo (Marca de Escritura)",
+      "Medio Elfo (Marca de Detección)",
+      "Medio Elfo (Marca de Tormenta)",
+      "Medio Orco (Marca de Búsqueda)",
+      "Mediano (Marca de Hospitalidad)",
+      "Mediano (Marca de Sanación)",
+      "Cambiante (Pielbestia)",
+      "Cambiante (Colmilargo)",
+      "Cambiante (Pasoveloz)",
+      "Cambiante (Cazasalvaje - Arcano 1)",
+      "Cambiante (Cazasalvaje - Arcano 2)",
+      "Orcos de Eberron",
+      "Kalashtar (RLW)"
+    ]
+  },
+  {
+    "source": "Guía del Explorador para Wildemount",
+    "races": [
+      "Dracónido (Sangre Dragón)",
+      "Dracónido (Habitante del Barroco)",
+      "Elfo Pálido",
+      "Mediano (La Guardia de Loto)",
+      "Orco (EGW)"
+    ]
+  },
+  {
+    "source": "Odiseas Míticas de Theros",
+    "races": [
+      "Centauro (OMT)",
+      "Leonin",
+      "Satiro",
+      "Minotauro (OMT)"
+    ]
+  },
+  {
+    "source": "Guía del Buscador de Camino para Eberron",
+    "races": [
+      "Alto Elfo (Aereni)",
+      "Elfo del bosque (Valenar)",
+      "Forjado",
+      "Orco (Eberron)"
+    ]
+  },
+  {
+    "source": "Extra",
+    "races": [
+      "Cambiante (UA)",
+      "Elfo Grugach (UA)",
+      "Elfo Avariel (UA)",
+      "Elfo Tajuru (Zendikar)",
+      "Elfo Juraga (Zendikar)",
+      "Elfo Mul Daya (Zendikar)",
+      "Elfo astral (Spelljammer)",
+      "Enano (Kaladesh)",
+      "Goblin Dankwood (AM)",
+      "Grung (GPE)",
+      "Huecos",
+      "Kalashtar (UA)",
+      "Locathah (EAL)",
+      "Orco (Ixalan)",
+      "Tortogas (PT)",
+      "Vedalken (Kaladesh)",
+      "Verdan (IA)"
+    ]
+  },
+  {
+    "source": "Razas de Agarias Pt. I: Seres místicos",
+    "races": [
+      "Albertina",
+      "Chico Slime / Ooze-kin (Adhesivo)",
+      "Chico Slime / Ooze-kin (Corrosivo)",
+      "Chico Slime / Ooze-kin (Vítreo)",
+      "Dracónido Erudito (Vacío)",
+      "Dracónido Superviviente (Vacío)",
+      "Dazahk",
+      "Enderman",
+      "Faery (Pixie)",
+      "Faery (Sprite)",
+      "Faery (Underfey)",
+      "Jötunn de Fuego (Eldjötunn)",
+      "Jötunn de Hielo (Ísjötunn)",
+      "Jötunn de Piedra (Bergjötunn)",
+      "Jötunn de Niebla (Draumjötunn)",
+      "Jötunn del Viento (Vindjötunn)",
+      "Jötunn Bélico (Blóðjötunn)",
+      "Sram",
+      "Tetraman"
+    ]
+  },
+  {
+    "source": "Razas de Agarias Pt. II: Antropomórficos",
+    "races": [
+      "Acuaebante (Crustaceo)",
+      "Acuaebante (Carcharodon)",
+      "Acuaebante (Nautiloide)",
+      "Ardilla Gris",
+      "Ardilla Roja",
+      "Ardilla Negra",
+      "Ardilla Voladora",
+      "Avilus",
+      "Axolotl",
+      "Geitlan",
+      "Gente Camello",
+      "Hormiga de Fuego",
+      "Hormiga Bulldog",
+      "Hormiga Voladora",
+      "Kitsune (Yako)",
+      "Kitsune (Zenko)",
+      "Lapines",
+      "Mammothodon",
+      "Oso (Despertado Pardo)",
+      "Oso (Despertado Negro)",
+      "Oso (Kodan)",
+      "Oso (Pandawa)",
+      "Porcumen",
+      "Polilae",
+      "Roc roc",
+      "Señor Tejon (Honi)",
+      "Señor Tejon (Uro)",
+      "Señor Tejon (Ameri)",
+      "Varmit"
+    ]
+  },
+  {
+    "source": "Razas de Agarias Pt. III: Felinos",
+    "races": [
+      "Gato Ancestral",
+      "GA - Tribu del Pantano Fluido",
+      "GA - Tribu Corredor de Túneles",
+      "GA - Tribu de la Estepa Ventosa",
+      "GA - Tribu del Bosque Crujiente",
+      "GA - Descendiente de León",
+      "GA - Descendiente de Tigre",
+      "GA - Descendiente de Leopardo",
+      "Gato - Clan de Sangre (Lider)",
+      "Gato - Clan de Sangre (Guerrero)",
+      "Gato Guardian (Cazador)",
+      "Gato Guardian (Guardian)",
+      "Gato Guardian (Curandero)",
+      "Githet",
+      "Leogrel (Sabana)",
+      "Leogrel (Cueva)",
+      "Leogrel (Sombras)"
+    ]
+  },
+  {
+    "source": "Razas de Agarias Pt. IV: Caninos",
+    "races": [
+      "Licántropo",
+      "Lobo Caminante",
+      "Vulpelupe (Bosque)",
+      "Vulpelupe (Artico)"
+    ]
+  },
+  {
+    "source": "Razas de Agarias Pt. V: Extra's",
+    "races": [
+      "Forjados de Guerra (Portalizadores)",
+      "Heliofago (Luz)",
+      "Heliofago (Oscuridad)",
+      "Panecios"
+    ]
+  }
+]

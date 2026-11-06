@@ -1,0 +1,478 @@
+{
+  "nombre": "Shadow Knight",
+  "claseName": "shadow",
+  "seccion": "agarias",
+  "nivelesDeAumento": [
+    4,
+    8,
+    12,
+    16,
+    19
+  ],
+  "conjurador": false,
+  "dadoDeGolpe": 6,
+  "niveles": {
+    "1": {
+      "descripcion": "Combatiente umbrío que convierte las sombras de sus enemigos caídos en soldados.",
+      "descripcionLarga": "El Shadow no solo derrota a sus enemigos: los conserva. Extrae su sombra, fragmento residual de voluntad y memoria, y la ata a su servicio. Cuanto mayor la batalla, más oscura su legión. Es un líder, un general, un comandante del vacío que camina erguido y detrás de él es seguido por siluetas que obedecen su voluntad.",
+      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Destreza o Inteligencia y Carisma.\n❖ Tus puntos de golpe es:\n    :: Tu dado de PG es: 1d6. 6 + Constitución.\n    :: Además, por cada nivel por encima de 1, obtienes 1d6 de PG + Constitución.\n❖ Competencias:\n    :: Armadura: Competencia con armaduras ligeras.\n    :: Armas: Competencia con dagas y espadas.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge tres entre Atletismo, Acrobacias, Intimidación, Perspicacia, Sigilo y Engañar.\n❖ Equipos. Comienzas con el siguiente equipo, además del otorgado por tu trasfondo:\n    :: (a) peto de cuero o (b) armadura cuero tachonado (si el DM lo permite).\n    :: (a) x2 Dagas o (b) una espada.\n    :: (a) paquete de explorador, (b) paquete de explorador de mazmorras o (c) paquete de ladrón.\n    :: Un mapa de la Región.\n    :: Monedas de Oro: 4d4 x 10.",
+      "infoBlock": {
+        "blockUno": {
+          "name": "Reanimar Sombras",
+          "titleName": "✦ REANIMAR SOMBRAS ✦",
+          "descripcion": "<b class=\"content_subrayado\">Intentos:</b> 3\n<b class=\"content_subrayado\">Condición:</b> Superar una CD 8 + la CR del enemigo.\n\nEsta habilidad permite al <b class=\"content_shadow\">Shadow Knight</b> reanimar las sombras de los enemigos que él mismo ha derrotado o ayudó a derrotar. Al vencer a un enemigo, el <b class=\"content_shadow\">\"Shadow\"</b> puede intentar reanimar a la sombra, que conservará un porcentaje de sus puntos de golpe en función de su rareza, y una o varias habilidades o ataques característicos. Las sombras pueden empuñar armas con las que estuvieron familiarizadas o tengan competencia. El <b class=\"content_shadow\">\"Shadow\"</b> tiene tres intentos para reanimar la sombra con una CD de 8 + el CR del enemigo derrotado. Las sombras no pueden alejarse del usuario más allá de 120 pies (24 casillas) dentro de combate, fuera de combate, la sombra puede alejarse tanto como se quiera, incluso si está en otra dimensión.\n\n<h3 class=\"content_h3\">Sistema de Rareza</h3>\nUna vez derrotado el enemigo, el <b class=\"content_shadow\">\"Shadow\"</b> puede realizar una tirada de Carisma (CD 15) para convencer a la sombra de unirse a él. Si tiene éxito, se tendrá ventaja en la tirada de reanimar. Si falla, la sombra no puede ser reanimada. [Usar con cuidado]\n<b class=\"content_subrayado\">Calidad Blanca:</b> <b class=\"content_subrayado_2\">[CR 0-7]</b> Conservan el 50% de sus puntos de golpe (PG) originales y 100% de sus estadísticas originales. Mantienen 1 habilidad y 1 acción (Incluye la acción Bonus) o reacción.\n<b class=\"content_subrayado\">Calidad Amarilla:</b> <b class=\"content_subrayado_2\">[CR 8-15]</b> Conservan el 55% de sus puntos de golpe (PG) originales y 100% de sus estadísticas originales, además de ganar 4 puntos de estadística adicionales al ser elevadas desde calidad blanca. Mantienen 1 habilidad, 1 acción (Incluye la acción Bonus) y 1 reacción.\n<b class=\"content_subrayado\">Calidad Naranja:</b> <b class=\"content_subrayado_2\">[CR 16-22]</b> Conservan el 60% de sus puntos de golpe (PG) originales y 100% de sus estadísticas originales, además de ganar 4 puntos de estadística adicionales al ser elevadas desde calidad amarilla. Mantienen 2 habilidades, 1 acción (Incluye la acción Bonus) y 1 reacción.\n<b class=\"content_subrayado\">Calidad Roja:</b> <b class=\"content_subrayado_2\">[CR 23-30]</b> Conservan el 65% de sus puntos de golpe (PG) originales y 100% de sus estadísticas originales, además de ganar 2 puntos de estadística adicionales al ser elevadas desde calidad naranja. Mantienen 2 habilidades, 1 acción (Incluye la acción Bonus), 1 reacción y 1 acción o reacción legendaria.\n<b class=\"content_subrayado\">(Puedes tener como máximo de 2 sombras de esta calidad.)</b>\n\nLas sombras de mayor rareza pueden actuar de forma más autónoma para el beneficio del <b class=\"content_shadow\">\"Shadow\"</b> y tienen una mayor resistencia en combate, pero siguen sin recordar su vida anterior. Si la sombra era un usuario de magia, podrá conservar un hechizo que la criatura haya usado en vida. No podrá volver a elegir otro hechizo en el futuro. (Los hechizos se concideran una acción y se respeta su funcionamiento.)\n\n<h3 class=\"content_h3\">Elevación de la Calidad de Sombras</h3>\nEl <b class=\"content_shadow\">\"Shadow\"</b> puede sacrificar sombras de calidad igual para elevar una sombra a la siguiente calidad. El proceso requiere un ritual que toma 1 hora por cada sombra sacrificada y se lleva a cabo en presencia de las sombras a sacrificar. Los requisitos son los siguientes:\n♻ Para elevar una sombra de Calidad Blanca a Calidad Amarilla, se deben sacrificar 2 sombras de Calidad Blanca.\n♻ Para elevar una sombra de Calidad Amarilla a Calidad Naranja, se deben sacrificar 4 sombras de Calidad Amarilla.\n♻ Para elevar una sombra de Calidad Naranja a Calidad Roja, se deben sacrificar 6 sombras de Calidad Naranja.\n\nEste proceso consume completamente las sombras sacrificadas, las cuales no podrán ser recuperadas ni reanimadas.\nPara gestionar el aumento de puntos de golpe (PG) cuando una sombra sube de calidad, se podría aplicarun sistema escalable basado en la puntuación originalde la sombra y su evolución a lo largo de las diferentescalidades. Ya que cada sombra es única y tienediferentes puntos de golpe dependiendo de su origen(como guerreros, magos o criaturas), el siguientemétodo puede ser flexible pero consistente.\n\n<h3 class=\"content_h3\">Fórmula para Aumentar los PG</h3>\n1. <b class=\"content_subrayado\">Sombras Base:</b> Los puntos de golpe se reducen dependiendo de su calidad (ver los porcentajes en elsistema de rareza).\n\n2. <b class=\"content_subrayado\">Puntos de Golpe Extra en la Elevación de Calidad:</b> Cuando una sombra se eleva a una nueva calidad, sele otorgan puntos de golpe adicionales basados en elsiguiente esquema:\n<b class=\"content_subrayado_2\">♻ De Blanca a Amarilla:</b> La sombra recibe +1d6 puntos de golpe adicionales por nivel que tenía en su calidad anterior.\n<b class=\"content_subrayado_2\">♻ De Amarilla a Naranja:</b> La sombra recibe +2d6 puntos de golpe adicionales por nivel.\n<b class=\"content_subrayado_2\">♻ De Naranja a Roja:</b> La sombra recibe +3d6 puntos de golpe adicionales por nivel.\n\n3. <b class=\"content_subrayado\">Aumento Relativo a la Constitución:</b> Cada sombra también puede recibir puntos adicionales según su modificador de Constitución (CON). Cada vez que se eleva de calidad, si la sombra tiene un modificador positivo en su Constitución, puede sumar ese modificador adicional a los puntos de golpe que recibe (aplicado para cada dado de vida).\n\n<h3 class=\"content_h3\">Ejemplo del Proceso de Aumento</h3>\n<b class=\"content_subrayado_2\">♻ Sombra Original (Nivel 6, Guerrero con 60PG originales y CON +2):</b> La sombra tiene Calidad Blanca, lo que significa que conserva el 50% de sus puntos de golpe originales, es decir, 30PG.\n\n<b class=\"content_subrayado_2\">♻ Elevación de Blanca a Amarilla:</b>\n-- Sacrificas 2 sombras blancas y la sombra elegida sube a Calidad Amarilla. Como la sombra está en el Nivel 6, recibirá +1d6 PG por nivel. Esto da un rango de +6d6 (mínimo 6, máximo 36PG adicionales).\n-- Con un modificador de CON +2, se agregan +12 PG adicionales (2 PG extra por nivel).\n-- PG total al elevarse a Amarilla: 30PG + (6d6 + 12).\n\n<b class=\"content_subrayado_2\">♻ Elevación de Amarilla a Naranja:</b>\n-- Sacrificas 4 sombras amarillas, y la sombra elegida sube a Calidad Naranja. Recibirá +2d6 PG por nivel, es decir, 12d6 (mínimo 12, máximo 72PG adicionales).\n-- Con su modificador de CON +2, se agregan +24 PG adicionales (2 PG extra por cada12d6).\n-- PG total al elevarse a Naranja: PG actual + (12d6 + 24).\n\n<b class=\"content_subrayado_2\">♻ Elevación de Naranja a Roja:</b>\n-- Sacrificas 7 sombras naranjas, y la sombrasube a Calidad Roja. Recibirá +3d6 PG por nivel, es decir, 18d6 (mínimo 18, máximo 108PG adicionales).\n-- Con su modificador de CON +2, se agregan +36 PG adicionales.\n-- PG total al elevarse a Roja: PG actual + (18d6 + 36).\n\n<h4 class=\"content_h4\">Número Máximo de Sombras</h4>\nEl <b class=\"content_shadow\">Shadow Knight</b> puede controlar y salvar hasta (Salvar son las sombras de reserva que no combaten.):\n<b class=\"content_subrayado_2\">♻</b> 2 sombras en combate y salvar 4 sombras a nivel 5.\n<b class=\"content_subrayado_2\">♻</b> 3 sombras en combate y salvar 6 sombras a nivel 10.\n<b class=\"content_subrayado_2\">♻</b> 4 sombras en combate y salvar 8 sombras a nivel 15.\n<b class=\"content_subrayado_2\">♻</b> 5 sombras en combate y salvar 10 sombras a nivel 20.\nSi una sombra es derrotada en combate, su esencia se desvanece y no podrá ser reanimada nuevamente hasta después de un descanso largo.\n\n<h4 class=\"content_h4\">Excepciones</h4>\nLos enemigos que no tienen sombra, como entidades incorpóreas o criaturas que no proyectan sombra física (espectros, hadas, energía pura), no pueden ser reanimados."
+        },
+        "blockDos": {
+          "name": "Sombra Viva",
+          "titleName": "✦ SOMBRA VIVA ✦",
+          "descripcion": "La Sombra Viva es una manifestación semiconsciente que se fusiona con el <b class=\"content_shadow\">Shadow</b> y refleja su esencia. Sus efectos varían con el nivel y la raza, pero comparte rasgos comunes entre todos los <b class=\"content_shadow\">Shadow's</b>.\n\n❖ Nivel 1 - Sombras del Nacimiento:\n<b class=\"content_subrayado\">❖-</b> Tu Sombra se mueve con vida propia y te envuelve en su protección.\n<b class=\"content_subrayado\">❖-</b> Obtienes ventaja en las pruebas de Destreza (Sigilo) realizadas en penumbra u oscuridad.\n<b class=\"content_subrayado\">❖-</b> Una vez por descanso corto, puedes envolver un ataque o habilidad racial en energía sombría, infligiendo 1d4 de daño necrótico adicional o ganando +1 a la CA hasta el inicio de tu próximo turno (a elección).\n<b class=\"content_subrayado\">❖-</b> Si tu raza no posee habilidades ofensivas o defensivas, en su lugar obtienes Resistencia al daño Necrótico.\n\n❖ Nivel 6 - Sombra Resonante:\n<b class=\"content_subrayado\">❖-</b> Tu Sombra Viva responde a tus emociones y combates.\n<b class=\"content_subrayado\">❖-</b> El daño necrótico aumenta a 1d6.\n<b class=\"content_subrayado\">❖-</b> Una vez por descanso corto, podés usar tu acción bonus para fusionarte parcialmente con tu sombra, volviéndote invisible hasta el final de tu siguiente turno si estás en penumbra u oscuridad.\n\n❖ Nivel 10 - Sombra Evolutiva:\n<b class=\"content_subrayado\">❖-</b> La Sombra se separa brevemente de tu cuerpo, actuando como una extensión de tu voluntad.\n<b class=\"content_subrayado\">❖-</b> Como acción, podés proyectar tu Sombra hasta 10 pies fuera de tu posición durante 1 minuto.\n<b class=\"content_subrayado\">❖-</b> Mientras esté activa, podés usar su posición para lanzar ataques cuerpo a cuerpo o habilidades raciales como si estuvieras allí (solo una vez por turno).\n<b class=\"content_subrayado\">❖-</b> Tus ataques o habilidades que infligen daño necrótico pueden causar ralentización (Velocidad reducida a la mitad hasta el final de tu siguiente turno).\n\n❖ Nivel 14 - Unión Perfecta:\n<b class=\"content_subrayado\">❖-</b> Tu Sombra Viva se convierte en un reflejo consciente de tu poder.\n<b class=\"content_subrayado\">❖-</b> El daño necrótico aumenta a 2d6.\n<b class=\"content_subrayado\">❖-</b> Una vez por descanso largo, podés activar el estado de Fusión Sombría durante 1 minuto:\n<b class=\"content_subrayado\">--</b> Obtenés Resistencia al daño Cortante, Perforante y Contundente proveniente de ataques no mágicos.\n<b class=\"content_subrayado\">--</b> Tus ataques se consideran mágicos y obtienen ventaja si el objetivo está en penumbra u oscuridad.\n<b class=\"content_subrayado\">--</b> Las criaturas que comiencen su turno adyacentes a vos deben superar una tirada de Salvación de Sabiduría (CD = 8 + tu bonificador de competencia + tu modificador de Carisma) o sufrir Miedo hasta el final de su siguiente turno."
+        },
+        "blockTres": {
+          "name": "Esencia de Linaje I",
+          "titleName": "✦ ESENCIA DE LINAJE I ✦",
+          "descripcion": "Esta habilidad permite al <b class=\"content_shadow\">\"Shadow\"</b> infundir las habilidades innatas de su linaje con poder sombrío. Esto altera y mejora las habilidades raciales innatas de la raza, añadiendo efectos relacionados con las sombras. Los cambios dependen del linaje del <b class=\"content_shadow\">\"Shadow\"</b> y su nivel.\n-- A nivel 1, el <b class=\"content_shadow\">\"Shadow\"</b> puede añadir 1d4 de daño necrótico a una habilidad racial relacionada con el ataque o +1 en las defensas. Si no tiene habilidades de este tipo, puede obtener Resistencia al daño Necrótico.\n-- A niveles superiores (6, 10, 14), el <b class=\"content_shadow\">\"Shadow\"</b> puede mejorar aún más estas habilidades, aumentando el daño necrótico (hasta un máximo de 2d6) o añadiendo efectos como ralentización o visión en la oscuridad para linajes que no tienen habilidades de ataque.\n\n<h3 class=\"content_h3\">Aliento de Sombras</h3>\n-- Tipo de Aliento: Línea de 30 pies (6 casillas) de largo y 5 pies (1 casilla) de ancho o un cono de 15 pies (3 casillas) (a elección del Dracónido).\n-- Tipo de Daño: Daño necrótico.\n\nEl Dracónido exhala una nube densa y oscura que engulle la luz y consume la energía vital de sus enemigos. Las oscuridad parece tener vida propia, revoloteando y enredándose alrededor de los objetivos, drenando su fuerza.\n\n<b class=\"content_subrayado\">Efecto</b>\nCuando el Dracónido usa su Aliento de Sombras, todas las criaturas en el área deben hacer una tirada de salvación de Constitución (CD = 8 + tu modificador de Constitución + tu bonificador por competencia). En una falla, las criaturas afectadas reciben 2d8 de daño necrótico y se ven envueltas por una aura sombría que les da desventaja en tiradas de salvación durante 1 minuto (No acumulable). En una salvación exitosa, reciben la mitad del daño y no sufren los efectos secundarios.\n\nEl daño necrótico del Aliento de Sombras aumenta en función del nivel del Dracónido:\n♻ Nivel 6: 3d8 de daño necrótico.\n♻ Nivel 11: 4d8 de daño necrótico.\n♻ Nivel 16: 5d8 de daño necrótico.\n\nUna vez usado, el Dracónido no podrá volver a usar el Aliento de Sombras hasta que termine un descanso corto o largo.\n\n<h3 class=\"content_h3\">Visión Nocturna Mejorada</h3>\nHabilidad Modificada por “Esencia de Linaje”\nLa Esencia de Linaje otorga a los Elfos, Semielfos, Gnomos, Semiorcos, Tiflins (y más razas) una visión nocturna mejorada que les permite ver en la oscuridad a una distancia de 90 pies (18 casillas) (en lugar de los 60 pies (12 casillas) estándar).\n\n<h3 class=\"content_h3\">Otras habilidades</h3>\nEl linaje orco / semiorco se redefine al convertirse en un <b class=\"content_shadow\">\"Shadow\"</b>, dándole nuevas dimensiones a sus habilidades distintivas. Estas son las mejoras:\n\n<b class=\"content_subrayado\">Horror Sombrío</b>\nModificación de la habilidad racial “Amenazante”\nEl <b class=\"content_shadow\">\"Shadow\"</b> Orco / Semiorco envuelve su figura en un aura oscura que irradia terror, intimidando y afectando la voluntad de sus enemigos dentro de un radio de 30 pies (6 casillas), estos deben hacer una tirada de salvación de Sabiduría (CD basada en Carisma) o quedar Asustados durante 1 minuto. Las criaturas pueden hacer una nueva tirada al final de cada uno de sus turnos para terminar el efecto antes de tiempo. Puede utilizar esta habilidad una vez por descanso corto o largo.\n\nHabilidades sugeridas para las sombras de linaje:",
+          "tablaClase": {
+            "encabezado": [
+              "Raza",
+              "Linaje",
+              "Linaje de las sombras"
+            ],
+            "filas": [
+              [
+                "Dracónido",
+                "Azul, Blanco, Negro, Rojo, Verde",
+                "Aliento de sombras"
+              ],
+              [
+                "Enano",
+                "Visión Nocturna, Resistencia Enana",
+                "Visión Nocturna Mejorada, Resistencia al daño de sombras"
+              ],
+              [
+                "Elfo / Semielfo",
+                "Visión Nocturna",
+                "Visión Nocturna Mejorada (ven la oscuridad mágica)"
+              ],
+              [
+                "Mediano",
+                "——",
+                "Resistencia al daño necrótico"
+              ],
+              [
+                "Humano",
+                "——",
+                "Resistencia al daño necrótico"
+              ],
+              [
+                "Gnomo",
+                "Visión Nocturna",
+                "Visión Nocturna Mejorada (ven la oscuridad mágica)"
+              ],
+              [
+                "Orco / Semiorco",
+                "Visión Nocturna, Ataque salvaje",
+                "Visión Nocturna Mejorada, Horror Sombrío (desmoraliza enemigos)"
+              ],
+              [
+                "Tiflin",
+                "Visión Nocturna",
+                "Visión Nocturna Mejorada, Resistencia al daño necrótico"
+              ]
+            ]
+          }
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Invocar Sombras",
+          "Salvar Sombras"
+        ],
+        "filas": [
+          [
+            "1",
+            "2"
+          ]
+        ]
+      }
+    },
+    "2": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Intercambio",
+          "titleName": "✦ INTERCAMBIO ✦",
+          "descripcion": "En este nivel se desbloquea la habilidad de Intercambio, una técnica que le permite cambiar de posición instantáneamente con una de sus sombras o con un arma de las sombras que controle.\n__ El <b class=\"content_shadow\">Shadow Knight</b> puede usar una acción bonus para intercambiar su posición con una sombra (Sin límite de alcance). Al realizar el intercambio, ambos cambian de lugar instantáneamente sin gastar movimientos y el intercambio no provoca ataques de oportunidad ni afecta a enemigos o aliados cercanos.\n__ Intercambio con Armas de las Sombras (Del apartado Extra): Si el <b class=\"content_shadow\">Shadow Knight</b> ha invocado un arma delas sombras, puede usar la acción bonus de Intercambio para intercambiar su posición con elarma. El arma debe estar dentro del mismo rango de 60 pies (18 metros). Después del intercambio, el arma aparecerá en manos del <b class=\"content_shadow\">Shadow Knight</b>, lista para usar, mientras que el <b class=\"content_shadow\">\"Shadow\"</b> se teletransporta al lugar donde estaba el arma previamente.\n__ Puede usar esta habilidad un número de veces igual a su modificador de Carisma (mínimo 1) por descanso corto o largo.\n__ Esta habilidad puede ser utilizada tanto en combate como fuera de él, permitiendo versatilidad en combate estratégico o exploración.\n__ Puede usar las sombras para abrir un portal y llegar hasta una de las sombras que controle, sin importar la distancia, mientras una de esas sombras esté en ese lugar exacto."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Invocar Sombras",
+          "Salvar Sombras"
+        ],
+        "filas": [
+          [
+            "1",
+            "2"
+          ]
+        ]
+      }
+    },
+    "3": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "El arte de las armas",
+          "titleName": "✦ EL ARTE DE LAS ARMAS ✦",
+          "descripcion": "El personaje debe elegir un tipo de arma para especializarse. Al llegar al nivel 3, como <b class=\"content_shadow\">Shadow Knight</b> desbloqueas la habilidad \"El Arte de las Armas\", que le otorga maestría sobre un tipo de arma de su elección. Dependiendo del arma seleccionada, el <b class=\"content_shadow\">Shadow</b> recibe beneficios especiales al usarla, lo que convierte su estilo de combate en algo único y letal. Estas opciones son:\n\n<h3 class=\"content_h3\">1. El Arte de las Dagas</h3>\n<b class=\"content_subrayado\">Descripción:</b> Maestría en el uso de dagas,enfocándose en la velocidad y precisión.\n<b class=\"content_subrayado\">Efecto:</b> Cuando usas dagas en combate, el daño de las dagas aumenta de 1d4 a 1d6. Además, si tienes una daga en ambas manos, puedes hacer un ataque adicional con tu segunda daga como parte de tu acción de ataque una vez por turno.\n\n<h3 class=\"content_h3\">2. El Arte de las Espadas</h3>\n<b class=\"content_subrayado\">Descripción:</b> Dominio de espadas (cualquier espada ligera o media), especializado en defensa y bloqueo.\n<b class=\"content_subrayado\">Efecto:</b> Puedes usar tu reacción para bloquear ataques físicos cuando empuñas una espada. Ganas un bonificador de +2 a la CA hasta el comienzo de tu próximo turno si eliges bloquear un ataque cuerpo acuerpo.\n\n<h3 class=\"content_h3\">3. El Arte de las Hachas</h3>\n<b class=\"content_subrayado\">Descripción:</b> Maestría en el uso de hachas, enfocándose en ataques brutales y devastadores.\n<b class=\"content_subrayado\">Efecto:</b> Cuando haces un ataque con un hacha, puedes usar tu acción adicional para hacer un ataque a dos manos (aunque el hacha no sea a dos manos) e infligir +2 puntos de daño adicional en cada ataque exitoso. Además, si impactas con un ataque crítico, infliges un 1d6 de daño adicional.\n\n<h3 class=\"content_h3\">4. El Arte de las Lanzas</h3>\n<b class=\"content_subrayado\">Descripción:</b> Especialización en el uso de lanzas y armas de asta, enfocándose en ataques a distancia y control del campo de batalla.\n<b class=\"content_subrayado\">Efecto:</b> El alcance de tus ataques con una lanza aumenta en 5 pies (1 casilla). Además, cuando una criatura entra en tu alcance, puedes usar tu reacción para realizar un ataque con lanza.\n\n<h3 class=\"content_h3\">5. El Arte de los Arcos</h3>\n<b class=\"content_subrayado\">Descripción:</b> Maestría en arcos y armas a distancia, con énfasis en la precisión y los disparos rápidos.\n<b class=\"content_subrayado\">Efecto:</b> Puedes realizar un ataque adicional con un arco cuando uses la acción de ataque. Además, cuando usas un arco largo o corto, obtienes ventaja en las tiradas de ataque contra enemigos que no te hayan visto atacar anteriormente en el combate.\n\n<h3 class=\"content_h3\">6. El Arte de las Mazas</h3>\n<b class=\"content_subrayado\">Descripción:</b> Especialización en el uso de mazas y armas contundentes, enfocándose en desestabilizar a los enemigos.\n<b class=\"content_subrayado\">Efecto:</b> Cada vez que impactes con una maza, el enemigo debe realizar una tirada de salvación de Fuerza (CD 13) o ser derribado. Si lo derribas, tienes crítico autoático en el próximo ataque cuerpo a cuerpo contra él.\n\n<h3 class=\"content_h3\">7. El Arte de las Espadas a Dos Manos</h3>\n<b class=\"content_subrayado\">Descripción:</b> Maestría en espadas de dos manos, enfocándose en ataques poderosos y devastadores.\n<b class=\"content_subrayado\">Efecto:</b> Al usar una espada a dos manos, puedes usar tu acción adicional para realizar un segundo ataque con la misma espada si el primer ataque falla. Además, puedes agregar +2 al daño de cada ataqueexitoso que realices."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Invocar Sombras",
+          "Salvar Sombras"
+        ],
+        "filas": [
+          [
+            "1",
+            "2"
+          ]
+        ]
+      }
+    },
+    "4": {
+      "infoCubo": {
+        "columnas": [
+          "Invocar Sombras",
+          "Salvar Sombras"
+        ],
+        "filas": [
+          [
+            "1",
+            "2"
+          ]
+        ]
+      }
+    },
+    "5": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Cualidad",
+          "titleName": "✦ CUALIDAD ✦",
+          "descripcion": "A partir del nivel 5, el <b class=\"content_shadow\">Shadow Knight</b> puede elegir una cualidad de la siguiente lista, tanto para él, como para sus sombras. A niveles más altos, puede elegir cualidades adicionales.\n\n<h3 class=\"content_h3\">Niveles y efectos</h3>\n<b class=\"content_subrayado\">Nivel 5:</b> Elige una cualidad de la lista para ti y tus sombras.\n<b class=\"content_subrayado\">Nivel 10:</b> Elige una segunda cualidad de la lista para ti y tus sombras.\n<b class=\"content_subrayado\">Nivel 15:</b> Elige una tercera cualidad de la lista para ti y tus sombras.\n\n<h3 class=\"content_h3\">Cualidades Disponibles</h3>\n\n<b class=\"content_subrayado\">Velocidad</b> (Pasiva del Monje): Tú ganas +5 pies (1 casilla) de velocidad de movimiento y tus sombras +10 pies (2 casillas) a cada velocidad de movimiento que tengan.\n<b class=\"content_subrayado\">Ataque Furtivo</b> (Activa del Pícaro): Tanto tú como tus sombras, si se encuentran en Sigilo, pueden hacer 1d6 de daño adicional. A nivel 10, 15 y 20, obtienes un +1d6 extra.\n<b class=\"content_subrayado\">Sentido del Peligro</b> (Pasiva del Bárbaro): Obtienes un asombroso sentido para percibir los elementos de tu entorno que presentan una amenaza, dándote ventaja cuando trates de apartarte del peligro. Tienes ventajaen las tiradas de salvación de Destreza contra los efectos que puedas ver, como trampas y hechizos.\n<b class=\"content_subrayado\">Todo Terreno</b> (Pasiva del Explorador): Tanto tú como tus sombras pueden moverse por terreno difícil no mágico y mágico sin gastar movimiento adicional. Además, obtienes ventaja en Sabiduría (“Supervivencia”).\n<b class=\"content_subrayado\">Mente Crítica</b> (Pasiva del Guerrero): Tanto tú como tus sombras tienen la capacidad de obtener un golpe crítico en un 19 o 20 con sus ataques.\n<b class=\"content_subrayado\">Perforador Druídico</b> (Pasiva del Druida): Tanto tú como tus sombras traspasan resistencias e inmunidades a ataques no mágicos. Sus ataques se cuentan como mágicos para superar resistencias y mitigar inmunidades a ataques no mágicos.\n<b class=\"content_subrayado\">Shadow Knight</b> (Activa del Shadow Knight): Tanto tú como tus sombras, mientras se matengan en una sombra o en completa oscuridad, pueden usar una acción para volverse invisibles hasta que realicen una acción (atacar, interactuar con algo, etc.)."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Invocar Sombras",
+          "Salvar Sombras"
+        ],
+        "filas": [
+          [
+            "2",
+            "4"
+          ]
+        ]
+      }
+    },
+    "6": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Esencia de Linaje II",
+          "titleName": "✦ ESENCIA DE LINAJE II ✦",
+          "descripcion": "A partir del nivel 6, el <b class=\"content_shadow\">Shadow Knight</b> fortalece su linaje, mejorando una de sus habilidades de linaje. El jugador puede elegir una de las siguientes mejoras para sus habilidades de linaje:\n\n<b class=\"content_subrayado\">Alcance:</b> Duplica el alcance de una habilidad que tengaun área de efecto o distancia de uso (por ejemplo, el aliento de dragón).\n<b class=\"content_subrayado\">Daño:</b> Aumenta el daño en un 1d6 adicional para una habilidad que inflija daño (por ejemplo, el Aliento de Sombras).\n<b class=\"content_subrayado\">Frecuencia:</b> Permite usar una de tus habilidades una vez adicional entre descansos cortos o largos."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Invocar Sombras",
+          "Salvar Sombras"
+        ],
+        "filas": [
+          [
+            "2",
+            "4"
+          ]
+        ]
+      }
+    },
+    "7": {
+      "infoCubo": {
+        "columnas": [
+          "Invocar Sombras",
+          "Salvar Sombras"
+        ],
+        "filas": [
+          [
+            "2",
+            "4"
+          ]
+        ]
+      }
+    },
+    "8": {
+      "infoCubo": {
+        "columnas": [
+          "Invocar Sombras",
+          "Salvar Sombras"
+        ],
+        "filas": [
+          [
+            "2",
+            "4"
+          ]
+        ]
+      }
+    },
+    "9": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Esencia de las Sombras",
+          "titleName": "✦ ESENCIA DE LAS SOMBRAS ✦",
+          "descripcion": "<b class=\"content_subrayado\">Usos</b> 2 veces entre descansos largos.\n<b class=\"content_subrayado\">Lanzamiento</b> 1 acción.\n<b class=\"content_subrayado\">Duración</b> 1 minuto.\n\nA partir del nivel 9, el <b class=\"content_shadow\">Shadow Knight</b> puede infundir su propio poder o el de un aliado con la esencia de las sombras, potenciando ataques o habilidades durante 1 minuto. El objetivo obtiene una de las siguientes mejoras a su elección por 1 minuto:\n\n<b class=\"content_subrayado\">Potenciar daño cuerpo a cuerpo:</b> Suma +4 de daño necrótico a cada ataque cuerpo a cuerpo.\n<b class=\"content_subrayado\">Mejorar precisión a distancia:</b> Suma +2 a las tiradas de ataque a distancia.\n<b class=\"content_subrayado\">Potenciar magia:</b> Aumenta la CD de las tiradas de salvación de conjuros lanzados por el objetivo en +2.\n\n<article class=\"info-card\" role=\"region\" aria-labelledby=\"info-title\" aria-describedby=\"info-desc\">\n    <h2 id=\"info-title\" class=\"info-title\">¿Las sombras son esencias?</h2>\n    <div id=\"info-desc\" class=\"info-body\">\n        <p class=\"lead\">En el contexto de la habilidad <strong>“Esencia de las Sombras”</strong>, el término <em>esencia</em> no se refiere a una entidad separada, sino a la <strong>naturaleza fundamental</strong> o característica de las sombras.</p>\n\n        <p>En este caso, la palabra <strong>“esencia”</strong> se utiliza para expresar que el <b class=\"content_shadow\">Shadow Knight</b> puede <strong>aprovechar y manipular</strong> la esencia o naturaleza de las sombras, canalizando su energía para potenciar sus habilidades y ataques.</p>\n\n        <p class=\"muted\">Las sombras aquí simbolizan la oscuridad y la energía sombría que el Shadow Knight controla y utiliza estratégicamente en combate.</p>\n    </div>\n</article>"
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Invocar Sombras",
+          "Salvar Sombras"
+        ],
+        "filas": [
+          [
+            "2",
+            "4"
+          ]
+        ]
+      }
+    },
+    "10": {
+      "infoCubo": {
+        "columnas": [
+          "Invocar Sombras",
+          "Salvar Sombras"
+        ],
+        "filas": [
+          [
+            "3",
+            "6"
+          ]
+        ]
+      }
+    },
+    "11": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Ataque Crítico",
+          "titleName": "✦ ATAQUE CRÍTICO ✦",
+          "descripcion": "A partir del nivel 11, tu dominio del Arte de las Armas alcanza un punto culminante. Has aprendido a canalizar la energía sombría de tu estilo de combate para golpear con precisión quirúrgica, transformando tus ataques en golpes devastadores que pueden decidir el curso de una batalla. (Tus sombras no pueden usar esta técnica).\n\n<b class=\"content_subrayado\">Activación:</b> Como parte de una acción de ataque con tu “Arte de Arma”, puedes declarar que estás usando Ataque Crítico antes de tirar para atacar.\n\n<b class=\"content_subrayado\">Golpe Crítico:</b> Si realizas un ataque con tu Arte de Arma y obtienes un 19 o 20 en la tirada (o 18-20 si posees “Mente Crítica”), el impacto se considera un Golpe Crítico Mejorado.\nEl daño de los dados del Arte se duplica (como en un crítico normal), y además se aplica un efecto especial según tu tipo de Arte de Arma:\n\n<b class=\"content_subrayado\">♻ El Arte de las Dagas:</b> Tu velocidad y precisión letal te permiten atacar arterias vitales.\n<b class=\"content_subrayado\">→</b> Infliges +2d6 de daño perforante y aplicas Sangrado (1d6 por turno).\n<b class=\"content_subrayado\">→</b> Si el enemigo muere por este daño, recuperas 1 uso de Ataque Crítico.\n\n<b class=\"content_subrayado\">♻ El Arte de las Espadas:</b> Tu concentración defensiva se convierte en contraataque perfecto.\n<b class=\"content_subrayado\">→</b> Ganas +2 a la CA hasta el inicio de tu próximo turno.\n<b class=\"content_subrayado\">→</b> El enemigo impactado debe superar una salvación de Constitución (CD 15) o quedar Aturdido hasta el final de su turno.\n\n<b class=\"content_subrayado\">♻ El Arte de las Hachas:</b> Tu fuerza brutal desgarra huesos y armaduras.\n<b class=\"content_subrayado\">→</b> El daño crítico inflige +1d6 adicional (total 3d6).\n<b class=\"content_subrayado\">→</b> El enemigo pierde 2 puntos de CA hasta el final de su siguiente turno.\n\n<b class=\"content_subrayado\">♻ El Arte de las Lanzas:</b> Tu precisión a distancia atraviesa nervios y tendones.\n<b class=\"content_subrayado\">→</b> El golpe causa +2d6 de daño perforante y reduce la velocidad del objetivo a 0 pies hasta el final de su turno.\n<b class=\"content_subrayado\">→</b> Si el enemigo intenta alejarse, provoca un ataque de oportunidad gratuito.\n\n<b class=\"content_subrayado\">♻ El Arte de los Arcos:</b> Tu disparo atraviesa los vientos del campo de batalla.\n<b class=\"content_subrayado\">→</b> Si el enemigo no te ha visto atacar, el daño crítico inflige +3d6 perforante adicional.\n<b class=\"content_subrayado\">→</b> El enemigo queda Revelado por Sombras: brilla con energía oscura, otorgando ventaja en ataques contra él hasta tu próximo turno.\n\n<b class=\"content_subrayado\">♻ El Arte de las Mazas:</b> El impacto es tan contundente que destruye hueso y concentración.\n<b class=\"content_subrayado\">→</b> El golpe crítico inflige +2d8 contundente adicional.\n<b class=\"content_subrayado\">→</b> El enemigo debe superar una salvación de Fuerza (CD 15) o ser derribado. Si cae, el siguiente ataque cuerpo a cuerpo contra él tiene crítico automático.\n\n<b class=\"content_subrayado\">♻ El Arte de las Espadas a Dos Manos:</b> Canalizas toda tu energía sombría en un solo tajo devastador.\n<b class=\"content_subrayado\">→</b> Infliges +3d6 de daño adicional.\n<b class=\"content_subrayado\">→</b> Si el golpe reduce al enemigo a la mitad de sus puntos de golpe o menos, puedes realizar un segundo ataque gratuito contra él como reacción.\n\n<h3 class=\"content_h3\">Condiciones y Limitaciones:</h3>\n<b class=\"content_subrayado\">♻ Requiere un Arte de arma:</b> El ataque debe realizarse con el arma correspondiente a tu “Arte”.\n<b class=\"content_subrayado\">♻ Un uso por turno:</b> Solo puedes aplicar Ataque Crítico una vez por turno.\n<b class=\"content_subrayado\">♻ Recuperación:</b> Puedes usar esta habilidad un número de veces igual a tu modificador de Destreza o Carisma (mínimo 1). Recuperas todos los usos tras un descanso corto o largo.\n\n<b class=\"content_subrayado\">✦ “MUTILAR” ✦</b>\nA nivel 17, tu dominio corporal alcanza su cenit.\n<b class=\"content_subrayado\">♻</b> El daño adicional aumenta a 3 dados de daño adicionales.\n<b class=\"content_subrayado\">♻</b> El sangrado (si aplica) inflige 3d6 por turno.\n<b class=\"content_subrayado\">♻</b> Si reduces a 0 puntos de golpe a un enemigo con Mutilar, puedes aplicar Ataque Crítico gratis una vez en los próximos 10 minutos."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Invocar Sombras",
+          "Salvar Sombras"
+        ],
+        "filas": [
+          [
+            "3",
+            "6"
+          ]
+        ]
+      }
+    },
+    "12": {
+      "infoCubo": {
+        "columnas": [
+          "Invocar Sombras",
+          "Salvar Sombras"
+        ],
+        "filas": [
+          [
+            "3",
+            "6"
+          ]
+        ]
+      }
+    },
+    "13": {
+      "infoCubo": {
+        "columnas": [
+          "Invocar Sombras",
+          "Salvar Sombras"
+        ],
+        "filas": [
+          [
+            "3",
+            "6"
+          ]
+        ]
+      }
+    },
+    "14": {
+      "infoCubo": {
+        "columnas": [
+          "Invocar Sombras",
+          "Salvar Sombras"
+        ],
+        "filas": [
+          [
+            "3",
+            "6"
+          ]
+        ]
+      }
+    },
+    "15": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Absorción de sombras",
+          "titleName": "✦ ABSORCIÓN DE SOMBRAS ✦",
+          "descripcion": "<b class=\"content_subrayado\">Usos</b> 3 usos entre descansos largos.\n<b class=\"content_subrayado\">Duración</b> Instantáneo (con mejoras temporales).\n\nEl Shadow Knight puede absorber la oscuridad delentorno para sanarse o fortalecerse. La cantidad decuración y los beneficios adicionales dependen de lacantidad de sombras presentes en el ambiente.\n<b class=\"content_subrayado\">→</b>Pequeña sombra (un lugar poco iluminado): Cura 1d4 puntos de golpe (PG).\n<b class=\"content_subrayado\">→</b>Sombra mediana (oscuridad parcial, como una esquina oscura): Cura 3d4 puntos de golpe (PG).\n<b class=\"content_subrayado\">→</b>Sombra grande (áreas oscuras, como una sombra proyectada por un gran objeto): Cura 5d4 puntos de golpe (PG) y otorga 1d4 puntos de golpe temporales durante 5 minutos.\n<b class=\"content_subrayado\">→</b>Oscuridad total (noche, cuevas profundas, oscuridad mágica): Cura 8d4 puntos de golpe (PG), otorga 2d4 puntos de golpe temporales durante 5 minutos, y elige uno:\n<b class=\"content_subrayado\">→→</b> +1 Fuerza durante 5 minutos\n<b class=\"content_subrayado\">→→</b> +10 pies de velocidad durante 5 minutos\n<b class=\"content_subrayado\">→→</b> +1 a la CA durante 5 minutos\n\n<b class=\"content_subrayado\">Tu sombra no cuenta.</b>\n"
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Invocar Sombras",
+          "Salvar Sombras"
+        ],
+        "filas": [
+          [
+            "4",
+            "8"
+          ]
+        ]
+      }
+    },
+    "16": {
+      "infoCubo": {
+        "columnas": [
+          "Invocar Sombras",
+          "Salvar Sombras"
+        ],
+        "filas": [
+          [
+            "4",
+            "8"
+          ]
+        ]
+      }
+    },
+    "17": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Abrazo de la oscuridad",
+          "titleName": "✦ ABRAZO DE LA OSCURIDAD ✦",
+          "descripcion": "<b class=\"content_subrayado\">Usos</b> 1 uso entre descansos largos\n<b class=\"content_subrayado\">Duración</b> Instantáneo\n\nEl <b class=\"content_shadow\">Shadow Knight</b> puede canalizar la oscuridad cercana para realizar un ataque devastador que drena la energía vital del enemigo, te curas con el daño causado y lo paraliza temporalmente.",
+          "tablaClase": {
+            "encabezado": [
+              "Tipo de Sombra",
+              "Daño Necrótico",
+              "Tirada de Salvación"
+            ],
+            "filas": [
+              [
+                "Pequeña",
+                "——",
+                "——"
+              ],
+              [
+                "MEdiana",
+                "1d6",
+                "——"
+              ],
+              [
+                "Grande",
+                "2d6 + Parálisis",
+                "Tirada de salvación de Constitución (CD 15) o quedar paralizado hasta el final de tu siguiente turno."
+              ],
+              [
+                "Noche / Cueva",
+                "4d4 + Parálisis",
+                "Tirada de salvación de Constitución (CD 15) o quedar paralizado hasta el final de tu siguiente turno."
+              ]
+            ]
+          }
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Invocar Sombras",
+          "Salvar Sombras"
+        ],
+        "filas": [
+          [
+            "4",
+            "8"
+          ]
+        ]
+      }
+    },
+    "18": {
+      "infoCubo": {
+        "columnas": [
+          "Invocar Sombras",
+          "Salvar Sombras"
+        ],
+        "filas": [
+          [
+            "4",
+            "8"
+          ]
+        ]
+      }
+    },
+    "19": {
+      "infoCubo": {
+        "columnas": [
+          "Invocar Sombras",
+          "Salvar Sombras"
+        ],
+        "filas": [
+          [
+            "4",
+            "8"
+          ]
+        ]
+      }
+    },
+    "20": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Dominio del Soberano",
+          "titleName": "✦ DOMINIO DEL SOBERANO ✦",
+          "descripcion": "<b class=\"content_subrayado\">“De las profundidades más oscuras, invoco la noche eterna. ¡Que mis sombras devoren toda luz y sumerjan a mis enemigos en su desesperación!”</b>\n\nAl alcanzar el nivel 20, el Shadow Knight se convierte en el “Monarca” de las sombras, alcanzando la cúspide de su poder. El Dominio del Soberano otorga al jugador un aumento automático a su Destreza o Inteligencia y Carisma al 22, a menos que ya lo sean.\n\n\nTras activar el Dominio del Soberano por primera vez:\n<b class=\"content_subrayado\">Aumento de las Estadísticas:</b> Las sombras bajo tu control ven sus estadísticas aumentadas permanentemente: Elige dos atributos para cada sombra, y estos se incrementan a 22 de manera permanente.\n<b class=\"content_subrayado\">Velocidad Sobrehumana:</b> Las sombras obtienen un incremento permanente de +10 pies a su velocidad de movimiento, pero además, se vuelven parcialmente inmateriales. Como maestro de las sombras, tu cuerpo ahora es difícil de discernir de las mismas, otorgándote las siguientes ventajas:\n<b class=\"content_subrayado\">--</b> Ganas Media Cobertura permanentemente mientras estés en espacios abiertos (+2 a la CA).\n<b class=\"content_subrayado\">--</b> Mientras hayan sombras que controles, cualquier ataque contra ti se realiza con desventaja, pues tu forma oscura se funde con las sombras circundantes.\n<b class=\"content_subrayado\">Intercambio Vital:</b> Si una de tus sombras es destruida mientras esta habilidad está activa, en vez de ser destruida, queda a 1 punto de golpe.\n<b class=\"content_subrayado\">Ataques Críticos:</b> Todas las sombras bajo tu control ganan la capacidad de realizar un ataque adicional durante su turno cuando usen la acción de ataque. Además, cualquier ataque realizado por las sombras se considera un crítico en una tirada de 19 o 20 de manera permanente.\n\n\nActivaciones poseteriores:\n<b class=\"content_subrayado\">-</b> Todas las sombras bajo tu control reciben un aumento de +4 a dos estadísticas de tu elección durante 1 hora.\n<b class=\"content_subrayado\">-</b> Ganas Tres Cuartos de Cobertura cuando te encuentres entre tus sombras (+5 a la CA).\n<b class=\"content_subrayado\">-</b> Tras ser activada el Intercambio Vital, la sombra recibe un aumento temporal de +10 pies a su velocidad y +2 a sus ataques y daños durante 1 hora.\n<b class=\"content_subrayado\">-</b> Puedes seleccionar una sombra destruida bajo tu control y reanimarla instantáneamente con la mitad sus puntos de golpe restaurados. Al resucitar, la sombra obtiene un +2 a su CA, y todos sus ataques son considerados mágicos durante 1 hora.\n"
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Invocar Sombras",
+          "Salvar Sombras"
+        ],
+        "filas": [
+          [
+            "5",
+            "10"
+          ]
+        ]
+      },
+      "requeridoTrue": {
+        "statAmount": {
+          "carisma": 2,
+          "choice": {
+            "count": 1,
+            "bonus": 2,
+            "allowedChoices": [
+              "destreza",
+              "inteligencia"
+            ]
+          }
+        },
+        "statMax": {
+          "activos": [
+            "fuerza",
+            "destreza",
+            "inteligencia"
+          ],
+          "stat": 25
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "Bendición épica de habilidades": {
+    "doteEpico": true,
+    "requisito": {
+      "niveles": 20
+    },
+    "aumentarStatOpcional": [
+      {
+        "fuerza": 1
+      },
+      {
+        "destreza": 1
+      },
+      {
+        "constitucion": 1
+      },
+      {
+        "inteligencia": 1
+      },
+      {
+        "sabiduria": 1
+      },
+      {
+        "carisma": 1
+      }
+    ],
+    "maxStatAmount": 30,
+    "habilidad": "Has llegado al límite de tus habilidades... [Solo si el DM lo permite.]\nGanas los siguientes beneficios:\n♻ Competencia con todas las habilidades y maestría en una.\n♻ Aumenta cualquier stat en +1, hasta un máximo de 30."
+  },
+  "Bendición épica en habilidades de las sombras": {
+    "doteEpico": true,
+    "requisito": {
+      "niveles": 20,
+      "claseName": "shadow"
+    },
+    "aumentarStatOpcional": [
+      {
+        "destreza": 1
+      },
+      {
+        "sabiduria": 1
+      },
+      {
+        "carisma": 1
+      }
+    ],
+    "maxStatAmount": 30,
+    "habilidad": "Las Ciaturas ahora no son nada ante tu verdadero poder.\nGanas los siguientes beneficios:\n♻ Maestría en dos habilidades a tu elección.\n♻ Aumenta cualquier stat en +1, hasta un máximo de 32."
+  },
+  "Bendición épica de destreza en combate": {
+    "doteEpico": true,
+    "requisito": {
+      "niveles": 20
+    },
+    "aumentarStatOpcional": [
+      {
+        "fuerza": 1
+      },
+      {
+        "destreza": 1
+      }
+    ],
+    "maxStatAmount": 30,
+    "habilidad": "Tus habilidades físicas aumentan con cada paso que des.\nGanas los siguientes beneficios:\n♻ Repetir ataques fallidos una vez por turno.\n♻ Tu Fuerza o Destreza aumenta en +1, hasta un máximo de 30."
+  },
+  "Bendición épica de la fortaleza": {
+    "doteEpico": true,
+    "requisito": {
+      "niveles": 20
+    },
+    "aumentarStat": {
+      "constitucion": 1
+    },
+    "maxStatAmount": 30,
+    "habilidad": "Un tanque en toda regla\nGanas los siguientes beneficios:\n♻ Inmunidad a los ataques o habilidades que ignoran resistencias.\n♻ Aumenta cualquier stat en +1, hasta un máximo de 30."
+  },
+  "Bendición épica del lanzamiento de hechizos": {
+    "doteEpico": true,
+    "requisito": {
+      "niveles": 20
+    },
+    "limitAmountOpcional": [
+      {
+        "inteligencia": 1
+      },
+      {
+        "sabiduria": 1
+      },
+      {
+        "carisma": 1
+      }
+    ],
+    "maxStatAmount": 30,
+    "habilidad": "Te has vuelto un genio en tu propio terreno mágico.\nGanas los siguientes beneficios:\n♻ Recuperar un hechizo gastado 1 espacio superior al cuarto nivel o 2 espacios menor al tercer nivel vez por descanso largo.\n♻ Aumenta cualquier stat en +1, hasta un máximo de 30."
+  }
+}

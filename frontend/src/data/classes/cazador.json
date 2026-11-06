@@ -1,0 +1,815 @@
+{
+  "nombre": "Cazador de Sangre",
+  "claseName": "cazador",
+  "seccion": "agarias",
+  "nivelesDeAumento": [
+    4,
+    8,
+    12,
+    16
+  ],
+  "conjurador": false,
+  "dadoDeGolpe": 8,
+  "niveles": {
+    "1": {
+      "descripcion": "Guerrero que utiliza su propia sangre como catalizador de poder oscuro.",
+      "descripcionLarga": "Inspirado por horrores cósmicos y bestias imposibles, el Cazador de Sangre transforma el dolor en arma. Marca su piel con rituales, activa maldiciones y potencia sus armas con su propia vitalidad. Cada combate es un intercambio: poder a cambio de sacrificio. Es determinación obsesiva frente a lo monstruoso.",
+      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Destreza, Inteligrncia.\n❖ Tus puntos de golpe es:\n    :: Tu dado de PG es: 1d10. 10 + Constitución.\n    :: Además, por cada nivel por encima de 1, obtienes 1d10 de PG + Constitución.\n❖ Competencias:\n    :: Armadura: Armadura ligera, armadura media, escudos.\n    :: Armas: Armas simples, armas marciales, armas de Cazador.\n    :: Herramientas: Herramientas de Alquimista.\n    :: Habilidades: escoge tres de entre Acrobacias, Atletismo, Historia, Perspicacia, Investigación, Religión, Supervivencia.\n❖ Equipos. Comienzas con el siguiente equipo, además del otorgado por tu trasfondo:\n    :: (a) un arma marcial o (b) dos armas simples.\n    :: (a) una ballesta ligera y 20 saetas o (b) una ballesta de mano y 20 saetas.\n    :: (a) armadura de cuero tachado o (b) armadura de malla de escamas.\n    :: Un equipo de explorador y suministros de alquimista.\n    :: Monedas de Oro: 5d4 x 10.\n\n\"Teme a la vieja Sangre\"\nQue la sangre de sus cuerpos sea lo último que vean.",
+      "infoBlock": {
+        "blockUno": {
+          "name": "Viales de Sangre",
+          "titleName": "✦ VIALES DE SANGRE ✦",
+          "descripcion": "<b class=\"content_subrayado\">Tu cuerpo genera una cantidad extraordinaria de sangre, más allá de lo que sería normal para los de tu raza, lo que te permite crear un elixir curativo único.</b>\n\nA partir del nivel 1, al finalizar un descanso largo, puedes llenar un número de viales con tu propia sangre igual a tu nivel de Cazador de Sangre (mínimo 1). Cada vial contiene un elixir que, cuando es consumido por ti, restaura los PG igual a tu Sangre Arcana. Además, puedes usar un vial como acción para eliminar una condición de envenenamiento o enfermedad que te afecte. Una vez que uses un vial, este se consume y no puede ser reutilizado hasta que completes otro descanso largo."
+        },
+        "blockDos": {
+          "name": "Cazador Predilecto",
+          "titleName": "✦ CAZADOR PREDILECTO ✦",
+          "descripcion": "Tras haber sobrevivido a la Perdición del Cazador, un ritual peligroso y guardado durante mucho tiempo que altera la sangre de tu vida, uniéndote para siempre a la oscuridad y afinando tus sentidos contra ella. Tienes ventaja en las pruebas de \"Sabiduría (Supervivencia)\" para rastrear criaturas de <b class=\"content_subrayado\">Yharnam</b>, <b class=\"content_subrayado\">Hadas</b>, <b class=\"content_subrayado\">Demonios</b>, <b class=\"content_subrayado\">Espectros</b> o <b class=\"content_subrayado\">Muertos vivientes</b>, así como en las pruebas de Inteligencia para recordar información sobre dichas criaturas.\n\nCazador predilecto también le permite a tu cuerpo controlar y dar forma a la Sangre Arcana, utilizando tu propia sangre y esencia vital para alimentar tus habilidades. Algunas de tus funciones requieren que tu objetivo realice una tirada de salvación para resistir los efectos de la función.\n\nLa CD del tiro de salvación se calcula dela siguiente manera: <b class=\"content_subrayado\">CD de salvación = 8 + tu Modificador de Inteligencia + tu Bonificación por Competencia</b>."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Sangre Arcana",
+          "Puntos de Sangre Arcana"
+        ],
+        "filas": [
+          [
+            "1d4",
+            "1"
+          ]
+        ]
+      }
+    },
+    "2": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Estilo de Combate",
+          "titleName": "✦ ESTILO DE COMBATE ✦",
+          "descripcion": "En el nivel 2, adoptas un estilo de lucha como especialidad. Elige una de las siguientes opciones. No puedes elegir una opción de Estilo de lucha más de una vez, incluso si luego puedes volver a elegir.\n— <b class=\"content_subrayado\">Pistolero:</b> Obtienes una bonificación de +2 a las tiradas de parry.\n— <b class=\"content_subrayado\">Duelista:</b> Cuando empuñas un arma cuerpo a cuerpo en una mano y ninguna otra arma, obtienes una bonificación de +2 a las tiradas de daño con esa arma.\n— <b class=\"content_subrayado\">Gran lucha con armas:</b> Cuando sacas un 1 o 2 en un dado de daño que no es de rito para un ataque que realizas con un arma cuerpo a cuerpo que estás empuñando con las dos manos, puedes volver a tirar el dado y debes usar la nueva tirada. El arma debe tener la propiedad de dos manos o versátil para que puedas obtener este beneficio.\n— <b class=\"content_subrayado\">Lucha con dos armas:</b> Cuando participas en una pelea con dos armas, puedes agregar tu modificador de habilidad al daño del segundo ataque.\n— <b class=\"content_subrayado\">Gran maestro de armas:</b> Adquieres competencia con armas cuerpo a cuerpo simples de dos manos y armas cuerpo a cuerpo marciales de dos manos.\n— <b class=\"content_subrayado\">Poder de desgaste:</b> Cuando infliges daño a una criatura usando un arma, obtienes una bonificación de +1 al daño con la misma arma a la misma criatura. Esto puede acumularse hasta los tiempos del modificador de habilidad del arma, reiniciándose al comienzo de tu siguiente turno o cuando atacas a una criatura diferente."
+        },
+        "blockDos": {
+          "name": "Regeneración Agresiva",
+          "titleName": "✦ REGENERACIÓN AGRESIVA ✦",
+          "descripcion": "<b class=\"content_subrayado\">*Desde el nivel 2, tu sangre se conecta instintivamente con la de tus enemigos, deseando absorber su esencia y reforzar tu cuerpo.*</b>\n\nCuando infliges daño en tu turno, puedes optar por recuperar una cantidad de puntos de vida igual a la mitad del daño que infligiste, hasta un máximo igual a los puntos de vida que perdiste en el último ataque que te golpeó. Solo puedes recuperar puntos de vida si infliges daño durante tu turno.\n\nPuedes utilizar esta característica un número de veces igual a tu nivel de cazador de sangre (mínimo 1). Recuperas todos los usos después de finalizar un descanso largo."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Sangre Arcana",
+          "Puntos de Sangre Arcana"
+        ],
+        "filas": [
+          [
+            "1d4",
+            "1"
+          ]
+        ]
+      }
+    },
+    "3": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Balas de Plata",
+          "titleName": "✦ BALAS DE PLATA ✦",
+          "descripcion": "<b class=\"content_subrayado\">*Tu control sobre tu propia sangre te permite transformarla en proyectiles.*</b>\nA partir del nivel 3, después de un descanso prolongado, puedes crear una cantidad de munición para armas a distancia de tu elección. La cantidad máxima es igual a tu modificador competencia. Esta munición cuenta como si fuera de plata, lo que te permite aprovechar debilidades a este tipo de material. Además, puedes elegir una de las siguientes maniobras defensivas para usar tus balas como reacción:\n— <b class=\"content_subrayado\">Desvío (Parry):</b> Si un oponente te golpea con un ataque, como reacción, puedes gastar 1 bala para atacar con tu arma a distancia al atacante. Si aciertas, evitas el golpe por completo, pero este ataque no causa daño.\n— <b class=\"content_subrayado\">Cotraataque (Counter):</b> Cuando un enemigo te golpea, antes de calcular el daño, puedes gastar 1 bala para hacer un contraataque contra él. Si aciertas, el enemigo recibe daño igual a tu Sangre Arcana y el ataque que te golpeó falla automáticamente."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Sangre Arcana",
+          "Puntos de Sangre Arcana"
+        ],
+        "filas": [
+          [
+            "1d4",
+            "1"
+          ]
+        ]
+      },
+      "subClase": {
+        "senda1": {
+          "subNombre": "Orden del Invocador de Sangre",
+          "subDescripcion": "✦ Orden del Invocador de Sangre ✦\nLa Orden del Invocador de Sangre, una de las más antiguas entre los cazadores, domina la “Sangre Arcana” para invocar criaturas de sangre como armas.\nSus miembros estudian la vida y la muerte, dedicándose a erradicar la corrupción, sacrificando ataques extra para mantener sus invocaciones.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Maestro de la Invocación",
+                  "subTitleName": "✦ Maestro de la Invocación ✦",
+                  "subDescripcion": "A partir del nivel 3, dominas mejor la manipulación de las criaturas de sangre. Obtienes un uso adicional de tu habilidad \"Criaturas de Sangre\". Además, ahora puedes invocar criaturas de sangre incluso de seres que no tienen sangre, manipulando la esencia vital de todo ser que posea un alma."
+                },
+                "subBlockDos": {
+                  "subName": "Criaturas de Sangre",
+                  "subTitleName": "✦ Criaturas de Sangre ✦",
+                  "subDescripcion": "A partir del nivel 3, aprendes a canalizar —o incluso sacrificar— parte de tu propia esencia vital para invocar y controlar criaturas mediante la magia de *Sangre Arcana*. Al obtener esta habilidad, aprendes una \"invocación de sangre\" de tu elección. También puedes sustituir una invocación que ya conozcas por otra distinta.\n\nAprenderás invocaciones de sangre adicionales en los niveles 6, 11 y 17. Cada vez que aprendas una nueva, podrás reemplazar una de las que ya conoces.\n\nUsar *Criaturas de Sangre* implica pagar un precio: recibirás daño necrótico igual a una tirada de tu dado de Sangre Arcana. Antes de completar la invocación, puedes decidir amplificarla, recibiendo daño necrótico adicional igual a otra tirada de tu dado de Sangre Arcana.\n\nSi invocas varias criaturas a la vez, sufrirás +1 dado extra de daño necrótico por cada criatura adicional. Este daño no se puede reducir ni curar de ninguna manera, ni siquiera con magia, hasta que completes un descanso largo. Sin embargo, una invocación amplificada obtiene efectos extra, indicados en su descripción. Las criaturas sin sangre son inmunes a tus invocaciones, a menos que las hayas amplificado.\n\nMientras una *Criatura de Sangre* esté presente en el campo, obtienes daño necrótico adicional igual a tu dado de *Sangre Arcana* al inicio de tu turno. Puedes usar esta habilidad una vez, recuperando el uso tras un descanso corto o largo. A partir del nivel 6 podrás usarla dos veces entre descansos, a partir del nivel 13, tres veces, y a partir del nivel 17, cuatro veces."
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Rito del Sangre Ancestral",
+                  "subTitleName": "✦ Rito del Sangre Ancestral ✦",
+                  "subDescripcion": "Al unirte a esta orden en el nivel 7, aprendes el **Rito del Sangre Ancestral** como parte de tu función de *Rito Carmesí*. Cuando activas este rito, el daño adicional infligido es daño necrótico. Además, mientras este rito esté activo en tu arma, obtienes los siguientes beneficios:\n— Tu arma brilla con un aura oscura, iluminando en un radio de 10 pies con luz tenue.\n— Ganas resistencia al daño de fuerza.\n— Cuando golpeas a una criatura no-muerta con un arma bajo este rito, tiras un dado adicional de Sangre Arcana (1d4 al nivel 3, 1d6 al nivel 5, etc.) para el daño adicional del rito."
+                },
+                "subBlockDos": {
+                  "subName": "Paseo Etéreo",
+                  "subTitleName": "✦ Paseo Etéreo ✦",
+                  "subDescripcion": "Al alcanzar el nivel 7, puedes atravesar el velo entre los planos, tocando el plano etéreo momentáneamente. Al inicio de tu turno, si no estás incapacitado, puedes moverte a través de criaturas y objetos como si fueran terreno difícil y ver criaturas y objetos en el Plano Etéreo. Recibes 1d10 de daño de fuerza si terminas tu turno dentro de un objeto.\n\nEsta característica dura una cantidad de rondas igual a tu modificador de Sangre Arcana (mínimo de 1 ronda). Si estás dentro de un objeto cuando termina, eres desplazado al espacio desocupado más cercano y sufres daño de fuerza igual al doble de los pies que te moviste dentro del objeto.\n\nUna vez que uses esta función, necesitas un descanso corto o largo para usarla de nuevo. Puedes usar Paseo Etéreo dos veces entre descansos a partir del nivel 15."
+                }
+              }
+            },
+            "11": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Marca de Desgarro",
+                  "subTitleName": "✦ Marca de Desgarro ✦",
+                  "subDescripcion": "A nivel 11, tu Marca de Castigo desgarra la esencia vital de tus enemigos, haciéndolos más vulnerables a tu poder de invocación. Siempre que golpees a una criatura con un arma bajo un rito carmesí, lanzas un dado adicional de Sangre Arcana para el daño adicional del rito. Además, si una criatura marcada tiene el rasgo de Movimiento Incorporal o un efecto similar, no puede moverse a través de criaturas u objetos mientras esté marcada."
+                }
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Invocación de Sangre del Exorcista",
+                  "subTitleName": "✦ Invocación de Sangre del Exorcista ✦",
+                  "subDescripcion": "A nivel 15, perfeccionas tus habilidades para erradicar la corrupción y castigar a aquellos que abusan de las energías vitales. Obtienes la \"Invocación de Sangre del Exorcista\", que no cuenta para el número de invocaciones conocidas."
+                }
+              }
+            },
+            "18": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Renacimiento de Sangre",
+                  "subTitleName": "✦ Renacimiento de Sangre ✦",
+                  "subDescripcion": "Al nivel 18, has aprendido a dominar la energía vital en tus armas. Si tienes uno o más ritos carmesí activos y tus puntos de golpe se reducen a 0 pero no mueres inmediatamente, puedes optar por finalizar todos tus ritos carmesí activos y quedarte con 1 punto de golpe. Una vez que uses esta caracterísitca, necesitarás un descanso largo.\n\n[boton-exorcista-carmesi]"
+                }
+              }
+            }
+          }
+        },
+        "senda2": {
+          "subNombre": "Orden del Licántropo",
+          "subDescripcion": "✦ Orden del Licántropo ✦\nLa Orden del Licántropo acepta voluntariamente la licantropía mediante un ritual llamado “Doma”, controlando su forma híbrida con magia de sangre y disciplina férrea.\nEsta transformación les otorga fuerza, resistencia y garras sobrenaturales, aunque siempre bajo la amenaza de sucumbir a su hambre bestial.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Sentidos Agudizados",
+                  "subTitleName": "✦ Sentidos Agudizados ✦",
+                  "subDescripcion": "Al elegir este arquetipo en el nivel 3, desarrollas los sentidos de un depredador natural. Obtienes ventaja en las pruebas de Sabiduría (Percepción) que dependan del oído o del olfato, lo que te permite rastrear a tus enemigos con precisión."
+                },
+                "subBlockDos": {
+                  "subName": "Transformación Híbrida",
+                  "subTitleName": "✦ Transformación Híbrida ✦",
+                  "subDescripcion": "También a nivel 3, aprendes a dominar la maldición licántropa que fluye por tus venas. Como acción adicional, puedes transformarte en una forma híbrida durante hasta 1 hora. Durante esta transformación, puedes hablar, usar equipo y portar armadura, y puedes revertir a tu forma normal como acción adicional. Automáticamente vuelves a tu forma normal si caes inconsciente o mueres.\n\nEsta característica reemplaza las reglas de licantropía del Manual de Monstruos. Una vez que uses esta función, debes terminar un descanso corto o largo antes de poder usarla de nuevo. Mientras estés en esta forma, obtienes las siguientes características:\n— <b class=\"content_subrayado\">Poder Primordial:</b> Obtienes ventaja en las pruebas de Fuerza y en las tiradas de salvación de Fuerza, además de una bonificación de +1 a las tiradas de daño en ataques cuerpo a cuerpo. Esta bonificación aumenta a +2 en el nivel 11 y a +3 en el nivel 18.\n— <b class=\"content_subrayado\">Piel Resistente:</b> Ganas resistencia al daño contundente, perforante y cortante de ataques no mágicos, a menos que sean realizados con armas plateadas. Mientras no lleves armadura pesada, tienes una bonificación de +1 a la CA.\n— <b class=\"content_subrayado\">Ataques Depredadores:</b> Puedes aplicar tu característica \"Rito Carmesí\" a tus ataques desarmados, que se consideran armas. Usas Destreza en lugar de Fuerza para las tiradas de ataque y daño de tus golpes desarmados, que causan 1d6 de daño contundente o cortante (tu elección). Este daño aumenta a 1d8 en el nivel 11. Además, cuando usas la acción de Ataque para realizar un ataque desarmado, puedes hacer un ataque desarmado adicional como acción adicional.\n— <b class=\"content_subrayado\">Sed de Sangre:</b> Si comienzas tu turno con menos puntos de vida que la mitad de tu máximo, debes superar una tirada de salvación de Sabiduría (CD 8) o moverte directamente hacia la criatura más cercana y atacar. Si te encuentras concentrado en un hechizo o bajo un efecto que impida la concentración (como la característica Rabia del Bárbaro), fallas automáticamente esta tirada. Si tienes la función \"Ataque Extra\", decides si usarla para este ataque frenético. Una vez que resuelves tu ataque, recuperas el control de ti mismo."
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Destreza del Acosador",
+                  "subTitleName": "✦ Destreza del Acosador ✦",
+                  "subDescripcion": "A nivel 7, tu velocidad aumenta en 10 pies y agregas 10 pies a tu distancia de salto de longitud y 3 pies a tu distancia de salto de altura. Además, tu forma híbrida recibe el siguiente beneficio:\n— Ataques Depredadores Mejorados. Obtienes una bonificación de +1 a las tiradas de ataque realizadas con tus ataques desarmados. Esta bonificación aumenta a +2 en el nivel 11 y a +3 en el nivel 18. Además, cuando tienes un rito carmesí activo en tus ataques desarmados, estos se consideran mágicos para superar resistencias e inmunidades a ataques no mágicos."
+                }
+              }
+            },
+            "11": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Transformación Avanzada",
+                  "subTitleName": "✦ Transformación Avanzada ✦",
+                  "subDescripcion": "A nivel 11, desatas y controlas aún más a la bestia interior. Puedes usar tu \"Transformación Híbrida\" dos veces, recuperando todos los usos gastados al terminar un descanso corto o largo. Durante tu forma híbrida, obtienes el siguiente beneficio adicional:\n— Regeneración de Licántropos: Al comienzo de cada uno de tus turnos, si tienes al menos 1 punto de vida pero menos de la mitad de tu máximo, recuperas puntos de vida iguales a 1 + tu modificador de Constitución (mínimo de 1). Si estás en forma híbrida, obtienes estos puntos de vida antes de realizar la tirada de salvación por tu sed de sangre."
+                }
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Marca de los Voraces",
+                  "subTitleName": "✦ Marca de los Voraces ✦",
+                  "subDescripcion": "A partir del nivel 15, tienes ventaja en la tirada de salvación para tu sed de sangre mientras estás en forma híbrida. Además, tu Marca de castigo ahora puede vincular a un enemigo con la ferocidad de tu cazador. Mientras estás en tu forma híbrida, tienes ventaja en las tiradas de ataque contra una criatura marcada por ti."
+                }
+              }
+            },
+            "18": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Dominio de la Forma Híbrida",
+                  "subTitleName": "✦ Dominio de la Forma Híbrida ✦",
+                  "subDescripcion": "Al nivel 18, has dominado completamente a tu depredador interior, lo que te permite usar tu \"Transformación híbrida\" un número ilimitado de veces. Tu forma híbrida permanece activa hasta que decidas volver a tu forma normal, caigas inconsciente o mueras. Además, obtienes el \"Aullido\" como parte de tus habilidades de Criaturas de Sangre, sin que cuente en el límite de maldiciones de sangre conocidas.\n\n[boton-clon-carmesi]"
+                }
+              }
+            }
+          }
+        },
+        "senda3": {
+          "subNombre": "Orden del Mutante",
+          "subDescripcion": "✦ Orden del Mutante ✦\nEl ritual de \"La Perdición del Cazador\" transforma dolorosamente a los cazadores de sangre, dejando secuelas permanentes.\nLa Orden del Mutante perfeccionó este proceso con alquimia corrupta y elixires tóxicos, alterando su biología para adaptarse y dominar en combate según las debilidades de sus enemigos.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Artesanía mutágena",
+                  "subTitleName": "✦ Artesanía mutágena ✦",
+                  "subDescripcion": "Cuando eliges este arquetipo en el nivel 3, aprendes a dominar fórmulas alquímicas prohibidas (conocidas como mutágenos) que pueden alterar temporalmente tus capacidades físicas y mentales.\n\nComo acción adicional, consumes un mutágeno, cuyos efectos y efectos secundarios duran hasta que terminas un descanso corto o largo, a menos que se especifique lo contrario. Mientras uno o más mutágenos te afectan, puedes usar una acción para concentrar y eliminar todos los mutágenos de tu sistema, poniendo fin a sus efectos y efectos secundarios.\n\nLos mutágenos están diseñados para la biología específica del personaje que los inventó, y tus mutágenos no tienen ningún efecto en otras criaturas. También son inestables por naturaleza, pierden su potencia con el tiempo y se vuelven inertes si no se usan antes de terminar el próximo descanso corto o largo.\n\nEn este nivel, obtienes:\n— Mutágenos para crear: 1\n— Fórmulas conocidas: 4\n\n<h3 class=\"content_h3\">✦✦ Fórmulas ✦✦</h3>\nLa cantidad de mutágenos que puedes inventar cuando terminas un descanso y la cantidad de fórmulas que conoces aumentan a medida que ganas niveles en la clase de cazador de sangre, como se muestra en la tabla de \"Mutágenos creados\" anterior. Además, cuando aprende una nueva fórmula mutágena, puede reemplazar una fórmula que ya conoce con una nueva fórmula mutágena. Eliges cuatro fórmulas mutágenas para aprender y puedes preparar un mutágeno cuando termines un descanso corto o largo. \n\n<h3 class=\"content_h3\">✦✦ Mutágenos ✦✦</h3>\n<b class=\"content_subrayado\">— Éter:</b> Tienes una velocidad de vuelo de 20 pies durante 1 hora. Sin embargo, tienes desventaja en las pruebas de Fuerza y Destreza durante este tiempo.\n<b class=\"content_subrayado\">— Seductor:</b> Tu piel y tu voz se vuelven maleables, permitiéndote mejorar tu apariencia y presencia. Tienes ventaja en las pruebas de Carisma. Sin embargo, tienes desventaja en las tiradas de iniciativa.\n<b class=\"content_subrayado\">— Celeridad:</b> Tu puntuación de Destreza aumenta en 3, al igual que tu puntuación máxima para esa puntuación. Sin embargo, tienes desventaja en las tiradas de salvación de Sabiduría. Tu puntuación de Destreza y tu máximo aumentan en 4 si consumes este mutágeno en el nivel 11 y en 5 en el nivel 18.\n<b class=\"content_subrayado\">— Versado en:</b> Tienes ventaja en las pruebas de Inteligencia. Sin embargo, tienes desventaja en las pruebas de Sabiduría.\n<b class=\"content_subrayado\">— Habilidad:</b> Tienes ventaja en las pruebas de Destreza. Sin embargo, tienes desventaja en las pruebas de Sabiduría.\n<b class=\"content_subrayado\">— Ascuas:</b> Tienes resistencia al daño por fuego y vulnerabilidad al daño por frío.\n<b class=\"content_subrayado\">— Gélido:</b> Tienes resistencia al daño por frío y vulnerabilidad al daño por fuego.\n<b class=\"content_subrayado\">— Impermeable:</b> Tienes resistencia al daño perforante y vulnerabilidad al daño cortante.\n<b class=\"content_subrayado\">— Movilidad:</b> Tienes inmunidad a las condiciones de lucha y restricción. Sin embargo, tienes desventaja en las pruebas de Fuerza. En el nivel 11, también eres inmune a la condición de paralización.\n<b class=\"content_subrayado\">— Perceptor:</b> Tienes ventaja en las pruebas de Sabiduría. Sin embargo, tienes desventaja en las pruebas de Carisma.\n<b class=\"content_subrayado\">— Ojo nocturno:</b> Tienes visión en la oscuridad a un alcance de 60 pies. Si ya tienes visión en la oscuridad, su alcance aumenta en 60 pies. Sin embargo, tienes desventaja en las tiradas de ataque y en las pruebas de Sabiduría (Percepción) que dependen de la vista cuando tú, el objetivo de tu ataque o cualquier cosa que estés tratando de percibir, estás bajo la luz solar directa.\n<b class=\"content_subrayado\">— Potencia:</b> Tu puntuación de Fuerza aumenta en 3, al igual que tu máximo para esa puntuación. Sin embargo, tienes desventaja en las tiradas de salvación de Destreza. Tu puntuación de Fuerza y tu máximo aumentan en 4 si consumes este mutágeno en el nivel 11 y en 5 en el nivel 18.\n<b class=\"content_subrayado\">— Rapidez:</b> Tu velocidad aumenta en 10 pies (2 casillas). Sin embargo, tienes desventaja en las pruebas de Inteligencia. En el nivel 15, tu velocidad aumenta 5 pies (1 casilla) adicionales.\n<b class=\"content_subrayado\">— Sagacidad:</b> Tu puntuación de Inteligencia aumenta en 3, al igual que tu máximo para esa puntuación. Sin embargo, tienes desventaja en las tiradas de salvación de Carisma. Tu puntuación de Inteligencia y tu máximo aumentan en 4 si consumes este mutágeno en el nivel 11 y en 5 en el nivel 18.\n<b class=\"content_subrayado\">— Blindado:</b> Tienes resistencia al daño cortante y tienes vulnerabilidad al daño contundente.\n<b class=\"content_subrayado\">— Irrompible:</b> Tienes resistencia al daño contundente y tienes vulnerabilidad al daño perforante.\n<b class=\"content_subrayado\">— Bermellón:</b> Obtienes un uso adicional de tu función Blood Maledict. Sin embargo, tienes desventaja en las tiradas de salvación de muerte."
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Artesanía mutágena 2",
+                  "subTitleName": "✦ Artesanía mutágena 2 ✦",
+                  "subDescripcion": "En este nivel, obtienes:\n—— Mutágenos para crear: 2\n—— Fórmulas conocidas: 5\n\n<h3 class=\"content_h3\">✦✦ Mutágeno 2 ✦✦</h3>\n<b class=\"content_subrayado\">— Reconstrucción:</b> Durante 1 hora, al comienzo de cada uno de tus turnos, cuando tengas al menos 1 punto de vida pero menos que la mitad de tu máximo de puntos de vida, recuperas puntos de vida iguales a tu bonificación de competencia. Sin embargo, su velocidad se reduce en 10 pies durante este tiempo."
+                }
+              }
+            },
+            "11": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Artesanía mutágena 3",
+                  "subTitleName": "✦ Artesanía mutágena 3 ✦",
+                  "subDescripcion": "En este nivel, obtienes:\n—— Mutágenos para crear: 2\n—— Fórmulas conocidas: 6\n\n<h3 class=\"content_h3\">✦✦ Mutágeno 3 ✦✦</h3>\n<b class=\"content_subrayado\">— Éter:</b> Tienes una velocidad de vuelo de 20 pies durante 1 hora. Sin embargo, tienes desventaja en las pruebas de Fuerza y Destreza durante este tiempo.\n<b class=\"content_subrayado\">— Crueldad:</b> Cuando usas la acción de Ataque, puedes realizar un ataque con arma adicional como acción adicional. Sin embargo, tienes desventaja en las tiradas de salvación de Inteligencia, Sabiduría y Carisma.\n<b class=\"content_subrayado\">— Precisión:</b> Tus ataques con armas obtienen un golpe crítico con una tirada de 19 o 20. Sin embargo, tienes desventaja en las tiradas de salvación de Fuerza."
+                }
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Artesanía mutágena 4",
+                  "subTitleName": "✦ Artesanía mutágena 4 ✦",
+                  "subDescripcion": "En este nivel, obtienes:\n—— Mutágenos creados: 3\n—— Fórmulas conocidas: 7"
+                }
+              }
+            },
+            "18": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Artesanía mutágena 5",
+                  "subTitleName": "✦ Artesanía mutágena 5 ✦",
+                  "subDescripcion": "En este nivel, obtienes:\n—— Mutágenos creados: 3\n—— Fórmulas conocidas: 8"
+                }
+              }
+            }
+          }
+        },
+        "senda4": {
+          "subNombre": "Pacto: Sangre vil de Cainhurst",
+          "subDescripcion": "✦ PACTO: SANGRE VIL DE CAINHURST ✦\nLos miembros de Cainhurst llevan en sus venas una antigua y poderosa sangre que les concede habilidades excepcionales. Al aceptar este pacto, sellas tu destino con esta sangre vil y recibes su oscuro poder.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Regeneración Impía",
+                  "subTitleName": "✦ Regeneración Impía ✦",
+                  "subDescripcion": "Al nivel 3, tras hacer este juramento, la sangre vil dentro de ti aumenta tu resistencia. Cada vez que realizas un descanso corto o largo, obtienes 1 dado de golpe adicional por cada 5 dados de golpe que tengas. Este dado de golpe adicional te permite recuperar más puntos de vida durante los descansos. Además, puedes usar tu reacción para regenerar puntos de vida iguales a tu modificador de Constitución una vez por descanso corto."
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Cazador de sustento",
+                  "subTitleName": "✦ Cazador de sustento ✦",
+                  "subDescripcion": "Al nivel 7 has aprendido a absorber la energía vital de tus enemigos a través de la sangre. Cuando infliges daño a una criatura, puedes optar por curarte un número de puntos de vida igual a la mitad del daño que causaste. Solo puedes usar esta habilidad una vez por descanso corto o largo."
+                }
+              }
+            },
+            "11": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Vitalidad oscura",
+                  "subTitleName": "✦ Vitalidad oscura ✦",
+                  "subDescripcion": "En el nivel 11, tu vínculo con la sangre vil de Cainhurst te otorga una resistencia mayor. Al comenzar cada turno, si tus puntos de vida están por debajo de la mitad de tu total máximo, puedes recuperar puntos de vida equivalentes a tu modificador de Constitución (mínimo de 1). Esta habilidad no interfiere con otras formas de curación y puede usarse incluso si estás gravemente herido."
+                }
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Maldición del cazador",
+                  "subTitleName": "✦ Maldición del cazador ✦",
+                  "subDescripcion": "Al llegar a nivel 15, cuando te enfrentas a un enemigo poderoso, puedes canalizar la sangre de Cainhurst para maldecir a tu objetivo. Como Acción Adicional, marca a una criatura dentro de 60 pies (12 casillas). Esa criatura sufre vulnerabilidad a todo el daño que le inflijas durante 1 minuto. Solo puedes usar esta habilidad una vez por descanso largo."
+                }
+              }
+            },
+            "18": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Invasión sangrienta",
+                  "subTitleName": "✦ Invasión sangrienta ✦",
+                  "subDescripcion": "En nivel 18, al alcanzar el máximo control sobre el Pacto \"Sangre Vil de Cainhurst\", puedes manipular el tejido mismo de la realidad a través de la sangre. Como acción, puedes gastar 15 viales de sangre para abrir un portal sangriento de 3m de diámetro. Este portal permanece abierto hasta el final de tu siguiente turno. Puedes elegir teletransportarte a cualquier lugar que hayas visto antes o conocido en detalle (nombre, apariencia física o localización específica) dentro de un radio de 2km. Cada uso de esta habilidad agota tu fuerza, por lo que solo puedes utilizarla una vez por descanso largo."
+                }
+              }
+            }
+          }
+        },
+        "senda5": {
+          "subNombre": "Pacto: Verdugo",
+          "subDescripcion": "✦ PACTO: VERDUGO ✦\nEl pacto del Verdugo infunde a su portador con una sangre oscura y poderosa, otorgándole habilidades implacables para drenar y consumir la vida de sus enemigos. Al aceptar este pacto, te conviertes en una encarnación de la muerte, capaz de liberar la potencia de tu propia sangre para obtener fuerza y dominio en combate.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Aumento del Vial de Sangre",
+                  "subTitleName": "✦ Aumento del Vial de Sangre ✦",
+                  "subDescripcion": "Al nivel 3, tu sangre se ha vuelto mucho más poderosa, amplificando la efectividad de tus viales de sangre. Cada vez que usas un vial de sangre para curarte, recuperas 2d6 puntos de vida adicionales. Además, puedes usar un vial de sangre como una acción adicional, pero solo puedes hacerlo una vez por descanso corto o largo."
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Sangre Potente",
+                  "subTitleName": "✦ Sangre Potente ✦",
+                  "subDescripcion": "A nivel 7, tu cuerpo está mejor adaptado para soportar la influencia de la sangre potenciada. El número máximo de viales de sangre que puedes llevar aumenta en 1 por cada 3 viales que normalmente puedes portar. Además, si te encuentras con un aliado que esté gravemente herido, puedes gastar un vial de sangre para curarlo."
+                }
+              }
+            },
+            "11": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Sangre Adaptativa",
+                  "subTitleName": "✦ Sangre Adaptativa ✦",
+                  "subDescripcion": "Al nivel 11, tu sangre busca a otros dignos de compartir su poder. Después de un descanso prolongado, puedes designar un número de criaturas igual a tu modificador de Sabiduría (mínimo de 1) que pueden consumir tus viales de sangre y beneficiarse de sus efectos. Puedes cambiar la designación de una criatura al final de un descanso corto. Cuando estas criaturas consumen un vial de sangre, también obtienen un bono temporal de +2 a la CA durante 1 minuto y pueden intercambiar de lugar si están en una distancia de 30 pies cada uno."
+                }
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Ejecución Sanguinaria",
+                  "subTitleName": "✦ Ejecución Sanguinaria ✦",
+                  "subDescripcion": "A nivel 15, cuando asestas un golpe crítico a una criatura, tu sangre vibra con poder. Tus ataques infligen un golpe crítico automáticamente hasta el final de tu siguiente turno. Si asestas un golpe crítico adicional durante esta duración, la duración se reinicia y el daño crítico aumenta en un 50% adicional (x2.5) en lugar de duplicarse. Puedes beneficiarte de este aumento de daño adicional un número de veces igual a tu modificador de Sabiduría (mínimo de 1). Esta característica no afecta ni se activa contra humanoides, bestias, plantas o constructos."
+                }
+              }
+            },
+            "18": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Dominio del Verdugo",
+                  "subTitleName": "✦ Dominio del Verdugo ✦",
+                  "subDescripcion": "Tu maestría sobre la sangre y la ejecución es absoluta. Cuando infliges un golpe crítico, el daño de tus viales de sangre también se ve amplificado. Mientras estés bajo los efectos de \"Ejecución Sanguinaria\", tus viales de sangre curan el doble de su capacidad habitual (4d6 puntos de vida adicionales). Además, puedes invocar el poder de la sangre para realizar una \"Ejecución Final.\" Como acción, puedes consumir 3 viales de sangre para realizar un único ataque devastador. Si el ataque impacta, se trata automáticamente como un golpe crítico, y el daño infligido no puede ser reducido por resistencias o inmunidades. Puedes usar esta habilidad una vez por descanso largo."
+                }
+              }
+            }
+          }
+        },
+        "senda6": {
+          "subNombre": "Pacto: Bestia de Sangre",
+          "subDescripcion": "✦ PACTO: BESTIA DE SANGRE ✦\nLa sangre que corre por tus venas está ligada a una bestia impía y poderosa de sangre <b class=\"content_subrayado\">(Elijes la apariencia de esta forma.)</b>, dándote una fortaleza antinatural y la capacidad de desatar la ferocidad de esa criatura dentro de ti. A medida que te vinculas más profundamente con este poder, tu cuerpo se transforma, convirtiéndote en un depredador letal.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Fortaleza de la Bestia",
+                  "subTitleName": "✦ Fortaleza de la Bestia ✦",
+                  "subDescripcion": "A nivel 3, desde que tomas este pacto, tu sangre se vincula con una bestia impía, fortaleciendo tu cuerpo. Tus dados de golpe aumentan a <b class=\"content_subrayado\">d10</b>. Además, obtienes una bonificación adicional de +1 a las tiradas de salvación de Fuerza mientras estés bajo los efectos de cualquier habilidad que utilice tu sangre."
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Piel de Bestia",
+                  "subTitleName": "✦ Piel de Bestia ✦",
+                  "subDescripcion": "Al nivel 7, tu piel se endurece y adopta una forma bestial de sangre cuando no llevas armadura ni empuñas un escudo. Tu CA se vuelve igual a 10 + tu modificador de Fuerza + tu modificador de Sabiduría. Además, obtienes resistencia al daño contundente, perforante y cortante de ataques no mágicos y que no sean realizados con armas de plata."
+                }
+              }
+            },
+            "11": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Furia de la Bestia",
+                  "subTitleName": "✦ Furia de la Bestia ✦",
+                  "subDescripcion": "En este nivel 11, la ira de la bestia fluye a través de ti, incrementando tu fuerza. Tu puntuación de Fuerza o Sabiduría (tu elección) aumenta en +2, y tu límite máximo para esa puntuación aumenta en consecuencia (hasta un máximo de 22). Además, mientras estés bajo la influencia de tus habilidades de sangre o en combate, puedes usar una acción adicional para obtener ventaja en tus ataques cuerpo a cuerpo hasta el final de tu turno. Puedes usar esta característica un número de veces igual a tu modificador de Sabiduría (mínimo de 1) y recuperas todos los usos después de un descanso corto o largo."
+                }
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Ira Desatada",
+                  "subTitleName": "✦ Ira Desatada ✦",
+                  "subDescripcion": "Al nivel 15, has aprendido a canalizar mejor la naturaleza destructiva de la bestia. Puedes entrar en un estado de furia bestial como acción adicional, lo que te otorga resistencia al daño mágico de origen contundente, perforante o cortante durante 1 minuto. Además, mientras estés en este estado, cualquier criatura que te golpee con un ataque cuerpo a cuerpo recibe daño igual a tu modificador de Fuerza (mínimo de 1). Puedes usar esta habilidad una vez por descanso largo."
+                }
+              }
+            },
+            "18": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Transformación de Bestia Primigenia",
+                  "subTitleName": "✦ Transformación de Bestia Primigenia ✦",
+                  "subDescripcion": "Finalmente, a nivel 18, puedes desatar completamente la bestia que llevas dentro, transformándote en una encarnación monstruosa de la sangre. Como Acción Adicional y consumiendo 2 viales de sangre, tu tamaño aumenta en 1 categoría (hasta un mínimo de tamaño \"Grande\") durante 1 minuto. Una vez por descanso largo y mientras estás en esta forma:\n<b class=\"content_subrayado\">—</b> Tu alcance de ataque aumenta en 10 pies (2 casillas).\n<b class=\"content_subrayado\">—</b> Obtienes ventaja en las tiradas de Fuerza y en las tiradas de ataque cuerpo a cuerpo.\n<b class=\"content_subrayado\">—</b> Puedes usar tu mano principal como un arma improvisada, causando 2d8 de daño contundente. Las armas versátiles que sostienes en esta mano aplican el bono como si las estuvieras usando con ambas manos.\n<b class=\"content_subrayado\">—</b> Puedes realizar un ataque desarmado adicional como parte de tu Acción de Ataque."
+                }
+              }
+            }
+          }
+        },
+        "senda7": {
+          "subNombre": "Pacto: El Coro",
+          "subDescripcion": "✦ PACTO: EL CORO ✦\nEl Pacto del Coro representa una comunión con entidades etéreas o celestiales, manifestadas como un coro de voces que resuenan en tu mente y alma. Estos espíritus guían tus acciones, amplifican tu poder y te conceden la capacidad de invocar su canto para lograr grandes hazañas.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Voces del Coro",
+                  "subTitleName": "✦ Voces del Coro ✦",
+                  "subDescripcion": "Al nivel 3, cuando haces este juramento, las voces del coro te conceden su protección y guía. Puedes escuchar susurros de estos espíritus, los cuales te otorgan ventaja en tiradas de salvación contra ser \"Encantado\" o \"Asustado\". Además, puedes invocar sus voces para mejorar tus habilidades. Puedes sumar un *d4* a una tirada de ataque, tirada de habilidad o tirada de salvación. Puedes usar esta habilidad un número de veces igual a tu modificador de Sabiduría (mínimo de 1) y recuperas todos los usos tras un descanso corto o largo."
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Cántico Sanador",
+                  "subTitleName": "✦ Cántico Sanador ✦",
+                  "subDescripcion": "En el nivel 7, el coro comienza a armonizar con tu cuerpo, brindándote la capacidad de sanar heridas mediante su canto. Como acción adicional, puedes entonar un cántico que restaura puntos de vida a una criatura que puedas ver a 30 pies (6 casillas) de ti. La cantidad de puntos de vida restaurados es igual a *2d8 + tu modificador de Sabiduría*. Puedes usar esta habilidad un número de veces igual a tu modificador de Sabiduría, recuperando todos los usos después de un descanso corto o largo."
+                }
+              }
+            },
+            "11": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Concierto de Voluntades",
+                  "subTitleName": "✦ Concierto de Voluntades ✦",
+                  "subDescripcion": "Al nivel 11, el coro amplifica su poder, permitiéndote controlar el flujo del combate con sus ecos. Como Acción Adicional, puedes invocar el poder del coro para obtener ventaja en todas tus tiradas de ataque durante tu turno. Además, cualquier enemigo que te ataque mientras este efecto esté activo debe realizar una tirada de salvación de Sabiduría contra tu CD de hechizos. En caso de fallar, el enemigo tiene desventaja en sus ataques contra ti hasta el final de su siguiente turno. Puedes usar esta habilidad una vez por descanso corto o largo."
+                }
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Cántico Corrupto",
+                  "subTitleName": "✦ Cántico Corrupto ✦",
+                  "subDescripcion": "A partir del nivel 15, el coro también puede manifestar su lado oscuro, invocando un canto destructivo que afecta a tus enemigos. Como acción, puedes elegir hasta 3 criaturas a 60 pies de ti. Esas criaturas deben realizar una tirada de salvación de Sabiduría. En caso de fallar, reciben *4d10* de daño Psíquico y quedan \"Aturdidas\" hasta el final de su siguiente turno. Si superan la tirada, reciben la mitad del daño y no quedan aturdidas. Puedes usar esta habilidad una vez por descanso largo."
+                }
+              }
+            },
+            "18": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Coro Apoteósico",
+                  "subTitleName": "✦ Coro Apoteósico ✦",
+                  "subDescripcion": "Finalmente, el coro revela todo su poder, fusionándose completamente contigo y manifestándose físicamente. Como acción adicional, puedes invocar una \"Manifestación del Coro\", envolviéndote en un halo de energía espectral o celestial durante 1 minuto. Mientras esta manifestación esté activa, obtienes los siguientes beneficios:\n<b class=\"content_subrayado\">— Inmunidad al daño psíquico.</b>\n<b class=\"content_subrayado\">—</b> Todos tus ataques cuerpo a cuerpo o a distancia causan daño adicional de 1d8 *psíquico* o *radiante* (a tu elección).\n<b class=\"content_subrayado\">—</b> Las criaturas a 30 pies (6 casillas) de ti tienen desventaja en las tiradas de salvación contra tus habilidades que provoquen miedo o encantamiento.\n\nPuedes usar esta habilidad una vez por descanso largo."
+                }
+              }
+            }
+          }
+        },
+        "senda8": {
+          "subNombre": "Pacto: La Liga",
+          "subDescripcion": "✦ PACTO: LA LIGA ✦\nEl Pacto de la Liga representa un juramento solemne hecho a una sociedad secreta o mística, comprometida con un objetivo oculto o una misión mayor. Aquellos que entran en la Liga obtienen habilidades para influir en el destino de los demás, castigar a los transgresores y proteger a los miembros de su hermandad.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Ojo Vigilante",
+                  "subTitleName": "✦ Ojo Vigilante ✦",
+                  "subDescripcion": "Cuando haces este juramento, la Liga te otorga una percepción aguda que te permite ver más allá de lo evidente. Obtienes Competencia con la habilidad Sabiduría (Percepción) si no la tenías ya. Además, puedes usar una Acción Adicional para marcar a una criatura que puedas ver a 60 pies (12 casillas) de ti. Durante 1 minuto, tienes ventaja en las tiradas de ataque contra esa criatura y no puede beneficiarse de la Invisibilidad contra ti. Puedes usar esta habilidad un número de veces igual a tu modificador de Sabiduría (mínimo 1) y recuperas todos los usos después de un descanso corto o largo."
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Justicia Silenciosa",
+                  "subTitleName": "✦ Justicia Silenciosa ✦",
+                  "subDescripcion": "La Liga te enseña a castigar a aquellos que desafían sus leyes en secreto. Cuando atacas a una criatura que esté atacando o dañando a un aliado en tu presencia, puedes usar una reacción para realizar un ataque adicional contra esa criatura. Si el ataque impacta, inflige un daño adicional de *2d8 de tipo psíquico o necrótico* (a tu elección). Puedes usar esta reacción una vez por turno y un número de veces igual a tu modificador de Sabiduría, recuperando todos los usos después de un descanso corto o largo."
+                }
+              }
+            },
+            "11": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Escudo de la Liga",
+                  "subTitleName": "✦ Escudo de la Liga ✦",
+                  "subDescripcion": "A partir de este nivel, la Liga te confiere una protección especial para sus miembros. Puedes usar una acción adicional para otorgar un Escudo de la Liga a ti o a un aliado a 30 pies (6 casillas) de ti. Durante 1 minuto, la criatura protegida tiene resistencia al daño *contundente*, *cortante* y *perforante* de armas no mágicas. Además, si esa criatura es atacada mientras está protegida por el escudo, puedes usar tu reacción para imponer desventaja en el ataque del enemigo. Puedes usar esta habilidad una vez por descanso corto o largo."
+                }
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Golpe de la Liga",
+                  "subTitleName": "✦ Golpe de la Liga ✦",
+                  "subDescripcion": "La Liga te otorga el poder de ejecutar juicios finales sobre los enemigos que la desafían. Como acción, puedes desatar un <b class=\"content_subrayado\">Golpe de la Liga</b> sobre una criatura que hayas marcado con tu \"Ojo Vigilante\". La criatura debe realizar una tirada de salvación de Constitución. Si falla, recibe 8d8 de daño de fuerza y es derribada al suelo. Si supera la tirada, recibe la mitad del daño y no es derribada. Esta habilidad solo puede usarse una vez por descanso largo."
+                }
+              }
+            },
+            "18": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Juicio Final de la Liga",
+                  "subTitleName": "✦ Juicio Final de la Liga ✦",
+                  "subDescripcion": "A este nivel, te conviertes en la mano ejecutora definitiva de la Liga, capaz de decidir el destino de una criatura con un solo juicio. Como Acción Adicional, puedes invocar el <b class=\"content_subrayado\">Juicio Final de la Liga</b>. Escoges una criatura a 60 pies (12 casillas) de ti. La criatura debe hacer una tirada de salvación de Sabiduría. Si falla, es reducida a 1 punto de vida de inmediato. Si supera la tirada, recibe 10d10 de daño psíquico. Puedes usar esta habilidad una vez cada 3 días, ya que su poder es inmenso."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "4": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Mejora de Puntuación de Característica",
+          "titleName": "✦ MEJORA DE PUNTUACIÓN DE CARACTERÍSTICA ✦",
+          "descripcion": "Cuando alcanzas el nivel 4, y nuevamente a los niveles 8, 12 y 16, puedes incrementar una puntuación de característica de tu elección en 2 puntos, o dos puntuaciones de característica de tu elección en 1 punto. Como es habitual, no puedes incrementar una puntuación de característica por encima de 20 usando este procedimiento."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Sangre Arcana",
+          "Puntos de Sangre Arcana"
+        ],
+        "filas": [
+          [
+            "1d4",
+            "1"
+          ]
+        ]
+      }
+    },
+    "5": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Ataque Extra",
+          "titleName": "✦ ATAQUE EXTRA ✦",
+          "descripcion": "A partir del nivel 5, cuando realices la acción de Ataque en tu turno, puedes atacar dos veces en lugar de una y tres veces a nivel 17."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Sangre Arcana",
+          "Puntos de Sangre Arcana"
+        ],
+        "filas": [
+          [
+            "1d4",
+            "1"
+          ]
+        ]
+      }
+    },
+    "6": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Voluntad Indomable",
+          "titleName": "✦ VOLUNTAD INDOMABLE ✦",
+          "descripcion": "Al alcanzar el nivel 6, has sobrevivido a horrores que harían temblar incluso a los guerreros más valientes. Tu mente y cuerpo se han endurecido contra el miedo, las enfermedades y el veneno.\n\nA partir de este nivel, obtienes inmunidad al estado de asustado/miedo, así como a las enfermedades comunes y al daño por veneno.\n\nAdemás, tu determinación inquebrantable se extiende a tus ataques. Cuando uses un arma cuerpo a cuerpo para golpear a una criatura que te cause miedo o que esté bajo el efecto de miedo, infliges daño adicional igual a tu modificador de Constitución. Este daño extra es del tipo del arma que estés usando."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Sangre Arcana",
+          "Puntos de Sangre Arcana"
+        ],
+        "filas": [
+          [
+            "2d6",
+            "2"
+          ]
+        ]
+      }
+    },
+    "7": {
+      "infoCubo": {
+        "columnas": [
+          "Sangre Arcana",
+          "Puntos de Sangre Arcana"
+        ],
+        "filas": [
+          [
+            "2d6",
+            "2"
+          ]
+        ]
+      }
+    },
+    "8": {
+      "infoCubo": {
+        "columnas": [
+          "Sangre Arcana",
+          "Puntos de Sangre Arcana"
+        ],
+        "filas": [
+          [
+            "2d6",
+            "2"
+          ]
+        ]
+      }
+    },
+    "9": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Psicometría Sombría",
+          "titleName": "✦ PSICOMETRÍA SOMBRÍA ✦",
+          "descripcion": "Cuando alcanzas el nivel 9, obtienes un talento sobrenatural para discernir los secretos que rodean reliquias misteriosas o lugares tocados por el mal. Siempre que realices una prueba de Inteligencia (Historia) para recordar información sobre la siniestra o trágica historia de un objeto que estás tocando o tu ubicación actual, tienes ventaja en la prueba. A discreción del DM, una tirada adecuadamente alta podría hacer que tu personaje experimente breves visiones del pasado relacionadas con el objeto o ubicación."
+        },
+        "blockDos": {
+          "name": "Sentido Ciego",
+          "titleName": "✦ SENTIDO CIEGO ✦",
+          "descripcion": "Al nivel 9, si eres capaz de oír, eres consciente de dónde se encuentra cualquier criatura escondida o invisible a 30 pies (6 casillas) o menos de ti."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Sangre Arcana",
+          "Puntos de Sangre Arcana"
+        ],
+        "filas": [
+          [
+            "2d6",
+            "2"
+          ]
+        ]
+      }
+    },
+    "10": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Aumento Sanguíneo",
+          "titleName": "✦ AUMENTO SANGUÍNEO ✦",
+          "descripcion": "A partir del nivel 10, la Sangre Arcana inunda tu cuerpo para reforzar permanentemente tu resistencia igual a +2 a la CA con o sin armadura, tu velocidad aumenta en 5 pies (1 Casilla) y tienes una bonificación a las tiradas de salvación de Fuerza, Destreza y Constitución igual a tu \"Puntuación de Sangre Arcana\" (mínimo de +1)."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Sangre Arcana",
+          "Puntos de Sangre Arcana"
+        ],
+        "filas": [
+          [
+            "2d6",
+            "2"
+          ]
+        ]
+      }
+    },
+    "11": {
+      "infoCubo": {
+        "columnas": [
+          "Sangre Arcana",
+          "Puntos de Sangre Arcana"
+        ],
+        "filas": [
+          [
+            "2d6",
+            "2"
+          ]
+        ]
+      }
+    },
+    "12": {
+      "infoCubo": {
+        "columnas": [
+          "Sangre Arcana",
+          "Puntos de Sangre Arcana"
+        ],
+        "filas": [
+          [
+            "3d8",
+            "3"
+          ]
+        ]
+      }
+    },
+    "13": {
+      "infoCubo": {
+        "columnas": [
+          "Sangre Arcana",
+          "Puntos de Sangre Arcana"
+        ],
+        "filas": [
+          [
+            "3d8",
+            "3"
+          ]
+        ]
+      }
+    },
+    "14": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Alma Endurecida",
+          "titleName": "✦ ALMA ENDURECIDA ✦",
+          "descripcion": "Al alcanzar el nivel 14, los horrores que has enfrentado y la sangre que has derramado han templado tu espíritu de manera implacable, haciéndote prácticamente inmune a la manipulación emocional y mental.\n\nObtienes ventaja en todas las tiradas de salvación contra ser encantado. Además, si una criatura intenta afectarte con una de estas condiciones y fallas la tirada de salvación, puedes usar tu reacción para sufrir daño Psíquico igual a tu \"Sangre Arcana + tu Puntuación de Sangre Arcana\" (sin posibilidad de curación hasta tener un descanso largo) y repetir la tirada de salvación inmediatamente."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Sangre Arcana",
+          "Puntos de Sangre Arcana"
+        ],
+        "filas": [
+          [
+            "3d8",
+            "3"
+          ]
+        ]
+      }
+    },
+    "15": {
+      "infoCubo": {
+        "columnas": [
+          "Sangre Arcana",
+          "Puntos de Sangre Arcana"
+        ],
+        "filas": [
+          [
+            "3d8",
+            "3"
+          ]
+        ]
+      }
+    },
+    "16": {
+      "infoCubo": {
+        "columnas": [
+          "Sangre Arcana",
+          "Puntos de Sangre Arcana"
+        ],
+        "filas": [
+          [
+            "3d8",
+            "3"
+          ]
+        ]
+      }
+    },
+    "17": {
+      "infoCubo": {
+        "columnas": [
+          "Sangre Arcana",
+          "Puntos de Sangre Arcana"
+        ],
+        "filas": [
+          [
+            "3d8",
+            "3"
+          ]
+        ]
+      }
+    },
+    "18": {
+      "infoCubo": {
+        "columnas": [
+          "Sangre Arcana",
+          "Puntos de Sangre Arcana"
+        ],
+        "filas": [
+          [
+            "4d10",
+            "4"
+          ]
+        ]
+      }
+    },
+    "19": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Sangre Ancestral",
+          "titleName": "✦ SANGRE ANCESTRAL ✦",
+          "descripcion": "A nivel 19, has alcanzado una conexión con las antiguas corrientes de poder que fluyen a través de la Sangre Arcana dentro de ti, permitiéndote desatar su potencial ancestral.\n\nCuando una criatura muere dentro de 60 pies (12 casillas) de ti, puedes usar tu reacción para consumir su esencia vital y restaurarte una cantidad de \"PG igual a tu nivel de cazador + tu modificador de Constitución + Sangre Arcana\". Si es una criatura con sangre, también puedes elegir invocar una \"Criatura de Sangre\" adicional sin sufrir daño necrótico en tu próximo turno. Solo puedes usar esta habilidad una vez por descanso corto o largo.\n\nSi ya eres de la orden del \"Invocador de Sangre\", puedes usar tu sangre para crear hasta <b class=\"content_subrayado\">dos Criaturas de Sangre</b> simultáneamente, sin sufrir el daño necrótico. Sin embargo, invocar más de dos Criaturas de Sangre requiere el sacrificio de tu vitalidad, sufriendo daño necrótico como de costumbre (Y si no eres de esta Orden y el doble si no eres)."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Sangre Arcana",
+          "Puntos de Sangre Arcana"
+        ],
+        "filas": [
+          [
+            "4d10",
+            "4"
+          ]
+        ]
+      }
+    },
+    "20": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Sueño Lúcido",
+          "titleName": "✦ SUEÑO LÚCIDO ✦",
+          "descripcion": "Al alcanzar el nivel 20, te conviertes en la personificación de la Sangre Arcana, dominando su poder al punto de poder controlar la sangre misma con una precisión letal.\n\nTu conexión con el plano onírico y tu dominio de la energía arcana te permiten trascender la muerte misma. Al alcanzar el nivel 20, si eres derrotado, asesinado o caes a 0 puntos de golpe, puedes regresar al campo de batalla como si despertaras de un sueño. Cuando esto ocurre, recuperas la mitad de tus puntos de golpe máximos y te levantas en el mismo lugar donde caíste. Puedes usar esta habilidad un número de veces igual a tu \"Puntuación de Sangre Arcana (mínimo 1 vez)\".\n\nCada vez que utilizas \"Sueño Lúcido\", el Señor de los Sueños se manifiesta brevemente en tu mente. Si el Señor de los Sueños conoce la debilidad de tu enemigo, te la revelará. Además, obtienes ventaja en todas tus tiradas de ataque contra esa debilidad durante el resto del combate. El Señor de los Sueños solo compartirá esta información una vez por enemigo, si es que conoce la debilidad del mismo.\n\nDespués de usar todas las veces permitidas, necesitarás un descanso prolongado para recuperar el uso de esta habilidad."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Sangre Arcana",
+          "Puntos de Sangre Arcana"
+        ],
+        "filas": [
+          [
+            "4d10",
+            "4"
+          ]
+        ]
+      }
+    }
+  }
+}
