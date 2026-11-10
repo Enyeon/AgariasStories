@@ -15,7 +15,7 @@
     "1": {
       "descripcion": "Portador de Runas antiguas que manipula poder ancestral grabado en su esencia.",
       "descripcionLarga": "El Tiznado canaliza Runas, fragmentos de un orden antiguo que trasciende reinos y eras. Las inscribe en armas, armaduras o en su propio cuerpo, alterando la realidad a través de símbolos primordiales. Cada Runa es poder, cada combinación una estrategia. No lanza magia convencional: invoca legado.",
-      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Fuerza, Constitución.\n❖ Tus puntos de golpe es:\n    :: Tu dado de PG es: 1d12. 12 + Constitución.\n    :: Además, por cada nivel por encima de 1, obtienes 1d12 de PG + Constitución.\n❖ Competencias:\n    :: Armadura: Armadura ligera, armadura media, escudos.\n    :: Armas: Armas simples, armas marciales.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge dos de entre Atletismo, Intimidación, Naturaleza, Percepción, Supervivencia y Trato de Animales.\n❖ Equipos. Comienzas con el siguiente equipo, además del otorgado por tu trasfondo:\n    :: (a) una gran hacha o (b) cualquier arma marcial cuerpo a cuerpo.\n    :: (a) dos hachas de mano o (b) cualquier arma simple.\n    :: Un equipo de explorador y cuatro jabalinas.\n    :: Monedas de Oro: 2d4 x 10.",
+      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: pendiente de definir por el autor de la clase.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d8.\n    :: Nivel 1: 8 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d8 (o 5) + tu modificador de Constitución por nivel.\n❖ Competencias: pendientes de definir por el autor de la clase.\n❖ Equipo: pendiente de definir por el autor de la clase.\n❖ Nota: los datos anteriores eran una copia del Bárbaro y se retiraron para no mostrar reglas incorrectas.",
       "infoBlock": {
         "blockUno": {
           "name": "",
@@ -83,80 +83,24 @@
       "informacionNivel": "Rasgo: Defensa temeraria"
     },
     "3": {
-      "informacionNivel": "Rasgo: Defensa temeraria",
-      "subClase": {
-        "senda1": {
-          "subNombre": "Hebra Paradoja",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "Rasgo: Rabia"
-            },
-            "6": {
-              "infoSubNivel": "Rasgo: Rabia"
-            },
-            "10": {
-              "infoSubNivel": "Rasgo: Rabia"
-            },
-            "14": {
-              "infoSubNivel": "Rasgo: Rabia"
-            }
-          }
-        },
-        "senda2": {
-          "subNombre": "Hebra Error",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "Rasgo: Rabia"
-            },
-            "6": {
-              "infoSubNivel": "Rasgo: Rabia"
-            },
-            "10": {
-              "infoSubNivel": "Rasgo: Rabia"
-            },
-            "14": {
-              "infoSubNivel": "Rasgo: Rabia"
-            }
-          }
-        },
-        "senda3": {
-          "subNombre": "Hebra Virus",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "Rasgo: Rabia"
-            },
-            "6": {
-              "infoSubNivel": "Rasgo: Rabia"
-            },
-            "10": {
-              "infoSubNivel": "Rasgo: Rabia"
-            },
-            "14": {
-              "infoSubNivel": "Rasgo: Rabia"
-            }
-          }
-        },
-        "senda4": {
-          "subNombre": "Hebra .exe",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "Rasgo: Rabia"
-            },
-            "6": {
-              "infoSubNivel": "Rasgo: Rabia"
-            },
-            "10": {
-              "infoSubNivel": "Rasgo: Rabia"
-            },
-            "14": {
-              "infoSubNivel": "Rasgo: Rabia"
-            }
-          }
-        }
-      }
+      "informacionNivel": "Rasgo: Defensa temeraria"
     },
     "20": {
       "informacionNivel": "Rasgo: Defensa temeraria"
     }
-  }
+  },
+  "competencias": {
+    "pendiente": true
+  },
+  "competenciasMulticlase": {
+    "pendiente": true
+  },
+  "fuenteReglas": "Agarias",
+  "subclasePendiente": true,
+  "subclasesRetiradas": [
+    "senda1",
+    "senda2",
+    "senda3",
+    "senda4"
+  ]
 }

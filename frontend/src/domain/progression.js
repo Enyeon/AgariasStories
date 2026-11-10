@@ -3,9 +3,12 @@
 
 import { ABILITY_KEYS, MAX_LEVEL, ABILITY_LABEL } from './constants.js';
 import { getClass, getRace, getFeat, getEpicBoon } from '../data/index.js';
+import { permissionsFor } from '../content/rules.js';
+import { ensureSubclassUnlocks } from './extensions.js';
 import {
   abilityScores, classLevels, featAbilityOptions, featAbilityBonus, featPrerequisites,
   hitDieFor, raceChoiceGroups, spellcasting, proficiencyBonus, subclassInfo, totalLevel,
+  hitPoints, classFeatures,
 } from './rules.js';
 
 const clone = (c) => structuredClone(c);
@@ -75,7 +78,7 @@ export function planLevelUp(c, classKey) {
   if (!cls) throw new Error(`Clase desconocida: ${classKey}`);
   const newClassLevel = (classLevels(c)[classKey] ?? 0) + 1;
   const newTotalLevel = totalLevel(c) + 1;
-  const sub = subclassInfo(classKey);
+  const sub = subclassInfo(classKey, c);
   const milestone = cls.niveles?.[newClassLevel]?.requeridoTrue ?? null;
   const choice = milestone?.statAmount?.choice;
   return {
@@ -177,11 +180,56 @@ export function applyLevelUp(c, choices) {
     improvement: plan.needsImprovement ? structuredClone(choices.improvement) : null,
     featureChoices: statAmountChoice.length ? { statAmount: statAmountChoice } : {},
   });
-  if (plan.needsSubclass) next.subclasses[plan.classKey] = choices.subclass;
+  if (plan.needsSubclass) {
+    next.subclasses[plan.classKey] = choices.subclass;
+    ensureSubclassUnlocks(next);
+  }
   if (plan.newClassLevel === 1 && !next.notes.classNotes[plan.classKey]) {
     next.notes.classNotes[plan.classKey] = getClass(plan.classKey)?.niveles?.[1]?.atributoInicial ?? '';
   }
   return { character: next, errors: [] };
+}
+
+/**
+ * Elige la subclase de una clase que ya alcanzó su nivel (p. ej. si la elección
+ * anterior se retiró de los datos). Devuelve un personaje NUEVO.
+ */
+export function setSubclass(c, classKey, subKey) {
+  const sub = subclassInfo(classKey, c);
+  const level = classLevels(c)[classKey] ?? 0;
+  if (!sub || level < sub.level) return { character: c, errors: ['Esta clase todavía no elige subclase.'] };
+  if (!sub.options.some((o) => o.key === subKey)) return { character: c, errors: ['Elige una opción válida.'] };
+  const next = clone(c);
+  next.subclasses[classKey] = subKey;
+  ensureSubclassUnlocks(next);
+  return { character: next, errors: [] };
+}
+
+// ── Varios niveles de una vez ────────────────────────────────────────────
+
+/**
+ * Aplica varias subidas de nivel en orden, cada una sobre el resultado de la
+ * anterior (exactamente igual que subir de una en una). Es atómica: si alguna
+ * falla, devuelve el personaje original sin cambios y el nivel que falló.
+ * @param {object} c
+ * @param {Array<Parameters<typeof applyLevelUp>[1]>} choicesList
+ */
+export function applyLevelUps(c, choicesList) {
+  let current = c;
+  for (let i = 0; i < choicesList.length; i++) {
+    const res = applyLevelUp(current, choicesList[i]);
+    if (res.errors.length) {
+      return { character: c, errors: res.errors, failedAt: totalLevel(c) + i + 1 };
+    }
+    current = res.character;
+  }
+  return { character: current, errors: [], failedAt: null };
+}
+
+/** ¿El siguiente nivel en esta clase requiere alguna decisión del jugador? */
+export function levelNeedsDecisions(c, classKey) {
+  const plan = planLevelUp(c, classKey);
+  return plan.needsSubclass || plan.needsImprovement || Boolean(plan.featureChoice);
 }
 
 /** Quita el último nivel y todo lo que dependía de él. */
@@ -190,12 +238,96 @@ export function applyLevelDown(c) {
   const next = clone(c);
   const removed = next.levels.pop();
   const remaining = classLevels(next)[removed.classKey] ?? 0;
-  const sub = subclassInfo(removed.classKey);
+  const sub = subclassInfo(removed.classKey, next);
   if (remaining === 0 || (sub && remaining < sub.level)) delete next.subclasses[removed.classKey];
+  if (remaining === 0 && next.classChoices) delete next.classChoices[removed.classKey];
   if (remaining === 0 && next.notes.classNotes[removed.classKey] === (getClass(removed.classKey)?.niveles?.[1]?.atributoInicial ?? '')) {
     delete next.notes.classNotes[removed.classKey];
   }
   if (next.levels.length < MAX_LEVEL) next.epicBoons = [];
+  // Los PG actuales no pueden quedar por encima del nuevo máximo.
+  if (next.combat?.currentHp !== null && next.combat?.currentHp !== undefined) {
+    const max = hitPoints(next, abilityScores(next)).max;
+    if (next.combat.currentHp > max) next.combat.currentHp = max;
+  }
+  return next;
+}
+
+/**
+ * Baja varios niveles quitando uno a uno (10 → 9 → … → 5) con applyLevelDown,
+ * igual que si se bajara de uno en uno. Lo que no depende del nivel (raza,
+ * trasfondo, rasgos con origen, criaturas, equipo, notas) se conserva.
+ * @param {object} c
+ * @param {number} targetLevel 0…nivel actual
+ */
+export function applyLevelDowns(c, targetLevel) {
+  const target = Math.max(0, Math.min(c.levels.length, Math.trunc(Number(targetLevel))));
+  let current = c;
+  while (current.levels.length > target) current = applyLevelDown(current);
+  return current;
+}
+
+/**
+ * Qué se pierde al bajar a `targetLevel`, para enseñarlo antes de confirmar.
+ * `spells` (opcional): catálogo de conjuros, para avisar de los conocidos de un
+ * nivel que ya no se puede lanzar.
+ */
+export function levelDownPreview(c, targetLevel, spells = null) {
+  const after = applyLevelDowns(c, targetLevel);
+  const levels = c.levels.slice(after.levels.length).map((l, i) => ({
+    level: after.levels.length + i + 1,
+    classKey: l.classKey,
+    className: getClass(l.classKey)?.nombre ?? l.classKey,
+    hpRoll: l.hpRoll,
+    improvement: l.improvement,
+  })).reverse();
+  const beforeFx = classFeatures(c);
+  const afterLevels = classLevels(after);
+  const features = [];
+  for (const f of beforeFx) {
+    const keep = afterLevels[f.classKey] ?? 0;
+    for (const lvl of f.levels.filter((x) => x.level > keep)) {
+      for (const x of [...lvl.features, ...lvl.subFeatures]) if (x.title) features.push({ className: f.className, level: lvl.level, title: x.title });
+    }
+  }
+  const subclasses = Object.keys(c.subclasses).filter((k) => !after.subclasses[k])
+    .map((k) => ({ classKey: k, className: getClass(k)?.nombre ?? k, name: subclassInfo(k, c)?.options.find((o) => o.key === c.subclasses[k])?.name ?? c.subclasses[k] }));
+  const classesLost = Object.keys(classLevels(c)).filter((k) => !afterLevels[k]).map((k) => getClass(k)?.nombre ?? k);
+  const topLevel = (arr) => (arr ?? []).reduce((m, n, i) => (n > 0 ? i + 1 : m), 0);
+  const maxSpellLevel = (sc) => Math.max(topLevel(sc.slots), topLevel(sc.pactSlots));
+  let spellsAbove = [];
+  if (spells && c.spells.known.length) {
+    const newMax = maxSpellLevel(spellcasting(after, abilityScores(after)));
+    spellsAbove = c.spells.known.filter((name) => {
+      const lvl = spells[name]?.nivel;
+      const n = lvl === 'Truco' ? 0 : Number(lvl);
+      return Number.isFinite(n) && n > newMax;
+    });
+  }
+  const scoresBefore = abilityScores(c);
+  const scoresAfter = abilityScores(after);
+  return {
+    from: c.levels.length,
+    to: after.levels.length,
+    character: after,
+    levels,
+    features,
+    subclasses,
+    classesLost,
+    epicBoons: after.epicBoons.length < c.epicBoons.length ? c.epicBoons.map((b) => b.name) : [],
+    abilities: ABILITY_KEYS.filter((k) => scoresBefore[k].total !== scoresAfter[k].total)
+      .map((k) => ({ ability: k, before: scoresBefore[k].total, after: scoresAfter[k].total })),
+    hp: { before: hitPoints(c, scoresBefore).max, after: hitPoints(after, scoresAfter).max },
+    spellsAbove,
+  };
+}
+
+/** Quita de los conocidos los conjuros indicados (y de los preparados). */
+export function forgetSpells(c, names) {
+  const drop = new Set(names);
+  const next = clone(c);
+  next.spells.known = next.spells.known.filter((n) => !drop.has(n));
+  next.spells.prepared = next.spells.prepared.filter((n) => !drop.has(n));
   return next;
 }
 
@@ -217,7 +349,10 @@ export function setRaceFeat(c, feat) {
 }
 
 export function canAddEpicBoon(c) {
-  if (!c.settings.allowEpicBoons) return { ok: false, reason: 'Necesitas el permiso del DM (pestaña «DM»).' };
+  const perms = permissionsFor(c);
+  if (!perms.epicBoons) {
+    return { ok: false, reason: perms.campaign ? `La campaña «${perms.campaign.name}» no permite bendiciones épicas.` : 'Necesitas el permiso del DM (pestaña «DM»).' };
+  }
   if (totalLevel(c) < MAX_LEVEL) return { ok: false, reason: `Las bendiciones épicas requieren nivel ${MAX_LEVEL}.` };
   return { ok: true, reason: '' };
 }

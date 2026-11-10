@@ -1,11 +1,20 @@
 // Pestaña «Rasgos»: índice + buscador, rasgos raciales, dotes y, por clase,
 // fundamentos, subclase, tabla de progresión y línea temporal de rasgos.
 
-import { html, raw, richText } from '../../ui/dom.js';
-import { classFeatures } from '../../domain/rules.js';
+import { html, raw, richText, setHtml } from '../../ui/dom.js';
+import { classFeatures, subclassInfo } from '../../domain/rules.js';
 import { parseTraitSections, parseClassBasics, proseToHtml, plainText } from '../../domain/text-format.js';
-import { getFeat, getRace, getEpicBoon, data } from '../../data/index.js';
+import { getFeat, getRace, getEpicBoon, getClass, data, raceName, featName } from '../../data/index.js';
 import { ABILITY_LABEL, CLASS_ICONS, CLASS_SECTIONS } from '../../domain/constants.js';
+import { setClassSkills, setClassSaves, TRAIT_ORIGINS } from '../../domain/proficiencies.js';
+import { describeEffect } from '../../domain/effects.js';
+import { confirmDialog, openDialog, toast } from '../../ui/feedback.js';
+import { setSubclass } from '../../domain/progression.js';
+import { openTraitEditor } from '../components/trait-editor.js';
+import { listEntries } from '../../content/registry.js';
+import {
+  assignedExtensions, addableExtensions, addUnlock, removeUnlock, findByCode, normalizeUnlockCode,
+} from '../../domain/extensions.js';
 import { textArea } from './common.js';
 
 const CLAMP_CHARS = 420;
@@ -81,7 +90,7 @@ function raceSection(ctx) {
   return html`<section class="traits-section" id="tr-race" aria-labelledby="tr-race-title">
     ${sectionHead({
       id: 'tr-race', icon: '🧬', eyebrow: 'Raza',
-      title: c.race.key ?? 'Sin raza',
+      title: c.race.key ? raceName(c.race.key) : 'Sin raza',
       actions: c.race.key ? editToggle(ctx, 'race', editing) : '',
     })}
     ${race ? html`<div class="chips chips--static">
@@ -114,7 +123,7 @@ function backgroundSection(ctx) {
 
 function featsSection(ctx) {
   const feats = ctx.sheet.feats.map((f) => ({
-    name: f.name, text: getFeat(f.name)?.habilidad ?? 'Dote no encontrada en los datos actuales.',
+    name: featName(f.name), text: getFeat(f.name)?.habilidad ?? 'Dote no encontrada en los datos actuales.',
     tags: [{ raza: 'Dote racial', trasfondo: 'Del trasfondo' }[f.source] ?? `Nivel ${f.level}`, f.ability ? `${ABILITY_LABEL[f.ability]} +1` : null], epic: false,
   }));
   const boons = ctx.character.epicBoons.map((b) => ({
@@ -134,7 +143,102 @@ function featsSection(ctx) {
   </section>`;
 }
 
+// ── Otros rasgos (origen genérico) ───────────────────────────────────────
+
+function customTraitCard(ctx, t) {
+  return html`<article class="trait-card trait-card--custom ${t.active ? '' : 'is-inactive'}" ${searchAttr(t.name, t.description, t.originDetail)}>
+    <header class="trait-card__head">
+      <h4 class="trait-card__title">${t.name}</h4>
+      ${ctx.readOnly ? '' : html`<div class="row">
+        <button type="button" class="icon-btn" data-action="trait-edit" data-id="${t.id}" aria-label="Editar ${t.name}" title="Editar">✎</button>
+        <button type="button" class="icon-btn" data-action="trait-delete" data-id="${t.id}" aria-label="Eliminar ${t.name}" title="Eliminar">🗑</button>
+      </div>`}
+    </header>
+    <div class="chips chips--static">
+      <span class="badge badge--accent">${TRAIT_ORIGINS[t.origin] ?? 'Otro'}</span>
+      ${t.active ? '' : html`<span class="badge badge--warning">Inactivo</span>`}
+      ${t.effects.map((e) => html`<span class="badge badge--gold">${describeEffect(e)}</span>`)}
+    </div>
+    ${t.originDetail ? html`<p class="trait-card__origin">${t.originDetail}</p>` : ''}
+    ${t.description ? clampable(t.description) : ''}
+    ${ctx.readOnly || !t.effects.length ? '' : html`<button type="button" class="link-btn" data-action="trait-toggle" data-id="${t.id}">${t.active ? 'Desactivar' : 'Activar'}</button>`}
+  </article>`;
+}
+
+function customTraitsSection(ctx) {
+  const traits = ctx.character.traits;
+  if (!traits.length && ctx.readOnly) return '';
+  return html`<section class="traits-section" id="tr-other" aria-labelledby="tr-other-title">
+    ${sectionHead({
+      id: 'tr-other', icon: '✧', eyebrow: 'Otros rasgos',
+      title: traits.length ? `${traits.length} ${traits.length === 1 ? 'rasgo' : 'rasgos'}` : 'Ninguno todavía',
+      actions: ctx.readOnly ? '' : html`<button type="button" class="btn btn--ghost btn--sm" data-action="trait-add">+ Añadir rasgo</button>`,
+    })}
+    ${traits.length
+      ? html`<div class="trait-grid">${traits.map((t) => customTraitCard(ctx, t))}</div>`
+      : html`<p class="muted">Rasgos que no vienen de tu raza, clase o trasfondo: un don del DM, una maldición, la marca de un evento, el poder de un objeto…</p>`}
+  </section>`;
+}
+
 // ── Clase ────────────────────────────────────────────────────────────────
+
+function chipList(items) {
+  return items.length
+    ? html`<div class="chips chips--static">${items.map((i) => html`<span class="badge" title="${i.title ?? ''}">${i.label}</span>`)}</div>`
+    : html`<span class="muted">Ninguna</span>`;
+}
+
+/** Competencias estructuradas de una clase, con las elecciones del jugador. */
+function proficiencyPanel(ctx, f) {
+  const st = ctx.sheet.classChoices.find((x) => x.classKey === f.classKey);
+  if (!st) return '';
+  if (st.pending) {
+    return html`<div class="callout callout--warning">
+      <p><strong>Competencias pendientes de definir.</strong> El autor de ${f.className} todavía no ha indicado sus salvaciones, competencias ni equipo${st.primary ? '' : ' de multiclase'}. Mientras tanto puedes marcarlas a mano en «Resumen».</p>
+    </div>`;
+  }
+  const manual = ctx.character.proficiencies.skills;
+  const ro = ctx.readOnly;
+  const skillButtons = st.skills ? st.skills.options.map((name) => {
+    const on = st.chosenSkills.includes(name);
+    const fromBg = st.blockedByBackground.includes(name);
+    const full = !on && st.skillsRemaining === 0;
+    const disabled = ro || (!on && (fromBg || full));
+    const title = fromBg ? 'Ya te la da el trasfondo: elige otra' : full ? 'Ya elegiste todas' : '';
+    return html`<button type="button" class="chip-toggle ${on ? 'is-on' : ''} ${on && fromBg ? 'is-warning' : ''}" aria-pressed="${on}"
+      ${disabled ? raw(`disabled title="${title}"`) : raw(`data-action="class-skill" data-class="${f.classKey}" data-key="${name}"`)}>${name}</button>`;
+  }) : [];
+  const fromManual = st.skills ? manual.filter((m) => st.skills.options.includes(m) && !st.chosenSkills.includes(m) && !st.blockedByBackground.includes(m)) : [];
+  const saves = [
+    ...st.salvaciones.map((k) => ({ label: ABILITY_LABEL[k] })),
+  ];
+  return html`<div class="prof-panel">
+    <p class="eyebrow">${st.primary ? 'Competencias de clase' : 'Competencias por multiclase'}${st.source ? html` · <span class="muted">${st.source}</span>` : ''}</p>
+    <dl class="basics">
+      ${st.primary ? html`<div class="basics__row"><dt>Salvaciones</dt><dd>
+        ${chipList(saves)}
+        ${st.saveChoice ? html`<div class="chips" role="group" aria-label="Salvación a elegir">
+          <span class="muted">Elige ${st.saveChoice.count}:</span>
+          ${st.saveChoice.options.map((k) => {
+            const on = st.chosenSaves.includes(k);
+            return html`<button type="button" class="chip-toggle ${on ? 'is-on' : ''}" aria-pressed="${on}" ${ro ? raw('disabled') : raw(`data-action="class-save" data-class="${f.classKey}" data-key="${k}"`)}>${ABILITY_LABEL[k]}</button>`;
+          })}
+        </div>` : ''}
+      </dd></div>` : ''}
+      <div class="basics__row"><dt>Armaduras</dt><dd>${chipList(st.armaduras.map((x) => ({ label: x })))}${st.armorNote ? html`<p class="field__hint">${st.armorNote}</p>` : ''}</dd></div>
+      <div class="basics__row"><dt>Armas</dt><dd>${chipList(st.armas.map((x) => ({ label: x })))}</dd></div>
+      <div class="basics__row"><dt>Herramientas</dt><dd>${chipList(st.herramientas.map((x) => ({ label: x })))}</dd></div>
+      ${st.skills ? html`<div class="basics__row"><dt>Habilidades</dt><dd>
+        <p class="prof-panel__count ${st.skillsRemaining ? 'is-pending' : ''}">${st.skillsRemaining
+          ? `Elige ${st.skillsRemaining} más (${st.chosenSkills.length}/${st.skills.count})`
+          : `${st.chosenSkills.length}/${st.skills.count} elegidas`}</p>
+        <div class="chips" role="group" aria-label="Habilidades de ${f.className}">${skillButtons}</div>
+        ${st.duplicates.length ? html`<p class="callout callout--warning">${st.duplicates.join(', ')} también ${st.duplicates.length === 1 ? 'la da' : 'las da'} tu trasfondo. La regla oficial te permite elegir otra en su lugar.</p>` : ''}
+        ${!ro && st.skillsRemaining && fromManual.length ? html`<button type="button" class="btn btn--ghost btn--sm" data-action="class-skills-from-manual" data-class="${f.classKey}">Usar las que ya tenías marcadas: ${fromManual.slice(0, st.skillsRemaining).join(', ')}</button>` : ''}
+      </dd></div>` : ''}
+    </dl>
+  </div>`;
+}
 
 function basicsPanel(ctx, f) {
   const key = `class:${f.classKey}`;
@@ -144,18 +248,24 @@ function basicsPanel(ctx, f) {
   return html`<div class="class-block">
     <div class="class-block__head">
       <h4 class="class-block__title">Fundamentos de la clase</h4>
-      ${editToggle(ctx, key, editing)}
     </div>
-    ${editing
-      ? textArea(ctx, { label: `Atributos y competencias de ${f.className}`, path: `notes.classNotes.${f.classKey}`, rows: 12 })
-      : basics.length
-        ? html`<dl class="basics" ${searchAttr(text)}>${basics.map((b) => html`<div class="basics__row">
-            <dt>${b.label || '—'}</dt>
-            <dd>${b.value ? html`<span>${b.value}</span>` : ''}
-              ${b.items.length ? html`<ul class="basics__list">${b.items.map((i) => html`<li>${i.label ? html`<strong>${i.label}:</strong> ` : ''}${i.value}</li>`)}</ul>` : ''}
-            </dd>
-          </div>`)}</dl>`
-        : html`<p class="muted">Sin datos de fundamentos para esta clase.</p>`}
+    ${proficiencyPanel(ctx, f)}
+    <details class="disclosure disclosure--ghost" data-key="basics:${f.classKey}" ${editing ? raw('open') : ''}>
+      <summary>Texto de la clase, puntos de golpe y equipo inicial</summary>
+      <div class="disclosure__body">
+        <div class="row row--end">${editToggle(ctx, key, editing, 'Editar notas')}</div>
+        ${editing
+          ? textArea(ctx, { label: `Atributos y notas de ${f.className}`, path: `notes.classNotes.${f.classKey}`, rows: 12 })
+          : basics.length
+            ? html`<dl class="basics" ${searchAttr(text)}>${basics.map((b) => html`<div class="basics__row">
+                <dt>${b.label || '—'}</dt>
+                <dd>${b.value ? html`<span>${b.value}</span>` : ''}
+                  ${b.items.length ? html`<ul class="basics__list">${b.items.map((i) => html`<li>${i.label ? html`<strong>${i.label}:</strong> ` : ''}${i.value}</li>`)}</ul>` : ''}
+                </dd>
+              </div>`)}</dl>`
+            : html`<p class="muted">Sin notas para esta clase.</p>`}
+      </div>
+    </details>
   </div>`;
 }
 
@@ -173,13 +283,45 @@ function progressionTable(f) {
 }
 
 function featureCard(item, subName) {
-  return html`<article class="feature-card ${item.sub ? 'feature-card--sub' : ''}" ${searchAttr(item.title, item.text)}>
+  return html`<article class="feature-card ${item.sub ? 'feature-card--sub' : ''} ${item.homebrew ? 'feature-card--homebrew' : ''} ${item.replacedBy ? 'is-replaced' : ''}" ${searchAttr(item.title, item.text)}>
     <header class="feature-card__head">
       <h5 class="feature-card__title">${item.title || 'Rasgo'}</h5>
       ${item.sub ? html`<span class="badge badge--accent">${subName ?? 'Subclase'}</span>` : ''}
+      ${item.homebrew && !item.sub ? html`<span class="badge badge--gold" title="${item.condition ?? ''}">⚜️ ${item.extension}${item.origin ? ` · ${TRAIT_ORIGINS[item.origin] ?? ''}` : ''}</span>` : ''}
+      ${item.replacedBy ? html`<span class="badge badge--warning">Sustituido por ${item.replacedBy}</span>` : ''}
     </header>
-    ${clampable(item.text)}
+    ${item.replaces ? html`<p class="trait-card__origin">Sustituye a «${item.replaces}».</p>` : ''}
+    ${item.replacedBy ? '' : clampable(item.text)}
   </article>`;
+}
+
+/** Extensiones Homebrew asignadas a esta clase (subclases secretas, bendiciones…). */
+function extensionsPanel(ctx, f) {
+  const assigned = assignedExtensions(ctx.character).filter(({ entry }) => entry.item.classKey === f.classKey);
+  const addable = ctx.readOnly ? [] : addableExtensions(ctx.character).filter((e) => e.item.classKey === f.classKey);
+  if (!assigned.length && ctx.readOnly) return '';
+  if (!assigned.length && !addable.length && !ctx.campaigns?.length && !listEntries('extension', { selectable: false }).length) return '';
+  return html`<div class="class-block extension-panel">
+    <div class="class-block__head">
+      <h4 class="class-block__title">⚜️ Contenido especial</h4>
+      ${ctx.readOnly ? '' : html`<div class="row">
+        ${addable.length ? html`<button type="button" class="btn btn--ghost btn--sm" data-action="ext-add" data-class="${f.classKey}">＋ Añadir (${addable.length})</button>` : ''}
+        <button type="button" class="btn btn--ghost btn--sm" data-action="ext-code">🔑 Tengo un código</button>
+      </div>`}
+    </div>
+    ${assigned.length ? html`<ul class="extension-list">${assigned.map(({ entry }) => {
+      const first = entry.item.features[0]?.level ?? 1;
+      const active = f.level >= first;
+      return html`<li>
+        <div><strong>${entry.item.name}</strong>
+          <span class="muted"> · ${entry.item.kind === 'subclase' ? f.subclassLabel : 'Habilidad especial'}${entry.item.condition ? ` · ${entry.item.condition}` : ''}</span>
+          ${active ? '' : html` <span class="badge">Desde nivel ${first}</span>`}
+          ${entry.item.kind === 'subclase' && f.subclass?.key !== entry.ref && f.subclassLevel && f.level >= f.subclassLevel ? html` <button type="button" class="link-btn" data-action="pick-subclass" data-class="${f.classKey}">Elegirla como ${f.subclassLabel.toLowerCase()}</button>` : ''}
+        </div>
+        ${ctx.readOnly ? '' : html`<button type="button" class="icon-btn" data-action="ext-remove" data-ref="${entry.ref}" aria-label="Quitar ${entry.item.name}" title="Quitar">×</button>`}
+      </li>`;
+    })}</ul>` : html`<p class="muted">Subclases secretas, bendiciones o evoluciones que tu DM te asigne aparecerán aquí.</p>`}
+  </div>`;
 }
 
 /** Agrupa niveles consecutivos sin rasgos para no llenar la línea temporal de vacíos. */
@@ -240,7 +382,7 @@ function classSection(ctx, f) {
   const hp = ctx.sheet.hp.perLevel.filter((p) => p.classKey === f.classKey).reduce((s, p) => s + p.total, 0);
   return html`<section class="traits-section traits-section--class" id="${id}" aria-labelledby="${id}-title">
     <header class="class-hero">
-      <span class="class-hero__emblem" aria-hidden="true">${CLASS_ICONS[f.classKey] ?? '⚔️'}</span>
+      <span class="class-hero__emblem" aria-hidden="true">${CLASS_ICONS[f.classKey] ?? getClass(f.classKey)?.icono ?? '⚔️'}</span>
       <div class="class-hero__titles">
         <p class="eyebrow">Clase · ${CLASS_SECTIONS[f.section] ?? 'Suplemento'}</p>
         <h3 class="traits-section__title" id="${id}-title">${f.className} <span class="badge badge--gold">Nivel ${f.level}</span></h3>
@@ -254,6 +396,12 @@ function classSection(ctx, f) {
         ${f.classDc ? html`<div title="8 + competencia + ${f.classDc.ability}"><dt>${f.classDc.name}</dt><dd>${f.classDc.value}</dd></div>` : ''}
       </dl>
     </header>
+    ${!f.subclass && f.subclassLevel && f.level >= f.subclassLevel && !ctx.readOnly ? html`<div class="callout callout--warning row row--between">
+      <p>Te falta elegir tu ${f.subclassLabel.toLowerCase()}.</p>
+      <button type="button" class="btn btn--primary btn--sm" data-action="pick-subclass" data-class="${f.classKey}">Elegir ${f.subclassLabel.toLowerCase()}</button>
+    </div>` : ''}
+    ${f.subclassPending ? html`<p class="callout">Las subclases de ${f.className} están pendientes de definir por el autor de la clase.</p>` : ''}
+    ${f.subclass?.pending ? html`<p class="callout">Los rasgos de nivel de esta ${f.subclassLabel.toLowerCase()} aún no están cargados en la app. Consulta el manual (${f.subclass.source ?? 'fuente oficial'}).</p>` : ''}
     ${f.subclass ? html`<div class="subclass-card" ${searchAttr(f.subclass.name, f.subclass.description)}>
       <p class="eyebrow">${f.subclassLabel}</p>
       <h4 class="subclass-card__title">${f.subclass.name}</h4>
@@ -263,6 +411,7 @@ function classSection(ctx, f) {
       ${basicsPanel(ctx, f)}
       ${progressionTable(f)}
     </div>
+    ${extensionsPanel(ctx, f)}
     ${timeline(f)}
     ${f.missingLevels.length ? html`<p class="callout callout--warning">Faltan datos de ${f.className} para ${f.missingLevels.length === 1 ? 'el nivel' : 'los niveles'} ${f.missingLevels.join(', ')}. Consulta el manual o a tu DM.</p>` : ''}
   </section>`;
@@ -272,10 +421,11 @@ function classSection(ctx, f) {
 
 function nav(ctx, classes) {
   const links = [
-    { href: '#tr-race', label: ctx.character.race.key ? `🧬 ${ctx.character.race.key}` : '🧬 Raza' },
+    { href: '#tr-race', label: ctx.character.race.key ? `🧬 ${raceName(ctx.character.race.key)}` : '🧬 Raza' },
     ...(ctx.sheet.background ? [{ href: '#tr-background', label: '📜 Trasfondo' }] : []),
     ...(ctx.sheet.feats.length || ctx.character.epicBoons.length ? [{ href: '#tr-feats', label: '✦ Dotes' }] : []),
-    ...classes.map((f) => ({ href: `#tr-class-${f.classKey}`, label: `${CLASS_ICONS[f.classKey] ?? '⚔️'} ${f.className} ${f.level}` })),
+    ...(ctx.character.traits.length || !ctx.readOnly ? [{ href: '#tr-other', label: '✧ Otros rasgos' }] : []),
+    ...classes.map((f) => ({ href: `#tr-class-${f.classKey}`, label: `${CLASS_ICONS[f.classKey] ?? getClass(f.classKey)?.icono ?? '⚔️'} ${f.className} ${f.level}` })),
   ];
   return html`<nav class="traits-nav" aria-label="Índice de rasgos">
     <p class="traits-nav__title">En esta página</p>
@@ -296,6 +446,7 @@ export function renderFeatures(ctx) {
       ${raceSection(ctx)}
       ${backgroundSection(ctx)}
       ${featsSection(ctx)}
+      ${customTraitsSection(ctx)}
       ${classes.length
         ? classes.map((f) => classSection(ctx, f))
         : html`<div class="empty-state"><h2>Sin rasgos de clase</h2><p>Sube a nivel 1 en «Progresión» para ver los rasgos de tu clase.</p></div>`}
@@ -330,7 +481,126 @@ export function applyTraitFilter(root, query) {
   if (status) status.textContent = q ? (shown ? `${shown} resultado(s) para «${query.trim()}»` : `Sin resultados para «${query.trim()}»`) : '';
 }
 
+async function editTrait(ed, id) {
+  const current = id ? ed.character.traits.find((t) => t.id === id) : null;
+  const perms = ed.permissions;
+  const trait = await openTraitEditor(current, { allowEffects: perms.traitEffects !== false, catalog: perms.homebrew.rasgo ? listEntries('rasgo') : [] });
+  if (!trait) return;
+  ed.update((c) => {
+    const i = c.traits.findIndex((t) => t.id === trait.id);
+    if (i >= 0) c.traits[i] = trait; else c.traits.push(trait);
+  }, { keepScroll: true });
+}
+
+async function addExtension(ed, classKey) {
+  const options = addableExtensions(ed.character).filter((e) => e.item.classKey === classKey);
+  const ref = await openDialog({
+    title: 'Añadir contenido especial',
+    size: 'lg',
+    render(body, close) {
+      setHtml(body, html`<div class="stack stack--sm">${options.map((e) => html`<button type="button" class="option-card" data-ref="${e.ref}">
+        <span><strong>${e.item.name}</strong> <span class="badge">${e.item.kind === 'subclase' ? 'Subclase' : 'Habilidad especial'}</span>
+        ${e.item.condition ? html`<span class="muted"> · ${e.item.condition}</span>` : ''}
+        <span class="rich">${richText(e.item.description || e.item.features.map((x) => `Nivel ${x.level}: ${x.name}`).join('\n'))}</span></span></button>`)}</div>
+        <div class="dialog__footer"><button type="button" class="btn btn--ghost" data-dialog-close>Cancelar</button></div>`);
+      body.addEventListener('click', (e) => { const b = e.target.closest('[data-ref]'); if (b) close(b.dataset.ref); });
+    },
+  });
+  if (!ref) return;
+  ed.replace(addUnlock(ed.character, ref), { keepScroll: true, message: 'Contenido especial añadido.' });
+}
+
+async function unlockWithCode(ed) {
+  const result = await openDialog({
+    title: 'Desbloquear con un código',
+    size: 'sm',
+    render(body, close) {
+      setHtml(body, html`<form class="stack" data-f novalidate>
+        <div class="field"><label class="field__label" for="unlock-code">Código que te dio el DM</label>
+          <input id="unlock-code" class="input" autocomplete="off" autocapitalize="characters" placeholder="ABCD-EFGH-JKLM" maxlength="20" autofocus></div>
+        <p class="field__error" data-error role="alert"></p>
+        <div class="dialog__footer"><button type="button" class="btn btn--ghost" data-dialog-close>Cancelar</button><button class="btn btn--primary">Desbloquear</button></div>
+      </form>`);
+      body.querySelector('[data-f]').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const raw = body.querySelector('#unlock-code').value;
+        const code = normalizeUnlockCode(raw);
+        const entry = code ? await findByCode(code) : null;
+        if (!entry) {
+          body.querySelector('[data-error]').textContent = 'Ese código no corresponde a ningún contenido disponible. Comprueba que estás en la campaña correcta y que el DM lo ha publicado.';
+          return;
+        }
+        close({ entry, code });
+      });
+    },
+  });
+  if (!result) return;
+  const { entry, code } = result;
+  if (!ed.character.levels.some((l) => l.classKey === entry.item.classKey)) {
+    toast(`«${entry.item.name}» es para la clase ${getClass(entry.item.classKey)?.nombre ?? entry.item.classKey}, que tu personaje no tiene. Se guardará igualmente y se aplicará si la consigues.`, { type: 'warning' });
+  }
+  ed.replace(addUnlock(ed.character, entry.ref, code), { keepScroll: true, message: `Desbloqueado: ${entry.item.name}.` });
+}
+
+async function pickSubclass(ed, classKey) {
+  const info = subclassInfo(classKey, ed.character);
+  if (!info) return;
+  const key = await openDialog({
+    title: `Elige tu ${info.label.toLowerCase()}`,
+    size: 'lg',
+    render(body, close) {
+      setHtml(body, html`<div class="stack stack--sm">${info.options.map((o) => html`<button type="button" class="option-card" data-sub="${o.key}">
+        <span><strong>${o.name}</strong><span class="rich">${richText(o.description)}</span></span></button>`)}</div>
+        <div class="dialog__footer"><button type="button" class="btn btn--ghost" data-dialog-close>Cancelar</button></div>`);
+      body.addEventListener('click', (e) => { const b = e.target.closest('[data-sub]'); if (b) close(b.dataset.sub); });
+    },
+  });
+  if (!key) return;
+  const res = setSubclass(ed.character, classKey, key);
+  if (res.errors.length) return toast(res.errors.join(' '), { type: 'error' });
+  ed.replace(res.character, { keepScroll: true, message: `${info.label}: ${info.options.find((o) => o.key === key)?.name}.` });
+}
+
 export const featuresActions = {
+  'ext-add': (ed, el) => addExtension(ed, el.dataset.class),
+  'ext-code': (ed) => unlockWithCode(ed),
+  async 'ext-remove'(ed, el) {
+    const entry = assignedExtensions(ed.character).find((x) => x.entry.ref === el.dataset.ref)?.entry;
+    const ok = await confirmDialog({ title: 'Quitar contenido especial', message: `¿Quitar «${entry?.item.name ?? 'este contenido'}» del personaje? Si era tu subclase, tendrás que elegir otra. Si tenía código, necesitarás el código otra vez para recuperarlo.`, confirmLabel: 'Quitar', danger: true });
+    if (ok) ed.replace(removeUnlock(ed.character, el.dataset.ref), { keepScroll: true });
+  },
+  'pick-subclass': (ed, el) => pickSubclass(ed, el.dataset.class),
+  'trait-add': (ed) => editTrait(ed, null),
+  'trait-edit': (ed, el) => editTrait(ed, el.dataset.id),
+  'trait-toggle': (ed, el) => ed.update((c) => {
+    const t = c.traits.find((x) => x.id === el.dataset.id);
+    if (t) t.active = !t.active;
+  }, { keepScroll: true }),
+  async 'trait-delete'(ed, el) {
+    const t = ed.character.traits.find((x) => x.id === el.dataset.id);
+    if (!t || !(await confirmDialog({ title: 'Eliminar rasgo', message: `¿Eliminar «${t.name}»? Sus efectos dejarán de aplicarse.`, confirmLabel: 'Eliminar', danger: true }))) return;
+    ed.update((c) => { c.traits = c.traits.filter((x) => x.id !== t.id); }, { keepScroll: true });
+  },
+  'class-skill': (ed, el) => {
+    const { class: classKey, key } = el.dataset;
+    const cur = ed.character.classChoices?.[classKey]?.skills ?? [];
+    const next = cur.includes(key) ? cur.filter((s) => s !== key) : [...cur, key];
+    ed.replace(setClassSkills(ed.character, classKey, next), { keepScroll: true, refocus: `[data-action="class-skill"][data-class="${classKey}"][data-key="${key}"]` });
+  },
+  'class-save': (ed, el) => {
+    const { class: classKey, key } = el.dataset;
+    const cur = ed.character.classChoices?.[classKey]?.saves ?? [];
+    ed.replace(setClassSaves(ed.character, classKey, cur.includes(key) ? [] : [key]), { keepScroll: true });
+  },
+  'class-skills-from-manual': (ed, el) => {
+    const classKey = el.dataset.class;
+    const st = ed.sheet.classChoices.find((x) => x.classKey === classKey);
+    if (!st?.skills) return;
+    const extra = ed.character.proficiencies.skills
+      .filter((m) => st.skills.options.includes(m) && !st.chosenSkills.includes(m) && !st.blockedByBackground.includes(m))
+      .slice(0, st.skillsRemaining);
+    ed.replace(setClassSkills(ed.character, classKey, [...st.chosenSkills, ...extra]), { keepScroll: true, message: 'Habilidades asignadas a la clase.' });
+  },
   'restore-race-traits': (ed) => ed.update((c) => { c.notes.raceTraits = getRace(c.race.key)?.info ?? ''; }, { structural: true }),
   'toggle-trait-edit': (ed, el) => {
     const key = el.dataset.target;

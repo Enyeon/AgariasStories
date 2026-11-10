@@ -162,7 +162,7 @@ describe('pericia (competencia experta)', () => {
 describe('migración 1 → 2', () => {
   it('convierte el trasfondo de texto en oficial o homebrew', () => {
     const v1 = (bg) => ({ format: 'agarias-dnd-character', schemaVersion: 1, character: { identity: { name: 'X', background: bg } } });
-    expect(SCHEMA_VERSION).toBe(2);
+    expect(SCHEMA_VERSION).toBeGreaterThanOrEqual(2);
     const official = parseDocument(v1('criminal')).character;
     expect(official.background).toMatchObject({ source: 'official', key: 'criminal' });
     expect(official.identity.background).toBeUndefined();

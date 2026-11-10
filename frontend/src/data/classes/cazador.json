@@ -14,7 +14,7 @@
     "1": {
       "descripcion": "Guerrero que utiliza su propia sangre como catalizador de poder oscuro.",
       "descripcionLarga": "Inspirado por horrores cósmicos y bestias imposibles, el Cazador de Sangre transforma el dolor en arma. Marca su piel con rituales, activa maldiciones y potencia sus armas con su propia vitalidad. Cada combate es un intercambio: poder a cambio de sacrificio. Es determinación obsesiva frente a lo monstruoso.",
-      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Destreza, Inteligrncia.\n❖ Tus puntos de golpe es:\n    :: Tu dado de PG es: 1d10. 10 + Constitución.\n    :: Además, por cada nivel por encima de 1, obtienes 1d10 de PG + Constitución.\n❖ Competencias:\n    :: Armadura: Armadura ligera, armadura media, escudos.\n    :: Armas: Armas simples, armas marciales, armas de Cazador.\n    :: Herramientas: Herramientas de Alquimista.\n    :: Habilidades: escoge tres de entre Acrobacias, Atletismo, Historia, Perspicacia, Investigación, Religión, Supervivencia.\n❖ Equipos. Comienzas con el siguiente equipo, además del otorgado por tu trasfondo:\n    :: (a) un arma marcial o (b) dos armas simples.\n    :: (a) una ballesta ligera y 20 saetas o (b) una ballesta de mano y 20 saetas.\n    :: (a) armadura de cuero tachado o (b) armadura de malla de escamas.\n    :: Un equipo de explorador y suministros de alquimista.\n    :: Monedas de Oro: 5d4 x 10.\n\n\"Teme a la vieja Sangre\"\nQue la sangre de sus cuerpos sea lo último que vean.",
+      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Destreza y Inteligencia.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d8.\n    :: Nivel 1: 8 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d8 (o 5) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Armadura ligera, Armadura media y Escudos.\n    :: Armas: Armas simples, Armas marciales y Armas de Cazador.\n    :: Herramientas: Herramientas de alquimista.\n    :: Habilidades: escoge tres de entre Acrobacias, Atletismo, Historia, Perspicacia, Investigación, Religión y Supervivencia.\n❖ Equipo. Comienzas con el siguiente equipo, además del que te dé tu trasfondo:\n    :: (a) un arma marcial o (b) dos armas simples.\n    :: (a) una ballesta ligera y 20 saetas o (b) una ballesta de mano y 20 saetas.\n    :: (a) armadura de cuero tachonado o (b) cota de escamas.\n    :: Un paquete de explorador y suministros de alquimista.\n    :: Alternativa: 5d4 × 10 po en lugar del equipo de clase.\n❖ Fuente: Agarias.\n\n\"Teme a la vieja Sangre\"\nQue la sangre de sus cuerpos sea lo último que vean.",
       "infoBlock": {
         "blockUno": {
           "name": "Viales de Sangre",
@@ -146,7 +146,13 @@
                 }
               }
             }
-          }
+          },
+          "efectos": [
+            {
+              "type": "habilita",
+              "value": "criaturas_de_sangre"
+            }
+          ]
         },
         "senda2": {
           "subNombre": "Orden del Licántropo",
@@ -811,5 +817,47 @@
         ]
       }
     }
-  }
+  },
+  "competencias": {
+    "salvaciones": [
+      "destreza",
+      "inteligencia"
+    ],
+    "armaduras": [
+      "Armadura ligera",
+      "Armadura media",
+      "Escudos"
+    ],
+    "armas": [
+      "Armas simples",
+      "Armas marciales",
+      "Armas de Cazador"
+    ],
+    "herramientas": [
+      "Herramientas de alquimista"
+    ],
+    "habilidades": {
+      "elegir": 3,
+      "de": [
+        "Acrobacias",
+        "Atletismo",
+        "Historia",
+        "Perspicacia",
+        "Investigación",
+        "Religión",
+        "Supervivencia"
+      ]
+    }
+  },
+  "competenciasMulticlase": {
+    "pendiente": true
+  },
+  "equipoInicial": [
+    "(a) un arma marcial o (b) dos armas simples.",
+    "(a) una ballesta ligera y 20 saetas o (b) una ballesta de mano y 20 saetas.",
+    "(a) armadura de cuero tachonado o (b) cota de escamas.",
+    "Un paquete de explorador y suministros de alquimista."
+  ],
+  "oroInicial": "5d4 × 10",
+  "fuenteReglas": "Agarias"
 }

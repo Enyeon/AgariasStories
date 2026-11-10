@@ -16,88 +16,30 @@
     "1": {
       "descripcion": "Guardían de la naturaleza que domina la magia primigenia y las formas salvajes.",
       "descripcionLarga": "El Druida no controla la naturaleza: es parte de ella. Comprende el equilibrio entre crecimiento y decadencia, vida y depredación. Puede transformarse en bestias, invocar fuerzas elementales o invocar la furia de la tierra misma. Representa el ciclo eterno y la memoria del mundo antes de las ciudades.",
-      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Fuerza, Constitución.\n❖ Tus puntos de golpe es:\n    :: Tu dado de PG es: 1d12. 12 + Constitución.\n    :: Además, por cada nivel por encima de 1, obtienes 1d12 de PG + Constitución.\n❖ Competencias:\n    :: Armadura: Armadura ligera, armadura media, escudos.\n    :: Armas: Armas simples, armas marciales.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge dos de entre Atletismo, Intimidación, Naturaleza, Percepción, Supervivencia y Trato de Animales.\n❖ Equipos. Comienzas con el siguiente equipo, además del otorgado por tu trasfondo:\n    :: (a) una gran hacha o (b) cualquier arma marcial cuerpo a cuerpo.\n    :: (a) dos hachas de mano o (b) cualquier arma simple.\n    :: Un equipo de explorador y cuatro jabalinas.\n    :: Monedas de Oro: 2d4 x 10.",
+      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Inteligencia y Sabiduría.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d8.\n    :: Nivel 1: 8 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d8 (o 5) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Armadura ligera, Armadura media y Escudos (Los druidas no llevan armaduras ni escudos de metal.).\n    :: Armas: Garrotes, Dagas, Dardos, Jabalinas, Mazas, Bastones, Cimitarras, Hoces, Hondas y Lanzas.\n    :: Herramientas: Útiles de herborista.\n    :: Habilidades: escoge dos de entre Conocimiento Arcano, Medicina, Naturaleza, Percepción, Perspicacia, Religión, Supervivencia y Trato con Animales.\n❖ Equipo. Comienzas con el siguiente equipo, además del que te dé tu trasfondo:\n    :: (a) un escudo de madera o (b) cualquier arma simple.\n    :: (a) una cimitarra o (b) cualquier arma simple cuerpo a cuerpo.\n    :: Armadura de cuero, un paquete de explorador y un canalizador druídico.\n    :: Alternativa: 2d4 × 10 po en lugar del equipo de clase.\n❖ Fuente: Manual del Jugador.",
       "informacionNivel": "✦  ✦\n\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n\n✦  ✦"
     },
     "2": {
-      "informacionNivel": "✦ ATAQUE TEMERARIO ✦"
-    },
-    "3": {
-      "informacionNivel": "✦ CONOCIMIENTO PRIMITIVO ✦",
+      "informacionNivel": "✦ ATAQUE TEMERARIO ✦",
       "subClase": {
-        "senda1": {
-          "subNombre": "Hebra Paradoja",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
+        "tierra": {
+          "subNombre": "Círculo de la Tierra",
+          "subDescripcion": "Sabios ligados a un terreno: conjuros adicionales y recuperación de magia.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
         },
-        "senda2": {
-          "subNombre": "Hebra Error",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
-        },
-        "senda3": {
-          "subNombre": "Hebra Virus",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
-        },
-        "senda4": {
-          "subNombre": "Hebra .exe",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
+        "luna": {
+          "subNombre": "Círculo de la Luna",
+          "subDescripcion": "Guardianes salvajes: formas salvajes de combate más poderosas.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
         }
       }
+    },
+    "3": {
+      "informacionNivel": "✦ CONOCIMIENTO PRIMITIVO ✦"
     },
     "4": {
       "informacionNivel": "✦  ✦"
@@ -150,5 +92,69 @@
     "20": {
       "informacionNivel": "✦  ✦"
     }
-  }
+  },
+  "competencias": {
+    "salvaciones": [
+      "inteligencia",
+      "sabiduria"
+    ],
+    "armaduras": [
+      "Armadura ligera",
+      "Armadura media",
+      "Escudos"
+    ],
+    "armas": [
+      "Garrotes",
+      "Dagas",
+      "Dardos",
+      "Jabalinas",
+      "Mazas",
+      "Bastones",
+      "Cimitarras",
+      "Hoces",
+      "Hondas",
+      "Lanzas"
+    ],
+    "herramientas": [
+      "Útiles de herborista"
+    ],
+    "habilidades": {
+      "elegir": 2,
+      "de": [
+        "Conocimiento Arcano",
+        "Medicina",
+        "Naturaleza",
+        "Percepción",
+        "Perspicacia",
+        "Religión",
+        "Supervivencia",
+        "Trato con Animales"
+      ]
+    },
+    "notaArmadura": "Los druidas no llevan armaduras ni escudos de metal."
+  },
+  "competenciasMulticlase": {
+    "armaduras": [
+      "Armadura ligera",
+      "Armadura media",
+      "Escudos"
+    ],
+    "armas": [],
+    "herramientas": [],
+    "habilidades": null
+  },
+  "equipoInicial": [
+    "(a) un escudo de madera o (b) cualquier arma simple.",
+    "(a) una cimitarra o (b) cualquier arma simple cuerpo a cuerpo.",
+    "Armadura de cuero, un paquete de explorador y un canalizador druídico."
+  ],
+  "oroInicial": "2d4 × 10",
+  "fuenteReglas": "Manual del Jugador",
+  "subclaseNombre": "Círculo druídico",
+  "subclasesRetiradas": [
+    "senda1",
+    "senda2",
+    "senda3",
+    "senda4"
+  ]
 }

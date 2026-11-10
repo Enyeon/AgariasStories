@@ -46,3 +46,22 @@ Resumen de lo encontrado antes de la refactorización y qué se hizo con cada co
 | Interfaz | **Rediseñar** manteniendo secciones y estética oscura. Easter egg «modo matrix» conservado en «Acerca de». |
 | Login/registro | **Eliminar** por ahora (estaba roto); el diseño permite añadir cuentas (ver README). |
 | Archivos de la lista anterior | **Eliminar**. |
+
+## v3 · Homebrew, campañas y datos (noviembre de 2026)
+
+Auditoría y diseño completos (con las decisiones tomadas) en el documento
+«Agarias · Auditoría y diseño del sistema Homebrew». Resumen de lo implementado:
+
+- **Contenido genérico**: registro único (`content/registry.js`) para el Homebrew,
+  consultado por `data/index.js` después de los datos oficiales; esquemas y
+  validación por tipo (`content/schema.js`); adaptadores a la forma del motor
+  (`content/engine.js`). Un único motor de reglas para oficial y Homebrew.
+- **Permisos**: un solo sistema (reglas de campaña, `content/rules.js`) que
+  sustituye a la casilla `allowEpicBoons` cuando hay campaña; comprobado también
+  en el servidor (Supabase, `supabase/migrations`).
+- **Persistencia**: referencias estables `hb:…` + instantáneas en el personaje;
+  estados borrador/propuesto/publicado/oculto/retirado; borrar = retirar.
+- **Competencias de clase** con fuentes y sin duplicados; **rasgos con origen**;
+  **subida de varios niveles** atómica y equivalente a la de uno en uno;
+  **criaturas vinculadas** (criatura ≠ vínculo); **referencia de reglas** corregida.
+- **Esquema 3** con migración 2→3; el backend Python acepta 1–3.

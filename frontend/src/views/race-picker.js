@@ -2,12 +2,18 @@
 
 import { html, setHtml, richText, raw } from '../ui/dom.js';
 import { openDialog } from '../ui/feedback.js';
-import { data, getRace } from '../data/index.js';
+import { data, getRace, raceName, listHomebrewRaces } from '../data/index.js';
 import { raceBonusText } from './sheet/progression.js';
 
 const normalize = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 
-export function openRacePicker(currentKey) {
+/**
+ * @param {string|null} currentKey
+ * @param {{ official?: boolean, homebrew?: boolean }} [allow] qué permite la campaña.
+ */
+export function openRacePicker(currentKey, allow = {}) {
+  const allowOfficial = allow.official !== false;
+  const allowHomebrew = allow.homebrew !== false;
   return openDialog({
     title: 'Elige una raza',
     size: 'lg',
@@ -17,15 +23,21 @@ export function openRacePicker(currentKey) {
 
       function list() {
         const q = normalize(query.trim());
-        const groups = data.raceCatalog
-          .map((g) => ({ ...g, races: g.races.filter((r) => !q || normalize(r).includes(q)) }))
+        const hb = allowHomebrew ? listHomebrewRaces() : [];
+        const catalog = [
+          ...(hb.length ? [{ source: 'Homebrew de la campaña', races: hb.map((x) => x.key) }] : []),
+          ...(allowOfficial ? data.raceCatalog : []),
+        ];
+        const groups = catalog
+          .map((g) => ({ ...g, races: g.races.filter((r) => !q || normalize(raceName(r)).includes(q)) }))
           .filter((g) => g.races.length);
+        if (!catalog.length) return html`<p class="muted">Tu campaña no permite elegir razas ahora mismo. Habla con tu DM.</p>`;
         if (!groups.length) return html`<p class="muted">No hay razas que coincidan con «${query}».</p>`;
         return groups.map((g) => html`<details class="disclosure" ${q || g.races.includes(selected) ? raw('open') : ''}>
           <summary>${g.source} <span class="badge">${g.races.length}</span></summary>
           <div class="disclosure__body"><div class="race-options">
             ${g.races.map((r) => html`<button type="button" class="race-option ${r === selected ? 'is-selected' : ''}" data-race="${r}" aria-pressed="${r === selected}">
-              <span class="race-option__name">${r}</span>
+              <span class="race-option__name">${raceName(r)}</span>
               <span class="race-option__bonus">${raceBonusText(getRace(r)) || 'Sin bonificaciones de atributo'}</span>
             </button>`)}
           </div></div>
@@ -35,7 +47,7 @@ export function openRacePicker(currentKey) {
       function detail() {
         const race = getRace(selected);
         if (!race) return html`<p class="muted">Selecciona una raza para ver sus rasgos.</p>`;
-        return html`<h3>${selected}</h3>
+        return html`<h3>${raceName(selected)}</h3>
           <p><span class="badge badge--accent">${raceBonusText(race) || 'Sin bonificaciones'}</span> <span class="badge">Velocidad ${race.velocidad ?? 30} pies</span></p>
           <p class="muted">${race.lenguage ?? ''}</p>
           <div class="rich">${richText(race.info)}</div>`;

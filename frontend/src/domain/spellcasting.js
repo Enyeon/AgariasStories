@@ -2,6 +2,8 @@
 // proyecto original. Ver docs/DATOS.md para los valores que necesitan revisión
 // (p. ej. la tabla del Brujo mezcla espacios de pacto y Arcanum Místico).
 
+import { getClass } from '../data/index.js';
+
 const FULL = [
   null,
   [2, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -100,6 +102,27 @@ export const SPELLCASTING_BY_CLASS = Object.freeze({
 
 const EMPTY_SLOTS = Object.freeze([0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
+const TABLE_BY_PROGRESSION = { full: FULL, half: HALF, artificer: ARTIFICER, pact: WARLOCK };
+
+/**
+ * Configuración de lanzamiento de una clase: la tabla oficial si existe o, si
+ * no, la que declare la propia clase (`lanzamiento`, p. ej. una clase Homebrew).
+ */
+export function castingConfig(classKey) {
+  if (Object.hasOwn(SPELLCASTING_BY_CLASS, classKey)) return SPELLCASTING_BY_CLASS[classKey];
+  const decl = getClass(classKey)?.lanzamiento;
+  const table = TABLE_BY_PROGRESSION[decl?.progression];
+  if (!table) return null;
+  const perLevel = (arr) => (Array.isArray(arr) && arr.length === 20 && arr.every((n) => Number.isInteger(n) && n >= 0) ? arr : null);
+  return {
+    progression: decl.progression,
+    table,
+    cantripsKnown: perLevel(decl.cantripsKnown) ?? CANTRIPS_2,
+    spellsKnown: perLevel(decl.spellsKnown) ?? undefined,
+    preparedFrom: ['full', 'half'].includes(decl.preparedFrom) ? decl.preparedFrom : null,
+  };
+}
+
 /**
  * Espacios de conjuro para el conjunto de niveles de clase lanzadora.
  * Con una única clase se usa su propia tabla (comportamiento original).
@@ -108,12 +131,12 @@ const EMPTY_SLOTS = Object.freeze([0, 0, 0, 0, 0, 0, 0, 0, 0]);
  * @param {Array<{classKey: string, level: number}>} casters
  */
 export function computeSpellSlots(casters) {
-  const withTable = casters.filter((c) => SPELLCASTING_BY_CLASS[c.classKey]);
+  const withTable = casters.filter((c) => castingConfig(c.classKey));
   if (withTable.length === 0) return { slots: [...EMPTY_SLOTS], pactSlots: null };
 
   if (withTable.length === 1) {
     const { classKey, level } = withTable[0];
-    const cfg = SPELLCASTING_BY_CLASS[classKey];
+    const cfg = castingConfig(classKey);
     const row = cfg.table[Math.min(20, Math.max(1, level))] ?? EMPTY_SLOTS;
     return cfg.progression === 'pact'
       ? { slots: [...EMPTY_SLOTS], pactSlots: [...row] }
@@ -123,7 +146,7 @@ export function computeSpellSlots(casters) {
   let casterLevel = 0;
   let pactSlots = null;
   for (const { classKey, level } of withTable) {
-    const cfg = SPELLCASTING_BY_CLASS[classKey];
+    const cfg = castingConfig(classKey);
     if (cfg.progression === 'full') casterLevel += level;
     else if (cfg.progression === 'half') casterLevel += Math.floor(level / 2);
     else if (cfg.progression === 'artificer') casterLevel += Math.ceil(level / 2);

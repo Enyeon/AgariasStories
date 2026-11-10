@@ -15,7 +15,7 @@
     "1": {
       "descripcion": "Artista arcano que manipula la magia a través del arte, la palabra y la emoción.",
       "descripcionLarga": "El Bardo entiende que la realidad vibra. La música, la poesía y el relato no son entretenimiento: son herramientas para alterar lo que existe. Inspira aliados, desarma enemigos y reescribe el ánimo del campo de batalla. Su magia fluye desde la creatividad y el ingenio. Es diplomático, espía, sabio y provocador. Donde otros lanzan fuego, él altera voluntades.",
-      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Fuerza, Constitución.\n❖ Tus puntos de golpe es:\n    :: Tu dado de PG es: 1d12. 12 + Constitución.\n    :: Además, por cada nivel por encima de 1, obtienes 1d12 de PG + Constitución.\n❖ Competencias:\n    :: Armadura: Armadura ligera, armadura media, escudos.\n    :: Armas: Armas simples, armas marciales.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge dos de entre Atletismo, Intimidación, Naturaleza, Percepción, Supervivencia y Trato de Animales.\n❖ Equipos. Comienzas con el siguiente equipo, además del otorgado por tu trasfondo:\n    :: (a) una gran hacha o (b) cualquier arma marcial cuerpo a cuerpo.\n    :: (a) dos hachas de mano o (b) cualquier arma simple.\n    :: Un equipo de explorador y cuatro jabalinas.\n    :: Monedas de Oro: 2d4 x 10.",
+      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Destreza y Carisma.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d8.\n    :: Nivel 1: 8 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d8 (o 5) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Armadura ligera.\n    :: Armas: Armas simples, Ballestas de mano, Espadas largas, Estoques y Espadas cortas.\n    :: Herramientas: Tres instrumentos musicales a tu elección.\n    :: Habilidades: escoge tres cualesquiera.\n❖ Equipo. Comienzas con el siguiente equipo, además del que te dé tu trasfondo:\n    :: (a) un estoque, (b) una espada larga o (c) cualquier arma simple.\n    :: (a) un paquete de diplomático o (b) un paquete de artista.\n    :: (a) un laúd o (b) cualquier otro instrumento musical.\n    :: Armadura de cuero y una daga.\n    :: Alternativa: 5d4 × 10 po en lugar del equipo de clase.\n❖ Fuente: Manual del Jugador.",
       "informacionNivel": "✦  ✦\n\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n\n✦  ✦"
     },
     "2": {
@@ -82,77 +82,19 @@
         ]
       },
       "subClase": {
-        "senda1": {
-          "subNombre": "Hebra Paradoja",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
+        "conocimiento": {
+          "subNombre": "Colegio del Conocimiento",
+          "subDescripcion": "Bardos que reúnen saber de todas partes: más habilidades y secretos mágicos de otras clases.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
         },
-        "senda2": {
-          "subNombre": "Hebra Error",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
-        },
-        "senda3": {
-          "subNombre": "Hebra Virus",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
-        },
-        "senda4": {
-          "subNombre": "Hebra .exe",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
+        "valor": {
+          "subNombre": "Colegio del Valor",
+          "subDescripcion": "Escaldos que inspiran en combate: armaduras medias, escudos, armas marciales y ataque adicional.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
         }
       }
     },
@@ -240,5 +182,56 @@
   "pericias": {
     "3": 2,
     "10": 2
-  }
+  },
+  "competencias": {
+    "salvaciones": [
+      "destreza",
+      "carisma"
+    ],
+    "armaduras": [
+      "Armadura ligera"
+    ],
+    "armas": [
+      "Armas simples",
+      "Ballestas de mano",
+      "Espadas largas",
+      "Estoques",
+      "Espadas cortas"
+    ],
+    "herramientas": [
+      "Tres instrumentos musicales a tu elección"
+    ],
+    "habilidades": {
+      "elegir": 3,
+      "de": "cualquiera"
+    }
+  },
+  "competenciasMulticlase": {
+    "armaduras": [
+      "Armadura ligera"
+    ],
+    "armas": [],
+    "herramientas": [
+      "Un instrumento musical a tu elección"
+    ],
+    "habilidades": {
+      "elegir": 1,
+      "de": "cualquiera"
+    }
+  },
+  "equipoInicial": [
+    "(a) un estoque, (b) una espada larga o (c) cualquier arma simple.",
+    "(a) un paquete de diplomático o (b) un paquete de artista.",
+    "(a) un laúd o (b) cualquier otro instrumento musical.",
+    "Armadura de cuero y una daga."
+  ],
+  "oroInicial": "5d4 × 10",
+  "fuenteReglas": "Manual del Jugador",
+  "subclaseNombre": "Colegio de bardo",
+  "subclasesRetiradas": [
+    "senda1",
+    "senda2",
+    "senda3",
+    "senda4"
+  ]
 }

@@ -15,7 +15,7 @@
     "1": {
       "descripcion": "Maestro del cuerpo y la energía interior, capaz de hazañas sobrenaturales.",
       "descripcionLarga": "El Monje disciplina su mente y su cuerpo hasta convertirlos en armas perfectas. Canaliza su energía vital para realizar proezas que rozan lo imposible: velocidad inhumana, golpes devastadores y control absoluto del equilibrio físico. No depende de armaduras ni hechizos, sino de control interior.",
-      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Fuerza, Constitución.\n❖ Tus puntos de golpe es:\n    :: Tu dado de PG es: 1d12. 12 + Constitución.\n    :: Además, por cada nivel por encima de 1, obtienes 1d12 de PG + Constitución.\n❖ Competencias:\n    :: Armadura: Armadura ligera, armadura media, escudos.\n    :: Armas: Armas simples, armas marciales.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge dos de entre Atletismo, Intimidación, Naturaleza, Percepción, Supervivencia y Trato de Animales.\n❖ Equipos. Comienzas con el siguiente equipo, además del otorgado por tu trasfondo:\n    :: (a) una gran hacha o (b) cualquier arma marcial cuerpo a cuerpo.\n    :: (a) dos hachas de mano o (b) cualquier arma simple.\n    :: Un equipo de explorador y cuatro jabalinas.\n    :: Monedas de Oro: 2d4 x 10.",
+      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Fuerza y Destreza.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d8.\n    :: Nivel 1: 8 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d8 (o 5) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Ninguna.\n    :: Armas: Armas simples y Espadas cortas.\n    :: Herramientas: Un tipo de herramientas de artesano o un instrumento musical, a tu elección.\n    :: Habilidades: escoge dos de entre Acrobacias, Atletismo, Historia, Perspicacia, Religión y Sigilo.\n❖ Equipo. Comienzas con el siguiente equipo, además del que te dé tu trasfondo:\n    :: (a) una espada corta o (b) cualquier arma simple.\n    :: (a) un paquete de explorador de mazmorras o (b) un paquete de explorador.\n    :: 10 dardos.\n    :: Alternativa: 5d4 po en lugar del equipo de clase.\n❖ Fuente: Manual del Jugador.",
       "informacionNivel": "✦  ✦\n\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n\n✦  ✦"
     },
     "2": {
@@ -24,77 +24,26 @@
     "3": {
       "informacionNivel": "Rasgo: Defensa temeraria",
       "subClase": {
-        "senda1": {
-          "subNombre": "",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
+        "mano-abierta": {
+          "subNombre": "Camino de la Mano Abierta",
+          "subDescripcion": "Maestros del combate sin armas: derribar, empujar y negar reacciones con Ráfaga de golpes.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
         },
-        "senda2": {
-          "subNombre": "",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
+        "sombra": {
+          "subNombre": "Camino de la Sombra",
+          "subDescripcion": "Ninjas y espías: conjuros de sombra y teletransporte entre sombras.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
         },
-        "senda3": {
-          "subNombre": "",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
-        },
-        "senda4": {
-          "subNombre": "",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
+        "cuatro-elementos": {
+          "subNombre": "Camino de los Cuatro Elementos",
+          "subDescripcion": "Canalizan los elementos con su ki.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
         },
         "senda5": {
           "subNombre": "Estilo del Borracho Errante",
@@ -167,5 +116,53 @@
     "20": {
       "informacionNivel": "Rasgo: Defensa temeraria"
     }
-  }
+  },
+  "competencias": {
+    "salvaciones": [
+      "fuerza",
+      "destreza"
+    ],
+    "armaduras": [],
+    "armas": [
+      "Armas simples",
+      "Espadas cortas"
+    ],
+    "herramientas": [
+      "Un tipo de herramientas de artesano o un instrumento musical, a tu elección"
+    ],
+    "habilidades": {
+      "elegir": 2,
+      "de": [
+        "Acrobacias",
+        "Atletismo",
+        "Historia",
+        "Perspicacia",
+        "Religión",
+        "Sigilo"
+      ]
+    }
+  },
+  "competenciasMulticlase": {
+    "armaduras": [],
+    "armas": [
+      "Armas simples",
+      "Espadas cortas"
+    ],
+    "herramientas": [],
+    "habilidades": null
+  },
+  "equipoInicial": [
+    "(a) una espada corta o (b) cualquier arma simple.",
+    "(a) un paquete de explorador de mazmorras o (b) un paquete de explorador.",
+    "10 dardos."
+  ],
+  "oroInicial": "5d4",
+  "fuenteReglas": "Manual del Jugador",
+  "subclaseNombre": "Tradición monástica",
+  "subclasesRetiradas": [
+    "senda1",
+    "senda2",
+    "senda3",
+    "senda4"
+  ]
 }

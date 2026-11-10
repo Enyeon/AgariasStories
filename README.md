@@ -9,6 +9,16 @@ del mundo de Agarias (197 razas, 18 clases, 339 conjuros, 74 dotes, bendiciones
 - **Exporta/importa** cada personaje como un archivo `.json` versionado.
 - **Comparte** con un enlace de sólo lectura (`/personaje/<id>`); sólo el navegador
   que lo creó puede actualizarlo.
+- **Homebrew y campañas**: crea clases, razas, hechizos, dotes, trasfondos, objetos,
+  criaturas y rasgos propios. En una campaña, el DM decide qué contenido se
+  permite y publica su Homebrew; los jugadores lo usan en sus fichas. Todo pasa
+  por el mismo motor de reglas que el contenido oficial.
+- **Extensiones de clase**: subclases Homebrew y habilidades especiales
+  (bendiciones, evoluciones, subclases secretas) sobre una clase existente, sin
+  duplicarla; se asignan a cada personaje (abiertas o con un código del DM).
+- **Criaturas vinculadas** (mascota, compañero, familiar, montura, invocación…),
+  **subir y bajar varios niveles** de una vez, **competencias de clase** con su
+  origen y **rasgos con origen** (DM, evento, objeto…).
 
 ---
 
@@ -20,11 +30,20 @@ Navegador ───────────────────────�
    ├─ domain/   reglas puras + formato   │   IndexedDB (personajes locales,
    ├─ services/ almacenamiento, API ─────┼─► guardado automático, offline)
    └─ views/    interfaz                 │
-                    │ fetch /api         │
+                    │ RPC                │
                     ▼                    │
-  Backend FastAPI (Python) ──► SQLite (personajes compartidos)
-  └─ sirve también el build del frontend en producción
+  Supabase (PostgreSQL) — opción recomendada para publicar:
+   ├─ personajes compartidos             │
+   └─ campañas, reglas y Homebrew del DM │
+  ó Backend FastAPI (Python) ──► SQLite (sólo compartir; para servidor propio)
 ```
+
+**Contenido.** Todo el contenido (oficial o Homebrew) se lee a través de
+`data/index.js`. El Homebrew vive en un registro (`content/registry.js`) que se
+consulta después de los datos oficiales; cada elemento se valida
+(`content/schema.js`) y se traduce una vez a la forma que lee el motor
+(`content/engine.js`). No hay código especial por tipo: una clase Homebrew usa
+las mismas reglas, pantallas y validaciones que una oficial.
 
 | Tecnología | Por qué |
 |---|---|
@@ -49,7 +68,7 @@ frontend: `vite`, `vitest`, `jsdom`, `fake-indexeddb`. Nada más.
 │   │   ├── validation.py   # validación del documento en servidor
 │   │   ├── security.py     # IDs, tokens, límite de tamaño, rate limit, cabeceras
 │   │   └── config.py       # variables de entorno
-│   ├── tests/              # pytest (23 tests)
+│   ├── tests/              # pytest (24 tests)
 │   ├── requirements.txt / requirements-dev.txt
 │   └── .env.example
 ├── frontend/
@@ -58,21 +77,32 @@ frontend: `vite`, `vitest`, `jsdom`, `fake-indexeddb`. Nada más.
 │   ├── src/
 │   │   ├── data/           # datos de juego en JSON (+ index.js para acceder)
 │   │   │   └── classes/    # un JSON por clase → añadir clase = añadir archivo
-│   │   ├── domain/         # SIN DOM: esquema, validación, migraciones, reglas, progresión
+│   │   ├── content/        # Homebrew: esquemas, validación, registro, adaptadores,
+│   │   │                   #   instantáneas y reglas/permisos de campaña
+│   │   ├── domain/         # SIN DOM: esquema, validación, migraciones, reglas, progresión,
+│   │   │                   #   competencias, efectos, criaturas
 │   │   ├── services/       # local-store (IndexedDB), api, characters, file-transfer, image
 │   │   ├── ui/             # dom (escape/plantillas), router, toasts y diálogos
 │   │   ├── views/          # páginas + sheet/ (pestañas de la ficha)
 │   │   └── styles/         # tokens, base, componentes, ficha
-│   ├── tests/              # vitest (63 tests)
+│   ├── tests/              # vitest (118 tests)
 │   └── .env.example
 ├── docs/
+│   ├── plantillas/         # clase-plantilla.json (clase completa de ejemplo) y CLASES.md
 │   ├── AUDITORIA.md        # estado del proyecto original y decisiones
 │   └── DATOS.md            # origen de los datos y lo que necesita verificación
+├── supabase/
+│   ├── migrations/         # tablas + funciones RPC (compartir, campañas, Homebrew)
+│   └── tests/              # pytest contra PostgreSQL local (6 tests)
 ├── netlify.toml            # despliegue del frontend en Netlify
 ├── docs/fuentes/           # textos originales de clases homebrew (Homebrewery)
 └── tools/
     ├── extract_data.mjs        # migración única de los datos antiguos a JSON
-    └── homebrewery_class.py    # convierte una clase de Homebrewery a su JSON
+    ├── homebrewery_class.py    # convierte una clase de Homebrewery a su JSON
+    ├── class_proficiencies.py  # competencias/equipo de las clases (corrige las copias del Bárbaro)
+    ├── class_subclasses.py     # subclases oficiales (retira las «Hebras» copiadas)
+    ├── rules_reference.py      # referencia: condiciones, tipos de daño, estados de Agarias
+    └── check_classes.mjs       # valida JSON de clases (node tools/check_classes.mjs [archivos])
 ```
 
 ## Puesta en marcha
@@ -148,7 +178,15 @@ guardar, exportar, importar) excepto **Compartir**, que necesita el backend.
 En ambos casos `frontend/public/_redirects` hace que los enlaces `/personaje/...`
 y `/editar/...` funcionen al recargar, y `_headers` añade las cabeceras de seguridad.
 
-### Backend (para Compartir)
+### Servidor con Supabase (Compartir + Campañas) — recomendado
+Sin servidor propio y con plan gratuito. Ver [`docs/SUPABASE.md`](docs/SUPABASE.md):
+1. Crea un proyecto en Supabase y ejecuta `supabase/migrations/*.sql` (SQL Editor).
+2. En Netlify → *Site configuration → Environment variables*:
+   `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY` (la clave «anon/publishable»: es
+   pública por diseño; las tablas no son accesibles con ella, sólo las funciones).
+3. Vuelve a publicar. Compartir y Campañas pasan a usar Supabase.
+
+### Backend propio (alternativa, sólo Compartir)
 El backend necesita un servidor Python **con disco persistente**: en los planes
 gratuitos que borran el disco (p. ej. Render Free) la base SQLite se perdería.
 Sirven Render (plan de pago + disco), Railway o Fly.io con un volumen.
@@ -177,8 +215,9 @@ hace falta configurar CORS.
 | `TRUST_PROXY_HEADERS` | `false` | Usar `X-Forwarded-For` para el rate limit |
 | `ENABLE_API_DOCS` | según `APP_ENV` | Documentación OpenAPI en `/api/docs` |
 
-`frontend/.env` (opcional): `VITE_DEV_API_PROXY` (destino del proxy de desarrollo)
-y `VITE_API_BASE_URL` (API en otro dominio).
+`frontend/.env` (opcional): `VITE_DEV_API_PROXY` (destino del proxy de desarrollo),
+`VITE_API_BASE_URL` (API en otro dominio), `VITE_SUPABASE_URL` y
+`VITE_SUPABASE_ANON_KEY` (si están, Compartir y Campañas usan Supabase).
 
 **No hay secretos que configurar**: los tokens de edición son aleatorios
 (256 bits) y se guardan como hash SHA-256. Nunca subas archivos `.env`.
@@ -192,7 +231,7 @@ Todo personaje se guarda, exporta y comparte como el mismo documento:
 ```json
 {
   "format": "agarias-dnd-character",
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "character": {
     "identity":      { "name": "…", "alignment": "…", "portrait": "data:image/webp;base64,…", "…": "…" },
     "race":          { "key": "Medio Elfo", "abilityChoices": [["fuerza","constitucion"]], "languages": ["Enano"], "feat": null },
@@ -202,6 +241,15 @@ Todo personaje se guarda, exporta y comparte como el mismo documento:
     "abilities":     { "fuerza": 15, "destreza": 12, "…": 10 },
     "levels":        [{ "classKey": "barbaro", "hpRoll": 12, "improvement": null, "featureChoices": {} }],
     "subclasses":    { "barbaro": "senda1" },
+    "classChoices":  { "barbaro": { "skills": ["Atletismo", "Percepción"], "saves": [] } },
+    "traits":        [{ "id": "…", "name": "Marca del Pacto", "origin": "evento", "originDetail": "Sesión 14",
+                        "description": "…", "effects": [{ "type": "bono", "target": "iniciativa", "value": 2 }],
+                        "ref": null, "active": true }],
+    "companions":    [{ "id": "…", "bond": "familiar", "name": "Sombra", "creatureRef": "hb:abc:criatura:lobo",
+                        "custom": null, "currentHp": 7, "tempHp": 0, "conditions": ["Asustado"], "present": true,
+                        "origin": "dm", "originDetail": "", "notes": "" }],
+    "campaign":      { "id": "abc", "name": "Las Torres Grises" },
+    "content":       { "hb:abc:criatura:lobo": { "type": "criatura", "version": 2, "name": "Lobo", "data": { "…": "…" } } },
     "epicBoons": [], "experience": 0,
     "proficiencies": { "skills": ["Atletismo"], "saves": ["fuerza"], "expertise": ["Sigilo"] },
     "combat":        { "armorClass": 16, "inspiration": false, "currentHp": null, "tempHp": 0, "speedOverrides": {} },
@@ -224,8 +272,41 @@ Todo personaje se guarda, exporta y comparte como el mismo documento:
 - **Migraciones** (`domain/migrations.js`): si cambia el formato, se sube
   `SCHEMA_VERSION` y se añade una función de migración; los archivos antiguos se
   siguen abriendo. Migraciones actuales: 0→1 (formatos de la versión anterior:
-  Firestore y `localStorage`) y 1→2 (el trasfondo de texto libre pasa a ser un
-  trasfondo oficial u homebrew; aparece la pericia).
+  Firestore y `localStorage`), 1→2 (el trasfondo de texto libre pasa a ser un
+  trasfondo oficial u homebrew; aparece la pericia) y 2→3 (elecciones de clase,
+  rasgos, criaturas, campaña e instantáneas; se sustituyen los «Atributos de
+  clase» copiados del Bárbaro si no se habían editado).
+
+### Homebrew, campañas y permisos
+- **Referencias estables**: el Homebrew se identifica con `hb:<paquete>:<tipo>:<id>`;
+  el id no depende del nombre (se puede renombrar). El contenido oficial conserva
+  sus claves de siempre.
+- **Instantáneas**: el personaje guarda referencias, y al guardar/exportar/compartir
+  adjunta una copia del Homebrew que usa (`content`). Si el DM lo retira, si se
+  abre fuera de la campaña o sin conexión, la ficha usa la copia; nunca sustituye
+  al original. La pestaña «Campaña» avisa si algo se actualizó, ocultó o retiró.
+- **Estados**: borrador → propuesto → publicado → oculto → retirado. Borrar algo
+  publicado sólo lo retira: ningún personaje se rompe por una acción del DM.
+- **Reglas de campaña** (un único sistema de permisos): por tipo de contenido, si
+  se permite el oficial y quién crea Homebrew (nadie / sólo el DM / propuestas de
+  jugadores); bendiciones épicas; quién añade rasgos con efectos. La interfaz las
+  aplica y el servidor las vuelve a comprobar (crear contenido, cambiar estados y
+  publicar un personaje con contenido no autorizado).
+- **Identidad sin cuentas**: el DM recibe una clave secreta; los jugadores, un
+  enlace de invitación (el código va tras `#`, no llega a ningún registro de
+  servidor). Ambos se guardan en el servidor sólo como hash.
+- **Efectos**: lo automatizable se declara como datos de un catálogo cerrado
+  (`domain/effects.js`: competencias, pericia, bonificaciones, resistencias,
+  inmunidades, habilitar recursos). Nada de código arbitrario en el Homebrew.
+- **Extensiones de clase** (`domain/extensions.js`): una subclase nueva o rasgos
+  especiales para una clase existente, con nivel requerido, condición narrativa,
+  origen y, opcionalmente, qué rasgo oficial sustituyen. Nunca se aplican a todos
+  los personajes de esa clase: cada personaje las tiene asignadas en `unlocks`.
+  Las «abiertas» las añade el jugador (si la campaña lo permite); las «con código»
+  necesitan el código que genera el DM (`ABCD-EFGH-JKLM`); el servidor sólo guarda
+  su SHA-256 y lo comprueba al publicar el personaje.
+- **Sin servidor** («Mi Homebrew»): todo funciona en el dispositivo y se puede
+  exportar como paquete `.json`; no hay permisos reales sin servidor.
 
 ### Trasfondos
 - **Oficiales y de Agarias** en `frontend/src/data/backgrounds.json`. Todos usan el
@@ -241,6 +322,17 @@ Todo personaje se guarda, exporta y comparte como el mismo documento:
   si se elige, el aumento de puntuaciones (+2/+1 o +1/+1/+1 entre sus atributos).
   Ese aumento es **opcional** porque en las reglas 2024 sustituye al racial.
 - El equipo elegido se añade al inventario (objetos y monedas) con un botón, una sola vez.
+
+### Clases: formato JSON
+Ver [`docs/plantillas/CLASES.md`](docs/plantillas/CLASES.md) y la plantilla
+[`clase-plantilla.json`](docs/plantillas/clase-plantilla.json) (clase completa y
+probada). Comprueba una clase con `node tools/check_classes.mjs <archivo>`.
+
+### Diálogos y formularios largos
+Los diálogos grandes no se cierran con un clic fuera y, si hay cambios, preguntan
+antes de cerrarse («Continuar editando / Salir sin guardar»). El editor de
+Homebrew guarda un borrador mientras escribes: si la página se cierra o recarga,
+al volver a abrir el mismo formulario ofrece recuperarlo.
 
 ### Pericia (competencia experta)
 Cada habilidad con competencia tiene un botón ★ que duplica el bonificador de
@@ -288,9 +380,11 @@ una lista blanca de etiquetas.
 ## Pruebas
 
 ```bash
-cd frontend && npm test                          # 63 tests: reglas, validación, migraciones, trasfondos,
-                                                 # IndexedDB, exportar/importar, compartir
-cd backend && python -m pytest                   # 23 tests: API, auth, conflictos, límites, SPA
+cd frontend && npm test                          # 118 tests: reglas, competencias, efectos, Homebrew,
+                                                 # extensiones, plantilla de clase, subir/bajar varios niveles…
+cd backend && python -m pytest                   # 24 tests: API, auth, conflictos, límites, SPA
+AGARIAS_TEST_PG="-h /tmp -p 5432 -U postgres" python -m pytest supabase/tests
+                                                 # 6 tests: permisos de campaña, códigos y RLS en PostgreSQL
 ```
 
 Además se verificó en Chrome (Playwright) el recorrido completo: crear → editar →
@@ -307,15 +401,25 @@ archivos dañados/ajenos/de versión futura y la interfaz a 390, 820 y 1366 px.
 2. Si había personajes en Firestore (`usuarios/{uid}/personajes`), exportarlos
    desde la consola de Firebase como JSON: la app los importa con la migración 0→1.
    Después, cerrar el proyecto de Firebase o dejar sus reglas en `allow read, write: if false`.
-3. Revisar los datos marcados en [`docs/DATOS.md`](docs/DATOS.md).
+3. Revisar los datos marcados en [`docs/DATOS.md`](docs/DATOS.md), en especial:
+   competencias y subclases de **Anomalía, Tiznado y Vinculador**, y cómo se
+   aplican y terminan los **estados de Agarias** (aparecen como «Pendiente»).
 
 ## Próximos pasos posibles
 - **Cuentas de usuario**: añadir una tabla `users` y una columna `owner_id` en
   `characters`; el token de edición seguiría valiendo para enlaces anónimos.
 - **Sincronización** entre dispositivos para usuarios registrados (la revisión y
   el 409 ya existentes sirven de base).
-- **Campañas**: grupos de personajes compartidos con un DM.
 - **Otras ediciones/reglas**: `data/` y `domain/rules.js` están separados; una
   edición nueva puede tener su propio paquete de datos y reglas, y `schemaVersion`
   permite añadir el campo de sistema de reglas con una migración.
 - Completar los niveles de clase pendientes y exportar la ficha a PDF.
+
+## Mejoras futuras (anotadas, no implementadas)
+- **Recursos con recarga** (Furia, Ki, usos por descanso): contador en la ficha y
+  descanso corto/largo; la tabla `infoCubo` ya tiene los números por nivel.
+- **Acciones y reacciones** como datos (disparador → condición → efecto), para
+  automatizar rasgos como «Reducción de daño como reacción».
+- **CA calculada** a partir de la armadura equipada y efectos.
+- **Códigos de desbloqueo por personaje** (hoy un código sirve para cualquier
+  personaje de la campaña que lo reciba).

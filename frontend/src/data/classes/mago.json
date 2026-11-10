@@ -15,88 +15,72 @@
     "1": {
       "descripcion": "Estudioso arcano que obtiene poder mediante conocimiento y disciplina intelectual.",
       "descripcionLarga": "El Mago entiende que la magia es un lenguaje. La estudia, la descompone y la reescribe. Su poder proviene del rigor, la investigación y la acumulación de saber prohibido. Puede especializarse en múltiples escuelas y ampliar su repertorio sin límites más allá de su curiosidad. Es ambición intelectual convertida en poder tangible.",
-      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Fuerza, Constitución.\n❖ Tus puntos de golpe es:\n    :: Tu dado de PG es: 1d12. 12 + Constitución.\n    :: Además, por cada nivel por encima de 1, obtienes 1d12 de PG + Constitución.\n❖ Competencias:\n    :: Armadura: Armadura ligera, armadura media, escudos.\n    :: Armas: Armas simples, armas marciales.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge dos de entre Atletismo, Intimidación, Naturaleza, Percepción, Supervivencia y Trato de Animales.\n❖ Equipos. Comienzas con el siguiente equipo, además del otorgado por tu trasfondo:\n    :: (a) una gran hacha o (b) cualquier arma marcial cuerpo a cuerpo.\n    :: (a) dos hachas de mano o (b) cualquier arma simple.\n    :: Un equipo de explorador y cuatro jabalinas.\n    :: Monedas de Oro: 2d4 x 10.",
+      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Inteligencia y Sabiduría.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d6.\n    :: Nivel 1: 6 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d6 (o 4) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Ninguna.\n    :: Armas: Dagas, Dardos, Hondas, Bastones y Ballestas ligeras.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge dos de entre Conocimiento Arcano, Historia, Investigación, Medicina, Perspicacia y Religión.\n❖ Equipo. Comienzas con el siguiente equipo, además del que te dé tu trasfondo:\n    :: (a) un bastón o (b) una daga.\n    :: (a) una bolsa de componentes o (b) un canalizador arcano.\n    :: (a) un paquete de erudito o (b) un paquete de explorador.\n    :: Un libro de conjuros.\n    :: Alternativa: 4d4 × 10 po en lugar del equipo de clase.\n❖ Fuente: Manual del Jugador.",
       "informacionNivel": "✦  ✦\n\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n\n✦  ✦"
     },
     "2": {
-      "informacionNivel": "✦  ✦"
-    },
-    "3": {
       "informacionNivel": "✦  ✦",
       "subClase": {
-        "senda1": {
-          "subNombre": "",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
+        "abjuracion": {
+          "subNombre": "Escuela de Abjuración",
+          "subDescripcion": "Magia protectora: un escudo arcano que absorbe daño.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
         },
-        "senda2": {
-          "subNombre": "",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
+        "adivinacion": {
+          "subNombre": "Escuela de Adivinación",
+          "subDescripcion": "Ver el futuro: tiradas de portento que sustituyen dados.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
         },
-        "senda3": {
-          "subNombre": "",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
+        "conjuracion": {
+          "subNombre": "Escuela de Conjuración",
+          "subDescripcion": "Crear y teletransportar: objetos menores y transposición.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
         },
-        "senda4": {
-          "subNombre": "",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
+        "encantamiento": {
+          "subNombre": "Escuela de Encantamiento",
+          "subDescripcion": "Influir en mentes: mirada hipnótica y encantamientos dobles.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
+        },
+        "evocacion": {
+          "subNombre": "Escuela de Evocación",
+          "subDescripcion": "Energía destructiva: proteger aliados del área de tus conjuros y potenciarlos.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
+        },
+        "ilusion": {
+          "subNombre": "Escuela de Ilusión",
+          "subDescripcion": "Engañar los sentidos: ilusiones mejoradas y que se vuelven reales.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
+        },
+        "nigromancia": {
+          "subNombre": "Escuela de Nigromancia",
+          "subDescripcion": "La vida y la muerte: cosecha de vida y no muertos más fuertes.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
+        },
+        "transmutacion": {
+          "subNombre": "Escuela de Transmutación",
+          "subDescripcion": "Transformar la materia: alquimia menor y piedra del transmutador.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
         }
       }
+    },
+    "3": {
+      "informacionNivel": "✦  ✦"
     },
     "4": {
       "informacionNivel": "✦  ✦"
@@ -149,5 +133,52 @@
     "20": {
       "informacionNivel": "✦  ✦"
     }
-  }
+  },
+  "competencias": {
+    "salvaciones": [
+      "inteligencia",
+      "sabiduria"
+    ],
+    "armaduras": [],
+    "armas": [
+      "Dagas",
+      "Dardos",
+      "Hondas",
+      "Bastones",
+      "Ballestas ligeras"
+    ],
+    "herramientas": [],
+    "habilidades": {
+      "elegir": 2,
+      "de": [
+        "Conocimiento Arcano",
+        "Historia",
+        "Investigación",
+        "Medicina",
+        "Perspicacia",
+        "Religión"
+      ]
+    }
+  },
+  "competenciasMulticlase": {
+    "armaduras": [],
+    "armas": [],
+    "herramientas": [],
+    "habilidades": null
+  },
+  "equipoInicial": [
+    "(a) un bastón o (b) una daga.",
+    "(a) una bolsa de componentes o (b) un canalizador arcano.",
+    "(a) un paquete de erudito o (b) un paquete de explorador.",
+    "Un libro de conjuros."
+  ],
+  "oroInicial": "4d4 × 10",
+  "fuenteReglas": "Manual del Jugador",
+  "subclaseNombre": "Tradición arcana",
+  "subclasesRetiradas": [
+    "senda1",
+    "senda2",
+    "senda3",
+    "senda4"
+  ]
 }

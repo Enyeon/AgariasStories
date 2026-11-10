@@ -5,13 +5,14 @@ import {
   hitPoints, featPrerequisites, classFeatures, spellcasting, languageInfo,
 } from '../src/domain/rules.js';
 import { computeSpellSlots } from '../src/domain/spellcasting.js';
-import { applyLevelUp, setRace, setRaceAbilityChoice } from '../src/domain/progression.js';
+import { applyLevelUp, planLevelUp, setRace, setRaceAbilityChoice } from '../src/domain/progression.js';
 import { getFeat } from '../src/data/index.js';
 
 function levelTo(c, classKey, n, extra = () => ({})) {
   let cur = c;
   for (let i = 0; i < n; i++) {
-    const { character, errors } = applyLevelUp(cur, { classKey, hpRoll: 5, ...extra(cur) });
+    const plan = planLevelUp(cur, classKey);
+    const { character, errors } = applyLevelUp(cur, { classKey, hpRoll: 5, subclass: plan.needsSubclass ? plan.subclassOptions[0].key : undefined, ...extra(cur) });
     if (errors.length) throw new Error(errors.join('; '));
     cur = character;
   }
@@ -150,10 +151,10 @@ describe('requisitos de dotes', () => {
 describe('rasgos de clase e idiomas', () => {
   it('lista rasgos hasta el nivel actual y marca niveles sin datos', () => {
     let c = setRace(createCharacter(), 'Medio Elfo');
-    c = levelTo(c, 'picaro', 3, (cur) => (cur.levels.length === 2 ? { subclass: 'senda1' } : {}));
+    c = levelTo(c, 'picaro', 3, (cur) => (cur.levels.length === 2 ? { subclass: 'ladron' } : {}));
     const [f] = classFeatures(c);
     expect(f.levels).toHaveLength(3);
-    expect(f.subclass?.key).toBe('senda1');
+    expect(f.subclass?.key).toBe('ladron');
   });
 
   it('calcula idiomas elegibles de la raza', () => {
@@ -202,5 +203,28 @@ describe('Shadow Knight (texto de Homebrewery convertido)', () => {
     expect(f.table.columns).toEqual(['Sombras activas', 'Sombras reservadas', 'Radio de presencia']);
     expect(f.table.rows.at(-1)['Radio de presencia']).toBe('5 km');
     expect(f.missingLevels).toEqual([]);
+  });
+});
+
+describe('referencia de reglas', () => {
+  it('tiene las 15 condiciones oficiales y los 13 tipos de daño oficiales', async () => {
+    const { data } = await import('../src/data/index.js');
+    const items = data.rulesReference.flatMap((g) => g.items);
+    expect(items.filter((i) => i.kind === 'condicion' && i.origin === 'oficial')).toHaveLength(15);
+    expect(items.filter((i) => i.kind === 'danio' && i.origin === 'oficial')).toHaveLength(13);
+    const { CONDITIONS, DAMAGE_TYPES } = await import('../src/domain/effects.js');
+    const names = new Set(items.map((i) => i.name));
+    for (const c of CONDITIONS) expect(names.has(c), c).toBe(true);
+    for (const d of DAMAGE_TYPES) expect(items.some((i) => i.id === `danio-${d.key}`), d.key).toBe(true);
+  });
+
+  it('los conceptos de Agarias no inventan cómo se aplican ni cómo terminan', async () => {
+    const { data } = await import('../src/data/index.js');
+    const states = data.rulesReference.find((g) => g.kind === 'estado').items;
+    for (const s of states) {
+      expect(s.origin).toBe('agarias');
+      expect(s.applies).toBeNull();
+      expect(s.ends).toBeNull();
+    }
   });
 });

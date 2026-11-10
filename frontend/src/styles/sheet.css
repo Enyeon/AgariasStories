@@ -93,12 +93,10 @@
 
 .picker { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: var(--space-4); min-height: 50vh; }
 .picker__list { display: flex; flex-direction: column; gap: var(--space-3); min-width: 0; }
-.picker__scroll { overflow-y: auto; max-height: 56vh; padding-right: var(--space-1); }
-.picker__detail { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-4); overflow-y: auto; max-height: 62vh; }
+.picker__scroll { overflow-y: auto; padding-right: var(--space-1); }
+.picker__detail { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-4); overflow-y: auto; }
 @media (max-width: 760px) {
   .picker { grid-template-columns: 1fr; min-height: 0; }
-  .picker__scroll { max-height: 42vh; }
-  .picker__detail { max-height: none; }
 }
 .race-options { display: grid; gap: var(--space-2); }
 .race-option {
@@ -357,3 +355,71 @@
 .option-card:has(input:disabled) { cursor: default; }
 .picker__group { font-family: var(--font-body); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); margin: var(--space-3) 0 var(--space-2); }
 .picker__group:first-child { margin-top: 0; }
+
+/* ── Competencias de clase (Fundamentos) ───────────────────────────── */
+.prof-panel { display: grid; gap: var(--space-2); margin-bottom: var(--space-3); }
+.prof-panel .basics dd { display: grid; gap: var(--space-2); }
+.prof-panel__count { margin: 0; font-size: var(--fs-xs); color: var(--text-muted); }
+.prof-panel__count.is-pending { color: var(--warning); font-weight: 600; }
+.prof-sources { font-size: var(--fs-xs); color: var(--text-muted); }
+
+/* ── Otros rasgos ──────────────────────────────────────────────────── */
+.trait-card__head { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-2); }
+.trait-card__origin { margin: 0; font-size: var(--fs-sm); font-style: italic; color: var(--text-muted); }
+.trait-card--custom { display: grid; gap: var(--space-2); align-content: start; }
+.trait-card.is-inactive { opacity: 0.65; }
+
+/* ── Editor de efectos ─────────────────────────────────────────────── */
+.effect-row { display: grid; grid-template-columns: minmax(150px, 0.8fr) 1.6fr auto; gap: var(--space-2); align-items: center; }
+.effect-row__fields { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+.effect-row__fields > * { flex: 1 1 140px; }
+.effect-row__fields .input--num { flex: 0 0 80px; }
+@media (max-width: 640px) { .effect-row { grid-template-columns: 1fr auto; } .effect-row__fields { grid-column: 1 / -1; grid-row: 2; } }
+.trait-card--custom .link-btn { justify-self: start; }
+
+/* ── Criaturas vinculadas ──────────────────────────────────────────── */
+.companion-grid { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr)); align-items: start; }
+.companion { display: grid; gap: var(--space-3); border-top: 3px solid var(--accent-strong); }
+.companion.is-absent { opacity: 0.7; }
+.companion.is-down { border-top-color: var(--danger); }
+.companion__head { display: flex; justify-content: space-between; gap: var(--space-2); align-items: flex-start; }
+.companion__name { margin: 0 0 var(--space-1); font-size: var(--fs-lg); }
+.companion__stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-2); }
+.companion__stats .stat-box small { font-size: var(--fs-xs); }
+.companion__hp .input--num { width: 5rem; }
+.stat-box--danger { border-color: var(--danger); }
+.chip-toggle--sm { padding: 0.15rem 0.55rem; font-size: var(--fs-xs); }
+.statblock { display: grid; gap: var(--space-2); }
+.statblock__meta { margin: 0; font-style: italic; color: var(--text-muted); }
+.statblock__abilities { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--space-1); text-align: center; }
+.statblock__abilities div { display: grid; padding: var(--space-1); border: 1px solid var(--border); border-radius: var(--radius-sm); }
+.statblock__abilities span { font-size: var(--fs-xs); color: var(--text-muted); text-transform: uppercase; }
+.statblock__abilities small { color: var(--text-muted); }
+.statblock__title { margin: var(--space-2) 0 0; color: var(--gold); font-size: var(--fs-sm); text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ── Diálogos con selector (lista + detalle: razas, trasfondos, dotes) ──
+   Responsabilidades de scroll:
+   - .dialog__body (dentro de .dialog__frame): scroll principal del diálogo.
+     Nunca se oculta su desbordamiento.
+   - Escritorio: la lista y el detalle tienen además su propio scroll acotado,
+     porque son listas largas (más de 100 dotes o razas) y así la lista sigue a
+     la vista mientras se lee el detalle. Es un scroll con función, no duplicado.
+   - Móvil (una columna): sólo el scroll principal; lista y detalle crecen.
+   (La v3.1 fijaba la altura del diálogo y ponía `overflow: hidden` en el cuerpo:
+   en el asistente de nivel la lista de dotes quedaba cortada sin poder llegar al final.) */
+@media (min-width: 761px) {
+  .picker__scroll { max-height: max(240px, min(56vh, 640px)); }
+  .picker__detail { max-height: max(260px, min(62vh, 700px)); }
+}
+@media (max-width: 760px) {
+  .picker__scroll { max-height: none; overflow: visible; }
+  .picker__detail { max-height: none; overflow: visible; }
+}
+
+/* ── Extensiones de clase (Homebrew) ───────────────────────────────── */
+.feature-card--homebrew { border-left: 3px solid var(--gold); }
+.feature-card.is-replaced { opacity: 0.6; }
+.feature-card.is-replaced .feature-card__title { text-decoration: line-through; }
+.extension-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
+.extension-list li { display: flex; justify-content: space-between; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-3); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: var(--radius-sm); background: var(--bg-elevated); }
+.extension-panel .class-block__head { display: flex; justify-content: space-between; align-items: center; gap: var(--space-2); flex-wrap: wrap; }

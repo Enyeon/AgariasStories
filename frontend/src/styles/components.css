@@ -114,19 +114,26 @@
 .loading { display: flex; align-items: center; justify-content: center; gap: var(--space-3); padding: var(--space-7); color: var(--text-muted); }
 
 /* ── Pestañas ──────────────────────────────────────────────────────── */
+/* Sin scroll: si no caben en una fila (móvil, ventana estrecha) pasan a una
+   segunda fila. Antes, `overflow-x: auto` + el `margin-bottom: -1px` de cada
+   pestaña creaban también un scroll vertical de 1 px en todas las pantallas. */
 .tabs {
-  display: flex; gap: var(--space-1); overflow-x: auto; scrollbar-width: thin;
+  display: flex; flex-wrap: wrap; gap: var(--space-1);
   border-bottom: 1px solid var(--border); margin-bottom: var(--space-4);
-  scroll-snap-type: x proximity;
 }
 .tab {
-  flex: none; scroll-snap-align: start;
+  flex: none;
   padding: var(--space-3) var(--space-4); border: 0; background: none; cursor: pointer;
   color: var(--text-muted); font: inherit; font-size: var(--fs-sm); font-weight: 600;
-  border-bottom: 2px solid transparent; margin-bottom: -1px; white-space: nowrap;
+  white-space: nowrap;
 }
 .tab:hover { color: var(--text); }
-.tab[aria-selected="true"] { color: var(--text); border-bottom-color: var(--accent); }
+/* Indicador de la pestaña activa dentro de su propia caja (no desborda). */
+.tab[aria-selected="true"] { color: var(--text); box-shadow: inset 0 -2px 0 var(--accent); }
+@media (max-width: 640px) {
+  .tabs { gap: 0; }
+  .tab { padding: var(--space-2) var(--space-3); }
+}
 .tab__dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--warning); margin-left: 6px; vertical-align: middle; }
 
 /* ── Diálogos ──────────────────────────────────────────────────────── */
@@ -141,17 +148,32 @@
 .dialog::backdrop { background: rgb(5 6 10 / 0.72); backdrop-filter: blur(3px); }
 .dialog[open] { animation: dialog-in 160ms ease-out; }
 @keyframes dialog-in { from { opacity: 0; transform: translateY(8px) scale(0.98); } }
-.dialog__frame { display: flex; flex-direction: column; max-height: inherit; }
+/* El <dialog> no debe desplazarse nunca: su contenido es .dialog__frame, que
+   ocupa como mucho la altura del diálogo; dentro, la cabecera es fija y el
+   ÚNICO scroll principal es .dialog__body. Antes el marco heredaba el
+   max-height del diálogo sin descontar el borde (box-sizing: border-box) y
+   sobraban 2 px: aparecía un segundo scroll, inútil, en el propio <dialog>. */
+.dialog[open] { display: flex; flex-direction: column; }
+.dialog__frame { display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; }
+.dialog__body { min-height: 0; position: relative; }
+/* position: relative → los elementos con position:absolute del contenido (p. ej.
+   las casillas ocultas de las «chips») quedan contenidos y recortados por el
+   scroll de .dialog__body. Sin ello se salían de él y alargaban el propio
+   <dialog>, que mostraba un segundo scroll redundante (editor de Homebrew). */
 .dialog__header { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); padding: var(--space-4) var(--space-5); border-bottom: 1px solid var(--border); }
 .dialog__title { margin: 0; font-size: var(--fs-xl); }
 .dialog__body { padding: var(--space-5); overflow-y: auto; }
 .dialog__message { color: var(--text-muted); }
 .dialog__actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--space-2); margin-top: var(--space-5); }
 .dialog__actions--stack { flex-direction: column; align-items: stretch; }
+.dialog.is-nudged { animation: dialog-nudge 280ms ease-out; }
+@keyframes dialog-nudge { 30% { transform: scale(1.012); } }
 .dialog__footer { position: sticky; bottom: calc(-1 * var(--space-5)); background: var(--surface); padding-top: var(--space-4); margin-top: var(--space-4); border-top: 1px solid var(--border); display: flex; justify-content: space-between; gap: var(--space-2); flex-wrap: wrap; }
 
 @media (max-width: 600px) {
-  .dialog { width: 100vw; max-width: 100vw; max-height: 100dvh; height: 100dvh; border-radius: 0; margin: 0; }
+  /* Pantalla completa sin borde: el borde de 1 px sumaba 2 px a 100dvh y
+     provocaba un segundo scroll (de 2 px) en el propio <dialog>. */
+  .dialog { width: 100vw; max-width: 100vw; max-height: 100dvh; height: 100dvh; border: 0; border-radius: 0; margin: 0; }
   .dialog__body { padding: var(--space-4); }
   .dialog__header { padding: var(--space-3) var(--space-4); }
 }
@@ -219,3 +241,55 @@
 .rich td, .rich th { border: 1px solid var(--border); padding: 4px 8px; }
 
 .pagination { display: flex; align-items: center; justify-content: center; gap: var(--space-2); margin-top: var(--space-4); flex-wrap: wrap; }
+
+/* ── Chips de alternar (botones con aria-pressed) ──────────────────── */
+.chip-toggle {
+  display: inline-flex; align-items: center; padding: 0.3rem 0.7rem; border-radius: 999px;
+  border: 1px solid var(--border-strong); background: var(--bg-elevated); color: var(--text-muted);
+  font: inherit; font-size: var(--fs-sm); cursor: pointer;
+}
+.chip-toggle:hover:not(:disabled) { border-color: var(--accent); color: var(--text); }
+.chip-toggle.is-on { background: var(--accent-soft); border-color: var(--accent); color: var(--text); }
+.chip-toggle.is-warning { border-color: var(--warning); background: var(--warning-soft); }
+.chip-toggle:disabled { opacity: 0.45; cursor: not-allowed; }
+.chip-toggle:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+.row--end { justify-content: flex-end; }
+
+/* ── Referencia de reglas ──────────────────────────────────────────── */
+.reference-filters { display: grid; gap: var(--space-2); margin-bottom: var(--space-4); }
+.reference-entry > summary { display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
+.reference-entry > summary > span:first-child { flex: 1 1 auto; }
+.reference-entry__summary { margin: 0 0 var(--space-3); color: var(--text); }
+.reference-entry__flavor { margin: var(--space-3) 0 0; font-size: var(--fs-sm); color: var(--text-muted); }
+.reference-entry .callout { margin-top: var(--space-3); }
+.basics--compact .basics__row { grid-template-columns: 1fr; gap: var(--space-1); padding: var(--space-2) var(--space-3); }
+
+/* ── Homebrew ──────────────────────────────────────────────────────── */
+.campaign-list { list-style: none; padding: 0; margin: 0 0 var(--space-3); display: grid; gap: var(--space-2); }
+.campaign-list li { display: flex; justify-content: space-between; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg-elevated); }
+.content-list { list-style: none; padding: 0; margin: var(--space-3) 0 0; display: grid; gap: var(--space-2); }
+.content-item { display: grid; grid-template-columns: auto 1fr auto auto; gap: var(--space-3); align-items: center; padding: var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg-elevated); }
+.content-item__icon { font-size: 1.4rem; }
+.content-item__main { display: grid; gap: 2px; min-width: 0; }
+.content-item__desc { font-size: var(--fs-sm); color: var(--text-muted); overflow-wrap: anywhere; }
+@media (max-width: 720px) { .content-item { grid-template-columns: auto 1fr; } .content-item > .badge, .content-item > .row { grid-column: 2; justify-content: flex-start; } }
+.select--sm { padding-block: 0.25rem; font-size: var(--fs-sm); width: auto; }
+.btn--danger-text { color: var(--danger); }
+.content-form { display: grid; gap: var(--space-3); }
+.content-form__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: var(--space-3); align-items: start; }
+.content-form__grid .field--wide, .content-form__section { grid-column: 1 / -1; }
+.content-form__section { margin: var(--space-3) 0 0; font-size: var(--fs-sm); text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); }
+.content-row { display: grid; grid-template-columns: 1fr auto; gap: var(--space-2); padding: var(--space-3); border: 1px dashed var(--border-strong); border-radius: var(--radius-sm); }
+.content-row__fields { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 180px), 1fr)); gap: var(--space-2); }
+.content-row__fields .field--wide { grid-column: 1 / -1; }
+.ability-inputs { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--space-2); }
+@media (max-width: 560px) { .ability-inputs { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.field__error ul { margin: 0; padding-left: 1.1rem; }
+.homebrew-page .row > .input { flex: 1 1 280px; }
+
+.content-form__nav { position: sticky; top: calc(-1 * var(--space-5)); z-index: 2; display: flex; gap: var(--space-1); flex-wrap: wrap; padding: var(--space-2) 0; background: var(--surface); border-bottom: 1px solid var(--border); }
+.content-form__nav a { padding: 0.2rem 0.6rem; border-radius: 999px; font-size: var(--fs-xs); color: var(--text-muted); text-decoration: none; border: 1px solid var(--border); }
+.content-form__nav a:hover, .content-form__nav a:focus-visible { color: var(--text); border-color: var(--accent); }
+.content-form__section { scroll-margin-top: 3.5rem; }
+@media (max-width: 640px) { .content-form__nav { top: calc(-1 * var(--space-4)); } }
+.unlock-code { margin: 0; padding: var(--space-4); text-align: center; font: 700 1.6rem/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0.12em; border: 1px dashed var(--gold); border-radius: var(--radius); color: var(--gold); user-select: all; }

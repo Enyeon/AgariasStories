@@ -10,3 +10,8 @@
 
 [build.environment]
   NODE_VERSION = "22"
+  # Servidor de Compartir y Campañas (ver docs/SUPABASE.md). La clave
+  # «publishable» es pública por diseño: con ella no se pueden leer las tablas,
+  # sólo llamar a las funciones, que comprueban claves y permisos.
+  VITE_SUPABASE_URL = "https://oybuikuqsmnwskmkmzsz.supabase.co"
+  VITE_SUPABASE_ANON_KEY = "sb_publishable_OPIV8V7n3QFxfzosyb_fGA_AbdZbZ2_"

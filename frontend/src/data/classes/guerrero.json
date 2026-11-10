@@ -15,7 +15,7 @@
     "1": {
       "descripcion": "Combatiente versátil entrenado en el dominio absoluto de las armas y la estrategia.",
       "descripcionLarga": "El Guerrero perfecciona el combate hasta convertirlo en arte técnico. No depende de magia ni furia, sino de disciplina, entrenamiento y experiencia. Puede adaptarse a cualquier estilo, dominar cualquier arma y resistir cualquier embate. Es el estándar contra el cual se miden los demás combatientes.",
-      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Fuerza, Constitución.\n❖ Tus puntos de golpe es:\n    :: Tu dado de PG es: 1d12. 12 + Constitución.\n    :: Además, por cada nivel por encima de 1, obtienes 1d12 de PG + Constitución.\n❖ Competencias:\n    :: Armadura: Armadura ligera, armadura media, escudos.\n    :: Armas: Armas simples, armas marciales.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge dos de entre Atletismo, Intimidación, Naturaleza, Percepción, Supervivencia y Trato de Animales.\n❖ Equipos. Comienzas con el siguiente equipo, además del otorgado por tu trasfondo:\n    :: (a) una gran hacha o (b) cualquier arma marcial cuerpo a cuerpo.\n    :: (a) dos hachas de mano o (b) cualquier arma simple.\n    :: Un equipo de explorador y cuatro jabalinas.\n    :: Monedas de Oro: 2d4 x 10.",
+      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Fuerza y Constitución.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d10.\n    :: Nivel 1: 10 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d10 (o 6) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Armadura ligera, Armadura media, Armadura pesada y Escudos.\n    :: Armas: Armas simples y Armas marciales.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge dos de entre Acrobacias, Atletismo, Historia, Intimidación, Percepción, Perspicacia, Supervivencia y Trato con Animales.\n❖ Equipo. Comienzas con el siguiente equipo, además del que te dé tu trasfondo:\n    :: (a) una cota de malla o (b) una armadura de cuero, un arco largo y 20 flechas.\n    :: (a) un arma marcial y un escudo o (b) dos armas marciales.\n    :: (a) una ballesta ligera y 20 virotes o (b) dos hachas de mano.\n    :: (a) un paquete de explorador de mazmorras o (b) un paquete de explorador.\n    :: Alternativa: 5d4 × 10 po en lugar del equipo de clase.\n❖ Fuente: Manual del Jugador.",
       "informacionNivel": "✦  ✦\n\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n\n✦  ✦"
     },
     "2": {
@@ -24,77 +24,26 @@
     "3": {
       "informacionNivel": "✦ CONOCIMIENTO PRIMITIVO ✦",
       "subClase": {
-        "senda1": {
-          "subNombre": "Hebra Paradoja",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
+        "campeon": {
+          "subNombre": "Campeón",
+          "subDescripcion": "Excelencia física: críticos más frecuentes y gran resistencia.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
         },
-        "senda2": {
-          "subNombre": "Hebra Error",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
+        "maestro-batalla": {
+          "subNombre": "Maestro de Batalla",
+          "subDescripcion": "Táctico: maniobras alimentadas por dados de superioridad.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
         },
-        "senda3": {
-          "subNombre": "Hebra Virus",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
-        },
-        "senda4": {
-          "subNombre": "Hebra .exe",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
+        "caballero-arcano": {
+          "subNombre": "Caballero Arcano",
+          "subDescripcion": "Combina el acero con conjuros de abjuración y evocación.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
         }
       }
     },
@@ -149,5 +98,63 @@
     "20": {
       "informacionNivel": "✦  ✦"
     }
-  }
+  },
+  "competencias": {
+    "salvaciones": [
+      "fuerza",
+      "constitucion"
+    ],
+    "armaduras": [
+      "Armadura ligera",
+      "Armadura media",
+      "Armadura pesada",
+      "Escudos"
+    ],
+    "armas": [
+      "Armas simples",
+      "Armas marciales"
+    ],
+    "herramientas": [],
+    "habilidades": {
+      "elegir": 2,
+      "de": [
+        "Acrobacias",
+        "Atletismo",
+        "Historia",
+        "Intimidación",
+        "Percepción",
+        "Perspicacia",
+        "Supervivencia",
+        "Trato con Animales"
+      ]
+    }
+  },
+  "competenciasMulticlase": {
+    "armaduras": [
+      "Armadura ligera",
+      "Armadura media",
+      "Escudos"
+    ],
+    "armas": [
+      "Armas simples",
+      "Armas marciales"
+    ],
+    "herramientas": [],
+    "habilidades": null
+  },
+  "equipoInicial": [
+    "(a) una cota de malla o (b) una armadura de cuero, un arco largo y 20 flechas.",
+    "(a) un arma marcial y un escudo o (b) dos armas marciales.",
+    "(a) una ballesta ligera y 20 virotes o (b) dos hachas de mano.",
+    "(a) un paquete de explorador de mazmorras o (b) un paquete de explorador."
+  ],
+  "oroInicial": "5d4 × 10",
+  "fuenteReglas": "Manual del Jugador",
+  "subclaseNombre": "Arquetipo marcial",
+  "subclasesRetiradas": [
+    "senda1",
+    "senda2",
+    "senda3",
+    "senda4"
+  ]
 }

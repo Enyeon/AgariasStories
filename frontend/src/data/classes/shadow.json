@@ -15,7 +15,7 @@
     "1": {
       "descripcion": "Combatiente umbrío que convierte las sombras de sus enemigos caídos en soldados.",
       "descripcionLarga": "El Shadow no solo derrota a sus enemigos: los conserva. Extrae su sombra, fragmento residual de voluntad y memoria, y la ata a su servicio. Cuanto mayor la batalla, más oscura su legión. Es un líder, un general, un comandante del vacío que camina erguido y detrás de él es seguido por siluetas que obedecen su voluntad.",
-      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Destreza o Inteligencia y Carisma.\n❖ Tus puntos de golpe es:\n    :: Tu dado de PG es: 1d6. 6 + Constitución.\n    :: Además, por cada nivel por encima de 1, obtienes 1d6 de PG + Constitución.\n❖ Competencias:\n    :: Armadura: Competencia con armaduras ligeras.\n    :: Armas: Competencia con dagas y espadas.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge tres entre Atletismo, Acrobacias, Intimidación, Perspicacia, Sigilo y Engañar.\n❖ Equipos. Comienzas con el siguiente equipo, además del otorgado por tu trasfondo:\n    :: (a) peto de cuero o (b) armadura cuero tachonado (si el DM lo permite).\n    :: (a) x2 Dagas o (b) una espada.\n    :: (a) paquete de explorador, (b) paquete de explorador de mazmorras o (c) paquete de ladrón.\n    :: Un mapa de la Región.\n    :: Monedas de Oro: 4d4 x 10.",
+      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Destreza o Inteligencia (a elegir) y Carisma.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d6.\n    :: Nivel 1: 6 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d6 (o 4) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Armadura ligera.\n    :: Armas: Dagas y Espadas.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge tres de entre Atletismo, Acrobacias, Intimidación, Perspicacia, Sigilo y Engaño.\n❖ Equipo. Comienzas con el siguiente equipo, además del que te dé tu trasfondo:\n    :: (a) peto de cuero o (b) armadura de cuero tachonado (si el DM lo permite).\n    :: (a) dos dagas o (b) una espada.\n    :: (a) un paquete de explorador, (b) un paquete de explorador de mazmorras o (c) un paquete de ladrón.\n    :: Un mapa de la región.\n    :: Alternativa: 4d4 × 10 po en lugar del equipo de clase.\n❖ Fuente: Agarias.",
       "infoCubo": {
         "columnas": [
           "Sombras activas",
@@ -645,5 +645,47 @@
       "carisma",
       "sabiduria"
     ]
-  }
+  },
+  "competencias": {
+    "salvaciones": [
+      "carisma"
+    ],
+    "armaduras": [
+      "Armadura ligera"
+    ],
+    "armas": [
+      "Dagas",
+      "Espadas"
+    ],
+    "herramientas": [],
+    "habilidades": {
+      "elegir": 3,
+      "de": [
+        "Atletismo",
+        "Acrobacias",
+        "Intimidación",
+        "Perspicacia",
+        "Sigilo",
+        "Engaño"
+      ]
+    },
+    "salvacionesElegir": {
+      "elegir": 1,
+      "de": [
+        "destreza",
+        "inteligencia"
+      ]
+    }
+  },
+  "competenciasMulticlase": {
+    "pendiente": true
+  },
+  "equipoInicial": [
+    "(a) peto de cuero o (b) armadura de cuero tachonado (si el DM lo permite).",
+    "(a) dos dagas o (b) una espada.",
+    "(a) un paquete de explorador, (b) un paquete de explorador de mazmorras o (c) un paquete de ladrón.",
+    "Un mapa de la región."
+  ],
+  "oroInicial": "4d4 × 10",
+  "fuenteReglas": "Agarias"
 }

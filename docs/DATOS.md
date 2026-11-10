@@ -135,3 +135,44 @@ conozca el diseño de Agarias (puede ser homebrew intencionado).
   `aumentarStatOpcional` (+1 al atributo elegido).
 - Los requisitos de raza se comprueban con `race-tags.json` o por nombre parcial
   (p. ej. «Elfo»).
+
+## Datos corregidos en la v3 (noviembre de 2026)
+
+Scripts reproducibles en `tools/` (se pueden volver a ejecutar sin efectos extra):
+
+| Problema | Corrección | Script |
+|---|---|---|
+| 15 de 18 clases tenían el bloque inicial del Bárbaro (salvaciones FUE/CON, competencias, equipo, «1d12» de PG) | Competencias estructuradas (`competencias`, `competenciasMulticlase`, `equipoInicial`, `oroInicial`) para las 12 clases del Manual, el Artífice (Tasha), el Cazador y el Shadow Knight; el texto de «Atributos de clase» se regenera a partir de esos datos y del `dadoDeGolpe` real | `class_proficiencies.py` |
+| 12 clases ofrecían las subclases de la Anomalía («Hebra Paradoja / Error / Virus / .exe») o subclases vacías, siempre a nivel 3 | Subclases oficiales en su nivel correcto (Clérigo, Brujo y Hechicero a nivel 1; Druida y Mago a nivel 2; resto a nivel 3), con descripción breve y `rasgosPendientes: true`. Se conservan las que tenían contenido (Borracho Errante del Monje) | `class_subclasses.py` |
+| Condiciones con texto erróneo; tipos de daño mezclados con estados; «Fuerza (Strength)»; faltaban 5 tipos de daño | Referencia nueva con 15 condiciones oficiales, 13 tipos de daño oficiales + Profano y Sagrado (Agarias) y estados de Agarias separados. Copia de la anterior en `docs/historial/rules-reference-v2.json` | `rules_reference.py` |
+| La dote «Duro» y la Invocación de sangre estaban escritas en el código | Ahora son efectos en los datos (`efectos` en `feats.json` y en la subclase del Cazador) | — |
+| Errata «Inteligrncia» (Cazador) | Corregida al regenerar el texto | `class_proficiencies.py` |
+
+Los textos anteriores de «Atributos de clase» están en
+`frontend/src/data/legacy/atributos-iniciales-v2.json`: la migración 2→3 los usa
+para sustituir, en personajes guardados, sólo los que el usuario no había editado.
+
+### Pendiente de su autor (marcado en la app como «Pendiente»)
+
+- **Anomalía, Tiznado y Vinculador**: salvaciones, competencias, equipo y
+  competencias de multiclase. Sus datos eran una copia del Bárbaro y se retiraron.
+- **Subclases de Tiznado y Vinculador**: tenían las «Hebras» de la Anomalía; se
+  retiraron y la clase muestra «subclases pendientes». (Las de la Anomalía se conservan.)
+- **Multiclase del Cazador y del Shadow Knight**: no está en sus textos originales.
+- **Estados de Agarias** (Corrupto, Desgarro, Dolor, Vacío): cómo se aplican y cómo
+  terminan. Desgarro y Vacío tienen parte de la mecánica en su texto original;
+  falta lo demás (ver la referencia de reglas en la app).
+- **Contusionado y Provocado**: se movieron a «condiciones de Agarias». Provocado
+  necesita cómo se aplica y cómo termina.
+- **Rasgos de nivel de las subclases oficiales**: sólo nombre y resumen.
+- **Rasgos por nivel de varias clases oficiales**: los encabezados internos
+  (`informacionNivel`) de varias clases siguen siendo los del Bárbaro. La app no
+  los muestra, pero conviene limpiarlos al cargar los rasgos reales.
+
+### A revisar
+
+- **Artífice**: en Tasha's el dado de golpe es **d8**; los datos tienen **d6**. No
+  se cambió porque modificaría los PG de personajes existentes: confírmalo y,
+  si procede, cambia `dadoDeGolpe` en `artifice.json`.
+- **Profano y Sagrado**: tipos de daño propios de Agarias (decisión del DM). Una
+  resistencia a Necrótico/Radiante NO cubre Profano/Sagrado salvo que se diga.

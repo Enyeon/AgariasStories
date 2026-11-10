@@ -1,5 +1,6 @@
 // Pestaña «Conjuros»: estadísticas de lanzamiento, espacios, grimorio y biblioteca.
 
+import { getClass } from '../../data/index.js';
 import { html, raw, richText } from '../../ui/dom.js';
 import { ABILITY_LABEL } from '../../domain/constants.js';
 import { formatModifier } from '../../domain/rules.js';
@@ -34,7 +35,9 @@ export function filterSpells(spells, filters, classKeys) {
     if (filters.level && String(s.nivel) !== filters.level) return false;
     if (filters.school && spellSchool(s) !== filters.school) return false;
     if (filters.type && !spellTypes(s).includes(filters.type)) return false;
-    if (filters.onlyMine && classKeys.length && !spellClasses(s).some((k) => classKeys.includes(k))) return false;
+    // Una clase puede declarar su lista en su JSON (`listaConjuros`) además de la marca del conjuro.
+    if (filters.onlyMine && classKeys.length && !spellClasses(s).some((k) => classKeys.includes(k))
+      && !classKeys.some((k) => getClass(k)?.listaConjuros?.includes(name))) return false;
     return true;
   }).sort(([a, sa], [b, sb]) => {
     const la = sa.nivel === 'Truco' ? 0 : Number(sa.nivel);

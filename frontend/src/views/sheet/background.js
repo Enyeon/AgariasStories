@@ -1,7 +1,8 @@
 // Trasfondo: tarjeta de la pestaña «Progresión», selector y editor de homebrew.
 
+import { listEntries } from '../../content/registry.js';
 import { html, raw, setHtml, richText } from '../../ui/dom.js';
-import { openDialog, toast, confirmDialog } from '../../ui/feedback.js';
+import { openDialog, toast, confirmDialog, trackChanges } from '../../ui/feedback.js';
 import { ABILITY_KEYS, ABILITY_LABEL, SKILL_NAMES } from '../../domain/constants.js';
 import { featAbilityOptions } from '../../domain/rules.js';
 import { proseToHtml } from '../../domain/text-format.js';
@@ -128,11 +129,16 @@ const norm = (s) => String(s ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').toL
  * @param {Array<object>} homebrew  Trasfondos homebrew de otros personajes locales.
  * @returns {Promise<{ source: string, key?: string, custom?: object } | { create: true } | undefined>}
  */
-export function openBackgroundPicker(currentKey, homebrew = []) {
-  const official = Object.entries(data.backgrounds).map(([key, d]) => ({ id: `o:${key}`, choice: { source: 'official', key }, def: { ...normalizeBackgroundDefinition(d), ...d, official: true } }));
+export function openBackgroundPicker(currentKey, homebrew = [], allow = {}) {
+  const official = (allow.official === false ? [] : Object.entries(data.backgrounds)).map(([key, d]) => ({ id: `o:${key}`, choice: { source: 'official', key }, def: { ...normalizeBackgroundDefinition(d), ...d, official: true } }));
+  const campaign = (allow.homebrew === false ? [] : listEntries('trasfondo')).map((e) => ({
+    id: `c:${e.ref}`, choice: { source: 'custom', custom: { ...e.engine, name: e.item.name, description: e.item.description }, ref: e.ref },
+    def: { ...normalizeBackgroundDefinition({ ...e.engine, name: e.item.name, description: e.item.description }), official: false }, pack: e.packName,
+  }));
   const own = homebrew.map((d, i) => ({ id: `h:${i}`, choice: { source: 'custom', custom: d }, def: { ...normalizeBackgroundDefinition(d), official: false } }));
   const groups = [
     ...[...new Set(official.map((o) => o.def.source))].map((src) => ({ title: src, items: official.filter((o) => o.def.source === src) })),
+    ...[...new Set(campaign.map((o) => o.pack))].map((p) => ({ title: `Homebrew: ${p}`, items: campaign.filter((o) => o.pack === p) })),
     ...(own.length ? [{ title: 'Tus trasfondos (de otros personajes)', items: own }] : []),
   ];
   return openDialog({
@@ -141,7 +147,7 @@ export function openBackgroundPicker(currentKey, homebrew = []) {
     render(body, close) {
       let selected = official.find((o) => o.choice.key === currentKey) ?? null;
       let query = '';
-      const all = [...official, ...own];
+      const all = [...official, ...campaign, ...own];
       const list = () => {
         const q = norm(query);
         const gs = groups.map((g) => ({ ...g, items: g.items.filter((i) => !q || norm(`${i.def.name} ${i.def.skills.join(' ')} ${i.def.feat ?? ''}`).includes(q)) })).filter((g) => g.items.length);
@@ -190,9 +196,11 @@ export function openBackgroundEditor(initial, { title = 'Trasfondo propio' } = {
   const def = normalizeBackgroundDefinition(initial ?? {});
   const equipment = ['A', 'B', 'C'].map((label) => def.equipment.find((e) => e.label === label)?.text ?? '');
   const feats = Object.keys(data.feats).sort((a, b) => a.localeCompare(b, 'es'));
+  const tracker = trackChanges();
   return openDialog({
     title,
     size: 'lg',
+    guard: tracker.guard,
     render(body, close) {
       setHtml(body, html`<form class="stack" data-form novalidate>
         <div class="callout"><p>Crea el trasfondo que quieras: todo es opcional salvo el nombre. Se guarda dentro del personaje, así que viaja al exportarlo o compartirlo.</p></div>
@@ -228,6 +236,7 @@ export function openBackgroundEditor(initial, { title = 'Trasfondo propio' } = {
         <div class="dialog__footer"><button type="button" class="btn btn--ghost" data-dialog-close>Cancelar</button><button type="submit" class="btn btn--primary">Guardar trasfondo</button></div>
       </form>`);
       const form = body.querySelector('[data-form]');
+      tracker.watch(form);
       form.addEventListener('input', (e) => {
         const label = e.target.dataset.eqPreview;
         if (label) body.querySelector(`[data-eq-out="${label}"]`).textContent = e.target.value.trim() ? `→ ${equipmentSummary(e.target.value)}` : '';
@@ -266,7 +275,8 @@ async function chooseBackground(ed) {
     if (!ok) return;
   }
   const homebrew = await ed.listHomebrewBackgrounds();
-  const choice = await openBackgroundPicker(c.background.key, homebrew);
+  const perms = ed.permissions;
+  const choice = await openBackgroundPicker(c.background.key, homebrew, { official: perms.official.trasfondo, homebrew: perms.homebrew.trasfondo });
   if (!choice) return;
   if (choice.create) return createBackground(ed);
   ed.replace(setBackground(ed.character, choice), { message: 'Trasfondo elegido.' });

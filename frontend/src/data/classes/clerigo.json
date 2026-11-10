@@ -16,88 +16,65 @@
     "1": {
       "descripcion": "Canalizador del poder divino otorgado por una deidad o fuerza sagrada.",
       "descripcionLarga": "El Clérigo es el puente entre lo mortal y lo eterno. Su poder proviene de la fe —en un dios, en un ideal o en un principio cósmico— y se manifiesta como luz, protección o juicio. Puede sanar o castigar con la misma autoridad. No es un simple sacerdote: es un ejecutor de la voluntad divina en el mundo físico.",
-      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Fuerza, Constitución.\n❖ Tus puntos de golpe es:\n    :: Tu dado de PG es: 1d12. 12 + Constitución.\n    :: Además, por cada nivel por encima de 1, obtienes 1d12 de PG + Constitución.\n❖ Competencias:\n    :: Armadura: Armadura ligera, armadura media, escudos.\n    :: Armas: Armas simples, armas marciales.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge dos de entre Atletismo, Intimidación, Naturaleza, Percepción, Supervivencia y Trato de Animales.\n❖ Equipos. Comienzas con el siguiente equipo, además del otorgado por tu trasfondo:\n    :: (a) una gran hacha o (b) cualquier arma marcial cuerpo a cuerpo.\n    :: (a) dos hachas de mano o (b) cualquier arma simple.\n    :: Un equipo de explorador y cuatro jabalinas.\n    :: Monedas de Oro: 2d4 x 10.",
-      "informacionNivel": "✦  ✦\n\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n\n✦  ✦"
+      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Sabiduría y Carisma.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d8.\n    :: Nivel 1: 8 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d8 (o 5) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Armadura ligera, Armadura media y Escudos.\n    :: Armas: Armas simples.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge dos de entre Historia, Medicina, Perspicacia, Persuasión y Religión.\n❖ Equipo. Comienzas con el siguiente equipo, además del que te dé tu trasfondo:\n    :: (a) una maza o (b) un martillo de guerra (si tienes competencia).\n    :: (a) una cota de escamas, (b) una armadura de cuero o (c) una cota de malla (si tienes competencia).\n    :: (a) una ballesta ligera y 20 virotes o (b) cualquier arma simple.\n    :: (a) un paquete de sacerdote o (b) un paquete de explorador.\n    :: Un escudo y un símbolo sagrado.\n    :: Alternativa: 5d4 × 10 po en lugar del equipo de clase.\n❖ Fuente: Manual del Jugador.",
+      "informacionNivel": "✦  ✦\n\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n\n✦  ✦",
+      "subClase": {
+        "conocimiento": {
+          "subNombre": "Dominio del Conocimiento",
+          "subDescripcion": "Dioses del saber: idiomas, habilidades expertas y lectura de pensamientos.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
+        },
+        "engano": {
+          "subNombre": "Dominio del Engaño",
+          "subDescripcion": "Dioses de la astucia: duplicados ilusorios, invisibilidad y bendición del embaucador.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
+        },
+        "guerra": {
+          "subNombre": "Dominio de la Guerra",
+          "subDescripcion": "Dioses de la batalla: armaduras pesadas, armas marciales y ataques adicionales.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
+        },
+        "luz": {
+          "subNombre": "Dominio de la Luz",
+          "subDescripcion": "Dioses del sol y la verdad: fuego, luz radiante y protección contra ataques.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
+        },
+        "naturaleza": {
+          "subNombre": "Dominio de la Naturaleza",
+          "subDescripcion": "Dioses de la naturaleza: armaduras pesadas, conjuros druídicos y control de bestias y plantas.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
+        },
+        "tempestad": {
+          "subNombre": "Dominio de la Tempestad",
+          "subDescripcion": "Dioses del trueno y el mar: relámpago, trueno y represalia contra quien te golpea.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
+        },
+        "vida": {
+          "subNombre": "Dominio de la Vida",
+          "subDescripcion": "Dioses de la vida y la curación: curaciones más potentes y armadura pesada.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
+        }
+      }
     },
     "2": {
       "informacionNivel": "✦ ATAQUE TEMERARIO ✦"
     },
     "3": {
-      "informacionNivel": "✦ CONOCIMIENTO PRIMITIVO ✦",
-      "subClase": {
-        "senda1": {
-          "subNombre": "Hebra Paradoja",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
-        },
-        "senda2": {
-          "subNombre": "Hebra Error",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
-        },
-        "senda3": {
-          "subNombre": "Hebra Virus",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
-        },
-        "senda4": {
-          "subNombre": "Hebra .exe",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
-        }
-      }
+      "informacionNivel": "✦ CONOCIMIENTO PRIMITIVO ✦"
     },
     "4": {
       "informacionNivel": "✦  ✦"
@@ -150,5 +127,56 @@
     "20": {
       "informacionNivel": "✦  ✦"
     }
-  }
+  },
+  "competencias": {
+    "salvaciones": [
+      "sabiduria",
+      "carisma"
+    ],
+    "armaduras": [
+      "Armadura ligera",
+      "Armadura media",
+      "Escudos"
+    ],
+    "armas": [
+      "Armas simples"
+    ],
+    "herramientas": [],
+    "habilidades": {
+      "elegir": 2,
+      "de": [
+        "Historia",
+        "Medicina",
+        "Perspicacia",
+        "Persuasión",
+        "Religión"
+      ]
+    }
+  },
+  "competenciasMulticlase": {
+    "armaduras": [
+      "Armadura ligera",
+      "Armadura media",
+      "Escudos"
+    ],
+    "armas": [],
+    "herramientas": [],
+    "habilidades": null
+  },
+  "equipoInicial": [
+    "(a) una maza o (b) un martillo de guerra (si tienes competencia).",
+    "(a) una cota de escamas, (b) una armadura de cuero o (c) una cota de malla (si tienes competencia).",
+    "(a) una ballesta ligera y 20 virotes o (b) cualquier arma simple.",
+    "(a) un paquete de sacerdote o (b) un paquete de explorador.",
+    "Un escudo y un símbolo sagrado."
+  ],
+  "oroInicial": "5d4 × 10",
+  "fuenteReglas": "Manual del Jugador",
+  "subclaseNombre": "Dominio divino",
+  "subclasesRetiradas": [
+    "senda1",
+    "senda2",
+    "senda3",
+    "senda4"
+  ]
 }

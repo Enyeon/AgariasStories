@@ -1,9 +1,10 @@
 // Exportación e importación de personajes como archivos .json.
 
-import { createDocument, LIMITS } from '../domain/schema.js';
+import { LIMITS } from '../domain/schema.js';
+import { createDocument } from './characters.js';
 import { parseDocument, InvalidDocumentError } from '../domain/validation.js';
 
-export const APP_VERSION = '2.0.0';
+export const APP_VERSION = '3.0.0';
 
 /** Nombre de archivo seguro a partir del nombre del personaje. */
 export function exportFileName(name) {
@@ -65,4 +66,38 @@ export function parseCharacterText(text) {
     throw new InvalidDocumentError('El archivo está dañado o no es un JSON válido.', err.message);
   }
   return parseDocument(raw);
+}
+
+/** Descarga cualquier objeto como archivo .json. */
+export function downloadJson(value, baseName) {
+  const blob = new Blob([JSON.stringify(value, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = exportFileName(baseName);
+  document.body.append(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+/** Pide al usuario un archivo .json y lo devuelve ya interpretado (o null si cancela). */
+export function readJsonFile({ maxBytes = LIMITS.importBytes } = {}) {
+  return new Promise((resolve, reject) => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'application/json,.json';
+    input.addEventListener('change', async () => {
+      const file = input.files?.[0];
+      if (!file) return resolve(null);
+      if (file.size > maxBytes) return reject(new InvalidDocumentError('El archivo es demasiado grande (máx. 2 MB).'));
+      try {
+        resolve(JSON.parse(await readText(file)));
+      } catch {
+        reject(new InvalidDocumentError('El archivo está dañado o no es un JSON válido.'));
+      }
+      return undefined;
+    });
+    input.click();
+  });
 }

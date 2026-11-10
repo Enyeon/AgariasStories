@@ -96,6 +96,7 @@ export const CLASS_SECTIONS = Object.freeze({
   manual: 'Manual del Jugador',
   tasha: 'Caldero de Tasha',
   agarias: 'Agarias Stories',
+  homebrew: 'Homebrew de la campaña',
 });
 
 /** Iconos de clase (los del Manual vienen del proyecto original). */

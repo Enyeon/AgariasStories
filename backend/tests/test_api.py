@@ -119,7 +119,7 @@ def test_rejects_foreign_or_corrupt_documents(client: TestClient) -> None:
         assert res.json()["error"]["code"] == "invalid_document"
 
 
-@pytest.mark.parametrize("version,status", [(1, 201), (2, 201), (3, 422)])
+@pytest.mark.parametrize("version,status", [(1, 201), (2, 201), (3, 201), (4, 422)])
 def test_schema_versions(client: TestClient, version: int, status: int) -> None:
     doc = make_document()
     doc["schemaVersion"] = version

@@ -3,14 +3,14 @@
 import { html, raw, richText } from '../../ui/dom.js';
 import { ABILITY_KEYS, ABILITY_LABEL, MAX_LEVEL } from '../../domain/constants.js';
 import { raceChoiceGroups, formatModifier, featAbilityOptions, subclassInfo } from '../../domain/rules.js';
-import { getRace, getClass, getFeat, raceHasToughness, data } from '../../data/index.js';
+import { getRace, getClass, getFeat, raceHasToughness, data, raceName, featName } from '../../data/index.js';
 import {
   setRace, setRaceAbilityChoice, setRaceLanguages, raceAllowsFeat, setRaceFeat, applyLevelDown, canLevelUp,
 } from '../../domain/progression.js';
 import { sectionCard, actionButton } from './common.js';
 import { openRacePicker } from '../race-picker.js';
 import { renderBackgroundCard } from './background.js';
-import { openLevelUpWizard, openFeatPicker } from '../level-up.js';
+import { openLevelUpWizard, openFeatPicker, openMultiLevelUp, openMultiLevelDown } from '../level-up.js';
 import { confirmDialog, toast } from '../../ui/feedback.js';
 
 export function raceBonusText(race) {
@@ -25,7 +25,7 @@ function improvementText(l) {
   if (l.improvement.type === 'asi') {
     return Object.entries(l.improvement.increases).map(([k, v]) => `${ABILITY_LABEL[k]} +${v}`).join(', ');
   }
-  return `Dote: ${l.improvement.name}${l.improvement.ability ? ` (${ABILITY_LABEL[l.improvement.ability]} +1)` : ''}`;
+  return `Dote: ${featName(l.improvement.name)}${l.improvement.ability ? ` (${ABILITY_LABEL[l.improvement.ability]} +1)` : ''}`;
 }
 
 function raceChoices(ctx, race) {
@@ -74,7 +74,7 @@ function raceFeat(ctx) {
   const def = getFeat(current?.name);
   const options = featAbilityOptions(def);
   return html`<fieldset class="choice-group">
-    <legend>Dote racial ${current ? html`<span class="badge badge--success">${current.name}</span>` : html`<span class="badge badge--warning">Pendiente</span>`}</legend>
+    <legend>Dote racial ${current ? html`<span class="badge badge--success">${featName(current.name)}</span>` : html`<span class="badge badge--warning">Pendiente</span>`}</legend>
     ${ctx.readOnly
       ? (def ? html`<div class="rich">${richText(def.habilidad)}</div>` : html`<p class="muted">Sin dote elegida.</p>`)
       : html`<div class="row">
@@ -89,7 +89,7 @@ function raceCard(ctx) {
   const race = getRace(ctx.character.race.key);
   const key = ctx.character.race.key;
   return sectionCard({
-    title: key ? `Raza: ${key}` : 'Raza',
+    title: key ? `Raza: ${raceName(key)}` : 'Raza',
     subtitle: race ? raceBonusText(race) : key ? 'Esta raza no existe en los datos actuales.' : 'Tu raza otorga bonificaciones, velocidades e idiomas.',
     actions: actionButton(ctx, { action: 'pick-race', label: key ? 'Cambiar raza' : 'Elegir raza', variant: key ? 'btn--ghost' : 'btn--primary' }),
     body: race ? html`<div class="stack">
@@ -111,6 +111,8 @@ function levelsCard(ctx) {
   });
   const actions = ctx.readOnly ? '' : html`
     ${c.levels.length ? html`<button type="button" class="btn btn--ghost" data-action="level-down">↓ Bajar nivel</button>` : ''}
+    ${c.levels.length > 1 ? html`<button type="button" class="btn btn--ghost" data-action="level-down-multi">⇊ Bajar varios niveles</button>` : ''}
+    ${c.levels.length && gate.ok && c.levels.length < 19 ? html`<button type="button" class="btn btn--ghost" data-action="level-up-multi">⇈ Subir varios niveles</button>` : ''}
     <button type="button" class="btn btn--primary" data-action="level-up" ${gate.ok ? '' : raw('aria-disabled="true"')} title="${gate.reason}">↑ ${c.levels.length ? 'Subir de nivel' : 'Nivel 1: elegir clase'}</button>`;
   return sectionCard({
     title: `Nivel ${sheet.level} de ${MAX_LEVEL}`,
@@ -149,11 +151,12 @@ export const progressionActions = {
       });
       if (!ok) return;
     }
-    const key = await openRacePicker(c.race.key);
+    const perms = ed.permissions;
+    const key = await openRacePicker(c.race.key, { official: perms.official.raza, homebrew: perms.homebrew.raza });
     if (key) ed.replace(setRace(ed.character, key), { message: `Raza: ${key}` });
   },
   async 'pick-race-feat'(ed) {
-    const choice = await openFeatPicker(ed.character, { title: 'Dote racial', excludeRaceFeat: true });
+    const choice = await openFeatPicker(ed.character, { title: 'Dote racial', excludeRaceFeat: true, allow: ed.permissions });
     if (!choice) return;
     const res = setRaceFeat(ed.character, choice);
     if (res.errors.length) return toast(res.errors.join(' '), { type: 'error' });
@@ -163,8 +166,18 @@ export const progressionActions = {
   async 'level-up'(ed) {
     const gate = canLevelUp(ed.character);
     if (!gate.ok) return toast(gate.reason, { type: 'warning' });
-    const next = await openLevelUpWizard(ed.character);
+    const next = await openLevelUpWizard(ed.character, { allow: ed.permissions });
     if (next) ed.replace(next, { message: `¡Nivel ${next.levels.length}!` });
+  },
+  async 'level-up-multi'(ed) {
+    const from = ed.character.levels.length;
+    const next = await openMultiLevelUp(ed.character, { allow: ed.permissions });
+    if (next) ed.replace(next, { message: `Nivel ${from} → ${next.levels.length}.` });
+  },
+  async 'level-down-multi'(ed) {
+    const from = ed.character.levels.length;
+    const next = await openMultiLevelDown(ed.character);
+    if (next) ed.replace(next, { message: `Nivel ${from} → ${next.levels.length}.` });
   },
   async 'level-down'(ed) {
     const c = ed.character;

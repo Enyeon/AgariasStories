@@ -136,7 +136,7 @@ describe('progresión', () => {
   it('sube y baja de nivel sin dejar restos', () => {
     let c = setRace(createCharacter(), 'Medio Elfo');
     for (let i = 0; i < 3; i++) {
-      ({ character: c } = applyLevelUp(c, { classKey: 'guerrero', hpRoll: 6, subclass: 'senda1' }));
+      ({ character: c } = applyLevelUp(c, { classKey: 'guerrero', hpRoll: 6, subclass: 'campeon' }));
     }
     const asi = { type: 'asi', increases: { fuerza: 2 } };
     const res = applyLevelUp(c, { classKey: 'guerrero', hpRoll: 6, improvement: asi });

@@ -7,7 +7,14 @@ import {
 } from './constants.js';
 import { getClass, getRace, getFeat, getEpicBoon, raceHasToughness, getRaceTags, getOfficialBackground, data } from '../data/index.js';
 import { createBackgroundDefinition } from './schema.js';
-import { SPELLCASTING_BY_CLASS, computeSpellSlots } from './spellcasting.js';
+import { castingConfig, computeSpellSlots } from './spellcasting.js';
+import {
+  proficiencySources, isGranted, effectSources, classChoiceStatus, pendingClassChoices,
+} from './proficiencies.js';
+import { sumBonus } from './effects.js';
+import { permissionsFor } from '../content/rules.js';
+import { extensionSubclassOptions, extensionFeatures } from './extensions.js';
+import { engineOf } from '../content/registry.js';
 
 // ── Básicos ──────────────────────────────────────────────────────────────
 
@@ -196,7 +203,7 @@ export function abilityCaps(c) {
       for (const k of statMax.activos) if (k in caps) caps[k] = Math.max(caps[k], Number(statMax.stat));
     }
   }
-  if (c.settings.allowEpicBoons && c.epicBoons.length > 0) {
+  if (permissionsFor(c).epicBoons && c.epicBoons.length > 0) {
     for (const k of ABILITY_KEYS) caps[k] = Math.max(caps[k], EPIC_ABILITY_CAP);
   }
   return caps;
@@ -207,11 +214,14 @@ export function abilityScores(c) {
   const racial = racialBonuses(c);
   const improvements = improvementBonuses(c);
   const caps = abilityCaps(c);
+  // Bonificaciones «atributo:<clave>» de rasgos, dotes o extensiones (catálogo de efectos).
+  const fx = effectSources(c);
   return Object.fromEntries(ABILITY_KEYS.map((k) => {
     const base = c.abilities[k];
-    const total = base + racial[k] + improvements[k];
+    const effects = sumBonus(fx, `atributo:${k}`);
+    const total = base + racial[k] + improvements[k] + effects;
     return [k, {
-      base, racial: racial[k], improvements: improvements[k], total,
+      base, racial: racial[k], improvements: improvements[k], effects, total,
       modifier: abilityModifier(total), cap: caps[k], overCap: total > caps[k],
     }];
   }));
@@ -223,20 +233,24 @@ function passiveFeatBonus(c, skillName) {
   return allFeats(c).reduce((sum, f) => sum + (Number(getFeat(f.name)?.pasiva?.[skillName]) || 0), 0);
 }
 
-/** Habilidades con competencia otorgada por el trasfondo (no se pueden quitar a mano). */
+/** Habilidades con competencia otorgada por alguna fuente (no se pueden quitar a mano). */
 export function grantedSkills(c) {
-  return backgroundDefinition(c)?.skills ?? [];
+  return [...proficiencySources(c).skills].filter(([, src]) => isGranted(src)).map(([name]) => name);
 }
 
-export function skillBonuses(c, scores, prof) {
-  const granted = grantedSkills(c);
+export function skillBonuses(c, scores, prof, sources = proficiencySources(c)) {
   return SKILLS.map((s) => {
-    const fromBackground = granted.includes(s.name);
-    const proficient = fromBackground || c.proficiencies.skills.includes(s.name);
+    const src = sources.skills.get(s.name) ?? [];
+    const proficient = src.length > 0;
+    const granted = isGranted(src);
+    const fromBackground = src.some((x) => x.kind === 'trasfondo');
     // La pericia sólo cuenta si hay competencia (regla 5e).
     const expert = proficient && (c.proficiencies.expertise ?? []).includes(s.name);
     const bonus = scores[s.ability].modifier + (expert ? prof * 2 : proficient ? prof : 0);
-    return { ...s, proficient, expert, fromBackground, bonus, passive: 10 + bonus + passiveFeatBonus(c, s.name) };
+    return {
+      ...s, proficient, expert, granted, fromBackground, sources: src,
+      bonus, passive: 10 + bonus + passiveFeatBonus(c, s.name),
+    };
   });
 }
 
@@ -257,13 +271,22 @@ export function expertiseAllowance(c) {
     const n = Number(getFeat(f.name)?.pericias) || 0;
     if (n) sources.push({ label: `Dote: ${f.name}`, amount: n });
   }
+  for (const t of c.traits ?? []) {
+    if (!t.active) continue;
+    const n = (t.effects ?? []).filter((e) => e.type === 'pericia').reduce((a, e) => a + e.amount, 0);
+    if (n) sources.push({ label: `Rasgo: ${t.name}`, amount: n });
+  }
   return { total: sources.reduce((a, b) => a + b.amount, 0), sources };
 }
 
-export function savingThrows(c, scores, prof) {
+export function savingThrows(c, scores, prof, sources = proficiencySources(c)) {
+  const allBonus = sumBonus(effectSources(c), 'salvaciones');
+  const resilient = allFeats(c).filter((f) => getFeat(f.name)?.salvacionDelAtributoElegido && f.ability);
   return ABILITY_KEYS.map((k) => {
-    const proficient = c.proficiencies.saves.includes(k);
-    return { ability: k, proficient, bonus: scores[k].modifier + (proficient ? prof : 0) };
+    const src = [...(sources.saves.get(k) ?? [])];
+    for (const f of resilient) if (f.ability === k) src.push({ kind: 'dote', label: f.name });
+    const proficient = src.length > 0;
+    return { ability: k, proficient, granted: isGranted(src), sources: src, bonus: scores[k].modifier + (proficient ? prof : 0) + allBonus };
   });
 }
 
@@ -285,25 +308,32 @@ export function averageHitDieRoll(die) {
 export function hitPoints(c, scores) {
   const conMod = scores.constitucion.modifier;
   const tough = raceHasToughness(c.race.key);
-  const duro = allFeats(c).some((f) => f.name === 'Duro');
+  const fx = effectSources(c);
+  const perLevelBonus = sumBonus(fx, 'pg_por_nivel');
+  const flatBonus = sumBonus(fx, 'pg_max');
+  const bonusLabels = fx.filter((s) => s.effects.some((e) => e.type === 'bono' && (e.target === 'pg_por_nivel' || e.target === 'pg_max'))).map((s) => s.label);
   const perLevel = c.levels.map((l, i) => {
     const die = hitDieFor(l.classKey);
     const roll = i === 0 ? die : Math.min(die, Math.max(1, l.hpRoll));
-    const extra = (tough ? 1 : 0) + (duro ? 2 : 0);
+    const extra = (tough ? 1 : 0) + perLevelBonus;
     return { level: i + 1, classKey: l.classKey, die, roll, conMod, extra, total: Math.max(1, roll + conMod + extra) };
   });
-  return { max: perLevel.reduce((s, p) => s + p.total, 0), perLevel, tough, duro };
+  const max = perLevel.length ? perLevel.reduce((s, p) => s + p.total, 0) + flatBonus : 0;
+  return { max, perLevel, tough, flatBonus, bonusLabels, duro: bonusLabels.includes('Duro') };
 }
 
 // ── Velocidades ──────────────────────────────────────────────────────────
 
 export function speeds(c) {
   const race = getRace(c.race.key) ?? {};
+  const walkBonus = sumBonus(effectSources(c), 'velocidad');
   return SPEEDS.map(({ key, label }) => {
     const fromRace = Number.isFinite(race[key]) ? race[key] : null;
     const override = c.combat.speedOverrides[key] ?? undefined;
-    const value = override ?? fromRace ?? (key === 'velocidad' ? 30 : null);
-    return { key, label, value, fromRace, overridden: override !== undefined };
+    const base = override ?? fromRace ?? (key === 'velocidad' ? 30 : null);
+    // Las bonificaciones de rasgos sólo afectan a la velocidad al caminar.
+    const value = key === 'velocidad' && base !== null ? base + walkBonus : base;
+    return { key, label, value, fromRace, bonus: key === 'velocidad' ? walkBonus : 0, overridden: override !== undefined };
   });
 }
 
@@ -347,7 +377,7 @@ export function spellcasting(c, scores, prof) {
       notes.push(`${cls.nombre}: lanzador «${cls.conjurador}» sin atributo de conjuro definido en los datos.`);
       continue;
     }
-    const cfg = SPELLCASTING_BY_CLASS[classKey];
+    const cfg = castingConfig(classKey);
     const mod = scores[cls.attribute].modifier;
     const idx = Math.min(MAX_LEVEL, level) - 1;
     let prepared = null;
@@ -435,17 +465,31 @@ export function classFeatures(c) {
     const cls = getClass(classKey);
     if (!cls) return { classKey, className: classKey, level, missing: true, levels: [], table: null };
     const subKey = c.subclasses[classKey] ?? null;
-    const subLevel = Object.entries(cls.niveles).find(([, l]) => l.subClase)?.[0];
-    const sub = subKey && subLevel ? cls.niveles[subLevel].subClase[subKey] : null;
+    const subLevel = Object.entries(cls.niveles).find(([, l]) => l.subClase)?.[0] ?? subclassInfo(classKey, c)?.level;
+    const sub = extensionSubclass(c, classKey) ?? (subKey && subLevel ? cls.niveles[subLevel]?.subClase?.[subKey] : null);
+    // Rasgos de extensiones Homebrew (subclase-extensión y habilidades especiales).
+    const extFeatures = extensionFeatures(c, classKey, MAX_LEVEL);
+    const replaced = new Map(extFeatures.filter((f) => f.replaces && f.level <= level).map((f) => [f.replaces.trim().toLowerCase(), f.title]));
     const definedLevels = Object.keys(cls.niveles).map(Number);
     const out = [];
     const tableCols = [];
     const tableRows = [];
     const featuresAt = (n) => ({
-      features: blocks(cls.niveles[n]?.infoBlock, (b) => ({ title: b.name || '', text: b.descripcion || '' })),
-      subFeatures: sub
-        ? blocks(sub.subNivel?.[n]?.infoSubBlock, (b) => ({ title: b.subName || '', text: b.subDescripcion || '' }))
-        : [],
+      features: [
+        ...blocks(cls.niveles[n]?.infoBlock, (b) => ({
+          title: b.name || '', text: b.descripcion || '',
+          replacedBy: replaced.get(String(b.name || '').trim().toLowerCase()) ?? null,
+        })),
+        ...extFeatures.filter((f) => f.level === n && f.kind === 'rasgos').map((f) => ({
+          title: f.title, text: f.text, homebrew: true, extension: f.extension, origin: f.origin, condition: f.condition, replaces: f.replaces,
+        })),
+      ],
+      subFeatures: [
+        ...(sub && !sub.homebrew ? blocks(sub.subNivel?.[n]?.infoSubBlock, (b) => ({ title: b.subName || '', text: b.subDescripcion || '' })) : []),
+        ...extFeatures.filter((f) => f.level === n && f.kind === 'subclase').map((f) => ({
+          title: f.title, text: f.text, homebrew: true, extension: f.extension, replaces: f.replaces,
+        })),
+      ],
     });
     for (let n = 1; n <= level; n++) {
       const l = cls.niveles[n];
@@ -464,10 +508,12 @@ export function classFeatures(c) {
       classKey, className: cls.nombre, level, hitDie: cls.dadoDeGolpe,
       section: cls.seccion, summary: cls.niveles?.[1]?.descripcion ?? '', caster: Boolean(cls.conjurador),
       subclassLabel: cls.subclaseNombre ?? 'Subclase',
+      subclassPending: Boolean(cls.subclasePendiente),
       subclassLevel: subLevel ? Number(subLevel) : null,
+      extensions: [...new Set(extFeatures.map((f) => f.ref))],
       classDc: classSaveDc(c, classKey, scores),
       next,
-      subclass: sub ? { key: subKey, name: sub.subNombre, description: sub.subDescripcion } : null,
+      subclass: sub ? { key: subKey, name: sub.subNombre, description: sub.subDescripcion, pending: Boolean(sub.rasgosPendientes), source: sub.fuente ?? null, homebrew: Boolean(sub.homebrew) } : null,
       startingInfo: cls.niveles?.[1]?.atributoInicial ?? '',
       levels: out,
       table: tableCols.length ? { columns: tableCols, rows: tableRows } : null,
@@ -477,21 +523,48 @@ export function classFeatures(c) {
 }
 
 /** Subclase disponible de una clase: { level, options: [{ key, name, description }] } */
-export function subclassInfo(classKey) {
+export function subclassInfo(classKey, c = null) {
   const cls = getClass(classKey);
   if (!cls) return null;
   const entry = Object.entries(cls.niveles).find(([, l]) => l.subClase);
-  if (!entry) return null;
+  // Con un personaje, se añaden las subclases-extensión Homebrew que puede usar.
+  const extra = extensionSubclassOptions(c, classKey);
+  if (!entry && !extra.length) return null;
+  const official = entry ? Object.entries(entry[1].subClase).map(([key, s]) => ({ key, name: s.subNombre, description: s.subDescripcion ?? '' })) : [];
   return {
-    level: Number(entry[0]),
+    level: entry ? Number(entry[0]) : Math.min(...extra.map((o) => o.level)),
     label: cls.subclaseNombre ?? 'Subclase',
-    options: Object.entries(entry[1].subClase).map(([key, s]) => ({ key, name: s.subNombre, description: s.subDescripcion ?? '' })),
+    options: [...official, ...extra],
   };
 }
 
-/** Sección «Criaturas de Sangre»: Cazador de Sangre con la Orden del Invocador (senda1). */
+/** Subclase-extensión elegida, en la forma de una subclase de los datos. */
+function extensionSubclass(c, classKey) {
+  const ref = c.subclasses?.[classKey];
+  const ext = ref ? engineOf('extension', ref) : null;
+  if (!ext || ext.kind !== 'subclase' || ext.classKey !== classKey) return null;
+  return { subNombre: ext.name, subDescripcion: ext.description, subNivel: {}, homebrew: true, fuente: 'Homebrew' };
+}
+
+/** Recursos habilitados por efectos (p. ej. la Orden del Invocador habilita las criaturas de sangre). */
+export function enabledResources(c) {
+  return new Set(effectSources(c).flatMap((s) => s.effects.filter((e) => e.type === 'habilita').map((e) => e.value)));
+}
+
+/** Criaturas de sangre: lo declara la subclase en sus datos, no el código. */
 export function hasBloodSummoning(c) {
-  return Boolean(classLevels(c).cazador) && c.subclasses.cazador === 'senda1';
+  return enabledResources(c).has('criaturas_de_sangre');
+}
+
+/** Resistencias, inmunidades y vulnerabilidades declaradas por efectos. */
+export function defenses(fx) {
+  const out = { resistencia: [], inmunidad: [], vulnerabilidad: [], inmunidad_condicion: [] };
+  for (const s of fx) {
+    for (const e of s.effects) {
+      if (e.type in out && !out[e.type].some((x) => x.value === e.value)) out[e.type].push({ value: e.value, source: s.label });
+    }
+  }
+  return out;
 }
 
 // ── Vista completa de la ficha ───────────────────────────────────────────
@@ -503,8 +576,10 @@ export function computeSheet(c) {
   const scores = abilityScores(c);
   const casting = spellcasting(c, scores, prof);
   const hp = hitPoints(c, scores);
-  const skills = skillBonuses(c, scores, prof);
+  const sources = proficiencySources(c);
+  const skills = skillBonuses(c, scores, prof, sources);
   const allowance = expertiseAllowance(c);
+  const fx = effectSources(c);
   return {
     background: backgroundDefinition(c),
     pendingBackground: pendingBackgroundChoices(c),
@@ -514,8 +589,17 @@ export function computeSheet(c) {
     proficiency: prof,
     scores,
     skills,
-    saves: savingThrows(c, scores, prof),
-    initiative: scores.destreza.modifier,
+    saves: savingThrows(c, scores, prof, sources),
+    initiative: scores.destreza.modifier + sumBonus(fx, 'iniciativa'),
+    proficiencies: {
+      armaduras: [...sources.armaduras].map(([name, src]) => ({ name, sources: src })),
+      armas: [...sources.armas].map(([name, src]) => ({ name, sources: src })),
+      herramientas: [...sources.herramientas].map(([name, src]) => ({ name, sources: src })),
+      idiomas: [...sources.idiomas].map(([name, src]) => ({ name, sources: src })),
+    },
+    classChoices: classChoiceStatus(c),
+    pendingClassChoices: pendingClassChoices(c),
+    defenses: defenses(fx),
     passivePerception: skills.find((s) => s.name === 'Percepción').passive,
     hp,
     speeds: speeds(c),

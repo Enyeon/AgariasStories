@@ -1,10 +1,15 @@
 // Casos de uso de personajes: une almacenamiento local, servidor y formato.
 // La UI sólo habla con este módulo; no conoce IndexedDB ni la API.
 
-import { createCharacter, createDocument } from '../domain/schema.js';
+import { createCharacter, createDocument as createBareDocument } from '../domain/schema.js';
+import { syncSnapshots } from '../content/snapshots.js';
+import { raceName, getClass } from '../data/index.js';
+
+/** Documento listo para guardar/exportar/compartir: con instantáneas de Homebrew. */
+export const createDocument = (character) => createBareDocument(syncSnapshots(character));
 import { parseDocument } from '../domain/validation.js';
 import { classLevels } from '../domain/rules.js';
-import { getClass } from '../data/index.js';
+
 import { createLocalStore, newId } from './local-store.js';
 import { api as defaultApi, ApiError } from './api.js';
 
@@ -20,7 +25,7 @@ export function summarize(character) {
   const levels = classLevels(character);
   return {
     name: character.identity.name.trim(),
-    race: character.race.key ?? '',
+    race: raceName(character.race.key),
     level: character.levels.length,
     classes: Object.entries(levels).map(([k, n]) => `${getClass(k)?.nombre ?? k} ${n}`).join(' / '),
     portrait: character.identity.portrait,

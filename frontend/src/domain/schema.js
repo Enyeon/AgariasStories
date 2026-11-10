@@ -11,7 +11,7 @@
 import { ABILITY_KEYS } from './constants.js';
 
 export const DOCUMENT_FORMAT = 'agarias-dnd-character';
-export const SCHEMA_VERSION = 2;
+export const SCHEMA_VERSION = 3;
 
 export const LIMITS = Object.freeze({
   shortText: 120,
@@ -39,6 +39,8 @@ export function createBackgroundState() {
     source: null,
     key: null,
     custom: null,
+    /** Si el trasfondo propio viene de una campaña: su referencia («hb:…»). */
+    ref: null,
     /** 'none' | '2-1' (+2 y +1) | '1-1-1' (+1 a tres) — opcional, decide el DM. */
     abilityMode: 'none',
     /** Atributos elegidos en orden: en '2-1' el primero recibe +2. */
@@ -113,6 +115,29 @@ export function createCharacter() {
     /** Bendiciones épicas (requieren permiso del DM): [{ name, ability }] */
     epicBoons: [],
     experience: 0,
+    /**
+     * Elecciones hechas dentro de las competencias de cada clase:
+     * { [classKey]: { skills: [], saves: [] } }
+     */
+    classChoices: {},
+    /** Rasgos con origen genérico (DM, campaña, evento, objeto...). Ver createTrait. */
+    traits: [],
+    /** Extensiones de clase asignadas (subclases secretas, bendiciones…): [{ ref, code, at }]. */
+    unlocks: [],
+    /** Vínculos con criaturas (mascota, familiar, montura...). Ver createCompanion. */
+    companions: [],
+    /**
+     * Campaña a la que pertenece el personaje: null | { id, name }.
+     * El token de jugador NO se guarda aquí (no debe viajar al exportar).
+     */
+    campaign: null,
+    /**
+     * Instantáneas del contenido Homebrew que usa el personaje, por referencia:
+     * { [ref]: { type, version, name, data } }. Son un respaldo para abrir la
+     * ficha si el contenido se retira o fuera de la campaña; la fuente de la
+     * verdad es el registro de contenido.
+     */
+    content: {},
     proficiencies: {
       skills: [],
       saves: [],
@@ -151,6 +176,64 @@ export function createCharacter() {
       /** Permiso del DM para bendiciones épicas y puntuaciones > 20. */
       allowEpicBoons: false,
     },
+  };
+}
+
+let idCounter = 0;
+/** Identificador local corto y único (no criptográfico). */
+export function localId(prefix = 'id') {
+  idCounter = (idCounter + 1) % 1e6;
+  return `${prefix}-${Date.now().toString(36)}-${idCounter.toString(36)}${Math.random().toString(36).slice(2, 6)}`;
+}
+
+export const TRAIT_ORIGIN_KEYS = Object.freeze(['dm', 'campana', 'evento', 'objeto', 'bendicion', 'maldicion', 'otro']);
+
+/** Rasgo con origen genérico. `effects` usa el catálogo de effects.js. */
+export function createTrait(overrides = {}) {
+  return {
+    id: localId('rasgo'),
+    name: '',
+    description: '',
+    origin: 'dm',
+    originDetail: '',
+    /** Referencia opcional a contenido del registro (p. ej. un rasgo Homebrew del DM). */
+    ref: null,
+    effects: [],
+    active: true,
+    ...overrides,
+  };
+}
+
+export const BOND_TYPES = Object.freeze({
+  mascota: 'Mascota',
+  companero: 'Compañero',
+  familiar: 'Familiar',
+  montura: 'Montura',
+  invocacion: 'Invocación',
+  vinculada: 'Criatura vinculada',
+});
+
+/**
+ * Vínculo con una criatura: la relación vive en el personaje; las estadísticas
+ * de la criatura, en el registro (`creatureRef`) o en un bloque propio.
+ */
+export function createCompanion(overrides = {}) {
+  return {
+    id: localId('vinculo'),
+    bond: 'companero',
+    name: '',
+    /** Criatura del registro (p. ej. 'sangre:Lobo de sangre' o 'hb:…'). */
+    creatureRef: null,
+    /** Bloque propio si la criatura no está en el registro: { size, type, ac, hpMax, speed, text }. */
+    custom: null,
+    currentHp: null,
+    tempHp: 0,
+    conditions: [],
+    present: true,
+    origin: 'dm',
+    originDetail: '',
+    notes: '',
+    ...overrides,
   };
 }
 

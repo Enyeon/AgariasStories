@@ -16,7 +16,7 @@ from typing import Any
 
 DOCUMENT_FORMAT = "agarias-dnd-character"
 # Sube este valor cuando el frontend publique un nuevo SCHEMA_VERSION.
-MAX_SCHEMA_VERSION = 2
+MAX_SCHEMA_VERSION = 3
 
 MAX_DEPTH = 8
 MAX_STRING = 20_000

@@ -7,8 +7,10 @@ import { renderFeatures, featuresActions } from './features.js';
 import { renderEquipment, equipmentActions } from './equipment.js';
 import { renderSpells, spellsActions } from './spells.js';
 import { renderStory, storyActions } from './story.js';
-import { renderBloodCreatures, renderDm, extrasActions } from './extras.js';
+import { renderDm, extrasActions } from './extras.js';
+import { renderCompanions, companionActions } from './companions.js';
 import { backgroundActions } from './background.js';
+import { contentStatus } from '../../content/snapshots.js';
 
 export const TABS = [
   { id: 'resumen', label: 'Resumen', render: renderSummary },
@@ -23,9 +25,10 @@ export const TABS = [
     visible: ({ character, sheet }) => sheet.spellcasting.isCaster || character.spells.known.length > 0,
   },
   { id: 'equipo', label: 'Equipo', render: renderEquipment },
-  { id: 'criaturas', label: 'Criaturas de Sangre', render: renderBloodCreatures, visible: ({ sheet }) => sheet.bloodSummoning },
+  { id: 'criaturas', label: 'Criaturas', render: renderCompanions, visible: ({ character, sheet, readOnly }) => !readOnly || sheet.bloodSummoning || (character.companions ?? []).length > 0 },
   { id: 'historia', label: 'Historia', render: renderStory },
-  { id: 'dm', label: 'DM', render: renderDm, visible: ({ character, readOnly }) => !readOnly || character.settings.allowEpicBoons },
+  { id: 'dm', label: 'Campaña', render: renderDm, visible: ({ character, readOnly }) => !readOnly || character.epicBoons.length > 0 || Boolean(character.campaign),
+    attention: ({ character }) => contentStatus(character).some((i) => i.state === 'retirado' || i.state === 'desconocido') },
 ];
 
 export const ACTIONS = {
@@ -36,6 +39,7 @@ export const ACTIONS = {
   ...spellsActions,
   ...storyActions,
   ...extrasActions,
+  ...companionActions,
   ...backgroundActions,
 };
 

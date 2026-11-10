@@ -16,7 +16,7 @@
     "1": {
       "descripcion": "Inventor arcano que fusiona magia y tecnología en artefactos extraordinarios.",
       "descripcionLarga": "El Artífice entiende que la magia puede construirse. Canaliza energía arcana en objetos, armaduras y constructos, transformando herramientas en armas y teoría en ingeniería aplicada. Es alquimista, ingeniero y estratega creativo. Donde otros lanzan conjuros, él los ensambla.",
-      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Fuerza, Constitución.\n❖ Tus puntos de golpe es:\n    :: Tu dado de PG es: 1d12. 12 + Constitución.\n    :: Además, por cada nivel por encima de 1, obtienes 1d12 de PG + Constitución.\n❖ Competencias:\n    :: Armadura: Armadura ligera, armadura media, escudos.\n    :: Armas: Armas simples, armas marciales.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge dos de entre Atletismo, Intimidación, Naturaleza, Percepción, Supervivencia y Trato de Animales.\n❖ Equipos. Comienzas con el siguiente equipo, además del otorgado por tu trasfondo:\n    :: (a) una gran hacha o (b) cualquier arma marcial cuerpo a cuerpo.\n    :: (a) dos hachas de mano o (b) cualquier arma simple.\n    :: Un equipo de explorador y cuatro jabalinas.\n    :: Monedas de Oro: 2d4 x 10.",
+      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Constitución y Inteligencia.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d6.\n    :: Nivel 1: 6 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d6 (o 4) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Armadura ligera, Armadura media y Escudos.\n    :: Armas: Armas simples.\n    :: Herramientas: Herramientas de ladrón, Herramientas de hojalatero y Un tipo de herramientas de artesano a tu elección.\n    :: Habilidades: escoge dos de entre Conocimiento Arcano, Historia, Investigación, Juego de Manos, Medicina, Naturaleza y Percepción.\n❖ Equipo. Comienzas con el siguiente equipo, además del que te dé tu trasfondo:\n    :: Dos armas simples cualesquiera.\n    :: Una ballesta ligera y 20 virotes.\n    :: (a) una armadura de cuero tachonado o (b) una cota de escamas.\n    :: Herramientas de ladrón y un paquete de explorador de mazmorras.\n    :: Alternativa: 5d4 × 10 po en lugar del equipo de clase.\n❖ Fuente: Tasha's Cauldron of Everything.",
       "informacionNivel": "✦  ✦\n\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n\n✦  ✦"
     },
     "2": {
@@ -25,77 +25,33 @@
     "3": {
       "informacionNivel": "✦ CONOCIMIENTO PRIMITIVO ✦",
       "subClase": {
-        "senda1": {
-          "subNombre": "Hebra Paradoja",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
+        "alquimista": {
+          "subNombre": "Alquimista",
+          "subDescripcion": "Elixires experimentales y curación potenciada.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Tasha's Cauldron of Everything"
         },
-        "senda2": {
-          "subNombre": "Hebra Error",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
+        "armero": {
+          "subNombre": "Armero",
+          "subDescripcion": "Una armadura arcana que sirve de arma y protección.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Tasha's Cauldron of Everything"
         },
-        "senda3": {
-          "subNombre": "Hebra Virus",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
+        "artillero": {
+          "subNombre": "Artillero",
+          "subDescripcion": "Un cañón arcano y conjuros destructivos.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Tasha's Cauldron of Everything"
         },
-        "senda4": {
-          "subNombre": "Hebra .exe",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
+        "herrero-batalla": {
+          "subNombre": "Herrero de Batalla",
+          "subDescripcion": "Un defensor de acero que combate a tu lado.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Tasha's Cauldron of Everything"
         }
       }
     },
@@ -150,5 +106,64 @@
     "20": {
       "informacionNivel": "✦  ✦"
     }
-  }
+  },
+  "competencias": {
+    "salvaciones": [
+      "constitucion",
+      "inteligencia"
+    ],
+    "armaduras": [
+      "Armadura ligera",
+      "Armadura media",
+      "Escudos"
+    ],
+    "armas": [
+      "Armas simples"
+    ],
+    "herramientas": [
+      "Herramientas de ladrón",
+      "Herramientas de hojalatero",
+      "Un tipo de herramientas de artesano a tu elección"
+    ],
+    "habilidades": {
+      "elegir": 2,
+      "de": [
+        "Conocimiento Arcano",
+        "Historia",
+        "Investigación",
+        "Juego de Manos",
+        "Medicina",
+        "Naturaleza",
+        "Percepción"
+      ]
+    }
+  },
+  "competenciasMulticlase": {
+    "armaduras": [
+      "Armadura ligera",
+      "Armadura media",
+      "Escudos"
+    ],
+    "armas": [],
+    "herramientas": [
+      "Herramientas de ladrón",
+      "Herramientas de hojalatero"
+    ],
+    "habilidades": null
+  },
+  "equipoInicial": [
+    "Dos armas simples cualesquiera.",
+    "Una ballesta ligera y 20 virotes.",
+    "(a) una armadura de cuero tachonado o (b) una cota de escamas.",
+    "Herramientas de ladrón y un paquete de explorador de mazmorras."
+  ],
+  "oroInicial": "5d4 × 10",
+  "fuenteReglas": "Tasha's Cauldron of Everything",
+  "subclaseNombre": "Especialidad de artífice",
+  "subclasesRetiradas": [
+    "senda1",
+    "senda2",
+    "senda3",
+    "senda4"
+  ]
 }

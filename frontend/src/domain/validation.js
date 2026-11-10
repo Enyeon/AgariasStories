@@ -10,8 +10,10 @@
 import { ABILITY_KEYS, SKILL_NAMES, SPEED_KEYS, MAX_LEVEL, MIN_ABILITY_SCORE, MAX_ABILITY_SCORE } from './constants.js';
 import {
   createCharacter, createItem, createWeapon, createBackgroundDefinition, BACKGROUND_ABILITY_MODES,
-  DOCUMENT_FORMAT, LIMITS, SCHEMA_VERSION,
+  DOCUMENT_FORMAT, LIMITS, SCHEMA_VERSION, createTrait, createCompanion, TRAIT_ORIGIN_KEYS, BOND_TYPES,
 } from './schema.js';
+import { normalizeEffects, CONDITIONS } from './effects.js';
+import { registerSnapshots, engineOf } from '../content/registry.js';
 import { migrateDocument } from './migrations.js';
 import { getClass, getRace, getFeat, getEpicBoon, getOfficialBackground } from '../data/index.js';
 
@@ -112,7 +114,7 @@ function improvement(value, warnings, levelNumber) {
 
 function level(value, index, warnings) {
   if (!isObject(value)) return null;
-  const classKey = text(value.classKey, 40);
+  const classKey = text(value.classKey, 120);
   if (!classKey) {
     warnings.push(`El nivel ${index + 1} no tenía clase y se descartó (y los siguientes).`);
     return null;
@@ -157,6 +159,57 @@ export function normalizeBackgroundDefinition(raw) {
   return def;
 }
 
+/** Normaliza un rasgo con origen genérico. Nunca lanza; null si está vacío. */
+export function normalizeTrait(raw) {
+  if (!isObject(raw)) return null;
+  const name = text(raw.name).trim();
+  const description = text(raw.description, LIMITS.longText);
+  if (!name && !description.trim()) return null;
+  const id = text(raw.id, 60);
+  return createTrait({
+    ...(id ? { id } : {}),
+    name: name || 'Rasgo sin nombre',
+    description,
+    origin: TRAIT_ORIGIN_KEYS.includes(raw.origin) ? raw.origin : 'otro',
+    originDetail: text(raw.originDetail, LIMITS.mediumText),
+    ref: text(raw.ref, 120) || null,
+    effects: normalizeEffects(raw.effects),
+    active: raw.active !== false,
+  });
+}
+
+/** Normaliza un vínculo con una criatura. Nunca lanza. */
+export function normalizeCompanion(raw) {
+  if (!isObject(raw)) return null;
+  const id = text(raw.id, 60);
+  const c = createCompanion({
+    ...(id ? { id } : {}),
+    bond: Object.hasOwn(BOND_TYPES, raw.bond) ? raw.bond : 'companero',
+    name: text(raw.name).trim(),
+    creatureRef: text(raw.creatureRef, 120) || null,
+    currentHp: optionalInt(raw.currentHp, { min: -999, max: 9999 }),
+    tempHp: int(raw.tempHp, { min: 0, max: 9999, fallback: 0 }),
+    conditions: uniqueStrings(raw.conditions, CONDITIONS),
+    present: raw.present !== false,
+    origin: TRAIT_ORIGIN_KEYS.includes(raw.origin) ? raw.origin : 'otro',
+    originDetail: text(raw.originDetail, LIMITS.mediumText),
+    notes: text(raw.notes, LIMITS.longText),
+  });
+  if (isObject(raw.custom)) {
+    c.custom = {
+      size: text(raw.custom.size, 40),
+      type: text(raw.custom.type, 60),
+      ac: optionalInt(raw.custom.ac, { min: 0, max: 99 }),
+      hpMax: optionalInt(raw.custom.hpMax, { min: 1, max: 9999 }),
+      speed: text(raw.custom.speed, 120),
+      text: text(raw.custom.text, LIMITS.longText),
+    };
+  }
+  if (!c.name && !c.creatureRef && !c.custom) return null;
+  if (!c.name) c.name = 'Criatura';
+  return c;
+}
+
 /**
  * Normaliza un objeto «personaje» (sin sobre). Nunca lanza.
  * @returns {{ character: ReturnType<typeof createCharacter>, warnings: string[] }}
@@ -196,6 +249,8 @@ export function normalizeCharacter(raw) {
   } else if (bg.source === 'custom' && isObject(bg.custom)) {
     d.background.source = 'custom';
     d.background.custom = normalizeBackgroundDefinition(bg.custom);
+    // Trasfondo de una campaña: referencia + copia (la copia viaja con el personaje).
+    if (typeof bg.ref === 'string' && bg.ref.startsWith('hb:')) d.background.ref = text(bg.ref, 120);
     if (!d.background.custom.name) d.background.custom.name = 'Trasfondo propio';
   }
   if (d.background.source) {
@@ -228,10 +283,25 @@ export function normalizeCharacter(raw) {
   }
 
   if (isObject(src.subclasses)) {
-    for (const [cls, sub] of Object.entries(src.subclasses)) {
-      const c = text(cls, 40);
-      const s = text(sub, 40);
-      if (c && s && d.levels.some((l) => l.classKey === c)) d.subclasses[c] = s;
+    for (const [rawClass, sub] of Object.entries(src.subclasses)) {
+      const c = text(rawClass, 120);
+      const s = text(sub, 120);
+      if (!c || !s || !d.levels.some((l) => l.classKey === c)) continue;
+      const cls = getClass(c);
+      // Subclase-extensión Homebrew: se resuelve por referencia (o su instantánea).
+      if (s.startsWith('hb:')) {
+        const ext = engineOf('extension', s);
+        if (!ext || ext.classKey === c) d.subclasses[c] = s;
+        continue;
+      }
+      const options = cls ? Object.values(cls.niveles ?? {}).find((l) => l.subClase)?.subClase : null;
+      if (cls && (!options || !Object.hasOwn(options, s))) {
+        // La subclase ya no existe en los datos (p. ej. era un relleno copiado
+        // de otra clase): se quita para que se pueda elegir de nuevo al subir.
+        warnings.push(`${cls.subclaseNombre ?? 'Subclase'} de ${cls.nombre}: la opción elegida ya no existe en los datos; podrás elegir otra al subir de nivel.`);
+        continue;
+      }
+      d.subclasses[c] = s;
     }
   }
 
@@ -288,7 +358,45 @@ export function normalizeCharacter(raw) {
   d.notes.backstory = text(notes.backstory, LIMITS.longText);
   if (isObject(notes.classNotes)) {
     for (const [k, v] of Object.entries(notes.classNotes).slice(0, 30)) {
-      d.notes.classNotes[text(k, 40)] = text(v, LIMITS.longText);
+      d.notes.classNotes[text(k, 120)] = text(v, LIMITS.longText);
+    }
+  }
+
+  // Elecciones de clase (sólo para clases que el personaje tiene).
+  if (isObject(src.classChoices)) {
+    for (const [cls, ch] of Object.entries(src.classChoices).slice(0, 30)) {
+      const key = text(cls, 80);
+      if (!key || !d.levels.some((l) => l.classKey === key) || !isObject(ch)) continue;
+      d.classChoices[key] = { skills: uniqueStrings(ch.skills, SKILL_NAMES).slice(0, 18), saves: uniqueStrings(ch.saves, ABILITY_KEYS).slice(0, 6) };
+    }
+  }
+
+  d.traits = list(src.traits, (t) => normalizeTrait(t), 100);
+  // Extensiones de clase asignadas: { ref, code, at }. El código (si lo hay) se
+  // conserva para que el servidor pueda comprobarlo al publicar.
+  d.unlocks = list(src.unlocks, (u) => {
+    if (!isObject(u)) return null;
+    const ref = text(u.ref, 120);
+    if (!ref.startsWith('hb:')) return null;
+    const code = typeof u.code === 'string' && /^[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(u.code) ? u.code : null;
+    return { ref, code, at: text(u.at, 40) };
+  }, 60).filter((u, i, all) => all.findIndex((x) => x.ref === u.ref) === i);
+  d.companions = list(src.companions, (x) => normalizeCompanion(x), 30);
+
+  if (isObject(src.campaign) && text(src.campaign.id, 40)) {
+    d.campaign = { id: text(src.campaign.id, 40), name: text(src.campaign.name) };
+  }
+
+  if (isObject(src.content)) {
+    for (const [ref, snap] of Object.entries(src.content).slice(0, 100)) {
+      const r = text(ref, 120);
+      if (!r.startsWith('hb:') || !isObject(snap) || !isObject(snap.data)) continue;
+      d.content[r] = {
+        type: text(snap.type, 20),
+        version: int(snap.version, { min: 1, max: 1_000_000, fallback: 1 }),
+        name: text(snap.name),
+        data: snap.data,
+      };
     }
   }
 
@@ -315,6 +423,10 @@ export function parseDocument(raw) {
       'Este personaje se creó con una versión más nueva de la aplicación. Actualiza la aplicación para abrirlo.',
     );
   }
+  // Las instantáneas de Homebrew se registran ANTES de normalizar, para que la
+  // validación reconozca la raza, clase o dotes Homebrew del personaje.
+  const rawContent = isObject(migrated.character?.content) ? migrated.character.content : {};
+  registerSnapshots(Object.fromEntries(Object.entries(rawContent).filter(([, v]) => isObject(v)).slice(0, 100)));
   const { character, warnings } = normalizeCharacter(migrated.character);
   return { character, warnings: [...(migrated.warnings ?? []), ...warnings] };
 }

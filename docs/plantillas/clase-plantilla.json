@@ -1,0 +1,608 @@
+{
+  "nombre": "Centinela del Alba (plantilla)",
+  "claseName": "plantilla_centinela",
+  "seccion": "homebrew",
+  "icono": "🌅",
+  "fuenteReglas": "Plantilla de ejemplo",
+  "dadoDeGolpe": 10,
+  "nivelesDeAumento": [
+    4,
+    8,
+    12,
+    16,
+    19
+  ],
+  "conjurador": true,
+  "attribute": "sabiduria",
+  "lanzamiento": {
+    "progression": "half",
+    "preparedFrom": "half"
+  },
+  "listaConjuros": [
+    "Luz",
+    "Llama sagrada",
+    "Bendición",
+    "Curar heridas",
+    "Detectar magia",
+    "Arma espiritual",
+    "Restablecimiento menor",
+    "Luz del día",
+    "Guardián de la fe"
+  ],
+  "cdClase": {
+    "nombre": "CD de Juramento",
+    "atributos": [
+      "sabiduria"
+    ]
+  },
+  "subclaseNombre": "Juramento",
+  "pericias": {
+    "1": 1
+  },
+  "competencias": {
+    "salvaciones": [
+      "sabiduria",
+      "carisma"
+    ],
+    "armaduras": [
+      "Armadura ligera",
+      "Armadura media",
+      "Escudos"
+    ],
+    "armas": [
+      "Armas simples",
+      "Armas marciales"
+    ],
+    "herramientas": [],
+    "habilidades": {
+      "elegir": 2,
+      "de": [
+        "Atletismo",
+        "Medicina",
+        "Perspicacia",
+        "Religión",
+        "Supervivencia"
+      ]
+    }
+  },
+  "competenciasMulticlase": {
+    "armaduras": [
+      "Armadura ligera",
+      "Armadura media",
+      "Escudos"
+    ],
+    "armas": [
+      "Armas simples",
+      "Armas marciales"
+    ],
+    "herramientas": [],
+    "habilidades": null
+  },
+  "equipoInicial": [
+    "(a) un arma marcial y un escudo o (b) dos armas marciales.",
+    "(a) cinco jabalinas o (b) cualquier arma simple cuerpo a cuerpo.",
+    "Una cota de malla y un símbolo del alba."
+  ],
+  "oroInicial": "5d4 × 10",
+  "niveles": {
+    "1": {
+      "descripcion": "Guardián incansable que canaliza la primera luz del día.",
+      "descripcionLarga": "Los Centinelas del Alba juran vigilar el umbral entre la noche y el día. Combinan disciplina marcial con una magia de luz que crece con cada amanecer.\n\n<i>Esta clase es una PLANTILLA de ejemplo: copia el archivo, cambia los textos y los números, y conserva la estructura.</i>",
+      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Sabiduría y Carisma.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d10.\n    :: Nivel 1: 10 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d10 (o 6) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Armadura ligera, Armadura media y Escudos.\n    :: Armas: Armas simples y Armas marciales.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge dos de entre Atletismo, Medicina, Perspicacia, Religión y Supervivencia.\n❖ Equipo. Comienzas con el siguiente equipo, además del que te dé tu trasfondo:\n    :: (a) un arma marcial y un escudo o (b) dos armas marciales.\n    :: (a) cinco jabalinas o (b) cualquier arma simple cuerpo a cuerpo.\n    :: Una cota de malla y un símbolo del alba.\n    :: Alternativa: 5d4 × 10 po en lugar del equipo de clase.\n❖ Fuente: Plantilla de ejemplo.",
+      "infoCubo": {
+        "columnas": [
+          "Luz del alba",
+          "Daño radiante"
+        ],
+        "filas": [
+          [
+            "2",
+            "1d6"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Vigilia",
+          "titleName": "✦ VIGILIA ✦",
+          "descripcion": "No puedes ser sorprendido mientras estés consciente y en guardia. Tienes competencia en Percepción.",
+          "efectos": [
+            {
+              "type": "competencia",
+              "kind": "habilidad",
+              "value": "Percepción"
+            }
+          ]
+        },
+        "blockDos": {
+          "name": "Estilo de combate",
+          "titleName": "✦ ESTILO DE COMBATE ✦",
+          "descripcion": "Elige un estilo de combate: Defensa, Duelo o Protección. <i>(Texto: la ficha no lo automatiza; anótalo en Notas.)</i>"
+        }
+      }
+    },
+    "2": {
+      "infoCubo": {
+        "columnas": [
+          "Luz del alba",
+          "Daño radiante"
+        ],
+        "filas": [
+          [
+            "2",
+            "1d6"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Golpe del alba",
+          "titleName": "✦ GOLPE DEL ALBA ✦",
+          "descripcion": "Cuando impactas con un arma cuerpo a cuerpo, puedes gastar un uso de <b>Luz del alba</b> para añadir el daño radiante indicado en la tabla. Recuperas los usos tras un descanso largo."
+        },
+        "blockDos": {
+          "name": "Lanzamiento de conjuros",
+          "titleName": "✦ LANZAMIENTO DE CONJUROS ✦",
+          "descripcion": "Preparas conjuros de la lista del Centinela. Tu atributo de lanzamiento es Sabiduría. Los espacios de conjuro los calcula la ficha."
+        }
+      }
+    },
+    "3": {
+      "infoCubo": {
+        "columnas": [
+          "Luz del alba",
+          "Daño radiante"
+        ],
+        "filas": [
+          [
+            "2",
+            "1d6"
+          ]
+        ]
+      },
+      "subClase": {
+        "faro": {
+          "subNombre": "Juramento del Faro",
+          "subDescripcion": "✦ JURAMENTO DEL FARO ✦\nProteges a los demás con escudos de luz.",
+          "efectos": [
+            {
+              "type": "competencia",
+              "kind": "armadura",
+              "value": "Armadura pesada"
+            }
+          ],
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Escudo de luz",
+                  "subTitleName": "✦ ESCUDO DE LUZ ✦",
+                  "subDescripcion": "Como reacción, cuando una criatura a 1,5 m recibe un ataque, impones desventaja a esa tirada. Usos: tu bonificador de competencia por descanso largo."
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Luz perpetua",
+                  "subTitleName": "✦ LUZ PERPETUA ✦",
+                  "subDescripcion": "Tienes resistencia al daño necrótico.",
+                  "efectos": [
+                    {
+                      "type": "resistencia",
+                      "value": "necrotico"
+                    }
+                  ]
+                }
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Faro inquebrantable",
+                  "subTitleName": "✦ FARO INQUEBRANTABLE ✦",
+                  "subDescripcion": "Tus aliados a 3 m no pueden ser asustados."
+                }
+              }
+            },
+            "20": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Mediodía",
+                  "subTitleName": "✦ MEDIODÍA ✦",
+                  "subDescripcion": "Durante 1 minuto emites luz brillante en 9 m; los enemigos en ella tienen desventaja en las salvaciones contra tus conjuros."
+                }
+              }
+            }
+          }
+        },
+        "ceniza": {
+          "subNombre": "Juramento de la Ceniza",
+          "subDescripcion": "✦ JURAMENTO DE LA CENIZA ✦\nPersigues a quienes huyen de la luz.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Rastro de brasas",
+                  "subTitleName": "✦ RASTRO DE BRASAS ✦",
+                  "subDescripcion": "Tienes competencia en Supervivencia y ventaja para rastrear criaturas que hayas dañado.",
+                  "efectos": [
+                    {
+                      "type": "competencia",
+                      "kind": "habilidad",
+                      "value": "Supervivencia"
+                    }
+                  ]
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Ceniza ardiente",
+                  "subTitleName": "✦ CENIZA ARDIENTE ✦",
+                  "subDescripcion": "Tienes resistencia al daño de fuego.",
+                  "efectos": [
+                    {
+                      "type": "resistencia",
+                      "value": "fuego"
+                    }
+                  ]
+                }
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Implacable",
+                  "subTitleName": "✦ IMPLACABLE ✦",
+                  "subDescripcion": "Tu velocidad aumenta en 10 pies.",
+                  "efectos": [
+                    {
+                      "type": "bono",
+                      "target": "velocidad",
+                      "value": 10
+                    }
+                  ]
+                }
+              }
+            },
+            "20": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Último rescoldo",
+                  "subTitleName": "✦ ÚLTIMO RESCOLDO ✦",
+                  "subDescripcion": "Una vez por descanso largo, cuando caes a 0 PG, quedas a 1 PG en su lugar."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "4": {
+      "infoCubo": {
+        "columnas": [
+          "Luz del alba",
+          "Daño radiante"
+        ],
+        "filas": [
+          [
+            "3",
+            "1d6"
+          ]
+        ]
+      }
+    },
+    "5": {
+      "infoCubo": {
+        "columnas": [
+          "Luz del alba",
+          "Daño radiante"
+        ],
+        "filas": [
+          [
+            "3",
+            "1d8"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Ataque extra",
+          "titleName": "✦ ATAQUE EXTRA ✦",
+          "descripcion": "Puedes atacar dos veces, en lugar de una, cuando realizas la acción de Atacar en tu turno."
+        }
+      }
+    },
+    "6": {
+      "infoCubo": {
+        "columnas": [
+          "Luz del alba",
+          "Daño radiante"
+        ],
+        "filas": [
+          [
+            "3",
+            "1d8"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Aura de vigilia",
+          "titleName": "✦ AURA DE VIGILIA ✦",
+          "descripcion": "Tú y las criaturas aliadas a 3 m o menos tenéis +1 a las tiradas de salvación. Además, no puedes ser asustado.",
+          "efectos": [
+            {
+              "type": "bono",
+              "target": "salvaciones",
+              "value": 1
+            },
+            {
+              "type": "inmunidad_condicion",
+              "value": "Asustado"
+            }
+          ]
+        }
+      }
+    },
+    "7": {
+      "infoCubo": {
+        "columnas": [
+          "Luz del alba",
+          "Daño radiante"
+        ],
+        "filas": [
+          [
+            "3",
+            "1d8"
+          ]
+        ]
+      }
+    },
+    "8": {
+      "infoCubo": {
+        "columnas": [
+          "Luz del alba",
+          "Daño radiante"
+        ],
+        "filas": [
+          [
+            "3",
+            "1d8"
+          ]
+        ]
+      }
+    },
+    "9": {
+      "infoCubo": {
+        "columnas": [
+          "Luz del alba",
+          "Daño radiante"
+        ],
+        "filas": [
+          [
+            "4",
+            "1d8"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Paso del amanecer",
+          "titleName": "✦ PASO DEL AMANECER ✦",
+          "descripcion": "Tu velocidad al caminar aumenta en 10 pies.",
+          "efectos": [
+            {
+              "type": "bono",
+              "target": "velocidad",
+              "value": 10
+            }
+          ]
+        }
+      }
+    },
+    "10": {
+      "infoCubo": {
+        "columnas": [
+          "Luz del alba",
+          "Daño radiante"
+        ],
+        "filas": [
+          [
+            "4",
+            "1d8"
+          ]
+        ]
+      }
+    },
+    "11": {
+      "infoCubo": {
+        "columnas": [
+          "Luz del alba",
+          "Daño radiante"
+        ],
+        "filas": [
+          [
+            "4",
+            "2d6"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Golpe del alba mejorado",
+          "titleName": "✦ GOLPE DEL ALBA MEJORADO ✦",
+          "descripcion": "Tu Golpe del alba ignora la resistencia al daño radiante."
+        }
+      }
+    },
+    "12": {
+      "infoCubo": {
+        "columnas": [
+          "Luz del alba",
+          "Daño radiante"
+        ],
+        "filas": [
+          [
+            "4",
+            "2d6"
+          ]
+        ]
+      }
+    },
+    "13": {
+      "infoCubo": {
+        "columnas": [
+          "Luz del alba",
+          "Daño radiante"
+        ],
+        "filas": [
+          [
+            "4",
+            "2d6"
+          ]
+        ]
+      }
+    },
+    "14": {
+      "infoCubo": {
+        "columnas": [
+          "Luz del alba",
+          "Daño radiante"
+        ],
+        "filas": [
+          [
+            "5",
+            "2d6"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Purificar",
+          "titleName": "✦ PURIFICAR ✦",
+          "descripcion": "Como acción, terminas un efecto de hechizado o asustado sobre ti o una criatura que toques. Usos: tu modificador de Sabiduría por descanso largo."
+        }
+      }
+    },
+    "15": {
+      "infoCubo": {
+        "columnas": [
+          "Luz del alba",
+          "Daño radiante"
+        ],
+        "filas": [
+          [
+            "5",
+            "2d6"
+          ]
+        ]
+      }
+    },
+    "16": {
+      "infoCubo": {
+        "columnas": [
+          "Luz del alba",
+          "Daño radiante"
+        ],
+        "filas": [
+          [
+            "5",
+            "2d6"
+          ]
+        ]
+      }
+    },
+    "17": {
+      "infoCubo": {
+        "columnas": [
+          "Luz del alba",
+          "Daño radiante"
+        ],
+        "filas": [
+          [
+            "5",
+            "2d8"
+          ]
+        ]
+      }
+    },
+    "18": {
+      "infoCubo": {
+        "columnas": [
+          "Luz del alba",
+          "Daño radiante"
+        ],
+        "filas": [
+          [
+            "5",
+            "2d8"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Aura ampliada",
+          "titleName": "✦ AURA AMPLIADA ✦",
+          "descripcion": "El alcance de tus auras aumenta a 9 m."
+        }
+      }
+    },
+    "19": {
+      "infoCubo": {
+        "columnas": [
+          "Luz del alba",
+          "Daño radiante"
+        ],
+        "filas": [
+          [
+            "6",
+            "2d8"
+          ]
+        ]
+      }
+    },
+    "20": {
+      "infoCubo": {
+        "columnas": [
+          "Luz del alba",
+          "Daño radiante"
+        ],
+        "filas": [
+          [
+            "6",
+            "2d8"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Amanecer eterno",
+          "titleName": "✦ AMANECER ETERNO ✦",
+          "descripcion": "Tu Sabiduría aumenta en 2 y su máximo pasa a 22. Además, aumenta en 2 una de estas puntuaciones: Fuerza o Constitución."
+        }
+      },
+      "requeridoTrue": {
+        "statAmount": {
+          "sabiduria": 2,
+          "choice": {
+            "count": 1,
+            "bonus": 2,
+            "allowedChoices": [
+              "fuerza",
+              "constitucion"
+            ]
+          }
+        },
+        "statMax": {
+          "activos": [
+            "sabiduria"
+          ],
+          "stat": 22
+        }
+      }
+    }
+  }
+}

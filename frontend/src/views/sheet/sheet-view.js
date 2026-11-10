@@ -1,6 +1,7 @@
 // Controlador de la ficha: pestañas, renderizado y eventos.
 // Lo usan el editor (editable, con guardado) y la vista compartida (sólo lectura).
 
+import { permissionsFor } from '../../content/rules.js';
 import { html, setHtml, setPath, getPath } from '../../ui/dom.js';
 import { computeSheet } from '../../domain/rules.js';
 import { loadSpells } from '../../data/index.js';
@@ -33,7 +34,7 @@ function parseValue(el) {
  * @param {{ character: object, readOnly?: boolean, initialTab?: string, onChange?: (c: object) => void,
  *   listHomebrewBackgrounds?: () => Promise<object[]> }} opts
  */
-export function createSheetView(root, { character, readOnly = false, initialTab = 'resumen', onChange, listHomebrewBackgrounds = async () => [] }) {
+export function createSheetView(root, { character, readOnly = false, initialTab = 'resumen', onChange, listHomebrewBackgrounds = async () => [], campaigns = () => [] }) {
   const ed = {
     root,
     readOnly,
@@ -59,7 +60,8 @@ export function createSheetView(root, { character, readOnly = false, initialTab 
   panel.id = 'sheet-panel';
   root.append(tabsEl, panel);
 
-  const ctx = () => ({ character: ed.character, sheet: ed.sheet, readOnly, spells: ed.spells, ui: ed.ui });
+  Object.defineProperty(ed, 'permissions', { get: () => permissionsFor(ed.character) });
+  const ctx = () => ({ character: ed.character, sheet: ed.sheet, readOnly, spells: ed.spells, ui: ed.ui, permissions: ed.permissions, campaigns: campaigns() });
 
   function visibleTabs() {
     const c = ctx();
@@ -129,10 +131,10 @@ export function createSheetView(root, { character, readOnly = false, initialTab 
   };
 
   /** Sustituye el personaje por uno nuevo devuelto por el dominio. */
-  ed.replace = (next, { message } = {}) => {
+  ed.replace = (next, { message, ...opts } = {}) => {
     if (readOnly || !next) return;
     ed.character = next;
-    changed({ structural: true });
+    changed({ structural: true, ...opts });
     if (message) toast(message, { type: 'success' });
   };
 

@@ -15,88 +15,30 @@
     "1": {
       "descripcion": "Portador innato de magia que fluye desde su propia esencia.",
       "descripcionLarga": "El Hechicero no aprende la magia: la respira. Su poder surge de una herencia sobrenatural, una anomalía o una influencia arcana en su linaje. Moldea la energía mágica con naturalidad, alterando conjuros según su voluntad. Es impredecible, intenso y profundamente personal.",
-      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Fuerza, Constitución.\n❖ Tus puntos de golpe es:\n    :: Tu dado de PG es: 1d12. 12 + Constitución.\n    :: Además, por cada nivel por encima de 1, obtienes 1d12 de PG + Constitución.\n❖ Competencias:\n    :: Armadura: Armadura ligera, armadura media, escudos.\n    :: Armas: Armas simples, armas marciales.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge dos de entre Atletismo, Intimidación, Naturaleza, Percepción, Supervivencia y Trato de Animales.\n❖ Equipos. Comienzas con el siguiente equipo, además del otorgado por tu trasfondo:\n    :: (a) una gran hacha o (b) cualquier arma marcial cuerpo a cuerpo.\n    :: (a) dos hachas de mano o (b) cualquier arma simple.\n    :: Un equipo de explorador y cuatro jabalinas.\n    :: Monedas de Oro: 2d4 x 10.",
-      "informacionNivel": "✦  ✦\n\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n\n✦  ✦"
+      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Constitución y Carisma.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d6.\n    :: Nivel 1: 6 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d6 (o 4) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Ninguna.\n    :: Armas: Dagas, Dardos, Hondas, Bastones y Ballestas ligeras.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge dos de entre Conocimiento Arcano, Engaño, Intimidación, Perspicacia, Persuasión y Religión.\n❖ Equipo. Comienzas con el siguiente equipo, además del que te dé tu trasfondo:\n    :: (a) una ballesta ligera y 20 virotes o (b) cualquier arma simple.\n    :: (a) una bolsa de componentes o (b) un canalizador arcano.\n    :: (a) un paquete de explorador de mazmorras o (b) un paquete de explorador.\n    :: Dos dagas.\n    :: Alternativa: 3d4 × 10 po en lugar del equipo de clase.\n❖ Fuente: Manual del Jugador.",
+      "informacionNivel": "✦  ✦\n\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n\n✦  ✦",
+      "subClase": {
+        "draconico": {
+          "subNombre": "Linaje Dracónico",
+          "subDescripcion": "Sangre de dragón: más resistencia, escamas y afinidad con un tipo de daño.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
+        },
+        "magia-salvaje": {
+          "subNombre": "Magia Salvaje",
+          "subDescripcion": "Magia caótica: oleadas de magia salvaje impredecibles.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
+        }
+      }
     },
     "2": {
       "informacionNivel": "✦ ATAQUE TEMERARIO ✦"
     },
     "3": {
-      "informacionNivel": "✦ CONOCIMIENTO PRIMITIVO ✦",
-      "subClase": {
-        "senda1": {
-          "subNombre": "Hebra Paradoja",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
-        },
-        "senda2": {
-          "subNombre": "Hebra Error",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
-        },
-        "senda3": {
-          "subNombre": "Hebra Virus",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
-        },
-        "senda4": {
-          "subNombre": "Hebra .exe",
-          "subDescripcion": "✦  ✦",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "6": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "10": {
-              "infoSubNivel": "✦  ✦"
-            },
-            "14": {
-              "infoSubNivel": "✦  ✦"
-            }
-          }
-        }
-      }
+      "informacionNivel": "✦ CONOCIMIENTO PRIMITIVO ✦"
     },
     "4": {
       "informacionNivel": "✦  ✦"
@@ -149,5 +91,52 @@
     "20": {
       "informacionNivel": "✦  ✦"
     }
-  }
+  },
+  "competencias": {
+    "salvaciones": [
+      "constitucion",
+      "carisma"
+    ],
+    "armaduras": [],
+    "armas": [
+      "Dagas",
+      "Dardos",
+      "Hondas",
+      "Bastones",
+      "Ballestas ligeras"
+    ],
+    "herramientas": [],
+    "habilidades": {
+      "elegir": 2,
+      "de": [
+        "Conocimiento Arcano",
+        "Engaño",
+        "Intimidación",
+        "Perspicacia",
+        "Persuasión",
+        "Religión"
+      ]
+    }
+  },
+  "competenciasMulticlase": {
+    "armaduras": [],
+    "armas": [],
+    "herramientas": [],
+    "habilidades": null
+  },
+  "equipoInicial": [
+    "(a) una ballesta ligera y 20 virotes o (b) cualquier arma simple.",
+    "(a) una bolsa de componentes o (b) un canalizador arcano.",
+    "(a) un paquete de explorador de mazmorras o (b) un paquete de explorador.",
+    "Dos dagas."
+  ],
+  "oroInicial": "3d4 × 10",
+  "fuenteReglas": "Manual del Jugador",
+  "subclaseNombre": "Origen hechicero",
+  "subclasesRetiradas": [
+    "senda1",
+    "senda2",
+    "senda3",
+    "senda4"
+  ]
 }

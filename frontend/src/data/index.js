@@ -12,6 +12,8 @@ import languages from './languages.json';
 import bloodCreatures from './blood-creatures.json';
 import rulesReference from './rules-reference.json';
 import backgrounds from './backgrounds.json';
+import { engineOf, listEntries } from '../content/registry.js';
+import { validateClassData } from '../content/class-data.js';
 
 const classModules = import.meta.glob('./classes/*.json', { eager: true, import: 'default' });
 
@@ -19,6 +21,18 @@ const classModules = import.meta.glob('./classes/*.json', { eager: true, import:
 const classes = Object.fromEntries(
   Object.values(classModules).map((cls) => [cls.claseName, cls]),
 );
+
+/**
+ * Registra una clase en el formato de data/classes/*.json que no está en el
+ * repositorio (p. ej. para probar una clase escrita a mano). Se valida antes:
+ * si tiene errores no se registra y se devuelven.
+ * @returns {{ ok: boolean, errors: string[], warnings: string[] }}
+ */
+export function registerClassData(cls) {
+  const res = validateClassData(cls);
+  if (res.ok) classes[cls.claseName] = cls;
+  return res;
+}
 
 // Razas con el rasgo «Dureza» (+1 PG por nivel). En el original era una lista
 // fija en hability--stats.js; se conserva aquí junto a los badges.
@@ -38,20 +52,49 @@ export const data = Object.freeze({
   classes,
 });
 
+// Los getters consultan primero los datos oficiales y después el registro de
+// Homebrew (content/registry.js). Las claves Homebrew son referencias estables
+// («hb:paquete:tipo:id»), así que nunca chocan con una clave oficial.
+
 export function getRace(key) {
-  return key && Object.hasOwn(races, key) ? races[key] : null;
+  if (!key) return null;
+  return Object.hasOwn(races, key) ? races[key] : engineOf('raza', key);
+}
+
+/** Nombre visible de una raza (las Homebrew se guardan por referencia). */
+export function raceName(key) {
+  return getRace(key)?.nombre ?? key ?? '';
 }
 
 export function getClass(key) {
-  return key && Object.hasOwn(classes, key) ? classes[key] : null;
+  if (!key) return null;
+  return Object.hasOwn(classes, key) ? classes[key] : engineOf('clase', key);
 }
 
+/** Clases elegibles: oficiales + Homebrew publicado o local. */
 export function listClasses() {
-  return Object.values(classes).sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
+  return [...Object.values(classes), ...listEntries('clase').map((e) => e.engine)]
+    .sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
 }
 
 export function getFeat(name) {
-  return name && Object.hasOwn(feats, name) ? feats[name] : null;
+  if (!name) return null;
+  return Object.hasOwn(feats, name) ? feats[name] : engineOf('dote', name);
+}
+
+/** Nombre visible de una dote (las Homebrew se guardan por referencia). */
+export function featName(key) {
+  return getFeat(key)?.nombre ?? key ?? '';
+}
+
+/** Dotes elegibles: [clave, definición]. */
+export function listFeats() {
+  return [...Object.entries(feats), ...listEntries('dote').map((e) => [e.ref, e.engine])];
+}
+
+/** Razas Homebrew elegibles: [{ key, race }]. */
+export function listHomebrewRaces() {
+  return listEntries('raza').map((e) => ({ key: e.ref, race: e.engine, pack: e.packName }));
 }
 
 /** Trasfondo oficial o de Agarias por clave (los homebrew viven en el personaje). */
@@ -74,8 +117,20 @@ export function getRaceTags(raceKey) {
 }
 
 let spellsPromise = null;
-/** El catálogo de conjuros (~500 KB) se carga bajo demanda. */
-export function loadSpells() {
+/**
+ * El catálogo de conjuros (~500 KB) se carga bajo demanda. Se devuelve un
+ * objeto nuevo con los hechizos Homebrew del registro añadidos (por nombre;
+ * si un Homebrew se llama igual que uno oficial, se distingue con «(HB)»).
+ */
+export async function loadSpells() {
   spellsPromise ??= import('./spells.json').then((m) => m.default);
-  return spellsPromise;
+  const official = await spellsPromise;
+  const homebrew = listEntries('hechizo', { selectable: false });
+  if (!homebrew.length) return official;
+  const out = { ...official };
+  for (const e of homebrew) {
+    const name = Object.hasOwn(official, e.engine.nombre) ? `${e.engine.nombre} (HB)` : e.engine.nombre;
+    out[name] = { ...e.engine, ref: e.ref };
+  }
+  return out;
 }

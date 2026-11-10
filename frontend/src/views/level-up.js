@@ -3,31 +3,34 @@
 
 import { html, setHtml, richText, raw } from '../ui/dom.js';
 import { openDialog } from '../ui/feedback.js';
-import { ABILITY_KEYS, ABILITY_LABEL, CLASS_SECTIONS } from '../domain/constants.js';
-import { listClasses, getFeat, data } from '../data/index.js';
+import { ABILITY_KEYS, ABILITY_LABEL, CLASS_SECTIONS, MAX_LEVEL } from '../domain/constants.js';
+import { listClasses, listFeats, getFeat, getClass, featName, loadSpells } from '../data/index.js';
 import {
   abilityScores, averageHitDieRoll, classLevels, featAbilityOptions, featPrerequisites, proficiencyBonus,
-  spellcasting, totalLevel, abilityModifier, formatModifier,
+  spellcasting, totalLevel, abilityModifier, formatModifier, hitPoints,
 } from '../domain/rules.js';
-import { planLevelUp, applyLevelUp, rollDie, validateImprovement } from '../domain/progression.js';
+import {
+  planLevelUp, applyLevelUp, applyLevelUps, levelNeedsDecisions, rollDie, validateImprovement, canLevelUp,
+  levelDownPreview, forgetSpells,
+} from '../domain/progression.js';
 
 const normalize = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 
 // ── Selector de dotes ────────────────────────────────────────────────────
 
-function featList(character, { excludeRaceFeat = false } = {}) {
+function featList(character, { excludeRaceFeat = false, allow = null } = {}) {
   const scores = abilityScores(character);
   const { isCaster } = spellcasting(character, scores, proficiencyBonus(Math.max(1, totalLevel(character))));
   const probe = excludeRaceFeat ? { ...character, race: { ...character.race, feat: null } } : character;
-  return Object.entries(data.feats).map(([name, def]) => {
+  return listFeats().filter(([, def]) => !allow || (def.homebrew ? allow.homebrew.dote : allow.official.dote)).map(([name, def]) => {
     const pre = featPrerequisites(probe, def, scores, { isCaster });
-    return { name, def, ok: pre.ok, reasons: pre.reasons, options: featAbilityOptions(def) };
-  }).sort((a, b) => Number(b.ok) - Number(a.ok) || a.name.localeCompare(b.name, 'es'));
+    return { name, label: def.nombre ?? name, homebrew: Boolean(def.homebrew), def, ok: pre.ok, reasons: pre.reasons, options: featAbilityOptions(def) };
+  }).sort((a, b) => Number(b.ok) - Number(a.ok) || a.label.localeCompare(b.label, 'es'));
 }
 
 /** Panel de elección de dote embebible. Llama a onChange({ name, ability }). */
-function mountFeatChooser(root, character, { initial, onChange, excludeRaceFeat }) {
-  const feats = featList(character, { excludeRaceFeat });
+function mountFeatChooser(root, character, { initial, onChange, excludeRaceFeat, allow }) {
+  const feats = featList(character, { excludeRaceFeat, allow });
   let query = '';
   let showAll = false;
   let selected = initial?.name ?? null;
@@ -35,9 +38,9 @@ function mountFeatChooser(root, character, { initial, onChange, excludeRaceFeat 
 
   function renderList() {
     const q = normalize(query);
-    const items = feats.filter((f) => (showAll || f.ok) && (!q || normalize(f.name).includes(q)));
+    const items = feats.filter((f) => (showAll || f.ok) && (!q || normalize(f.label).includes(q)));
     return items.length ? items.map((f) => html`<button type="button" class="race-option ${f.name === selected ? 'is-selected' : ''} ${f.ok ? '' : 'is-locked'}" data-feat="${f.name}" aria-pressed="${f.name === selected}">
-        <span class="race-option__name">${f.name}</span>
+        <span class="race-option__name">${f.label}${f.homebrew ? html` <span class="badge badge--gold">HB</span>` : ''}</span>
         <span class="race-option__bonus">${f.ok ? (f.options.length ? `+1 a ${f.options.map((k) => ABILITY_LABEL[k].slice(0, 3)).join('/')}` : Object.keys(f.def.aumentarStat ?? {}).map((k) => `${ABILITY_LABEL[k]} +1`).join(', ') || 'Sin aumento de atributo') : f.reasons.join(' · ')}</span>
       </button>`) : html`<p class="muted">Sin resultados.</p>`;
   }
@@ -45,7 +48,7 @@ function mountFeatChooser(root, character, { initial, onChange, excludeRaceFeat 
   function renderDetail() {
     const f = feats.find((x) => x.name === selected);
     if (!f) return html`<p class="muted">Selecciona una dote para ver su descripción.</p>`;
-    return html`<h4>${f.name}</h4>
+    return html`<h4>${f.label}</h4>
       ${f.ok ? '' : html`<p class="callout callout--warning">No cumples los requisitos: ${f.reasons.join(' · ')}</p>`}
       ${f.options.length ? html`<fieldset class="choice-group"><legend>Atributo que aumenta (+1)</legend><div class="chips">
         ${f.options.map((k) => html`<label class="chip"><input type="radio" name="feat-ability" value="${k}" ${k === ability ? raw('checked') : ''}>${ABILITY_LABEL[k]}</label>`)}
@@ -88,12 +91,13 @@ function mountFeatChooser(root, character, { initial, onChange, excludeRaceFeat 
     ability = f.options.length === 1 ? f.options[0] : null;
     root.querySelectorAll('[data-feat]').forEach((b) => b.classList.toggle('is-selected', b.dataset.feat === selected));
     setHtml(root.querySelector('[data-feat-detail]'), renderDetail());
+    if (window.matchMedia('(max-width: 760px)').matches) root.querySelector('[data-feat-detail]').scrollIntoView({ behavior: 'smooth' });
     onChange({ name: selected, ability });
   });
   render();
 }
 
-export function openFeatPicker(character, { title = 'Elige una dote', excludeRaceFeat = false } = {}) {
+export function openFeatPicker(character, { title = 'Elige una dote', excludeRaceFeat = false, allow = null } = {}) {
   return openDialog({
     title,
     size: 'lg',
@@ -101,7 +105,7 @@ export function openFeatPicker(character, { title = 'Elige una dote', excludeRac
       let choice = character.race.feat ? { ...character.race.feat } : null;
       setHtml(body, html`<div data-chooser></div><p class="field__error" data-error role="alert"></p>
         <div class="dialog__footer"><button class="btn btn--ghost" data-dialog-close>Cancelar</button><button class="btn btn--primary" data-ok>Confirmar dote</button></div>`);
-      mountFeatChooser(body.querySelector('[data-chooser]'), character, { initial: choice, excludeRaceFeat, onChange: (c) => { choice = c; } });
+      mountFeatChooser(body.querySelector('[data-chooser]'), character, { initial: choice, excludeRaceFeat, allow, onChange: (c) => { choice = c; } });
       body.querySelector('[data-ok]').addEventListener('click', () => {
         if (!choice?.name) {
           body.querySelector('[data-error]').textContent = 'Selecciona una dote.';
@@ -120,9 +124,24 @@ export function openFeatPicker(character, { title = 'Elige una dote', excludeRac
 
 // ── Asistente de subida de nivel ─────────────────────────────────────────
 
-export function openLevelUpWizard(character) {
+/**
+ * @param {object} character
+ * @param {object} [opts]
+ * @param {{ classKey?: string|null, hpMode?: 'ask'|'avg'|'roll' }} [opts.preset] decisiones tomadas para todos los niveles.
+ * @param {{ index: number, total: number }} [opts.progress] en modo varios niveles: «Nivel 4 (2 de 5)».
+ * En modo varios niveles devuelve { character, choices } en lugar del personaje.
+ */
+export function openLevelUpWizard(character, opts = {}) {
+  const multi = Boolean(opts.progress);
+  const nextLevel = character.levels.length + 1;
+  let wizardState = null;
   return openDialog({
-    title: character.levels.length ? `Subir a nivel ${character.levels.length + 1}` : 'Nivel 1: elige tu clase',
+    // Asistente de varios pasos: no se pierde con un clic fuera y, si ya hay
+    // decisiones tomadas, pide confirmación antes de cerrarse.
+    guard: { isDirty: () => Boolean(wizardState?.dirty()) },
+    title: multi
+      ? `Nivel ${nextLevel} · ${opts.progress.index} de ${opts.progress.total}`
+      : character.levels.length ? `Subir a nivel ${nextLevel}` : 'Nivel 1: elige tu clase',
     size: 'xl',
     className: 'wizard',
     render(body, close) {
@@ -142,14 +161,32 @@ export function openLevelUpWizard(character) {
       };
       const scores = abilityScores(character);
       const current = classLevels(character);
+      const hpMode = opts.preset?.hpMode ?? 'ask';
+
+      function presetHp() {
+        if (!state.plan || state.plan.isFirstLevel || hpMode === 'ask') return;
+        state.hpMethod = hpMode;
+        state.hpRoll = hpMode === 'roll' ? rollDie(state.plan.hitDie) : averageHitDieRoll(state.plan.hitDie);
+      }
+      if (opts.preset?.classKey) {
+        state.classKey = opts.preset.classKey;
+        state.plan = planLevelUp(character, state.classKey);
+        presetHp();
+      }
 
       const steps = () => {
         const s = ['class'];
         if (state.plan?.needsSubclass) s.push('subclass');
         if (state.plan?.needsImprovement) s.push('improvement');
         if (state.plan?.featureChoice) s.push('feature');
-        s.push('hp', 'confirm');
+        if (!multi || hpMode === 'ask' || state.plan?.isFirstLevel) s.push('hp');
+        if (!multi) s.push('confirm');
         return s;
+      };
+      if (opts.preset?.classKey) state.step = steps()[1] ?? 'class';
+      const startStep = state.step;
+      wizardState = {
+        dirty: () => multi || state.step !== startStep || Boolean(state.subclass || state.feat || state.asi?.some(Boolean) || state.featureChoice?.length),
       };
       const LABELS = { class: 'Clase', subclass: 'Subclase', improvement: 'Mejora', feature: 'Rasgo', hp: 'Puntos de golpe', confirm: 'Confirmar' };
 
@@ -163,7 +200,7 @@ export function openLevelUpWizard(character) {
 
       function stepClass() {
         const groups = Object.entries(CLASS_SECTIONS).map(([sec, label]) => ({
-          label, classes: listClasses().filter((c) => c.seccion === sec),
+          label, classes: listClasses().filter((c) => c.seccion === sec && (current[c.claseName] || !opts.allow || (c.homebrew ? opts.allow.homebrew.clase : opts.allow.official.clase))),
         })).filter((g) => g.classes.length);
         return html`<p class="muted">${character.levels.length ? 'Puedes seguir en tu clase o tomar otra (multiclase).' : 'La clase define tus habilidades, tu dado de golpe y tu estilo de juego.'}</p>
           ${groups.map((g) => html`<h3 class="wizard__group">${g.label}</h3>
@@ -245,7 +282,7 @@ export function openLevelUpWizard(character) {
           <li><span>Clase</span><strong>${p.className} ${p.newClassLevel}</strong></li>
           <li><span>Nivel de personaje</span><strong>${p.newTotalLevel}</strong></li>
           ${subName ? html`<li><span>${p.subclassLabel}</span><strong>${subName}</strong></li>` : ''}
-          ${imp ? html`<li><span>Mejora</span><strong>${imp.type === 'asi' ? Object.entries(imp.increases).map(([k, v]) => `${ABILITY_LABEL[k]} +${v}`).join(', ') : `Dote: ${imp.name}`}</strong></li>` : ''}
+          ${imp ? html`<li><span>Mejora</span><strong>${imp.type === 'asi' ? Object.entries(imp.increases).map(([k, v]) => `${ABILITY_LABEL[k]} +${v}`).join(', ') : `Dote: ${featName(imp.name)}`}</strong></li>` : ''}
           ${state.featureChoice.length ? html`<li><span>Rasgo de clase</span><strong>${state.featureChoice.map((k) => ABILITY_LABEL[k]).join(', ')} +${p.featureChoice.bonus}</strong></li>` : ''}
           ${p.milestone?.statAmount ? html`<li><span>Bonificación de clase</span><strong>${Object.entries(p.milestone.statAmount).filter(([k]) => k !== 'choice').map(([k, v]) => `${ABILITY_LABEL[k]} +${v}`).join(', ')}</strong></li>` : ''}
           <li><span>Dado de golpe</span><strong>${hp} (d${p.hitDie})</strong></li>
@@ -272,6 +309,8 @@ export function openLevelUpWizard(character) {
       function render() {
         const list = steps();
         const idx = list.indexOf(state.step);
+        const last = idx === list.length - 1;
+        const nextLabel = !last ? 'Continuar →' : multi ? (opts.progress.index === opts.progress.total ? 'Ver resumen →' : 'Siguiente nivel →') : '✓ Confirmar subida';
         setHtml(body, html`
           <ol class="stepper" aria-label="Pasos">
             ${list.map((s, i) => html`<li class="stepper__item ${i < idx ? 'is-done' : ''} ${i === idx ? 'is-current' : ''}" ${i === idx ? raw('aria-current="step"') : ''}>${s === 'subclass' ? state.plan.subclassLabel : LABELS[s]}</li>`)}
@@ -279,11 +318,12 @@ export function openLevelUpWizard(character) {
           <div class="wizard__body">${RENDER[state.step]()}</div>
           <p class="field__error" role="alert">${state.error}</p>
           <div class="dialog__footer">
-            <button type="button" class="btn btn--ghost" data-nav="back">${idx === 0 ? 'Cancelar' : '← Atrás'}</button>
-            <button type="button" class="btn btn--primary" data-nav="next">${state.step === 'confirm' ? '✓ Confirmar subida' : 'Continuar →'}</button>
+            <button type="button" class="btn btn--ghost" data-nav="back">${idx === 0 ? (multi ? 'Cancelar todo' : 'Cancelar') : '← Atrás'}</button>
+            <button type="button" class="btn btn--primary" data-nav="next">${nextLabel}</button>
           </div>`);
         if (state.step === 'improvement' && state.improvementType === 'feat') {
           mountFeatChooser(body.querySelector('[data-feat-root]'), character, {
+            allow: opts.allow,
             initial: state.feat,
             onChange: (f) => { state.feat = f; state.error = ''; },
           });
@@ -297,19 +337,21 @@ export function openLevelUpWizard(character) {
         if (delta > 0) {
           state.error = validateStep();
           if (state.error) return render();
-          if (state.step === 'confirm') {
-            const res = applyLevelUp(character, {
+          if (idx === list.length - 1) {
+            const choices = {
               classKey: state.classKey,
               hpRoll: state.hpRoll,
               improvement: improvement(),
               subclass: state.subclass,
               featureChoices: { statAmount: state.featureChoice },
-            });
+            };
+            const res = applyLevelUp(character, choices);
             if (res.errors.length) { state.error = res.errors.join(' '); return render(); }
-            return close(res.character);
+            return close(multi ? { character: res.character, choices } : res.character);
           }
         } else if (idx === 0) {
-          return close(undefined);
+          // Mismo camino que la × : pregunta si hay decisiones sin guardar.
+          return body.closest('dialog').querySelector('.dialog__close')?.click();
         }
         state.error = '';
         state.step = list[Math.max(0, Math.min(list.length - 1, idx + delta))];
@@ -325,6 +367,7 @@ export function openLevelUpWizard(character) {
             state.classKey = cls.dataset.class;
             state.plan = planLevelUp(character, state.classKey);
             Object.assign(state, { subclass: null, feat: null, asi: [null, null], featureChoice: [], hpRoll: null, hpMethod: null });
+            presetHp();
           }
           state.error = '';
           return render();
@@ -360,6 +403,185 @@ export function openLevelUpWizard(character) {
         state.error = '';
       });
       render();
+    },
+  });
+}
+
+// ── Varios niveles de una vez ────────────────────────────────────────────
+
+function openMultiLevelSetup(character) {
+  const level = character.levels.length;
+  const classes = Object.keys(classLevels(character));
+  const mainClass = character.levels.at(-1)?.classKey ?? '';
+  return openDialog({
+    title: 'Subir varios niveles',
+    size: 'md',
+    render(body, close) {
+      setHtml(body, html`<form class="stack" data-form>
+        <p class="muted">Se recorren los niveles uno a uno, igual que si subieras de uno en uno. Sólo se te preguntará en los niveles con decisiones (subclase, mejora, rasgos). Nada cambia hasta que confirmes el resumen final.</p>
+        <div class="form-grid form-grid--wide">
+          <div class="field"><label class="field__label" for="ml-target">Nivel objetivo</label>
+            <select id="ml-target" class="select" name="target">${Array.from({ length: MAX_LEVEL - level }, (_, i) => level + i + 1).map((n) => html`<option value="${n}" ${n === Math.min(MAX_LEVEL, level + 2) ? raw('selected') : ''}>Nivel ${n}${n === level + 1 ? ' (sólo uno)' : ` (+${n - level})`}</option>`)}</select></div>
+          <div class="field"><label class="field__label" for="ml-class">Clase</label>
+            <select id="ml-class" class="select" name="classKey">
+              ${classes.map((k) => html`<option value="${k}" ${k === mainClass ? raw('selected') : ''}>${getClass(k)?.nombre ?? k}</option>`)}
+              <option value="">Elegir en cada nivel (multiclase)</option>
+            </select></div>
+        </div>
+        <fieldset class="choice-group"><legend>Puntos de golpe de cada nivel</legend>
+          <div class="stack stack--sm">
+            <label class="check"><input type="radio" name="hpMode" value="avg" checked> Usar el promedio en todos (recomendado)</label>
+            <label class="check"><input type="radio" name="hpMode" value="roll"> Tirar el dado automáticamente en cada nivel</label>
+            <label class="check"><input type="radio" name="hpMode" value="ask"> Preguntarme en cada nivel (dado físico)</label>
+          </div>
+        </fieldset>
+        <div class="dialog__footer"><button type="button" class="btn btn--ghost" data-dialog-close>Cancelar</button><button type="submit" class="btn btn--primary">Empezar</button></div>
+      </form>`);
+      const form = body.querySelector('[data-form]');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const fd = new FormData(form);
+        close({ target: Number(fd.get('target')), classKey: fd.get('classKey') || null, hpMode: fd.get('hpMode') });
+      });
+    },
+  });
+}
+
+function openMultiLevelSummary(original, final, steps) {
+  const before = abilityScores(original);
+  const after = abilityScores(final);
+  const changes = ABILITY_KEYS.filter((k) => after[k].total !== before[k].total);
+  return openDialog({
+    title: `Resumen: nivel ${original.levels.length} → ${final.levels.length}`,
+    size: 'lg',
+    guard: { isDirty: () => true },
+    render(body, close) {
+      setHtml(body, html`<div class="stack">
+        <div class="table-wrap"><table class="table">
+          <thead><tr><th class="num" scope="col">Nivel</th><th scope="col">Clase</th><th scope="col">Decisiones</th><th class="num" scope="col">Dado de PG</th></tr></thead>
+          <tbody>${steps.map((st, i) => {
+            const lvl = original.levels.length + i + 1;
+            const sub = st.choices.subclass ? (planLevelUp(st.before, st.choices.classKey).subclassOptions.find((o) => o.key === st.choices.subclass)?.name ?? st.choices.subclass) : null;
+            const imp = st.choices.improvement;
+            const notes = [
+              sub ? `Subclase: ${sub}` : '',
+              imp?.type === 'asi' ? Object.entries(imp.increases).map(([k, v]) => `${ABILITY_LABEL[k]} +${v}`).join(', ') : '',
+              imp?.type === 'feat' ? `Dote: ${featName(imp.name)}` : '',
+              st.choices.featureChoices?.statAmount?.length ? `Rasgo: ${st.choices.featureChoices.statAmount.map((k) => ABILITY_LABEL[k]).join(', ')}` : '',
+            ].filter(Boolean).join(' · ');
+            return html`<tr><td class="num">${lvl}</td><td>${getClass(st.choices.classKey)?.nombre ?? st.choices.classKey}</td><td>${notes || html`<span class="muted">—</span>`}</td><td class="num">${lvl === 1 ? 'máx.' : st.choices.hpRoll}</td></tr>`;
+          })}</tbody>
+        </table></div>
+        <ul class="summary-list">
+          <li><span>PG máximos</span><strong>${hitPointsMax(original)} → ${hitPointsMax(final)}</strong></li>
+          ${changes.map((k) => html`<li><span>${ABILITY_LABEL[k]}</span><strong>${before[k].total} → ${after[k].total}</strong></li>`)}
+        </ul>
+        <div class="dialog__footer"><button type="button" class="btn btn--ghost" data-dialog-close>Descartar todo</button><button type="button" class="btn btn--primary" data-ok autofocus>✓ Confirmar ${steps.length} niveles</button></div>
+      </div>`);
+      body.querySelector('[data-ok]').addEventListener('click', () => close(true));
+    },
+  });
+}
+
+function hitPointsMax(c) {
+  return hitPoints(c, abilityScores(c)).max;
+}
+
+/**
+ * Sube varios niveles seguidos. Atómico: devuelve el personaje final sólo si
+ * el usuario confirma el resumen; si cancela en cualquier momento, undefined.
+ */
+export async function openMultiLevelUp(character, { allow = null } = {}) {
+  const gate = canLevelUp(character);
+  if (!gate.ok) return undefined;
+  const setup = await openMultiLevelSetup(character);
+  if (!setup) return undefined;
+  const total = setup.target - character.levels.length;
+  const steps = [];
+  let current = character;
+  for (let i = 1; i <= total; i++) {
+    const classKey = setup.classKey;
+    let choices;
+    if (classKey && setup.hpMode !== 'ask' && current.levels.length > 0 && !levelNeedsDecisions(current, classKey)) {
+      const plan = planLevelUp(current, classKey);
+      choices = { classKey, hpRoll: setup.hpMode === 'roll' ? rollDie(plan.hitDie) : averageHitDieRoll(plan.hitDie), improvement: null, subclass: null, featureChoices: {} };
+    } else {
+      const res = await openLevelUpWizard(current, { allow, preset: { classKey, hpMode: setup.hpMode }, progress: { index: i, total } });
+      if (!res) return undefined;
+      choices = res.choices;
+    }
+    const applied = applyLevelUp(current, choices);
+    if (applied.errors.length) return undefined;
+    steps.push({ before: current, choices });
+    current = applied.character;
+  }
+  if (!(await openMultiLevelSummary(character, current, steps))) return undefined;
+  // Se vuelve a aplicar desde el original con las mismas decisiones: el
+  // resultado es idéntico y garantiza que todo el lote es válido.
+  const res = applyLevelUps(character, steps.map((s) => s.choices));
+  return res.errors.length ? undefined : res.character;
+}
+
+// ── Bajar varios niveles ─────────────────────────────────────────────────
+
+function improvementLabel(imp) {
+  if (!imp) return '';
+  if (imp.type === 'asi') return Object.entries(imp.increases).map(([k, v]) => `${ABILITY_LABEL[k]} +${v}`).join(', ');
+  if (imp.type === 'feat') return `Dote: ${featName(imp.name)}`;
+  return '';
+}
+
+/**
+ * Baja de nivel N veces (10 → 9 → … → 5) con la misma lógica que «Bajar nivel».
+ * Muestra antes qué se pierde. Devuelve el personaje nuevo o undefined.
+ */
+export async function openMultiLevelDown(character) {
+  let spells = null;
+  if (character.spells.known.length) {
+    try { spells = await loadSpells(); } catch { spells = null; }
+  }
+  const current = character.levels.length;
+  return openDialog({
+    title: 'Bajar varios niveles',
+    size: 'lg',
+    render(body, close) {
+      let target = Math.max(0, current - 1);
+      let dropSpells = true;
+      const draw = () => {
+        const p = levelDownPreview(character, target, spells);
+        setHtml(body, html`<div class="stack">
+          <div class="form-grid form-grid--wide">
+            <div class="field"><label class="field__label" for="ld-target">Bajar hasta</label>
+              <select id="ld-target" class="select" data-target>${Array.from({ length: current }, (_, i) => current - 1 - i).map((n) => html`<option value="${n}" ${n === target ? raw('selected') : ''}>${n === 0 ? 'Sin niveles (quitar todas las clases)' : `Nivel ${n}${n === current - 1 ? ' (sólo uno)' : ` (−${current - n})`}`}</option>`)}</select></div>
+            <div class="callout"><p>Se quitan uno a uno, igual que con «Bajar nivel». Se conservan raza, trasfondo, equipo, notas, rasgos con origen y criaturas.</p></div>
+          </div>
+          <section aria-labelledby="ld-lost"><h3 id="ld-lost" class="content-form__section">Se perderá</h3>
+            <div class="table-wrap"><table class="table">
+              <thead><tr><th class="num" scope="col">Nivel</th><th scope="col">Clase</th><th scope="col">Mejora o dote</th><th class="num" scope="col">PG</th></tr></thead>
+              <tbody>${p.levels.map((l) => html`<tr><td class="num">${l.level}</td><td>${l.className}</td><td>${improvementLabel(l.improvement) || html`<span class="muted">—</span>`}</td><td class="num">${l.level === 1 ? 'máx.' : l.hpRoll}</td></tr>`)}</tbody>
+            </table></div>
+          </section>
+          <ul class="summary-list">
+            <li><span>Nivel</span><strong>${p.from} → ${p.to}</strong></li>
+            <li><span>PG máximos</span><strong>${p.hp.before} → ${p.hp.after}</strong></li>
+            ${p.abilities.map((a) => html`<li><span>${ABILITY_LABEL[a.ability]}</span><strong>${a.before} → ${a.after}</strong></li>`)}
+            ${p.subclasses.map((x) => html`<li><span>Subclase de ${x.className}</span><strong>${x.name} (se elegirá de nuevo al volver a subir)</strong></li>`)}
+            ${p.classesLost.length ? html`<li><span>Clases que se quitan</span><strong>${p.classesLost.join(', ')}</strong></li>` : ''}
+            ${p.epicBoons.length ? html`<li><span>Bendiciones épicas</span><strong>${p.epicBoons.join(', ')}</strong></li>` : ''}
+          </ul>
+          ${p.features.length ? html`<details class="disclosure"><summary>Rasgos de clase que se dejan de tener (${p.features.length})</summary>
+            <div class="disclosure__body"><ul class="basics__list">${p.features.map((f) => html`<li><strong>${f.className} ${f.level}:</strong> ${f.title}</li>`)}</ul></div></details>` : ''}
+          ${p.spellsAbove.length ? html`<label class="check check--lg"><input type="checkbox" data-drop-spells ${dropSpells ? raw('checked') : ''}>
+            <span><strong>Olvidar ${p.spellsAbove.length} conjuro(s) de un nivel que ya no puedes lanzar</strong><br><small>${p.spellsAbove.join(', ')}. Desmárcalo si los obtuviste por otra vía (un objeto, una dote…).</small></span></label>` : ''}
+          <div class="dialog__footer"><button type="button" class="btn btn--ghost" data-dialog-close>Cancelar</button><button type="button" class="btn btn--danger" data-ok>Bajar a nivel ${p.to}</button></div>
+        </div>`);
+        body.querySelector('[data-ok]').addEventListener('click', () => close(dropSpells && p.spellsAbove.length ? forgetSpells(p.character, p.spellsAbove) : p.character));
+      };
+      body.addEventListener('change', (e) => {
+        if (e.target.matches('[data-target]')) { target = Number(e.target.value); draw(); body.querySelector('[data-target]').focus(); }
+        if (e.target.matches('[data-drop-spells]')) dropSpells = e.target.checked;
+      });
+      draw();
     },
   });
 }

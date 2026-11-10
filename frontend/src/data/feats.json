@@ -152,7 +152,14 @@
     "habilidad": "Resistente y resiliente.\nObtiene los siguientes beneficios:\n♻ Aumenta tu puntuación de Constitución en 1, hasta un máximo de 20.\n♻ Cuando lanzas un Dado de Golpe para recuperar puntos de golpe, el número mínimo de puntos de golpe que recuperas de la tirada es igual al doble de tu modificador de Constitución (mínimo de 2)."
   },
   "Duro": {
-    "habilidad": "Has entrenado tu cuerpo a tal punto, que tu piel parece de acero.\nObteniendo los siguientes beneficios:\n♻ Tu máximo de puntos de vida aumenta en una cantidad igual al doble de tu nivel cuando obtienes esta dote. Siempre que ganes un nivel a partir de entonces, tu máximo de puntos de golpe aumenta en 2 puntos de golpe adicionales."
+    "habilidad": "Has entrenado tu cuerpo a tal punto, que tu piel parece de acero.\nObteniendo los siguientes beneficios:\n♻ Tu máximo de puntos de vida aumenta en una cantidad igual al doble de tu nivel cuando obtienes esta dote. Siempre que ganes un nivel a partir de entonces, tu máximo de puntos de golpe aumenta en 2 puntos de golpe adicionales.",
+    "efectos": [
+      {
+        "type": "bono",
+        "target": "pg_por_nivel",
+        "value": 2
+      }
+    ]
   },
   "Envenenador": {
     "habilidad": "Puedes preparar y entregar venenos mortales.\nOtorgándote los siguientes beneficios:\n♻ Cuando haces una tirada de daño que inflige daño por veneno, ignora la resistencia al daño por veneno.\n♻ Puedes aplicar veneno a un arma o munición como una acción adicional, en lugar de una acción.\n♻ Obtienes competencia con el kit de envenenador si aún no lo tienes. Con una hora de trabajo usando un equipo de envenenador y gastando 50 po en materiales, puedes crear un número de dosis de veneno potente igual a tu bonificador de competencia. Una vez aplicado a un arma o munición, el veneno conserva su potencia durante 1 minuto o hasta que golpeas con el arma o la munición. Cuando una criatura recibe daño del arma recubierta o de la munición, esa criatura debe tener éxito en una tirada de salvación de Constitución CD 14 o recibir 2d8 daños por veneno y quedar envenenada hasta el final de tu próximo turno."
@@ -484,7 +491,8 @@
         "carisma": 1
       }
     ],
-    "habilidad": "Elige una puntuación de habilidad.\nObteniendo los siguientes beneficios:\n♻ Aumenta la puntuación de cualquier habilidad elegida en 1, hasta un máximo de 20.\n♻ Obtienes competencia en las tiradas de salvación usando la habilidad elegida."
+    "habilidad": "Elige una puntuación de habilidad.\nObteniendo los siguientes beneficios:\n♻ Aumenta la puntuación de cualquier habilidad elegida en 1, hasta un máximo de 20.\n♻ Obtienes competencia en las tiradas de salvación usando la habilidad elegida.",
+    "salvacionDelAtributoElegido": true
   },
   "Sanguinario elemental": {
     "requisito": {

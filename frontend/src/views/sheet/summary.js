@@ -3,7 +3,9 @@
 import { html, raw } from '../../ui/dom.js';
 import { ABILITIES, ABILITY_DESCRIPTIONS, ALIGNMENTS, XP_BY_LEVEL, ABILITY_LABEL } from '../../domain/constants.js';
 import { classLevels } from '../../domain/rules.js';
-import { getClass } from '../../data/index.js';
+import { getClass, raceName } from '../../data/index.js';
+import { sourcesLabel } from '../../domain/proficiencies.js';
+import { DAMAGE_LABEL } from '../../domain/effects.js';
 import { textField, numberField, selectField, out, mod, actionButton, sectionCard, bindAttrs } from './common.js';
 
 function identityStrip(ctx) {
@@ -16,7 +18,7 @@ function identityStrip(ctx) {
         ${textField(ctx, { label: 'Nombre del personaje', path: 'identity.name', placeholder: 'Ej.: Kael, hija de la Tormenta' })}
         <div class="field">
           <span class="field__label">Raza</span>
-          <span class="static-value">${c.race.key ?? '—'} ${ctx.readOnly ? '' : html`<button type="button" class="link-btn" data-action="goto-tab" data-tab="progresion">${c.race.key ? 'Cambiar' : 'Elegir'}</button>`}</span>
+          <span class="static-value">${c.race.key ? raceName(c.race.key) : '—'} ${ctx.readOnly ? '' : html`<button type="button" class="link-btn" data-action="goto-tab" data-tab="progresion">${c.race.key ? 'Cambiar' : 'Elegir'}</button>`}</span>
         </div>
         <div class="field">
           <span class="field__label">Clase y nivel</span>
@@ -79,13 +81,27 @@ function combatStrip(ctx) {
     </section>`;
 }
 
+/** Etiqueta corta de las fuentes que no son la marca manual. */
+function sourceTag(sources) {
+  const kinds = [...new Set(sources.filter((x) => !(x.kind === 'otros' && x.label === 'Marcada a mano')).map((x) => (x.kind === 'otros' ? 'rasgo' : x.kind)))];
+  if (!kinds.length) return '';
+  return html` <span class="prof-item__tag" title="${sourcesLabel(sources)}">${kinds.join(' · ')}</span>`;
+}
+
+function profToggle(ctx, { on, granted, sources, action, key, label }) {
+  const attrs = ctx.readOnly || granted
+    ? raw(`disabled${granted ? ` title="Otorgada por: ${sourcesLabel(sources).replace(/"/g, '')}"` : ''}`)
+    : raw(`data-action="${action}" data-key="${key}"`);
+  return html`<button type="button" class="prof-toggle ${on ? 'is-on' : ''} ${granted ? 'is-locked' : ''}" ${attrs} aria-pressed="${on}" aria-label="${label}"></button>`;
+}
+
 function savesList(ctx) {
   return sectionCard({
     title: 'Tiradas de salvación',
     body: html`<ul class="prof-list" role="list">
       ${ctx.sheet.saves.map((s) => html`<li class="prof-item">
-        <button type="button" class="prof-toggle ${s.proficient ? 'is-on' : ''}" ${ctx.readOnly ? raw('disabled') : raw(`data-action="toggle-save" data-key="${s.ability}"`)} aria-pressed="${s.proficient}" aria-label="Competencia en salvación de ${ABILITY_LABEL[s.ability]}"></button>
-        <span class="prof-item__name">${ABILITY_LABEL[s.ability]}</span>
+        ${profToggle(ctx, { on: s.proficient, granted: s.granted, sources: s.sources, action: 'toggle-save', key: s.ability, label: `Competencia en salvación de ${ABILITY_LABEL[s.ability]}` })}
+        <span class="prof-item__name">${ABILITY_LABEL[s.ability]}${sourceTag(s.sources)}</span>
         <span class="prof-item__bonus">${out(`save.${s.ability}`, mod(s.bonus))}</span>
       </li>`)}
     </ul>`,
@@ -100,26 +116,48 @@ function skillsList(ctx) {
     title: 'Habilidades',
     subtitle: ctx.readOnly
       ? 'La columna de la derecha es la puntuación pasiva.'
-      : 'Círculo: competencia. ★: pericia (duplica la competencia). La columna de la derecha es la puntuación pasiva.',
+      : 'Círculo: competencia (las bloqueadas vienen de tu clase, trasfondo o rasgos). ★: pericia. A la derecha, la pasiva.',
     actions: (used || allowed) ? html`<span class="badge ${over ? 'badge--warning' : 'badge--gold'}" title="${sourcesText}${over ? ' · Tienes más pericias de las que otorgan tus rasgos (válido si tu DM lo permite).' : ''}">★ Pericias ${used}/${allowed}</span>` : '',
     body: html`<ul class="prof-list prof-list--skills" role="list">
       ${ctx.sheet.skills.map((s) => {
-        const lockTitle = s.fromBackground ? 'Competencia otorgada por el trasfondo' : '';
-        const profAttrs = ctx.readOnly || s.fromBackground
-          ? raw(`disabled title="${lockTitle}"`)
-          : raw(`data-action="toggle-skill" data-key="${s.name}"`);
         const expertAttrs = ctx.readOnly || !s.proficient
           ? raw(`disabled title="${s.proficient ? '' : 'Necesitas competencia para tener pericia'}"`)
           : raw(`data-action="toggle-expertise" data-key="${s.name}" title="Pericia en ${s.name}"`);
         return html`<li class="prof-item ${s.expert ? 'is-expert' : ''}">
-          <button type="button" class="prof-toggle ${s.proficient ? 'is-on' : ''} ${s.fromBackground ? 'is-locked' : ''}" ${profAttrs} aria-pressed="${s.proficient}" aria-label="Competencia en ${s.name}"></button>
-          <span class="prof-item__name">${s.name} <small>(${ABILITY_LABEL[s.ability].slice(0, 3)})</small>${s.fromBackground ? html` <span class="prof-item__tag" title="${lockTitle}">trasfondo</span>` : ''}</span>
+          ${profToggle(ctx, { on: s.proficient, granted: s.granted, sources: s.sources, action: 'toggle-skill', key: s.name, label: `Competencia en ${s.name}` })}
+          <span class="prof-item__name">${s.name} <small>(${ABILITY_LABEL[s.ability].slice(0, 3)})</small>${sourceTag(s.sources)}</span>
           <button type="button" class="expert-toggle ${s.expert ? 'is-on' : ''}" ${expertAttrs} aria-pressed="${s.expert}" aria-label="Pericia en ${s.name}">★</button>
           <span class="prof-item__bonus">${out(`skill.${s.name}`, mod(s.bonus))}</span>
           <span class="prof-item__passive" title="Pasiva">${out(`skill.${s.name}.passive`, s.passive)}</span>
         </li>`;
       })}
     </ul>`,
+  });
+}
+
+/** Armaduras, armas, herramientas e idiomas con su procedencia. */
+function otherProficiencies(ctx) {
+  const p = ctx.sheet.proficiencies;
+  const d = ctx.sheet.defenses;
+  const groups = [
+    ['Armaduras', p.armaduras], ['Armas', p.armas], ['Herramientas', p.herramientas], ['Idiomas (rasgos)', p.idiomas],
+  ].filter(([, list]) => list.length);
+  const defenseRows = [
+    ['Resistencias', d.resistencia.map((x) => ({ name: DAMAGE_LABEL[x.value], sources: [{ kind: 'otros', label: x.source }] }))],
+    ['Inmunidades', d.inmunidad.map((x) => ({ name: DAMAGE_LABEL[x.value], sources: [{ kind: 'otros', label: x.source }] }))],
+    ['Vulnerabilidades', d.vulnerabilidad.map((x) => ({ name: DAMAGE_LABEL[x.value], sources: [{ kind: 'otros', label: x.source }] }))],
+    ['Inmune a condiciones', d.inmunidad_condicion.map((x) => ({ name: x.value, sources: [{ kind: 'otros', label: x.source }] }))],
+  ].filter(([, list]) => list.length);
+  const pending = ctx.sheet.classChoices.some((x) => x.pending || x.skillsRemaining || x.savesRemaining);
+  if (!groups.length && !defenseRows.length && !pending) return '';
+  return sectionCard({
+    title: 'Competencias y defensas',
+    subtitle: 'Pasa el ratón por encima de cada una para ver de dónde viene.',
+    actions: pending ? html`<button type="button" class="btn btn--ghost btn--sm" data-action="goto-tab" data-tab="rasgos">Elegir competencias de clase</button>` : '',
+    body: html`<dl class="basics">${[...groups, ...defenseRows].map(([label, list]) => html`<div class="basics__row">
+      <dt>${label}</dt>
+      <dd><div class="chips chips--static">${list.map((x) => html`<span class="badge" title="${sourcesLabel(x.sources)}">${x.name}</span>`)}</div></dd>
+    </div>`)}</dl>`,
   });
 }
 
@@ -159,6 +197,7 @@ export function renderSummary(ctx) {
         ${savesList(ctx)}
         ${skillsList(ctx)}
       </div>
+      ${otherProficiencies(ctx)}
     </div>`;
 }
 

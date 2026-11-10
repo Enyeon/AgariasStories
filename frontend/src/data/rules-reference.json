@@ -6,59 +6,82 @@
       {
         "id": "accion-ataque",
         "name": "Atacar (Attack)",
-        "text": "Realizas un ataque cuerpo a cuerpo o a distancia con un arma, hechizo o ataque sin armas. Si tienes Ataque Extra, puedes hacer múltiples ataques."
+        "text": "Realizas un ataque cuerpo a cuerpo o a distancia con un arma, hechizo o ataque sin armas. Si tienes Ataque Extra, puedes hacer múltiples ataques.",
+        "kind": "accion",
+        "origin": "oficial"
       },
       {
         "id": "accion-cast",
         "name": "Lanzar un hechizo (Cast a Spell)",
-        "text": "Lanzas un hechizo cuyo tiempo de lanzamiento sea “1 acción”. Debes cumplir sus requisitos (conjuro preparado, componentes, etc.)."
+        "text": "Lanzas un hechizo cuyo tiempo de lanzamiento sea “1 acción”. Debes cumplir sus requisitos (conjuro preparado, componentes, etc.).",
+        "kind": "accion",
+        "origin": "oficial"
       },
       {
         "id": "accion-dash",
         "name": "Correr (Dash)",
-        "text": "Gastas tu acción para duplicar tu velocidad de movimiento ese turno. No puedes usar la acción para otra cosa."
+        "text": "Gastas tu acción para duplicar tu velocidad de movimiento ese turno. No puedes usar la acción para otra cosa.",
+        "kind": "accion",
+        "origin": "oficial"
       },
       {
         "id": "accion-withdrawal",
-        "name": "Retirada (Withdrawal)",
-        "text": "Si realizas la acción de Retirada, tu movimiento no provoca ataques de oportunidad por el resto del turno."
+        "name": "Destrabarse (Disengage)",
+        "text": "Tu movimiento no provoca ataques de oportunidad durante el resto del turno.",
+        "kind": "accion",
+        "origin": "oficial"
       },
       {
         "id": "accion-dodge",
         "name": "Esquivar (Dodge)",
-        "text": "Hasta el comienzo de tu siguiente turno, todos los ataques contra ti tienen desventaja y haces tiradas de salvación de Destreza con ventaja, siempre que puedas ver al atacante y no estés incapacitado."
+        "text": "Hasta el comienzo de tu siguiente turno, todos los ataques contra ti tienen desventaja y haces tiradas de salvación de Destreza con ventaja, siempre que puedas ver al atacante y no estés incapacitado.",
+        "kind": "accion",
+        "origin": "oficial"
       },
       {
         "id": "accion-an-object",
         "name": "Interacción (Use an Object)",
-        "text": "Usas un objeto no mágico o interactúas con un objeto (tirar de una palanca, abrir una puerta, beber una poción si el DM lo permite como acción)."
+        "text": "Usas un objeto no mágico o interactúas con un objeto (tirar de una palanca, abrir una puerta, beber una poción si el DM lo permite como acción).",
+        "kind": "accion",
+        "origin": "oficial"
       },
       {
         "id": "accion-help",
         "name": "Ayudar (Help)",
-        "text": "Concedes ventaja a una criatura aliada en una tarea (ataque, habilidad, etc.) si está a 5 pies de ti."
+        "text": "Concedes ventaja a una criatura aliada en una tarea (ataque, habilidad, etc.) si está a 5 pies de ti.",
+        "kind": "accion",
+        "origin": "oficial"
       },
       {
         "id": "accion-hide",
         "name": "Esconderse (Hide)",
-        "text": "Intentas ocultarte (sigilo), solo si estás fuera de la vista o tienes cobertura. Requiere tirada de Destreza (Sigilo)."
+        "text": "Intentas ocultarte (sigilo), solo si estás fuera de la vista o tienes cobertura. Requiere tirada de Destreza (Sigilo).",
+        "kind": "accion",
+        "origin": "oficial"
       },
       {
         "id": "accion-ready",
         "name": "Preparar acción (Ready)",
-        "text": "¿Cuándo se usa?: Activaste una acción lista.\n\nEjemplo: “Si pasa esto, hago esto”."
+        "text": "Eliges un desencadenante («si el orco cruza la puerta…») y una acción. Cuando ocurre el desencadenante, puedes usar tu reacción para realizarla. Si es un conjuro, debes mantener la concentración hasta entonces.",
+        "kind": "accion",
+        "origin": "oficial"
       },
       {
         "id": "accion-search",
         "name": "Buscar (Search)",
-        "text": "Realizas una tirada de Sabiduría (Percepción) o Inteligencia (Investigación) para encontrar algo oculto."
+        "text": "Realizas una tirada de Sabiduría (Percepción) o Inteligencia (Investigación) para encontrar algo oculto.",
+        "kind": "accion",
+        "origin": "oficial"
       },
       {
         "id": "accion-shove",
         "name": "Empujar (Shove)",
-        "text": "Intentas empujar a una criatura 5 pies lejos de ti o derribarla al suelo (tirada de Atletismo contra Atletismo o Acrobacias)."
+        "text": "Intentas empujar a una criatura 5 pies lejos de ti o derribarla al suelo (tirada de Atletismo contra Atletismo o Acrobacias).",
+        "kind": "accion",
+        "origin": "oficial"
       }
-    ]
+    ],
+    "kind": "accion"
   },
   {
     "title": "Acciones adicionales (Bonus Actions)",
@@ -67,24 +90,33 @@
       {
         "id": "accion-extra_arma",
         "name": "Ataque extra con arma ligera",
-        "text": "¿Cómo se obtiene?: Si usas un arma ligera en la acción principal.\n\nEjemplo: Atacas con espada corta y luego con daga."
+        "text": "¿Cómo se obtiene?: Si usas un arma ligera en la acción principal.\n\nEjemplo: Atacas con espada corta y luego con daga.",
+        "kind": "accion",
+        "origin": "oficial"
       },
       {
         "id": "accion-habilidad",
         "name": "Habilidad de clase",
-        "text": "¿Cómo se obtiene?: Algunas clases dan acciones adicionales.\n\nEjemplo: Monje puede hacer “Ataque sin armas” con su Bonus Action."
+        "text": "¿Cómo se obtiene?: Algunas clases dan acciones adicionales.\n\nEjemplo: Monje puede hacer “Ataque sin armas” con su Bonus Action.",
+        "kind": "accion",
+        "origin": "oficial"
       },
       {
         "id": "accion-dote",
         "name": "Habilidad de dote",
-        "text": "¿Cómo se obtiene?: Algunas dotes dan acciones adicionales.\n\nEjemplo: Algunos dotes como \"Shield Master\", \"Polearm Master\" o \"Crossbow Expert\"."
+        "text": "¿Cómo se obtiene?: Algunas dotes dan acciones adicionales.\n\nEjemplo: Algunos dotes como \"Shield Master\", \"Polearm Master\" o \"Crossbow Expert\".",
+        "kind": "accion",
+        "origin": "oficial"
       },
       {
         "id": "accion-conjuro",
         "name": "Conjuro",
-        "text": "¿Cómo se obtiene?: Algunos hechizos se lanzan con acción adicional.\n\nEjemplo: “Misty Step”, “Sanctuary”."
+        "text": "¿Cómo se obtiene?: Algunos hechizos se lanzan con acción adicional.\n\nEjemplo: “Misty Step”, “Sanctuary”.",
+        "kind": "accion",
+        "origin": "oficial"
       }
-    ]
+    ],
+    "kind": "accion"
   },
   {
     "title": "Reacciones (Reactions)",
@@ -93,24 +125,33 @@
       {
         "id": "accion-oportunidad",
         "name": "Ataque de oportunidad",
-        "text": "¿Cuándo se usa?: Una criatura sale de tu alcance sin Disengage. (Un Desenganche es una medida de protección y defensa en combate)\n\nEjemplo: Atacas al enemigo que huye."
+        "text": "¿Cuándo se usa?: Una criatura hostil que puedes ver sale de tu alcance sin usar la acción de Destrabarse.\n\nEjemplo: Atacas cuerpo a cuerpo al enemigo que huye.",
+        "kind": "accion",
+        "origin": "oficial"
       },
       {
         "id": "accion-counterspell",
         "name": "Contrahechizo (Counterspell)",
-        "text": "¿Cuándo se usa?: Ves a alguien lanzar un conjuro.\n\nEjemplo: Intentas anularlo con una tirada."
+        "text": "¿Cuándo se usa?: Ves a alguien lanzar un conjuro.\n\nEjemplo: Intentas anularlo con una tirada.",
+        "kind": "accion",
+        "origin": "oficial"
       },
       {
         "id": "accion-Shield",
         "name": "Escudo (Shield)",
-        "text": "¿Cuándo se usa?: Te impactan un ataque.\n\nEjemplo: +5 a la CA hasta tu siguiente turno."
+        "text": "¿Cuándo se usa?: Te impactan un ataque.\n\nEjemplo: +5 a la CA hasta tu siguiente turno.",
+        "kind": "accion",
+        "origin": "oficial"
       },
       {
-        "id": "accion-ready",
+        "id": "reaccion-ready",
         "name": "Preparar acción (Ready)",
-        "text": "¿Cuándo se usa?: Activaste una acción lista.\n\nEjemplo: “Si pasa esto, hago esto”."
+        "text": "Cuando se cumple el desencadenante de una acción Preparada, la realizas usando tu reacción.",
+        "kind": "accion",
+        "origin": "oficial"
       }
-    ]
+    ],
+    "kind": "accion"
   },
   {
     "title": "Acciones legendarias",
@@ -119,179 +160,602 @@
       {
         "id": "accion-legendaria",
         "name": "Acción legendaria",
-        "text": "¿Cuándo se usa?: Hasta 3 veces por ronda, al final del turno de otro personaje.\n\nSe gastan “puntos de acción legendaria”, que se recuperan al inicio del turno de la criatura legendaria.\n\nEjemplo: Un dragón puede moverse, atacar con la cola o usar un rugido como acción legendaria."
+        "text": "¿Cuándo se usa?: Hasta 3 veces por ronda, al final del turno de otro personaje.\n\nSe gastan “puntos de acción legendaria”, que se recuperan al inicio del turno de la criatura legendaria.\n\nEjemplo: Un dragón puede moverse, atacar con la cola o usar un rugido como acción legendaria.",
+        "kind": "accion",
+        "origin": "oficial"
       }
-    ]
+    ],
+    "kind": "accion"
   },
   {
+    "id": "condiciones",
+    "kind": "condicion",
     "title": "Condiciones",
-    "intro": "Condiciones estándar del sistema, aplicables en combate o narrativamente:",
+    "intro": "Las 15 condiciones oficiales de D&D 5e (Manual del Jugador, 2014) y las propias de Agarias, marcadas aparte. Una condición dura hasta que termina el efecto que la causó, salvo que se indique otra cosa.",
     "items": [
       {
-        "id": "accion-exhaustion",
-        "name": "Agotado (Exhaustion)",
-        "text": "Es una condición progresiva que aplica penalizaciones acumulativas. Va desde desventajas leves hasta la muerte al alcanzar 6 niveles. Solo puede curarse con descanso largo o magia específica."
+        "id": "cond-agarrado",
+        "kind": "condicion",
+        "origin": "oficial",
+        "name": "Agarrado",
+        "en": "Grappled",
+        "summary": "Alguien o algo te sujeta y no te deja desplazarte.",
+        "effect": [
+          "Tu velocidad es 0 y no puede aumentar por ninguna bonificación."
+        ],
+        "applies": "Con un ataque de agarre: el atacante usa uno de sus ataques para hacer una prueba de Fuerza (Atletismo) contra tu Fuerza (Atletismo) o Destreza (Acrobacias). También por rasgos de criaturas y algunos conjuros.",
+        "ends": "Si usas tu acción y ganas una prueba de Fuerza (Atletismo) o Destreza (Acrobacias) contra el Atletismo del que te agarra; si quien te agarra queda Incapacitado; o si un efecto te saca de su alcance.",
+        "related": []
       },
       {
-        "id": "accion-grappled",
-        "name": "Agarrado (Grappled)",
-        "text": "Velocidad se reduce a 0. No se ve afectado por penalizadores si no se especifica. Puede intentar escapar (Atletismo o Acrobacias vs. Atletismo del que lo agarra)."
+        "id": "cond-asustado",
+        "kind": "condicion",
+        "origin": "oficial",
+        "name": "Asustado",
+        "en": "Frightened",
+        "summary": "El miedo a una fuente concreta te domina.",
+        "effect": [
+          "Tienes desventaja en las pruebas de característica y en las tiradas de ataque mientras la fuente de tu miedo esté en tu línea de visión.",
+          "No puedes acercarte voluntariamente a la fuente de tu miedo."
+        ],
+        "applies": "Cuando lo indique el rasgo, conjuro, criatura u objeto que lo provoca.",
+        "ends": "Cuando termina el efecto que la causó, o como indique ese efecto (por ejemplo, superando una tirada de salvación).",
+        "related": []
       },
       {
-        "id": "accion-frightened",
-        "name": "Aterrorizado (Frightened)",
-        "text": "Tiene desventaja en pruebas y ataques mientras vea la fuente del miedo, y no puede acercarse voluntariamente a ella."
+        "id": "cond-aturdido",
+        "kind": "condicion",
+        "origin": "oficial",
+        "name": "Aturdido",
+        "en": "Stunned",
+        "summary": "Estás aturdido y apenas puedes reaccionar.",
+        "effect": [
+          "Estás Incapacitado, no puedes moverte y sólo puedes hablar con titubeos.",
+          "Fallas automáticamente las tiradas de salvación de Fuerza y Destreza.",
+          "Las tiradas de ataque contra ti tienen ventaja."
+        ],
+        "applies": "Cuando lo indique el rasgo, conjuro, criatura u objeto que lo provoca.",
+        "ends": "Cuando termina el efecto que la causó, o como indique ese efecto (por ejemplo, superando una tirada de salvación).",
+        "related": [
+          "Incapacitado"
+        ]
       },
       {
-        "id": "accion-stunned",
-        "name": "Aturdido (Stunned)",
-        "text": "No puede moverse ni hablar coherentemente, falla automáticamente las tiradas de salvación de Fuerza y Destreza, y los ataques contra él tienen ventaja."
+        "id": "cond-cegado",
+        "kind": "condicion",
+        "origin": "oficial",
+        "name": "Cegado",
+        "en": "Blinded",
+        "summary": "No puedes ver.",
+        "effect": [
+          "Fallas automáticamente cualquier prueba de característica que requiera la vista.",
+          "Las tiradas de ataque contra ti tienen ventaja y las tuyas tienen desventaja."
+        ],
+        "applies": "Cuando lo indique el rasgo, conjuro, criatura u objeto que lo provoca.",
+        "ends": "Cuando termina el efecto que la causó, o como indique ese efecto (por ejemplo, superando una tirada de salvación).",
+        "related": []
       },
       {
-        "id": "accion-prone",
-        "name": "Caído (Prone)",
-        "text": "Debe arrastrarse. Ataques cuerpo a cuerpo tienen ventaja contra él; ataques a distancia tienen desventaja. Atacar desde el suelo tiene desventaja."
+        "id": "cond-derribado",
+        "kind": "condicion",
+        "origin": "oficial",
+        "name": "Derribado",
+        "en": "Prone",
+        "summary": "Estás tumbado en el suelo.",
+        "effect": [
+          "Sólo puedes desplazarte arrastrándote (cada pie cuesta un pie extra), salvo que te levantes.",
+          "Tienes desventaja en tus tiradas de ataque.",
+          "Los ataques contra ti tienen ventaja si el atacante está a 5 pies o menos; si está más lejos, tienen desventaja."
+        ],
+        "applies": "Puedes tirarte al suelo voluntariamente. También al caer Inconsciente, con un empujón (acción de Empujar) o por efectos que lo indiquen.",
+        "ends": "Levantándote: te cuesta la mitad de tu velocidad. No puedes si tu velocidad es 0.",
+        "related": []
       },
       {
-        "id": "accion-blinded",
-        "name": "Cegado (Blinded)",
-        "text": "No puede ver, falla automáticamente cualquier tirada que requiera vista, ataques contra él tienen ventaja, y sus ataques tienen desventaja."
+        "id": "cond-ensordecido",
+        "kind": "condicion",
+        "origin": "oficial",
+        "name": "Ensordecido",
+        "en": "Deafened",
+        "summary": "No puedes oír.",
+        "effect": [
+          "Fallas automáticamente cualquier prueba de característica que requiera el oído."
+        ],
+        "applies": "Cuando lo indique el rasgo, conjuro, criatura u objeto que lo provoca.",
+        "ends": "Cuando termina el efecto que la causó, o como indique ese efecto (por ejemplo, superando una tirada de salvación).",
+        "related": []
       },
       {
-        "id": "accion-injured",
-        "name": "Contusionado (Injured)",
-        "text": "Estado narrativo, no mecánico. No es parte de las reglas base."
+        "id": "cond-envenenado",
+        "kind": "condicion",
+        "origin": "oficial",
+        "name": "Envenenado",
+        "en": "Poisoned",
+        "summary": "Un veneno o una toxina te debilita.",
+        "effect": [
+          "Tienes desventaja en las tiradas de ataque y en las pruebas de característica."
+        ],
+        "applies": "Cuando lo indique el rasgo, conjuro, criatura u objeto que lo provoca.",
+        "ends": "Cuando termina el efecto que la causó, o como indique ese efecto (por ejemplo, superando una tirada de salvación).",
+        "related": []
       },
       {
-        "id": "accion-poisoned",
-        "name": "Envenenado (Poisoned)",
-        "text": "Tiene desventaja en todas las tiradas de ataque y habilidad."
+        "id": "cond-hechizado",
+        "kind": "condicion",
+        "origin": "oficial",
+        "name": "Hechizado",
+        "en": "Charmed",
+        "summary": "Una influencia mágica o sobrenatural te hace ver a alguien como un amigo.",
+        "effect": [
+          "No puedes atacar a quien te hechizó ni elegirlo como objetivo de capacidades o efectos mágicos dañinos.",
+          "Quien te hechizó tiene ventaja en las pruebas de característica para relacionarse socialmente contigo."
+        ],
+        "applies": "Cuando lo indique el rasgo, conjuro, criatura u objeto que lo provoca.",
+        "ends": "Cuando termina el efecto que la causó, o como indique ese efecto (por ejemplo, superando una tirada de salvación).",
+        "related": []
       },
       {
-        "id": "accion-charmed",
-        "name": "Hechizado (Charmed)",
-        "text": "No puede atacar ni lanzar conjuros dañinos al encantador. Tiene ventaja en tiradas sociales hacia el encantador."
+        "id": "cond-incapacitado",
+        "kind": "condicion",
+        "origin": "oficial",
+        "name": "Incapacitado",
+        "en": "Incapacitated",
+        "summary": "No puedes actuar.",
+        "effect": [
+          "No puedes realizar acciones ni reacciones."
+        ],
+        "applies": "Cuando lo indique el rasgo, conjuro, criatura u objeto que lo provoca.",
+        "ends": "Cuando termina el efecto que la causó, o como indique ese efecto (por ejemplo, superando una tirada de salvación).",
+        "related": [
+          "Aturdido",
+          "Inconsciente",
+          "Paralizado",
+          "Petrificado"
+        ]
       },
       {
-        "id": "accion-incapacitated",
-        "name": "Incapacitado (Incapacitated)",
-        "text": "No puede realizar acciones ni reacciones. (Muy común cuando estás dormido, atontado, etc.)"
+        "id": "cond-inconsciente",
+        "kind": "condicion",
+        "origin": "oficial",
+        "name": "Inconsciente",
+        "en": "Unconscious",
+        "summary": "Estás sin sentido.",
+        "effect": [
+          "Estás Incapacitado, no puedes moverte ni hablar y no eres consciente de lo que te rodea.",
+          "Sueltas lo que sostengas y caes Derribado.",
+          "Fallas automáticamente las tiradas de salvación de Fuerza y Destreza.",
+          "Las tiradas de ataque contra ti tienen ventaja.",
+          "Cualquier ataque que te impacte es un crítico si el atacante está a 5 pies o menos."
+        ],
+        "applies": "Al quedar a 0 puntos de golpe sin morir, por el sueño mágico y por otros efectos que lo indiquen.",
+        "ends": "Al recuperar al menos 1 punto de golpe, al estabilizarte y despertar (1d4 horas después), o cuando termine el efecto que te dejó inconsciente.",
+        "related": [
+          "Incapacitado",
+          "Derribado"
+        ]
       },
       {
-        "id": "accion-unconscious",
-        "name": "Inconsciente (Unconscious)",
-        "text": "Inconsciente, cae al suelo, suelta objetos, está incapacitado, no puede moverse, fallan automáticamente tiradas de salvación de Fuerza/Destreza, los ataques tienen ventaja, y si lo golpean cuerpo a cuerpo, es crítico automático si impacta."
+        "id": "cond-invisible",
+        "kind": "condicion",
+        "origin": "oficial",
+        "name": "Invisible",
+        "en": "Invisible",
+        "summary": "No se te puede ver sin magia o un sentido especial.",
+        "effect": [
+          "A efectos de esconderte, se considera que estás en una zona muy oscura. Aún pueden localizarte por el ruido que haces o las huellas que dejas.",
+          "Las tiradas de ataque contra ti tienen desventaja y las tuyas tienen ventaja."
+        ],
+        "applies": "Cuando lo indique el rasgo, conjuro, criatura u objeto que lo provoca.",
+        "ends": "Cuando termina el efecto que la causó, o como indique ese efecto (por ejemplo, superando una tirada de salvación).",
+        "related": []
       },
       {
-        "id": "accion-invisible",
-        "name": "Invisible (Invisible)",
-        "text": "No puede ser visto sin magia o sentidos especiales. Tiene ventaja en ataques, y los ataques contra él tienen desventaja."
+        "id": "cond-paralizado",
+        "kind": "condicion",
+        "origin": "oficial",
+        "name": "Paralizado",
+        "en": "Paralyzed",
+        "summary": "Tu cuerpo no responde.",
+        "effect": [
+          "Estás Incapacitado y no puedes moverte ni hablar.",
+          "Fallas automáticamente las tiradas de salvación de Fuerza y Destreza.",
+          "Las tiradas de ataque contra ti tienen ventaja.",
+          "Cualquier ataque que te impacte es un crítico si el atacante está a 5 pies o menos."
+        ],
+        "applies": "Cuando lo indique el rasgo, conjuro, criatura u objeto que lo provoca.",
+        "ends": "Cuando termina el efecto que la causó, o como indique ese efecto (por ejemplo, superando una tirada de salvación).",
+        "related": [
+          "Incapacitado"
+        ]
       },
       {
-        "id": "accion-paralyzed",
-        "name": "Paralizado (Paralyzed)",
-        "text": "Incapacitado, no puede moverse o hablar, falla automáticamente tiradas de salvación de Fuerza/Destreza, ataques contra él tienen ventaja, y si te golpean cuerpo a cuerpo, el daño es crítico automático."
+        "id": "cond-petrificado",
+        "kind": "condicion",
+        "origin": "oficial",
+        "name": "Petrificado",
+        "en": "Petrified",
+        "summary": "Te has convertido, junto con los objetos no mágicos que llevas, en una sustancia sólida inanimada (normalmente piedra).",
+        "effect": [
+          "Tu peso se multiplica por diez y dejas de envejecer.",
+          "Estás Incapacitado, no puedes moverte ni hablar y no eres consciente de lo que te rodea.",
+          "Las tiradas de ataque contra ti tienen ventaja.",
+          "Fallas automáticamente las tiradas de salvación de Fuerza y Destreza.",
+          "Tienes resistencia a todo el daño.",
+          "Eres inmune al veneno y a la enfermedad; un veneno o enfermedad que ya tuvieras queda en suspenso, no se cura."
+        ],
+        "applies": "Cuando lo indique el rasgo, conjuro, criatura u objeto que lo provoca.",
+        "ends": "Cuando termina el efecto que la causó, o como indique ese efecto (por ejemplo, superando una tirada de salvación).",
+        "related": [
+          "Incapacitado"
+        ]
       },
       {
-        "id": "accion-petrified",
-        "name": "Petrificado (Petrified)",
-        "text": "Te conviertes en piedra. Estás incapacitado, inconsciente, inmune a venenos y enfermedades, y todo ataque que impacte es crítico si es cuerpo a cuerpo."
+        "id": "cond-restringido",
+        "kind": "condicion",
+        "origin": "oficial",
+        "name": "Restringido",
+        "en": "Restrained",
+        "summary": "Algo te inmoviliza: una red, raíces, una telaraña…",
+        "effect": [
+          "Tu velocidad es 0 y no puede aumentar por ninguna bonificación.",
+          "Las tiradas de ataque contra ti tienen ventaja y las tuyas tienen desventaja.",
+          "Tienes desventaja en las tiradas de salvación de Destreza."
+        ],
+        "applies": "Cuando lo indique el efecto: una red, el conjuro Enmarañar, la telaraña de una araña gigante, la constricción de una serpiente…",
+        "ends": "Como indique el efecto. Lo habitual es una prueba de Fuerza contra una CD; en el caso de una red, también cortándola (5 de daño cortante contra CA 10).",
+        "related": []
       },
       {
-        "id": "accion-provoked",
-        "name": "Provocado (Provoked)",
-        "text": "Una criatura bajo este efecto tiene desventaja en ataques, conjuros u otras acciones ofensivas que no tengan como objetivo al provocador."
+        "id": "cond-agotamiento",
+        "kind": "condicion",
+        "origin": "oficial",
+        "name": "Agotamiento",
+        "en": "Exhaustion",
+        "summary": "Cansancio extremo que se mide en seis niveles acumulativos.",
+        "effect": [
+          "Nivel 1: desventaja en las pruebas de característica.",
+          "Nivel 2: velocidad reducida a la mitad.",
+          "Nivel 3: desventaja en las tiradas de ataque y de salvación.",
+          "Nivel 4: máximo de puntos de golpe reducido a la mitad.",
+          "Nivel 5: velocidad 0.",
+          "Nivel 6: muerte.",
+          "Los efectos se acumulan: en el nivel 3 sufres también los de los niveles 1 y 2."
+        ],
+        "applies": "Cuando lo indique un efecto (marcha forzada, hambre, sed, frío extremo, ciertos conjuros o criaturas). Cada aplicación suma uno o más niveles.",
+        "ends": "Un descanso largo reduce un nivel si has comido y bebido. Algunos conjuros (como Restablecimiento mayor) también reducen el nivel.",
+        "related": []
       },
       {
-        "id": "accion-restrained",
-        "name": "Restringido (Restrained)",
-        "text": "Igual que enredado: no puede moverse, ataques con desventaja, etc."
+        "id": "cond-contusionado",
+        "kind": "condicion",
+        "origin": "agarias",
+        "name": "Contusionado",
+        "en": "Injured",
+        "summary": "Etiqueta narrativa: el personaje está magullado o herido.",
+        "effect": [
+          "Sin efecto mecánico propio. Sirve para describir la escena."
+        ],
+        "applies": null,
+        "ends": null,
+        "related": [],
+        "original": "Estado narrativo, no mecánico. No es parte de las reglas base."
       },
       {
-        "id": "accion-deafened",
-        "name": "Sordo (Deafened)",
-        "text": "No puede oír, falla cualquier prueba de Percepción basada en el oído."
+        "id": "cond-provocado",
+        "kind": "condicion",
+        "origin": "agarias",
+        "name": "Provocado",
+        "en": "Provoked",
+        "summary": "Una criatura concentra su atención en quien la provoca.",
+        "effect": [
+          "Tiene desventaja en ataques, conjuros u otras acciones ofensivas que no tengan como objetivo a quien la provocó."
+        ],
+        "applies": null,
+        "ends": null,
+        "related": [],
+        "note": "Se parece al efecto de algunos rasgos oficiales (por ejemplo, el Desafío del campeón del Juramento de la Corona o la Marca inquebrantable del Caballero), pero no es una condición oficial de 5e.",
+        "original": "Una criatura bajo este efecto tiene desventaja en ataques, conjuros u otras acciones ofensivas que no tengan como objetivo al provocador."
       }
     ]
   },
   {
-    "title": "Estados",
-    "intro": "Estados añadidos por 1d6 de daño de efectos mágicos o condiciones no estándar:",
+    "id": "danio",
+    "kind": "danio",
+    "title": "Tipos de daño",
+    "intro": "Los 13 tipos de daño oficiales y los 2 tipos propios de Agarias. Un tipo de daño no tiene efecto por sí mismo: importa para las resistencias, inmunidades y vulnerabilidades.",
     "items": [
       {
-        "id": "estado-acid",
-        "name": "Ácido (Acid)",
-        "text": "Una sustancia corrosiva que quema piel, armaduras y objetos. Puede disolver materiales rápidamente."
+        "id": "danio-acido",
+        "kind": "danio",
+        "origin": "oficial",
+        "name": "Ácido",
+        "en": "Acid",
+        "summary": "Sustancias corrosivas, como el aliento de un dragón negro.",
+        "effect": [
+          "No tiene efecto propio: importa para las resistencias, inmunidades y vulnerabilidades de cada criatura."
+        ],
+        "applies": "Lo indica cada ataque, conjuro o rasgo que hace daño.",
+        "ends": null,
+        "related": [],
+        "flavor": "Una sustancia corrosiva que quema piel, armaduras y objetos. Puede disolver materiales rápidamente."
       },
       {
-        "id": "estado-corruption",
-        "name": "Corrupto (Corruption)",
-        "text": "Una energía impura que deforma cuerpo y mente, vinculada a entes prohibidos o fuerzas del Vacío."
+        "id": "danio-contundente",
+        "kind": "danio",
+        "origin": "oficial",
+        "name": "Contundente",
+        "en": "Bludgeoning",
+        "summary": "Golpes con fuerza bruta: mazas, caídas, puñetazos, constricción.",
+        "effect": [
+          "No tiene efecto propio: importa para las resistencias, inmunidades y vulnerabilidades de cada criatura."
+        ],
+        "applies": "Lo indica cada ataque, conjuro o rasgo que hace daño.",
+        "ends": null,
+        "related": []
       },
       {
-        "id": "estado-torn",
-        "name": "Desgarro (Torn)",
-        "text": "Daño físico brutal que causa hemorragia y puede reducir -1 a -3 CA al impactar críticamente armaduras naturales o físicas. Efecto exclusivo de ataques con garras, colmillos o armas dentadas como espadas serradas."
+        "id": "danio-cortante",
+        "kind": "danio",
+        "origin": "oficial",
+        "name": "Cortante",
+        "en": "Slashing",
+        "summary": "Espadas, hachas y garras.",
+        "effect": [
+          "No tiene efecto propio: importa para las resistencias, inmunidades y vulnerabilidades de cada criatura."
+        ],
+        "applies": "Lo indica cada ataque, conjuro o rasgo que hace daño.",
+        "ends": null,
+        "related": []
       },
       {
-        "id": "estado-pain",
-        "name": "Dolor (Pain)",
-        "text": "Un estado físico extremo que debilita los reflejos y nubla la concentración, causado por daño severo o magia torturante."
+        "id": "danio-frio",
+        "kind": "danio",
+        "origin": "oficial",
+        "name": "Frío",
+        "en": "Cold",
+        "summary": "Frío glacial, como el de un Rayo de escarcha.",
+        "effect": [
+          "No tiene efecto propio: importa para las resistencias, inmunidades y vulnerabilidades de cada criatura."
+        ],
+        "applies": "Lo indica cada ataque, conjuro o rasgo que hace daño.",
+        "ends": null,
+        "related": [],
+        "flavor": "Congelación súbita que ralentiza el cuerpo, entumece los sentidos y puede inmovilizar extremidades.",
+        "note": "En la versión anterior aparecía como «Hielo». Su descripción menciona ralentizar e inmovilizar: eso sólo ocurre si el ataque o conjuro concreto lo dice."
       },
       {
-        "id": "estado-lightning",
-        "name": "Relámpago (Lightning)",
-        "text": "Una descarga rápida y violenta que atraviesa armaduras y músculos, causando espasmos o parálisis breve."
+        "id": "danio-fuego",
+        "kind": "danio",
+        "origin": "oficial",
+        "name": "Fuego",
+        "en": "Fire",
+        "summary": "Llamas y calor, como el de una Bola de fuego.",
+        "effect": [
+          "No tiene efecto propio: importa para las resistencias, inmunidades y vulnerabilidades de cada criatura."
+        ],
+        "applies": "Lo indica cada ataque, conjuro o rasgo que hace daño.",
+        "ends": null,
+        "related": [],
+        "flavor": "Llamas que infligen daño continuo, chamuscan tejidos y pueden propagar el caos si no se controlan."
       },
       {
-        "id": "estado-strength",
-        "name": "Fuerza (Strength)",
-        "text": "Representa la energía mágica pura, invisible y sin forma elemental. Es uno de los tipos de daño más difíciles de resistir."
+        "id": "danio-fuerza",
+        "kind": "danio",
+        "origin": "oficial",
+        "name": "Fuerza",
+        "en": "Force",
+        "summary": "Energía mágica pura, como la de un Proyectil mágico. No es el atributo Fuerza.",
+        "effect": [
+          "No tiene efecto propio: importa para las resistencias, inmunidades y vulnerabilidades de cada criatura."
+        ],
+        "applies": "Lo indica cada ataque, conjuro o rasgo que hace daño.",
+        "ends": null,
+        "related": [],
+        "flavor": "Representa la energía mágica pura, invisible y sin forma elemental. Es uno de los tipos de daño más difíciles de resistir.",
+        "note": "En la versión anterior aparecía como «Fuerza (Strength)», una mala traducción: en inglés es Force."
       },
       {
-        "id": "estado-fire",
-        "name": "Fuego (Burned / Fire)",
-        "text": "Llamas que infligen daño continuo, chamuscan tejidos y pueden propagar el caos si no se controlan."
+        "id": "danio-necrotico",
+        "kind": "danio",
+        "origin": "oficial",
+        "name": "Necrótico",
+        "en": "Necrotic",
+        "summary": "Energía que marchita la materia viva y consume la fuerza vital, como el Toque escalofriante.",
+        "effect": [
+          "No tiene efecto propio: importa para las resistencias, inmunidades y vulnerabilidades de cada criatura."
+        ],
+        "applies": "Lo indica cada ataque, conjuro o rasgo que hace daño.",
+        "ends": null,
+        "related": [],
+        "flavor": "Energía de la muerte que consume la fuerza vital, marchita la carne y deja cicatrices antinaturales."
       },
       {
-        "id": "estado-cold",
-        "name": "Hielo (Frozen / Cold)",
-        "text": "Congelación súbita que ralentiza el cuerpo, entumece los sentidos y puede inmovilizar extremidades."
+        "id": "danio-perforante",
+        "kind": "danio",
+        "origin": "oficial",
+        "name": "Perforante",
+        "en": "Piercing",
+        "summary": "Lanzas, flechas y mordiscos.",
+        "effect": [
+          "No tiene efecto propio: importa para las resistencias, inmunidades y vulnerabilidades de cada criatura."
+        ],
+        "applies": "Lo indica cada ataque, conjuro o rasgo que hace daño.",
+        "ends": null,
+        "related": []
       },
       {
-        "id": "estado-necrotic",
-        "name": "Necrótico (Necrotic)",
-        "text": "Energía de la muerte que consume la fuerza vital, marchita la carne y deja cicatrices antinaturales."
+        "id": "danio-psiquico",
+        "kind": "danio",
+        "origin": "oficial",
+        "name": "Psíquico",
+        "en": "Psychic",
+        "summary": "Ataques mentales, como los de un desollador mental.",
+        "effect": [
+          "No tiene efecto propio: importa para las resistencias, inmunidades y vulnerabilidades de cada criatura."
+        ],
+        "applies": "Lo indica cada ataque, conjuro o rasgo que hace daño.",
+        "ends": null,
+        "related": [],
+        "flavor": "Ataques mentales que alteran los pensamientos, causan confusión, alucinaciones o un miedo paralizante."
       },
       {
-        "id": "estado-unholy",
-        "name": "Profano (Unholy)",
-        "text": "Energía corrupta usada por seres oscuros, que hiere el alma y se opone a la luz y lo sagrado."
+        "id": "danio-radiante",
+        "kind": "danio",
+        "origin": "oficial",
+        "name": "Radiante",
+        "en": "Radiant",
+        "summary": "Luz abrasadora o poder divino, como el de Llama sagrada o el de un ángel.",
+        "effect": [
+          "No tiene efecto propio: importa para las resistencias, inmunidades y vulnerabilidades de cada criatura."
+        ],
+        "applies": "Lo indica cada ataque, conjuro o rasgo que hace daño.",
+        "ends": null,
+        "related": [],
+        "flavor": "Una luz pura y poderosa que quema el mal, ciega a los impuros y sana a los dignos.",
+        "note": "El daño radiante no cura por sí mismo; algunos rasgos o conjuros concretos sí lo hacen."
       },
       {
-        "id": "estado-psychic",
-        "name": "Psíquico (Psychic)",
-        "text": "Ataques mentales que alteran los pensamientos, causan confusión, alucinaciones o un miedo paralizante."
+        "id": "danio-relampago",
+        "kind": "danio",
+        "origin": "oficial",
+        "name": "Relámpago",
+        "en": "Lightning",
+        "summary": "Electricidad, como la de un Relámpago o el aliento de un dragón azul.",
+        "effect": [
+          "No tiene efecto propio: importa para las resistencias, inmunidades y vulnerabilidades de cada criatura."
+        ],
+        "applies": "Lo indica cada ataque, conjuro o rasgo que hace daño.",
+        "ends": null,
+        "related": [],
+        "flavor": "Una descarga rápida y violenta que atraviesa armaduras y músculos, causando espasmos o parálisis breve.",
+        "note": "La parálisis sólo ocurre si el efecto concreto lo indica; el tipo de daño no paraliza por sí solo."
       },
       {
-        "id": "estado-radiant",
-        "name": "Radiante (Radiant)",
-        "text": "Una luz pura y poderosa que quema el mal, ciega a los impuros y sana a los dignos."
+        "id": "danio-trueno",
+        "kind": "danio",
+        "origin": "oficial",
+        "name": "Trueno",
+        "en": "Thunder",
+        "summary": "Ondas de sonido violentas, como las de Onda atronadora.",
+        "effect": [
+          "No tiene efecto propio: importa para las resistencias, inmunidades y vulnerabilidades de cada criatura."
+        ],
+        "applies": "Lo indica cada ataque, conjuro o rasgo que hace daño.",
+        "ends": null,
+        "related": []
       },
       {
-        "id": "estado-tangled",
-        "name": "Enredado (Tangled)",
-        "text": "Velocidad 0, ataques contra él tienen ventaja, sus ataques tienen desventaja, y tiene desventaja en tiradas de salvación de Destreza."
+        "id": "danio-veneno",
+        "kind": "danio",
+        "origin": "oficial",
+        "name": "Veneno",
+        "en": "Poison",
+        "summary": "Toxinas, picaduras y gases venenosos.",
+        "effect": [
+          "No tiene efecto propio: importa para las resistencias, inmunidades y vulnerabilidades de cada criatura."
+        ],
+        "applies": "Lo indica cada ataque, conjuro o rasgo que hace daño.",
+        "ends": null,
+        "related": []
       },
       {
-        "id": "estado-divine",
-        "name": "Sagrado (Divine)",
-        "text": "Energía celestial canalizada por dioses o fe, que impone orden, justicia y reprime la oscuridad."
+        "id": "danio-profano",
+        "kind": "danio",
+        "origin": "agarias",
+        "name": "Profano",
+        "en": "Unholy",
+        "summary": "Poder de entidades malignas o de juramentos rotos. En Agarias es el opuesto del daño Sagrado.",
+        "effect": [
+          "No tiene efecto propio: importa para las resistencias, inmunidades y vulnerabilidades de cada criatura."
+        ],
+        "applies": "Lo indica cada ataque, conjuro o rasgo que hace daño.",
+        "ends": null,
+        "related": [],
+        "flavor": "Energía corrupta usada por seres oscuros, que hiere el alma y se opone a la luz y lo sagrado.",
+        "note": "No existe como tipo de daño en D&D 5e. En las reglas oficiales, los efectos de este estilo suelen hacer daño Necrótico. En Agarias es un tipo propio: resistir el daño Necrótico no protege del Profano salvo que la criatura lo diga."
       },
       {
-        "id": "estado-void",
-        "name": "Vacío (Void)",
-        "text": "Una energía sofocante que drena el aliento y la fuerza vital. Las criaturas afectadas por este daño sufren asfixia parcial y, además, los ataques con este efecto, tras fallar el ataque, aún pueden ser atraídas 5 pies hacia la fuente del efecto."
+        "id": "danio-sagrado",
+        "kind": "danio",
+        "origin": "agarias",
+        "name": "Sagrado",
+        "en": "Holy",
+        "summary": "Poder divino benigno canalizado por dioses o por la fe.",
+        "effect": [
+          "No tiene efecto propio: importa para las resistencias, inmunidades y vulnerabilidades de cada criatura."
+        ],
+        "applies": "Lo indica cada ataque, conjuro o rasgo que hace daño.",
+        "ends": null,
+        "related": [],
+        "flavor": "Energía celestial canalizada por dioses o fe, que impone orden, justicia y reprime la oscuridad.",
+        "note": "No existe como tipo de daño en D&D 5e; lo más cercano es Radiante. En Agarias es un tipo propio: resistir el daño Radiante no protege del Sagrado salvo que la criatura lo diga."
+      }
+    ]
+  },
+  {
+    "id": "estados",
+    "kind": "estado",
+    "title": "Estados de Agarias",
+    "intro": "Mecánicas propias de la campaña. Lo que el DM aún no ha definido aparece como «Pendiente»: la app no inventa cómo se aplican ni cómo terminan.",
+    "items": [
+      {
+        "id": "estado-corrupto",
+        "kind": "estado",
+        "origin": "agarias",
+        "name": "Corrupto",
+        "en": "Corrupted",
+        "summary": "Una criatura u objeto alterado por una influencia ajena y persistente (entes prohibidos, el Vacío). Es un estado que dura, no un tipo de daño.",
+        "effect": null,
+        "applies": null,
+        "ends": null,
+        "related": [],
+        "original": "Una energía impura que deforma cuerpo y mente, vinculada a entes prohibidos o fuerzas del Vacío."
+      },
+      {
+        "id": "estado-desgarro",
+        "kind": "estado",
+        "origin": "agarias",
+        "name": "Desgarro",
+        "en": "Torn",
+        "summary": "Herida brutal que causa hemorragia, propia de garras, colmillos y armas dentadas.",
+        "effect": [
+          "Según el texto original: un impacto crítico puede reducir la CA de una armadura natural o física entre 1 y 3. Falta definir si es -1d3 o lo decide el DM, y cuánto dura."
+        ],
+        "applies": null,
+        "ends": null,
+        "related": [],
+        "original": "Daño físico brutal que causa hemorragia y puede reducir -1 a -3 CA al impactar críticamente armaduras naturales o físicas. Efecto exclusivo de ataques con garras, colmillos o armas dentadas como espadas serradas.",
+        "note": "Falta definir: cuánto daño hace la hemorragia, cuándo se tira y cómo se detiene (por ejemplo, con Medicina o curación)."
+      },
+      {
+        "id": "estado-dolor",
+        "kind": "estado",
+        "origin": "agarias",
+        "name": "Dolor",
+        "en": "Pain",
+        "summary": "Un estado físico extremo que debilita los reflejos y nubla la concentración.",
+        "effect": null,
+        "applies": null,
+        "ends": null,
+        "related": [],
+        "original": "Un estado físico extremo que debilita los reflejos y nubla la concentración, causado por daño severo o magia torturante.",
+        "note": "Falta definir el efecto mecánico (por ejemplo, desventaja en las salvaciones de Concentración) y cómo se aplica y termina."
+      },
+      {
+        "id": "estado-vacio",
+        "kind": "estado",
+        "origin": "agarias",
+        "name": "Vacío",
+        "en": "Void",
+        "summary": "Energía sofocante que drena el aliento y la fuerza vital.",
+        "effect": [
+          "Según el texto original: incluso si el ataque falla, el objetivo puede ser atraído 5 pies hacia la fuente."
+        ],
+        "applies": null,
+        "ends": null,
+        "related": [],
+        "original": "Una energía sofocante que drena el aliento y la fuerza vital. Las criaturas afectadas por este daño sufren asfixia parcial y, además, los ataques con este efecto, tras fallar el ataque, aún pueden ser atraídas 5 pies hacia la fuente del efecto.",
+        "note": "Falta definir: si es un tipo de daño o un estado, qué es «asfixia parcial» en reglas y si hay salvación para evitar la atracción."
       }
     ]
   }

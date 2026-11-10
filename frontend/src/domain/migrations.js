@@ -10,6 +10,7 @@
 import { ABILITY_KEYS } from './constants.js';
 import { DOCUMENT_FORMAT, SCHEMA_VERSION, createBackgroundState, createBackgroundDefinition } from './schema.js';
 import { getClass, data } from '../data/index.js';
+import legacyStartingInfoV2 from '../data/legacy/atributos-iniciales-v2.json';
 
 const isObject = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
 
@@ -45,6 +46,29 @@ export const MIGRATIONS = {
       character.background = background;
     }
     return { ...doc, schemaVersion: 2, character };
+  },
+  // 2 → 3: aparecen classChoices, traits, companions, campaign y content (los
+  // rellena normalizeCharacter). Además, los «Atributos de clase» copiados en
+  // las notas eran, en 15 clases, una copia del Bárbaro: si el usuario no los
+  // había editado se sustituyen por el texto corregido de la clase.
+  2: (doc) => {
+    const character = { ...(isObject(doc.character) ? doc.character : {}) };
+    const warnings = [];
+    const notes = isObject(character.notes) ? { ...character.notes } : null;
+    if (notes && isObject(notes.classNotes)) {
+      const classNotes = { ...notes.classNotes };
+      for (const [classKey, value] of Object.entries(classNotes)) {
+        const old = legacyStartingInfoV2[classKey];
+        const current = getClass(classKey)?.niveles?.[1]?.atributoInicial;
+        if (typeof value === 'string' && old && current && value.trim() === old.trim() && old.trim() !== current.trim()) {
+          classNotes[classKey] = current;
+          warnings.push(`Se actualizaron los atributos iniciales de ${getClass(classKey).nombre} con los datos corregidos de la clase (no los habías editado).`);
+        }
+      }
+      notes.classNotes = classNotes;
+      character.notes = notes;
+    }
+    return { ...doc, schemaVersion: 3, character, warnings: [...(doc.warnings ?? []), ...warnings] };
   },
 };
 

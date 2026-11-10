@@ -1,0 +1,298 @@
+[
+  {
+    "title": "Acciones en tu Turno",
+    "intro": "Durante tu turno (en combate), puedes usar una acción. Las más comunes son:",
+    "items": [
+      {
+        "id": "accion-ataque",
+        "name": "Atacar (Attack)",
+        "text": "Realizas un ataque cuerpo a cuerpo o a distancia con un arma, hechizo o ataque sin armas. Si tienes Ataque Extra, puedes hacer múltiples ataques."
+      },
+      {
+        "id": "accion-cast",
+        "name": "Lanzar un hechizo (Cast a Spell)",
+        "text": "Lanzas un hechizo cuyo tiempo de lanzamiento sea “1 acción”. Debes cumplir sus requisitos (conjuro preparado, componentes, etc.)."
+      },
+      {
+        "id": "accion-dash",
+        "name": "Correr (Dash)",
+        "text": "Gastas tu acción para duplicar tu velocidad de movimiento ese turno. No puedes usar la acción para otra cosa."
+      },
+      {
+        "id": "accion-withdrawal",
+        "name": "Retirada (Withdrawal)",
+        "text": "Si realizas la acción de Retirada, tu movimiento no provoca ataques de oportunidad por el resto del turno."
+      },
+      {
+        "id": "accion-dodge",
+        "name": "Esquivar (Dodge)",
+        "text": "Hasta el comienzo de tu siguiente turno, todos los ataques contra ti tienen desventaja y haces tiradas de salvación de Destreza con ventaja, siempre que puedas ver al atacante y no estés incapacitado."
+      },
+      {
+        "id": "accion-an-object",
+        "name": "Interacción (Use an Object)",
+        "text": "Usas un objeto no mágico o interactúas con un objeto (tirar de una palanca, abrir una puerta, beber una poción si el DM lo permite como acción)."
+      },
+      {
+        "id": "accion-help",
+        "name": "Ayudar (Help)",
+        "text": "Concedes ventaja a una criatura aliada en una tarea (ataque, habilidad, etc.) si está a 5 pies de ti."
+      },
+      {
+        "id": "accion-hide",
+        "name": "Esconderse (Hide)",
+        "text": "Intentas ocultarte (sigilo), solo si estás fuera de la vista o tienes cobertura. Requiere tirada de Destreza (Sigilo)."
+      },
+      {
+        "id": "accion-ready",
+        "name": "Preparar acción (Ready)",
+        "text": "¿Cuándo se usa?: Activaste una acción lista.\n\nEjemplo: “Si pasa esto, hago esto”."
+      },
+      {
+        "id": "accion-search",
+        "name": "Buscar (Search)",
+        "text": "Realizas una tirada de Sabiduría (Percepción) o Inteligencia (Investigación) para encontrar algo oculto."
+      },
+      {
+        "id": "accion-shove",
+        "name": "Empujar (Shove)",
+        "text": "Intentas empujar a una criatura 5 pies lejos de ti o derribarla al suelo (tirada de Atletismo contra Atletismo o Acrobacias)."
+      }
+    ]
+  },
+  {
+    "title": "Acciones adicionales (Bonus Actions)",
+    "intro": "No todas las clases o personajes tienen acciones adicionales, pero algunas habilidades o hechizos las permiten. Solo puedes hacer una por turno.",
+    "items": [
+      {
+        "id": "accion-extra_arma",
+        "name": "Ataque extra con arma ligera",
+        "text": "¿Cómo se obtiene?: Si usas un arma ligera en la acción principal.\n\nEjemplo: Atacas con espada corta y luego con daga."
+      },
+      {
+        "id": "accion-habilidad",
+        "name": "Habilidad de clase",
+        "text": "¿Cómo se obtiene?: Algunas clases dan acciones adicionales.\n\nEjemplo: Monje puede hacer “Ataque sin armas” con su Bonus Action."
+      },
+      {
+        "id": "accion-dote",
+        "name": "Habilidad de dote",
+        "text": "¿Cómo se obtiene?: Algunas dotes dan acciones adicionales.\n\nEjemplo: Algunos dotes como \"Shield Master\", \"Polearm Master\" o \"Crossbow Expert\"."
+      },
+      {
+        "id": "accion-conjuro",
+        "name": "Conjuro",
+        "text": "¿Cómo se obtiene?: Algunos hechizos se lanzan con acción adicional.\n\nEjemplo: “Misty Step”, “Sanctuary”."
+      }
+    ]
+  },
+  {
+    "title": "Reacciones (Reactions)",
+    "intro": "Son respuestas a eventos fuera de tu turno. Solo puedes usar una por ronda.",
+    "items": [
+      {
+        "id": "accion-oportunidad",
+        "name": "Ataque de oportunidad",
+        "text": "¿Cuándo se usa?: Una criatura sale de tu alcance sin Disengage. (Un Desenganche es una medida de protección y defensa en combate)\n\nEjemplo: Atacas al enemigo que huye."
+      },
+      {
+        "id": "accion-counterspell",
+        "name": "Contrahechizo (Counterspell)",
+        "text": "¿Cuándo se usa?: Ves a alguien lanzar un conjuro.\n\nEjemplo: Intentas anularlo con una tirada."
+      },
+      {
+        "id": "accion-Shield",
+        "name": "Escudo (Shield)",
+        "text": "¿Cuándo se usa?: Te impactan un ataque.\n\nEjemplo: +5 a la CA hasta tu siguiente turno."
+      },
+      {
+        "id": "accion-ready",
+        "name": "Preparar acción (Ready)",
+        "text": "¿Cuándo se usa?: Activaste una acción lista.\n\nEjemplo: “Si pasa esto, hago esto”."
+      }
+    ]
+  },
+  {
+    "title": "Acciones legendarias",
+    "intro": "Solo las tienen criaturas legendarias (jefes, dragones, etc.), no los jugadores.",
+    "items": [
+      {
+        "id": "accion-legendaria",
+        "name": "Acción legendaria",
+        "text": "¿Cuándo se usa?: Hasta 3 veces por ronda, al final del turno de otro personaje.\n\nSe gastan “puntos de acción legendaria”, que se recuperan al inicio del turno de la criatura legendaria.\n\nEjemplo: Un dragón puede moverse, atacar con la cola o usar un rugido como acción legendaria."
+      }
+    ]
+  },
+  {
+    "title": "Condiciones",
+    "intro": "Condiciones estándar del sistema, aplicables en combate o narrativamente:",
+    "items": [
+      {
+        "id": "accion-exhaustion",
+        "name": "Agotado (Exhaustion)",
+        "text": "Es una condición progresiva que aplica penalizaciones acumulativas. Va desde desventajas leves hasta la muerte al alcanzar 6 niveles. Solo puede curarse con descanso largo o magia específica."
+      },
+      {
+        "id": "accion-grappled",
+        "name": "Agarrado (Grappled)",
+        "text": "Velocidad se reduce a 0. No se ve afectado por penalizadores si no se especifica. Puede intentar escapar (Atletismo o Acrobacias vs. Atletismo del que lo agarra)."
+      },
+      {
+        "id": "accion-frightened",
+        "name": "Aterrorizado (Frightened)",
+        "text": "Tiene desventaja en pruebas y ataques mientras vea la fuente del miedo, y no puede acercarse voluntariamente a ella."
+      },
+      {
+        "id": "accion-stunned",
+        "name": "Aturdido (Stunned)",
+        "text": "No puede moverse ni hablar coherentemente, falla automáticamente las tiradas de salvación de Fuerza y Destreza, y los ataques contra él tienen ventaja."
+      },
+      {
+        "id": "accion-prone",
+        "name": "Caído (Prone)",
+        "text": "Debe arrastrarse. Ataques cuerpo a cuerpo tienen ventaja contra él; ataques a distancia tienen desventaja. Atacar desde el suelo tiene desventaja."
+      },
+      {
+        "id": "accion-blinded",
+        "name": "Cegado (Blinded)",
+        "text": "No puede ver, falla automáticamente cualquier tirada que requiera vista, ataques contra él tienen ventaja, y sus ataques tienen desventaja."
+      },
+      {
+        "id": "accion-injured",
+        "name": "Contusionado (Injured)",
+        "text": "Estado narrativo, no mecánico. No es parte de las reglas base."
+      },
+      {
+        "id": "accion-poisoned",
+        "name": "Envenenado (Poisoned)",
+        "text": "Tiene desventaja en todas las tiradas de ataque y habilidad."
+      },
+      {
+        "id": "accion-charmed",
+        "name": "Hechizado (Charmed)",
+        "text": "No puede atacar ni lanzar conjuros dañinos al encantador. Tiene ventaja en tiradas sociales hacia el encantador."
+      },
+      {
+        "id": "accion-incapacitated",
+        "name": "Incapacitado (Incapacitated)",
+        "text": "No puede realizar acciones ni reacciones. (Muy común cuando estás dormido, atontado, etc.)"
+      },
+      {
+        "id": "accion-unconscious",
+        "name": "Inconsciente (Unconscious)",
+        "text": "Inconsciente, cae al suelo, suelta objetos, está incapacitado, no puede moverse, fallan automáticamente tiradas de salvación de Fuerza/Destreza, los ataques tienen ventaja, y si lo golpean cuerpo a cuerpo, es crítico automático si impacta."
+      },
+      {
+        "id": "accion-invisible",
+        "name": "Invisible (Invisible)",
+        "text": "No puede ser visto sin magia o sentidos especiales. Tiene ventaja en ataques, y los ataques contra él tienen desventaja."
+      },
+      {
+        "id": "accion-paralyzed",
+        "name": "Paralizado (Paralyzed)",
+        "text": "Incapacitado, no puede moverse o hablar, falla automáticamente tiradas de salvación de Fuerza/Destreza, ataques contra él tienen ventaja, y si te golpean cuerpo a cuerpo, el daño es crítico automático."
+      },
+      {
+        "id": "accion-petrified",
+        "name": "Petrificado (Petrified)",
+        "text": "Te conviertes en piedra. Estás incapacitado, inconsciente, inmune a venenos y enfermedades, y todo ataque que impacte es crítico si es cuerpo a cuerpo."
+      },
+      {
+        "id": "accion-provoked",
+        "name": "Provocado (Provoked)",
+        "text": "Una criatura bajo este efecto tiene desventaja en ataques, conjuros u otras acciones ofensivas que no tengan como objetivo al provocador."
+      },
+      {
+        "id": "accion-restrained",
+        "name": "Restringido (Restrained)",
+        "text": "Igual que enredado: no puede moverse, ataques con desventaja, etc."
+      },
+      {
+        "id": "accion-deafened",
+        "name": "Sordo (Deafened)",
+        "text": "No puede oír, falla cualquier prueba de Percepción basada en el oído."
+      }
+    ]
+  },
+  {
+    "title": "Estados",
+    "intro": "Estados añadidos por 1d6 de daño de efectos mágicos o condiciones no estándar:",
+    "items": [
+      {
+        "id": "estado-acid",
+        "name": "Ácido (Acid)",
+        "text": "Una sustancia corrosiva que quema piel, armaduras y objetos. Puede disolver materiales rápidamente."
+      },
+      {
+        "id": "estado-corruption",
+        "name": "Corrupto (Corruption)",
+        "text": "Una energía impura que deforma cuerpo y mente, vinculada a entes prohibidos o fuerzas del Vacío."
+      },
+      {
+        "id": "estado-torn",
+        "name": "Desgarro (Torn)",
+        "text": "Daño físico brutal que causa hemorragia y puede reducir -1 a -3 CA al impactar críticamente armaduras naturales o físicas. Efecto exclusivo de ataques con garras, colmillos o armas dentadas como espadas serradas."
+      },
+      {
+        "id": "estado-pain",
+        "name": "Dolor (Pain)",
+        "text": "Un estado físico extremo que debilita los reflejos y nubla la concentración, causado por daño severo o magia torturante."
+      },
+      {
+        "id": "estado-lightning",
+        "name": "Relámpago (Lightning)",
+        "text": "Una descarga rápida y violenta que atraviesa armaduras y músculos, causando espasmos o parálisis breve."
+      },
+      {
+        "id": "estado-strength",
+        "name": "Fuerza (Strength)",
+        "text": "Representa la energía mágica pura, invisible y sin forma elemental. Es uno de los tipos de daño más difíciles de resistir."
+      },
+      {
+        "id": "estado-fire",
+        "name": "Fuego (Burned / Fire)",
+        "text": "Llamas que infligen daño continuo, chamuscan tejidos y pueden propagar el caos si no se controlan."
+      },
+      {
+        "id": "estado-cold",
+        "name": "Hielo (Frozen / Cold)",
+        "text": "Congelación súbita que ralentiza el cuerpo, entumece los sentidos y puede inmovilizar extremidades."
+      },
+      {
+        "id": "estado-necrotic",
+        "name": "Necrótico (Necrotic)",
+        "text": "Energía de la muerte que consume la fuerza vital, marchita la carne y deja cicatrices antinaturales."
+      },
+      {
+        "id": "estado-unholy",
+        "name": "Profano (Unholy)",
+        "text": "Energía corrupta usada por seres oscuros, que hiere el alma y se opone a la luz y lo sagrado."
+      },
+      {
+        "id": "estado-psychic",
+        "name": "Psíquico (Psychic)",
+        "text": "Ataques mentales que alteran los pensamientos, causan confusión, alucinaciones o un miedo paralizante."
+      },
+      {
+        "id": "estado-radiant",
+        "name": "Radiante (Radiant)",
+        "text": "Una luz pura y poderosa que quema el mal, ciega a los impuros y sana a los dignos."
+      },
+      {
+        "id": "estado-tangled",
+        "name": "Enredado (Tangled)",
+        "text": "Velocidad 0, ataques contra él tienen ventaja, sus ataques tienen desventaja, y tiene desventaja en tiradas de salvación de Destreza."
+      },
+      {
+        "id": "estado-divine",
+        "name": "Sagrado (Divine)",
+        "text": "Energía celestial canalizada por dioses o fe, que impone orden, justicia y reprime la oscuridad."
+      },
+      {
+        "id": "estado-void",
+        "name": "Vacío (Void)",
+        "text": "Una energía sofocante que drena el aliento y la fuerza vital. Las criaturas afectadas por este daño sufren asfixia parcial y, además, los ataques con este efecto, tras fallar el ataque, aún pueden ser atraídas 5 pies hacia la fuente del efecto."
+      }
+    ]
+  }
+]

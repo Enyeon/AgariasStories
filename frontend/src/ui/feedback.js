@@ -47,10 +47,71 @@ export function reportError(err, fallback) {
 // ── Diálogos ─────────────────────────────────────────────────────────────
 
 /**
- * Abre un diálogo modal. `render(body, close)` rellena el contenido.
- * Devuelve una promesa que se resuelve con el valor pasado a close().
+ * Estado serializado de todos los campos de un contenedor. Sirve para saber si
+ * un formulario cambió desde que se abrió (ver `guard` en openDialog).
  */
-export function openDialog({ title, size = 'md', render, dismissable = true, className = '' }) {
+export function formSnapshot(root) {
+  return JSON.stringify([...root.querySelectorAll('input, select, textarea')].map((el) => (
+    el.type === 'checkbox' || el.type === 'radio' ? el.checked : el.value)));
+}
+
+/**
+ * Protección estándar para diálogos con formulario:
+ *   const tracker = trackChanges();
+ *   openDialog({ guard: tracker.guard, render(body) { …; tracker.watch(form); } })
+ * `watch` toma la foto inicial; `onDiscard` es opcional (p. ej. borrar un borrador).
+ */
+export function trackChanges({ onDiscard } = {}) {
+  let root = null;
+  let initial = '';
+  let forced = false;
+  return {
+    watch(el) {
+      root = el;
+      initial = formSnapshot(el);
+      forced = false;
+    },
+    /** Cuenta como «cambios sin guardar» aunque los campos no se hayan tocado (p. ej. un borrador recuperado). */
+    markDirty() {
+      forced = true;
+    },
+    /** Tras un cambio de estructura (p. ej. otro modo del formulario) que no cuenta como edición. */
+    reset() {
+      if (root) initial = formSnapshot(root);
+    },
+    guard: {
+      isDirty: () => forced || Boolean(root && formSnapshot(root) !== initial),
+      onDiscard,
+    },
+  };
+}
+
+/** Pregunta antes de descartar cambios. true = salir sin guardar. */
+export function confirmDiscard() {
+  return choiceDialog({
+    title: '¿Deseas salir?',
+    message: 'Has realizado cambios que todavía no has guardado.',
+    choices: [
+      { label: 'Continuar editando', value: false, variant: 'btn--primary' },
+      { label: 'Salir sin guardar', value: true, variant: 'btn--ghost btn--danger-text' },
+    ],
+  }).then((v) => v === true);
+}
+
+/**
+ * Abre un diálogo modal. `render(body, close, dialog)` rellena el contenido.
+ * Devuelve una promesa que se resuelve con el valor pasado a close().
+ *
+ * Cierre:
+ * - Botón × / [data-dialog-close] / tecla Esc: siempre, salvo `dismissable: false`.
+ * - Clic fuera: sólo en diálogos pequeños (sm/md) sin `guard`. En los grandes
+ *   o con formularios largos un clic accidental fuera no hace nada.
+ * - `guard: { isDirty(): boolean, onDiscard?() }`: si hay cambios, cualquier
+ *   intento de cerrar sin guardar pide confirmación («Continuar editando» /
+ *   «Salir sin guardar»). close(valor) desde el propio formulario no pregunta.
+ */
+export function openDialog({ title, size = 'md', render, dismissable = true, className = '', guard = null, closeOnBackdrop }) {
+  const backdropCloses = closeOnBackdrop ?? (dismissable && !guard && (size === 'sm' || size === 'md'));
   return new Promise((resolve) => {
     const dialog = document.createElement('dialog');
     dialog.className = `dialog dialog--${size} ${className}`;
@@ -66,20 +127,49 @@ export function openDialog({ title, size = 'md', render, dismissable = true, cla
       </div>`);
     document.body.append(dialog);
     let settled = false;
+    let asking = false;
+    // Con cambios sin guardar, el navegador también avisa al recargar o cerrar la pestaña.
+    const onBeforeUnload = (e) => {
+      try { if (guard?.isDirty?.()) e.preventDefault(); } catch { /* nada */ }
+    };
+    if (guard) window.addEventListener('beforeunload', onBeforeUnload);
     const close = (value) => {
       if (settled) return;
       settled = true;
+      window.removeEventListener('beforeunload', onBeforeUnload);
       dialog.close();
       dialog.remove();
       resolve(value);
     };
+    /** Intento de cerrar sin guardar: pregunta si hay cambios. */
+    const requestDismiss = async () => {
+      if (!dismissable || asking || settled) return;
+      let dirty = false;
+      try { dirty = Boolean(guard?.isDirty?.()); } catch { dirty = true; }
+      if (dirty) {
+        asking = true;
+        const leave = await confirmDiscard();
+        asking = false;
+        if (!leave) return;
+        guard.onDiscard?.();
+      }
+      close(undefined);
+    };
     dialog.addEventListener('cancel', (e) => {
       e.preventDefault();
-      if (dismissable) close(undefined);
+      requestDismiss();
     });
     dialog.addEventListener('click', (e) => {
-      if (e.target.closest('[data-dialog-close]')) close(undefined);
-      else if (dismissable && e.target === dialog) close(undefined);
+      if (e.target.closest('[data-dialog-close]')) requestDismiss();
+      else if (e.target === dialog) {
+        if (backdropCloses) {
+          close(undefined);
+        } else {
+          // Pequeña señal visual: el clic fuera no cierra este diálogo.
+          dialog.classList.add('is-nudged');
+          setTimeout(() => dialog.classList.remove('is-nudged'), 300);
+        }
+      }
     });
     render(dialog.querySelector('.dialog__body'), close, dialog);
     dialog.showModal();

@@ -18,12 +18,19 @@ export function setBackground(c, choice) {
   if (choice?.source === 'official' && choice.key) {
     Object.assign(next.background, { source: 'official', key: choice.key });
   } else if (choice?.source === 'custom' && choice.custom) {
-    Object.assign(next.background, { source: 'custom', custom: normalizeBackgroundDefinition(choice.custom) });
+    Object.assign(next.background, {
+      source: 'custom',
+      custom: normalizeBackgroundDefinition(choice.custom),
+      ref: typeof choice.ref === 'string' && choice.ref.startsWith('hb:') ? choice.ref : null,
+    });
   }
   return next;
 }
 
-/** Edita el homebrew conservando las elecciones que sigan siendo válidas. */
+/**
+ * Edita el homebrew conservando las elecciones que sigan siendo válidas.
+ * Si venía de una campaña, deja de estar vinculado: ahora es del jugador.
+ */
 export function updateCustomBackground(c, def) {
   const next = clone(c);
   const custom = normalizeBackgroundDefinition(def);

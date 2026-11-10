@@ -13,8 +13,13 @@ import { mountShared } from './views/shared.js';
 import { mountReference } from './views/reference.js';
 import { mountAbout } from './views/about.js';
 import { mountNotFound } from './views/not-found.js';
+import { mountHomebrew, mountJoin } from './views/homebrew.js';
+import { homebrew } from './services/homebrew.js';
 
-const services = { characters: createCharacterService() };
+const services = { characters: createCharacterService(), homebrew };
+// El Homebrew guardado en el dispositivo se instala antes de abrir cualquier
+// ficha; las campañas se actualizan después en segundo plano.
+homebrew.init();
 const container = document.getElementById('main');
 
 const router = createRouter({
@@ -24,6 +29,9 @@ const router = createRouter({
     { name: 'home', pattern: /^\/editar\/([\w-]{1,64})$/, view: (el, [id]) => mountEditor(el, ctx, id) },
     { name: 'home', pattern: /^\/personaje\/([\w-]{1,64})$/, view: (el, [id]) => mountShared(el, ctx, id) },
     { name: 'reference', pattern: /^\/referencia$/, view: (el) => mountReference(el, ctx) },
+    { name: 'homebrew', pattern: /^\/homebrew$/, view: (el) => mountHomebrew(el, ctx) },
+    { name: 'homebrew', pattern: /^\/homebrew\/([a-z0-9-]{1,40})$/, view: (el, [id]) => mountHomebrew(el, ctx, id) },
+    { name: 'homebrew', pattern: /^\/unirse$/, view: (el) => mountJoin(el, ctx) },
     { name: 'about', pattern: /^\/acerca$/, view: (el) => mountAbout(el, ctx) },
   ],
   notFound: (el) => mountNotFound(el, ctx),
@@ -45,3 +53,6 @@ window.addEventListener('unhandledrejection', (e) => {
 
 requestPersistentStorage();
 router.start();
+if (homebrew.available() && homebrew.memberships().length) {
+  homebrew.refreshAll().catch(() => { /* sin conexión: se usa la copia guardada */ });
+}
