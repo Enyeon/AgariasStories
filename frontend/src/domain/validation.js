@@ -7,6 +7,7 @@
 // Los problemas no fatales se devuelven como `warnings` legibles para el usuario.
 // Sólo se lanza error cuando el documento no es un personaje en absoluto.
 
+import { sanitizeStoredChoices } from './class-choices.js';
 import { ABILITY_KEYS, SKILL_NAMES, SPEED_KEYS, MAX_LEVEL, MIN_ABILITY_SCORE, MAX_ABILITY_SCORE } from './constants.js';
 import {
   createCharacter, createItem, createWeapon, createBackgroundDefinition, BACKGROUND_ABILITY_MODES,
@@ -126,6 +127,8 @@ function level(value, index, warnings) {
   if (isObject(value.featureChoices)) {
     const sc = uniqueStrings(value.featureChoices.statAmount, ABILITY_KEYS);
     if (sc.length) featureChoices.statAmount = sc;
+    const el = sanitizeStoredChoices(value.featureChoices.elecciones);
+    if (Object.keys(el).length) featureChoices.elecciones = el;
   }
   return {
     classKey,

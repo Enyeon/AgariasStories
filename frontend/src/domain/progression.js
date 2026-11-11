@@ -1,6 +1,7 @@
 // Progresión del personaje: raza, subida y bajada de nivel.
 // Todas las funciones devuelven un personaje NUEVO (no mutan el recibido).
 
+import { pendingChoices, knownChoices, validateChoices, hasRequiredChoices, expandGrants } from './class-choices.js';
 import { ABILITY_KEYS, MAX_LEVEL, ABILITY_LABEL } from './constants.js';
 import { getClass, getRace, getFeat, getEpicBoon } from '../data/index.js';
 import { permissionsFor } from '../content/rules.js';
@@ -73,7 +74,7 @@ export function canLevelUp(c) {
 /**
  * Qué decisiones requiere subir un nivel en `classKey`.
  */
-export function planLevelUp(c, classKey) {
+export function planLevelUp(c, classKey, { subclass = null } = {}) {
   const cls = getClass(classKey);
   if (!cls) throw new Error(`Clase desconocida: ${classKey}`);
   const newClassLevel = (classLevels(c)[classKey] ?? 0) + 1;
@@ -81,6 +82,9 @@ export function planLevelUp(c, classKey) {
   const sub = subclassInfo(classKey, c);
   const milestone = cls.niveles?.[newClassLevel]?.requeridoTrue ?? null;
   const choice = milestone?.statAmount?.choice;
+  const needsSubclass = Boolean(sub && newClassLevel >= sub.level && !c.subclasses[classKey]);
+  // Las elecciones de la subclase dependen de cuál se elija en este mismo nivel.
+  const subKey = c.subclasses[classKey] ?? (needsSubclass ? subclass : null);
   return {
     classKey,
     className: cls.nombre,
@@ -88,7 +92,7 @@ export function planLevelUp(c, classKey) {
     newTotalLevel,
     hitDie: hitDieFor(classKey),
     isFirstLevel: newTotalLevel === 1,
-    needsSubclass: Boolean(sub && newClassLevel >= sub.level && !c.subclasses[classKey]),
+    needsSubclass,
     subclassOptions: sub?.options ?? [],
     subclassLabel: sub?.label ?? 'Subclase',
     needsImprovement: Array.isArray(cls.nivelesDeAumento) && cls.nivelesDeAumento.includes(newClassLevel),
@@ -96,6 +100,7 @@ export function planLevelUp(c, classKey) {
     featureChoice: choice
       ? { count: Number(choice.count) || 1, bonus: Number(choice.bonus) || 0, allowed: choice.allowedChoices ?? [...ABILITY_KEYS] }
       : null,
+    choices: pendingChoices(c, classKey, newClassLevel, subKey),
   };
 }
 
@@ -152,7 +157,7 @@ export function validateImprovement(c, improvement) {
 export function applyLevelUp(c, choices) {
   const gate = canLevelUp(c);
   if (!gate.ok) return { character: c, errors: [gate.reason] };
-  const plan = planLevelUp(c, choices.classKey);
+  const plan = planLevelUp(c, choices.classKey, { subclass: choices.subclass });
   const errors = [];
 
   const hpRoll = plan.isFirstLevel ? plan.hitDie : Number(choices.hpRoll);
@@ -171,6 +176,10 @@ export function applyLevelUp(c, choices) {
       errors.push(`Elige ${plan.featureChoice.count} atributo(s) para el rasgo de clase.`);
     }
   }
+  const subKey = c.subclasses[plan.classKey] ?? (plan.needsSubclass ? choices.subclass : null);
+  const grants = expandGrants(plan.classKey, subKey, plan.choices, choices.featureChoices?.elecciones);
+  const picked = validateChoices(knownChoices(c, plan.classKey), grants, choices.featureChoices?.elecciones, { spells: choices.spells ?? null });
+  errors.push(...picked.errors);
   if (errors.length) return { character: c, errors };
 
   const next = clone(c);
@@ -178,7 +187,10 @@ export function applyLevelUp(c, choices) {
     classKey: plan.classKey,
     hpRoll,
     improvement: plan.needsImprovement ? structuredClone(choices.improvement) : null,
-    featureChoices: statAmountChoice.length ? { statAmount: statAmountChoice } : {},
+    featureChoices: {
+      ...(statAmountChoice.length ? { statAmount: statAmountChoice } : {}),
+      ...(Object.keys(picked.elecciones).length ? { elecciones: picked.elecciones } : {}),
+    },
   });
   if (plan.needsSubclass) {
     next.subclasses[plan.classKey] = choices.subclass;
@@ -229,7 +241,7 @@ export function applyLevelUps(c, choicesList) {
 /** ¿El siguiente nivel en esta clase requiere alguna decisión del jugador? */
 export function levelNeedsDecisions(c, classKey) {
   const plan = planLevelUp(c, classKey);
-  return plan.needsSubclass || plan.needsImprovement || Boolean(plan.featureChoice);
+  return plan.needsSubclass || plan.needsImprovement || Boolean(plan.featureChoice) || hasRequiredChoices(plan.choices);
 }
 
 /** Quita el último nivel y todo lo que dependía de él. */

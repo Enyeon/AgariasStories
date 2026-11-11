@@ -11,9 +11,10 @@
 
 import { ABILITY_KEYS, SKILL_NAMES } from '../domain/constants.js';
 import { normalizeEffect } from '../domain/effects.js';
+import { checkChoiceData } from './class-choices-format.js';
 
 const SECTIONS = ['manual', 'tasha', 'agarias', 'homebrew'];
-const PROGRESSIONS = ['full', 'half', 'artificer', 'pact'];
+const PROGRESSIONS = ['full', 'half', 'half_up', 'artificer', 'pact'];
 const isObject = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
 const isText = (v) => typeof v === 'string';
 
@@ -28,7 +29,7 @@ export function validateClassData(cls, { file = '' } = {}) {
   const where = (path) => (file ? `${file} → ${path}` : path);
   const err = (path, msg) => errors.push(`${where(path)}: ${msg}`);
   const warn = (path, msg) => warnings.push(`${where(path)}: ${msg}`);
-  const stats = { levels: 0, features: 0, subclasses: 0, subFeatures: 0, effects: 0, textOnlyFeatures: 0 };
+  const stats = { levels: 0, features: 0, subclasses: 0, subFeatures: 0, effects: 0, textOnlyFeatures: 0, choices: 0 };
 
   if (!isObject(cls)) return { ok: false, errors: [where('raíz') + ': no es un objeto JSON'], warnings, stats };
 
@@ -80,7 +81,14 @@ export function validateClassData(cls, { file = '' } = {}) {
       const l = cls.lanzamiento;
       if (!isObject(l) || !PROGRESSIONS.includes(l.progression)) err('lanzamiento.progression', `uno de: ${PROGRESSIONS.join(', ')}`);
       if (l?.preparedFrom !== undefined && l.preparedFrom !== null && !['full', 'half'].includes(l.preparedFrom)) err('lanzamiento.preparedFrom', '"full", "half" o null');
-      for (const k of ['cantripsKnown', 'spellsKnown']) {
+      if (l?.preparedTable !== undefined && (l.spellsKnown !== undefined || (l.preparedFrom !== undefined && l.preparedFrom !== null))) {
+        err('lanzamiento.preparedTable', 'usa "preparedTable" (número fijo de preparados por nivel) o "preparedFrom"/"spellsKnown", no ambos');
+      }
+      if (l?.espaciosPacto !== undefined && (l.progression !== 'pact' || !Array.isArray(l.espaciosPacto) || l.espaciosPacto.length !== 20
+        || l.espaciosPacto.some((p) => !Array.isArray(p) || !Number.isInteger(p[0]) || p[0] < 0 || !Number.isInteger(p[1]) || p[1] < 1 || p[1] > 9))) {
+        err('lanzamiento.espaciosPacto', 'con "progression": "pact", 20 pares [cantidad, nivel de los espacios]');
+      }
+      for (const k of ['cantripsKnown', 'spellsKnown', 'preparedTable']) {
         if (l?.[k] !== undefined && (!Array.isArray(l[k]) || l[k].length !== 20)) err(`lanzamiento.${k}`, 'lista de 20 números (uno por nivel)');
       }
     } else {
@@ -98,12 +106,18 @@ export function validateClassData(cls, { file = '' } = {}) {
   }
 
   // ── Niveles ──
+  const tableColumns = new Set(Object.values(isObject(cls.niveles) ? cls.niveles : {}).flatMap((l) => l?.infoCubo?.columnas ?? []));
   const checkEffects = (path, list) => {
     if (list === undefined) return 0;
     if (!Array.isArray(list)) { err(path, 'lista de efectos'); return 0; }
     let ok = 0;
     list.forEach((e, i) => {
-      if (normalizeEffect(e)) ok++;
+      const n = normalizeEffect(e);
+      if (n?.desdeTabla && !tableColumns.has(n.desdeTabla)) {
+        err(`${path}[${i}].desdeTabla`, `no hay ninguna columna «${n.desdeTabla}» en los "infoCubo" de la clase`);
+        return;
+      }
+      if (n) ok++;
       else err(`${path}[${i}]`, `efecto no válido o desconocido: ${JSON.stringify(e)} (ver domain/effects.js)`);
     });
     return ok;
@@ -170,6 +184,7 @@ export function validateClassData(cls, { file = '' } = {}) {
           stats.effects += checkEffects(`${p}.efectos`, s.efectos);
           for (const [lvl, sn] of Object.entries(s.subNivel ?? {})) {
             if (!(Number(lvl) >= 1 && Number(lvl) <= 20)) err(`${p}.subNivel.${lvl}`, 'nivel 1–20');
+            if (sn?.infoSubNivel !== undefined) warn(`${p}.subNivel.${lvl}.infoSubNivel`, 'formato antiguo que la ficha NO muestra: pasa el texto a "infoSubBlock" (un bloque por rasgo con "subName" y "subDescripcion")');
             for (const [bk, b] of Object.entries(sn?.infoSubBlock ?? {})) {
               if (!isObject(b) || !isText(b.subName)) { err(`${p}.subNivel.${lvl}.infoSubBlock.${bk}`, 'necesita "subName" y "subDescripcion"'); continue; }
               stats.subFeatures++;
@@ -181,6 +196,7 @@ export function validateClassData(cls, { file = '' } = {}) {
         }
       }
     }
+    stats.choices = checkChoiceData(cls, err);
     if (subclassLevels > 1) err('niveles', 'sólo un nivel puede tener "subClase" (el nivel en que se elige)');
     if (!subclassLevels && !cls.subclasePendiente) warn('niveles', 'la clase no tiene subclases (si las tendrá, usa "subclasePendiente": true)');
   }

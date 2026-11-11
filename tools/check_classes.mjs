@@ -38,7 +38,7 @@ for (const file of files.sort()) {
   }
   const mark = ok && !errors.length ? (warnings.length ? '⚠' : '✓') : '✗';
   if (mark === '✗') failed++;
-  console.log(`${mark} ${basename(file)} — ${data?.nombre ?? '?'}: ${stats.levels}/20 niveles, ${stats.features} rasgos, ${stats.subclasses} subclases (${stats.subFeatures} rasgos), ${stats.effects} efectos automáticos, ${stats.textOnlyFeatures} rasgos sólo texto`);
+  console.log(`${mark} ${basename(file)} — ${data?.nombre ?? '?'}: ${stats.levels}/20 niveles, ${stats.features} rasgos, ${stats.subclasses} subclases (${stats.subFeatures} rasgos), ${stats.effects} efectos automáticos, ${stats.textOnlyFeatures} rasgos sólo texto${stats.choices ? `, ${stats.choices} elecciones` : ""}`);
   for (const e of errors) console.log(`    ERROR  ${e}`);
   if (process.env.VERBOSE || args.length) for (const w of warnings) console.log(`    aviso  ${w}`);
   else if (warnings.length) console.log(`    ${warnings.length} aviso(s) (VERBOSE=1 para verlos)`);

@@ -2,67 +2,16 @@
   "nombre": "Bárbaro",
   "claseName": "barbaro",
   "seccion": "manual",
-  "icono": "🪓",
-  "fuenteReglas": "Manual del Jugador",
+  "img": "img/barbaro.jpg",
   "dadoDeGolpe": 12,
-  "conjurador": false,
   "nivelesDeAumento": [
     4,
     8,
     12,
     16
   ],
-  "competencias": {
-    "salvaciones": [
-      "fuerza",
-      "constitucion"
-    ],
-    "armaduras": [
-      "Armadura ligera",
-      "Armadura media",
-      "Escudos"
-    ],
-    "armas": [
-      "Armas simples",
-      "Armas marciales"
-    ],
-    "herramientas": [],
-    "habilidades": {
-      "elegir": 2,
-      "de": [
-        "Atletismo",
-        "Intimidación",
-        "Naturaleza",
-        "Percepción",
-        "Supervivencia",
-        "Trato con Animales"
-      ]
-    }
-  },
-  "cdClase": {
-    "nombre": "CD de Juramento",
-    "atributos": [
-      "sabiduria"
-    ]
-  },
-  "subclaseNombre": "Senda primaria",
-  "pericias": {
-    "1": 1
-  },
-  "competenciasMulticlase": {
-    "armaduras": [
-      "Escudos"
-    ],
-    "armas": [
-      "Armas simples",
-      "Armas marciales"
-    ],
-    "herramientas": [],
-    "habilidades": null
-  },
-  "equipoInicial": [
-    "(a) Gran hacha, 4 hachas de mano, mochila de explorador y 15 PO o (b) 75 PO."
-  ],
+  "conjurador": false,
+  "nivelRequerido": 20,
   "niveles": {
     "1": {
       "descripcion": "Guerrero primitivo que canaliza su furia como fuente de poder físico devastador.",
@@ -88,14 +37,12 @@
       "infoCubo": {
         "columnas": [
           "Furia",
-          "Daño de Furia",
-          "Maestría en Armas"
+          "Daño de Furia"
         ],
         "filas": [
           [
             "2",
-            "+2",
-            "2"
+            "+2"
           ]
         ]
       }
@@ -116,14 +63,12 @@
       "infoCubo": {
         "columnas": [
           "Furia",
-          "Daño de Furia",
-          "Maestría en Armas"
+          "Daño de Furia"
         ],
         "filas": [
           [
             "2",
-            "+2",
-            "2"
+            "+2"
           ]
         ]
       }
@@ -317,7 +262,7 @@
         },
         "senda5": {
           "subNombre": "Senda del Vikingo",
-          "subDescripcion": "✦ SENDA DEL VIKINGO ✦\nFuente: <b class=\"content_subrayado\">Agarias</b>\nCanaliza tu Furia en un entrenamiento formidable\n\nLos Bárbaros que siguen la Senda del Trueno y la Marea son hijos de las tormentas y el mar helado. Forjados en costas azotadas por olas implacables y vientos que cortan como cuchillas, llevan en la sangre el rugido del trueno y en sus manos la fuerza del acero. Su Furia no es solo rabia, sino un llamado a la tempestad: cada golpe resuena como un trueno distante, y cada paso es el eco de un guerrero que ha visto mundos arder y ha invitado a la muerte a compartir su mesa. Allí donde pisan, los bardos y skalds entonan su nombre, pues son heraldos de la fuerza indomable y la voluntad inquebrantable.",
+          "subDescripcion": "✦ SENDA DEL VIKINGO ✦ [Homebrew]\nCanaliza tu Furia en un entrenamiento formidable\n\nLos Bárbaros que siguen la Senda del Trueno y la Marea son hijos de las tormentas y el mar helado. Forjados en costas azotadas por olas implacables y vientos que cortan como cuchillas, llevan en la sangre el rugido del trueno y en sus manos la fuerza del acero. Su Furia no es solo rabia, sino un llamado a la tempestad: cada golpe resuena como un trueno distante, y cada paso es el eco de un guerrero que ha visto mundos arder y ha invitado a la muerte a compartir su mesa. Allí donde pisan, los bardos y skalds entonan su nombre, pues son heraldos de la fuerza indomable y la voluntad inquebrantable.",
           "subNivel": {
             "3": {
               "infoSubBlock": {
@@ -361,61 +306,17 @@
               }
             }
           }
-        },
-        "senda6": {
-          "subNombre": "Senda del Bersérker Aplastante",
-          "subDescripcion": "✦ SENDA DEL BERSÉRKER APLASTANTE ✦\nFuente: <b class=\"content_subrayado\">Agarias</b>\nCuanto más daño recibes, más fuerte te vuelves\n\nLos Bárbaros que siguen la Senda del Bersérker Aplastante convierten el dolor en fuerza bruta. Su Furia no busca control: busca destrucción. Cada golpe recibido alimenta su Ira, cada herida hace que su cuerpo se vuelva más peligroso y cada enemigo que se atreve a enfrentarlos solo consigue despertar una fuerza mayor.\n\nPero ese poder tiene un precio. A medida que su Ira aumenta, abandonan toda intención de protegerse. Su cuerpo se convierte en un arma y su propia vida, en combustible para seguir luchando.",
-          "subNivel": {
-            "3": {
-              "infoSubBlock": {
-                "subBlockUno": {
-                  "subName": "Ira Aplastante",
-                  "subTitleName": "✦ IRA APLASTANTE ✦",
-                  "subDescripcion": "Cuando entras en Furia, comienzas con 0 puntos de Ira Aplastante. Mientras tu Furia esté activa, cada vez que recibas daño de una criatura hostil, obtienes 1 punto de Ira Aplastante. Solo puedes obtener 1 punto de esta forma por turno.\n\nTambién puedes obtener 1 punto de Ira Aplastante voluntariamente como Acción Bónus, pero al hacerlo sufres daño igual a tu bonificador de competencia. Este daño no puede reducirte por debajo de 1 punto de golpe.\n\nTu Ira Aplastante tiene un máximo igual a tu bonificador de competencia.\n\nPor cada punto de Ira Aplastante que tengas, obtienes un bonificador de +1 a las tiradas de daño de tus ataques cuerpo a cuerpo basados en Fuerza.\n\nSin embargo, tu defensa se deteriora. Por cada punto de Ira Aplastante, sufres un penalizador de -1 a tu Clase de Armadura.\n\nLos puntos de Ira Aplastante desaparecen cuando termina tu Furia.\n\nMientras tengas al menos 1 punto de Ira Aplastante, tus ataques cuerpo a cuerpo pueden producir efectos visuales o narrativos de fuerza descomunal: romper madera, abollar metal, destruir objetos frágiles o lanzar enemigos de forma espectacular, a criterio del DM."
-                }
-              }
-            },
-            "6": {
-              "infoSubBlock": {
-                "subBlockUno": {
-                  "subName": "Regeneración Brutal",
-                  "subTitleName": "✦ REGENERACIÓN BRUTAL ✦",
-                  "subDescripcion": "Tu cuerpo se niega a caer mientras tu Furia permanezca activa. Como Acción Bónus durante tu Furia, puedes gastar 1 Dado de Golpe para recuperar puntos de golpe iguales al resultado del dado + tu modificador de Constitución.\n\nDespués de usar esta característica, tu Ira Aplastante disminuye en 1 punto.\n\nPuedes usar esta característica una cantidad de veces igual a tu bonificador de competencia por Descanso Largo.\n\nAdemás, cuando recuperas puntos de golpe mediante esta característica, puedes aumentar tu Ira Aplastante en 1 punto sufriendo daño igual a tu bonificador de competencia. Este daño no puede reducirte por debajo de 1 punto de golpe.\n\nTu cuerpo no se cura porque estés tranquilo. Se cura porque todavía quiere seguir peleando."
-                }
-              }
-            },
-            "10": {
-              "infoSubBlock": {
-                "subBlockUno": {
-                  "subName": "Golpe Sísmico",
-                  "subTitleName": "✦ GOLPE SÍSMICO ✦",
-                  "subDescripcion": "Tu fuerza ha alcanzado un punto en el que tus golpes pueden afectar incluso a quienes no estás atacando directamente.\n\nMientras estés en Furia, cuando impactes a una criatura con un ataque cuerpo a cuerpo basado en Fuerza, puedes provocar una onda de choque. El objetivo y todas las criaturas que elijas a 5 pies (1 casilla) de él deben superar una tirada de salvación de Fuerza (CD 8 + tu bonificador de competencia + tu modificador de Fuerza) o recibir daño contundente igual a tu bonificador de Furia + tu modificador de Fuerza y ser empujadas 10 pies (2 casillas) en dirección opuesta a ti.\n\nUna criatura que supere la tirada recibe la mitad del daño y no es empujada.\n\nPuedes usar este efecto una cantidad de veces igual a tu bonificador de competencia por Descanso Largo.\n\nEl suelo tiembla. Las armas se doblan. Las criaturas empiezan a entender que quizá no deberían haberte golpeado."
-                }
-              }
-            },
-            "14": {
-              "infoSubBlock": {
-                "subBlockUno": {
-                  "subName": "Ira Imparable",
-                  "subTitleName": "✦ IRA IMPARABLE ✦",
-                  "subDescripcion": "Tu Furia ha dejado de ser simplemente una emoción. Se ha convertido en una fuerza destructiva.\n\nMientras estés en Furia, puedes utilizar tu Acción Adicional para entrar en un estado de Ira Imparable. Al hacerlo, obtienes inmediatamente el máximo de puntos de Ira Aplastante permitido por tu bonificador de competencia y sufres daño igual a 2 veces tu bonificador de competencia. Este daño no puede reducirte por debajo de 1 punto de golpe.\n\nMientras Ira Imparable esté activa, tus ataques cuerpo a cuerpo basados en Fuerza infligen daño contundente adicional igual a tu modificador de Fuerza y tienes ventaja en las tiradas de Fuerza y en las tiradas de salvación de Fuerza.\n\nAdemás, cuando una criatura te golpea con un ataque cuerpo a cuerpo, puedes utilizar tu Reacción para realizar inmediatamente un ataque cuerpo a cuerpo contra ella. Si impactas, el objetivo debe superar una tirada de salvación de Fuerza (CD 8 + tu bonificador de competencia + tu modificador de Fuerza) o ser derribado.\n\nIra Imparable termina cuando termina tu Furia. Una vez utilizas esta característica, no puedes volver a utilizarla hasta completar un Descanso Largo.\n\nCuando tu Ira alcanza su máximo, ya no parece que estés luchando contra tus enemigos, más parece que tus enemigos están intentando sobrevivir a ti."
-                }
-              }
-            }
-          }
         }
       },
       "infoCubo": {
         "columnas": [
           "Furia",
-          "Daño de Furia",
-          "Maestría en Armas"
+          "Daño de Furia"
         ],
         "filas": [
           [
-            "2",
-            "+2",
-            "2"
+            "3",
+            "+2"
           ]
         ]
       }
@@ -431,14 +332,12 @@
       "infoCubo": {
         "columnas": [
           "Furia",
-          "Daño de Furia",
-          "Maestría en Armas"
+          "Daño de Furia"
         ],
         "filas": [
           [
             "3",
-            "+2",
-            "3"
+            "+2"
           ]
         ]
       }
@@ -459,14 +358,12 @@
       "infoCubo": {
         "columnas": [
           "Furia",
-          "Daño de Furia",
-          "Maestría en Armas"
+          "Daño de Furia"
         ],
         "filas": [
           [
             "3",
-            "+2",
-            "3"
+            "+2"
           ]
         ]
       }
@@ -475,14 +372,12 @@
       "infoCubo": {
         "columnas": [
           "Furia",
-          "Daño de Furia",
-          "Maestría en Armas"
+          "Daño de Furia"
         ],
         "filas": [
           [
             "4",
-            "+2",
-            "3"
+            "+2"
           ]
         ]
       }
@@ -497,20 +392,18 @@
         "blockDos": {
           "name": "Salto Instintivo",
           "titleName": "✦ SALTO INSTINTIVO ✦",
-          "descripcion": "Como parte de tu Acción Bónus que tomas para entrar en tu Furia, puedes moverte hasta la mitad de tu velocidad."
+          "descripcion": "Como parte de tu Acción Bonus que tomas para entrar en tu Furia, puedes moverte hasta la mitad de tu velocidad."
         }
       },
       "infoCubo": {
         "columnas": [
           "Furia",
-          "Daño de Furia",
-          "Maestría en Armas"
+          "Daño de Furia"
         ],
         "filas": [
           [
             "4",
-            "+2",
-            "3"
+            "+2"
           ]
         ]
       }
@@ -519,14 +412,12 @@
       "infoCubo": {
         "columnas": [
           "Furia",
-          "Daño de Furia",
-          "Maestría en Armas"
+          "Daño de Furia"
         ],
         "filas": [
           [
             "4",
-            "+2",
-            "3"
+            "+2"
           ]
         ]
       }
@@ -542,14 +433,12 @@
       "infoCubo": {
         "columnas": [
           "Furia",
-          "Daño de Furia",
-          "Maestría en Armas"
+          "Daño de Furia"
         ],
         "filas": [
           [
             "4",
-            "+3",
-            "3"
+            "+3"
           ]
         ]
       }
@@ -558,14 +447,12 @@
       "infoCubo": {
         "columnas": [
           "Furia",
-          "Daño de Furia",
-          "Maestría en Armas"
+          "Daño de Furia"
         ],
         "filas": [
           [
             "4",
-            "+3",
-            "4"
+            "+3"
           ]
         ]
       }
@@ -581,14 +468,12 @@
       "infoCubo": {
         "columnas": [
           "Furia",
-          "Daño de Furia",
-          "Maestría en Armas"
+          "Daño de Furia"
         ],
         "filas": [
           [
             "4",
-            "+3",
-            "4"
+            "+3"
           ]
         ]
       }
@@ -597,14 +482,12 @@
       "infoCubo": {
         "columnas": [
           "Furia",
-          "Daño de Furia",
-          "Maestría en Armas"
+          "Daño de Furia"
         ],
         "filas": [
           [
             "5",
-            "+3",
-            "4"
+            "+3"
           ]
         ]
       }
@@ -620,14 +503,12 @@
       "infoCubo": {
         "columnas": [
           "Furia",
-          "Daño de Furia",
-          "Maestría en Armas"
+          "Daño de Furia"
         ],
         "filas": [
           [
             "5",
-            "+3",
-            "4"
+            "+3"
           ]
         ]
       }
@@ -636,14 +517,12 @@
       "infoCubo": {
         "columnas": [
           "Furia",
-          "Daño de Furia",
-          "Maestría en Armas"
+          "Daño de Furia"
         ],
         "filas": [
           [
             "5",
-            "+3",
-            "4"
+            "+3"
           ]
         ]
       }
@@ -673,14 +552,12 @@
       "infoCubo": {
         "columnas": [
           "Furia",
-          "Daño de Furia",
-          "Maestría en Armas"
+          "Daño de Furia"
         ],
         "filas": [
           [
             "5",
-            "+4",
-            "4"
+            "+4"
           ]
         ]
       }
@@ -696,14 +573,12 @@
       "infoCubo": {
         "columnas": [
           "Furia",
-          "Daño de Furia",
-          "Maestría en Armas"
+          "Daño de Furia"
         ],
         "filas": [
           [
             "6",
-            "+4",
-            "4"
+            "+4"
           ]
         ]
       }
@@ -719,14 +594,12 @@
       "infoCubo": {
         "columnas": [
           "Furia",
-          "Daño de Furia",
-          "Maestría en Armas"
+          "Daño de Furia"
         ],
         "filas": [
           [
             "6",
-            "+4",
-            "4"
+            "+4"
           ]
         ]
       }
@@ -742,14 +615,12 @@
       "infoCubo": {
         "columnas": [
           "Furia",
-          "Daño de Furia",
-          "Maestría en Armas"
+          "Daño de Furia"
         ],
         "filas": [
           [
             "6",
-            "+4",
-            "4"
+            "+4"
           ]
         ]
       },
@@ -778,17 +649,61 @@
       "infoCubo": {
         "columnas": [
           "Furia",
-          "Daño de Furia",
-          "Maestría en Armas"
+          "Daño de Furia"
         ],
         "filas": [
           [
             "Ilimitado",
-            "+4",
-            "4"
+            "+4"
           ]
         ]
       }
     }
-  }
+  },
+  "competencias": {
+    "salvaciones": [
+      "fuerza",
+      "constitucion"
+    ],
+    "armaduras": [
+      "Armadura ligera",
+      "Armadura media",
+      "Escudos"
+    ],
+    "armas": [
+      "Armas simples",
+      "Armas marciales"
+    ],
+    "herramientas": [],
+    "habilidades": {
+      "elegir": 2,
+      "de": [
+        "Atletismo",
+        "Intimidación",
+        "Naturaleza",
+        "Percepción",
+        "Supervivencia",
+        "Trato con Animales"
+      ]
+    }
+  },
+  "competenciasMulticlase": {
+    "armaduras": [
+      "Escudos"
+    ],
+    "armas": [
+      "Armas simples",
+      "Armas marciales"
+    ],
+    "herramientas": [],
+    "habilidades": null
+  },
+  "equipoInicial": [
+    "(a) un gran hacha o (b) cualquier arma marcial cuerpo a cuerpo.",
+    "(a) dos hachas de mano o (b) cualquier arma simple.",
+    "Un paquete de explorador y cuatro jabalinas."
+  ],
+  "oroInicial": "2d4 × 10",
+  "fuenteReglas": "Manual del Jugador",
+  "subclaseNombre": "Senda primaria"
 }

@@ -2,103 +2,19 @@
   "nombre": "Guerrero",
   "claseName": "guerrero",
   "seccion": "manual",
+  "icono": "🩸",
+  "fuenteReglas": "Manual del Jugador",
   "dadoDeGolpe": 10,
+  "subclaseNombre": "Arquetipo marcial",
   "nivelesDeAumento": [
     4,
+    6,
     8,
     12,
-    16,
-    19
+    14,
+    16
   ],
   "conjurador": false,
-  "niveles": {
-    "1": {
-      "descripcion": "Combatiente versátil entrenado en el dominio absoluto de las armas y la estrategia.",
-      "descripcionLarga": "El Guerrero perfecciona el combate hasta convertirlo en arte técnico. No depende de magia ni furia, sino de disciplina, entrenamiento y experiencia. Puede adaptarse a cualquier estilo, dominar cualquier arma y resistir cualquier embate. Es el estándar contra el cual se miden los demás combatientes.",
-      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Fuerza y Constitución.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d10.\n    :: Nivel 1: 10 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d10 (o 6) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Armadura ligera, Armadura media, Armadura pesada y Escudos.\n    :: Armas: Armas simples y Armas marciales.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge dos de entre Acrobacias, Atletismo, Historia, Intimidación, Percepción, Perspicacia, Supervivencia y Trato con Animales.\n❖ Equipo. Comienzas con el siguiente equipo, además del que te dé tu trasfondo:\n    :: (a) una cota de malla o (b) una armadura de cuero, un arco largo y 20 flechas.\n    :: (a) un arma marcial y un escudo o (b) dos armas marciales.\n    :: (a) una ballesta ligera y 20 virotes o (b) dos hachas de mano.\n    :: (a) un paquete de explorador de mazmorras o (b) un paquete de explorador.\n    :: Alternativa: 5d4 × 10 po en lugar del equipo de clase.\n❖ Fuente: Manual del Jugador.",
-      "informacionNivel": "✦  ✦\n\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n\n✦  ✦"
-    },
-    "2": {
-      "informacionNivel": "✦ ATAQUE TEMERARIO ✦"
-    },
-    "3": {
-      "informacionNivel": "✦ CONOCIMIENTO PRIMITIVO ✦",
-      "subClase": {
-        "campeon": {
-          "subNombre": "Campeón",
-          "subDescripcion": "Excelencia física: críticos más frecuentes y gran resistencia.",
-          "subNivel": {},
-          "rasgosPendientes": true,
-          "fuente": "Manual del Jugador"
-        },
-        "maestro-batalla": {
-          "subNombre": "Maestro de Batalla",
-          "subDescripcion": "Táctico: maniobras alimentadas por dados de superioridad.",
-          "subNivel": {},
-          "rasgosPendientes": true,
-          "fuente": "Manual del Jugador"
-        },
-        "caballero-arcano": {
-          "subNombre": "Caballero Arcano",
-          "subDescripcion": "Combina el acero con conjuros de abjuración y evocación.",
-          "subNivel": {},
-          "rasgosPendientes": true,
-          "fuente": "Manual del Jugador"
-        }
-      }
-    },
-    "4": {
-      "informacionNivel": "✦  ✦"
-    },
-    "5": {
-      "informacionNivel": "✦  ✦"
-    },
-    "6": {
-      "informacionNivel": "✦  ✦"
-    },
-    "7": {
-      "informacionNivel": "✦  ✦"
-    },
-    "8": {
-      "informacionNivel": "✦  ✦"
-    },
-    "9": {
-      "informacionNivel": "✦  ✦"
-    },
-    "10": {
-      "informacionNivel": "✦  ✦"
-    },
-    "11": {
-      "informacionNivel": "✦  ✦"
-    },
-    "12": {
-      "informacionNivel": "✦  ✦"
-    },
-    "13": {
-      "informacionNivel": "✦  ✦"
-    },
-    "14": {
-      "informacionNivel": "✦  ✦"
-    },
-    "15": {
-      "informacionNivel": "✦  ✦"
-    },
-    "16": {
-      "informacionNivel": "✦  ✦"
-    },
-    "17": {
-      "informacionNivel": "✦  ✦"
-    },
-    "18": {
-      "informacionNivel": "✦  ✦"
-    },
-    "19": {
-      "informacionNivel": "✦  ✦"
-    },
-    "20": {
-      "informacionNivel": "✦  ✦"
-    }
-  },
   "competencias": {
     "salvaciones": [
       "fuerza",
@@ -124,6 +40,7 @@
         "Intimidación",
         "Percepción",
         "Perspicacia",
+        "Persuasión",
         "Supervivencia",
         "Trato con Animales"
       ]
@@ -143,18 +60,958 @@
     "habilidades": null
   },
   "equipoInicial": [
-    "(a) una cota de malla o (b) una armadura de cuero, un arco largo y 20 flechas.",
-    "(a) un arma marcial y un escudo o (b) dos armas marciales.",
-    "(a) una ballesta ligera y 20 virotes o (b) dos hachas de mano.",
-    "(a) un paquete de explorador de mazmorras o (b) un paquete de explorador."
+    "(A) Cota de Malla, Gran Espada, Maza, 8 Jabalinas, Paquete de Dungeoneer y 4 PO.",
+    "(B) Armadura de Cuero Tachonado, Cimitarra, Espada Corta, Arco Largo, 20 Flechas, Carcaj, Paquete de Dungeoneer y 11 PO.",
+    "(C) 155 PO."
   ],
-  "oroInicial": "5d4 × 10",
-  "fuenteReglas": "Manual del Jugador",
-  "subclaseNombre": "Arquetipo marcial",
-  "subclasesRetiradas": [
-    "senda1",
-    "senda2",
-    "senda3",
-    "senda4"
-  ]
+  "listasDeEleccion": {
+    "estilo-combate": {
+      "titulo": "Estilo de combate",
+      "libre": true,
+      "reemplazarAlSubir": true,
+      "ayuda": "Escribe el nombre del Feat de Estilo de Combate (capítulo 5). Se recomienda Defensa.",
+      "placeholder": "Feat de Estilo de Combate"
+    },
+    "maestria-armas": {
+      "titulo": "Maestría en armas",
+      "libre": true,
+      "cambiable": true,
+      "ayuda": "Un tipo de arma Simple o Marcial. Puedes cambiar una al terminar un Descanso Largo (botón «Cambiar» en la ficha).",
+      "placeholder": "Tipo de arma (p. ej. Espada larga)"
+    }
+  },
+  "niveles": {
+    "1": {
+      "descripcion": "Combatiente versátil entrenado en el dominio absoluto de las armas y la estrategia.",
+      "descripcionLarga": "El Guerrero perfecciona el combate hasta convertirlo en arte técnico. No depende de magia ni furia, sino de disciplina, entrenamiento y experiencia. Puede adaptarse a cualquier estilo, dominar cualquier arma y resistir cualquier embate. Es el estándar contra el cual se miden los demás combatientes.",
+      "atributoInicial": "Atributos de clase:\n❖ Habilidad principal: Fuerza o Destreza.\n❖ Tiradas de Salvación: Fuerza y Constitución.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d10.\n    :: Nivel 1: 10 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d10 (o 6) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Armadura ligera, Armadura media, Armadura pesada y Escudos.\n    :: Armas: Armas simples y Armas marciales.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge dos de entre Acrobacias, Trato con Animales, Atletismo, Historia, Perspicacia, Intimidación, Persuasión, Percepción o Supervivencia.\n❖ Equipo inicial: elige A, B o C.\n    :: (A) Cota de Malla, Gran Espada, Maza, 8 Jabalinas, Paquete de Dungeoneer y 4 PO.\n    :: (B) Armadura de Cuero Tachonado, Cimitarra, Espada Corta, Arco Largo, 20 Flechas, Carcaj, Paquete de Dungeoneer y 11 PO.\n    :: (C) 155 PO.\n❖ Fuente: Manual del Jugador.",
+      "infoBlock": {
+        "blockUno": {
+          "name": "Estilo de Combate",
+          "titleName": "✦ ESTILO DE COMBATE ✦",
+          "descripcion": "Has perfeccionado tu destreza marcial y obtienes un Feat de Estilo de Combate a tu elección (consulta el capítulo 5). Se recomienda Defensa. Cada vez que ganes un nivel de Guerrero, puedes reemplazar el feat que elegiste por otro Feat de Estilo de Combate diferente.",
+          "elegir": {
+            "lista": "estilo-combate",
+            "cantidad": 1
+          }
+        },
+        "blockDos": {
+          "name": "Segundo Aliento",
+          "titleName": "✦ SEGUNDO ALIENTO ✦",
+          "descripcion": "Tienes una reserva limitada de resistencia física y mental a la que puedes recurrir. Como Acción Adicional, puedes usarlo para recuperar Puntos de Golpe iguales a 1d10 más tu nivel de Guerrero. Puedes usar esta característica dos veces. Recuperas un uso gastado cuando terminas un Descanso Corto y recuperas todos los usos gastados cuando terminas un Descanso Largo. Cuando alcances ciertos niveles de Guerrero, obtienes más usos de esta característica, como se muestra en la columna de Segundo Aliento de la tabla de Características del Guerrero."
+        },
+        "blockTres": {
+          "name": "Maestría en Armas",
+          "titleName": "✦ MAESTRÍA EN ARMAS ✦",
+          "descripcion": "Tu entrenamiento con armas te permite usar las propiedades de maestría de tres tipos de armas Simples o Marciales de tu elección. Siempre que termines un Descanso Largo, puedes practicar ejercicios de armas y cambiar una de esas elecciones de arma. Cuando alcances ciertos niveles de Guerrero, obtienes la capacidad de usar las propiedades de maestría de más tipos de armas, como se muestra en la columna de Maestría en Armas de la tabla de Características del Guerrero.",
+          "elegir": {
+            "lista": "maestria-armas",
+            "cantidad": 3
+          }
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Segundo Aliento",
+          "Maestría en Armas"
+        ],
+        "filas": [
+          [
+            "2",
+            "3"
+          ]
+        ]
+      }
+    },
+    "2": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Impulso de Acción",
+          "titleName": "✦ IMPULSO DE ACCIÓN ✦",
+          "descripcion": "Puedes superar tus límites normales por un momento. En tu turno, puedes realizar una acción adicional, excepto la acción Mágica. Una vez que uses esta característica, no puedes volver a hacerlo hasta que termines un Descanso Corto o Largo. A partir del nivel 17, puedes usarla dos veces antes de un descanso, pero solo una vez por turno."
+        },
+        "blockDos": {
+          "name": "Mente Táctica",
+          "titleName": "✦ MENTE TÁCTICA ✦",
+          "descripcion": "Tienes una mente para las tácticas en y fuera del campo de batalla. Cuando falles una prueba de habilidad, puedes gastar un uso de tu Segundo Aliento para impulsarte hacia el éxito. En lugar de recuperar Puntos de Golpe, lanzas 1d10 y añades el número obtenido a la prueba de habilidad, potencialmente convirtiéndola en un éxito. Si la prueba aún falla, este uso del Segundo Aliento no se gasta."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Segundo Aliento",
+          "Maestría en Armas"
+        ],
+        "filas": [
+          [
+            "2",
+            "3"
+          ]
+        ]
+      }
+    },
+    "3": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Subclase de Luchador",
+          "titleName": "✦ SUBCLASE DE LUCHADOR ✦",
+          "descripcion": "Obtienes una subclase de Luchador de tu elección. Las subclases del Maestro de Batalla, Campeón, Caballero Eldritch y Guerrero Psíquico están detalladas después de la descripción de esta clase. Una subclase es una especialización que te otorga características en ciertos niveles de Luchador. A lo largo de tu carrera, obtendrás todas las características de tu subclase que correspondan a tu nivel de Luchador o inferior.\n\n<b>Subclases de Guerrero.</b> Una subclase de Guerrero es una especialización que te otorga características en ciertos niveles, según lo especificado en la subclase. Esta sección presenta las subclases Maestro de Batalla, Campeón, Caballero Eldritch y Guerrero Psíquico."
+        }
+      },
+      "subClase": {
+        "maestro-batalla": {
+          "subNombre": "Maestro de Batalla",
+          "subDescripcion": "✦ MAESTRO DE BATALLA ✦\nMaestro en Maniobras de Batalla Sofisticadas\n\nLos Maestros de Batalla son estudiantes del arte de la guerra, aprendiendo técnicas marciales transmitidas a través de generaciones. Los Maestros de Batalla más logrados son figuras completas que combinan sus habilidades de combate cuidadosamente perfeccionadas con estudios académicos en los campos de la historia, la teoría y las artes.",
+          "fuente": "Manual del Jugador",
+          "listasDeEleccion": {
+            "maniobras": {
+              "titulo": "Maniobras",
+              "ayuda": "Las maniobras se presentan aquí en orden alfabético. Solo puedes usar una maniobra por ataque.",
+              "opciones": [
+                {
+                  "id": "emboscada",
+                  "nombre": "Emboscada",
+                  "descripcion": "Cuando realices una prueba de Destreza (Sigilo) o una tirada de Iniciativa, puedes gastar un Dado de Superioridad y añadir el dado a la tirada, a menos que tengas la condición de Incapacitado."
+                },
+                {
+                  "id": "trampa-y-cambio",
+                  "nombre": "Trampa y Cambio",
+                  "descripcion": "Cuando estés dentro de 5 pies de una criatura en tu turno, puedes gastar un Dado de Superioridad y cambiar lugares con esa criatura, siempre que gastes al menos 5 pies de movimiento y la criatura esté dispuesta y no tenga la condición de Incapacitado. Este movimiento no provoca Ataques de Oportunidad. Lanza el Dado de Superioridad. Hasta el inicio de tu próximo turno, tú o la otra criatura (a tu elección) ganan un bono a la CA igual al número obtenido."
+                },
+                {
+                  "id": "ataque-del-comandante",
+                  "nombre": "Ataque del Comandante",
+                  "descripcion": "Cuando realices la acción de Ataque en tu turno, puedes reemplazar uno de tus ataques para dirigir a uno de tus compañeros a atacar. Cuando lo hagas, elige una criatura dispuesta que pueda verte o escucharte y gasta un Dado de Superioridad. Esa criatura puede usar inmediatamente su Reacción para hacer un ataque con un arma o un Golpe Desarmado, añadiendo el Dado de Superioridad a la tirada de daño del ataque en caso de éxito."
+                },
+                {
+                  "id": "presencia-autoritaria",
+                  "nombre": "Presencia Autoritaria",
+                  "descripcion": "Cuando realices una prueba de Carisma (Intimidación, Interpretación o Persuasión), puedes gastar un Dado de Superioridad y añadir ese dado a la tirada."
+                },
+                {
+                  "id": "ataque-desarmante",
+                  "nombre": "Ataque Desarmante",
+                  "descripcion": "Cuando aciertes a una criatura con una tirada de ataque, puedes gastar un Dado de Superioridad para intentar desarmar al objetivo. Añade el número del dado de Superioridad a la tirada de daño del ataque. El objetivo debe superar una tirada de salvación de Fuerza o soltar un objeto de tu elección que esté sosteniendo, con el objeto cayendo en su espacio."
+                },
+                {
+                  "id": "golpe-distractor",
+                  "nombre": "Golpe Distractor",
+                  "descripcion": "Cuando aciertes a una criatura con una tirada de ataque, puedes gastar un Dado de Superioridad para distraer al objetivo. Añade el número del dado de Superioridad a la tirada de daño del ataque. La siguiente tirada de ataque contra el objetivo realizada por un atacante que no seas tú tiene Ventaja si se realiza antes del inicio de tu siguiente turno."
+                },
+                {
+                  "id": "paso-evasivo",
+                  "nombre": "Paso Evasivo",
+                  "descripcion": "Como Acción Adicional, puedes gastar un Dado de Superioridad y tomar la acción de Desenfocar. También lanzas el dado y añades el número obtenido a tu CA hasta el inicio de tu siguiente turno."
+                },
+                {
+                  "id": "ataque-enganoso",
+                  "nombre": "Ataque Engañoso",
+                  "descripcion": "Como Acción Adicional, puedes gastar un Dado de Superioridad para hacer un engaño, eligiendo una criatura dentro de 5 pies de ti como tu objetivo. Tienes Ventaja en tu siguiente tirada de ataque contra ese objetivo en este turno. Si ese ataque acierta, añade el Dado de Superioridad a la tirada de daño del ataque."
+                },
+                {
+                  "id": "ataque-provocador",
+                  "nombre": "Ataque Provocador",
+                  "descripcion": "Cuando aciertes a una criatura con una tirada de ataque, puedes gastar un Dado de Superioridad para intentar provocar al objetivo a atacarte. Añade el número del dado de Superioridad a la tirada de daño del ataque. El objetivo debe superar una tirada de salvación de Sabiduría o tener Desventaja en las tiradas de ataque contra objetivos que no seas tú hasta el final de tu siguiente turno."
+                },
+                {
+                  "id": "ataque-lunging",
+                  "nombre": "Ataque Lunging",
+                  "descripcion": "Como Acción Adicional, puedes gastar un Dado de Superioridad y tomar la acción de Correr. Si te mueves al menos 5 pies en línea recta inmediatamente antes de golpear con un ataque cuerpo a cuerpo como parte de la acción de Ataque en este turno, puedes añadir el Dado de Superioridad a la tirada de daño del ataque."
+                },
+                {
+                  "id": "ataque-maniobrador",
+                  "nombre": "Ataque Maniobrador",
+                  "descripcion": "Cuando aciertes a una criatura con una tirada de ataque, puedes gastar un Dado de Superioridad para maniobrar a uno de tus compañeros a otra posición. Añade el número del dado de Superioridad a la tirada de daño del ataque y elige una criatura dispuesta que pueda verte o escucharte. Esa criatura puede usar su Reacción para moverse hasta la mitad de su Velocidad sin provocar un Ataque de Oportunidad del objetivo de tu ataque."
+                },
+                {
+                  "id": "ataque-amenazante",
+                  "nombre": "Ataque Amenazante",
+                  "descripcion": "Cuando aciertes a una criatura con una tirada de ataque, puedes gastar un Dado de Superioridad para intentar asustar al objetivo. Añade el Dado de Superioridad a la tirada de daño del ataque. El objetivo debe superar una tirada de salvación de Sabiduría o tener la condición de Asustado hasta el final de tu siguiente turno."
+                },
+                {
+                  "id": "parada",
+                  "nombre": "Parada",
+                  "descripcion": "Cuando otra criatura te daña con una tirada de ataque cuerpo a cuerpo, puedes tomar una Reacción y gastar un Dado de Superioridad para reducir el daño en la cantidad que obtengas en tu Dado de Superioridad más tu modificador de Fuerza o Destreza (a tu elección)."
+                },
+                {
+                  "id": "ataque-preciso",
+                  "nombre": "Ataque Preciso",
+                  "descripcion": "Cuando fallas con una tirada de ataque, puedes gastar un Dado de Superioridad, lanzar ese dado y añadirlo a la tirada de ataque, potencialmente causando que el ataque acierte."
+                },
+                {
+                  "id": "ataque-empujador",
+                  "nombre": "Ataque Empujador",
+                  "descripcion": "Cuando aciertes a una criatura con una tirada de ataque usando un arma o un Golpe Desarmado, puedes gastar un Dado de Superioridad para intentar empujar al objetivo hacia atrás. Añade el Dado de Superioridad a la tirada de daño del ataque. Si el objetivo es Grande o más pequeño, debe superar una tirada de salvación de Fuerza o ser empujado hasta 15 pies directamente lejos de ti."
+                },
+                {
+                  "id": "rally",
+                  "nombre": "Rally",
+                  "descripcion": "Como Acción Adicional, puedes gastar un Dado de Superioridad para reforzar la determinación de un compañero. Elige a un aliado dentro de 30 pies de ti que pueda verte o escucharte. Esa criatura gana Puntos de Golpe Temporales igual al número del dado de Superioridad más la mitad de tu nivel de Guerrero (redondeado hacia abajo)."
+                },
+                {
+                  "id": "riposte",
+                  "nombre": "Riposte",
+                  "descripcion": "Cuando una criatura te falle con una tirada de ataque cuerpo a cuerpo, puedes tomar una Reacción y gastar un Dado de Superioridad para realizar una tirada de ataque cuerpo a cuerpo con un arma o un Golpe Desarmado contra la criatura. Si aciertas, añade el Dado de Superioridad a la tirada de daño del ataque."
+                },
+                {
+                  "id": "ataque-barrido",
+                  "nombre": "Ataque Barrido",
+                  "descripcion": "Cuando aciertes a una criatura con una tirada de ataque cuerpo a cuerpo usando un arma o un Golpe Desarmado, puedes gastar un Dado de Superioridad para intentar dañar a otra criatura. Elige otra criatura dentro de 5 pies del objetivo original y dentro de tu alcance. Si la tirada de ataque original acertaría a la segunda criatura, esta recibe daño igual al número que obtuviste en tu Dado de Superioridad. El daño es del mismo tipo que el causado por el ataque original."
+                },
+                {
+                  "id": "evaluacion-tactica",
+                  "nombre": "Evaluación Táctica",
+                  "descripcion": "Cuando realices una prueba de Inteligencia (Historia o Investigación) o una prueba de Sabiduría (Perspicacia), puedes gastar un Dado de Superioridad y añadir ese dado a la prueba de habilidad."
+                },
+                {
+                  "id": "ataque-de-zancada",
+                  "nombre": "Ataque de Zancada",
+                  "descripcion": "Cuando aciertes a una criatura con una tirada de ataque usando un arma o un Golpe Desarmado, puedes gastar un Dado de Superioridad y añadir el dado a la tirada de daño del ataque. Si el objetivo es Grande o más pequeño, debe superar una tirada de salvación de Fuerza o tener la condición de Tendido."
+                }
+              ]
+            },
+            "herramienta-artesano": {
+              "titulo": "Herramientas de artesano",
+              "libre": true,
+              "ayuda": "Un tipo de Herramientas de Artesano de tu elección.",
+              "placeholder": "Tipo de herramientas de artesano",
+              "efectoLibre": {
+                "type": "competencia",
+                "kind": "herramienta"
+              }
+            },
+            "habilidad-estudiante": {
+              "titulo": "Estudiante de la Guerra: habilidad",
+              "desde": "habilidades",
+              "de": [
+                "Acrobacias",
+                "Atletismo",
+                "Historia",
+                "Intimidación",
+                "Percepción",
+                "Perspicacia",
+                "Persuasión",
+                "Supervivencia",
+                "Trato con Animales"
+              ]
+            }
+          },
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Superioridad en Combate",
+                  "subTitleName": "✦ SUPERIORIDAD EN COMBATE ✦",
+                  "subDescripcion": "Tu experiencia en el campo de batalla ha refinado tus técnicas de lucha. Aprendes maniobras que se alimentan de dados especiales llamados Dados de Superioridad.\n<b>Maniobras.</b> Aprendes tres maniobras de tu elección de la sección «Opciones de Maniobras» más adelante en la descripción de esta subclase. Muchas maniobras mejoran un ataque de alguna manera. Solo puedes usar una maniobra por ataque.\nAprendes dos maniobras adicionales de tu elección cuando alcanzas los niveles de Guerrero 7, 10 y 15. Cada vez que aprendas nuevas maniobras, también puedes reemplazar una maniobra que conozcas por una diferente.\n<b>Dados de Superioridad.</b> Tienes cuatro Dados de Superioridad, que son d8. Un Dado de Superioridad se gasta cuando lo usas. Recuperas todos los Dados de Superioridad gastados cuando terminas un Descanso Corto o Largo. Obtienes un Dado de Superioridad adicional cuando alcanzas los niveles de Guerrero 7 (cinco dados en total) y 15 (seis dados en total).\n<b>Tiros de Salvación.</b> Si una maniobra requiere un tiro de salvación, la CD es igual a 8 más tu modificador de Fuerza o Destreza (a tu elección) y el Bono de Competencia.",
+                  "elegir": {
+                    "lista": "maniobras",
+                    "cantidad": 3
+                  }
+                },
+                "subBlockDos": {
+                  "subName": "Estudiante de la Guerra",
+                  "subTitleName": "✦ ESTUDIANTE DE LA GUERRA ✦",
+                  "subDescripcion": "Obtienes competencia con un tipo de Herramientas de Artesano de tu elección y obtienes competencia en una habilidad de tu elección de las habilidades disponibles para Guerreros en el nivel 1.",
+                  "elegir": [
+                    {
+                      "lista": "herramienta-artesano",
+                      "cantidad": 1
+                    },
+                    {
+                      "lista": "habilidad-estudiante",
+                      "cantidad": 1
+                    }
+                  ]
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conoce a tu Enemigo",
+                  "subTitleName": "✦ CONOCE A TU ENEMIGO ✦",
+                  "subDescripcion": "Como Acción Adicional, puedes discernir ciertas fortalezas y debilidades de una criatura que puedes ver dentro de 30 pies de ti; sabes si esa criatura tiene alguna Inmunidad, Resistencia o Vulnerabilidad, y si la criatura tiene alguna, sabes cuáles son. Una vez que uses esta característica, no puedes volver a hacerlo hasta que termines un Descanso Largo. También puedes restaurar un uso de la característica gastando un Dado de Superioridad (sin necesidad de acción)."
+                }
+              },
+              "elegir": {
+                "lista": "maniobras",
+                "cantidad": 2,
+                "reemplazar": 1,
+                "rasgo": "Superioridad en Combate"
+              }
+            },
+            "10": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Superioridad en Combate Mejorada",
+                  "subTitleName": "✦ SUPERIORIDAD EN COMBATE MEJORADA ✦",
+                  "subDescripcion": "Tu Dado de Superioridad se convierte en un d10."
+                }
+              },
+              "elegir": {
+                "lista": "maniobras",
+                "cantidad": 2,
+                "reemplazar": 1,
+                "rasgo": "Superioridad en Combate"
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Implacable",
+                  "subTitleName": "✦ IMPLACABLE ✦",
+                  "subDescripcion": "Una vez por turno, cuando uses una maniobra, puedes lanzar 1d8 y usar el número obtenido en lugar de gastar un Dado de Superioridad."
+                }
+              },
+              "elegir": {
+                "lista": "maniobras",
+                "cantidad": 2,
+                "reemplazar": 1,
+                "rasgo": "Superioridad en Combate"
+              }
+            },
+            "18": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Superioridad en Combate Suprema",
+                  "subTitleName": "✦ SUPERIORIDAD EN COMBATE SUPREMA ✦",
+                  "subDescripcion": "Tu Dado de Superioridad se convierte en un d12."
+                }
+              }
+            }
+          }
+        },
+        "campeon": {
+          "subNombre": "Campeón",
+          "subDescripcion": "✦ CAMPEÓN ✦\nBuscar la Excelencia Física en el Combate\n\nUn Campeón se enfoca en el desarrollo de la destreza marcial en una búsqueda implacable de la victoria. Los Campeones combinan un entrenamiento riguroso con una excelencia física para asestar golpes devastadores, soportar peligros y obtener gloria. Ya sea en concursos atléticos o en sangrientos combates, los Campeones luchan por la corona del vencedor.",
+          "fuente": "Manual del Jugador",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Crítico Mejorado",
+                  "subTitleName": "✦ CRÍTICO MEJORADO ✦",
+                  "subDescripcion": "Tus tiradas de ataque con armas y Golpes Desarmados pueden conseguir un Golpe Crítico con una tirada de 19 o 20 en el d20."
+                },
+                "subBlockDos": {
+                  "subName": "Atleta Notable",
+                  "subTitleName": "✦ ATLETA NOTABLE ✦",
+                  "subDescripcion": "Gracias a tu atletismo, tienes Ventaja en tiradas de Iniciativa y pruebas de Fuerza (Atletismo). Además, inmediatamente después de realizar un Golpe Crítico, puedes moverte hasta la mitad de tu Velocidad sin provocar Ataques de Oportunidad."
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Estilo de Combate Adicional",
+                  "subTitleName": "✦ ESTILO DE COMBATE ADICIONAL ✦",
+                  "subDescripcion": "Obtienes otro estilo de combate de tu elección.",
+                  "elegir": {
+                    "lista": "estilo-combate",
+                    "cantidad": 1
+                  }
+                }
+              }
+            },
+            "10": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Guerrero Heroico",
+                  "subTitleName": "✦ GUERRERO HEROICO ✦",
+                  "subDescripcion": "La emoción del combate te impulsa hacia la victoria. Durante el combate, puedes darte Inspiración Heroica siempre que comiences tu turno sin ella."
+                }
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Crítico Superior",
+                  "subTitleName": "✦ CRÍTICO SUPERIOR ✦",
+                  "subDescripcion": "Tus tiradas de ataque con armas y Golpes Desarmados ahora pueden conseguir un Golpe Crítico con una tirada de 18-20 en el d20."
+                }
+              }
+            },
+            "18": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Sobreviviente",
+                  "subTitleName": "✦ SOBREVIVIENTE ✦",
+                  "subDescripcion": "Alcanzas el pináculo de la resiliencia en batalla, dándote estos beneficios:\n<b>Desafiar a la Muerte.</b> Tienes Ventaja en las Tiradas de Salvación contra la Muerte. Además, cuando saques 18-20 en una Tirada de Salvación contra la Muerte, obtienes el beneficio de lanzar un 20 en ella.\n<b>Rally Heroico.</b> Al inicio de cada uno de tus turnos, recuperas Puntos de Golpe igual a 5 más tu modificador de Constitución si estás Sangrando y tienes al menos 1 Punto de Golpe."
+                }
+              }
+            }
+          }
+        },
+        "caballero-arcano": {
+          "subNombre": "Caballero Arcano",
+          "subDescripcion": "✦ CABALLERO ARCANO ✦\nApoyar las Habilidades de Combate con Magia Arcana\n\nLos Caballeros Arcanos combinan la maestría marcial común a todos los Guerreros con un estudio cuidadoso de la magia. Sus hechizos tanto complementan como extienden sus habilidades de combate, proporcionando protección adicional para reforzar su armadura y permitiéndoles enfrentarse a muchos enemigos a la vez con magia explosiva.",
+          "fuente": "Manual del Jugador",
+          "listasDeEleccion": {
+            "trucos-mago": {
+              "titulo": "Trucos de Mago",
+              "desde": "conjuros",
+              "clase": "mago",
+              "niveles": [
+                0
+              ],
+              "reemplazarAlSubir": true,
+              "ayuda": "Se recomiendan Rayo de Escarcha y Agarre Eléctrico."
+            },
+            "hechizos-mago": {
+              "titulo": "Hechizos preparados de Mago",
+              "desde": "conjuros",
+              "clase": "mago",
+              "niveles": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "reemplazarAlSubir": true,
+              "ayuda": "Deben ser de un nivel para el que tengas ranuras de hechizo. Se recomiendan Manos Ardientes, Salto y Escudo."
+            }
+          },
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Lanzamiento de Hechizos",
+                  "subTitleName": "✦ LANZAMIENTO DE HECHIZOS ✦",
+                  "subDescripcion": "Has aprendido a lanzar hechizos. Consulta el capítulo 7 para las reglas sobre el lanzamiento de hechizos. La información a continuación detalla cómo utilizas esas reglas como Caballero Arcano.\n<b>Trucos.</b> Conoces dos trucos de tu elección de la lista de hechizos de Mago (consulta la sección de esa clase para ver la lista). Rayo de Escarcha y Agarre Eléctrico son recomendados. Cada vez que ganes un nivel de Guerrero, puedes reemplazar uno de estos trucos por otro truco de tu elección de la lista de hechizos de Mago. Cuando alcances el nivel 10 de Guerrero, aprendes otro truco de Mago de tu elección.\n<b>Ranuras de Hechizo.</b> La tabla de Hechizos de Caballero Arcano muestra cuántas ranuras de hechizo tienes para lanzar tus hechizos de nivel 1 y superiores. Recuperas todas las ranuras gastadas cuando terminas un Descanso Largo.\n\n<b>Lanzamiento de Hechizos del Caballero Arcano</b> (ranuras de hechizo por nivel de hechizo)\n<table><thead><tr><th>Nivel de guerrero</th><th>Hechizos preparados</th><th>Nv. 1</th><th>Nv. 2</th><th>Nv. 3</th><th>Nv. 4</th></tr></thead><tbody><tr><td>3</td><td>3</td><td>2</td><td>—</td><td>—</td><td>—</td></tr><tr><td>4</td><td>4</td><td>3</td><td>—</td><td>—</td><td>—</td></tr><tr><td>5</td><td>4</td><td>3</td><td>—</td><td>—</td><td>—</td></tr><tr><td>6</td><td>4</td><td>3</td><td>—</td><td>—</td><td>—</td></tr><tr><td>7</td><td>5</td><td>4</td><td>2</td><td>—</td><td>—</td></tr><tr><td>8</td><td>6</td><td>4</td><td>2</td><td>—</td><td>—</td></tr><tr><td>9</td><td>6</td><td>4</td><td>2</td><td>—</td><td>—</td></tr><tr><td>10</td><td>7</td><td>4</td><td>3</td><td>—</td><td>—</td></tr><tr><td>11</td><td>8</td><td>4</td><td>3</td><td>—</td><td>—</td></tr><tr><td>12</td><td>8</td><td>4</td><td>3</td><td>—</td><td>—</td></tr><tr><td>13</td><td>9</td><td>4</td><td>3</td><td>2</td><td>—</td></tr><tr><td>14</td><td>10</td><td>4</td><td>3</td><td>2</td><td>—</td></tr><tr><td>15</td><td>10</td><td>4</td><td>3</td><td>2</td><td>—</td></tr><tr><td>16</td><td>11</td><td>4</td><td>3</td><td>3</td><td>—</td></tr><tr><td>17</td><td>11</td><td>4</td><td>3</td><td>3</td><td>—</td></tr><tr><td>18</td><td>11</td><td>4</td><td>3</td><td>3</td><td>—</td></tr><tr><td>19</td><td>12</td><td>4</td><td>3</td><td>3</td><td>1</td></tr><tr><td>20</td><td>13</td><td>4</td><td>3</td><td>3</td><td>1</td></tr></tbody></table>\n\n<b>Hechizos Preparados de Nivel 1+.</b> Preparas la lista de hechizos de nivel 1 y superiores que están disponibles para lanzar con esta habilidad. Para empezar, elige tres hechizos de nivel 1 de la lista de hechizos de Mago. Se recomiendan Manos Ardientes, Salto y Escudo.\nEl número de hechizos en tu lista aumenta a medida que subes de nivel como Guerrero, como se muestra en la columna de Hechizos Preparados de la tabla de Lanzamiento de Hechizos del Caballero Arcano. Cada vez que ese número aumenta, elige hechizos adicionales de la lista de hechizos de Mago hasta que el número de hechizos en tu lista coincida con el número indicado en la tabla. Los hechizos elegidos deben ser de un nivel para el cual tengas ranuras de hechizo. Por ejemplo, si eres un Guerrero de nivel 7, tu lista de hechizos preparados puede incluir cinco hechizos de Mago de niveles 1 y 2 en cualquier combinación.\n<b>Cambiar Tus Hechizos Preparados.</b> Cada vez que subas de nivel como Guerrero, puedes reemplazar un hechizo en tu lista con otro hechizo de Mago para el cual tengas ranuras de hechizo.\n<b>Habilidad para Lanzar Hechizos.</b> La Inteligencia es tu habilidad para lanzar hechizos para tus hechizos de Mago.\n<b>Foco para Lanzar Hechizos.</b> Puedes usar un Foco Arcano como Foco para Lanzar Hechizos para tus hechizos de Mago.",
+                  "elegir": [
+                    {
+                      "lista": "trucos-mago",
+                      "cantidad": 2
+                    },
+                    {
+                      "lista": "hechizos-mago",
+                      "cantidad": 3,
+                      "nivelMax": 1
+                    }
+                  ]
+                },
+                "subBlockDos": {
+                  "subName": "Vínculo de Guerra",
+                  "subTitleName": "✦ VÍNCULO DE GUERRA ✦",
+                  "subDescripcion": "Aprendes un ritual que crea un vínculo mágico entre tú y un arma. Realizas el ritual durante 1 hora, que puede hacerse durante un Descanso Corto. El arma debe estar al alcance durante todo el ritual, al final del cual tocas el arma y forjas el vínculo. El vínculo falla si otro Guerrero está vinculado al arma o si el arma es un objeto mágico al cual otra persona está sintonizada. Una vez que te has vinculado a un arma, no puedes ser desarmado de esa arma a menos que tengas la condición de Incapacitado. Si está en el mismo plano de existencia, puedes convocar esa arma como una Acción Bonificada, haciendo que se teletransporte instantáneamente a tu mano. Puedes tener hasta dos armas vinculadas, pero solo puedes convocar una a la vez con una Acción Bonificada. Si intentas vincularte con un tercer arma, debes romper el vínculo con una de las otras dos."
+                }
+              }
+            },
+            "4": {
+              "elegir": {
+                "lista": "hechizos-mago",
+                "cantidad": 1,
+                "nivelMax": 1,
+                "rasgo": "Lanzamiento de Hechizos"
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Magia de Guerra",
+                  "subTitleName": "✦ MAGIA DE GUERRA ✦",
+                  "subDescripcion": "Cuando tomas la acción de Ataque en tu turno, puedes reemplazar uno de los ataques con el lanzamiento de uno de tus trucos de Mago que tenga un tiempo de lanzamiento de una acción."
+                }
+              },
+              "elegir": {
+                "lista": "hechizos-mago",
+                "cantidad": 1,
+                "nivelMax": 2,
+                "rasgo": "Lanzamiento de Hechizos"
+              }
+            },
+            "8": {
+              "elegir": {
+                "lista": "hechizos-mago",
+                "cantidad": 1,
+                "nivelMax": 2,
+                "rasgo": "Lanzamiento de Hechizos"
+              }
+            },
+            "10": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Golpe Arcano",
+                  "subTitleName": "✦ GOLPE ARCANO ✦",
+                  "subDescripcion": "Aprendes a hacer que tus golpes con armas debiliten la capacidad de una criatura para resistir tus hechizos. Cuando golpeas a una criatura con un ataque usando un arma, esa criatura tiene Desventaja en la siguiente tirada de salvación que haga contra un hechizo que lances antes del final de tu próximo turno."
+                }
+              },
+              "elegir": [
+                {
+                  "lista": "hechizos-mago",
+                  "cantidad": 1,
+                  "nivelMax": 2,
+                  "rasgo": "Lanzamiento de Hechizos"
+                },
+                {
+                  "lista": "trucos-mago",
+                  "cantidad": 1,
+                  "rasgo": "Lanzamiento de Hechizos"
+                }
+              ]
+            },
+            "11": {
+              "elegir": {
+                "lista": "hechizos-mago",
+                "cantidad": 1,
+                "nivelMax": 2,
+                "rasgo": "Lanzamiento de Hechizos"
+              }
+            },
+            "13": {
+              "elegir": {
+                "lista": "hechizos-mago",
+                "cantidad": 1,
+                "nivelMax": 3,
+                "rasgo": "Lanzamiento de Hechizos"
+              }
+            },
+            "14": {
+              "elegir": {
+                "lista": "hechizos-mago",
+                "cantidad": 1,
+                "nivelMax": 3,
+                "rasgo": "Lanzamiento de Hechizos"
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Carga Arcana",
+                  "subTitleName": "✦ CARGA ARCANA ✦",
+                  "subDescripcion": "Cuando uses tu Impulso de Acción, puedes teletransportarte hasta 30 pies a un espacio desocupado que puedas ver. Puedes teletransportarte antes o después de la acción adicional."
+                }
+              }
+            },
+            "16": {
+              "elegir": {
+                "lista": "hechizos-mago",
+                "cantidad": 1,
+                "nivelMax": 3,
+                "rasgo": "Lanzamiento de Hechizos"
+              }
+            },
+            "18": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Magia de Guerra Mejorada",
+                  "subTitleName": "✦ MAGIA DE GUERRA MEJORADA ✦",
+                  "subDescripcion": "Cuando tomas la acción de Ataque en tu turno, puedes reemplazar dos de los ataques con el lanzamiento de uno de tus hechizos de Mago de nivel 1 o nivel 2 que tenga un tiempo de lanzamiento de una acción."
+                }
+              }
+            },
+            "19": {
+              "elegir": {
+                "lista": "hechizos-mago",
+                "cantidad": 1,
+                "nivelMax": 4,
+                "rasgo": "Lanzamiento de Hechizos"
+              }
+            },
+            "20": {
+              "elegir": {
+                "lista": "hechizos-mago",
+                "cantidad": 1,
+                "nivelMax": 4,
+                "rasgo": "Lanzamiento de Hechizos"
+              }
+            }
+          }
+        },
+        "guerrero-psiquico": {
+          "subNombre": "Guerrero Psíquico",
+          "subDescripcion": "✦ GUERRERO PSÍQUICO ✦\nAumenta la Fuerza Física con Poder Psíquico\n\nLos Guerreros Psíquicos despiertan el poder de sus mentes para aumentar su fuerza física. Aprovechan este poder psíquico para infundir sus golpes con armas, lanzar energía telequinética y crear barreras de fuerza mental.",
+          "fuente": "Manual del Jugador",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Poder Psíquico",
+                  "subTitleName": "✦ PODER PSÍQUICO ✦",
+                  "subDescripcion": "Albergas una fuente de energía psíquica dentro de ti. Se representa mediante tus Dados de Energía Psíquica, que alimentan los poderes que tienes de esta subclase. La tabla de Dados de Energía del Guerrero Psíquico muestra el tamaño de dado y el número de estos dados que tienes cuando alcanzas ciertos niveles de Guerrero.\n\n<b>Dados de Energía del Guerrero Psíquico</b>\n<table><thead><tr><th>Nivel de guerrero</th><th>Dado</th><th>Número</th></tr></thead><tbody><tr><td>3</td><td>D6</td><td>4</td></tr><tr><td>5</td><td>D8</td><td>6</td></tr><tr><td>9</td><td>D8</td><td>8</td></tr><tr><td>11</td><td>D10</td><td>8</td></tr><tr><td>13</td><td>D10</td><td>10</td></tr><tr><td>17</td><td>D12</td><td>12</td></tr></tbody></table>\n\nCualquier característica en esta subclase que use un Dado de Energía Psíquica utiliza solo los dados de esta subclase. Algunos de tus poderes gastan el Dado de Energía Psíquica, según se especifica en la descripción de un poder, y no puedes usar un poder si requiere que uses un dado cuando todos tus Dados de Energía Psíquica están agotados. Recuperas uno de tus Dados de Energía Psíquica gastados cuando terminas un Descanso Corto, y recuperas todos ellos cuando terminas un Descanso Largo.\n<b>Campo Protector.</b> Cuando tú u otra criatura que puedas ver a 30 pies de ti recibe daño, puedes usar una Reacción para gastar un Dado de Energía Psíquica, lanzarlo y reducir el daño recibido por el número obtenido más tu modificador de Inteligencia (reducción mínima de 1), ya que creas un escudo momentáneo de fuerza telequinética.\n<b>Golpe Psíquico.</b> Puedes impulsar tus armas con fuerza psíquica. Una vez en cada uno de tus turnos, inmediatamente después de que golpees a un objetivo a 30 pies de ti con un ataque y le hagas daño con un arma, puedes gastar un Dado de Energía Psíquica, lanzarlo y hacerle daño de Fuerza al objetivo igual al número obtenido más tu modificador de Inteligencia.\n<b>Movimiento Telequinético.</b> Puedes mover un objeto o una criatura con tu mente. Como una acción mágica, elige un objetivo que puedas ver a 30 pies de ti; el objetivo debe ser un objeto suelto que sea Grande o más pequeño o una criatura dispuesta distinta a ti. Transportas al objetivo hasta 30 pies a un lugar desocupado que puedas ver. Alternativamente, si el objetivo es un objeto diminuto, puedes transportarlo hacia o desde tu mano. Una vez que realices esta acción, no podrás hacerlo nuevamente hasta que termines un Descanso Corto o Largo, a menos que gastes un Dado de Energía Psiónica (no se requiere acción) para restaurar su uso."
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Adepto Telequinético",
+                  "subTitleName": "✦ ADEPTO TELEQUINÉTICO ✦",
+                  "subDescripcion": "Has dominado nuevas formas de utilizar tus habilidades telequinéticas, detalladas a continuación.\n<b>Salto Impulsado por Psiónica.</b> Como Acción Bónus, obtienes una Velocidad de Vuelo igual al doble de tu Velocidad hasta el final del turno actual. Una vez que realices esta Acción Bónus, no podrás hacerlo nuevamente hasta que termines un Descanso Corto o Largo, a menos que gastes un Dado de Energía Psiónica (no se requiere acción) para restaurar su uso.\n<b>Empuje Telequinético.</b> Cuando haces daño a un objetivo con tu Golpe Psíquico, puedes forzar al objetivo a hacer una tirada de salvación de Fuerza (DC 8 más tu modificador de Inteligencia y tu Bonificación de Competencia). En una salvación fallida, puedes darle al objetivo la condición Derribado o transportarlo hasta 10 pies horizontalmente."
+                }
+              }
+            },
+            "10": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Mente Protegida",
+                  "subTitleName": "✦ MENTE PROTEGIDA ✦",
+                  "subDescripcion": "Tienes Resistencia al daño Psíquico. Además, si comienzas tu turno con la condición de Encantado o Aterrorizado, puedes gastar un Dado de Energía Psiónica (no se requiere acción) y terminar todos los efectos en ti que te estén dando esas condiciones.",
+                  "efectos": [
+                    {
+                      "type": "resistencia",
+                      "value": "psiquico"
+                    }
+                  ]
+                }
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Muro de Fuerza",
+                  "subTitleName": "✦ MURO DE FUERZA ✦",
+                  "subDescripcion": "Puedes protegerte a ti mismo y a otros con fuerza telequinética. Como Acción Bónus, puedes elegir criaturas, incluyéndote a ti, dentro de 30 pies de ti, hasta un número de criaturas igual a tu modificador de Inteligencia (mínimo una criatura). Cada una de las criaturas elegidas tiene Media Cobertura durante 1 minuto o hasta que tenga la condición Incapacitado.\nUna vez que uses esta característica, no podrás hacerlo nuevamente hasta que termines un Descanso Largo, a menos que gastes un Dado de Energía Psiónica (no se requiere acción) para restaurar su uso."
+                }
+              }
+            },
+            "18": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Maestro Telequinético",
+                  "subTitleName": "✦ MAESTRO TELEQUINÉTICO ✦",
+                  "subDescripcion": "Siempre tienes el hechizo Telequinesis preparado. Con esta característica, puedes lanzarlo sin gastar un espacio de conjuro ni componentes, y tu habilidad para lanzarlo es Inteligencia. En cada uno de tus turnos mientras mantienes la Concentración en él, incluyendo el turno en que lo lanzas, puedes realizar un ataque con un arma como Acción Bónus.\nUna vez que lances el hechizo con esta característica, no podrás hacerlo de esta manera nuevamente hasta que termines un Descanso Largo, a menos que gastes un Dado de Energía Psiónica (no se requiere acción) para restaurar su uso."
+                }
+              }
+            }
+          }
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Segundo Aliento",
+          "Maestría en Armas"
+        ],
+        "filas": [
+          [
+            "2",
+            "3"
+          ]
+        ]
+      }
+    },
+    "4": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Mejora de Puntuación de Habilidad",
+          "titleName": "✦ MEJORA DE PUNTUACIÓN DE HABILIDAD ✦",
+          "descripcion": "Obtienes el rasgo de Mejora de Puntuación de Habilidad (ver capítulo 5) u otro rasgo de tu elección para el cual califiques. Obtienes este rasgo nuevamente en los niveles 6, 8, 12, 14 y 16 de Luchador."
+        }
+      },
+      "elegir": {
+        "lista": "maestria-armas",
+        "cantidad": 1,
+        "rasgo": "Maestría en Armas"
+      },
+      "infoCubo": {
+        "columnas": [
+          "Segundo Aliento",
+          "Maestría en Armas"
+        ],
+        "filas": [
+          [
+            "3",
+            "4"
+          ]
+        ]
+      }
+    },
+    "5": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Ataque Adicional",
+          "titleName": "✦ ATAQUE ADICIONAL ✦",
+          "descripcion": "Puedes atacar dos veces en lugar de una siempre que realices la acción de Ataque en tu turno."
+        },
+        "blockDos": {
+          "name": "Cambio Táctico",
+          "titleName": "✦ CAMBIO TÁCTICO ✦",
+          "descripcion": "Siempre que actives tu Segundo Viento con una Acción Adicional, puedes moverte hasta la mitad de tu Velocidad sin provocar Ataques de Oportunidad."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Segundo Aliento",
+          "Maestría en Armas"
+        ],
+        "filas": [
+          [
+            "3",
+            "4"
+          ]
+        ]
+      }
+    },
+    "6": {
+      "infoCubo": {
+        "columnas": [
+          "Segundo Aliento",
+          "Maestría en Armas"
+        ],
+        "filas": [
+          [
+            "3",
+            "4"
+          ]
+        ]
+      }
+    },
+    "7": {
+      "infoCubo": {
+        "columnas": [
+          "Segundo Aliento",
+          "Maestría en Armas"
+        ],
+        "filas": [
+          [
+            "3",
+            "4"
+          ]
+        ]
+      }
+    },
+    "8": {
+      "infoCubo": {
+        "columnas": [
+          "Segundo Aliento",
+          "Maestría en Armas"
+        ],
+        "filas": [
+          [
+            "3",
+            "4"
+          ]
+        ]
+      }
+    },
+    "9": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Indomable",
+          "titleName": "✦ INDOMABLE ✦",
+          "descripcion": "Si fallas una tirada de salvación, puedes volver a tirarla con un bono igual a tu nivel de Luchador. Debes usar el nuevo resultado, y no puedes usar esta característica nuevamente hasta que termines un Descanso Largo.\nPuedes usar esta característica dos veces antes de un Descanso Largo a partir del nivel 13 y tres veces antes de un Descanso Largo a partir del nivel 17."
+        },
+        "blockDos": {
+          "name": "Maestro Táctico",
+          "titleName": "✦ MAESTRO TÁCTICO ✦",
+          "descripcion": "Cuando ataques con un arma cuya propiedad de maestría puedes usar, puedes reemplazar esa propiedad con la propiedad Empujar, Aturdir o Lentitud para ese ataque."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Segundo Aliento",
+          "Maestría en Armas"
+        ],
+        "filas": [
+          [
+            "3",
+            "4"
+          ]
+        ]
+      }
+    },
+    "10": {
+      "elegir": {
+        "lista": "maestria-armas",
+        "cantidad": 1,
+        "rasgo": "Maestría en Armas"
+      },
+      "infoCubo": {
+        "columnas": [
+          "Segundo Aliento",
+          "Maestría en Armas"
+        ],
+        "filas": [
+          [
+            "4",
+            "5"
+          ]
+        ]
+      }
+    },
+    "11": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Dos Ataques Adicionales",
+          "titleName": "✦ DOS ATAQUES ADICIONALES ✦",
+          "descripcion": "Puedes atacar tres veces en lugar de una siempre que realices la acción de Ataque en tu turno."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Segundo Aliento",
+          "Maestría en Armas"
+        ],
+        "filas": [
+          [
+            "4",
+            "5"
+          ]
+        ]
+      }
+    },
+    "12": {
+      "infoCubo": {
+        "columnas": [
+          "Segundo Aliento",
+          "Maestría en Armas"
+        ],
+        "filas": [
+          [
+            "4",
+            "5"
+          ]
+        ]
+      }
+    },
+    "13": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Ataques Estudiados",
+          "titleName": "✦ ATAQUES ESTUDIADOS ✦",
+          "descripcion": "Estudias a tus oponentes y aprendes de cada ataque que realizas. Si realizas una tirada de ataque contra una criatura y fallas, tienes Ventaja en tu siguiente tirada de ataque contra esa criatura antes del final de tu próximo turno."
+        },
+        "blockDos": {
+          "name": "Indomable (2)",
+          "titleName": "✦ INDOMABLE (2) ✦",
+          "descripcion": "Puedes usar Indomable dos veces antes de un Descanso Largo."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Segundo Aliento",
+          "Maestría en Armas"
+        ],
+        "filas": [
+          [
+            "4",
+            "5"
+          ]
+        ]
+      }
+    },
+    "14": {
+      "infoCubo": {
+        "columnas": [
+          "Segundo Aliento",
+          "Maestría en Armas"
+        ],
+        "filas": [
+          [
+            "4",
+            "5"
+          ]
+        ]
+      }
+    },
+    "15": {
+      "infoCubo": {
+        "columnas": [
+          "Segundo Aliento",
+          "Maestría en Armas"
+        ],
+        "filas": [
+          [
+            "4",
+            "5"
+          ]
+        ]
+      }
+    },
+    "16": {
+      "elegir": {
+        "lista": "maestria-armas",
+        "cantidad": 1,
+        "rasgo": "Maestría en Armas"
+      },
+      "infoCubo": {
+        "columnas": [
+          "Segundo Aliento",
+          "Maestría en Armas"
+        ],
+        "filas": [
+          [
+            "4",
+            "6"
+          ]
+        ]
+      }
+    },
+    "17": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Impulso de Acción (2) e Indomable (3)",
+          "titleName": "✦ IMPULSO DE ACCIÓN (2) E INDOMABLE (3) ✦",
+          "descripcion": "Puedes usar Impulso de Acción dos veces antes de un descanso, pero solo una vez por turno. Puedes usar Indomable tres veces antes de un Descanso Largo."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Segundo Aliento",
+          "Maestría en Armas"
+        ],
+        "filas": [
+          [
+            "4",
+            "6"
+          ]
+        ]
+      }
+    },
+    "18": {
+      "infoCubo": {
+        "columnas": [
+          "Segundo Aliento",
+          "Maestría en Armas"
+        ],
+        "filas": [
+          [
+            "4",
+            "6"
+          ]
+        ]
+      }
+    },
+    "19": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Beneficio Épico",
+          "titleName": "✦ BENEFICIO ÉPICO ✦",
+          "descripcion": "Obtienes un feat de Beneficio Épico (consulta el capítulo 5) u otro feat de tu elección para el cual calificas. Se recomienda el Beneficio de Destreza en Combate."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Segundo Aliento",
+          "Maestría en Armas"
+        ],
+        "filas": [
+          [
+            "4",
+            "6"
+          ]
+        ]
+      }
+    },
+    "20": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Tres Ataques Adicionales",
+          "titleName": "✦ TRES ATAQUES ADICIONALES ✦",
+          "descripcion": "Puedes atacar cuatro veces en lugar de una siempre que realices la acción de Ataque en tu turno."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Segundo Aliento",
+          "Maestría en Armas"
+        ],
+        "filas": [
+          [
+            "4",
+            "6"
+          ]
+        ]
+      }
+    }
+  }
 }

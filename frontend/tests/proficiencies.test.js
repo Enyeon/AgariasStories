@@ -1,7 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import { createCharacter, createTrait } from '../src/domain/schema.js';
 import { computeSheet, hitPoints, abilityScores } from '../src/domain/rules.js';
-import { applyLevelUp, planLevelUp, setRace } from '../src/domain/progression.js';
+import { planLevelUp, setRace } from '../src/domain/progression.js';
+import { applyLevelUp } from './helpers/auto-choices.js';
 import {
   classProficiencies, proficiencySources, setClassSkills, setClassSaves, classChoiceStatus, pendingClassChoices,
 } from '../src/domain/proficiencies.js';

@@ -13,6 +13,8 @@ import {
   planLevelUp, applyLevelUp, applyLevelUps, levelNeedsDecisions, rollDie, validateImprovement, canLevelUp,
   levelDownPreview, forgetSpells,
 } from '../domain/progression.js';
+import { knownChoices, listSource, validateChoices, expandGrants } from '../domain/class-choices.js';
+import { choiceGroupsHtml, bindChoiceGroups, choicesError, choicesSummary, choicesPayload } from './components/choice-picker.js';
 
 const normalize = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 
@@ -155,6 +157,7 @@ export function openLevelUpWizard(character, opts = {}) {
         asi: [null, null],
         feat: null,
         featureChoice: [],
+        elecciones: {},
         hpRoll: null,
         hpMethod: null,
         error: '',
@@ -162,6 +165,17 @@ export function openLevelUpWizard(character, opts = {}) {
       const scores = abilityScores(character);
       const current = classLevels(character);
       const hpMode = opts.preset?.hpMode ?? 'ask';
+      // Catálogo de conjuros: sólo se carga si alguna elección es de conjuros.
+      let spells = null;
+      let spellsRequested = false;
+      // Elecciones del nivel, incluidas las que abre una opción ya marcada.
+      const choiceGroups = () => expandGrants(state.classKey, character.subclasses[state.classKey] ?? state.subclass, state.plan?.choices ?? [], choicesPayload(state.elecciones));
+      const needsSpells = () => choiceGroups().some((g) => listSource(g.def) === 'conjuros');
+      function ensureSpells() {
+        if (spells || spellsRequested || !needsSpells()) return;
+        spellsRequested = true;
+        loadSpells().then((s) => { spells = s; if (state.step === 'choices') render(); }).catch(() => {});
+      }
 
       function presetHp() {
         if (!state.plan || state.plan.isFirstLevel || hpMode === 'ask') return;
@@ -178,6 +192,7 @@ export function openLevelUpWizard(character, opts = {}) {
         const s = ['class'];
         if (state.plan?.needsSubclass) s.push('subclass');
         if (state.plan?.needsImprovement) s.push('improvement');
+        if (state.plan?.choices?.length) s.push('choices');
         if (state.plan?.featureChoice) s.push('feature');
         if (!multi || hpMode === 'ask' || state.plan?.isFirstLevel) s.push('hp');
         if (!multi) s.push('confirm');
@@ -186,9 +201,9 @@ export function openLevelUpWizard(character, opts = {}) {
       if (opts.preset?.classKey) state.step = steps()[1] ?? 'class';
       const startStep = state.step;
       wizardState = {
-        dirty: () => multi || state.step !== startStep || Boolean(state.subclass || state.feat || state.asi?.some(Boolean) || state.featureChoice?.length),
+        dirty: () => multi || state.step !== startStep || Boolean(state.subclass || state.feat || state.asi?.some(Boolean) || state.featureChoice?.length || Object.keys(choicesPayload(state.elecciones)).length),
       };
-      const LABELS = { class: 'Clase', subclass: 'Subclase', improvement: 'Mejora', feature: 'Rasgo', hp: 'Puntos de golpe', confirm: 'Confirmar' };
+      const LABELS = { class: 'Clase', subclass: 'Subclase', improvement: 'Mejora', feature: 'Rasgo', choices: 'Elecciones', hp: 'Puntos de golpe', confirm: 'Confirmar' };
 
       function improvement() {
         if (!state.plan?.needsImprovement) return undefined;
@@ -252,6 +267,13 @@ export function openLevelUpWizard(character, opts = {}) {
           <div class="chips">${fc.allowed.map((k) => html`<label class="chip"><input type="checkbox" data-feature value="${k}" ${state.featureChoice.includes(k) ? raw('checked') : ''}>${ABILITY_LABEL[k]}</label>`)}</div>`;
       }
 
+      function stepChoices() {
+        ensureSpells();
+        const required = state.plan.choices.some((g) => g.cantidad > 0);
+        return html`<p class="muted">${state.plan.className} ${state.plan.newClassLevel}: ${required ? 'tus rasgos de este nivel te piden elegir.' : 'puedes cambiar una elección anterior (opcional).'}</p>
+          ${choiceGroupsHtml(choiceGroups(), state.elecciones, { known: knownChoices(character, state.classKey), spells })}`;
+      }
+
       function stepHp() {
         const die = state.plan.hitDie;
         const con = abilityModifier(scores.constitucion.total);
@@ -284,12 +306,13 @@ export function openLevelUpWizard(character, opts = {}) {
           ${subName ? html`<li><span>${p.subclassLabel}</span><strong>${subName}</strong></li>` : ''}
           ${imp ? html`<li><span>Mejora</span><strong>${imp.type === 'asi' ? Object.entries(imp.increases).map(([k, v]) => `${ABILITY_LABEL[k]} +${v}`).join(', ') : `Dote: ${featName(imp.name)}`}</strong></li>` : ''}
           ${state.featureChoice.length ? html`<li><span>Rasgo de clase</span><strong>${state.featureChoice.map((k) => ABILITY_LABEL[k]).join(', ')} +${p.featureChoice.bonus}</strong></li>` : ''}
+          ${choicesSummary(choiceGroups(), state.elecciones).map((t) => html`<li><span>Elección</span><strong>${t}</strong></li>`)}
           ${p.milestone?.statAmount ? html`<li><span>Bonificación de clase</span><strong>${Object.entries(p.milestone.statAmount).filter(([k]) => k !== 'choice').map(([k, v]) => `${ABILITY_LABEL[k]} +${v}`).join(', ')}</strong></li>` : ''}
           <li><span>Dado de golpe</span><strong>${hp} (d${p.hitDie})</strong></li>
         </ul>`;
       }
 
-      const RENDER = { class: stepClass, subclass: stepSubclass, improvement: stepImprovement, feature: stepFeature, hp: stepHp, confirm: stepConfirm };
+      const RENDER = { class: stepClass, subclass: stepSubclass, improvement: stepImprovement, feature: stepFeature, choices: stepChoices, hp: stepHp, confirm: stepConfirm };
 
       function validateStep() {
         switch (state.step) {
@@ -299,6 +322,12 @@ export function openLevelUpWizard(character, opts = {}) {
             const imp = improvement();
             if (!imp) return state.improvementType === 'feat' ? 'Elige una dote (y su atributo si corresponde).' : 'Completa el reparto de atributos.';
             return validateImprovement(character, imp).join(' ');
+          }
+          case 'choices': {
+            const groups = choiceGroups();
+            const msg = choicesError(groups, state.elecciones);
+            if (msg) return msg;
+            return validateChoices(knownChoices(character, state.classKey), groups, choicesPayload(state.elecciones), { spells }).errors.join(' ');
           }
           case 'feature': return state.featureChoice.length === state.plan.featureChoice.count ? '' : `Elige ${state.plan.featureChoice.count} atributo(s).`;
           case 'hp': return state.plan.isFirstLevel || state.hpRoll ? '' : 'Tira el dado, usa el promedio o introduce tu tirada.';
@@ -328,6 +357,14 @@ export function openLevelUpWizard(character, opts = {}) {
             onChange: (f) => { state.feat = f; state.error = ''; },
           });
         }
+        if (state.step === 'choices') {
+          const shown = choiceGroups().map((g) => `${g.lista}:${g.cantidad}`).join();
+          bindChoiceGroups(body, choiceGroups(), state.elecciones, { known: knownChoices(character, state.classKey), spells }, () => {
+            state.error = '';
+            // Una opción que abre otras elecciones (p. ej. Guerrero Bendito → 2 trucos): se redibuja el paso.
+            if (choiceGroups().map((g) => `${g.lista}:${g.cantidad}`).join() !== shown) render();
+          });
+        }
         body.querySelector('.wizard__body').scrollTop = 0;
       }
 
@@ -343,7 +380,7 @@ export function openLevelUpWizard(character, opts = {}) {
               hpRoll: state.hpRoll,
               improvement: improvement(),
               subclass: state.subclass,
-              featureChoices: { statAmount: state.featureChoice },
+              featureChoices: { statAmount: state.featureChoice, elecciones: choicesPayload(state.elecciones) },
             };
             const res = applyLevelUp(character, choices);
             if (res.errors.length) { state.error = res.errors.join(' '); return render(); }
@@ -366,7 +403,7 @@ export function openLevelUpWizard(character, opts = {}) {
           if (state.classKey !== cls.dataset.class) {
             state.classKey = cls.dataset.class;
             state.plan = planLevelUp(character, state.classKey);
-            Object.assign(state, { subclass: null, feat: null, asi: [null, null], featureChoice: [], hpRoll: null, hpMethod: null });
+            Object.assign(state, { subclass: null, feat: null, asi: [null, null], featureChoice: [], elecciones: {}, hpRoll: null, hpMethod: null });
             presetHp();
           }
           state.error = '';
@@ -387,6 +424,9 @@ export function openLevelUpWizard(character, opts = {}) {
         const t = e.target;
         if (t.name === 'subclass') {
           state.subclass = t.value;
+          // Las elecciones de la subclase dependen de cuál se elija.
+          state.plan = planLevelUp(character, state.classKey, { subclass: state.subclass });
+          state.elecciones = {};
           body.querySelectorAll('.option-card').forEach((card) => card.classList.toggle('is-selected', card.contains(t)));
         }
         else if (t.name === 'imp-type') { state.improvementType = t.value; render(); }
@@ -468,6 +508,7 @@ function openMultiLevelSummary(original, final, steps) {
               imp?.type === 'asi' ? Object.entries(imp.increases).map(([k, v]) => `${ABILITY_LABEL[k]} +${v}`).join(', ') : '',
               imp?.type === 'feat' ? `Dote: ${featName(imp.name)}` : '',
               st.choices.featureChoices?.statAmount?.length ? `Rasgo: ${st.choices.featureChoices.statAmount.map((k) => ABILITY_LABEL[k]).join(', ')}` : '',
+              ...choicesSummary(expandGrants(st.choices.classKey, st.before.subclasses[st.choices.classKey] ?? st.choices.subclass, planLevelUp(st.before, st.choices.classKey, { subclass: st.choices.subclass }).choices, st.choices.featureChoices?.elecciones ?? {}), st.choices.featureChoices?.elecciones ?? {}),
             ].filter(Boolean).join(' · ');
             return html`<tr><td class="num">${lvl}</td><td>${getClass(st.choices.classKey)?.nombre ?? st.choices.classKey}</td><td>${notes || html`<span class="muted">—</span>`}</td><td class="num">${lvl === 1 ? 'máx.' : st.choices.hpRoll}</td></tr>`;
           })}</tbody>

@@ -2,6 +2,8 @@
   "nombre": "Bardo",
   "claseName": "bardo",
   "seccion": "manual",
+  "icono": "🎻",
+  "fuenteReglas": "Manual del Jugador",
   "dadoDeGolpe": 8,
   "nivelesDeAumento": [
     4,
@@ -11,178 +13,58 @@
   ],
   "conjurador": true,
   "attribute": "carisma",
-  "niveles": {
-    "1": {
-      "descripcion": "Artista arcano que manipula la magia a través del arte, la palabra y la emoción.",
-      "descripcionLarga": "El Bardo entiende que la realidad vibra. La música, la poesía y el relato no son entretenimiento: son herramientas para alterar lo que existe. Inspira aliados, desarma enemigos y reescribe el ánimo del campo de batalla. Su magia fluye desde la creatividad y el ingenio. Es diplomático, espía, sabio y provocador. Donde otros lanzan fuego, él altera voluntades.",
-      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Destreza y Carisma.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d8.\n    :: Nivel 1: 8 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d8 (o 5) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Armadura ligera.\n    :: Armas: Armas simples, Ballestas de mano, Espadas largas, Estoques y Espadas cortas.\n    :: Herramientas: Tres instrumentos musicales a tu elección.\n    :: Habilidades: escoge tres cualesquiera.\n❖ Equipo. Comienzas con el siguiente equipo, además del que te dé tu trasfondo:\n    :: (a) un estoque, (b) una espada larga o (c) cualquier arma simple.\n    :: (a) un paquete de diplomático o (b) un paquete de artista.\n    :: (a) un laúd o (b) cualquier otro instrumento musical.\n    :: Armadura de cuero y una daga.\n    :: Alternativa: 5d4 × 10 po en lugar del equipo de clase.\n❖ Fuente: Manual del Jugador.",
-      "informacionNivel": "✦  ✦\n\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n\n✦  ✦"
-    },
-    "2": {
-      "informacionNivel": "✦  ✦",
-      "infoBlock": {
-        "blockUno": {
-          "name": "",
-          "titleName": "✦  ✦",
-          "descripcion": ""
-        },
-        "blockDos": {
-          "name": "",
-          "titleName": "✦  ✦",
-          "descripcion": ""
-        },
-        "blockTres": {
-          "name": "",
-          "titleName": "✦  ✦",
-          "descripcion": ""
-        }
-      },
-      "infoCubo": {
-        "columnas": [
-          "",
-          ""
-        ],
-        "filas": [
-          [
-            "",
-            ""
-          ]
-        ]
-      }
-    },
-    "3": {
-      "informacionNivel": "✦  ✦",
-      "infoBlock": {
-        "blockUno": {
-          "name": "",
-          "titleName": "✦  ✦",
-          "descripcion": ""
-        },
-        "blockDos": {
-          "name": "",
-          "titleName": "✦  ✦",
-          "descripcion": ""
-        },
-        "blockTres": {
-          "name": "",
-          "titleName": "✦  ✦",
-          "descripcion": ""
-        }
-      },
-      "infoCubo": {
-        "columnas": [
-          "",
-          ""
-        ],
-        "filas": [
-          [
-            "",
-            ""
-          ]
-        ]
-      },
-      "subClase": {
-        "conocimiento": {
-          "subNombre": "Colegio del Conocimiento",
-          "subDescripcion": "Bardos que reúnen saber de todas partes: más habilidades y secretos mágicos de otras clases.",
-          "subNivel": {},
-          "rasgosPendientes": true,
-          "fuente": "Manual del Jugador"
-        },
-        "valor": {
-          "subNombre": "Colegio del Valor",
-          "subDescripcion": "Escaldos que inspiran en combate: armaduras medias, escudos, armas marciales y ataque adicional.",
-          "subNivel": {},
-          "rasgosPendientes": true,
-          "fuente": "Manual del Jugador"
-        }
-      }
-    },
-    "4": {
-      "informacionNivel": "✦  ✦",
-      "infoBlock": {
-        "blockUno": {
-          "name": "",
-          "titleName": "✦  ✦",
-          "descripcion": ""
-        },
-        "blockDos": {
-          "name": "",
-          "titleName": "✦  ✦",
-          "descripcion": ""
-        },
-        "blockTres": {
-          "name": "",
-          "titleName": "✦  ✦",
-          "descripcion": ""
-        }
-      },
-      "infoCubo": {
-        "columnas": [
-          "",
-          ""
-        ],
-        "filas": [
-          [
-            "",
-            ""
-          ]
-        ]
-      }
-    },
-    "5": {
-      "informacionNivel": "✦  ✦"
-    },
-    "6": {
-      "informacionNivel": "✦  ✦"
-    },
-    "7": {
-      "informacionNivel": "✦  ✦"
-    },
-    "8": {
-      "informacionNivel": "✦  ✦"
-    },
-    "9": {
-      "informacionNivel": "✦  ✦"
-    },
-    "10": {
-      "informacionNivel": "✦  ✦"
-    },
-    "11": {
-      "informacionNivel": "✦  ✦"
-    },
-    "12": {
-      "informacionNivel": "✦  ✦"
-    },
-    "13": {
-      "informacionNivel": "✦  ✦"
-    },
-    "14": {
-      "informacionNivel": "✦  ✦"
-    },
-    "15": {
-      "informacionNivel": "✦  ✦"
-    },
-    "16": {
-      "informacionNivel": "✦  ✦"
-    },
-    "17": {
-      "informacionNivel": "✦  ✦"
-    },
-    "18": {
-      "informacionNivel": "✦  ✦"
-    },
-    "19": {
-      "informacionNivel": "✦  ✦"
-    },
-    "20": {
-      "informacionNivel": "✦  ✦"
-    }
+  "lanzamiento": {
+    "progression": "full",
+    "cantripsKnown": [
+      2,
+      2,
+      2,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "preparedTable": [
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11,
+      12,
+      14,
+      15,
+      16,
+      16,
+      17,
+      17,
+      18,
+      18,
+      19,
+      20,
+      21,
+      22
+    ]
   },
   "pericias": {
-    "3": 2,
-    "10": 2
+    "2": 2,
+    "9": 2
   },
+  "subclaseNombre": "Colegio de bardo",
   "competencias": {
     "salvaciones": [
       "destreza",
@@ -192,15 +74,9 @@
       "Armadura ligera"
     ],
     "armas": [
-      "Armas simples",
-      "Ballestas de mano",
-      "Espadas largas",
-      "Estoques",
-      "Espadas cortas"
+      "Armas simples"
     ],
-    "herramientas": [
-      "Tres instrumentos musicales a tu elección"
-    ],
+    "herramientas": [],
     "habilidades": {
       "elegir": 3,
       "de": "cualquiera"
@@ -211,27 +87,747 @@
       "Armadura ligera"
     ],
     "armas": [],
-    "herramientas": [
-      "Un instrumento musical a tu elección"
-    ],
+    "herramientas": [],
     "habilidades": {
       "elegir": 1,
       "de": "cualquiera"
     }
   },
   "equipoInicial": [
-    "(a) un estoque, (b) una espada larga o (c) cualquier arma simple.",
-    "(a) un paquete de diplomático o (b) un paquete de artista.",
-    "(a) un laúd o (b) cualquier otro instrumento musical.",
-    "Armadura de cuero y una daga."
+    "(A) Armadura de cuero, 2 dagas, instrumento musical de tu elección, equipo de entretenimiento y 19 PO.",
+    "(B) 90 PO."
   ],
-  "oroInicial": "5d4 × 10",
-  "fuenteReglas": "Manual del Jugador",
-  "subclaseNombre": "Colegio de bardo",
+  "listasDeEleccion": {
+    "instrumentos-bardo": {
+      "titulo": "Instrumentos musicales",
+      "libre": true,
+      "placeholder": "Instrumento musical (p. ej. Laúd)",
+      "ayuda": "Elige 3 instrumentos musicales (ver capítulo 6). Si el Bardo es tu segunda clase, eliges 1.",
+      "efectoLibre": {
+        "type": "competencia",
+        "kind": "herramienta"
+      }
+    }
+  },
   "subclasesRetiradas": [
     "senda1",
     "senda2",
     "senda3",
     "senda4"
-  ]
+  ],
+  "niveles": {
+    "1": {
+      "descripcion": "Artista arcano que manipula la magia a través del arte, la palabra y la emoción.",
+      "descripcionLarga": "El Bardo entiende que la realidad vibra. La música, la poesía y el relato no son entretenimiento: son herramientas para alterar lo que existe. Inspira aliados, desarma enemigos y reescribe el ánimo del campo de batalla. Su magia fluye desde la creatividad y el ingenio. Es diplomático, espía, sabio y provocador. Donde otros lanzan fuego, él altera voluntades.",
+      "atributoInicial": "Atributos de clase:\n❖ Habilidad principal: Carisma.\n❖ Tiradas de Salvación: Destreza y Carisma.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d8.\n    :: Nivel 1: 8 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d8 (o 5) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Armadura ligera.\n    :: Armas: Armas simples.\n    :: Herramientas: elige 3 instrumentos musicales (ver capítulo 6); se eligen al subir a nivel 1.\n    :: Habilidades: elige cualquier 3 habilidades (ver capítulo 1).\n❖ Equipo inicial: elige A o B.\n    :: (A) Armadura de cuero, 2 dagas, instrumento musical de tu elección, equipo de entretenimiento y 19 PO.\n    :: (B) 90 PO.\n❖ Fuente: Manual del Jugador.",
+      "elegir": {
+        "lista": "instrumentos-bardo",
+        "cantidad": 3,
+        "multiclase": 1,
+        "rasgo": "Competencias de clase"
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Inspiración Bárdica",
+          "titleName": "✦ INSPIRACIÓN BÁRDICA ✦",
+          "descripcion": "Puedes inspirar sobrenaturalmente a otros a través de palabras, música o danza. Esta inspiración se representa con tu dado de Inspiración Bárdica, que es un d6.\n\n<b>Usando Inspiración Bárdica.</b> Como Acción adicional, puedes inspirar a otra criatura que esté dentro de 60 pies de ti y que pueda verte o escucharte. Esa criatura recibe uno de tus dados de Inspiración Bárdica. Una criatura solo puede tener un dado de Inspiración Bárdica a la vez.\nUna vez dentro de la siguiente hora, cuando la criatura falle una prueba de d20, la criatura puede tirar el dado de Inspiración Bárdica y añadir el número obtenido al d20, lo que potencialmente convierte el fallo en un éxito. Un dado de Inspiración Bárdica se gasta cuando se tira.\n<b>Número de usos.</b> Puedes otorgar un dado de Inspiración Bárdica un número de veces igual a tu modificador de Carisma (mínimo una vez), y recuperas todos los usos gastados cuando terminas un Descanso Largo.\n<b>En niveles superiores.</b> Tu dado de Inspiración Bárdica cambia cuando alcanzas ciertos niveles de Bardo, como se muestra en la columna de Dado Bárdico de la tabla de Características del Bardo. El dado se convierte en un d8 en el nivel 5, un d10 en el nivel 10, y un d12 en el nivel 15."
+        },
+        "blockDos": {
+          "name": "Conjuración",
+          "titleName": "✦ CONJURACIÓN ✦",
+          "descripcion": "Has aprendido a lanzar conjuros a través de tus artes bárdicas. Consulta el capítulo 7 para conocer las reglas sobre la conjuración. La información a continuación detalla cómo usas esas reglas con los conjuros de Bardo, que aparecen en la lista de conjuros del Bardo más adelante en la descripción de la clase.\n\n<b>Trucos.</b> Conoces dos trucos de tu elección de la lista de conjuros del Bardo. Se recomiendan Luces Danzantes y Burla Atroz.\nCada vez que subes un nivel de Bardo, puedes reemplazar uno de tus trucos con otro truco de tu elección de la lista de conjuros del Bardo.\nCuando alcanzas los niveles 4 y 10 de Bardo, aprendes otro truco de tu elección de la lista de conjuros del Bardo, como se muestra en la columna de Trucos de la tabla de Características del Bardo.\n<b>Espacios de conjuro.</b> La tabla de Características del Bardo muestra cuántos espacios de conjuro tienes para lanzar tus conjuros de nivel 1 o superior. Recuperas todos los espacios gastados cuando terminas un Descanso Largo.\n<b>Conjuros preparados de nivel 1 o superior.</b> Preparas la lista de conjuros de nivel 1 o superior que están disponibles para que lances con esta característica. Para empezar, elige cuatro conjuros de nivel 1 de la lista de conjuros del Bardo. Se recomiendan Encantar Persona, Rociada de Color, Susurros Disonantes y Palabra Curativa.\nLa cantidad de conjuros en tu lista aumenta a medida que subes de nivel como Bardo, tal como se muestra en la columna de Conjuros Preparados de la tabla de Características del Bardo. Cada vez que ese número aumenta, elige conjuros adicionales de la lista de conjuros del Bardo hasta que el número de conjuros en tu lista coincida con el número en la tabla. Los conjuros elegidos deben ser de un nivel para el cual tengas espacios de conjuro. Por ejemplo, si eres un Bardo de nivel 3, tu lista de conjuros preparados puede incluir seis conjuros de niveles 1 y 2 en cualquier combinación.\nSi otra característica de Bardo te da conjuros que siempre tienes preparados, esos conjuros no cuentan en el número de conjuros que puedes preparar con esta característica, pero esos conjuros cuentan como conjuros de Bardo para ti.\n<b>Cambiar tus conjuros preparados.</b> Cada vez que subes un nivel como Bardo, puedes reemplazar un conjuro de tu lista por otro conjuro de Bardo para el cual tengas espacios de conjuro.\n<b>Habilidad de conjuración.</b> El Carisma es tu habilidad de conjuración para tus conjuros de Bardo.\n<b>Enfoque de conjuración.</b> Puedes usar un instrumento musical como un enfoque de conjuración para tus conjuros de Bardo."
+        },
+        "blockTres": {
+          "name": "El Repertorio de un Bardo",
+          "titleName": "✦ EL REPERTORIO DE UN BARDO ✦",
+          "descripcion": "¿Tu Bardo golpea un tambor mientras canta las hazañas de héroes antiguos? ¿Rasguea un laúd mientras canta melodías románticas? ¿Interpretas arias de poder conmovedor? ¿Recitas monólogos dramáticos de tragedias clásicas? ¿Usas el ritmo de una danza popular para coordinar el movimiento de tus aliados en la batalla? ¿Compones limericks traviesos? Al interpretar un Bardo, considera el estilo de actuación artística que prefieres, los estados de ánimo que podrías evocar y los temas que inspiran tus propias creaciones. ¿Tus poemas están inspirados en momentos de belleza natural o son reflexiones melancólicas sobre la pérdida? ¿Prefieres himnos elevados o canciones bulliciosas de taberna? ¿Te atraen los lamentos por los caídos o las celebraciones de la alegría? ¿Bailas jigs alegres o realizas coreografías interpretativas elaboradas? ¿Te enfocas en un estilo de interpretación o te esfuerzas por dominar todos ellos?"
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Dado Bárdico",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "d6",
+            "2",
+            "4",
+            "2"
+          ]
+        ]
+      }
+    },
+    "2": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Pericia",
+          "titleName": "✦ PERICIA ✦",
+          "descripcion": "Obtienes Pericia (consulta el glosario de reglas) en dos de tus competencias en habilidades a tu elección. Se recomienda Interpretación y Persuasión si tienes competencia en ellas.\nEn el nivel 9 de Bardo, obtienes Pericia en dos de tus competencias en habilidades adicionales a tu elección."
+        },
+        "blockDos": {
+          "name": "Mano para Todo",
+          "titleName": "✦ MANO PARA TODO ✦",
+          "descripcion": "Puedes añadir la mitad de tu Bono de Competencia (redondeado hacia abajo) a cualquier prueba de habilidad que realices que no use tu Bono de Competencia.\nPor ejemplo, si haces una prueba de Fuerza (Atletismo) y careces de competencia en Atletismo, puedes añadir la mitad de tu Bono de Competencia a la prueba.",
+          "efectos": [
+            {
+              "type": "medio_competencia"
+            }
+          ]
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Dado Bárdico",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "d6",
+            "2",
+            "5",
+            "3"
+          ]
+        ]
+      }
+    },
+    "3": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Subclase de Bardo",
+          "titleName": "✦ SUBCLASE DE BARDO ✦",
+          "descripcion": "Obtienes una subclase de Bardo a tu elección. Las subclases Colegio de Danza, Colegio de Glamour, Colegio de Sabiduría y Colegio de Valor están detalladas después de la descripción de esta clase. Una subclase es una especialización que te otorga características en ciertos niveles de Bardo. Durante el resto de tu carrera, obtienes cada una de las características de tu subclase que correspondan a tu nivel de Bardo o inferior.\n\n<b>Subclases de Bardo.</b> Una subclase de Bardo es una especialización que te otorga características en ciertos niveles de Bardo, según se especifica en la subclase. Los Bardos forman asociaciones sueltas, que llaman colegios, para preservar sus tradiciones. Esta sección presenta las subclases Colegio de Danza, Colegio de Glamour, Colegio de Sabiduría y Colegio de Valor."
+        }
+      },
+      "subClase": {
+        "danza": {
+          "subNombre": "Colegio de Danza",
+          "subDescripcion": "✦ COLEGIO DE DANZA ✦\nMuévete en Armonía con el Cosmos\n\nLos Bardos del Colegio de Danza saben que las Palabras de Creación no pueden ser contenidas dentro del habla o el canto; las palabras son pronunciadas por los movimientos de los cuerpos celestiales y fluyen a través de las acciones de las criaturas más pequeñas. Estos Bardos practican una forma de estar en armonía con el cosmos giratorio que enfatiza la agilidad, la velocidad y la gracia.",
+          "fuente": "Manual del Jugador",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Pasos Deslumbrantes",
+                  "subTitleName": "✦ PASOS DESLUMBRANTES ✦",
+                  "subDescripcion": "Mientras no lleves armadura ni uses un Escudo, obtienes los siguientes beneficios:\n<b>Virtuoso de la Danza:</b> Tienes Ventaja en cualquier prueba de Carisma (Interpretación) que realices que implique que estés bailando.\n<b>Defensa sin Armadura:</b> Tu Clase de Armadura base es igual a 10 más tus modificadores de Destreza y Carisma.\n<b>Golpes Ágiles:</b> Cuando gastas un uso de tu Inspiración Bárdica como parte de una acción, Acción Bonificada o Reacción, puedes hacer un Golpe Desarmado como parte de esa acción, Acción Bonificada o Reacción.\n<b>Daño Bárdico:</b> Puedes usar Destreza en lugar de Fuerza para las tiradas de ataque de tus Golpes Desarmados. Cuando causes daño con un Golpe Desarmado, puedes causar daño por Contusión igual a una tirada de tu dado de Inspiración Bárdica más tu modificador de Destreza, en lugar del daño normal del golpe. Esta tirada no gasta el dado.",
+                  "efectos": [
+                    {
+                      "type": "ca_sin_armadura",
+                      "base": 10,
+                      "atributos": [
+                        "destreza",
+                        "carisma"
+                      ],
+                      "escudo": false
+                    }
+                  ]
+                }
+              }
+            },
+            "6": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Movimiento Inspirador",
+                  "subTitleName": "✦ MOVIMIENTO INSPIRADOR ✦",
+                  "subDescripcion": "Cuando un enemigo que puedes ver termina su turno a menos de 5 pies de ti, puedes tomar una Reacción y gastar un uso de tu Inspiración Bárdica para moverte hasta la mitad de tu Velocidad. Luego, un aliado a tu elección que esté dentro de 30 pies de ti también puede moverse hasta la mitad de su Velocidad usando su Reacción.\nNinguno de los movimientos de esta característica provoca Ataques de Oportunidad."
+                },
+                "subBlockDos": {
+                  "subName": "Pasos en Tándem",
+                  "subTitleName": "✦ PASOS EN TÁNDEM ✦",
+                  "subDescripcion": "Cuando lances la Iniciativa, puedes gastar un uso de tu Inspiración Bárdica si no tienes la condición de Incapacitado. Al hacerlo, tira tu dado de Inspiración Bárdica; tú y cada aliado dentro de 30 pies de ti que pueda verte o escucharte reciben un bonificador a la Iniciativa igual al número que obtuviste en la tirada."
+                }
+              }
+            },
+            "14": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Evasión de Líder",
+                  "subTitleName": "✦ EVASIÓN DE LÍDER ✦",
+                  "subDescripcion": "Cuando te someten a un efecto que te permite hacer una tirada de salvación de Destreza para recibir solo la mitad del daño, en su lugar, no recibes daño si tienes éxito en la tirada de salvación y solo la mitad del daño si fallas. Si cualquier criatura dentro de 5 pies de ti está haciendo la misma tirada de salvación de Destreza, puedes compartir este beneficio con ellas para esa salvación.\nNo puedes usar esta característica si tienes la condición de Incapacitado."
+                }
+              }
+            }
+          }
+        },
+        "glamour": {
+          "subNombre": "Colegio de Glamour",
+          "subDescripcion": "✦ COLEGIO DE GLAMOUR ✦\nTeje Magia Fey Fascinante\n\nEl Colegio de Glamour rastrea sus orígenes en la magia fascinante del bosque Fey. Los Bardos que estudian esta magia tejen hilos de belleza y terror en sus canciones e historias, y los más poderosos entre ellos pueden envolver su ser en una majestad sobrenatural. Sus actuaciones despiertan una melancólica añoranza por la inocencia perdida, evocan recuerdos inconscientes de temores arraigados y tocan las emociones incluso de los oyentes más duros de corazón.",
+          "fuente": "Manual del Jugador",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Magia Fascinante",
+                  "subTitleName": "✦ MAGIA FASCINANTE ✦",
+                  "subDescripcion": "Siempre tienes preparados los conjuros Encantar Persona e Imagen Espejo.\nAdemás, inmediatamente después de lanzar un conjuro de Encantamiento o Ilusión usando un espacio de conjuro, puedes hacer que una criatura que puedes ver dentro de 60 pies de ti realice una tirada de salvación de Sabiduría contra tu CD de salvación de conjuro. En una tirada fallida, el objetivo tiene la condición de Encantado o Aterrorizado (a tu elección) durante 1 minuto. El objetivo repite la tirada al final de cada uno de sus turnos, terminando el efecto sobre sí mismo en caso de éxito.\nUna vez que uses este beneficio, no podrás usarlo de nuevo hasta que termines un Descanso Largo. También puedes restaurar su uso gastando un uso de tu Inspiración Bárdica (no se requiere acción).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Hechizar persona"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Imagen múltiple"
+                    }
+                  ]
+                },
+                "subBlockDos": {
+                  "subName": "Manto de Inspiración",
+                  "subTitleName": "✦ MANTO DE INSPIRACIÓN ✦",
+                  "subDescripcion": "Puedes tejer magia fey en una canción o danza para llenar a otros con vigor. Como Acción Bonificada, puedes gastar un uso de Inspiración Bárdica, tirando un dado de Inspiración Bárdica. Cuando lo hagas, elige una cantidad de otras criaturas dentro de 60 pies de ti, hasta un número igual a tu modificador de Carisma (mínimo de una criatura). Cada una de esas criaturas gana una cantidad de Puntos de Golpe Temporales igual al doble del número obtenido en la tirada del dado de Inspiración Bárdica, y luego cada una puede usar su Reacción para moverse hasta su Velocidad sin provocar Ataques de Oportunidad."
+                }
+              }
+            },
+            "6": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Manto de Majestad",
+                  "subTitleName": "✦ MANTO DE MAJESTAD ✦",
+                  "subDescripcion": "Siempre tienes preparado el conjuro Ordenar.\nComo Acción Bonificada, puedes lanzar Ordenar sin gastar un espacio de conjuro, y asumes una presencia sobrenatural de apariencia majestuosa durante 1 minuto o hasta que termine tu Concentración. Durante este tiempo, puedes lanzar Ordenar como Acción Bonificada sin gastar un espacio de conjuro. Cualquier criatura Encantada por ti falla automáticamente su tirada de salvación contra el Ordenar que lances con esta característica.\nUna vez que uses esta característica, no podrás usarla de nuevo hasta que termines un Descanso Largo. También puedes restaurar su uso gastando un espacio de conjuro de nivel 3 o superior (no se requiere acción).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Orden imperiosa"
+                    }
+                  ]
+                }
+              }
+            },
+            "14": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Majestad Inquebrantable",
+                  "subTitleName": "✦ MAJESTAD INQUEBRANTABLE ✦",
+                  "subDescripcion": "Como Acción Bonificada, puedes asumir una presencia mágicamente majestuosa durante 1 minuto o hasta que tengas la condición de Incapacitado. Durante este tiempo, siempre que cualquier criatura te golpee con una tirada de ataque por primera vez en un turno, el atacante debe tener éxito en una tirada de salvación de Carisma contra tu CD de salvación de conjuro, o el ataque falla, ya que la criatura retrocede ante tu majestuosidad.\nUna vez que asumas esta presencia majestuosa, no puedes hacerlo de nuevo hasta que termines un Descanso Corto o Largo."
+                }
+              }
+            }
+          }
+        },
+        "conocimiento": {
+          "subNombre": "Colegio de Sabiduría",
+          "subDescripcion": "✦ COLEGIO DE SABIDURÍA ✦\nExplora las Profundidades del Conocimiento Mágico\n\nLos Bardos del Colegio de Sabiduría recopilan conjuros y secretos de diversas fuentes, como tomos eruditos, ritos místicos y cuentos populares. Los miembros del colegio se reúnen en bibliotecas y universidades para compartir su saber entre ellos. También se encuentran en festivales o asuntos de estado, donde pueden exponer la corrupción, desentrañar mentiras y burlarse de figuras autoritarias engreídas.",
+          "fuente": "Manual del Jugador",
+          "listasDeEleccion": {
+            "habilidades-sabiduria": {
+              "titulo": "Competencias Adicionales",
+              "desde": "habilidades",
+              "de": "cualquiera"
+            },
+            "descubrimientos-magicos": {
+              "titulo": "Descubrimientos Mágicos",
+              "desde": "conjuros",
+              "clase": [
+                "clerigo",
+                "druida",
+                "mago"
+              ],
+              "nivelMax": "espacios",
+              "siemprePreparados": true,
+              "reemplazarAlSubir": true,
+              "ayuda": "Trucos o conjuros de Clérigo, Druida o Mago de un nivel para el que tengas espacios. Quedan siempre preparados."
+            }
+          },
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Competencias Adicionales",
+                  "subTitleName": "✦ COMPETENCIAS ADICIONALES ✦",
+                  "subDescripcion": "Adquieres competencia en tres habilidades de tu elección.",
+                  "elegir": {
+                    "lista": "habilidades-sabiduria",
+                    "cantidad": 3
+                  }
+                },
+                "subBlockDos": {
+                  "subName": "Palabras Cortantes",
+                  "subTitleName": "✦ PALABRAS CORTANTES ✦",
+                  "subDescripcion": "Aprendes a usar tu ingenio para distraer, confundir y de otro modo minar la confianza y competencia de los demás de manera sobrenatural. Cuando una criatura que puedes ver dentro de 60 pies de ti realiza una tirada de daño o tiene éxito en una tirada de habilidad o de ataque, puedes tomar una Reacción para gastar un uso de tu Inspiración Bárdica; tira tu dado de Inspiración Bárdica y resta el número obtenido de la tirada de la criatura, reduciendo el daño o potencialmente convirtiendo el éxito en un fracaso."
+                }
+              }
+            },
+            "6": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Descubrimientos Mágicos",
+                  "subTitleName": "✦ DESCUBRIMIENTOS MÁGICOS ✦",
+                  "subDescripcion": "Aprendes dos conjuros de tu elección. Estos conjuros pueden provenir de las listas de conjuros de Clérigo, Druida o Mago, o cualquier combinación de ellas. Un conjuro que elijas debe ser un cantrip o un conjuro para el cual tengas espacios de conjuros, como se muestra en la tabla de Características de Bardo.\nSiempre tienes preparados los conjuros elegidos, y siempre que subas de nivel como Bardo, puedes reemplazar uno de los conjuros con otro que cumpla con estos requisitos.",
+                  "elegir": {
+                    "lista": "descubrimientos-magicos",
+                    "cantidad": 2
+                  }
+                }
+              }
+            },
+            "14": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Habilidad Sin Par",
+                  "subTitleName": "✦ HABILIDAD SIN PAR ✦",
+                  "subDescripcion": "Cuando realices una tirada de habilidad o de ataque y falles, puedes gastar un uso de Inspiración Bárdica; tira el dado de Inspiración Bárdica y suma el número obtenido al d20, potencialmente convirtiendo un fallo en un éxito. Si fallas, la Inspiración Bárdica no se gasta."
+                }
+              }
+            }
+          }
+        },
+        "valor": {
+          "subNombre": "Colegio de Valor",
+          "subDescripcion": "✦ COLEGIO DE VALOR ✦\nCanta los Hechos de los Héroes Antiguos\n\nLos Bardos del Colegio de Valor son narradores audaces cuyas historias preservan la memoria de los grandes héroes del pasado. Estos Bardos cantan las hazañas de los poderosos en salas abovedadas o ante multitudes reunidas alrededor de grandes hogueras. Viajan para ser testigos de grandes eventos en persona y para asegurarse de que la memoria de estos eventos no se desvanezca. Con sus canciones, inspiran a nuevas generaciones a alcanzar las mismas alturas de logro que los héroes de antaño.",
+          "fuente": "Manual del Jugador",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Inspiración en Combate",
+                  "subTitleName": "✦ INSPIRACIÓN EN COMBATE ✦",
+                  "subDescripcion": "Puedes usar tu ingenio para cambiar el curso de la batalla. Una criatura que tenga un dado de Inspiración Bárdica de tu parte puede usarlo para uno de los siguientes efectos:\n<b>Defensa.</b> Cuando la criatura es golpeada por una tirada de ataque, esa criatura puede usar su Reacción para lanzar el dado de Inspiración Bárdica y sumar el número obtenido a su CA contra ese ataque, lo que podría hacer que el ataque falle.\n<b>Ofensa.</b> Inmediatamente después de que la criatura golpee un objetivo con una tirada de ataque, la criatura puede lanzar el dado de Inspiración Bárdica y sumar el número obtenido al daño del ataque contra el objetivo."
+                },
+                "subBlockDos": {
+                  "subName": "Entrenamiento Marcial",
+                  "subTitleName": "✦ ENTRENAMIENTO MARCIAL ✦",
+                  "subDescripcion": "Adquieres competencia con armas Marciales y entrenamiento con armaduras Medias y Escudos. Además, puedes usar un arma Simple o Marcial como un Foco de Conjuro para lanzar conjuros de tu lista de conjuros de Bardo.",
+                  "efectos": [
+                    {
+                      "type": "competencia",
+                      "kind": "arma",
+                      "value": "Armas marciales"
+                    },
+                    {
+                      "type": "competencia",
+                      "kind": "armadura",
+                      "value": "Armadura media"
+                    },
+                    {
+                      "type": "competencia",
+                      "kind": "armadura",
+                      "value": "Escudos"
+                    }
+                  ]
+                }
+              }
+            },
+            "6": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Ataque Extra",
+                  "subTitleName": "✦ ATAQUE EXTRA ✦",
+                  "subDescripcion": "Puedes atacar dos veces en lugar de una siempre que realices la acción de Ataque en tu turno. Además, puedes lanzar uno de tus cantrips que tenga un tiempo de lanzamiento de una acción en lugar de uno de esos ataques."
+                }
+              }
+            },
+            "14": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Magia de Batalla",
+                  "subTitleName": "✦ MAGIA DE BATALLA ✦",
+                  "subDescripcion": "Después de lanzar un conjuro que tenga un tiempo de lanzamiento de una acción, puedes realizar un ataque con un arma como Acción Bonificada."
+                }
+              }
+            }
+          }
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Dado Bárdico",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "d6",
+            "2",
+            "6",
+            "4 · 2"
+          ]
+        ]
+      }
+    },
+    "4": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Mejora de Puntuación de Característica",
+          "titleName": "✦ MEJORA DE PUNTUACIÓN DE CARACTERÍSTICA ✦",
+          "descripcion": "Obtienes la dote Mejora de Puntuación de Característica (ver capítulo 5) u otra dote de tu elección para la que cumplas los requisitos. Obtienes este rasgo de nuevo en los niveles de Bardo 8, 12 y 16."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Dado Bárdico",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "d6",
+            "3",
+            "7",
+            "4 · 3"
+          ]
+        ]
+      }
+    },
+    "5": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Fuente de Inspiración",
+          "titleName": "✦ FUENTE DE INSPIRACIÓN ✦",
+          "descripcion": "Ahora recuperas todos los usos gastados de Inspiración Bárdica cuando terminas un Descanso Corto o Largo.\nAdemás, puedes gastar un espacio de conjuro (no requiere acción) para recuperar un uso gastado de Inspiración Bárdica."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Dado Bárdico",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "d8",
+            "3",
+            "9",
+            "4 · 3 · 2"
+          ]
+        ]
+      }
+    },
+    "6": {
+      "infoCubo": {
+        "columnas": [
+          "Dado Bárdico",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "d8",
+            "3",
+            "10",
+            "4 · 3 · 3"
+          ]
+        ]
+      }
+    },
+    "7": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Contraencanto",
+          "titleName": "✦ CONTRAENCANTO ✦",
+          "descripcion": "Puedes usar notas musicales o palabras de poder para interrumpir efectos que influyen en la mente. Si tú o una criatura a 30 pies de ti falla una tirada de salvación contra un efecto que aplica la condición de Encantado o Asustado, puedes usar una Reacción para que se repita la tirada, y la nueva tirada tiene Ventaja."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Dado Bárdico",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "d8",
+            "3",
+            "11",
+            "4 · 3 · 3 · 1"
+          ]
+        ]
+      }
+    },
+    "8": {
+      "infoCubo": {
+        "columnas": [
+          "Dado Bárdico",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "d8",
+            "3",
+            "12",
+            "4 · 3 · 3 · 2"
+          ]
+        ]
+      }
+    },
+    "9": {
+      "infoCubo": {
+        "columnas": [
+          "Dado Bárdico",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "d8",
+            "3",
+            "14",
+            "4 · 3 · 3 · 3 · 1"
+          ]
+        ]
+      }
+    },
+    "10": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Secretos Mágicos",
+          "titleName": "✦ SECRETOS MÁGICOS ✦",
+          "descripcion": "Has aprendido secretos de varias tradiciones mágicas. Cada vez que alcanzas un nivel de Bardo (incluido este nivel) y el número de Conjuros Preparados de la tabla de Características del Bardo aumenta, puedes elegir cualquiera de tus nuevos conjuros preparados de las listas de conjuros de Bardo, Clérigo, Druida y Mago, y los conjuros elegidos cuentan como conjuros de Bardo para ti (consulta la sección de cada clase para su lista de conjuros). Además, cada vez que reemplaces un conjuro preparado para esta clase, puedes reemplazarlo por un conjuro de esas listas.",
+          "efectos": [
+            {
+              "type": "lista_conjuros",
+              "value": "clerigo"
+            },
+            {
+              "type": "lista_conjuros",
+              "value": "druida"
+            },
+            {
+              "type": "lista_conjuros",
+              "value": "mago"
+            }
+          ]
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Dado Bárdico",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "d10",
+            "4",
+            "15",
+            "4 · 3 · 3 · 3 · 2"
+          ]
+        ]
+      }
+    },
+    "11": {
+      "infoCubo": {
+        "columnas": [
+          "Dado Bárdico",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "d10",
+            "4",
+            "16",
+            "4 · 3 · 3 · 3 · 2 · 1"
+          ]
+        ]
+      }
+    },
+    "12": {
+      "infoCubo": {
+        "columnas": [
+          "Dado Bárdico",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "d10",
+            "4",
+            "16",
+            "4 · 3 · 3 · 3 · 2 · 1"
+          ]
+        ]
+      }
+    },
+    "13": {
+      "infoCubo": {
+        "columnas": [
+          "Dado Bárdico",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "d10",
+            "4",
+            "17",
+            "4 · 3 · 3 · 3 · 2 · 1 · 1"
+          ]
+        ]
+      }
+    },
+    "14": {
+      "infoCubo": {
+        "columnas": [
+          "Dado Bárdico",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "d10",
+            "4",
+            "17",
+            "4 · 3 · 3 · 3 · 2 · 1 · 1"
+          ]
+        ]
+      }
+    },
+    "15": {
+      "infoCubo": {
+        "columnas": [
+          "Dado Bárdico",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "d12",
+            "4",
+            "18",
+            "4 · 3 · 3 · 3 · 2 · 1 · 1 · 1"
+          ]
+        ]
+      }
+    },
+    "16": {
+      "infoCubo": {
+        "columnas": [
+          "Dado Bárdico",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "d12",
+            "4",
+            "18",
+            "4 · 3 · 3 · 3 · 2 · 1 · 1 · 1"
+          ]
+        ]
+      }
+    },
+    "17": {
+      "infoCubo": {
+        "columnas": [
+          "Dado Bárdico",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "d12",
+            "4",
+            "19",
+            "4 · 3 · 3 · 3 · 2 · 1 · 1 · 1 · 1"
+          ]
+        ]
+      }
+    },
+    "18": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Inspiración Superior",
+          "titleName": "✦ INSPIRACIÓN SUPERIOR ✦",
+          "descripcion": "Cuando tiras Iniciativa, recuperas usos gastados de Inspiración Bárdica hasta tener dos si tienes menos que eso."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Dado Bárdico",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "d12",
+            "4",
+            "20",
+            "4 · 3 · 3 · 3 · 3 · 1 · 1 · 1 · 1"
+          ]
+        ]
+      }
+    },
+    "19": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Hazaña Épica",
+          "titleName": "✦ HAZAÑA ÉPICA ✦",
+          "descripcion": "Obtienes una hazaña épica (consulta el capítulo 5) u otra hazaña de tu elección para la cual cumples los requisitos. Se recomienda la Hazaña de Recordatorio de Hechizos."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Dado Bárdico",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "d12",
+            "4",
+            "21",
+            "4 · 3 · 3 · 3 · 3 · 2 · 1 · 1 · 1"
+          ]
+        ]
+      }
+    },
+    "20": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Palabras de Creación",
+          "titleName": "✦ PALABRAS DE CREACIÓN ✦",
+          "descripcion": "Has dominado dos de las Palabras de Creación: las palabras de vida y muerte. Por lo tanto, siempre tienes preparados los conjuros Palabra de Poder: Curar y Palabra de Poder: Matar. Cuando lanzas uno de estos conjuros, puedes dirigirte a una segunda criatura con él si esa criatura está dentro de 10 pies del primer objetivo.",
+          "efectos": [
+            {
+              "type": "conjuro_preparado",
+              "value": "Palabra de poder: curar"
+            },
+            {
+              "type": "conjuro_preparado",
+              "value": "Palabra de poder: matar"
+            }
+          ]
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Dado Bárdico",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "d12",
+            "4",
+            "22",
+            "4 · 3 · 3 · 3 · 3 · 2 · 2 · 1 · 1"
+          ]
+        ]
+      }
+    }
+  }
 }

@@ -6,6 +6,7 @@
 // medias se descarta al normalizar: nunca llega un efecto inválido al motor.
 
 import { html, raw, setHtml } from '../../ui/dom.js';
+import { listClasses } from '../../data/index.js';
 import { ABILITY_KEYS, ABILITY_LABEL, SKILL_NAMES } from '../../domain/constants.js';
 import {
   EFFECT_TYPES, PROFICIENCY_KINDS, BONUS_TARGETS, DAMAGE_TYPES, CONDITIONS, RESOURCES, normalizeEffects,
@@ -36,6 +37,18 @@ function valueField(e) {
       return html`<select class="select" data-ef="value" aria-label="Condición">${CONDITIONS.map((c) => opt(c, c, e.value))}</select>`;
     case 'habilita':
       return html`<select class="select" data-ef="value" aria-label="Recurso">${Object.entries(RESOURCES).map(([k, l]) => opt(k, l, e.value))}</select>`;
+    case 'medio_competencia':
+      return html`<span class="muted">Sin datos: suma la mitad del bono a las pruebas sin competencia.</span>`;
+    case 'conjuro_preparado':
+      return html`<input class="input" type="text" maxlength="80" data-ef="value" value="${e.value ?? ''}" placeholder="Nombre del conjuro (como en el catálogo)" aria-label="Conjuro">`;
+    case 'lista_conjuros':
+      return html`<select class="select" data-ef="value" aria-label="Clase">${listClasses().map((c) => opt(c.claseName, c.nombre, e.value))}</select>`;
+    case 'ca_sin_armadura': {
+      const [a1, a2] = e.atributos ?? ['destreza'];
+      const attr = (k, cur, label) => html`<select class="select" data-ef="${k}" aria-label="${label}">${k === 'attr2' ? opt('', '— Ninguno —', cur) : ''}${ABILITY_KEYS.map((x) => opt(x, ABILITY_LABEL[x], cur))}</select>`;
+      return html`<span class="muted">10 +</span>${attr('attr1', a1 ?? 'destreza', 'Primer atributo')}<span class="muted">+</span>${attr('attr2', a2 ?? '', 'Segundo atributo')}
+        <label class="row field__inline"><input type="checkbox" data-ef="escudo" ${e.escudo ? raw('checked') : ''}> Admite escudo</label>`;
+    }
     default:
       return '';
   }
@@ -60,7 +73,11 @@ export function effectsFieldset(effects = [], { legend = 'Efectos automáticos (
 
 function readRow(r) {
   const get = (k) => r.querySelector(`[data-ef="${k}"]`)?.value;
-  return { type: get('type'), kind: get('kind'), value: get('value'), target: get('target'), amount: get('amount') };
+  const type = get('type');
+  if (type === 'ca_sin_armadura') {
+    return { type, atributos: [get('attr1'), get('attr2')].filter(Boolean), escudo: Boolean(r.querySelector('[data-ef="escudo"]')?.checked) };
+  }
+  return { type, kind: get('kind'), value: get('value'), target: get('target'), amount: get('amount') };
 }
 
 export function readEffects(root) {

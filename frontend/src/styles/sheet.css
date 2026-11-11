@@ -61,6 +61,7 @@
 .combat-grid { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); }
 .stat-box { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-1); padding: var(--space-3); border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-elevated); text-align: center; min-height: 92px; }
 .stat-box__label { font-size: var(--fs-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 650; }
+.stat-box__hint { margin: 0; font-size: var(--fs-xs); color: var(--text-muted); }
 .stat-box__value { font-family: var(--font-display); font-size: 1.75rem; font-weight: 700; line-height: 1.1; }
 .stat-box__value small { font-size: var(--fs-xs); font-family: var(--font-body); color: var(--text-faint); }
 .stat-box__input { width: 5rem; font-size: 1.4rem; font-weight: 700; font-family: var(--font-display); }
@@ -423,3 +424,23 @@
 .extension-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
 .extension-list li { display: flex; justify-content: space-between; align-items: center; gap: var(--space-2); padding: var(--space-2) var(--space-3); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: var(--radius-sm); background: var(--bg-elevated); }
 .extension-panel .class-block__head { display: flex; justify-content: space-between; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
+
+/* ── Elecciones de rasgos (maniobras, estilos, trucos…) ──
+   Sin scroll propio: la lista crece dentro del cuerpo del diálogo, que es el
+   único scroll; el buscador acota las listas largas. */
+.choice-group { border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-3) var(--space-4); margin: 0; min-width: 0; display: grid; gap: var(--space-2); }
+.choice-group__title { font-weight: 700; padding: 0 var(--space-1); display: flex; align-items: center; gap: var(--space-2); }
+.choice-group__replace { max-width: 28rem; }
+.choice-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-1); }
+.choice-opt { border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface-2); padding: var(--space-2) var(--space-3); }
+.choice-opt.is-selected { border-color: var(--accent); background: var(--accent-soft); }
+.choice-opt__main { display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; cursor: pointer; }
+.choice-opt__main input { accent-color: var(--accent-strong); width: 18px; height: 18px; flex: none; }
+.choice-opt__main input:disabled + .choice-opt__name { color: var(--text-muted); }
+.choice-opt__name { font-weight: 600; }
+.choice-opt__more summary { cursor: pointer; color: var(--text-muted); font-size: var(--fs-sm); margin-top: var(--space-1); }
+.choice-opt__more .rich { margin-top: var(--space-1); font-size: var(--fs-sm); }
+.choices-panel { display: grid; gap: var(--space-3); }
+.choices-panel__items { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
+.choices-panel__items li { padding: var(--space-2) var(--space-3); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: var(--radius-sm); background: var(--bg-elevated); }
+.spell__static { padding: var(--space-3) var(--space-4); }

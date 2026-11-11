@@ -338,7 +338,7 @@
       "Común",
       "Goblin"
     ],
-    "info": "Rasgos de Raza:\n♻ Visión en la Oscuridad. Puedes ver en luz tenue a una distancia de 60 pies (12 casillas) como si fuera luz brillante, y en oscuridad como si fuera luz tenue. No puedes distinguir colores en la oscuridad, solo tonos de gris.\n♻ Furia del Pequeño. Cuando haces daño a una criatura con un ataque o un conjuro y su tamaño es mayor que el tuyo, puedes hacer que el ataque o conjuro inflija daño adicional a la criatura. El daño adicional es igual a tu nivel. Una vez que uses este rasgo, no podrás volver a usarlo hasta que termines un descanso corto o largo.\n♻ Escape Ágil. Puedes usar la acción de Destrabarse o Esconderte como una acción adicional en cada uno de tus turnos."
+    "info": "Rasgos de Raza:\n♻ Visión en la Oscuridad. Puedes ver en luz tenue a una distancia de 60 pies (12 casillas) como si fuera luz brillante, y en oscuridad como si fuera luz tenue. No puedes distinguir colores en la oscuridad, solo tonos de gris.\n♻ Furia del Pequeño. Cuando haces daño a una criatura con un ataque o un conjuro y su tamaño es mayor que el tuyo, puedes hacer que el ataque o conjuro inflija daño adicional a la criatura. El daño adicional es igual a tu nivel. Una vez que uses este rasgo, no podrás volver a usarlo hasta que termines un descanso corto o largo.\n♻ Escape Ágil. Puedes usar la acción de Desengancharte o Esconderte como una acción adicional en cada uno de tus turnos."
   },
   "Hobgoblin": {
     "velocidad": 30,

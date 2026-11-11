@@ -4,7 +4,7 @@
 import { html, raw, richText, setHtml } from '../../ui/dom.js';
 import { classFeatures, subclassInfo } from '../../domain/rules.js';
 import { parseTraitSections, parseClassBasics, proseToHtml, plainText } from '../../domain/text-format.js';
-import { getFeat, getRace, getEpicBoon, getClass, data, raceName, featName } from '../../data/index.js';
+import { getFeat, getRace, getEpicBoon, getClass, data, raceName, featName, loadSpells } from '../../data/index.js';
 import { ABILITY_LABEL, CLASS_ICONS, CLASS_SECTIONS } from '../../domain/constants.js';
 import { setClassSkills, setClassSaves, TRAIT_ORIGINS } from '../../domain/proficiencies.js';
 import { describeEffect } from '../../domain/effects.js';
@@ -16,6 +16,8 @@ import {
   assignedExtensions, addableExtensions, addUnlock, removeUnlock, findByCode, normalizeUnlockCode,
 } from '../../domain/extensions.js';
 import { textArea } from './common.js';
+import { classChoiceStatus, fillMissingChoices, replaceChoice, choiceListDef, knownChoices, listSource } from '../../domain/class-choices.js';
+import { choiceGroupsHtml, bindChoiceGroups, choicesError } from '../components/choice-picker.js';
 
 const CLAMP_CHARS = 420;
 const norm = (s) => String(s ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
@@ -295,6 +297,97 @@ function featureCard(item, subName) {
   </article>`;
 }
 
+/** Elecciones de rasgos (maniobras, estilos, trucos…): lo elegido y lo que falta. */
+function choicesPanel(ctx, f) {
+  const st = classChoiceStatus(ctx.character, f.classKey, { spells: ctx.spells });
+  if (!st.lists.length && !st.missing.length) return '';
+  const missing = st.missing.reduce((n, m) => n + m.cantidad, 0);
+  return html`<div class="class-block choices-panel">
+    <div class="class-block__head"><h4 class="class-block__title">Elecciones</h4></div>
+    ${missing && !ctx.readOnly ? html`<div class="callout callout--warning row row--between">
+      <p>Te ${missing === 1 ? 'falta 1 elección' : `faltan ${missing} elecciones`} de tus rasgos (${[...new Set(st.missing.map((m) => m.def.titulo ?? m.lista))].join(', ')}).</p>
+      <button type="button" class="btn btn--primary btn--sm" data-action="choices-fill" data-class="${f.classKey}">Elegir ahora</button>
+    </div>` : ''}
+    ${st.lists.filter((l) => l.values.length).map((l) => html`<div class="choices-panel__list" ${searchAttr(l.def.titulo, ...l.values.map((v) => v.label))}>
+      <p class="eyebrow">${l.def.titulo ?? l.lista} · ${l.values.length}</p>
+      <ul class="choices-panel__items">${l.values.map((v) => html`<li>
+        <div class="row row--between">
+          <strong>${v.label}</strong>
+          <span class="row">${v.meta ? html`<span class="badge">${v.meta}</span>` : ''}
+            ${l.def.cambiable && !ctx.readOnly ? html`<button type="button" class="link-btn" data-action="choice-change" data-class="${f.classKey}" data-list="${l.lista}" data-value="${v.value}">Cambiar</button>` : ''}</span>
+        </div>
+        ${v.description ? html`<details class="choice-opt__more"><summary>Descripción</summary><div class="rich">${prose(v.description)}</div></details>` : ''}
+      </li>`)}</ul>
+    </div>`)}
+  </div>`;
+}
+
+const needsSpellCatalog = (groups) => groups.some((g) => listSource(g.def) === 'conjuros');
+
+async function fillChoices(ed, classKey) {
+  const status = classChoiceStatus(ed.character, classKey);
+  if (!status.missing.length) return;
+  const groups = status.missing.map((m) => ({ ...m, key: `${m.level}:${m.lista}`, features: [`nivel ${m.level}`, ...m.features] }));
+  const spells = needsSpellCatalog(groups) ? (ed.spells ?? await loadSpells().catch(() => null)) : null;
+  const state = {};
+  const ok = await openDialog({
+    title: 'Elecciones pendientes',
+    size: 'lg',
+    guard: { isDirty: () => Object.values(state).some((s) => s.add.length) },
+    render(body, close) {
+      let error = '';
+      const draw = () => {
+        setHtml(body, html`<p class="muted">Estas elecciones corresponden a niveles que ya tienes. Se guardan en su nivel: si bajas de nivel, se deshacen.</p>
+          ${choiceGroupsHtml(groups, state, { known: status.known, spells })}
+          <p class="field__error" role="alert">${error}</p>
+          <div class="dialog__footer"><button type="button" class="btn btn--ghost" data-dialog-close>Cancelar</button><button type="button" class="btn btn--primary" data-ok>Guardar</button></div>`);
+        bindChoiceGroups(body, groups, state, { known: status.known, spells }, () => { body.querySelector('.field__error').textContent = ''; });
+        body.querySelector('[data-ok]').addEventListener('click', () => {
+          error = choicesError(groups, state);
+          if (error) return draw();
+          close(true);
+        });
+      };
+      draw();
+    },
+  });
+  if (!ok) return;
+  const picks = Object.fromEntries(Object.entries(state).map(([k, s]) => [k, s.add]));
+  const res = fillMissingChoices(ed.character, classKey, picks, { spells });
+  if (res.errors.length) return toast(res.errors.join(' '), { type: 'error' });
+  ed.replace(res.character, { keepScroll: true, message: 'Elecciones guardadas.' });
+}
+
+async function changeChoice(ed, classKey, lista, oldValue) {
+  const def = choiceListDef(classKey, ed.character.subclasses?.[classKey] ?? null, lista);
+  if (!def) return;
+  const spells = listSource(def) === 'conjuros' ? (ed.spells ?? await loadSpells().catch(() => null)) : null;
+  const group = { lista, def, cantidad: 0, reemplazar: 1, nivelMax: null, features: [] };
+  const known = knownChoices(ed.character, classKey);
+  const state = { [lista]: { add: [], remove: [oldValue] } };
+  const ok = await openDialog({
+    title: `Cambiar: ${def.titulo ?? lista}`,
+    size: 'md',
+    render(body, close) {
+      setHtml(body, html`${choiceGroupsHtml([group], state, { known, spells })}
+        <p class="field__error" role="alert"></p>
+        <div class="dialog__footer"><button type="button" class="btn btn--ghost" data-dialog-close>Cancelar</button><button type="button" class="btn btn--primary" data-ok>Cambiar</button></div>`);
+      // El valor a cambiar ya está decidido: no se muestra el selector de reemplazo.
+      body.querySelector('.choice-group__replace')?.remove();
+      bindChoiceGroups(body, [group], state, { known, spells });
+      body.querySelector('[data-ok]').addEventListener('click', () => {
+        const msg = choicesError([group], state);
+        if (msg) { body.querySelector('.field__error').textContent = msg; return; }
+        close(true);
+      });
+    },
+  });
+  if (!ok) return;
+  const res = replaceChoice(ed.character, classKey, lista, oldValue, state[lista].add[0], { spells });
+  if (res.errors.length) return toast(res.errors.join(' '), { type: 'error' });
+  ed.replace(res.character, { keepScroll: true, message: `${def.titulo ?? lista}: cambiado.` });
+}
+
 /** Extensiones Homebrew asignadas a esta clase (subclases secretas, bendiciones…). */
 function extensionsPanel(ctx, f) {
   const assigned = assignedExtensions(ctx.character).filter(({ entry }) => entry.item.classKey === f.classKey);
@@ -411,6 +504,7 @@ function classSection(ctx, f) {
       ${basicsPanel(ctx, f)}
       ${progressionTable(f)}
     </div>
+    ${choicesPanel(ctx, f)}
     ${extensionsPanel(ctx, f)}
     ${timeline(f)}
     ${f.missingLevels.length ? html`<p class="callout callout--warning">Faltan datos de ${f.className} para ${f.missingLevels.length === 1 ? 'el nivel' : 'los niveles'} ${f.missingLevels.join(', ')}. Consulta el manual o a tu DM.</p>` : ''}
@@ -570,6 +664,8 @@ export const featuresActions = {
     if (ok) ed.replace(removeUnlock(ed.character, el.dataset.ref), { keepScroll: true });
   },
   'pick-subclass': (ed, el) => pickSubclass(ed, el.dataset.class),
+  'choices-fill': (ed, el) => fillChoices(ed, el.dataset.class),
+  'choice-change': (ed, el) => changeChoice(ed, el.dataset.class, el.dataset.list, el.dataset.value),
   'trait-add': (ed) => editTrait(ed, null),
   'trait-edit': (ed, el) => editTrait(ed, el.dataset.id),
   'trait-toggle': (ed, el) => ed.update((c) => {

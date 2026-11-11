@@ -2,121 +2,23 @@
   "nombre": "Monje",
   "claseName": "monje",
   "seccion": "manual",
+  "icono": "👊",
+  "fuenteReglas": "Manual del Jugador",
   "dadoDeGolpe": 8,
   "nivelesDeAumento": [
     4,
     8,
     12,
-    16,
-    19
+    16
   ],
   "conjurador": false,
-  "niveles": {
-    "1": {
-      "descripcion": "Maestro del cuerpo y la energía interior, capaz de hazañas sobrenaturales.",
-      "descripcionLarga": "El Monje disciplina su mente y su cuerpo hasta convertirlos en armas perfectas. Canaliza su energía vital para realizar proezas que rozan lo imposible: velocidad inhumana, golpes devastadores y control absoluto del equilibrio físico. No depende de armaduras ni hechizos, sino de control interior.",
-      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Fuerza y Destreza.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d8.\n    :: Nivel 1: 8 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d8 (o 5) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Ninguna.\n    :: Armas: Armas simples y Espadas cortas.\n    :: Herramientas: Un tipo de herramientas de artesano o un instrumento musical, a tu elección.\n    :: Habilidades: escoge dos de entre Acrobacias, Atletismo, Historia, Perspicacia, Religión y Sigilo.\n❖ Equipo. Comienzas con el siguiente equipo, además del que te dé tu trasfondo:\n    :: (a) una espada corta o (b) cualquier arma simple.\n    :: (a) un paquete de explorador de mazmorras o (b) un paquete de explorador.\n    :: 10 dardos.\n    :: Alternativa: 5d4 po en lugar del equipo de clase.\n❖ Fuente: Manual del Jugador.",
-      "informacionNivel": "✦  ✦\n\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n\n✦  ✦"
-    },
-    "2": {
-      "informacionNivel": "Rasgo: Defensa temeraria"
-    },
-    "3": {
-      "informacionNivel": "Rasgo: Defensa temeraria",
-      "subClase": {
-        "mano-abierta": {
-          "subNombre": "Camino de la Mano Abierta",
-          "subDescripcion": "Maestros del combate sin armas: derribar, empujar y negar reacciones con Ráfaga de golpes.",
-          "subNivel": {},
-          "rasgosPendientes": true,
-          "fuente": "Manual del Jugador"
-        },
-        "sombra": {
-          "subNombre": "Camino de la Sombra",
-          "subDescripcion": "Ninjas y espías: conjuros de sombra y teletransporte entre sombras.",
-          "subNivel": {},
-          "rasgosPendientes": true,
-          "fuente": "Manual del Jugador"
-        },
-        "cuatro-elementos": {
-          "subNombre": "Camino de los Cuatro Elementos",
-          "subDescripcion": "Canalizan los elementos con su ki.",
-          "subNivel": {},
-          "rasgosPendientes": true,
-          "fuente": "Manual del Jugador"
-        },
-        "senda5": {
-          "subNombre": "Estilo del Borracho Errante",
-          "subDescripcion": "✦ ESTILO BORRACHO ERRANTE ✦\nEl Monje no lucha con rabia ni con cálculo frío: lucha con el fluir del bambú y la embriaguez del alma. Entre risas, cánticos y tragos, sus enemigos caen sin entender lo que pasó.",
-          "subNivel": {
-            "3": {
-              "infoSubNivel": "✦ Senda del Néctar Sagrado ✦\nA nivel 3, cuando usas Ráfaga de Golpes, puedes elegir ganar uno de los siguientes efectos hasta el final de tu turno:\n♻ Brisa del Bambú: Tu velocidad aumenta en 10 pies y puedes atravesar el espacio de criaturas sin provocar ataques de oportunidad.\n♻ Fortaleza del Licor: Ganas resistencia al daño contundente, cortante y perforante hasta el final del turno.\n\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n\n✦ Golpe al Ki Fluyente ✦\nA nivel 3, cuando realizas un ataque desarmado como parte de tu acción de Ráfaga de Golpes, puedes gastar 1 punto de Ki para intentar interrumpir el Flujo de energía interna de tu oponente.\n\nEl objetivo debe ser una criatura que tenga sangre o flujo vital (no funciona en no-muertos, constructos o limos).\n\nEl objetivo debe realizar una tirada de salvación de Constitución contra tu CD de salvación de Ki.\n♻ Si falla, queda Paralizado hasta el final de su siguiente turno.\n♻ Si tiene éxito, no ocurre nada adicional.\n\nSolo puedes aplicar Golpe al Ki Fluyente una vez por turno, incluso si realizas múltiples ataques.\n\nCuando alcanzas el nivel 5 de Monje, no obtienes el característico “Golpe Aturdidor” del Monje base. En su lugar, Golpe al Ki Fluyente mejora automáticamente para que puedas aplicarlo con cualquier ataque desarmado (no solo con Ráfaga de Golpes), manteniendo las mismas condiciones, costes y limitaciones."
-            },
-            "6": {
-              "infoSubNivel": "✦ Embriaguez Controlada ✦\nA nivel 6, como acción adicional, puedes gastar 1 punto de Ki para beber un trago rápido y obtener uno de estos beneficios durante 1 minuto:\n♻ Golpe Fuerte: +2 a tiradas de ataque con armas cuerpo a cuerpo (o ataques desarmados).\n♻ Reflejos de Búho: +2 a la CA.\n♻ Paso Nebuloso: Puedes usar tu reacción para imponerte ventaja en una tirada de salvación de Destreza o Sabiduría.\n\nPuedes usar esta acción un número de veces igual a tu modificador de Sabiduría por descanso largo."
-            },
-            "11": {
-              "infoSubNivel": "✦ Vientre de Hierro ✦\nAl nivel 11, eres inmune a la condición de Envenenado. Además, cuando una criatura te cause daño, puedes usar tu reacción para devolverle parte del golpe. El atacante recibe un total de daño igual a tu dado de Artes Marciales + tu modificador de Sabiduría.\n\nSe interpreta como que absorbes el golpe, te tambaleas y devuelves una bofetada cargada de Ki embriagado."
-            },
-            "17": {
-              "infoSubNivel": "✦ Danza Celestial ✦\nA nivel 17, como acción, puedes gastar 4 puntos de Ki para entrar en un estado de trance borracho durante 1 minuto. Mientras dure este estado:\n♻ Puedes realizar un ataque adicional cuando tomes la acción de Ataque (tienes un Ataque Extra por turno).\n♻ Tu velocidad aumenta en +10 pies.\n♻ Obtienes ventaja en todas las tiradas de Destreza y de ataque cuerpo a cuerpo.\n♻ Al final de cada uno de tus turnos, recuperas 3 puntos de golpe si has realizado al menos un ataque ese turno.\n\nUna vez que uses esta característica, no puedes volver a usarla hasta que termines un descanso largo."
-            }
-          }
-        }
-      }
-    },
-    "4": {
-      "informacionNivel": "✦  ✦"
-    },
-    "5": {
-      "informacionNivel": "✦  ✦"
-    },
-    "6": {
-      "informacionNivel": "✦  ✦"
-    },
-    "7": {
-      "informacionNivel": "✦  ✦"
-    },
-    "8": {
-      "informacionNivel": "✦  ✦"
-    },
-    "9": {
-      "informacionNivel": "✦  ✦"
-    },
-    "10": {
-      "informacionNivel": "✦  ✦"
-    },
-    "11": {
-      "informacionNivel": "✦  ✦"
-    },
-    "12": {
-      "informacionNivel": "✦  ✦"
-    },
-    "13": {
-      "informacionNivel": "✦  ✦"
-    },
-    "14": {
-      "informacionNivel": "✦  ✦"
-    },
-    "15": {
-      "informacionNivel": "✦  ✦"
-    },
-    "16": {
-      "informacionNivel": "✦  ✦"
-    },
-    "17": {
-      "informacionNivel": "✦  ✦"
-    },
-    "18": {
-      "informacionNivel": "✦  ✦"
-    },
-    "19": {
-      "informacionNivel": "✦  ✦"
-    },
-    "20": {
-      "informacionNivel": "Rasgo: Defensa temeraria"
-    }
+  "cdClase": {
+    "nombre": "CD de Enfoque",
+    "atributos": [
+      "sabiduria"
+    ]
   },
+  "subclaseNombre": "Tradición monástica",
   "competencias": {
     "salvaciones": [
       "fuerza",
@@ -125,11 +27,9 @@
     "armaduras": [],
     "armas": [
       "Armas simples",
-      "Espadas cortas"
+      "Armas marciales con la propiedad Ligera"
     ],
-    "herramientas": [
-      "Un tipo de herramientas de artesano o un instrumento musical, a tu elección"
-    ],
+    "herramientas": [],
     "habilidades": {
       "elegir": 2,
       "de": [
@@ -152,17 +52,818 @@
     "habilidades": null
   },
   "equipoInicial": [
-    "(a) una espada corta o (b) cualquier arma simple.",
-    "(a) un paquete de explorador de mazmorras o (b) un paquete de explorador.",
-    "10 dardos."
+    "(A) Lanza, 5 Dagas, Herramientas de Artesano o Instrumento Musical elegido para la competencia con herramientas, Mochila de Explorador y 11 PO.",
+    "(B) 50 PO."
   ],
-  "oroInicial": "5d4",
-  "fuenteReglas": "Manual del Jugador",
-  "subclaseNombre": "Tradición monástica",
+  "listasDeEleccion": {
+    "herramienta-monje": {
+      "titulo": "Herramienta del Monje",
+      "libre": true,
+      "placeholder": "Herramientas de artesano o instrumento musical",
+      "ayuda": "Un tipo de Herramientas de Artesano o un Instrumento Musical, a tu elección.",
+      "efectoLibre": {
+        "type": "competencia",
+        "kind": "herramienta"
+      }
+    }
+  },
   "subclasesRetiradas": [
     "senda1",
     "senda2",
     "senda3",
     "senda4"
-  ]
+  ],
+  "niveles": {
+    "1": {
+      "descripcion": "Maestro del cuerpo y la energía interior, capaz de hazañas sobrenaturales.",
+      "descripcionLarga": "El Monje disciplina su mente y su cuerpo hasta convertirlos en armas perfectas. Canaliza su energía vital para realizar proezas que rozan lo imposible: velocidad inhumana, golpes devastadores y control absoluto del equilibrio físico. No depende de armaduras ni hechizos, sino de control interior.",
+      "atributoInicial": "Atributos de clase:\n❖ Habilidad principal: Destreza y Sabiduría.\n❖ Tiradas de Salvación: Fuerza y Destreza.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d8.\n    :: Nivel 1: 8 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d8 (o 5) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Ninguna.\n    :: Armas: Armas Simples y Armas Marciales que tengan la propiedad de Liviana.\n    :: Herramientas: Artesano o Instrumento Musical (a tu elección; se elige al subir a nivel 1).\n    :: Habilidades: escoge dos de entre Acrobacias, Atletismo, Historia, Perspicacia, Religión o Sigilo.\n❖ Equipo inicial: elige A o B.\n    :: (A) Lanza, 5 Dagas, Herramientas de Artesano o Instrumento Musical elegido para la competencia con herramientas mencionada arriba, Mochila de Explorador, y 11 PO.\n    :: (B) 50 PO.\n❖ Fuente: Manual del Jugador.",
+      "elegir": {
+        "lista": "herramienta-monje",
+        "cantidad": 1,
+        "rasgo": "Competencias de clase",
+        "multiclase": 0
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Artes Marciales",
+          "titleName": "✦ ARTES MARCIALES ✦",
+          "descripcion": "Tu práctica de las artes marciales te otorga maestría en estilos de combate que usan tu Golpe sin Armas y armas de Monje, que son las siguientes:\n• Armas Cuerpo a Cuerpo Simples\n• Armas Cuerpo a Cuerpo Marciales que tienen la propiedad de Ligereza\n\nGanas los siguientes beneficios mientras estés desarmado o solo empuñes armas de Monje y no estés usando armadura o un Escudo.\n\n<b>Golpe sin Armas Adicional.</b> Puedes realizar un Golpe sin Armas como una Acción de Bonificación.\n<b>Dado de Artes Marciales.</b> Puedes lanzar 1d6 en lugar del daño normal de tu Golpe sin Armas o armas de Monje. Este dado cambia a medida que avanzas en los niveles de Monje, como se muestra en la columna de Artes Marciales de la tabla de Características del Monje.\n<b>Ataques Destreza.</b> Puedes usar tu modificador de Destreza en lugar de tu modificador de Fuerza para las tiradas de ataque y daño de tus Golpes sin Armas y armas de Monje. Además, cuando usas la opción de Agarrar o Empujar con tu Golpe sin Armas, puedes usar tu modificador de Destreza en lugar de tu modificador de Fuerza para determinar la CD de la salvación."
+        },
+        "blockDos": {
+          "name": "Defensa sin Armadura",
+          "titleName": "✦ DEFENSA SIN ARMADURA ✦",
+          "descripcion": "Mientras no estés usando armadura ni empuñes un Escudo, tu Clase de Armadura base es igual a 10 más tus modificadores de Destreza y Sabiduría.",
+          "efectos": [
+            {
+              "type": "ca_sin_armadura",
+              "base": 10,
+              "atributos": [
+                "destreza",
+                "sabiduria"
+              ],
+              "escudo": false
+            }
+          ]
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Artes Marciales",
+          "Puntos de Enfoque",
+          "Movimiento sin Armadura"
+        ],
+        "filas": [
+          [
+            "1d6",
+            "-",
+            "-"
+          ]
+        ]
+      }
+    },
+    "2": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Enfoque del Monje",
+          "titleName": "✦ ENFOQUE DEL MONJE ✦",
+          "descripcion": "Tu enfoque y entrenamiento marcial te permiten aprovechar un pozo de energía extraordinaria dentro de ti. Esta energía está representada por Puntos de Enfoque. Tu nivel de Monje determina la cantidad de puntos que tienes, como se muestra en la columna de Puntos de Enfoque de la tabla de Características del Monje.\n\nPuedes gastar estos puntos para mejorar o alimentar ciertas características del Monje. Comienzas conociendo tres de estas características: Ataque Furtivo, Defensa Paciente y Paso del Viento, cada una de las cuales se detalla a continuación. Cuando gastas un Punto de Enfoque, no está disponible hasta que termines un Descanso Corto o Largo, al final del cual recuperas todos tus puntos gastados.\n\nAlgunas características que usan Puntos de Enfoque requieren que tu objetivo realice una tirada de salvación. La DC de la salvación es igual a 8 más tu modificador de Sabiduría y tu Bonificación de Competencia.\n\n<b>Ataque Furtivo.</b> Puedes gastar 1 Punto de Enfoque para realizar dos de los Golpes sin Armas como una Acción de Bonificación.\n<b>Defensa Paciente.</b> Puedes tomar la acción de Desenganche como una Acción de Bonificación. Alternativamente, puedes gastar 1 Punto de Enfoque para tomar tanto la acción de Desenganche como la acción de Esquivar como una Acción de Bonificación.\n<b>Paso del Viento.</b> Puedes tomar la acción de Carrera como una Acción de Bonificación. Alternativamente, puedes gastar 1 Punto de Enfoque para tomar tanto la acción de Desenganche como la de Carrera como una Acción de Bonificación, y la distancia de tu salto se duplica durante el turno."
+        },
+        "blockDos": {
+          "name": "Movimiento sin Armadura",
+          "titleName": "✦ MOVIMIENTO SIN ARMADURA ✦",
+          "descripcion": "Tu velocidad aumenta en 10 pies mientras no estés usando armadura ni empuñes un Escudo. Este bono aumenta cuando alcanzas ciertos niveles de Monje, como se muestra en la tabla de Características del Monje.",
+          "efectos": [
+            {
+              "type": "bono",
+              "target": "velocidad",
+              "desdeTabla": "Movimiento sin Armadura"
+            }
+          ]
+        },
+        "blockTres": {
+          "name": "Metabolismo Inusual",
+          "titleName": "✦ METABOLISMO INUSUAL ✦",
+          "descripcion": "Cuando lances la Iniciativa, puedes recuperar todos los Puntos de Enfoque gastados. Cuando lo hagas, tira tu dado de Artes Marciales y recupera un número de Puntos de Golpe igual a tu nivel de Monje más el número obtenido en la tirada. Una vez que uses esta característica, no puedes usarla nuevamente hasta que termines un Descanso Largo."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Artes Marciales",
+          "Puntos de Enfoque",
+          "Movimiento sin Armadura"
+        ],
+        "filas": [
+          [
+            "1d6",
+            "2",
+            "+10 pies"
+          ]
+        ]
+      }
+    },
+    "3": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Desvío de Ataques",
+          "titleName": "✦ DESVÍO DE ATAQUES ✦",
+          "descripcion": "Cuando un rollo de ataque te golpea y su daño incluye daño por Contundente, Perforante o Cortante, puedes tomar una Reacción para reducir el daño total del ataque contra ti. La reducción es igual a 1d10 más tu modificador de Destreza y tu nivel de Monje.\n\nSi reduces el daño a 0, puedes gastar 1 Punto de Enfoque para redirigir parte de la fuerza del ataque. Si lo haces, elige una criatura que puedas ver dentro de 5 pies de ti si el ataque fue un ataque cuerpo a cuerpo, o una criatura que puedas ver dentro de 60 pies de ti que no esté detrás de una Cobertura Total si el ataque fue un ataque a distancia. Esa criatura debe realizar una tirada de salvación de Destreza o recibir daño igual a dos tiradas de tu dado de Artes Marciales más tu modificador de Destreza. El daño es del mismo tipo que el infligido por el ataque."
+        },
+        "blockDos": {
+          "name": "Subclase de Monje",
+          "titleName": "✦ SUBCLASE DE MONJE ✦",
+          "descripcion": "Obtienes una subclase de Monje a tu elección. Las subclases Guerrero de la Misericordia, Guerrero de las Sombras, Guerrero de los Elementos y Guerrero de la Mano Abierta se detallan después de la descripción de esta clase. Una subclase es una especialización que te otorga características en ciertos niveles de Monje. Durante el resto de tu carrera, obtendrás cada una de las características de tu subclase que estén en tu nivel de Monje o inferior.\n\n<b>Subclases de Monje.</b> Una subclase de Monje es una especialización que te otorga características en ciertos niveles, según se especifica en la subclase. Esta sección presenta las subclases Guerrero de la Misericordia, Guerrero de la Sombra, Guerrero de los Elementos y Guerrero de la Mano Abierta."
+        }
+      },
+      "subClase": {
+        "misericordia": {
+          "subNombre": "Guerrero de la Misericordia",
+          "subDescripcion": "✦ GUERRERO DE LA MISERICORDIA ✦\nManipular las Fuerzas de la Vida y la Muerte\n\nLos Guerreros de la Misericordia manipulan la fuerza vital de los demás. Estos Monjes son médicos errantes, pero traen un final rápido a sus enemigos. A menudo llevan máscaras, presentándose como emisarios sin rostro de la vida y la muerte.",
+          "fuente": "Manual del Jugador",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Mano del Daño",
+                  "subTitleName": "✦ MANO DEL DAÑO ✦",
+                  "subDescripcion": "Una vez por turno, cuando golpeas a una criatura con un Golpe Desarmado y causas daño, puedes gastar 1 Punto de Enfoque para causar daño Necrótico adicional igual a una tirada de tu dado de Artes Marciales más tu modificador de Sabiduría."
+                },
+                "subBlockDos": {
+                  "subName": "Mano de la Sanación",
+                  "subTitleName": "✦ MANO DE LA SANACIÓN ✦",
+                  "subDescripcion": "Como acción Mágica, puedes gastar 1 Punto de Enfoque para tocar a una criatura y restaurar un número de Puntos de Golpe igual a una tirada de tu dado de Artes Marciales más tu modificador de Sabiduría. Cuando uses tu Torbellino de Golpes, puedes reemplazar uno de los Golpes Desarmados con un uso de esta característica sin gastar un Punto de Enfoque para la sanación."
+                },
+                "subBlockTres": {
+                  "subName": "Implementos de Misericordia",
+                  "subTitleName": "✦ IMPLEMENTOS DE MISERICORDIA ✦",
+                  "subDescripcion": "Ganas competencia en las habilidades de Perspicacia y Medicina y competencia con el Kit de Herbalismo.",
+                  "efectos": [
+                    {
+                      "type": "competencia",
+                      "kind": "habilidad",
+                      "value": "Perspicacia"
+                    },
+                    {
+                      "type": "competencia",
+                      "kind": "habilidad",
+                      "value": "Medicina"
+                    },
+                    {
+                      "type": "competencia",
+                      "kind": "herramienta",
+                      "value": "Kit de herbalismo"
+                    }
+                  ]
+                }
+              }
+            },
+            "6": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Toque del Médico",
+                  "subTitleName": "✦ TOQUE DEL MÉDICO ✦",
+                  "subDescripcion": "Tu Mano del Daño y Mano de la Sanación mejoran, como se detalla a continuación:\n<b>Mano del Daño:</b> Cuando uses Mano del Daño en una criatura, también puedes darle a esa criatura la condición de Envenenado hasta el final de tu próximo turno.\n<b>Mano de la Sanación:</b> Cuando uses Mano de la Sanación, también puedes terminar una de las siguientes condiciones en la criatura que sanas: Ciego, Sordomudo, Paralizado, Envenenado o Aturdido."
+                }
+              }
+            },
+            "11": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Torbellino de Sanación y Daño",
+                  "subTitleName": "✦ TORBELLINO DE SANACIÓN Y DAÑO ✦",
+                  "subDescripcion": "Cuando uses Torbellino de Golpes, puedes reemplazar cada uno de los Golpes Desarmados con un uso de Mano de la Sanación sin gastar Puntos de Enfoque para la sanación.\nAdemás, cuando realices un Golpe Desarmado con Torbellino de Golpes y causes daño, puedes usar Mano del Daño con ese golpe sin gastar un Punto de Enfoque para Mano del Daño. Aún puedes usar Mano del Daño solo una vez por turno."
+                }
+              }
+            },
+            "17": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Mano de la Última Misericordia",
+                  "subTitleName": "✦ MANO DE LA ÚLTIMA MISERICORDIA ✦",
+                  "subDescripcion": "Tu maestría en la energía vital abre la puerta a la misericordia suprema. Como acción mágica, puedes tocar el cadáver de una criatura que haya muerto en las últimas 24 horas y gastar 5 Puntos de Enfoque. La criatura regresa a la vida con un número de Puntos de Golpe igual a 4d10 más tu modificador de Sabiduría. Si la criatura murió con alguna de las siguientes condiciones, la criatura revive con las condiciones eliminadas: Ciego, Sordomudo, Paralizado, Envenenado y Aturdido.\n\nUna vez que uses esta característica, no podrás usarla de nuevo hasta que termines un Descanso Largo."
+                }
+              }
+            }
+          }
+        },
+        "sombra": {
+          "subNombre": "Guerrero de las Sombras",
+          "subDescripcion": "✦ GUERRERO DE LAS SOMBRAS ✦\nAprovechar el Poder de la Sombra para Sigilo y Subterfugio\n\nLos Guerreros de las Sombras practican el sigilo y el subterfugio, aprovechando el poder de Shadowfell. Se sienten cómodos en la oscuridad, capaces de envolver el entorno en penumbra para ocultarse, saltar de sombra a sombra y asumir una forma espectral.",
+          "fuente": "Manual del Jugador",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Artes de la Sombra",
+                  "subTitleName": "✦ ARTES DE LA SOMBRA ✦",
+                  "subDescripcion": "Has aprendido a aprovechar el poder de Shadowfell, obteniendo los siguientes beneficios:\n<b>Oscuridad.</b> Puedes gastar 1 Punto de Enfoque para lanzar el hechizo Oscuridad sin componentes mágicos. Puedes ver dentro del área del hechizo cuando lo lanzas con esta característica. Mientras el hechizo persista, puedes mover su área de Oscuridad a un espacio dentro de 60 pies de ti al inicio de cada uno de tus turnos.\n<b>Visión en la Oscuridad.</b> Obtienes Visión en la Oscuridad con un alcance de 60 pies. Si ya tienes Visión en la Oscuridad, su alcance aumenta en 60 pies.\n<b>Figuras Sombrías.</b> Conoces el hechizo Ilusión Menor. La Sabiduría es tu habilidad para lanzar hechizos con él."
+                }
+              }
+            },
+            "6": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Paso Sombrío",
+                  "subTitleName": "✦ PASO SOMBRÍO ✦",
+                  "subDescripcion": "Mientras estés completamente en Luz Tenue u Oscuridad, puedes usar una Acción Adicional para teletransportarte hasta 60 pies a un espacio desocupado que puedas ver y que también esté en Luz Tenue u Oscuridad. Luego, tienes Ventaja en el siguiente ataque cuerpo a cuerpo que hagas antes del final del turno actual."
+                }
+              }
+            },
+            "11": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Paso Sombrío Mejorado",
+                  "subTitleName": "✦ PASO SOMBRÍO MEJORADO ✦",
+                  "subDescripcion": "Puedes aprovechar tu conexión con Shadowfell para potenciar tu teletransportación. Cuando uses tu Paso Sombrío, puedes gastar 1 Punto de Enfoque para eliminar el requisito de que debes comenzar y terminar en Luz Tenue u Oscuridad para ese uso de la característica. Como parte de esta Acción Adicional, puedes hacer un Ataque Desarmado inmediatamente después de teletransportarte."
+                }
+              }
+            },
+            "17": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Capa de Sombras",
+                  "subTitleName": "✦ CAPA DE SOMBRAS ✦",
+                  "subDescripcion": "Como acción mágica mientras estés completamente en Luz Tenue u Oscuridad, puedes gastar 3 Puntos de Enfoque para envolverte en sombras durante 1 minuto, hasta que tengas la condición de Incapacitado, o hasta que termines tu turno en Luz Brillante. Mientras estés envuelto en estas sombras, obtienes los siguientes beneficios:\n<b>Invisibilidad.</b> Tienes la condición de Invisible.\n<b>Parcialmente Incorpóreo.</b> Puedes moverte a través de espacios ocupados como si fueran Terreno Difícil. Si terminas tu turno en dicho espacio, te desplazas al último espacio desocupado en el que estuviste.\n<b>Tormenta de Sombras.</b> Puedes usar tu Tormenta de Golpes sin gastar Puntos de Enfoque."
+                }
+              }
+            }
+          }
+        },
+        "cuatro-elementos": {
+          "subNombre": "Guerrero de los Elementos",
+          "subDescripcion": "✦ GUERRERO DE LOS ELEMENTOS ✦\nManeja Golpes y Explosiones de Poder Elemental\n\nLos Guerreros de los Elementos acceden al poder de los Planos Elementales. Aprovechando su enfoque sobrenatural, estos Monjes doman momentáneamente la energía del Caos Elemental para empoderarse en combate y fuera de él.",
+          "fuente": "Manual del Jugador",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Sintonización Elemental",
+                  "subTitleName": "✦ SINTONIZACIÓN ELEMENTAL ✦",
+                  "subDescripcion": "Al inicio de tu turno, puedes gastar 1 Punto de Enfoque para imbuirte de energía elemental. La energía dura 10 minutos o hasta que tengas la condición de Incapacitado. Obtienes los siguientes beneficios mientras esta característica esté activa:\n<b>Alcance.</b> Cuando realizas un Golpe Desarmado, tu alcance es 10 pies mayor de lo normal, ya que la energía elemental se extiende desde ti.\n<b>Golpes Elementales.</b> Siempre que impactes con tu Golpe Desarmado, puedes hacer que cause tu elección de daño Ácido, Frío, Fuego, Rayo o Trueno en lugar de su tipo de daño normal. Cuando causes uno de estos tipos, también puedes forzar al objetivo a hacer una tirada de salvación de Fuerza. En caso de fallar, puedes mover al objetivo hasta 10 pies hacia ti o alejándolo de él, mientras la energía elemental gira alrededor de él."
+                },
+                "subBlockDos": {
+                  "subName": "Manipular Elementos",
+                  "subTitleName": "✦ MANIPULAR ELEMENTOS ✦",
+                  "subDescripcion": "Conoces el hechizo Elementalismo. Sabiduría es tu habilidad para lanzar hechizos con él."
+                }
+              }
+            },
+            "6": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Explosión Elemental",
+                  "subTitleName": "✦ EXPLOSIÓN ELEMENTAL ✦",
+                  "subDescripcion": "Como acción mágica, puedes gastar 2 Puntos de Enfoque para causar que la energía elemental estalle en una esfera de radio de 20 pies centrada en un punto dentro de 120 pies de ti. Elige un tipo de daño: Ácido, Frío, Fuego, Rayo o Trueno.\n\nCada criatura en la esfera debe hacer una tirada de salvación de Destreza. En caso de fallar, la criatura recibe daño del tipo elegido igual a tres tiradas de tu dado de Artes Marciales. En caso de éxito, la criatura recibe la mitad de ese daño."
+                }
+              }
+            },
+            "11": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Paso de los Elementos",
+                  "subTitleName": "✦ PASO DE LOS ELEMENTOS ✦",
+                  "subDescripcion": "Mientras tu Sintonización Elemental esté activa, también tienes una Velocidad de Vuelo y una Velocidad de Nado igual a tu Velocidad."
+                }
+              }
+            },
+            "17": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Epítome Elemental",
+                  "subTitleName": "✦ EPÍTOME ELEMENTAL ✦",
+                  "subDescripcion": "Mientras tu Sintonización Elemental esté activa, también obtienes los siguientes beneficios:\n<b>Resistencia al Daño.</b> Obtienes Resistencia a uno de los siguientes tipos de daño de tu elección: Ácido, Frío, Fuego, Rayo o Trueno. Al inicio de cada uno de tus turnos, puedes cambiar esta elección.\n<b>Paso Destructivo.</b> Cuando usas tu Paso del Viento, tu Velocidad aumenta en 20 pies hasta el final del turno. Durante esa duración, cualquier criatura de tu elección recibe daño igual a una tirada de tu dado de Artes Marciales cuando entras en un espacio dentro de 5 pies de ella. El tipo de daño es tu elección entre Ácido, Frío, Fuego, Relámpago o Trueno. Una criatura solo puede recibir este daño una vez por turno.\n<b>Golpes Potenciados.</b> Una vez en cada uno de tus turnos, puedes causar daño adicional a un objetivo igual a una tirada de tu dado de Artes Marciales cuando lo golpeas con un Ataque Desarmado. El daño adicional es del mismo tipo que el causado por ese ataque."
+                }
+              }
+            }
+          }
+        },
+        "mano-abierta": {
+          "subNombre": "Guerrero de la Mano Abierta",
+          "subDescripcion": "✦ GUERRERO DE LA MANO ABIERTA ✦\nMaestro en Técnicas de Combate Desarmado\n\nLos Guerreros de la Mano Abierta son maestros en el combate desarmado. Aprenden técnicas para empujar y derribar a sus oponentes y manipular su propia energía para protegerse del daño.",
+          "fuente": "Manual del Jugador",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Técnica de Mano Abierta",
+                  "subTitleName": "✦ TÉCNICA DE MANO ABIERTA ✦",
+                  "subDescripcion": "Siempre que golpees a una criatura con un ataque concedido por tu Lluvia de Golpes, puedes imponer uno de los siguientes efectos sobre ese objetivo.\n<b>Confusión.</b> El objetivo no puede realizar Ataques de Oportunidad hasta el inicio de su siguiente turno.\n<b>Empujar.</b> El objetivo debe tener éxito en una tirada de salvación de Fuerza o ser empujado hasta 15 pies lejos de ti.\n<b>Derribar.</b> El objetivo debe tener éxito en una tirada de salvación de Destreza o quedar en condición de Caído."
+                }
+              }
+            },
+            "6": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Integridad Corporal",
+                  "subTitleName": "✦ INTEGRIDAD CORPORAL ✦",
+                  "subDescripcion": "Ganas la habilidad de sanar tus heridas. Como Acción de Bonificación, puedes lanzar tu dado de Artes Marciales. Recuperas un número de Puntos de Golpe igual al resultado de la tirada más tu modificador de Sabiduría (mínimo de 1 Punto de Golpe recuperado).\n\nPuedes usar esta característica un número de veces igual a tu modificador de Sabiduría (mínimo una vez), y recuperas todos los usos gastados cuando terminas un Descanso Largo."
+                }
+              }
+            },
+            "11": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Paso Ágil",
+                  "subTitleName": "✦ PASO ÁGIL ✦",
+                  "subDescripcion": "Cuando tomas una Acción de Bonificación distinta de Paso del Viento, también puedes usar Paso del Viento inmediatamente después de esa Acción de Bonificación."
+                }
+              }
+            },
+            "17": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Palma Vibrante",
+                  "subTitleName": "✦ PALMA VIBRANTE ✦",
+                  "subDescripcion": "Ganas la habilidad de generar vibraciones letales en el cuerpo de alguien. Cuando golpeas a una criatura con un Ataque Desarmado, puedes gastar 4 Puntos de Enfoque para iniciar estas vibraciones imperceptibles, que duran un número de días igual a tu nivel de Monje. Las vibraciones son inofensivas a menos que tomes una acción para terminarlas. Alternativamente, cuando tomas la acción de Ataque en tu turno, puedes omitir uno de los ataques para terminar las vibraciones. Para finalizar las vibraciones, tú y el objetivo deben estar en el mismo plano de existencia. Cuando las terminas, el objetivo debe hacer una tirada de salvación de Constitución, sufriendo 10d12 de daño de Fuerza en caso de fallar la salvación o la mitad de ese daño en caso de tener éxito.\nSolo puedes tener una criatura bajo el efecto de esta característica al mismo tiempo. Puedes terminar las vibraciones de manera inofensiva (sin necesidad de acción)."
+                }
+              }
+            }
+          }
+        },
+        "senda5": {
+          "subNombre": "Estilo del Borracho Errante",
+          "subDescripcion": "✦ ESTILO BORRACHO ERRANTE ✦\nEl Monje no lucha con rabia ni con cálculo frío: lucha con el fluir del bambú y la embriaguez del alma. Entre risas, cánticos y tragos, sus enemigos caen sin entender lo que pasó.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Senda del Néctar Sagrado",
+                  "subTitleName": "✦ SENDA DEL NÉCTAR SAGRADO ✦",
+                  "subDescripcion": "A nivel 3, cuando usas Ráfaga de Golpes, puedes elegir ganar uno de los siguientes efectos hasta el final de tu turno:\n♻ Brisa del Bambú: Tu velocidad aumenta en 10 pies y puedes atravesar el espacio de criaturas sin provocar ataques de oportunidad.\n♻ Fortaleza del Licor: Ganas resistencia al daño contundente, cortante y perforante hasta el final del turno."
+                },
+                "subBlockDos": {
+                  "subName": "Golpe al Ki Fluyente",
+                  "subTitleName": "✦ GOLPE AL KI FLUYENTE ✦",
+                  "subDescripcion": "A nivel 3, cuando realizas un ataque desarmado como parte de tu acción de Ráfaga de Golpes, puedes gastar 1 punto de Ki para intentar interrumpir el Flujo de energía interna de tu oponente.\n\nEl objetivo debe ser una criatura que tenga sangre o flujo vital (no funciona en no-muertos, constructos o limos).\n\nEl objetivo debe realizar una tirada de salvación de Constitución contra tu CD de salvación de Ki.\n♻ Si falla, queda Paralizado hasta el final de su siguiente turno.\n♻ Si tiene éxito, no ocurre nada adicional.\n\nSolo puedes aplicar Golpe al Ki Fluyente una vez por turno, incluso si realizas múltiples ataques.\n\nCuando alcanzas el nivel 5 de Monje, no obtienes el característico “Golpe Aturdidor” del Monje base. En su lugar, Golpe al Ki Fluyente mejora automáticamente para que puedas aplicarlo con cualquier ataque desarmado (no solo con Ráfaga de Golpes), manteniendo las mismas condiciones, costes y limitaciones."
+                }
+              }
+            },
+            "6": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Embriaguez Controlada",
+                  "subTitleName": "✦ EMBRIAGUEZ CONTROLADA ✦",
+                  "subDescripcion": "A nivel 6, como acción adicional, puedes gastar 1 punto de Ki para beber un trago rápido y obtener uno de estos beneficios durante 1 minuto:\n♻ Golpe Fuerte: +2 a tiradas de ataque con armas cuerpo a cuerpo (o ataques desarmados).\n♻ Reflejos de Búho: +2 a la CA.\n♻ Paso Nebuloso: Puedes usar tu reacción para imponerte ventaja en una tirada de salvación de Destreza o Sabiduría.\n\nPuedes usar esta acción un número de veces igual a tu modificador de Sabiduría por descanso largo."
+                }
+              }
+            },
+            "11": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Vientre de Hierro",
+                  "subTitleName": "✦ VIENTRE DE HIERRO ✦",
+                  "subDescripcion": "Al nivel 11, eres inmune a la condición de Envenenado. Además, cuando una criatura te cause daño, puedes usar tu reacción para devolverle parte del golpe. El atacante recibe un total de daño igual a tu dado de Artes Marciales + tu modificador de Sabiduría.\n\nSe interpreta como que absorbes el golpe, te tambaleas y devuelves una bofetada cargada de Ki embriagado.",
+                  "efectos": [
+                    {
+                      "type": "inmunidad_condicion",
+                      "value": "Envenenado"
+                    }
+                  ]
+                }
+              }
+            },
+            "17": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Danza Celestial",
+                  "subTitleName": "✦ DANZA CELESTIAL ✦",
+                  "subDescripcion": "A nivel 17, como acción, puedes gastar 4 puntos de Ki para entrar en un estado de trance borracho durante 1 minuto. Mientras dure este estado:\n♻ Puedes realizar un ataque adicional cuando tomes la acción de Ataque (tienes un Ataque Extra por turno).\n♻ Tu velocidad aumenta en +10 pies.\n♻ Obtienes ventaja en todas las tiradas de Destreza y de ataque cuerpo a cuerpo.\n♻ Al final de cada uno de tus turnos, recuperas 3 puntos de golpe si has realizado al menos un ataque ese turno.\n\nUna vez que uses esta característica, no puedes volver a usarla hasta que termines un descanso largo."
+                }
+              }
+            }
+          }
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Artes Marciales",
+          "Puntos de Enfoque",
+          "Movimiento sin Armadura"
+        ],
+        "filas": [
+          [
+            "1d6",
+            "3",
+            "+10 pies"
+          ]
+        ]
+      }
+    },
+    "4": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Mejora de Puntuación de Habilidad",
+          "titleName": "✦ MEJORA DE PUNTUACIÓN DE HABILIDAD ✦",
+          "descripcion": "Obtienes la hazaña Mejora de Puntuación de Habilidad (ver capítulo 5) u otra hazaña de tu elección para la cual califiques. Obtienes esta característica nuevamente en los niveles de Monje 8, 12 y 16."
+        },
+        "blockDos": {
+          "name": "Caída Lenta",
+          "titleName": "✦ CAÍDA LENTA ✦",
+          "descripcion": "Puedes tomar una Reacción cuando caigas para reducir cualquier daño que recibas de la caída en una cantidad igual a cinco veces tu nivel de Monje."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Artes Marciales",
+          "Puntos de Enfoque",
+          "Movimiento sin Armadura"
+        ],
+        "filas": [
+          [
+            "1d6",
+            "4",
+            "+10 pies"
+          ]
+        ]
+      }
+    },
+    "5": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Ataque Adicional",
+          "titleName": "✦ ATAQUE ADICIONAL ✦",
+          "descripcion": "Puedes atacar dos veces en lugar de una siempre que tomes la acción de Ataque en tu turno."
+        },
+        "blockDos": {
+          "name": "Golpe Aturdidor",
+          "titleName": "✦ GOLPE ATURDIDOR ✦",
+          "descripcion": "Una vez por turno, cuando golpeas a una criatura con un arma de Monje o un Ataque Desarmado, puedes gastar 1 Punto de Enfoque para intentar un golpe aturdidor. La criatura objetivo debe hacer una tirada de salvación de Constitución. En caso de fallo, la criatura tiene la condición Aturdida hasta el inicio de tu próximo turno. En caso de éxito, la Velocidad de la criatura se reduce a la mitad hasta el inicio de tu próximo turno, y el próximo rollo de ataque hecho contra la criatura antes de entonces tiene Ventaja."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Artes Marciales",
+          "Puntos de Enfoque",
+          "Movimiento sin Armadura"
+        ],
+        "filas": [
+          [
+            "1d8",
+            "5",
+            "+10 pies"
+          ]
+        ]
+      }
+    },
+    "6": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Golpes Potenciados",
+          "titleName": "✦ GOLPES POTENCIADOS ✦",
+          "descripcion": "Siempre que causes daño con tu Ataque Desarmado, puede causar daño de Fuerza o su tipo de daño normal."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Artes Marciales",
+          "Puntos de Enfoque",
+          "Movimiento sin Armadura"
+        ],
+        "filas": [
+          [
+            "1d8",
+            "6",
+            "+15 pies"
+          ]
+        ]
+      }
+    },
+    "7": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Evasión",
+          "titleName": "✦ EVASIÓN ✦",
+          "descripcion": "Cuando estás sujeto a un efecto que te permite hacer una tirada de salvación de Destreza para recibir solo la mitad del daño, en su lugar no recibes daño si tienes éxito en la tirada de salvación y solo la mitad del daño si fallas.\nNo te beneficias de esta característica si tienes la condición Incapacitado."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Artes Marciales",
+          "Puntos de Enfoque",
+          "Movimiento sin Armadura"
+        ],
+        "filas": [
+          [
+            "1d8",
+            "7",
+            "+15 pies"
+          ]
+        ]
+      }
+    },
+    "8": {
+      "infoCubo": {
+        "columnas": [
+          "Artes Marciales",
+          "Puntos de Enfoque",
+          "Movimiento sin Armadura"
+        ],
+        "filas": [
+          [
+            "1d8",
+            "8",
+            "+15 pies"
+          ]
+        ]
+      }
+    },
+    "9": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Movimiento Acrobático",
+          "titleName": "✦ MOVIMIENTO ACROBÁTICO ✦",
+          "descripcion": "Mientras no estés usando armadura o llevando un Escudo, obtienes la capacidad de moverte a lo largo de superficies verticales y sobre líquidos en tu turno sin caer durante el movimiento."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Artes Marciales",
+          "Puntos de Enfoque",
+          "Movimiento sin Armadura"
+        ],
+        "filas": [
+          [
+            "1d8",
+            "9",
+            "+15 pies"
+          ]
+        ]
+      }
+    },
+    "10": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Enfoque Elevado",
+          "titleName": "✦ ENFOQUE ELEVADO ✦",
+          "descripcion": "Tus características Flurry of Blows, Patient Defense y Step of the Wind obtienen los siguientes beneficios:\n<b>Flurry of Blows:</b> Puedes gastar 1 Punto de Enfoque para usar Flurry of Blows y hacer tres Ataques Desarmados con él en lugar de dos.\n<b>Patient Defense:</b> Cuando gastas un Punto de Enfoque para usar Patient Defense, obtienes una cantidad de Puntos de Golpe Temporales igual a dos tiradas de tu dado de Artes Marciales.\n<b>Step of the Wind:</b> Cuando gastas un Punto de Enfoque para usar Step of the Wind, puedes elegir una criatura dispuesta dentro de 5 pies de ti que sea Grande o más pequeña. Mueves la criatura contigo hasta el final de tu turno. El movimiento de la criatura no provoca Ataques de Oportunidad."
+        },
+        "blockDos": {
+          "name": "Auto-Restauración",
+          "titleName": "✦ AUTO-RESTAURACIÓN ✦",
+          "descripcion": "A través de la pura fuerza de voluntad, puedes eliminar una de las siguientes condiciones de ti mismo al final de cada uno de tus turnos: Encantado, Aterrorizado o Envenenado.\nAdemás, prescindir de comida y bebida no te otorga niveles de Agotamiento."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Artes Marciales",
+          "Puntos de Enfoque",
+          "Movimiento sin Armadura"
+        ],
+        "filas": [
+          [
+            "1d8",
+            "10",
+            "+20 pies"
+          ]
+        ]
+      }
+    },
+    "11": {
+      "infoCubo": {
+        "columnas": [
+          "Artes Marciales",
+          "Puntos de Enfoque",
+          "Movimiento sin Armadura"
+        ],
+        "filas": [
+          [
+            "1d10",
+            "11",
+            "+20 pies"
+          ]
+        ]
+      }
+    },
+    "12": {
+      "infoCubo": {
+        "columnas": [
+          "Artes Marciales",
+          "Puntos de Enfoque",
+          "Movimiento sin Armadura"
+        ],
+        "filas": [
+          [
+            "1d10",
+            "12",
+            "+20 pies"
+          ]
+        ]
+      }
+    },
+    "13": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Desviar Energía",
+          "titleName": "✦ DESVIAR ENERGÍA ✦",
+          "descripcion": "Ahora puedes usar tu característica Deflect Attacks contra ataques que causen cualquier tipo de daño, no solo Bludgeoning, Piercing o Slashing."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Artes Marciales",
+          "Puntos de Enfoque",
+          "Movimiento sin Armadura"
+        ],
+        "filas": [
+          [
+            "1d10",
+            "13",
+            "+20 pies"
+          ]
+        ]
+      }
+    },
+    "14": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Superviviente Disciplinado",
+          "titleName": "✦ SUPERVIVIENTE DISCIPLINADO ✦",
+          "descripcion": "Tu disciplina física y mental te otorga competencia en todas las tiradas de salvación.\nAdemás, siempre que hagas una tirada de salvación y falles, puedes gastar 1 Punto de Enfoque para volver a tirarla, y debes usar la nueva tirada.",
+          "efectos": [
+            {
+              "type": "competencia",
+              "kind": "salvacion",
+              "value": "fuerza"
+            },
+            {
+              "type": "competencia",
+              "kind": "salvacion",
+              "value": "destreza"
+            },
+            {
+              "type": "competencia",
+              "kind": "salvacion",
+              "value": "constitucion"
+            },
+            {
+              "type": "competencia",
+              "kind": "salvacion",
+              "value": "inteligencia"
+            },
+            {
+              "type": "competencia",
+              "kind": "salvacion",
+              "value": "sabiduria"
+            },
+            {
+              "type": "competencia",
+              "kind": "salvacion",
+              "value": "carisma"
+            }
+          ]
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Artes Marciales",
+          "Puntos de Enfoque",
+          "Movimiento sin Armadura"
+        ],
+        "filas": [
+          [
+            "1d10",
+            "14",
+            "+25 pies"
+          ]
+        ]
+      }
+    },
+    "15": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Enfoque Perfecto",
+          "titleName": "✦ ENFOQUE PERFECTO ✦",
+          "descripcion": "Cuando lances la Iniciativa y no uses Auto-Restauración, recuperas los Puntos de Enfoque gastados hasta tener 4 si tienes 3 o menos."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Artes Marciales",
+          "Puntos de Enfoque",
+          "Movimiento sin Armadura"
+        ],
+        "filas": [
+          [
+            "1d10",
+            "15",
+            "+25 pies"
+          ]
+        ]
+      }
+    },
+    "16": {
+      "infoCubo": {
+        "columnas": [
+          "Artes Marciales",
+          "Puntos de Enfoque",
+          "Movimiento sin Armadura"
+        ],
+        "filas": [
+          [
+            "1d10",
+            "16",
+            "+25 pies"
+          ]
+        ]
+      }
+    },
+    "17": {
+      "infoCubo": {
+        "columnas": [
+          "Artes Marciales",
+          "Puntos de Enfoque",
+          "Movimiento sin Armadura"
+        ],
+        "filas": [
+          [
+            "1d12",
+            "17",
+            "+25 pies"
+          ]
+        ]
+      }
+    },
+    "18": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Defensa Superior",
+          "titleName": "✦ DEFENSA SUPERIOR ✦",
+          "descripcion": "Al comienzo de tu turno, puedes gastar 3 Puntos de Enfoque para reforzarte contra el daño durante 1 minuto o hasta que tengas la condición Incapacitado. Durante ese tiempo, tienes Resistencia a todo el daño excepto al daño de Fuerza."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Artes Marciales",
+          "Puntos de Enfoque",
+          "Movimiento sin Armadura"
+        ],
+        "filas": [
+          [
+            "1d12",
+            "18",
+            "+30 pies"
+          ]
+        ]
+      }
+    },
+    "19": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Hito Épico",
+          "titleName": "✦ HITO ÉPICO ✦",
+          "descripcion": "Obtienes una hazaña Hito Épico (ver capítulo 5) u otra hazaña de tu elección para la cual califiques. Se recomienda la Hazaña de Ofensiva Irresistible."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Artes Marciales",
+          "Puntos de Enfoque",
+          "Movimiento sin Armadura"
+        ],
+        "filas": [
+          [
+            "1d12",
+            "19",
+            "+30 pies"
+          ]
+        ]
+      }
+    },
+    "20": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Cuerpo y Mente",
+          "titleName": "✦ CUERPO Y MENTE ✦",
+          "descripcion": "Has desarrollado tu cuerpo y mente a nuevas alturas. Tus puntuaciones de Destreza y Sabiduría aumentan en 4, hasta un máximo de 25."
+        }
+      },
+      "requeridoTrue": {
+        "statAmount": {
+          "destreza": 4,
+          "sabiduria": 4
+        },
+        "statMax": {
+          "activos": [
+            "destreza",
+            "sabiduria"
+          ],
+          "stat": 25
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Artes Marciales",
+          "Puntos de Enfoque",
+          "Movimiento sin Armadura"
+        ],
+        "filas": [
+          [
+            "1d12",
+            "20",
+            "+30 pies"
+          ]
+        ]
+      }
+    }
+  }
 }

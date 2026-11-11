@@ -2,132 +2,65 @@
   "nombre": "Clérigo",
   "claseName": "clerigo",
   "seccion": "manual",
+  "icono": "✝️",
+  "fuenteReglas": "Manual del Jugador",
   "dadoDeGolpe": 8,
   "nivelesDeAumento": [
     4,
     8,
     12,
-    16,
-    19
+    16
   ],
   "conjurador": true,
-  "attribute": "inteligencia",
-  "niveles": {
-    "1": {
-      "descripcion": "Canalizador del poder divino otorgado por una deidad o fuerza sagrada.",
-      "descripcionLarga": "El Clérigo es el puente entre lo mortal y lo eterno. Su poder proviene de la fe —en un dios, en un ideal o en un principio cósmico— y se manifiesta como luz, protección o juicio. Puede sanar o castigar con la misma autoridad. No es un simple sacerdote: es un ejecutor de la voluntad divina en el mundo físico.",
-      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Sabiduría y Carisma.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d8.\n    :: Nivel 1: 8 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d8 (o 5) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Armadura ligera, Armadura media y Escudos.\n    :: Armas: Armas simples.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge dos de entre Historia, Medicina, Perspicacia, Persuasión y Religión.\n❖ Equipo. Comienzas con el siguiente equipo, además del que te dé tu trasfondo:\n    :: (a) una maza o (b) un martillo de guerra (si tienes competencia).\n    :: (a) una cota de escamas, (b) una armadura de cuero o (c) una cota de malla (si tienes competencia).\n    :: (a) una ballesta ligera y 20 virotes o (b) cualquier arma simple.\n    :: (a) un paquete de sacerdote o (b) un paquete de explorador.\n    :: Un escudo y un símbolo sagrado.\n    :: Alternativa: 5d4 × 10 po en lugar del equipo de clase.\n❖ Fuente: Manual del Jugador.",
-      "informacionNivel": "✦  ✦\n\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n\n✦  ✦",
-      "subClase": {
-        "conocimiento": {
-          "subNombre": "Dominio del Conocimiento",
-          "subDescripcion": "Dioses del saber: idiomas, habilidades expertas y lectura de pensamientos.",
-          "subNivel": {},
-          "rasgosPendientes": true,
-          "fuente": "Manual del Jugador"
-        },
-        "engano": {
-          "subNombre": "Dominio del Engaño",
-          "subDescripcion": "Dioses de la astucia: duplicados ilusorios, invisibilidad y bendición del embaucador.",
-          "subNivel": {},
-          "rasgosPendientes": true,
-          "fuente": "Manual del Jugador"
-        },
-        "guerra": {
-          "subNombre": "Dominio de la Guerra",
-          "subDescripcion": "Dioses de la batalla: armaduras pesadas, armas marciales y ataques adicionales.",
-          "subNivel": {},
-          "rasgosPendientes": true,
-          "fuente": "Manual del Jugador"
-        },
-        "luz": {
-          "subNombre": "Dominio de la Luz",
-          "subDescripcion": "Dioses del sol y la verdad: fuego, luz radiante y protección contra ataques.",
-          "subNivel": {},
-          "rasgosPendientes": true,
-          "fuente": "Manual del Jugador"
-        },
-        "naturaleza": {
-          "subNombre": "Dominio de la Naturaleza",
-          "subDescripcion": "Dioses de la naturaleza: armaduras pesadas, conjuros druídicos y control de bestias y plantas.",
-          "subNivel": {},
-          "rasgosPendientes": true,
-          "fuente": "Manual del Jugador"
-        },
-        "tempestad": {
-          "subNombre": "Dominio de la Tempestad",
-          "subDescripcion": "Dioses del trueno y el mar: relámpago, trueno y represalia contra quien te golpea.",
-          "subNivel": {},
-          "rasgosPendientes": true,
-          "fuente": "Manual del Jugador"
-        },
-        "vida": {
-          "subNombre": "Dominio de la Vida",
-          "subDescripcion": "Dioses de la vida y la curación: curaciones más potentes y armadura pesada.",
-          "subNivel": {},
-          "rasgosPendientes": true,
-          "fuente": "Manual del Jugador"
-        }
-      }
-    },
-    "2": {
-      "informacionNivel": "✦ ATAQUE TEMERARIO ✦"
-    },
-    "3": {
-      "informacionNivel": "✦ CONOCIMIENTO PRIMITIVO ✦"
-    },
-    "4": {
-      "informacionNivel": "✦  ✦"
-    },
-    "5": {
-      "informacionNivel": "✦  ✦"
-    },
-    "6": {
-      "informacionNivel": "✦  ✦"
-    },
-    "7": {
-      "informacionNivel": "✦  ✦"
-    },
-    "8": {
-      "informacionNivel": "✦  ✦"
-    },
-    "9": {
-      "informacionNivel": "✦  ✦"
-    },
-    "10": {
-      "informacionNivel": "✦  ✦"
-    },
-    "11": {
-      "informacionNivel": "✦  ✦"
-    },
-    "12": {
-      "informacionNivel": "✦  ✦"
-    },
-    "13": {
-      "informacionNivel": "✦  ✦"
-    },
-    "14": {
-      "informacionNivel": "✦  ✦"
-    },
-    "15": {
-      "informacionNivel": "✦  ✦"
-    },
-    "16": {
-      "informacionNivel": "✦  ✦"
-    },
-    "17": {
-      "informacionNivel": "✦  ✦"
-    },
-    "18": {
-      "informacionNivel": "✦  ✦"
-    },
-    "19": {
-      "informacionNivel": "✦  ✦"
-    },
-    "20": {
-      "informacionNivel": "✦  ✦"
-    }
+  "attribute": "sabiduria",
+  "lanzamiento": {
+    "progression": "full",
+    "cantripsKnown": [
+      3,
+      3,
+      3,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5
+    ],
+    "preparedTable": [
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11,
+      12,
+      14,
+      15,
+      16,
+      16,
+      17,
+      17,
+      18,
+      18,
+      19,
+      20,
+      21,
+      22
+    ]
   },
+  "subclaseNombre": "Dominio divino",
   "competencias": {
     "salvaciones": [
       "sabiduria",
@@ -146,8 +79,8 @@
       "elegir": 2,
       "de": [
         "Historia",
-        "Medicina",
         "Perspicacia",
+        "Medicina",
         "Persuasión",
         "Religión"
       ]
@@ -164,19 +97,1037 @@
     "habilidades": null
   },
   "equipoInicial": [
-    "(a) una maza o (b) un martillo de guerra (si tienes competencia).",
-    "(a) una cota de escamas, (b) una armadura de cuero o (c) una cota de malla (si tienes competencia).",
-    "(a) una ballesta ligera y 20 virotes o (b) cualquier arma simple.",
-    "(a) un paquete de sacerdote o (b) un paquete de explorador.",
-    "Un escudo y un símbolo sagrado."
+    "(A) Camisote de malla, Escudo, Maza, Símbolo sagrado, Paquete de sacerdote y 7 PO.",
+    "(B) 110 PO."
   ],
-  "oroInicial": "5d4 × 10",
-  "fuenteReglas": "Manual del Jugador",
-  "subclaseNombre": "Dominio divino",
+  "listasDeEleccion": {
+    "orden-divina": {
+      "titulo": "Orden Divina",
+      "opciones": [
+        {
+          "id": "protector",
+          "nombre": "Protector",
+          "descripcion": "Entrenado para la batalla, obtienes competencia con armas marciales y entrenamiento en armadura pesada.",
+          "efectos": [
+            {
+              "type": "competencia",
+              "kind": "arma",
+              "value": "Armas marciales"
+            },
+            {
+              "type": "competencia",
+              "kind": "armadura",
+              "value": "Armadura pesada"
+            }
+          ]
+        },
+        {
+          "id": "taumaturgo",
+          "nombre": "Taumaturgo",
+          "descripcion": "Conoces un truco adicional de la lista de conjuros de clérigo. Además, tu conexión mística con lo divino te otorga un bono a tus chequeos de Inteligencia (Arcanos o Religión). El bono es igual a tu modificador de Sabiduría (mínimo de +1).",
+          "efectos": [
+            {
+              "type": "bono",
+              "target": "trucos",
+              "value": 1
+            },
+            {
+              "type": "bono",
+              "target": "habilidad:Conocimiento Arcano",
+              "desdeAtributo": "sabiduria",
+              "minimo": 1
+            },
+            {
+              "type": "bono",
+              "target": "habilidad:Religión",
+              "desdeAtributo": "sabiduria",
+              "minimo": 1
+            }
+          ]
+        }
+      ]
+    },
+    "golpes-benditos": {
+      "titulo": "Golpes Benditos",
+      "opciones": [
+        {
+          "id": "golpe-divino",
+          "nombre": "Golpe Divino",
+          "descripcion": "Una vez en cada uno de tus turnos, cuando golpeas a una criatura con una tirada de ataque usando un arma, puedes hacer que el objetivo reciba un daño adicional de 1d8 necrótico o radiante (a tu elección). A nivel 14 aumenta a 2d8."
+        },
+        {
+          "id": "conjuros-potentes",
+          "nombre": "Conjuros Potentes",
+          "descripcion": "Añade tu modificador de Sabiduría al daño que inflijas con cualquier truco de clérigo. A nivel 14, al dañar con un truco de clérigo otorgas Puntos de Golpe Temporales iguales al doble de tu modificador de Sabiduría a ti o a otra criatura a 60 pies."
+        }
+      ]
+    }
+  },
   "subclasesRetiradas": [
     "senda1",
     "senda2",
     "senda3",
     "senda4"
-  ]
+  ],
+  "niveles": {
+    "1": {
+      "descripcion": "Canalizador del poder divino otorgado por una deidad o fuerza sagrada.",
+      "descripcionLarga": "El Clérigo es el puente entre lo mortal y lo eterno. Su poder proviene de la fe —en un dios, en un ideal o en un principio cósmico— y se manifiesta como luz, protección o juicio. Puede sanar o castigar con la misma autoridad. No es un simple sacerdote: es un ejecutor de la voluntad divina en el mundo físico.",
+      "atributoInicial": "Atributos de clase:\n❖ Habilidad principal: Sabiduría.\n❖ Tiradas de Salvación: Sabiduría y Carisma.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d8.\n    :: Nivel 1: 8 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d8 (o 5) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Armadura ligera y mediana, y escudos.\n    :: Armas: Armas sencillas.\n    :: Herramientas: Ninguna.\n    :: Habilidades: elige 2 entre Historia, Perspicacia, Medicina, Persuasión o Religión.\n❖ Equipo inicial: elige A o B.\n    :: (A) Camisote de malla, Escudo, Maza, Símbolo sagrado, Paquete de sacerdote y 7 PO.\n    :: (B) 110 PO.\n❖ Fuente: Manual del Jugador.",
+      "infoBlock": {
+        "blockUno": {
+          "name": "Lanzamiento de Conjuros",
+          "titleName": "✦ LANZAMIENTO DE CONJUROS ✦",
+          "descripcion": "Has aprendido a lanzar conjuros a través de la oración y la meditación. Consulta el capítulo 7 para conocer las reglas sobre el lanzamiento de conjuros. La información a continuación detalla cómo usas esas reglas con los conjuros de clérigo, que aparecen en la lista de conjuros del clérigo más adelante en la descripción de la clase.\n<b>Trucos.</b> Conoces tres trucos de tu elección de la lista de conjuros de clérigo. Se recomiendan Guía, Llama Sagrada y Taumaturgia. Cada vez que subes de nivel como clérigo, puedes reemplazar uno de tus trucos por otro truco de tu elección de la lista de conjuros de clérigo. Cuando alcances los niveles 4 y 10 de clérigo, aprenderás otro truco de tu elección de la lista de conjuros de clérigo, como se muestra en la columna de Trucos de la tabla de Características del Clérigo.\n<b>Espacios de conjuros.</b> La tabla de Características del Clérigo muestra cuántos espacios de conjuros tienes para lanzar tus conjuros de nivel 1. Recuperas todos los espacios gastados cuando terminas un Descanso Largo.\n<b>Conjuros preparados.</b> Preparas la lista de conjuros de nivel 1 que están disponibles para que los lances con esta característica. Para empezar, elige cuatro conjuros de nivel 1 de la lista de conjuros de clérigo. Se recomiendan Bendición, Curar Heridas, Rayo Guiador y Escudo de Fe. El número de conjuros en tu lista aumenta a medida que subes de nivel como clérigo, como se muestra en la columna de Conjuros Preparados de la tabla de Características del Clérigo. Cada vez que ese número aumenta, elige conjuros adicionales de la lista de conjuros de clérigo hasta que el número de conjuros en tu lista coincida con el número en la tabla. Los conjuros elegidos deben ser de un nivel para el cual tengas espacios de conjuro. Por ejemplo, si eres un clérigo de nivel 3, tu lista de conjuros preparados puede incluir seis conjuros de niveles 1 y 2 en cualquier combinación. Si otra característica de clérigo te da conjuros que siempre tienes preparados, esos conjuros no cuentan en el número de conjuros que puedes preparar con esta característica, pero esos conjuros cuentan como conjuros de clérigo para ti.\n<b>Cambiar tus conjuros preparados.</b> Cada vez que termines un Descanso Largo, puedes cambiar tu lista de conjuros preparados, reemplazando cualquiera de los conjuros en esa lista por otros conjuros de clérigo para los cuales tengas espacios de conjuro.\n<b>Habilidad de lanzamiento de conjuros.</b> Sabiduría es tu habilidad de lanzamiento de conjuros para tus conjuros de clérigo.\n<b>Enfoque de lanzamiento de conjuros.</b> Puedes usar un símbolo sagrado como un enfoque de lanzamiento de conjuros para tus conjuros de clérigo."
+        },
+        "blockDos": {
+          "name": "Orden Divina",
+          "titleName": "✦ ORDEN DIVINA ✦",
+          "descripcion": "Te has dedicado a uno de los siguientes roles sagrados de tu elección.\n<b>Protector.</b> Entrenado para la batalla, obtienes competencia con armas marciales y entrenamiento en armadura pesada.\n<b>Taumaturgo.</b> Conoces un truco adicional de la lista de conjuros de clérigo. Además, tu conexión mística con lo divino te otorga un bono a tus chequeos de Inteligencia (Arcanos o Religión). El bono es igual a tu modificador de Sabiduría (mínimo de +1).",
+          "elegir": {
+            "lista": "orden-divina",
+            "cantidad": 1
+          }
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "-",
+            "3",
+            "4",
+            "2"
+          ]
+        ]
+      }
+    },
+    "2": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Canalizar Divinidad",
+          "titleName": "✦ CANALIZAR DIVINIDAD ✦",
+          "descripcion": "Puedes canalizar energía divina directamente de los Planos Exteriores para alimentar efectos mágicos. Comienzas con dos de estos efectos: Chispa Divina y Ahuyentar a los Muertos Vivientes, cada uno de los cuales se describe a continuación. Cada vez que uses Canalizar Divinidad de esta clase, elige qué efecto de Canalizar Divinidad de esta clase quieres crear. Obtienes opciones de efectos adicionales a niveles más altos de clérigo.\nPuedes usar Canalizar Divinidad de esta clase dos veces. Recuperas uno de sus usos gastados cuando terminas un Descanso Corto, y recuperas todos los usos gastados cuando terminas un Descanso Largo. Obtienes usos adicionales cuando alcanzas ciertos niveles de clérigo, como se muestra en la columna de Canalizar Divinidad de la tabla de Características del Clérigo.\nSi un efecto de Canalizar Divinidad requiere una tirada de salvación, la CD (Clase de Dificultad) es igual a la CD de salvación de conjuros de la característica Lanzamiento de Conjuros de esta clase.\n<b>Chispa Divina.</b> Como acción mágica, apuntas tu Símbolo Sagrado hacia otra criatura que puedas ver dentro de un rango de 30 pies y enfocas energía divina en ella. Lanza 1d8 y añade tu modificador de Sabiduría. Puedes o bien restaurar puntos de golpe a la criatura igual a ese total o bien forzar a la criatura a hacer una tirada de salvación de Constitución. Si falla la tirada de salvación, la criatura recibe daño necrótico o radiante (a tu elección) igual a ese total. Si tiene éxito en la tirada de salvación, la criatura recibe la mitad de daño (redondeado hacia abajo). Lanzas un d8 adicional cuando alcanzas los niveles 7 (2d8), 13 (3d8) y 18 (4d8) como clérigo.\n<b>Ahuyentar a los Muertos Vivientes.</b> Como acción mágica, presentas tu Símbolo Sagrado y reprendes a las criaturas no muertas. Cada no muerto de tu elección que esté a 30 pies de ti debe hacer una tirada de salvación de Sabiduría. Si la criatura falla su tirada de salvación, queda bajo las condiciones Asustado e Incapacitado durante 1 minuto. Durante esa duración, intentará alejarse de ti lo más que pueda en su turno. Este efecto termina antes en la criatura si recibe algún daño, si tú quedas bajo la condición de Incapacitado o si mueres."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "2",
+            "3",
+            "5",
+            "3"
+          ]
+        ]
+      }
+    },
+    "3": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Subclase de Clérigo",
+          "titleName": "✦ SUBCLASE DE CLÉRIGO ✦",
+          "descripcion": "Obtienes una subclase de clérigo de tu elección. Las subclases Dominio de la Vida, Dominio de la Luz, Dominio del Engaño y Dominio de la Guerra se detallan después de la descripción de esta clase. Una subclase es una especialización que te otorga características en ciertos niveles de clérigo. Durante el resto de tu carrera, obtienes cada una de las características de tu subclase que correspondan a tu nivel de clérigo o inferior.\n\n<b>Subclases de Clérigo.</b> Una subclase de clérigo es una especialización que te otorga características a ciertos niveles de clérigo, según lo especificado en la subclase. Cada subclase de clérigo recibe el nombre de un dominio de existencia que es favorecido por un dios, panteón u orden religiosa. Esta sección presenta las subclases del Dominio de la Vida, Dominio de la Luz, Dominio del Engaño y Dominio de la Guerra."
+        }
+      },
+      "subClase": {
+        "vida": {
+          "subNombre": "Dominio de la Vida",
+          "fuente": "Manual del Jugador",
+          "subDescripcion": "✦ DOMINIO DE LA VIDA ✦\nAlivia los Dolores del Mundo\n\nEl Dominio de la Vida se centra en la energía positiva que ayuda a sostener toda la vida en el multiverso. Los clérigos que acceden a este dominio son maestros de la curación, utilizando esa fuerza vital para sanar muchas heridas. La existencia misma depende de la energía positiva asociada con este dominio, por lo que un clérigo de casi cualquier tradición religiosa podría elegirlo. Este dominio está particularmente asociado con deidades agrícolas, dioses de la curación o la resistencia, y dioses del hogar y la comunidad. Las órdenes religiosas dedicadas a la curación también buscan la magia de este dominio.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Discípulo de la Vida",
+                  "subTitleName": "✦ DISCÍPULO DE LA VIDA ✦",
+                  "subDescripcion": "Cuando un conjuro que lanzas con un espacio de conjuro restaura puntos de golpe a una criatura, esa criatura recupera puntos de golpe adicionales en el turno en que lo lanzas. Los puntos de golpe adicionales son igual a 2 más el nivel del espacio de conjuro."
+                },
+                "subBlockDos": {
+                  "subName": "Conjuros del Dominio de la Vida",
+                  "subTitleName": "✦ CONJUROS DEL DOMINIO DE LA VIDA ✦",
+                  "subDescripcion": "Tu conexión con este dominio divino asegura que siempre tengas ciertos conjuros listos. Cuando alcances un nivel de clérigo especificado en la tabla de Conjuros del Dominio de la Vida, siempre tendrás los conjuros listados preparados a partir de entonces.\n\n<b>Conjuros del Dominio de la Vida</b>\n<table><thead><tr><th>Nivel de clérigo</th><th>Conjuros preparados</th></tr></thead><tbody><tr><td>3</td><td>Ayuda, Bendición, Curar Heridas, Restauración Menor</td></tr><tr><td>5</td><td>Palabra de Curación Masiva, Revivir</td></tr><tr><td>7</td><td>Aura de Vida, Protección contra la Muerte</td></tr><tr><td>9</td><td>Restauración Mayor, Curación de Heridas Masiva</td></tr></tbody></table>",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Auxilio"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Bendición"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Curar heridas"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Restablecimiento menor"
+                    }
+                  ]
+                },
+                "subBlockTres": {
+                  "subName": "Preservar la Vida",
+                  "subTitleName": "✦ PRESERVAR LA VIDA ✦",
+                  "subDescripcion": "Como acción mágica, presentas tu Símbolo Sagrado y gastas un uso de tu Canalizar Divinidad para invocar energía curativa que puede restaurar un número de puntos de golpe igual a cinco veces tu nivel de clérigo. Elige criaturas heridas dentro de un rango de 30 pies de ti (lo que puede incluirte a ti mismo) y divide esos puntos de golpe entre ellas. Esta característica puede restaurar a una criatura a no más de la mitad de su máximo de puntos de golpe."
+                }
+              }
+            },
+            "5": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros del Dominio de la Vida",
+                  "subTitleName": "✦ CONJUROS DEL DOMINIO DE LA VIDA ✦",
+                  "subDescripcion": "Siempre tienes preparados: Palabra de Curación Masiva, Revivir (ver Conjuros del Dominio de la Vida, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Palabra de curación en masa"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Revivir"
+                    }
+                  ]
+                }
+              }
+            },
+            "6": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Sanador Bendito",
+                  "subTitleName": "✦ SANADOR BENDITO ✦",
+                  "subDescripcion": "Los conjuros de curación que lanzas a otros también te curan a ti. Inmediatamente después de lanzar un conjuro con un espacio de conjuro que restaura puntos de golpe a una o más criaturas que no seas tú, recuperas puntos de golpe igual a 2 más el nivel del espacio de conjuro."
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros del Dominio de la Vida",
+                  "subTitleName": "✦ CONJUROS DEL DOMINIO DE LA VIDA ✦",
+                  "subDescripcion": "Siempre tienes preparados: Aura de Vida, Protección contra la Muerte (ver Conjuros del Dominio de la Vida, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Aura de Vida"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Guardia contra la muerte"
+                    }
+                  ]
+                }
+              }
+            },
+            "9": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros del Dominio de la Vida",
+                  "subTitleName": "✦ CONJUROS DEL DOMINIO DE LA VIDA ✦",
+                  "subDescripcion": "Siempre tienes preparados: Restauración Mayor, Curación de Heridas Masiva (ver Conjuros del Dominio de la Vida, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Restablecimiento mayor"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Curar heridas en masa"
+                    }
+                  ]
+                }
+              }
+            },
+            "17": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Curación Suprema",
+                  "subTitleName": "✦ CURACIÓN SUPREMA ✦",
+                  "subDescripcion": "Cuando normalmente lanzarías uno o más dados para restaurar puntos de golpe a una criatura con un conjuro o Canalizar Divinidad, no lances esos dados para la curación; en su lugar, utiliza el número más alto posible para cada dado. Por ejemplo, en lugar de restaurar 2d6 puntos de golpe a una criatura con un conjuro, restauras 12."
+                }
+              }
+            }
+          }
+        },
+        "luz": {
+          "subNombre": "Dominio de la Luz",
+          "fuente": "Manual del Jugador",
+          "subDescripcion": "✦ DOMINIO DE LA LUZ ✦\nLlevar Luz para Expulsar la Oscuridad\n\nEl Dominio de la Luz enfatiza el poder divino para traer fuego abrasador y revelación. Los clérigos que manejan este poder son almas iluminadas, llenas de resplandor y del poder de la visión esclarecedora de sus deidades, encargados de ahuyentar mentiras y quemar la oscuridad.\nEl Dominio de la Luz está asociado con dioses de la verdad, vigilancia, belleza, perspicacia y renovación. Algunos de estos dioses se identifican con el sol o como aurigas que guían el sol a través del cielo. Otros son centinelas que atraviesan el engaño. Algunos son deidades de la belleza y el arte que enseñan que el arte es un vehículo para la mejora del alma.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros del Dominio de la Luz",
+                  "subTitleName": "✦ CONJUROS DEL DOMINIO DE LA LUZ ✦",
+                  "subDescripcion": "Tu conexión con este dominio divino asegura que siempre tengas ciertos conjuros listos. Cuando alcances un nivel de clérigo especificado en la tabla de Conjuros del Dominio de la Luz, siempre tendrás los conjuros listados preparados a partir de entonces.\n\n<b>Conjuros del Dominio de la Luz</b>\n<table><thead><tr><th>Nivel de clérigo</th><th>Conjuros preparados</th></tr></thead><tbody><tr><td>3</td><td>Manos Ardientes, Fuego de Hada, Rayo Abrasador, Ver Invisibilidad</td></tr><tr><td>5</td><td>Luz del Día, Bola de Fuego</td></tr><tr><td>7</td><td>Ojo Arcano, Murallas de Fuego</td></tr><tr><td>9</td><td>Rayo de Llama, Adivinación</td></tr></tbody></table>",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Manos ardientes"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Fuego feérico"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Rayo abrasador"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Ver invisibilidad"
+                    }
+                  ]
+                },
+                "subBlockDos": {
+                  "subName": "Resplandor del Amanecer",
+                  "subTitleName": "✦ RESPLANDOR DEL AMANECER ✦",
+                  "subDescripcion": "Como acción mágica, presentas tu Símbolo Sagrado y gastas un uso de tu Canalizar Divinidad para emitir un destello de luz en una emanación de 30 pies que se origina en ti mismo. Cualquier Oscuridad mágica —como la creada por el conjuro Oscuridad— en esa área es disipada. Además, cada criatura de tu elección en esa área debe hacer una tirada de salvación de Constitución, recibiendo daño radiante igual a 2d10 más tu nivel de clérigo en caso de fallo o la mitad de ese daño en caso de éxito."
+                },
+                "subBlockTres": {
+                  "subName": "Destello Protector",
+                  "subTitleName": "✦ DESTELLO PROTECTOR ✦",
+                  "subDescripcion": "Cuando una criatura que puedes ver dentro de 30 pies de ti haga una tirada de ataque, puedes tomar una Reacción para imponer Desventaja en la tirada de ataque, haciendo que la luz parpadee antes de que acierte o falle. Puedes usar esta característica un número de veces igual a tu modificador de Sabiduría (mínimo una vez). Recuperas todos los usos gastados cuando terminas un Descanso Largo."
+                }
+              }
+            },
+            "5": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros del Dominio de la Luz",
+                  "subTitleName": "✦ CONJUROS DEL DOMINIO DE LA LUZ ✦",
+                  "subDescripcion": "Siempre tienes preparados: Luz del Día, Bola de Fuego (ver Conjuros del Dominio de la Luz, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Luz del día"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Bola de Fuego"
+                    }
+                  ]
+                }
+              }
+            },
+            "6": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Destello Protector Mejorado",
+                  "subTitleName": "✦ DESTELLO PROTECTOR MEJORADO ✦",
+                  "subDescripcion": "Recuperas todos los usos gastados de tu Destello Protector cuando terminas un Descanso Corto o Largo. Además, cada vez que uses el Destello Protector, puedes otorgar al objetivo del ataque desencadenante un número de Puntos de Golpe Temporales igual a 2d6 más tu modificador de Sabiduría."
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros del Dominio de la Luz",
+                  "subTitleName": "✦ CONJUROS DEL DOMINIO DE LA LUZ ✦",
+                  "subDescripcion": "Siempre tienes preparados: Ojo Arcano, Murallas de Fuego (ver Conjuros del Dominio de la Luz, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Ojo arcano"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Muro de fuego"
+                    }
+                  ]
+                }
+              }
+            },
+            "9": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros del Dominio de la Luz",
+                  "subTitleName": "✦ CONJUROS DEL DOMINIO DE LA LUZ ✦",
+                  "subDescripcion": "Siempre tienes preparados: Rayo de Llama, Adivinación (ver Conjuros del Dominio de la Luz, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Golpe flamígero"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Escudriñar"
+                    }
+                  ]
+                }
+              }
+            },
+            "17": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Corona de Luz",
+                  "subTitleName": "✦ CORONA DE LUZ ✦",
+                  "subDescripcion": "Como acción mágica, haces que emitas un aura de luz solar que dura 1 minuto o hasta que la disuelvas (sin acción requerida). Emite Luz Brillante en un radio de 60 pies y Luz Tenue por 30 pies adicionales. Tus enemigos en la Luz Brillante tienen Desventaja en las tiradas de salvación contra tu Resplandor del Amanecer y cualquier conjuro que cause daño de Fuego o Radiante. Puedes usar esta característica un número de veces igual a tu modificador de Sabiduría (mínimo una vez) y recuperas todos los usos gastados cuando terminas un Descanso Largo."
+                }
+              }
+            }
+          }
+        },
+        "engano": {
+          "subNombre": "Dominio de la Travesura",
+          "fuente": "Manual del Jugador",
+          "subDescripcion": "✦ DOMINIO DE LA TRAVESURA ✦\nCrear Travesuras y Desafiar la Autoridad\n\nEl Dominio de la Travesura ofrece magia de engaño, ilusión y sigilo. Los clérigos que manejan esta magia son una fuerza disruptiva en el mundo, pinchando el orgullo, burlando a los tiranos, liberando cautivos y desafiando tradiciones vacías. Prefieren el subterfugio y las bromas a la confrontación directa.\nLos dioses de la travesura son creadores de travesuras e instigadores que representan un desafío constante al orden aceptado tanto entre los dioses como entre los mortales. Encarnan las fuerzas de cambio y agitación social, y son patrones de ladrones, bribones, jugadores, rebeldes y liberadores. Las órdenes religiosas que operan en secreto, especialmente aquellas que buscan socavar gobiernos o jerarquías opresivas, también recurren al poder del Dominio de la Travesura.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Bendición del Embaucador",
+                  "subTitleName": "✦ BENDICIÓN DEL EMBAUCADOR ✦",
+                  "subDescripcion": "Como acción mágica, puedes elegirte a ti mismo o a una criatura dispuesta dentro de 30 pies de ti para tener Ventaja en las pruebas de Destreza (Sigilo). Esta bendición dura hasta que termines un Descanso Largo o uses esta característica nuevamente."
+                },
+                "subBlockDos": {
+                  "subName": "Invocar Duplicidad",
+                  "subTitleName": "✦ INVOCAR DUPLICIDAD ✦",
+                  "subDescripcion": "Como Acción de Bonificación, puedes gastar un uso de tu Canalizar Divinidad para crear una ilusión visual perfecta de ti mismo en un espacio desocupado que puedes ver dentro de 30 pies de ti. La ilusión es intangible y no ocupa su espacio. Dura 1 minuto, pero termina antes si la disuelves (sin acción requerida) o tienes la condición de Incapacitado. La ilusión está animada e imita tus expresiones y gestos. Mientras persiste, obtienes los siguientes beneficios.\n<b>Lanzar Conjuros.</b> Puedes lanzar conjuros como si estuvieras en el espacio de la ilusión, pero debes usar tus propios sentidos.\n<b>Distracción.</b> Cuando tanto tú como tu ilusión están dentro de 5 pies de una criatura que puede ver la ilusión, tienes Ventaja en las tiradas de ataque contra esa criatura, dado lo que distrae la ilusión al objetivo.\n<b>Mover.</b> Como Acción de Bonificación, puedes mover la ilusión hasta 30 pies a un espacio desocupado que puedas ver y que esté dentro de 120 pies de ti."
+                },
+                "subBlockTres": {
+                  "subName": "Conjuros del Dominio de la Travesura",
+                  "subTitleName": "✦ CONJUROS DEL DOMINIO DE LA TRAVESURA ✦",
+                  "subDescripcion": "Tu conexión con este dominio divino asegura que siempre tengas ciertos conjuros listos. Cuando alcances un nivel de clérigo especificado en la tabla de Conjuros del Dominio de la Travesura, siempre tendrás los conjuros listados preparados a partir de entonces.\n\n<b>Conjuros del Dominio de la Travesura</b>\n<table><thead><tr><th>Nivel de clérigo</th><th>Conjuros preparados</th></tr></thead><tbody><tr><td>3</td><td>Encantar Persona, Disfrazarse, Invisibilidad, Pasar sin Dejar Rastro</td></tr><tr><td>5</td><td>Patrón Hipnótico, No Detección</td></tr><tr><td>7</td><td>Confusión, Puerta Dimensional</td></tr><tr><td>9</td><td>Dominar Persona, Modificar Memoria</td></tr></tbody></table>",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Hechizar persona"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Disfrazarse"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Invisibilidad"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Pasar sin rastro"
+                    }
+                  ]
+                }
+              }
+            },
+            "5": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros del Dominio de la Travesura",
+                  "subTitleName": "✦ CONJUROS DEL DOMINIO DE LA TRAVESURA ✦",
+                  "subDescripcion": "Siempre tienes preparados: Patrón Hipnótico, No Detección (ver Conjuros del Dominio de la Travesura, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Patrón hipnótico"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Indetectable"
+                    }
+                  ]
+                }
+              }
+            },
+            "6": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Transposición del Embaucador",
+                  "subTitleName": "✦ TRANSPOSICIÓN DEL EMBAUCADOR ✦",
+                  "subDescripcion": "Siempre que tomes la Acción de Bonificación para crear o mover la ilusión de tu Invocar Duplicidad, puedes teletransportarte, intercambiando lugares con la ilusión."
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros del Dominio de la Travesura",
+                  "subTitleName": "✦ CONJUROS DEL DOMINIO DE LA TRAVESURA ✦",
+                  "subDescripcion": "Siempre tienes preparados: Confusión, Puerta Dimensional (ver Conjuros del Dominio de la Travesura, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Confusión"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Puerta dimensional"
+                    }
+                  ]
+                }
+              }
+            },
+            "9": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros del Dominio de la Travesura",
+                  "subTitleName": "✦ CONJUROS DEL DOMINIO DE LA TRAVESURA ✦",
+                  "subDescripcion": "Siempre tienes preparados: Dominar Persona, Modificar Memoria (ver Conjuros del Dominio de la Travesura, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Dominar persona"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Alterar recuerdos"
+                    }
+                  ]
+                }
+              }
+            },
+            "17": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Duplicidad Mejorada",
+                  "subTitleName": "✦ DUPLICIDAD MEJORADA ✦",
+                  "subDescripcion": "La ilusión de tu Invocar Duplicidad se ha vuelto más poderosa de las siguientes maneras.\n<b>Distracción Compartida.</b> Cuando tú y tus aliados hagan tiradas de ataque contra una criatura dentro de 5 pies de la ilusión, las tiradas de ataque tienen Ventaja.\n<b>Ilusión Sanadora.</b> Cuando la ilusión termina, tú o una criatura de tu elección dentro de 5 pies de ella recupera un número de Puntos de Golpe igual a tu nivel de Clérigo."
+                }
+              }
+            }
+          }
+        },
+        "guerra": {
+          "subNombre": "Dominio de la Guerra",
+          "fuente": "Manual del Jugador",
+          "subDescripcion": "✦ DOMINIO DE LA GUERRA ✦\nInspirar Valor y Golpear a los Enemigos\n\nLa guerra tiene muchas manifestaciones. Puede convertir a personas comunes en héroes. Puede ser desesperada y horrible, con actos de crueldad y cobardía eclipsando casos de excelencia y coraje. Clérigos que acceden a la magia del Dominio de la Guerra sobresalen en la batalla, inspirando a otros a luchar por la causa justa u ofreciendo actos de violencia como oraciones.\nLos dioses del Dominio de la Guerra vigilan a los guerreros y los recompensan por sus grandes hazañas. Incluyen campeones del honor y la caballería, así como dioses de la destrucción y el saqueo. Otros dioses de la guerra adoptan una postura más neutral, promoviendo la guerra en todas sus manifestaciones y apoyando a los guerreros en cualquier circunstancia.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Golpe Guiado",
+                  "subTitleName": "✦ GOLPE GUIADO ✦",
+                  "subDescripcion": "Cuando tú o una criatura dentro de 30 pies de ti fallan con una tirada de ataque, puedes gastar un uso de tu Canalizar Divinidad y darle a esa tirada un bono de +10, lo que potencialmente podría hacer que acierte. Cuando uses esta característica para beneficiar la tirada de ataque de otra criatura, debes tomar una Reacción para hacerlo."
+                },
+                "subBlockDos": {
+                  "subName": "Conjuros del Dominio de la Guerra",
+                  "subTitleName": "✦ CONJUROS DEL DOMINIO DE LA GUERRA ✦",
+                  "subDescripcion": "Tu conexión con este dominio divino asegura que siempre tengas ciertos conjuros listos. Cuando alcances un nivel de clérigo especificado en la tabla de Conjuros del Dominio de la Guerra, siempre tendrás los conjuros listados preparados a partir de entonces.\n\n<b>Conjuros del Dominio de la Guerra</b>\n<table><thead><tr><th>Nivel de clérigo</th><th>Conjuros preparados</th></tr></thead><tbody><tr><td>3</td><td>Guía del Golpe, Arma Mágica, Escudo de Fe, Arma Espiritual</td></tr><tr><td>5</td><td>Capa del Cruzado, Guardianes Espirituales</td></tr><tr><td>7</td><td>Escudo de Fuego, Libertad de Movimiento</td></tr><tr><td>9</td><td>Sujeción de Monstruos, Golpe de Viento de Acero</td></tr></tbody></table>",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Saeta guiada"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Arma mágica"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Escudo de fe"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Arma espiritual"
+                    }
+                  ]
+                },
+                "subBlockTres": {
+                  "subName": "Sacerdote de la Guerra",
+                  "subTitleName": "✦ SACERDOTE DE LA GUERRA ✦",
+                  "subDescripcion": "Como Acción de Bonificación, puedes hacer un ataque con un arma o un Golpe Desarmado. Puedes usar esta Acción de Bonificación un número de veces igual a tu modificador de Sabiduría (mínimo una vez). Recuperas todos los usos gastados cuando terminas un Descanso Corto o Largo."
+                }
+              }
+            },
+            "5": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros del Dominio de la Guerra",
+                  "subTitleName": "✦ CONJUROS DEL DOMINIO DE LA GUERRA ✦",
+                  "subDescripcion": "Siempre tienes preparados: Capa del Cruzado, Guardianes Espirituales (ver Conjuros del Dominio de la Guerra, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Capa del Cruzado"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Espíritus guardianes"
+                    }
+                  ]
+                }
+              }
+            },
+            "6": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Bendición del Dios de la Guerra",
+                  "subTitleName": "✦ BENDICIÓN DEL DIOS DE LA GUERRA ✦",
+                  "subDescripcion": "Puedes gastar un uso de tu Canalizar Divinidad para lanzar Escudo de Fe o Arma Espiritual en lugar de gastar un espacio de conjuro. Cuando lances cualquiera de esos conjuros de esta manera, el conjuro no requiere Concentración. En su lugar, el conjuro dura 1 minuto, pero termina antes si lanzas ese conjuro nuevamente, tienes la condición de Incapacitado o mueres."
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros del Dominio de la Guerra",
+                  "subTitleName": "✦ CONJUROS DEL DOMINIO DE LA GUERRA ✦",
+                  "subDescripcion": "Siempre tienes preparados: Escudo de Fuego, Libertad de Movimiento (ver Conjuros del Dominio de la Guerra, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Escudo de fuego"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Libertad de movimiento"
+                    }
+                  ]
+                }
+              }
+            },
+            "9": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros del Dominio de la Guerra",
+                  "subTitleName": "✦ CONJUROS DEL DOMINIO DE LA GUERRA ✦",
+                  "subDescripcion": "Siempre tienes preparados: Sujeción de Monstruos, Golpe de Viento de Acero (ver Conjuros del Dominio de la Guerra, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Inmovilizar monstruo"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Golpe de Viento de Acero"
+                    }
+                  ]
+                }
+              }
+            },
+            "17": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Avatar de la Batalla",
+                  "subTitleName": "✦ AVATAR DE LA BATALLA ✦",
+                  "subDescripcion": "Ganas Resistencia al daño de Contundente, Perforante y Cortante.",
+                  "efectos": [
+                    {
+                      "type": "resistencia",
+                      "value": "contundente"
+                    },
+                    {
+                      "type": "resistencia",
+                      "value": "perforante"
+                    },
+                    {
+                      "type": "resistencia",
+                      "value": "cortante"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "conocimiento": {
+          "subNombre": "Dominio del Conocimiento",
+          "subDescripcion": "Dioses del saber: idiomas, habilidades expertas y lectura de pensamientos.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
+        },
+        "naturaleza": {
+          "subNombre": "Dominio de la Naturaleza",
+          "subDescripcion": "Dioses de la naturaleza: armaduras pesadas, conjuros druídicos y control de bestias y plantas.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
+        },
+        "tempestad": {
+          "subNombre": "Dominio de la Tempestad",
+          "subDescripcion": "Dioses del trueno y el mar: relámpago, trueno y represalia contra quien te golpea.",
+          "subNivel": {},
+          "rasgosPendientes": true,
+          "fuente": "Manual del Jugador"
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "2",
+            "3",
+            "6",
+            "4 · 2"
+          ]
+        ]
+      }
+    },
+    "4": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Mejora de Puntuación de Habilidad",
+          "titleName": "✦ MEJORA DE PUNTUACIÓN DE HABILIDAD ✦",
+          "descripcion": "Obtienes la hazaña de Mejora de Puntuación de Habilidad (consulta el capítulo 5) u otra hazaña de tu elección para la cual califiques. Obtienes esta característica nuevamente en los niveles 8, 12 y 16 de clérigo."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "2",
+            "4",
+            "7",
+            "4 · 3"
+          ]
+        ]
+      }
+    },
+    "5": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Desintegrar a los Muertos Vivientes",
+          "titleName": "✦ DESINTEGRAR A LOS MUERTOS VIVIENTES ✦",
+          "descripcion": "Cada vez que uses Ahuyentar a los Muertos Vivientes, puedes lanzar un número de d8 igual a tu modificador de Sabiduría (mínimo de 1d8) y sumar las tiradas. Cada no muerto que falle su tirada de salvación contra ese uso de Ahuyentar a los Muertos Vivientes recibe daño radiante igual al total de la tirada. Este daño no termina el efecto de ahuyentar."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "2",
+            "4",
+            "9",
+            "4 · 3 · 2"
+          ]
+        ]
+      }
+    },
+    "6": {
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "4",
+            "10",
+            "4 · 3 · 3"
+          ]
+        ]
+      }
+    },
+    "7": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Golpes Benditos",
+          "titleName": "✦ GOLPES BENDITOS ✦",
+          "descripcion": "El poder divino te infunde en la batalla. Obtienes una de las siguientes opciones de tu elección (si obtienes cualquiera de estas opciones de una subclase de clérigo en un libro más antiguo, usa solo la opción que elijas para esta característica).\n<b>Golpe Divino.</b> Una vez en cada uno de tus turnos, cuando golpeas a una criatura con una tirada de ataque usando un arma, puedes hacer que el objetivo reciba un daño adicional de 1d8 necrótico o radiante (a tu elección).\n<b>Conjuros Potentes.</b> Añade tu modificador de Sabiduría al daño que inflijas con cualquier truco de clérigo.",
+          "elegir": {
+            "lista": "golpes-benditos",
+            "cantidad": 1
+          }
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "4",
+            "11",
+            "4 · 3 · 3 · 1"
+          ]
+        ]
+      }
+    },
+    "8": {
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "4",
+            "12",
+            "4 · 3 · 3 · 2"
+          ]
+        ]
+      }
+    },
+    "9": {
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "4",
+            "14",
+            "4 · 3 · 3 · 3 · 1"
+          ]
+        ]
+      }
+    },
+    "10": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Intervención Divina",
+          "titleName": "✦ INTERVENCIÓN DIVINA ✦",
+          "descripcion": "Puedes invocar a tu deidad o panteón para que intervenga en tu favor. Como acción mágica, elige cualquier conjuro de clérigo de nivel 5 o inferior que no requiera una reacción para lanzarlo. Como parte de la misma acción, lanzas ese conjuro sin gastar un espacio de conjuro ni necesitar componentes materiales. No puedes usar esta característica nuevamente hasta que termines un Descanso Largo."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "5",
+            "15",
+            "4 · 3 · 3 · 3 · 2"
+          ]
+        ]
+      }
+    },
+    "11": {
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "5",
+            "16",
+            "4 · 3 · 3 · 3 · 2 · 1"
+          ]
+        ]
+      }
+    },
+    "12": {
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "5",
+            "16",
+            "4 · 3 · 3 · 3 · 2 · 1"
+          ]
+        ]
+      }
+    },
+    "13": {
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "5",
+            "17",
+            "4 · 3 · 3 · 3 · 2 · 1 · 1"
+          ]
+        ]
+      }
+    },
+    "14": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Mejora de Golpes Benditos",
+          "titleName": "✦ MEJORA DE GOLPES BENDITOS ✦",
+          "descripcion": "La opción que elegiste para Golpes Benditos se vuelve más poderosa.\n<b>Golpe Divino.</b> El daño adicional de tu Golpe Divino aumenta a 2d8.\n<b>Conjuros Potentes.</b> Cuando lanzas un truco de clérigo e infliges daño a una criatura con él, puedes otorgar vitalidad a ti mismo o a otra criatura dentro de un rango de 60 pies, otorgando un número de Puntos de Golpe Temporales igual al doble de tu modificador de Sabiduría."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "5",
+            "17",
+            "4 · 3 · 3 · 3 · 2 · 1 · 1"
+          ]
+        ]
+      }
+    },
+    "15": {
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "5",
+            "18",
+            "4 · 3 · 3 · 3 · 2 · 1 · 1 · 1"
+          ]
+        ]
+      }
+    },
+    "16": {
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "5",
+            "18",
+            "4 · 3 · 3 · 3 · 2 · 1 · 1 · 1"
+          ]
+        ]
+      }
+    },
+    "17": {
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "5",
+            "19",
+            "4 · 3 · 3 · 3 · 2 · 1 · 1 · 1 · 1"
+          ]
+        ]
+      }
+    },
+    "18": {
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "4",
+            "5",
+            "20",
+            "4 · 3 · 3 · 3 · 3 · 1 · 1 · 1 · 1"
+          ]
+        ]
+      }
+    },
+    "19": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Don Épico",
+          "titleName": "✦ DON ÉPICO ✦",
+          "descripcion": "Obtienes una hazaña de Don Épico (consulta el capítulo 5) u otra hazaña de tu elección para la cual califiques. Se recomienda el Don del Destino."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "4",
+            "5",
+            "21",
+            "4 · 3 · 3 · 3 · 3 · 2 · 1 · 1 · 1"
+          ]
+        ]
+      }
+    },
+    "20": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Intervención Divina Mayor",
+          "titleName": "✦ INTERVENCIÓN DIVINA MAYOR ✦",
+          "descripcion": "Puedes invocar una intervención divina aún más poderosa. Cuando uses tu característica de Intervención Divina, puedes elegir el conjuro Deseo cuando selecciones un conjuro. Si lo haces, no podrás usar Intervención Divina nuevamente hasta que termines 2d4 Descansos Largos."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "4",
+            "5",
+            "22",
+            "4 · 3 · 3 · 3 · 3 · 2 · 2 · 1 · 1"
+          ]
+        ]
+      }
+    }
+  }
 }

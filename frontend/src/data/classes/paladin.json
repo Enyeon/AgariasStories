@@ -2,104 +2,43 @@
   "nombre": "Paladín",
   "claseName": "paladin",
   "seccion": "manual",
+  "icono": "🛡️",
+  "fuenteReglas": "Manual del Jugador",
   "dadoDeGolpe": 10,
   "nivelesDeAumento": [
     4,
     8,
     12,
-    16,
-    19
+    16
   ],
   "conjurador": true,
-  "attribute": "sabiduria",
-  "niveles": {
-    "1": {
-      "descripcion": "Guerrero sagrado que combate impulsado por un juramento inquebrantable.",
-      "descripcionLarga": "El Paladín obtiene poder de su convicción absoluta. Su juramento es su fuente de magia, su escudo y su espada. Combina fuerza marcial con energía divina, protegiendo aliados y castigando el mal con determinación inflexible. Es idealismo armado.",
-      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Sabiduría y Carisma.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d10.\n    :: Nivel 1: 10 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d10 (o 6) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Armadura ligera, Armadura media, Armadura pesada y Escudos.\n    :: Armas: Armas simples y Armas marciales.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge dos de entre Atletismo, Intimidación, Medicina, Perspicacia, Persuasión y Religión.\n❖ Equipo. Comienzas con el siguiente equipo, además del que te dé tu trasfondo:\n    :: (a) un arma marcial y un escudo o (b) dos armas marciales.\n    :: (a) cinco jabalinas o (b) cualquier arma simple cuerpo a cuerpo.\n    :: (a) un paquete de sacerdote o (b) un paquete de explorador.\n    :: Una cota de malla y un símbolo sagrado.\n    :: Alternativa: 5d4 × 10 po en lugar del equipo de clase.\n❖ Fuente: Manual del Jugador.",
-      "informacionNivel": "✦  ✦\n\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n\n✦  ✦"
-    },
-    "2": {
-      "informacionNivel": "✦ ATAQUE TEMERARIO ✦"
-    },
-    "3": {
-      "informacionNivel": "✦ CONOCIMIENTO PRIMITIVO ✦",
-      "subClase": {
-        "devocion": {
-          "subNombre": "Juramento de Devoción",
-          "subDescripcion": "El ideal del caballero: honestidad, coraje y compasión.",
-          "subNivel": {},
-          "rasgosPendientes": true,
-          "fuente": "Manual del Jugador"
-        },
-        "antiguos": {
-          "subNombre": "Juramento de los Antiguos",
-          "subDescripcion": "Proteger la luz y la vida: aura contra conjuros y naturaleza.",
-          "subNivel": {},
-          "rasgosPendientes": true,
-          "fuente": "Manual del Jugador"
-        },
-        "venganza": {
-          "subNombre": "Juramento de Venganza",
-          "subDescripcion": "Castigar a los malvados: persecución implacable de un enemigo.",
-          "subNivel": {},
-          "rasgosPendientes": true,
-          "fuente": "Manual del Jugador"
-        }
-      }
-    },
-    "4": {
-      "informacionNivel": "✦  ✦"
-    },
-    "5": {
-      "informacionNivel": "✦  ✦"
-    },
-    "6": {
-      "informacionNivel": "✦  ✦"
-    },
-    "7": {
-      "informacionNivel": "✦  ✦"
-    },
-    "8": {
-      "informacionNivel": "✦  ✦"
-    },
-    "9": {
-      "informacionNivel": "✦  ✦"
-    },
-    "10": {
-      "informacionNivel": "✦  ✦"
-    },
-    "11": {
-      "informacionNivel": "✦  ✦"
-    },
-    "12": {
-      "informacionNivel": "✦  ✦"
-    },
-    "13": {
-      "informacionNivel": "✦  ✦"
-    },
-    "14": {
-      "informacionNivel": "✦  ✦"
-    },
-    "15": {
-      "informacionNivel": "✦  ✦"
-    },
-    "16": {
-      "informacionNivel": "✦  ✦"
-    },
-    "17": {
-      "informacionNivel": "✦  ✦"
-    },
-    "18": {
-      "informacionNivel": "✦  ✦"
-    },
-    "19": {
-      "informacionNivel": "✦  ✦"
-    },
-    "20": {
-      "informacionNivel": "✦  ✦"
-    }
+  "attribute": "carisma",
+  "lanzamiento": {
+    "progression": "half_up",
+    "preparedTable": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      6,
+      7,
+      7,
+      9,
+      9,
+      10,
+      10,
+      11,
+      11,
+      12,
+      12,
+      14,
+      14,
+      15,
+      15
+    ]
   },
+  "subclaseNombre": "Juramento sagrado",
   "competencias": {
     "salvaciones": [
       "sabiduria",
@@ -120,9 +59,9 @@
       "elegir": 2,
       "de": [
         "Atletismo",
+        "Perspicacia",
         "Intimidación",
         "Medicina",
-        "Perspicacia",
         "Persuasión",
         "Religión"
       ]
@@ -142,18 +81,1009 @@
     "habilidades": null
   },
   "equipoInicial": [
-    "(a) un arma marcial y un escudo o (b) dos armas marciales.",
-    "(a) cinco jabalinas o (b) cualquier arma simple cuerpo a cuerpo.",
-    "(a) un paquete de sacerdote o (b) un paquete de explorador.",
-    "Una cota de malla y un símbolo sagrado."
+    "(A) Cota de Malla, Escudo, Espada Larga, 6 Jabalinas, Símbolo Sagrado, Paquete de Sacerdote y 9 piezas de oro.",
+    "(B) 150 piezas de oro."
   ],
-  "oroInicial": "5d4 × 10",
-  "fuenteReglas": "Manual del Jugador",
-  "subclaseNombre": "Juramento sagrado",
+  "listasDeEleccion": {
+    "maestria-armas": {
+      "titulo": "Maestría en armas",
+      "libre": true,
+      "cambiable": true,
+      "placeholder": "Tipo de arma (p. ej. Espada larga)",
+      "ayuda": "Tipos de arma con los que tengas competencia. Puedes cambiarlos al terminar un Descanso Largo (botón «Cambiar» en la ficha)."
+    },
+    "estilo-combate-paladin": {
+      "titulo": "Estilo de Combate",
+      "opciones": [
+        {
+          "id": "dote",
+          "nombre": "Dote de Estilo de Combate",
+          "descripcion": "Obtienes una dote de Estilo de Combate de tu elección (consulta el capítulo 5).",
+          "elegir": {
+            "lista": "dote-estilo-combate",
+            "cantidad": 1
+          }
+        },
+        {
+          "id": "guerrero-bendito",
+          "nombre": "Guerrero Bendito",
+          "descripcion": "Aprendes dos trucos de clérigo de tu elección. Cuentan como hechizos de Paladín para ti, y el Carisma es tu habilidad para lanzarlos. Cada vez que subes de nivel como Paladín, puedes reemplazar uno por otro truco de Clérigo.",
+          "elegir": {
+            "lista": "trucos-guerrero-bendito",
+            "cantidad": 2
+          }
+        }
+      ]
+    },
+    "dote-estilo-combate": {
+      "titulo": "Dote de Estilo de Combate",
+      "libre": true,
+      "placeholder": "Nombre de la dote (capítulo 5)"
+    },
+    "trucos-guerrero-bendito": {
+      "titulo": "Trucos de Guerrero Bendito",
+      "desde": "conjuros",
+      "clase": "clerigo",
+      "niveles": [
+        0
+      ],
+      "siemprePreparados": true,
+      "reemplazarAlSubir": true,
+      "ayuda": "Se recomiendan Guía y Llama Sagrada."
+    }
+  },
   "subclasesRetiradas": [
     "senda1",
     "senda2",
     "senda3",
     "senda4"
-  ]
+  ],
+  "niveles": {
+    "1": {
+      "descripcion": "Guerrero sagrado que combate impulsado por un juramento inquebrantable.",
+      "descripcionLarga": "El Paladín obtiene poder de su convicción absoluta. Su juramento es su fuente de magia, su escudo y su espada. Combina fuerza marcial con energía divina, protegiendo aliados y castigando el mal con determinación inflexible. Es idealismo armado.",
+      "atributoInicial": "Atributos de clase:\n❖ Habilidad principal: Fuerza y Carisma.\n❖ Tiradas de Salvación: Sabiduría y Carisma.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d10.\n    :: Nivel 1: 10 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d10 (o 6) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Armaduras ligeras, medianas, pesadas y escudos.\n    :: Armas: Armas simples y marciales.\n    :: Herramientas: Ninguna.\n    :: Habilidades: elige 2 entre Atletismo, Perspicacia, Intimidación, Medicina, Persuasión o Religión.\n❖ Equipo inicial: elige A o B.\n    :: (A) Cota de Malla, Escudo, Espada Larga, 6 Jabalinas, Símbolo Sagrado, Paquete de Sacerdote y 9 piezas de oro.\n    :: (B) 150 piezas de oro.\n❖ Fuente: Manual del Jugador.",
+      "infoBlock": {
+        "blockUno": {
+          "name": "Imposición de Manos",
+          "titleName": "✦ IMPOSICIÓN DE MANOS ✦",
+          "descripcion": "Tu toque bendito puede sanar heridas. Tienes una reserva de poder curativo que se restaura cuando terminas un Descanso Largo. Con esa reserva, puedes restaurar un número total de Puntos de Golpe igual a cinco veces tu nivel de Paladín.\n\nComo Acción de Bonificación, puedes tocar a una criatura (que podría ser tú mismo) y extraer poder de la reserva curativa para restaurar un número de Puntos de Golpe a esa criatura, hasta el máximo de puntos restantes en la reserva.\n\nTambién puedes gastar 5 Puntos de Golpe de la reserva curativa para eliminar la condición de Envenenado de la criatura; esos puntos no restauran Puntos de Golpe a la criatura."
+        },
+        "blockDos": {
+          "name": "Conjuración de Hechizos",
+          "titleName": "✦ CONJURACIÓN DE HECHIZOS ✦",
+          "descripcion": "Has aprendido a lanzar hechizos a través de la oración y la meditación. Consulta el capítulo 7 para ver las reglas sobre la conjuración de hechizos. La información a continuación detalla cómo utilizas esas reglas con los hechizos de Paladín, que aparecen en la lista de hechizos del Paladín más adelante en la descripción de la clase.\n<b>Espacios de Conjuro.</b> La tabla de Características del Paladín muestra cuántos espacios de conjuro tienes para lanzar tus hechizos de nivel 1+. Recuperas todos los espacios gastados cuando terminas un Descanso Largo.\n<b>Hechizos Preparados de Nivel 1+.</b> Preparas la lista de hechizos de nivel 1+ que están disponibles para ti para lanzar con esta característica. Para comenzar, elige dos hechizos de nivel 1 de Paladín. Heroísmo y Golpe Abrasador son recomendados. El número de hechizos en tu lista aumenta a medida que subes de nivel de Paladín, como se muestra en la columna de Hechizos Preparados en la tabla de Características del Paladín. Cada vez que ese número aumente, elige hechizos adicionales de Paladín hasta que el número de hechizos en tu lista coincida con el número en la tabla de Características del Paladín. Los hechizos elegidos deben ser de un nivel para el cual tengas espacios de conjuro. Por ejemplo, si eres un Paladín de nivel 5, tu lista de hechizos preparados puede incluir seis hechizos de Paladín de nivel 1 o 2 en cualquier combinación.\n\nSi otra característica de Paladín te da hechizos que siempre tienes preparados, esos hechizos no cuentan contra el número de hechizos que puedes preparar con esta característica, pero esos hechizos cuentan como hechizos de Paladín para ti.\n<b>Cambiar tus Hechizos Preparados.</b> Cada vez que terminas un Descanso Largo, puedes reemplazar un hechizo de tu lista con otro hechizo de Paladín para el cual tengas espacios de conjuro.\n<b>Habilidad para Conjurar Hechizos.</b> El Carisma es tu habilidad para conjurar hechizos de Paladín.\n<b>Foco de Conjuración.</b> Puedes usar un Símbolo Sagrado como Foco de Conjuración para tus hechizos de Paladín."
+        },
+        "blockTres": {
+          "name": "Maestría en Armas",
+          "titleName": "✦ MAESTRÍA EN ARMAS ✦",
+          "descripcion": "Tu entrenamiento con armas te permite usar las propiedades de maestría de dos tipos de armas de tu elección con las cuales tienes competencia, como espadas largas y jabalinas.\nCada vez que terminas un Descanso Largo, puedes cambiar los tipos de armas que elegiste. Por ejemplo, podrías cambiar a usar las propiedades de maestría de alabardas y mayales.",
+          "elegir": {
+            "lista": "maestria-armas",
+            "cantidad": 2
+          }
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Hechizos preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "-",
+            "2",
+            "2"
+          ]
+        ]
+      }
+    },
+    "2": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Estilo de Combate",
+          "titleName": "✦ ESTILO DE COMBATE ✦",
+          "descripcion": "Obtienes una dote de Estilo de Combate de tu elección (consulta el capítulo 5 para ver las dotes). En lugar de elegir una de esas dotes, puedes elegir la siguiente opción:\n<b>Guerrero Bendito.</b> Aprendes dos trucos de clérigo de tu elección (consulta la sección de la clase de clérigo para ver la lista de hechizos de clérigo). Guía y Llama Sagrada son recomendaciones. Los trucos elegidos cuentan como hechizos de Paladín para ti, y el Carisma es tu habilidad para lanzarlos. Cada vez que subes de nivel como Paladín, puedes reemplazar uno de estos trucos por otro truco de Clérigo.",
+          "elegir": {
+            "lista": "estilo-combate-paladin",
+            "cantidad": 1
+          }
+        },
+        "blockDos": {
+          "name": "Golpe del Paladín",
+          "titleName": "✦ GOLPE DEL PALADÍN ✦",
+          "descripcion": "Siempre tienes el hechizo Golpe Divino preparado. Además, puedes lanzarlo sin gastar un espacio de conjuro, pero debes terminar un Descanso Largo antes de poder lanzarlo de esta manera nuevamente.",
+          "efectos": [
+            {
+              "type": "conjuro_preparado",
+              "value": "Golpe Divino"
+            }
+          ]
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Hechizos preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "-",
+            "3",
+            "2"
+          ]
+        ]
+      }
+    },
+    "3": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Canalizar Divinidad",
+          "titleName": "✦ CANALIZAR DIVINIDAD ✦",
+          "descripcion": "Puedes canalizar energía divina directamente desde los Planos Exteriores, usándola para alimentar efectos mágicos. Comienzas con un efecto de este tipo: Sentido Divino, que se describe a continuación. Otras características de Paladín te otorgan opciones adicionales de efectos de Canalizar Divinidad. Cada vez que uses Canalizar Divinidad de esta clase, eliges cuál de los efectos de esta clase crear.\nPuedes usar Canalizar Divinidad de esta clase dos veces. Recuperas uno de sus usos gastados cuando terminas un Descanso Corto, y recuperas todos los usos gastados cuando terminas un Descanso Largo. Obtienes un uso adicional cuando alcanzas el nivel 11 de Paladín.\nSi un efecto de Canalizar Divinidad requiere una tirada de salvación, la DC es igual a la DC de salvación de hechizo de la característica de Conjuración de Hechizos de esta clase.\n<b>Sentido Divino.</b> Como Acción de Bonificación, puedes abrir tu conciencia para detectar Celestiales, Demonios y No Muertos. Durante los siguientes 10 minutos o hasta que tengas la condición de Incapacitado, conoces la ubicación de cualquier criatura de esos tipos dentro de 60 pies de ti, y conoces su tipo de criatura. Dentro del mismo radio, también detectas la presencia de cualquier lugar u objeto que haya sido consagrado o profanado, como con el hechizo Santuario."
+        },
+        "blockDos": {
+          "name": "Subclase de Paladín",
+          "titleName": "✦ SUBCLASE DE PALADÍN ✦",
+          "descripcion": "Obtienes una subclase de Paladín de tu elección. Las subclases Juramento de Devoción, Juramento de Gloria, Juramento de los Ancianos y Juramento de Venganza se detallan después de la descripción de esta clase. Una subclase es una especialización que te otorga características en ciertos niveles de Paladín. Durante el resto de tu carrera, obtienes cada una de las características de tu subclase que corresponden a tu nivel de Paladín o inferior.\n\n<b>Romper tu Juramento.</b> Un Paladín intenta mantener los más altos estándares de conducta, pero incluso los más dedicados son falibles. A veces, un Paladín transgrede su juramento.\nUn Paladín que ha roto un voto típicamente busca absolución, pasando una vigilia toda la noche como señal de penitencia o emprendiendo un ayuno. Después de un rito de perdón, el Paladín comienza de nuevo.\nSi tu Paladín viola su juramento sin arrepentirse, habla con tu DM. Es probable que tu Paladín deba tomar una subclase más apropiada o incluso abandonar la clase y adoptar otra."
+        }
+      },
+      "subClase": {
+        "devocion": {
+          "subNombre": "Juramento de Devoción",
+          "fuente": "Manual del Jugador",
+          "rasgosPendientes": true,
+          "subDescripcion": "El ideal del caballero: honestidad, coraje y compasión.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Arma Sagrada",
+                  "subTitleName": "✦ ARMA SAGRADA ✦",
+                  "subDescripcion": "[…] de nuevo, añades tu modificador de Carisma a las tiradas de ataque que realices con esa arma (bonificación mínima de +1). Y cada vez que aciertes con ella, causarás el daño normal del arma o daño Radiante. El arma también emite Luz Brillante en un radio de 6 metros y Luz Tenue 6 metros más allá. Puedes terminar este efecto antes de tiempo (no se requiere acción). Este efecto también termina si no estás llevando el arma.\n\n⚠ Texto incompleto: esta parte no venía en las imágenes recibidas."
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Aura de Devoción",
+                  "subTitleName": "✦ AURA DE DEVOCIÓN ✦",
+                  "subDescripcion": "Tú y tus aliados tienen Inmunidad a la condición Afectado por Encantamiento mientras estén en tu Aura de Protección. Si un aliado Afectado por Encantamiento entra en el aura, esa condición no tiene efecto en ese aliado mientras esté allí.",
+                  "efectos": [
+                    {
+                      "type": "inmunidad_condicion",
+                      "value": "Hechizado"
+                    }
+                  ]
+                }
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Castigo de Protección",
+                  "subTitleName": "✦ CASTIGO DE PROTECCIÓN ✦",
+                  "subDescripcion": "Tu castigo mágico ahora irradia energía protectora. Siempre que lances Castigo Divino, tú y tus aliados tienen Media Cobertura mientras estén en tu Aura de Protección. El aura tiene este beneficio hasta el comienzo de tu siguiente turno."
+                }
+              }
+            },
+            "20": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Nimbus Sagrado",
+                  "subTitleName": "✦ NIMBUS SAGRADO ✦",
+                  "subDescripcion": "Como Acción Adicional, puedes imbuir tu Aura de Protección con poder sagrado, otorgando los beneficios a continuación durante 10 minutos o hasta que los termines (no se requiere acción). Una vez que uses esta característica, no puedes volver a usarla hasta que termines un Descanso Largo. También puedes restaurar su uso gastando un espacio de conjuro de nivel 5 (no se requiere acción).\n<b>Custodia Sagrada.</b> Tienes Ventaja en cualquier tirada de salvación que te obligue a hacer un Demonio o un No-muerto.\n<b>Daño Radiante.</b> Siempre que un enemigo comience su turno en el aura, esa criatura recibe daño Radiante igual a tu modificador de Carisma más tu Bono de Competencia.\n<b>Luz Solar.</b> El aura está llena de Luz Brillante que es luz solar."
+                }
+              }
+            }
+          }
+        },
+        "gloria": {
+          "subNombre": "Juramento de Gloria",
+          "fuente": "Manual del Jugador",
+          "subDescripcion": "✦ JURAMENTO DE GLORIA ✦\nEsfuérzate por las Alturas del Heroísmo\n\nLos paladines que toman el Juramento de Gloria creen que ellos y sus compañeros están destinados a alcanzar la gloria a través de actos heroicos. Se entrenan diligentemente y animan a sus compañeros, para que todos estén listos cuando el destino llame. Estos paladines comparten los siguientes principios:\n• Esfuérzate por ser conocido por tus actos.\n• Enfrenta las adversidades con coraje.\n• Inspira a otros a luchar por la gloria.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Castigo Inspirador",
+                  "subTitleName": "✦ CASTIGO INSPIRADOR ✦",
+                  "subDescripcion": "Inmediatamente después de que lances Sonrisa Divina, puedes gastar un uso de tu Canalizar Divinidad y distribuir Puntos de Golpe Temporales a las criaturas de tu elección dentro de un radio de 9 metros desde ti, lo que puede incluirte a ti. El número total de Puntos de Golpe Temporales es igual a 2d8 más tu nivel de Paladín, dividido entre las criaturas elegidas como desees."
+                },
+                "subBlockDos": {
+                  "subName": "Hechizos del Juramento de Gloria",
+                  "subTitleName": "✦ HECHIZOS DEL JURAMENTO DE GLORIA ✦",
+                  "subDescripcion": "La magia de tu juramento asegura que siempre tengas ciertos hechizos preparados; cuando alcances un nivel de Paladín especificado en la tabla de Hechizos del Juramento de Gloria, siempre tendrás los hechizos listados preparados a partir de ese momento.\n\n<b>Hechizos del Juramento de Gloria</b>\n<table><thead><tr><th>Nivel de Paladín</th><th>Hechizos</th></tr></thead><tbody><tr><td>3</td><td>Guía Radiante, Heroísmo</td></tr><tr><td>5</td><td>Arma Mágica Mejorada, Armadura de Agilidad</td></tr><tr><td>9</td><td>Hospedar, Protección contra Energía</td></tr><tr><td>13</td><td>Compulsión, Libertad de Movimiento</td></tr><tr><td>17</td><td>Libertad de Movimiento, Guardián de la Fe</td></tr></tbody></table>",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Saeta guiada"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Heroísmo"
+                    }
+                  ]
+                }
+              }
+            },
+            "5": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Atleta Inigualable",
+                  "subTitleName": "✦ ATLETA INIGUALABLE ✦",
+                  "subDescripcion": "Como Acción Adicional, puedes gastar un uso de tu Canalizar Divinidad para aumentar tu atletismo. Durante 1 hora, tienes Ventaja en las pruebas de Fuerza (Atletismo) y Destreza (Acrobacia), y la distancia de tus Saltos Largos y Altos aumenta en 3 metros (esta distancia adicional consume movimiento como es normal)."
+                },
+                "subBlockDos": {
+                  "subName": "Hechizos del Juramento de Gloria",
+                  "subTitleName": "✦ HECHIZOS DEL JURAMENTO DE GLORIA ✦",
+                  "subDescripcion": "Siempre tienes preparados: Arma Mágica Mejorada, Armadura de Agilidad (ver Hechizos del Juramento de Gloria, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Arma mágica"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Potenciar característica"
+                    }
+                  ]
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Aura de Agilidad",
+                  "subTitleName": "✦ AURA DE AGILIDAD ✦",
+                  "subDescripcion": "Tu Velocidad aumenta en 3 metros.\nAdemás, siempre que un aliado entre en tu Aura de Protección por primera vez en un turno o comience su turno allí, la Velocidad del aliado aumenta en 3 metros hasta el final de su siguiente turno.",
+                  "efectos": [
+                    {
+                      "type": "bono",
+                      "target": "velocidad",
+                      "value": 10
+                    }
+                  ]
+                }
+              }
+            },
+            "9": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Hechizos del Juramento de Gloria",
+                  "subTitleName": "✦ HECHIZOS DEL JURAMENTO DE GLORIA ✦",
+                  "subDescripcion": "Siempre tienes preparados: Hospedar, Protección contra Energía (ver Hechizos del Juramento de Gloria, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Acelerar"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Protección contra energía"
+                    }
+                  ]
+                }
+              }
+            },
+            "13": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Hechizos del Juramento de Gloria",
+                  "subTitleName": "✦ HECHIZOS DEL JURAMENTO DE GLORIA ✦",
+                  "subDescripcion": "Siempre tienes preparados: Compulsión, Libertad de Movimiento (ver Hechizos del Juramento de Gloria, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Compulsión"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Libertad de movimiento"
+                    }
+                  ]
+                }
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Defensa Gloriosa",
+                  "subTitleName": "✦ DEFENSA GLORIOSA ✦",
+                  "subDescripcion": "Puedes convertir la defensa en un golpe repentino. Cuando tú u otra criatura que puedas ver dentro de un radio de 3 metros de ti es golpeada por una tirada de ataque, puedes tomar una Reacción para otorgar un bono a la CA del objetivo contra ese ataque, lo que podría hacer que falle. El bono es igual a tu modificador de Carisma (mínimo de +1). Si el ataque falla, puedes realizar un ataque con un arma contra el atacante como parte de esta Reacción si el atacante está dentro del alcance de tu arma.\nPuedes usar esta característica un número de veces igual a tu modificador de Carisma (mínimo de una vez), y recuperas todos los usos gastados cuando terminas un Descanso Largo."
+                }
+              }
+            },
+            "17": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Hechizos del Juramento de Gloria",
+                  "subTitleName": "✦ HECHIZOS DEL JURAMENTO DE GLORIA ✦",
+                  "subDescripcion": "Siempre tienes preparados: Libertad de Movimiento, Guardián de la Fe (ver Hechizos del Juramento de Gloria, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Libertad de movimiento"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Guardián de la fe"
+                    }
+                  ]
+                }
+              }
+            },
+            "20": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Leyenda Viva",
+                  "subTitleName": "✦ LEYENDA VIVA ✦",
+                  "subDescripcion": "Puedes empoderarte con las leyendas —ya sean verdaderas o exageradas— de tus grandes hazañas. Como Acción Adicional, obtienes los beneficios a continuación durante 10 minutos. Una vez que uses esta característica, no puedes volver a usarla hasta que termines un Descanso Largo, a menos que gastes un espacio de hechizo de nivel 5 para restaurar su uso (no se requiere acción).\n<b>Carismático.</b> Estás bendecido con una presencia sobrenatural y tienes Ventaja en todas las pruebas de Carisma.\n<b>Repetición de Tiradas de Salvación.</b> Si fallas una tirada de salvación, puedes tomar una Reacción para volver a lanzarla. Debes usar esta nueva tirada.\n<b>Golpe Infalible.</b> Una vez en cada uno de tus turnos, cuando hagas una tirada de ataque con un arma y falles, puedes hacer que ese ataque acierte en su lugar."
+                }
+              }
+            }
+          }
+        },
+        "antiguos": {
+          "subNombre": "Juramento de los Antiguos",
+          "fuente": "Manual del Jugador",
+          "subDescripcion": "✦ JURAMENTO DE LOS ANTIGUOS ✦\nPreservar la Vida y la Luz en el Mundo\n\nEl Juramento de los Antiguos es tan antiguo como los primeros elfos. Los paladines que hacen este juramento valoran la luz; aman las cosas hermosas y que dan vida en el mundo más que cualquier principio de honor, coraje y justicia. A menudo adornan su armadura y ropa con imágenes de cosas en crecimiento —hojas, astas o flores— para reflejar su compromiso con la preservación de la vida y la luz.\n\nEstos paladines comparten los siguientes principios:\n• Enciende la luz de la esperanza.\n• Protege la vida.\n• Disfruta del arte y la risa.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Ira de la Naturaleza",
+                  "subTitleName": "✦ IRA DE LA NATURALEZA ✦",
+                  "subDescripcion": "Como acción mágica, puedes gastar un uso de tu Canalizar Divinidad para conjurar vides espectrales alrededor de las criaturas cercanas. Cada criatura de tu elección que puedas ver dentro de un radio de 15 pies de ti debe tener éxito en una tirada de salvación de Fuerza o quedar bajo la condición de Restringido durante 1 minuto. Una criatura Restringida repite la salvación al final de cada uno de sus turnos, terminando el efecto sobre sí misma en caso de éxito."
+                },
+                "subBlockDos": {
+                  "subName": "Hechizos del Juramento de los Antiguos",
+                  "subTitleName": "✦ HECHIZOS DEL JURAMENTO DE LOS ANTIGUOS ✦",
+                  "subDescripcion": "La magia de tu juramento asegura que siempre tengas ciertos hechizos preparados; cuando alcances un nivel de Paladín especificado en la tabla de Hechizos del Juramento de los Antiguos, siempre tendrás los hechizos listados preparados a partir de ese momento.\n\n<b>Hechizos del Juramento de los Antiguos</b>\n<table><thead><tr><th>Nivel de Paladín</th><th>Hechizos</th></tr></thead><tbody><tr><td>3</td><td>Golpe Atrapaniebla, Hablar con Animales</td></tr><tr><td>5</td><td>Paso Brumoso, Rayo de Luna</td></tr><tr><td>9</td><td>Crecimiento Vegetal, Protección contra Energía</td></tr><tr><td>13</td><td>Tormenta de Hielo, Piel de Piedra</td></tr><tr><td>17</td><td>Comunión con la Naturaleza, Paso de los Árboles</td></tr></tbody></table>",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Golpe Atrapaniebla"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Hablar con los animales"
+                    }
+                  ]
+                }
+              }
+            },
+            "5": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Hechizos del Juramento de los Antiguos",
+                  "subTitleName": "✦ HECHIZOS DEL JURAMENTO DE LOS ANTIGUOS ✦",
+                  "subDescripcion": "Siempre tienes preparados: Paso Brumoso, Rayo de Luna (ver Hechizos del Juramento de los Antiguos, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Paso brumoso"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Rayo de luna"
+                    }
+                  ]
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Aura de Protección",
+                  "subTitleName": "✦ AURA DE PROTECCIÓN ✦",
+                  "subDescripcion": "La magia ancestral recae tan pesadamente sobre ti que forma un escudo arcano, amortiguando la energía proveniente de fuera del Plano Material; tú y tus aliados tienen Resistencia al daño Necrótico, Psíquico y Radiante mientras estén dentro de tu Aura de Protección.",
+                  "efectos": [
+                    {
+                      "type": "resistencia",
+                      "value": "necrotico"
+                    },
+                    {
+                      "type": "resistencia",
+                      "value": "psiquico"
+                    },
+                    {
+                      "type": "resistencia",
+                      "value": "radiante"
+                    }
+                  ]
+                }
+              }
+            },
+            "9": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Hechizos del Juramento de los Antiguos",
+                  "subTitleName": "✦ HECHIZOS DEL JURAMENTO DE LOS ANTIGUOS ✦",
+                  "subDescripcion": "Siempre tienes preparados: Crecimiento Vegetal, Protección contra Energía (ver Hechizos del Juramento de los Antiguos, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Crecimiento vegetal"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Protección contra energía"
+                    }
+                  ]
+                }
+              }
+            },
+            "13": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Hechizos del Juramento de los Antiguos",
+                  "subTitleName": "✦ HECHIZOS DEL JURAMENTO DE LOS ANTIGUOS ✦",
+                  "subDescripcion": "Siempre tienes preparados: Tormenta de Hielo, Piel de Piedra (ver Hechizos del Juramento de los Antiguos, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Tormenta de hielo"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Piel de Piedra"
+                    }
+                  ]
+                }
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Centinela Eterno",
+                  "subTitleName": "✦ CENTINELA ETERNO ✦",
+                  "subDescripcion": "Cuando se te reduzca a 0 Puntos de Golpe y no seas asesinado de inmediato, puedes bajar a 1 Punto de Golpe en su lugar y recuperar una cantidad de Puntos de Golpe igual a tres veces tu nivel de Paladín. Una vez que uses esta característica, no podrás hacerlo de nuevo hasta que termines un Descanso Largo. Además, no puedes ser envejecido mágicamente y dejas de envejecer visiblemente."
+                }
+              }
+            },
+            "17": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Hechizos del Juramento de los Antiguos",
+                  "subTitleName": "✦ HECHIZOS DEL JURAMENTO DE LOS ANTIGUOS ✦",
+                  "subDescripcion": "Siempre tienes preparados: Comunión con la Naturaleza, Paso de los Árboles (ver Hechizos del Juramento de los Antiguos, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Comunión con la naturaleza"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Paso arbóreo"
+                    }
+                  ]
+                }
+              }
+            },
+            "20": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Campeón Anciano",
+                  "subTitleName": "✦ CAMPEÓN ANCIANO ✦",
+                  "subDescripcion": "Como Acción Bonificada, puedes imbuir tu Aura de Protección con poder primitivo, otorgando los beneficios a continuación durante 1 minuto o hasta que los termines (no se requiere acción). Una vez que uses esta característica, no podrás usarla de nuevo hasta que termines un Descanso Largo. También puedes restaurar su uso gastando un espacio de hechizo de nivel 5 (no se requiere acción).\n<b>Disminuir Desafío.</b> Los enemigos en el aura tienen Desventaja en las tiradas de salvación contra tus hechizos y opciones de Canalizar Divinidad.\n<b>Regeneración.</b> Al inicio de cada uno de tus turnos, recuperas 10 Puntos de Golpe.\n<b>Hechizos Rápidos.</b> Siempre que lances un hechizo que tenga un tiempo de lanzamiento de una acción, puedes lanzarlo usando una Acción Bonificada en su lugar."
+                }
+              }
+            }
+          }
+        },
+        "venganza": {
+          "subNombre": "Juramento de Venganza",
+          "fuente": "Manual del Jugador",
+          "subDescripcion": "✦ JURAMENTO DE VENGANZA ✦\nCastiga a los Malhechores a Cualquier Costo\n\nEl Juramento de Venganza es un compromiso solemne de castigar a aquellos que han cometido actos de maldad gravemente. Cuando ejércitos malignos masacran aldeanos indefensos, cuando un tirano desafía la voluntad de los dioses, cuando una guilda de ladrones se vuelve demasiado violenta, cuando un dragón arrasa el campo —en momentos como estos, los paladines surgen y juran un Juramento de Venganza para corregir lo que ha ido mal.\n\nEstos paladines comparten los siguientes principios:\n• No muestres misericordia a los malvados.\n• Lucha contra la injusticia y sus causas.\n• Ayuda a aquellos perjudicados por la injusticia.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Hechizos del Juramento de Venganza",
+                  "subTitleName": "✦ HECHIZOS DEL JURAMENTO DE VENGANZA ✦",
+                  "subDescripcion": "La magia de tu juramento asegura que siempre tengas ciertos hechizos preparados; cuando alcances un nivel de Paladín especificado en la tabla de Hechizos del Juramento de Venganza, siempre tendrás los hechizos listados preparados a partir de ese momento.\n\n<b>Hechizos del Juramento de Venganza</b>\n<table><thead><tr><th>Nivel de Paladín</th><th>Hechizos</th></tr></thead><tbody><tr><td>3</td><td>Maldición, Marca del Cazador</td></tr><tr><td>5</td><td>Sujetar Persona, Paso Brumoso</td></tr><tr><td>9</td><td>Aceleración, Protección contra Energía</td></tr><tr><td>13</td><td>Destierro, Puerta Dimensional</td></tr><tr><td>17</td><td>Sujetar Monstruo, Escrutinio</td></tr></tbody></table>",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Perdición"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Marca del cazador"
+                    }
+                  ]
+                },
+                "subBlockDos": {
+                  "subName": "Juramento de Enemistad",
+                  "subTitleName": "✦ JURAMENTO DE ENEMISTAD ✦",
+                  "subDescripcion": "Cuando tomas la acción de Ataque, puedes gastar un uso de tu Canalizar Divinidad para pronunciar un juramento de enemistad contra una criatura que puedas ver dentro de un radio de 30 pies de ti. Tienes Ventaja en las tiradas de ataque contra la criatura durante 1 minuto o hasta que uses esta característica nuevamente.\nSi la criatura cae a 0 Puntos de Golpe antes de que termine el juramento, puedes transferir el juramento a una criatura diferente dentro de 30 pies de ti (no se requiere acción)."
+                }
+              }
+            },
+            "5": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Hechizos del Juramento de Venganza",
+                  "subTitleName": "✦ HECHIZOS DEL JURAMENTO DE VENGANZA ✦",
+                  "subDescripcion": "Siempre tienes preparados: Sujetar Persona, Paso Brumoso (ver Hechizos del Juramento de Venganza, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Inmovilizar persona"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Paso brumoso"
+                    }
+                  ]
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Vengador Implacable",
+                  "subTitleName": "✦ VENGADOR IMPLACABLE ✦",
+                  "subDescripcion": "Tu enfoque sobrenatural te ayuda a cerrar la retirada de un enemigo. Cuando golpeas a una criatura con un Ataque de Oportunidad, puedes reducir la Velocidad de la criatura a 0 hasta el final del turno actual. Luego puedes moverte hasta la mitad de tu Velocidad como parte de la misma Reacción. Este movimiento no provoca Ataques de Oportunidad."
+                }
+              }
+            },
+            "9": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Hechizos del Juramento de Venganza",
+                  "subTitleName": "✦ HECHIZOS DEL JURAMENTO DE VENGANZA ✦",
+                  "subDescripcion": "Siempre tienes preparados: Aceleración, Protección contra Energía (ver Hechizos del Juramento de Venganza, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Acelerar"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Protección contra energía"
+                    }
+                  ]
+                }
+              }
+            },
+            "13": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Hechizos del Juramento de Venganza",
+                  "subTitleName": "✦ HECHIZOS DEL JURAMENTO DE VENGANZA ✦",
+                  "subDescripcion": "Siempre tienes preparados: Destierro, Puerta Dimensional (ver Hechizos del Juramento de Venganza, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Destierro"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Puerta dimensional"
+                    }
+                  ]
+                }
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Alma de Venganza",
+                  "subTitleName": "✦ ALMA DE VENGANZA ✦",
+                  "subDescripcion": "Inmediatamente después de que una criatura bajo el efecto de tu Juramento de Enemistad golpee o falle un ataque, puedes tomar una Reacción para realizar un ataque cuerpo a cuerpo contra esa criatura si está dentro del alcance."
+                }
+              }
+            },
+            "17": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Hechizos del Juramento de Venganza",
+                  "subTitleName": "✦ HECHIZOS DEL JURAMENTO DE VENGANZA ✦",
+                  "subDescripcion": "Siempre tienes preparados: Sujetar Monstruo, Escrutinio (ver Hechizos del Juramento de Venganza, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Inmovilizar monstruo"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Escudriñar"
+                    }
+                  ]
+                }
+              }
+            },
+            "20": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Ángel Vengador",
+                  "subTitleName": "✦ ÁNGEL VENGADOR ✦",
+                  "subDescripcion": "Como Acción Bonificada, obtienes los siguientes beneficios durante 10 minutos o hasta que los termines (no se requiere acción). Una vez que uses esta característica, no podrás usarla de nuevo hasta que termines un Descanso Largo. También puedes restaurar su uso gastando un espacio de hechizo de nivel 5 (no se requiere acción).\n<b>Vuelo.</b> Brotan alas espectrales en tu espalda, tienes una Velocidad de Vuelo de 60 pies y puedes flotar.\n<b>Aura Aterradora.</b> Siempre que un enemigo comience su turno en tu Aura de Protección, esa criatura debe tener éxito en una tirada de salvación de Sabiduría o sufrir la condición de Aterrorizado durante 1 minuto o hasta que reciba algún daño. Las tiradas de ataque contra la criatura Aterrorizada tienen Ventaja."
+                }
+              }
+            }
+          }
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Hechizos preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "2",
+            "4",
+            "3"
+          ]
+        ]
+      }
+    },
+    "4": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Mejora de Puntuación de Habilidad",
+          "titleName": "✦ MEJORA DE PUNTUACIÓN DE HABILIDAD ✦",
+          "descripcion": "Obtienes la dote de Mejora de Puntuación de Habilidad (consulta el capítulo 5) u otra dote de tu elección para la que califiques. Obtienes esta característica nuevamente en los niveles 8, 12 y 16 de Paladín."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Hechizos preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "2",
+            "5",
+            "3"
+          ]
+        ]
+      }
+    },
+    "5": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Ataque Extra",
+          "titleName": "✦ ATAQUE EXTRA ✦",
+          "descripcion": "Puedes atacar dos veces en lugar de una siempre que tomes la acción de Ataque en tu turno."
+        },
+        "blockDos": {
+          "name": "Corcel Fiel",
+          "titleName": "✦ CORCEL FIEL ✦",
+          "descripcion": "Puedes invocar la ayuda de un corcel de otro mundo. Siempre tienes preparado el hechizo Encontrar Corcel. También puedes lanzar el hechizo una vez sin gastar un espacio de conjuro, y recuperas la capacidad de hacerlo cuando terminas un Descanso Largo.",
+          "efectos": [
+            {
+              "type": "conjuro_preparado",
+              "value": "Hallar corcel"
+            }
+          ]
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Hechizos preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "2",
+            "6",
+            "4 · 2"
+          ]
+        ]
+      }
+    },
+    "6": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Aura de Protección",
+          "titleName": "✦ AURA DE PROTECCIÓN ✦",
+          "descripcion": "Irradias un aura protectora e invisible en una Emisión de 10 pies que se origina desde ti. El aura está inactiva mientras tengas la condición de Incapacitado. Tú y tus aliados en el aura obtienen una bonificación a las tiradas de salvación igual a tu modificador de Carisma (con una bonificación mínima de +1).\nSi hay otro Paladín presente, una criatura solo puede beneficiarse de una Aura de Protección a la vez; la criatura elige qué aura usar mientras esté dentro de ellas.",
+          "efectos": [
+            {
+              "type": "bono",
+              "target": "salvaciones",
+              "desdeAtributo": "carisma",
+              "minimo": 1
+            }
+          ]
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Hechizos preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "2",
+            "6",
+            "4 · 2"
+          ]
+        ]
+      }
+    },
+    "7": {
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Hechizos preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "2",
+            "7",
+            "4 · 3"
+          ]
+        ]
+      }
+    },
+    "8": {
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Hechizos preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "2",
+            "7",
+            "4 · 3"
+          ]
+        ]
+      }
+    },
+    "9": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Abjurar Enemigos",
+          "titleName": "✦ ABJURAR ENEMIGOS ✦",
+          "descripcion": "Como acción mágica, puedes gastar un uso de Canalizar Divinidad de esta clase para abrumar a tus enemigos con asombro. Mientras presentas tu Símbolo Sagrado o arma, puedes apuntar a un número de criaturas igual a tu modificador de Carisma (mínimo de una criatura) que puedas ver dentro de 60 pies de ti. Cada objetivo debe tener éxito en una tirada de salvación de Sabiduría o adquirir la condición de Asustado durante 1 minuto o hasta que reciba daño. Mientras esté Asustado de esta manera, un objetivo solo puede hacer una de las siguientes acciones en sus turnos: moverse, realizar una acción o realizar una Acción de Bonificación."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Hechizos preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "2",
+            "9",
+            "4 · 3 · 2"
+          ]
+        ]
+      }
+    },
+    "10": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Aura de Coraje",
+          "titleName": "✦ AURA DE CORAJE ✦",
+          "descripcion": "Tú y tus aliados tienen Inmunidad a la condición de Asustado mientras estén en tu Aura de Protección. Si un aliado Asustado entra en el aura, esa condición no tiene efecto en ese aliado mientras esté allí.",
+          "efectos": [
+            {
+              "type": "inmunidad_condicion",
+              "value": "Asustado"
+            }
+          ]
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Hechizos preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "2",
+            "9",
+            "4 · 3 · 2"
+          ]
+        ]
+      }
+    },
+    "11": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Golpes Radiantes",
+          "titleName": "✦ GOLPES RADIANTES ✦",
+          "descripcion": "Tus golpes ahora llevan un poder sobrenatural. Cuando golpeas a un objetivo con una tirada de ataque usando un arma cuerpo a cuerpo o un Golpe Desarmado, el objetivo recibe 1d8 de daño Radiante adicional."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Hechizos preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "10",
+            "4 · 3 · 3"
+          ]
+        ]
+      }
+    },
+    "12": {
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Hechizos preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "10",
+            "4 · 3 · 3"
+          ]
+        ]
+      }
+    },
+    "13": {
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Hechizos preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "11",
+            "4 · 3 · 3 · 1"
+          ]
+        ]
+      }
+    },
+    "14": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Toque Restaurador",
+          "titleName": "✦ TOQUE RESTAURADOR ✦",
+          "descripcion": "Cuando usas Imposición de Manos en una criatura, también puedes eliminar una o más de las siguientes condiciones de la criatura: Cegado, Hechizado, Ensordecido, Asustado, Paralizado o Aturdido. Debes gastar 5 Puntos de Golpe de la reserva de curación de Imposición de Manos por cada una de estas condiciones que elimines; esos puntos no restauran Puntos de Golpe a la criatura."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Hechizos preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "11",
+            "4 · 3 · 3 · 1"
+          ]
+        ]
+      }
+    },
+    "15": {
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Hechizos preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "12",
+            "4 · 3 · 3 · 2"
+          ]
+        ]
+      }
+    },
+    "16": {
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Hechizos preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "12",
+            "4 · 3 · 3 · 2"
+          ]
+        ]
+      }
+    },
+    "17": {
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Hechizos preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "14",
+            "4 · 3 · 3 · 3 · 1"
+          ]
+        ]
+      }
+    },
+    "18": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Expansión de Aura",
+          "titleName": "✦ EXPANSIÓN DE AURA ✦",
+          "descripcion": "Tu Aura de Protección ahora es una Emisión de 30 pies."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Hechizos preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "14",
+            "4 · 3 · 3 · 3 · 1"
+          ]
+        ]
+      }
+    },
+    "19": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Don Épico",
+          "titleName": "✦ DON ÉPICO ✦",
+          "descripcion": "Obtienes una dote de Don Épico (consulta el capítulo 5) u otra dote de tu elección para la que califiques. El Don de la Vista Verdadera es recomendado."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Hechizos preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "15",
+            "4 · 3 · 3 · 3 · 2"
+          ]
+        ]
+      }
+    },
+    "20": {
+      "infoCubo": {
+        "columnas": [
+          "Canalizar Divinidad",
+          "Hechizos preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "15",
+            "4 · 3 · 3 · 3 · 2"
+          ]
+        ]
+      }
+    }
+  }
 }

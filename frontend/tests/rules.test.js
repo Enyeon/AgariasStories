@@ -5,7 +5,8 @@ import {
   hitPoints, featPrerequisites, classFeatures, spellcasting, languageInfo,
 } from '../src/domain/rules.js';
 import { computeSpellSlots } from '../src/domain/spellcasting.js';
-import { applyLevelUp, planLevelUp, setRace, setRaceAbilityChoice } from '../src/domain/progression.js';
+import { planLevelUp, setRace, setRaceAbilityChoice } from '../src/domain/progression.js';
+import { applyLevelUp } from './helpers/auto-choices.js';
 import { getFeat } from '../src/data/index.js';
 
 function levelTo(c, classKey, n, extra = () => ({})) {

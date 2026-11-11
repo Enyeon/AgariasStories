@@ -2,7 +2,8 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { webcrypto } from 'node:crypto';
 import { createCharacter } from '../src/domain/schema.js';
 import { computeSheet, classFeatures, subclassInfo } from '../src/domain/rules.js';
-import { applyLevelUp, applyLevelUps, applyLevelDowns, planLevelUp, setRace, setSubclass } from '../src/domain/progression.js';
+import { applyLevelDowns, planLevelUp, setRace, setSubclass } from '../src/domain/progression.js';
+import { applyLevelUp, applyLevelUps } from './helpers/auto-choices.js';
 import {
   addUnlock, removeUnlock, findByCode, hashUnlockCode, generateUnlockCode, normalizeUnlockCode, addableExtensions, UNLOCK_CODE_RE,
 } from '../src/domain/extensions.js';

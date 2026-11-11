@@ -27,6 +27,7 @@ const DEFAULT_MESSAGES = {
   server_error: 'El servidor tuvo un problema. Inténtalo más tarde.',
   invalid: 'Los datos enviados no son válidos.',
   unauthorized_content: 'Este personaje usa contenido Homebrew que el DM no ha publicado en la campaña.',
+  server_not_ready: 'El servidor en línea no está preparado (faltan sus funciones de base de datos). Avisa a quien administra la app.',
   campaigns_unavailable: 'Las campañas necesitan el servidor en línea (Supabase), que no está configurado en esta instalación.',
 };
 
@@ -116,7 +117,9 @@ export function createRpc({ url = SUPABASE_URL, key = SUPABASE_KEY, fetchImpl = 
     try { payload = await res.json(); } catch { /* sin cuerpo */ }
     if (!res.ok) {
       const raw = String(payload?.message ?? '');
+      // PGRST202: la función RPC no existe (migración sin aplicar en Supabase).
       const code = Object.hasOwn(DEFAULT_MESSAGES, raw) ? raw
+        : payload?.code === 'PGRST202' || (res.status === 404 && /function/i.test(raw)) ? 'server_not_ready'
         : res.status === 413 ? 'payload_too_large'
           : res.status === 429 ? 'rate_limited'
             : res.status >= 500 ? 'server_error' : 'http_error';

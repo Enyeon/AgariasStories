@@ -15,8 +15,51 @@
   "conjurador": true,
   "attribute": "sabiduria",
   "lanzamiento": {
-    "progression": "half",
-    "preparedFrom": "half"
+    "progression": "half_up",
+    "cantripsKnown": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "preparedTable": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      6,
+      7,
+      7,
+      9,
+      9,
+      10,
+      10,
+      11,
+      11,
+      12,
+      12,
+      14,
+      14,
+      15,
+      15
+    ]
   },
   "listaConjuros": [
     "Luz",
@@ -84,6 +127,109 @@
     "Una cota de malla y un símbolo del alba."
   ],
   "oroInicial": "5d4 × 10",
+  "listasDeEleccion": {
+    "votos-alba": {
+      "titulo": "Votos del alba",
+      "ayuda": "Ejemplo de lista con opciones propias: cada voto es una opción con id, nombre y descripción; puede tener efectos.",
+      "opciones": [
+        {
+          "id": "vigilia",
+          "nombre": "Voto de vigilia",
+          "descripcion": "Duermes la mitad que los demás y tienes competencia en Percepción. Desde el nivel 15, también resistencia al frío (ejemplo de efecto con «nivel»).",
+          "efectos": [
+            {
+              "type": "competencia",
+              "kind": "habilidad",
+              "value": "Percepción"
+            },
+            {
+              "type": "resistencia",
+              "value": "frio",
+              "nivel": 15
+            }
+          ]
+        },
+        {
+          "id": "misericordia",
+          "nombre": "Voto de misericordia",
+          "descripcion": "Tienes competencia en Medicina. Además, eliges otra Arma del alba (ejemplo de «elegir» dentro de una opción).",
+          "efectos": [
+            {
+              "type": "competencia",
+              "kind": "habilidad",
+              "value": "Medicina"
+            }
+          ],
+          "elegir": {
+            "lista": "arma-del-alba",
+            "cantidad": 1
+          }
+        },
+        {
+          "id": "silencio",
+          "nombre": "Voto de silencio",
+          "descripcion": "Puedes comunicarte por señas con cualquier criatura que te vea."
+        },
+        {
+          "id": "llama",
+          "nombre": "Voto de la llama",
+          "descripcion": "Tu Golpe del alba ilumina 3 m alrededor del objetivo hasta tu siguiente turno."
+        },
+        {
+          "id": "juramento-sol",
+          "nombre": "Voto del sol naciente",
+          "descripcion": "Requiere nivel 9 y el Voto de la llama. Ejemplo de «requisitos» (nivel y otra opción).",
+          "requisitos": {
+            "nivel": 9,
+            "opcion": "llama"
+          }
+        },
+        {
+          "id": "plegaria",
+          "nombre": "Plegaria menor",
+          "descripcion": "Ejemplo de opción «repetible»: se puede elegir más de una vez.",
+          "repetible": true
+        }
+      ]
+    },
+    "arma-del-alba": {
+      "titulo": "Arma del alba",
+      "libre": true,
+      "cambiable": true,
+      "ayuda": "Ejemplo de lista libre y cambiable: el jugador escribe el valor y puede cambiarlo desde la ficha.",
+      "placeholder": "Tipo de arma"
+    },
+    "oficio-del-alba": {
+      "titulo": "Oficio del alba",
+      "libre": true,
+      "efectoLibre": {
+        "type": "competencia",
+        "kind": "herramienta"
+      },
+      "ayuda": "Ejemplo de lista libre con efecto: lo que se escribe se añade como competencia con herramienta."
+    },
+    "secretos-alba": {
+      "titulo": "Secretos del alba",
+      "desde": "conjuros",
+      "clase": [
+        "clerigo",
+        "mago"
+      ],
+      "nivelMax": "espacios",
+      "siemprePreparados": true,
+      "reemplazarAlSubir": true,
+      "ayuda": "Ejemplo de lista de conjuros de varias clases, con el nivel máximo según tus espacios y siempre preparados."
+    },
+    "tomo-alba": {
+      "titulo": "Tomo del alba",
+      "desde": "conjuros",
+      "clase": "clerigo",
+      "escuela": "Abjuración",
+      "nivelMax": "espacios",
+      "libroConjuros": true,
+      "ayuda": "Ejemplo de lista de conjuros filtrada por «escuela» y añadida al libro de conjuros («libroConjuros»): aparecen en el grimorio de la ficha."
+    }
+  },
   "niveles": {
     "1": {
       "descripcion": "Guardián incansable que canaliza la primera luz del día.",
@@ -92,12 +238,14 @@
       "infoCubo": {
         "columnas": [
           "Luz del alba",
-          "Daño radiante"
+          "Daño radiante",
+          "Paso del alba"
         ],
         "filas": [
           [
             "2",
-            "1d6"
+            "1d6",
+            "-"
           ]
         ]
       },
@@ -118,6 +266,38 @@
           "name": "Estilo de combate",
           "titleName": "✦ ESTILO DE COMBATE ✦",
           "descripcion": "Elige un estilo de combate: Defensa, Duelo o Protección. <i>(Texto: la ficha no lo automatiza; anótalo en Notas.)</i>"
+        },
+        "blockTres": {
+          "name": "Arma y oficio del alba",
+          "titleName": "✦ ARMA Y OFICIO DEL ALBA ✦",
+          "descripcion": "Elige un tipo de arma con el que juraste vigilar (puedes cambiarlo tras un descanso largo) y un oficio: obtienes competencia con esas herramientas.",
+          "elegir": [
+            {
+              "lista": "arma-del-alba",
+              "cantidad": 1
+            },
+            {
+              "lista": "oficio-del-alba",
+              "cantidad": 1,
+              "multiclase": 0
+            }
+          ]
+        },
+        "blockCuatro": {
+          "name": "Defensa del alba",
+          "titleName": "✦ DEFENSA DEL ALBA ✦",
+          "descripcion": "Mientras no lleves armadura, tu CA es 10 + tu modificador de Destreza + tu modificador de Sabiduría. Puedes usar un escudo y seguir beneficiándote de este rasgo.\n\n<i>Ejemplo del efecto «ca_sin_armadura»: la ficha calcula esta CA y la ofrece junto a la Clase de Armadura (la CA sigue siendo manual).</i>",
+          "efectos": [
+            {
+              "type": "ca_sin_armadura",
+              "base": 10,
+              "atributos": [
+                "destreza",
+                "sabiduria"
+              ],
+              "escudo": true
+            }
+          ]
         }
       }
     },
@@ -125,12 +305,14 @@
       "infoCubo": {
         "columnas": [
           "Luz del alba",
-          "Daño radiante"
+          "Daño radiante",
+          "Paso del alba"
         ],
         "filas": [
           [
             "2",
-            "1d6"
+            "1d6",
+            "+5 pies"
           ]
         ]
       },
@@ -144,6 +326,27 @@
           "name": "Lanzamiento de conjuros",
           "titleName": "✦ LANZAMIENTO DE CONJUROS ✦",
           "descripcion": "Preparas conjuros de la lista del Centinela. Tu atributo de lanzamiento es Sabiduría. Los espacios de conjuro los calcula la ficha."
+        },
+        "blockTres": {
+          "name": "Votos del alba",
+          "titleName": "✦ VOTOS DEL ALBA ✦",
+          "descripcion": "Eliges un voto de la lista de Votos del alba. En el nivel 9 eliges otro y puedes cambiar uno que ya tengas.",
+          "elegir": {
+            "lista": "votos-alba",
+            "cantidad": 1
+          }
+        },
+        "blockCuatro": {
+          "name": "Paso ligero",
+          "titleName": "✦ PASO LIGERO ✦",
+          "descripcion": "Tu velocidad aumenta según la columna «Paso del alba» de la tabla de la clase.\n\n<i>Ejemplo de bono «desdeTabla»: el valor sale de la columna de la tabla al nivel actual.</i>",
+          "efectos": [
+            {
+              "type": "bono",
+              "target": "velocidad",
+              "desdeTabla": "Paso del alba"
+            }
+          ]
         }
       }
     },
@@ -151,12 +354,14 @@
       "infoCubo": {
         "columnas": [
           "Luz del alba",
-          "Daño radiante"
+          "Daño radiante",
+          "Paso del alba"
         ],
         "filas": [
           [
             "2",
-            "1d6"
+            "1d6",
+            "+5 pies"
           ]
         ]
       },
@@ -171,13 +376,51 @@
               "value": "Armadura pesada"
             }
           ],
+          "listasDeEleccion": {
+            "plegarias-faro": {
+              "titulo": "Plegarias del faro",
+              "desde": "conjuros",
+              "clase": "clerigo",
+              "niveles": [
+                0
+              ],
+              "reemplazarAlSubir": true,
+              "ayuda": "Ejemplo de lista de conjuros: trucos de clérigo del catálogo."
+            },
+            "habilidad-faro": {
+              "titulo": "Saber del faro",
+              "desde": "habilidades",
+              "de": [
+                "Historia",
+                "Religión",
+                "Perspicacia"
+              ],
+              "ayuda": "Ejemplo de lista de habilidades: la elegida da competencia automáticamente."
+            }
+          },
           "subNivel": {
             "3": {
               "infoSubBlock": {
                 "subBlockUno": {
                   "subName": "Escudo de luz",
                   "subTitleName": "✦ ESCUDO DE LUZ ✦",
-                  "subDescripcion": "Como reacción, cuando una criatura a 1,5 m recibe un ataque, impones desventaja a esa tirada. Usos: tu bonificador de competencia por descanso largo."
+                  "subDescripcion": "Como reacción, cuando una criatura a 1,5 m recibe un ataque, impones desventaja a esa tirada. Usos: tu bonificador de competencia por descanso largo.\n\nSiempre tienes preparado el truco Luz.\n<i>Ejemplo del efecto «conjuro_preparado».</i>",
+                  "elegir": [
+                    {
+                      "lista": "plegarias-faro",
+                      "cantidad": 1
+                    },
+                    {
+                      "lista": "habilidad-faro",
+                      "cantidad": 1
+                    }
+                  ],
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Luz"
+                    }
+                  ]
                 }
               }
             },
@@ -284,12 +527,14 @@
       "infoCubo": {
         "columnas": [
           "Luz del alba",
-          "Daño radiante"
+          "Daño radiante",
+          "Paso del alba"
         ],
         "filas": [
           [
             "3",
-            "1d6"
+            "1d6",
+            "+5 pies"
           ]
         ]
       }
@@ -298,12 +543,14 @@
       "infoCubo": {
         "columnas": [
           "Luz del alba",
-          "Daño radiante"
+          "Daño radiante",
+          "Paso del alba"
         ],
         "filas": [
           [
             "3",
-            "1d8"
+            "1d8",
+            "+5 pies"
           ]
         ]
       },
@@ -312,6 +559,15 @@
           "name": "Ataque extra",
           "titleName": "✦ ATAQUE EXTRA ✦",
           "descripcion": "Puedes atacar dos veces, en lugar de una, cuando realizas la acción de Atacar en tu turno."
+        },
+        "blockDos": {
+          "name": "Tomo del alba",
+          "titleName": "✦ TOMO DEL ALBA ✦",
+          "descripcion": "Añades a tu libro un conjuro de Abjuración de Clérigo de un nivel para el que tengas espacios.",
+          "elegir": {
+            "lista": "tomo-alba",
+            "cantidad": 1
+          }
         }
       }
     },
@@ -319,12 +575,14 @@
       "infoCubo": {
         "columnas": [
           "Luz del alba",
-          "Daño radiante"
+          "Daño radiante",
+          "Paso del alba"
         ],
         "filas": [
           [
             "3",
-            "1d8"
+            "1d8",
+            "+5 pies"
           ]
         ]
       },
@@ -344,6 +602,35 @@
               "value": "Asustado"
             }
           ]
+        },
+        "blockDos": {
+          "name": "Saber del vigía",
+          "titleName": "✦ SABER DEL VIGÍA ✦",
+          "descripcion": "Conoces un truco adicional de tu clase y sumas tu modificador de Sabiduría (mínimo +1) a las pruebas de Historia y a todas tus pruebas de Carisma, y tu modificador de Sabiduría a la iniciativa.\n\n<i>Ejemplo de bono «trucos» (trucos extra de la clase) y de un bono «desdeAtributo» (igual a un modificador, con mínimo), a una habilidad, a todas las pruebas de un atributo («pruebas:carisma») y a la iniciativa.</i>",
+          "efectos": [
+            {
+              "type": "bono",
+              "target": "trucos",
+              "value": 1
+            },
+            {
+              "type": "bono",
+              "target": "habilidad:Historia",
+              "desdeAtributo": "sabiduria",
+              "minimo": 1
+            },
+            {
+              "type": "bono",
+              "target": "pruebas:carisma",
+              "desdeAtributo": "sabiduria",
+              "minimo": 1
+            },
+            {
+              "type": "bono",
+              "target": "iniciativa",
+              "desdeAtributo": "sabiduria"
+            }
+          ]
         }
       }
     },
@@ -351,12 +638,14 @@
       "infoCubo": {
         "columnas": [
           "Luz del alba",
-          "Daño radiante"
+          "Daño radiante",
+          "Paso del alba"
         ],
         "filas": [
           [
             "3",
-            "1d8"
+            "1d8",
+            "+5 pies"
           ]
         ]
       }
@@ -365,12 +654,14 @@
       "infoCubo": {
         "columnas": [
           "Luz del alba",
-          "Daño radiante"
+          "Daño radiante",
+          "Paso del alba"
         ],
         "filas": [
           [
             "3",
-            "1d8"
+            "1d8",
+            "+5 pies"
           ]
         ]
       }
@@ -379,12 +670,14 @@
       "infoCubo": {
         "columnas": [
           "Luz del alba",
-          "Daño radiante"
+          "Daño radiante",
+          "Paso del alba"
         ],
         "filas": [
           [
             "4",
-            "1d8"
+            "1d8",
+            "+5 pies"
           ]
         ]
       },
@@ -401,32 +694,62 @@
             }
           ]
         }
+      },
+      "elegir": {
+        "lista": "votos-alba",
+        "cantidad": 1,
+        "reemplazar": 1,
+        "rasgo": "Votos del alba"
       }
     },
     "10": {
       "infoCubo": {
         "columnas": [
           "Luz del alba",
-          "Daño radiante"
+          "Daño radiante",
+          "Paso del alba"
         ],
         "filas": [
           [
             "4",
-            "1d8"
+            "1d8",
+            "+10 pies"
           ]
         ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Saber del alba",
+          "titleName": "✦ SABER DEL ALBA ✦",
+          "descripcion": "Puedes preparar conjuros de la lista de Clérigo como si fueran de tu clase, sumas la mitad de tu bono de competencia a las pruebas sin competencia y aprendes un secreto del alba (siempre preparado).\n\n<i>Ejemplo de los efectos «lista_conjuros» y «medio_competencia», y de una elección de conjuros «siempre preparados».</i>",
+          "efectos": [
+            {
+              "type": "lista_conjuros",
+              "value": "clerigo"
+            },
+            {
+              "type": "medio_competencia"
+            }
+          ],
+          "elegir": {
+            "lista": "secretos-alba",
+            "cantidad": 1
+          }
+        }
       }
     },
     "11": {
       "infoCubo": {
         "columnas": [
           "Luz del alba",
-          "Daño radiante"
+          "Daño radiante",
+          "Paso del alba"
         ],
         "filas": [
           [
             "4",
-            "2d6"
+            "2d6",
+            "+10 pies"
           ]
         ]
       },
@@ -442,12 +765,14 @@
       "infoCubo": {
         "columnas": [
           "Luz del alba",
-          "Daño radiante"
+          "Daño radiante",
+          "Paso del alba"
         ],
         "filas": [
           [
             "4",
-            "2d6"
+            "2d6",
+            "+10 pies"
           ]
         ]
       }
@@ -456,12 +781,14 @@
       "infoCubo": {
         "columnas": [
           "Luz del alba",
-          "Daño radiante"
+          "Daño radiante",
+          "Paso del alba"
         ],
         "filas": [
           [
             "4",
-            "2d6"
+            "2d6",
+            "+10 pies"
           ]
         ]
       }
@@ -470,12 +797,14 @@
       "infoCubo": {
         "columnas": [
           "Luz del alba",
-          "Daño radiante"
+          "Daño radiante",
+          "Paso del alba"
         ],
         "filas": [
           [
             "5",
-            "2d6"
+            "2d6",
+            "+10 pies"
           ]
         ]
       },
@@ -484,6 +813,18 @@
           "name": "Purificar",
           "titleName": "✦ PURIFICAR ✦",
           "descripcion": "Como acción, terminas un efecto de hechizado o asustado sobre ti o una criatura que toques. Usos: tu modificador de Sabiduría por descanso largo."
+        },
+        "blockDos": {
+          "name": "Vigor del alba",
+          "titleName": "✦ VIGOR DEL ALBA ✦",
+          "descripcion": "Tus puntos de golpe máximos aumentan en una cantidad igual a tu nivel en esta clase.\n\n<i>Ejemplo de bono «desdeNivel»: vale tu nivel en la clase que da el rasgo (con «mas» opcional), también en multiclase.</i>",
+          "efectos": [
+            {
+              "type": "bono",
+              "target": "pg_max",
+              "desdeNivel": true
+            }
+          ]
         }
       }
     },
@@ -491,12 +832,14 @@
       "infoCubo": {
         "columnas": [
           "Luz del alba",
-          "Daño radiante"
+          "Daño radiante",
+          "Paso del alba"
         ],
         "filas": [
           [
             "5",
-            "2d6"
+            "2d6",
+            "+10 pies"
           ]
         ]
       }
@@ -505,12 +848,14 @@
       "infoCubo": {
         "columnas": [
           "Luz del alba",
-          "Daño radiante"
+          "Daño radiante",
+          "Paso del alba"
         ],
         "filas": [
           [
             "5",
-            "2d6"
+            "2d6",
+            "+10 pies"
           ]
         ]
       }
@@ -519,12 +864,14 @@
       "infoCubo": {
         "columnas": [
           "Luz del alba",
-          "Daño radiante"
+          "Daño radiante",
+          "Paso del alba"
         ],
         "filas": [
           [
             "5",
-            "2d8"
+            "2d8",
+            "+10 pies"
           ]
         ]
       }
@@ -533,12 +880,14 @@
       "infoCubo": {
         "columnas": [
           "Luz del alba",
-          "Daño radiante"
+          "Daño radiante",
+          "Paso del alba"
         ],
         "filas": [
           [
             "5",
-            "2d8"
+            "2d8",
+            "+10 pies"
           ]
         ]
       },
@@ -554,12 +903,14 @@
       "infoCubo": {
         "columnas": [
           "Luz del alba",
-          "Daño radiante"
+          "Daño radiante",
+          "Paso del alba"
         ],
         "filas": [
           [
             "6",
-            "2d8"
+            "2d8",
+            "+10 pies"
           ]
         ]
       }
@@ -568,12 +919,14 @@
       "infoCubo": {
         "columnas": [
           "Luz del alba",
-          "Daño radiante"
+          "Daño radiante",
+          "Paso del alba"
         ],
         "filas": [
           [
             "6",
-            "2d8"
+            "2d8",
+            "+10 pies"
           ]
         ]
       },

@@ -7,6 +7,7 @@ import {
 } from '../src/domain/progression.js';
 import { normalizeCharacter } from '../src/domain/validation.js';
 import { setClassSkills } from '../src/domain/proficiencies.js';
+import { autoChoices } from './helpers/auto-choices.js';
 
 function choicesFor(c, classKey, n) {
   // Decisiones deterministas para cada nivel: subclase = primera opción,
@@ -15,12 +16,16 @@ function choicesFor(c, classKey, n) {
   let cur = c;
   for (let i = 0; i < n; i++) {
     const plan = planLevelUp(cur, classKey);
+    const subclass = plan.needsSubclass ? plan.subclassOptions[0].key : null;
     const ch = {
       classKey,
       hpRoll: Math.floor(plan.hitDie / 2) + 1,
-      subclass: plan.needsSubclass ? plan.subclassOptions[0].key : null,
+      subclass,
       improvement: plan.needsImprovement ? { type: 'asi', increases: { fuerza: 1, constitucion: 1 } } : null,
-      featureChoices: plan.featureChoice ? { statAmount: plan.featureChoice.allowed.slice(0, plan.featureChoice.count) } : {},
+      featureChoices: {
+        ...(plan.featureChoice ? { statAmount: plan.featureChoice.allowed.slice(0, plan.featureChoice.count) } : {}),
+        elecciones: autoChoices(cur, classKey, subclass),
+      },
     };
     list.push(ch);
     const res = applyLevelUp(cur, ch);

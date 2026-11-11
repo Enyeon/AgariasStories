@@ -102,24 +102,40 @@ export const SPELLCASTING_BY_CLASS = Object.freeze({
 
 const EMPTY_SLOTS = Object.freeze([0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
-const TABLE_BY_PROGRESSION = { full: FULL, half: HALF, artificer: ARTIFICER, pact: WARLOCK };
+// half_up: lanzador «medio» de las reglas 2024 (Paladín, Explorador): espacios desde
+// el nivel 1 (misma tabla que el Artífice) y, en multiclase, nivel/2 redondeando arriba.
+const TABLE_BY_PROGRESSION = { full: FULL, half: HALF, half_up: ARTIFICER, artificer: ARTIFICER, pact: WARLOCK };
 
 /**
  * Configuración de lanzamiento de una clase: la tabla oficial si existe o, si
  * no, la que declare la propia clase (`lanzamiento`, p. ej. una clase Homebrew).
  */
 export function castingConfig(classKey) {
-  if (Object.hasOwn(SPELLCASTING_BY_CLASS, classKey)) return SPELLCASTING_BY_CLASS[classKey];
+  const official = Object.hasOwn(SPELLCASTING_BY_CLASS, classKey) ? SPELLCASTING_BY_CLASS[classKey] : null;
   const decl = getClass(classKey)?.lanzamiento;
-  const table = TABLE_BY_PROGRESSION[decl?.progression];
+  // Sin declaración en el JSON se usa la tabla del código (clases oficiales).
+  if (!decl) return official;
+  // `espaciosPacto`: 20 pares [cantidad, nivel] (Magia del Pacto 2024: todos los
+  // espacios son del mismo nivel). Sustituye a la tabla del código.
+  const pact = Array.isArray(decl.espaciosPacto) && decl.espaciosPacto.length === 20
+    && decl.espaciosPacto.every((p) => Array.isArray(p) && Number.isInteger(p[0]) && Number.isInteger(p[1]) && p[1] >= 1 && p[1] <= 9)
+    ? [null, ...decl.espaciosPacto.map(([n, lvl]) => Array.from({ length: 9 }, (_, i) => (i === lvl - 1 ? n : 0)))]
+    : null;
+  const table = pact ?? TABLE_BY_PROGRESSION[decl.progression] ?? official?.table;
   if (!table) return null;
   const perLevel = (arr) => (Array.isArray(arr) && arr.length === 20 && arr.every((n) => Number.isInteger(n) && n >= 0) ? arr : null);
+  // Lo que declara el JSON de la clase manda (p. ej. tablas 2024); lo que no
+  // declara se toma de la tabla oficial del código, si la hay.
+  const preparedTable = perLevel(decl.preparedTable);
   return {
-    progression: decl.progression,
+    progression: TABLE_BY_PROGRESSION[decl.progression] ? decl.progression : official.progression,
     table,
-    cantripsKnown: perLevel(decl.cantripsKnown) ?? CANTRIPS_2,
-    spellsKnown: perLevel(decl.spellsKnown) ?? undefined,
-    preparedFrom: ['full', 'half'].includes(decl.preparedFrom) ? decl.preparedFrom : null,
+    // Sin tabla de trucos: la oficial (el Paladín no tiene) o, en una clase nueva, la estándar.
+    cantripsKnown: perLevel(decl.cantripsKnown) ?? (official ? official.cantripsKnown : CANTRIPS_2),
+    spellsKnown: preparedTable ? undefined : (perLevel(decl.spellsKnown) ?? official?.spellsKnown),
+    preparedTable: preparedTable ?? undefined,
+    preparedFrom: preparedTable ? null : (['full', 'half'].includes(decl.preparedFrom) ? decl.preparedFrom : decl.preparedFrom === null ? null : official?.preparedFrom ?? null),
+    spellbook: official?.spellbook,
   };
 }
 
@@ -149,7 +165,7 @@ export function computeSpellSlots(casters) {
     const cfg = castingConfig(classKey);
     if (cfg.progression === 'full') casterLevel += level;
     else if (cfg.progression === 'half') casterLevel += Math.floor(level / 2);
-    else if (cfg.progression === 'artificer') casterLevel += Math.ceil(level / 2);
+    else if (cfg.progression === 'artificer' || cfg.progression === 'half_up') casterLevel += Math.ceil(level / 2);
     else if (cfg.progression === 'pact') pactSlots = [...(cfg.table[Math.min(20, level)] ?? EMPTY_SLOTS)];
   }
   const slots = casterLevel > 0 ? [...FULL[Math.min(20, casterLevel)]] : [...EMPTY_SLOTS];

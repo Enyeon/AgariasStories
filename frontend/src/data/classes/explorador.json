@@ -2,97 +2,47 @@
   "nombre": "Explorador",
   "claseName": "explorador",
   "seccion": "manual",
+  "icono": "🏹",
+  "fuenteReglas": "Manual del Jugador",
   "dadoDeGolpe": 10,
   "nivelesDeAumento": [
     4,
     8,
     12,
-    16,
-    19
+    16
   ],
   "conjurador": true,
-  "attribute": "inteligencia",
-  "niveles": {
-    "1": {
-      "descripcion": "Cazador experto y maestro de la supervivencia en territorios hostiles.",
-      "descripcionLarga": "El Explorador es el filo silencioso en la frontera de lo desconocido. Rastrea, acecha y ataca con precisión letal. Su conocimiento del terreno lo convierte en estratega natural, y su conexión con la naturaleza le otorga ventajas que ningún soldado urbano posee. Es paciencia, puntería y preparación.",
-      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Fuerza y Destreza.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d10.\n    :: Nivel 1: 10 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d10 (o 6) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Armadura ligera, Armadura media y Escudos.\n    :: Armas: Armas simples y Armas marciales.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge tres de entre Atletismo, Investigación, Naturaleza, Percepción, Perspicacia, Sigilo, Supervivencia y Trato con Animales.\n❖ Equipo. Comienzas con el siguiente equipo, además del que te dé tu trasfondo:\n    :: (a) una cota de escamas o (b) una armadura de cuero.\n    :: (a) dos espadas cortas o (b) dos armas simples cuerpo a cuerpo.\n    :: (a) un paquete de explorador de mazmorras o (b) un paquete de explorador.\n    :: Un arco largo y un carcaj con 20 flechas.\n    :: Alternativa: 5d4 × 10 po en lugar del equipo de clase.\n❖ Fuente: Manual del Jugador.",
-      "informacionNivel": "✦  ✦\n\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n\n✦  ✦"
-    },
-    "2": {
-      "informacionNivel": "✦ ATAQUE TEMERARIO ✦"
-    },
-    "3": {
-      "informacionNivel": "✦ CONOCIMIENTO PRIMITIVO ✦",
-      "subClase": {
-        "cazador": {
-          "subNombre": "Cazador",
-          "subDescripcion": "Especialista en abatir amenazas: técnicas contra hordas, gigantes y enemigos escurridizos.",
-          "subNivel": {},
-          "rasgosPendientes": true,
-          "fuente": "Manual del Jugador"
-        },
-        "senor-bestias": {
-          "subNombre": "Señor de las Bestias",
-          "subDescripcion": "Explorador unido a un compañero animal que lucha a su lado.",
-          "subNivel": {},
-          "rasgosPendientes": true,
-          "fuente": "Manual del Jugador"
-        }
-      }
-    },
-    "4": {
-      "informacionNivel": "✦  ✦"
-    },
-    "5": {
-      "informacionNivel": "✦  ✦"
-    },
-    "6": {
-      "informacionNivel": "✦  ✦"
-    },
-    "7": {
-      "informacionNivel": "✦  ✦"
-    },
-    "8": {
-      "informacionNivel": "✦  ✦"
-    },
-    "9": {
-      "informacionNivel": "✦  ✦"
-    },
-    "10": {
-      "informacionNivel": "✦  ✦"
-    },
-    "11": {
-      "informacionNivel": "✦  ✦"
-    },
-    "12": {
-      "informacionNivel": "✦  ✦"
-    },
-    "13": {
-      "informacionNivel": "✦  ✦"
-    },
-    "14": {
-      "informacionNivel": "✦  ✦"
-    },
-    "15": {
-      "informacionNivel": "✦  ✦"
-    },
-    "16": {
-      "informacionNivel": "✦  ✦"
-    },
-    "17": {
-      "informacionNivel": "✦  ✦"
-    },
-    "18": {
-      "informacionNivel": "✦  ✦"
-    },
-    "19": {
-      "informacionNivel": "✦  ✦"
-    },
-    "20": {
-      "informacionNivel": "✦  ✦"
-    }
+  "attribute": "sabiduria",
+  "lanzamiento": {
+    "progression": "half_up",
+    "preparedTable": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      6,
+      7,
+      7,
+      9,
+      9,
+      10,
+      10,
+      11,
+      11,
+      12,
+      12,
+      14,
+      14,
+      15,
+      15
+    ]
   },
+  "pericias": {
+    "2": 1,
+    "9": 2
+  },
+  "subclaseNombre": "Arquetipo de explorador",
   "competencias": {
     "salvaciones": [
       "fuerza",
@@ -111,14 +61,14 @@
     "habilidades": {
       "elegir": 3,
       "de": [
+        "Trato con Animales",
         "Atletismo",
+        "Perspicacia",
         "Investigación",
         "Naturaleza",
         "Percepción",
-        "Perspicacia",
         "Sigilo",
-        "Supervivencia",
-        "Trato con Animales"
+        "Supervivencia"
       ]
     }
   },
@@ -136,30 +86,1025 @@
     "habilidades": {
       "elegir": 1,
       "de": [
+        "Trato con Animales",
         "Atletismo",
+        "Perspicacia",
         "Investigación",
         "Naturaleza",
         "Percepción",
-        "Perspicacia",
         "Sigilo",
-        "Supervivencia",
-        "Trato con Animales"
+        "Supervivencia"
       ]
     }
   },
   "equipoInicial": [
-    "(a) una cota de escamas o (b) una armadura de cuero.",
-    "(a) dos espadas cortas o (b) dos armas simples cuerpo a cuerpo.",
-    "(a) un paquete de explorador de mazmorras o (b) un paquete de explorador.",
-    "Un arco largo y un carcaj con 20 flechas."
+    "(A) Armadura de cuero tachonado, Cimitarra, Espada corta, Arco largo, 20 flechas, carcaj, enfoque druídico (ramita de muérdago), equipo de explorador y 7 PO.",
+    "(B) 150 PO."
   ],
-  "oroInicial": "5d4 × 10",
-  "fuenteReglas": "Manual del Jugador",
-  "subclaseNombre": "Arquetipo de explorador",
+  "listasDeEleccion": {
+    "maestria-armas": {
+      "titulo": "Maestría con armas",
+      "libre": true,
+      "cambiable": true,
+      "placeholder": "Tipo de arma (p. ej. Arco largo)",
+      "ayuda": "Tipos de arma con los que tengas competencia. Puedes cambiarlos al terminar un Descanso Largo (botón «Cambiar» en la ficha)."
+    },
+    "idiomas-explorador": {
+      "titulo": "Idiomas (Explorador Hábil)",
+      "libre": true,
+      "placeholder": "Idioma (capítulo 2)",
+      "efectoLibre": {
+        "type": "competencia",
+        "kind": "idioma"
+      }
+    },
+    "estilo-combate-explorador": {
+      "titulo": "Estilo de Combate",
+      "opciones": [
+        {
+          "id": "dote",
+          "nombre": "Hazaña de Estilo de Combate",
+          "descripcion": "Obtienes una hazaña de Estilo de Combate de tu elección (consulta el capítulo 5).",
+          "elegir": {
+            "lista": "dote-estilo-combate",
+            "cantidad": 1
+          }
+        },
+        {
+          "id": "guerrero-druidico",
+          "nombre": "Guerrero Druídico",
+          "descripcion": "Aprendes dos trucos de Druida de tu elección. Cuentan como conjuros de Explorador para ti, y la Sabiduría es tu habilidad para lanzarlos. Siempre que subas de nivel como Explorador, puedes reemplazar uno por otro truco de Druida.",
+          "elegir": {
+            "lista": "trucos-guerrero-druidico",
+            "cantidad": 2
+          }
+        }
+      ]
+    },
+    "dote-estilo-combate": {
+      "titulo": "Hazaña de Estilo de Combate",
+      "libre": true,
+      "placeholder": "Nombre de la hazaña (capítulo 5)"
+    },
+    "trucos-guerrero-druidico": {
+      "titulo": "Trucos de Guerrero Druídico",
+      "desde": "conjuros",
+      "clase": "druida",
+      "niveles": [
+        0
+      ],
+      "siemprePreparados": true,
+      "reemplazarAlSubir": true,
+      "ayuda": "Se recomiendan Guía y Voluta Estelar."
+    }
+  },
   "subclasesRetiradas": [
     "senda1",
     "senda2",
     "senda3",
     "senda4"
-  ]
+  ],
+  "niveles": {
+    "1": {
+      "descripcion": "Cazador experto y maestro de la supervivencia en territorios hostiles.",
+      "descripcionLarga": "El Explorador es el filo silencioso en la frontera de lo desconocido. Rastrea, acecha y ataca con precisión letal. Su conocimiento del terreno lo convierte en estratega natural, y su conexión con la naturaleza le otorga ventajas que ningún soldado urbano posee. Es paciencia, puntería y preparación.",
+      "atributoInicial": "Atributos de clase:\n❖ Habilidad principal: Destreza y Sabiduría.\n❖ Tiradas de Salvación: Fuerza y Destreza.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d10.\n    :: Nivel 1: 10 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d10 (o 6) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Armadura ligera y media, y escudos.\n    :: Armas: Armas simples y marciales.\n    :: Herramientas: Ninguna.\n    :: Habilidades: elige 3 entre Manejo de Animales, Atletismo, Perspicacia, Investigación, Naturaleza, Percepción, Sigilo o Supervivencia.\n❖ Equipo inicial: elige A o B.\n    :: (A) Armadura de cuero tachonado, Cimitarra, Espada corta, Arco largo, 20 flechas, carcaj, enfoque druídico (ramita de muérdago), equipo de explorador y 7 PO.\n    :: (B) 150 PO.\n❖ Fuente: Manual del Jugador.",
+      "infoBlock": {
+        "blockUno": {
+          "name": "Conjuros",
+          "titleName": "✦ CONJUROS ✦",
+          "descripcion": "Has aprendido a canalizar la esencia mágica de la naturaleza para lanzar conjuros. Consulta el capítulo 7 para conocer las reglas sobre lanzamiento de conjuros. La información a continuación detalla cómo usas esas reglas con los conjuros de Explorador, que aparecen en la lista de conjuros de Explorador más adelante en la descripción de la clase.\n<b>Espacios de Conjuros.</b> La tabla de Características del Explorador muestra cuántos espacios de conjuros tienes para lanzar tus conjuros de nivel 1+. Recuperas todos los espacios gastados cuando terminas un Descanso Largo.\n<b>Conjuros Preparados de Nivel 1+.</b> Preparas la lista de conjuros de nivel 1+ que están disponibles para que los lances con esta característica. Para empezar, elige dos conjuros de nivel 1 de Explorador. Se recomiendan Curar Heridas y Golpe de Enredadera.\nEl número de conjuros en tu lista aumenta a medida que subes de nivel como Explorador, como se muestra en la columna de Conjuros Preparados de la tabla de Características del Explorador. Siempre que ese número aumente, elige conjuros adicionales de Explorador hasta que el número de conjuros en tu lista coincida con el número en la tabla de Características del Explorador. Los conjuros elegidos deben ser de un nivel para el cual tengas espacios de conjuros. Por ejemplo, si eres un Explorador de nivel 5, tu lista de conjuros preparados puede incluir seis conjuros de Explorador de nivel 1 o 2 en cualquier combinación.\nSi otra característica de Explorador te otorga conjuros que siempre tienes preparados, esos conjuros no cuentan contra el número de conjuros que puedes preparar con esta característica, pero esos conjuros cuentan como conjuros de Explorador para ti.\n<b>Cambiar tus Conjuros Preparados.</b> Siempre que terminas un Descanso Largo, puedes reemplazar un conjuro en tu lista con otro conjuro de Explorador para el cual tengas espacios de conjuro.\n<b>Habilidad de Lanzamiento de Conjuros.</b> La Sabiduría es tu habilidad de lanzamiento de conjuros para tus conjuros de Explorador.\n<b>Enfoque de Conjuros.</b> Puedes usar un Enfoque Druídico como Enfoque de Conjuros para tus conjuros de Explorador."
+        },
+        "blockDos": {
+          "name": "Enemigo Favorito",
+          "titleName": "✦ ENEMIGO FAVORITO ✦",
+          "descripcion": "Siempre tienes el conjuro Marca del Cazador preparado. Puedes lanzarlo dos veces sin gastar un espacio de conjuro, y recuperas todos los usos gastados de esta habilidad cuando terminas un Descanso Largo.\n\nEl número de veces que puedes lanzar el conjuro sin un espacio de conjuro aumenta cuando alcanzas ciertos niveles de Explorador, como se muestra en la columna de Enemigo Favorito de la tabla de Características del Explorador.",
+          "efectos": [
+            {
+              "type": "conjuro_preparado",
+              "value": "Marca del cazador"
+            }
+          ]
+        },
+        "blockTres": {
+          "name": "Maestría con Armas",
+          "titleName": "✦ MAESTRÍA CON ARMAS ✦",
+          "descripcion": "Tu entrenamiento con armas te permite usar las propiedades de maestría de dos tipos de armas de tu elección con las que tengas competencia, como arcos largos y espadas cortas. Siempre que termines un Descanso Largo, puedes cambiar los tipos de armas que elegiste. Por ejemplo, podrías cambiar a usar las propiedades de maestría de cimitarras y espadas largas.",
+          "elegir": {
+            "lista": "maestria-armas",
+            "cantidad": 2
+          }
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Enemigo Favorito",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "2",
+            "2",
+            "2"
+          ]
+        ]
+      }
+    },
+    "2": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Explorador Hábil",
+          "titleName": "✦ EXPLORADOR HÁBIL ✦",
+          "descripcion": "Gracias a tus viajes, obtienes los siguientes beneficios:\n\n<b>Pericia.</b> Elige una de tus competencias en habilidades con la que no tengas Pericia. Obtienes Pericia en esa habilidad.\n<b>Idiomas.</b> Conoces dos idiomas de tu elección de las tablas de idiomas en el capítulo 2.",
+          "elegir": {
+            "lista": "idiomas-explorador",
+            "cantidad": 2
+          }
+        },
+        "blockDos": {
+          "name": "Estilo de Combate",
+          "titleName": "✦ ESTILO DE COMBATE ✦",
+          "descripcion": "Obtienes una hazaña de Estilo de Combate de tu elección (consulta el capítulo 5). En lugar de elegir una de esas hazañas, puedes elegir la opción a continuación.\n<b>Guerrero Druídico.</b> Aprendes dos trucos de tu elección (consulta la sección de la clase Druida para obtener una lista de trucos). Se recomiendan Guía y Voluta Estelar. Los trucos elegidos cuentan como conjuros de Explorador para ti, y la Sabiduría es tu habilidad de lanzamiento de conjuros para ellos. Siempre que subas de nivel como Explorador, puedes reemplazar uno de estos trucos por otro truco de Druida.",
+          "elegir": {
+            "lista": "estilo-combate-explorador",
+            "cantidad": 1
+          }
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Enemigo Favorito",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "2",
+            "3",
+            "2"
+          ]
+        ]
+      }
+    },
+    "3": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Subclase de Explorador",
+          "titleName": "✦ SUBCLASE DE EXPLORADOR ✦",
+          "descripcion": "Obtienes una subclase de Explorador de tu elección. Las subclases Maestro de Bestias, Errante Feérico, Acechador en la Penumbra y Cazador se detallan después de la descripción de esta clase. Una subclase es una especialización que te otorga características a ciertos niveles de Explorador. Durante el resto de tu carrera, obtienes cada una de las características de tu subclase que correspondan a tu nivel de Explorador o inferior.\n\n<b>Subclases de Explorador.</b> Una subclase de Explorador es una especialización que te otorga características en ciertos niveles, como se especifica en la subclase. Esta sección presenta las subclases Maestro de Bestias, Errante Feérico, Acechador en la Penumbra y Cazador."
+        }
+      },
+      "subClase": {
+        "senor-bestias": {
+          "subNombre": "Maestro de Bestias",
+          "fuente": "Manual del Jugador",
+          "subDescripcion": "✦ MAESTRO DE BESTIAS ✦\nVínculo con una Bestia Primigenia\n\nUn Maestro de Bestias forma un vínculo místico con un animal especial, aprovechando la magia primigenia y una profunda conexión con el mundo natural.",
+          "listasDeEleccion": {
+            "bestia-primigenia": {
+              "titulo": "Bestia Primigenia",
+              "cambiable": true,
+              "ayuda": "Al terminar un Descanso Largo puedes invocar una bestia diferente (botón «Cambiar» en la ficha).",
+              "opciones": [
+                {
+                  "id": "tierra",
+                  "nombre": "Bestia de la Tierra",
+                  "descripcion": "<b>Bestia de la Tierra — Bestia Mediana, Neutral</b>\n<b>CA</b> 13 + tu modificador de Sabiduría · <b>PG</b> 5 + cinco veces tu nivel de Explorador (dados de golpe d8 igual a tu nivel) · <b>Velocidad</b> 40 pies, trepar 40 pies\n<table><thead><tr><th></th><th>FUE</th><th>DES</th><th>CON</th><th>INT</th><th>SAB</th><th>CAR</th></tr></thead><tbody><tr><td>Puntuación</td><td>14 (+2)</td><td>14 (+2)</td><td>15 (+2)</td><td>8 (−1)</td><td>14 (+2)</td><td>11 (+0)</td></tr></tbody></table>\n<b>Sentidos</b> Visión en la oscuridad 60 pies, Percepción pasiva 12\n<b>Idiomas</b> Entiende los idiomas que tú conoces · <b>CR</b> Ninguno (BC igual a tu Bonificador de Competencia)\n<b>Vínculo Primigenio.</b> Suma tu Bonificador de Competencia a cualquier prueba de característica o tirada de salvación que haga la bestia.\n<b>Golpe de la Bestia.</b> Ataque cuerpo a cuerpo: bonificador igual a tu modificador de ataque de conjuro, alcance 5 pies. Impacto: 1d8 + 2 + tu modificador de Sabiduría de daño Contundente, Perforante o Cortante (elegido al invocarla). Si la bestia se movió al menos 20 pies en línea recta hacia el objetivo antes de impactar, el objetivo recibe 1d6 de daño extra del mismo tipo y queda Derribado si es Grande o más pequeño."
+                },
+                {
+                  "id": "cielo",
+                  "nombre": "Bestia del Cielo",
+                  "descripcion": "<b>Bestia del Cielo — Bestia Pequeña, Neutral</b>\n<b>CA</b> 13 + tu modificador de Sabiduría · <b>PG</b> 4 + cuatro veces tu nivel de Explorador (dados de golpe d6 igual a tu nivel) · <b>Velocidad</b> 10 pies, volar 60 pies\n<table><thead><tr><th></th><th>FUE</th><th>DES</th><th>CON</th><th>INT</th><th>SAB</th><th>CAR</th></tr></thead><tbody><tr><td>Puntuación</td><td>6 (−2)</td><td>16 (+3)</td><td>13 (+1)</td><td>8 (−1)</td><td>14 (+2)</td><td>11 (+0)</td></tr></tbody></table>\n<b>Sentidos</b> Visión en la oscuridad 60 pies, Percepción pasiva 12\n<b>Idiomas</b> Entiende los idiomas que tú conoces · <b>CR</b> Ninguno (BC igual a tu Bonificador de Competencia)\n<b>Sobrevuelo.</b> No provoca Ataques de Oportunidad al salir volando del alcance de un enemigo.\n<b>Vínculo Primigenio.</b> Suma tu Bonificador de Competencia a cualquier prueba de característica o tirada de salvación que haga la bestia.\n<b>Golpe de la Bestia.</b> Ataque cuerpo a cuerpo: bonificador igual a tu modificador de ataque de conjuro, alcance 5 pies. Impacto: 1d4 + 3 + tu modificador de Sabiduría de daño Cortante."
+                },
+                {
+                  "id": "mar",
+                  "nombre": "Bestia del Mar",
+                  "descripcion": "<b>Bestia del Mar — Bestia Mediana, Neutral</b>\n<b>CA</b> 13 + tu modificador de Sabiduría · <b>PG</b> 5 + cinco veces tu nivel de Explorador (dados de golpe d8 igual a tu nivel) · <b>Velocidad</b> 5 pies, nadar 60 pies\n<table><thead><tr><th></th><th>FUE</th><th>DES</th><th>CON</th><th>INT</th><th>SAB</th><th>CAR</th></tr></thead><tbody><tr><td>Puntuación</td><td>14 (+2)</td><td>14 (+2)</td><td>15 (+2)</td><td>8 (−1)</td><td>14 (+2)</td><td>11 (+0)</td></tr></tbody></table>\n<b>Sentidos</b> Visión en la oscuridad 90 pies, Percepción pasiva 12\n<b>Idiomas</b> Entiende los idiomas que tú conoces · <b>CR</b> Ninguno (BC igual a tu Bonificador de Competencia)\n<b>Anfibia.</b> Puede respirar aire y agua.\n<b>Vínculo Primigenio.</b> Suma tu Bonificador de Competencia a cualquier prueba de característica o tirada de salvación que haga la bestia.\n<b>Golpe de la Bestia.</b> Ataque cuerpo a cuerpo: bonificador igual a tu modificador de ataque de conjuro, alcance 5 pies. Impacto: 1d6 + 2 + tu modificador de Sabiduría de daño Contundente o Perforante (elegido al invocarla), y el objetivo queda Agarrado (CD para escapar igual a tu CD de salvación de conjuros)."
+                }
+              ]
+            }
+          },
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Compañero Primigenio",
+                  "subTitleName": "✦ COMPAÑERO PRIMIGENIO ✦",
+                  "subDescripcion": "Invocas mágicamente a una bestia primigenia, la cual obtiene fuerza de tu vínculo con la naturaleza. Elige su bloque de estadísticas: Bestia de la Tierra, Bestia del Mar o Bestia del Cielo. También determinas el tipo de animal que es, eligiendo uno apropiado para el bloque de estadísticas. Cualquiera que sea la bestia que elijas, lleva marcas primigenias que indican su origen sobrenatural.\n\nLa bestia es Amistosa contigo y con tus aliados y obedece tus órdenes. Desaparece si mueres.\n<b>La Bestia en Combate.</b> En combate, la bestia actúa durante tu turno. Puede moverse y usar su Reacción por sí misma, pero la única acción que realiza es la acción de Esquivar, a menos que uses una Acción de Bonificación para ordenarle que realice una acción en su bloque de estadísticas o alguna otra acción. También puedes sacrificar uno de tus ataques cuando tomes la acción de Ataque para ordenarle a la bestia que realice la acción de Golpe de la Bestia. Si tienes la condición de Incapacitado, la bestia actúa por sí misma y no está limitada a la acción de Esquivar.\n<b>Restaurar o Reemplazar la Bestia.</b> Si la bestia ha muerto en la última hora, puedes realizar una acción mágica para tocarla y gastar un espacio de conjuro. La bestia vuelve a la vida después de 1 minuto con todos sus Puntos de Golpe restaurados. Siempre que termines un Descanso Largo, puedes invocar una bestia primigenia diferente, la cual aparece en un espacio desocupado a 5 pies de ti. Eliges su bloque de estadísticas y apariencia. Si ya tienes una bestia de esta característica, la antigua desaparece cuando aparece la nueva.\n\n<b>Bestia de la Tierra — Bestia Mediana, Neutral</b>\n<b>CA</b> 13 + tu modificador de Sabiduría · <b>PG</b> 5 + cinco veces tu nivel de Explorador (dados de golpe d8 igual a tu nivel) · <b>Velocidad</b> 40 pies, trepar 40 pies\n<table><thead><tr><th></th><th>FUE</th><th>DES</th><th>CON</th><th>INT</th><th>SAB</th><th>CAR</th></tr></thead><tbody><tr><td>Puntuación</td><td>14 (+2)</td><td>14 (+2)</td><td>15 (+2)</td><td>8 (−1)</td><td>14 (+2)</td><td>11 (+0)</td></tr></tbody></table>\n<b>Sentidos</b> Visión en la oscuridad 60 pies, Percepción pasiva 12\n<b>Idiomas</b> Entiende los idiomas que tú conoces · <b>CR</b> Ninguno (BC igual a tu Bonificador de Competencia)\n<b>Vínculo Primigenio.</b> Suma tu Bonificador de Competencia a cualquier prueba de característica o tirada de salvación que haga la bestia.\n<b>Golpe de la Bestia.</b> Ataque cuerpo a cuerpo: bonificador igual a tu modificador de ataque de conjuro, alcance 5 pies. Impacto: 1d8 + 2 + tu modificador de Sabiduría de daño Contundente, Perforante o Cortante (elegido al invocarla). Si la bestia se movió al menos 20 pies en línea recta hacia el objetivo antes de impactar, el objetivo recibe 1d6 de daño extra del mismo tipo y queda Derribado si es Grande o más pequeño.\n\n<b>Bestia del Cielo — Bestia Pequeña, Neutral</b>\n<b>CA</b> 13 + tu modificador de Sabiduría · <b>PG</b> 4 + cuatro veces tu nivel de Explorador (dados de golpe d6 igual a tu nivel) · <b>Velocidad</b> 10 pies, volar 60 pies\n<table><thead><tr><th></th><th>FUE</th><th>DES</th><th>CON</th><th>INT</th><th>SAB</th><th>CAR</th></tr></thead><tbody><tr><td>Puntuación</td><td>6 (−2)</td><td>16 (+3)</td><td>13 (+1)</td><td>8 (−1)</td><td>14 (+2)</td><td>11 (+0)</td></tr></tbody></table>\n<b>Sentidos</b> Visión en la oscuridad 60 pies, Percepción pasiva 12\n<b>Idiomas</b> Entiende los idiomas que tú conoces · <b>CR</b> Ninguno (BC igual a tu Bonificador de Competencia)\n<b>Sobrevuelo.</b> No provoca Ataques de Oportunidad al salir volando del alcance de un enemigo.\n<b>Vínculo Primigenio.</b> Suma tu Bonificador de Competencia a cualquier prueba de característica o tirada de salvación que haga la bestia.\n<b>Golpe de la Bestia.</b> Ataque cuerpo a cuerpo: bonificador igual a tu modificador de ataque de conjuro, alcance 5 pies. Impacto: 1d4 + 3 + tu modificador de Sabiduría de daño Cortante.\n\n<b>Bestia del Mar — Bestia Mediana, Neutral</b>\n<b>CA</b> 13 + tu modificador de Sabiduría · <b>PG</b> 5 + cinco veces tu nivel de Explorador (dados de golpe d8 igual a tu nivel) · <b>Velocidad</b> 5 pies, nadar 60 pies\n<table><thead><tr><th></th><th>FUE</th><th>DES</th><th>CON</th><th>INT</th><th>SAB</th><th>CAR</th></tr></thead><tbody><tr><td>Puntuación</td><td>14 (+2)</td><td>14 (+2)</td><td>15 (+2)</td><td>8 (−1)</td><td>14 (+2)</td><td>11 (+0)</td></tr></tbody></table>\n<b>Sentidos</b> Visión en la oscuridad 90 pies, Percepción pasiva 12\n<b>Idiomas</b> Entiende los idiomas que tú conoces · <b>CR</b> Ninguno (BC igual a tu Bonificador de Competencia)\n<b>Anfibia.</b> Puede respirar aire y agua.\n<b>Vínculo Primigenio.</b> Suma tu Bonificador de Competencia a cualquier prueba de característica o tirada de salvación que haga la bestia.\n<b>Golpe de la Bestia.</b> Ataque cuerpo a cuerpo: bonificador igual a tu modificador de ataque de conjuro, alcance 5 pies. Impacto: 1d6 + 2 + tu modificador de Sabiduría de daño Contundente o Perforante (elegido al invocarla), y el objetivo queda Agarrado (CD para escapar igual a tu CD de salvación de conjuros).",
+                  "elegir": {
+                    "lista": "bestia-primigenia",
+                    "cantidad": 1
+                  }
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Entrenamiento Excepcional",
+                  "subTitleName": "✦ ENTRENAMIENTO EXCEPCIONAL ✦",
+                  "subDescripcion": "Cuando uses una Acción de Bonificación para ordenar a tu bestia Compañero Primigenio que realice una acción, también puedes ordenarle que tome la acción de Correr, Desengancharse, Esquivar o Ayudar usando su Acción de Bonificación. Además, cada vez que golpea con una tirada de ataque y causa daño, puede causar daño de Fuerza a tu elección o su tipo de daño normal."
+                }
+              }
+            },
+            "11": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Furia Bestial",
+                  "subTitleName": "✦ FURIA BESTIAL ✦",
+                  "subDescripcion": "Cuando ordenes a tu bestia Compañero Primigenio que realice la acción de Golpe de la Bestia, la bestia puede usarla dos veces. Además, la primera vez que golpea a una criatura bajo el efecto de tu conjuro Marca del Cazador en cada turno, la bestia inflige daño de Fuerza adicional igual al daño adicional de ese conjuro."
+                }
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Compartir Conjuros",
+                  "subTitleName": "✦ COMPARTIR CONJUROS ✦",
+                  "subDescripcion": "Cuando lanzas un conjuro que tiene como objetivo a ti, también puedes afectar a tu bestia Compañero Primigenio con el conjuro si la bestia está dentro de un radio de 30 pies de ti."
+                }
+              }
+            }
+          }
+        },
+        "errante-feerico": {
+          "subNombre": "Errante Feérico",
+          "fuente": "Manual del Jugador",
+          "subDescripcion": "✦ ERRANTE FEÉRICO ✦\nEmpuña la Alegría y la Furia Feérica\n\nUn misticismo feérico te rodea, gracias al favor de un archifey o a una ubicación en el Plano Feérico que te transformó. Sin importar cómo obtuviste la magia feérica, ahora eres un Errante Feérico. Tu alegre risa ilumina los corazones de los desanimados, y tu destreza marcial infunde terror en tus enemigos, pues grande es la alegría de los feéricos y temible es su furia.",
+          "listasDeEleccion": {
+            "regalo-feerico": {
+              "titulo": "Regalo Feérico",
+              "ayuda": "Elígelo o tira 1d6.",
+              "opciones": [
+                {
+                  "id": "1",
+                  "nombre": "1. Mariposas ilusorias revolotean a tu alrededor mientras tomas un Descanso Corto o Largo",
+                  "descripcion": "Mariposas ilusorias revolotean a tu alrededor mientras tomas un Descanso Corto o Largo."
+                },
+                {
+                  "id": "2",
+                  "nombre": "2. Flores brotan de tu cabello cada amanecer",
+                  "descripcion": "Flores brotan de tu cabello cada amanecer."
+                },
+                {
+                  "id": "3",
+                  "nombre": "3. Tienes un débil aroma a canela, lavanda, nuez moscada u otra hierba o especia reconfortante",
+                  "descripcion": "Tienes un débil aroma a canela, lavanda, nuez moscada u otra hierba o especia reconfortante."
+                },
+                {
+                  "id": "4",
+                  "nombre": "4. Tu sombra danza mientras nadie la mira directamente",
+                  "descripcion": "Tu sombra danza mientras nadie la mira directamente."
+                },
+                {
+                  "id": "5",
+                  "nombre": "5. Cuernos o astas brotan de tu cabeza",
+                  "descripcion": "Cuernos o astas brotan de tu cabeza."
+                },
+                {
+                  "id": "6",
+                  "nombre": "6. Tu piel y cabello cambian de color cada amanecer",
+                  "descripcion": "Tu piel y cabello cambian de color cada amanecer."
+                }
+              ]
+            },
+            "glamour-habilidad": {
+              "titulo": "Glamour de Otro Mundo: habilidad",
+              "desde": "habilidades",
+              "de": [
+                "Engaño",
+                "Interpretación",
+                "Persuasión"
+              ]
+            }
+          },
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Golpes Aterradores",
+                  "subTitleName": "✦ GOLPES ATERRADORES ✦",
+                  "subDescripcion": "Puedes aumentar tus golpes con armas con magia que marca la mente, extraída de los oscuros rincones del Plano Feérico. Cuando golpeas a una criatura con un arma, puedes causar un daño extra de 1d4 Psíquico al objetivo, que solo puede recibir este daño adicional una vez por turno. El daño adicional aumenta a 1d6 cuando alcanzas el nivel 11 como Explorador."
+                },
+                "subBlockDos": {
+                  "subName": "Conjuros del Errante Feérico",
+                  "subTitleName": "✦ CONJUROS DEL ERRANTE FEÉRICO ✦",
+                  "subDescripcion": "Cuando alcances un nivel de Explorador especificado en la tabla de Conjuros del Errante Feérico, siempre tendrás preparados los conjuros listados a partir de ese momento.\n\n<b>Conjuros del Errante Feérico</b>\n<table><thead><tr><th>Nivel de Explorador</th><th>Conjuro</th></tr></thead><tbody><tr><td>3</td><td>Encantar Persona</td></tr><tr><td>5</td><td>Paso Nebuloso</td></tr><tr><td>9</td><td>Invocar Fey</td></tr><tr><td>13</td><td>Puerta Dimensional</td></tr><tr><td>17</td><td>Engaño</td></tr></tbody></table>\n\nTambién posees una bendición feérica. Elígela de la tabla de Regalos Feéricos o determínala al azar.\n\n<b>Regalos Feéricos</b>\n<table><thead><tr><th>1d6</th><th>Regalo</th></tr></thead><tbody><tr><td>1</td><td>Mariposas ilusorias revolotean a tu alrededor mientras tomas un Descanso Corto o Largo.</td></tr><tr><td>2</td><td>Flores brotan de tu cabello cada amanecer.</td></tr><tr><td>3</td><td>Tienes un débil aroma a canela, lavanda, nuez moscada u otra hierba o especia reconfortante.</td></tr><tr><td>4</td><td>Tu sombra danza mientras nadie la mira directamente.</td></tr><tr><td>5</td><td>Cuernos o astas brotan de tu cabeza.</td></tr><tr><td>6</td><td>Tu piel y cabello cambian de color cada amanecer.</td></tr></tbody></table>",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Hechizar persona"
+                    }
+                  ],
+                  "elegir": {
+                    "lista": "regalo-feerico",
+                    "cantidad": 1
+                  }
+                },
+                "subBlockTres": {
+                  "subName": "Glamour de Otro Mundo",
+                  "subTitleName": "✦ GLAMOUR DE OTRO MUNDO ✦",
+                  "subDescripcion": "Siempre que realices una prueba de Carisma, obtienes un bono a la prueba igual a tu modificador de Sabiduría (mínimo de +1).\nTambién obtienes competencia en una de las siguientes habilidades de tu elección: Engaño, Interpretación o Persuasión.",
+                  "efectos": [
+                    {
+                      "type": "bono",
+                      "target": "pruebas:carisma",
+                      "desdeAtributo": "sabiduria",
+                      "minimo": 1
+                    }
+                  ],
+                  "elegir": {
+                    "lista": "glamour-habilidad",
+                    "cantidad": 1
+                  }
+                }
+              }
+            },
+            "5": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros del Errante Feérico",
+                  "subTitleName": "✦ CONJUROS DEL ERRANTE FEÉRICO ✦",
+                  "subDescripcion": "Siempre tienes preparado: Paso Nebuloso (ver Conjuros del Errante Feérico, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Paso brumoso"
+                    }
+                  ]
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Giro Encantador",
+                  "subTitleName": "✦ GIRO ENCANTADOR ✦",
+                  "subDescripcion": "La magia del Plano Feérico protege tu mente. Tienes Ventaja en las tiradas de salvación para evitar o terminar las condiciones de Encantado o Aterrorizado.\nAdemás, siempre que tú o una criatura que puedes ver dentro de un radio de 120 pies de ti tenga éxito en una tirada de salvación para evitar o terminar las condiciones de Encantado o Aterrorizado, puedes tomar una Reacción para forzar a otra criatura que puedas ver dentro de un radio de 120 pies de ti a hacer una tirada de Sabiduría contra tu DC de salvación de conjuros. Si falla la tirada, el objetivo queda Encantado o Aterrorizado (a tu elección) durante 1 minuto. El objetivo repite la tirada al final de cada uno de sus turnos, terminando el efecto sobre sí mismo en caso de éxito."
+                }
+              }
+            },
+            "9": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros del Errante Feérico",
+                  "subTitleName": "✦ CONJUROS DEL ERRANTE FEÉRICO ✦",
+                  "subDescripcion": "Siempre tienes preparado: Invocar Fey (ver Conjuros del Errante Feérico, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Invocar feérico"
+                    }
+                  ]
+                }
+              }
+            },
+            "11": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Refuerzos Feéricos",
+                  "subTitleName": "✦ REFUERZOS FEÉRICOS ✦",
+                  "subDescripcion": "Puedes lanzar Invocar Fey sin componente Material. También puedes lanzarlo una vez sin gastar un espacio de conjuro, y recuperas la capacidad de lanzarlo de esta manera cuando terminas un Descanso Largo. Siempre que empieces a lanzar el conjuro, puedes modificarlo para que no requiera Concentración. Si lo haces, la duración del conjuro se convierte en 1 minuto para ese lanzamiento."
+                }
+              }
+            },
+            "13": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros del Errante Feérico",
+                  "subTitleName": "✦ CONJUROS DEL ERRANTE FEÉRICO ✦",
+                  "subDescripcion": "Siempre tienes preparado: Puerta Dimensional (ver Conjuros del Errante Feérico, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Puerta dimensional"
+                    }
+                  ]
+                }
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Errante Nebuloso",
+                  "subTitleName": "✦ ERRANTE NEBULOSO ✦",
+                  "subDescripcion": "Puedes lanzar Paso Nebuloso sin gastar un espacio de conjuro. Puedes hacerlo un número de veces igual a tu modificador de Sabiduría (mínimo una vez), y recuperas todos los usos gastados cuando terminas un Descanso Largo. Además, siempre que lances Paso Nebuloso, puedes llevar contigo a una criatura dispuesta que puedes ver dentro de un radio de 5 pies de ti. Esa criatura se teletransporta a un espacio desocupado de tu elección dentro de 5 pies de tu espacio de destino."
+                }
+              }
+            },
+            "17": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros del Errante Feérico",
+                  "subTitleName": "✦ CONJUROS DEL ERRANTE FEÉRICO ✦",
+                  "subDescripcion": "Siempre tienes preparado: Engaño (ver Conjuros del Errante Feérico, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Engaño"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "acechador-penumbra": {
+          "subNombre": "Acechador en la Penumbra",
+          "fuente": "Manual del Jugador",
+          "subDescripcion": "✦ ACECHADOR EN LA PENUMBRA ✦\nAprovecha la Magia de las Sombras para Combatir a tus Enemigos\n\nLos Acechadores en la Penumbra se sienten cómodos en los lugares más oscuros, utilizando magia del Plano de las Sombras para combatir a enemigos que acechan en la oscuridad.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Emboscador Temible",
+                  "subTitleName": "✦ EMBOSCADOR TEMIBLE ✦",
+                  "subDescripcion": "Has dominado el arte de crear emboscadas temibles, otorgándote los siguientes beneficios:\n<b>Salto del Emboscador.</b> Al comienzo de tu primer turno de cada combate, tu Velocidad aumenta en 10 pies hasta el final de ese turno.\n<b>Golpe Temible.</b> Cuando atacas a una criatura y la golpeas con un arma, puedes causar un daño extra de 2d6 Psíquico. Solo puedes usar este beneficio una vez por turno, y puedes usarlo un número de veces igual a tu modificador de Sabiduría (mínimo una vez). Recuperas todos los usos gastados cuando terminas un Descanso Largo.\n<b>Bono a la Iniciativa.</b> Cuando lances la Iniciativa, puedes añadir tu modificador de Sabiduría a la tirada.",
+                  "efectos": [
+                    {
+                      "type": "bono",
+                      "target": "iniciativa",
+                      "desdeAtributo": "sabiduria"
+                    }
+                  ]
+                },
+                "subBlockDos": {
+                  "subName": "Conjuros del Acechador en la Penumbra",
+                  "subTitleName": "✦ CONJUROS DEL ACECHADOR EN LA PENUMBRA ✦",
+                  "subDescripcion": "Cuando alcances un nivel de Explorador especificado en la tabla de Conjuros del Acechador en la Penumbra, siempre tendrás preparados los conjuros listados a partir de ese momento.\n\n<b>Conjuros del Acechador en la Penumbra</b>\n<table><thead><tr><th>Nivel de Explorador</th><th>Conjuro</th></tr></thead><tbody><tr><td>3</td><td>Disfrazarse</td></tr><tr><td>5</td><td>Truco de Cuerda</td></tr><tr><td>9</td><td>Temor</td></tr><tr><td>13</td><td>Invisibilidad Superior</td></tr><tr><td>17</td><td>Apariencia</td></tr></tbody></table>",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Disfrazarse"
+                    }
+                  ]
+                },
+                "subBlockTres": {
+                  "subName": "Visión Umbral",
+                  "subTitleName": "✦ VISIÓN UMBRAL ✦",
+                  "subDescripcion": "Obtienes Visión en la Oscuridad con un alcance de 60 pies. Si ya tienes Visión en la Oscuridad cuando obtienes esta característica, su alcance aumenta en 60 pies.\nTambién eres hábil en evadir criaturas que dependen de la Visión en la Oscuridad. Mientras estés completamente en la Oscuridad, tienes la condición de Invisible para cualquier criatura que dependa de la Visión en la Oscuridad para verte en esa Oscuridad."
+                }
+              }
+            },
+            "5": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros del Acechador en la Penumbra",
+                  "subTitleName": "✦ CONJUROS DEL ACECHADOR EN LA PENUMBRA ✦",
+                  "subDescripcion": "Siempre tienes preparado: Truco de Cuerda (ver Conjuros del Acechador en la Penumbra, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Truco de la cuerda"
+                    }
+                  ]
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Mente de Hierro",
+                  "subTitleName": "✦ MENTE DE HIERRO ✦",
+                  "subDescripcion": "Has perfeccionado tu capacidad para resistir poderes que alteran la mente. Obtienes competencia en tiradas de salvación de Sabiduría. Si ya tienes esta competencia, en su lugar obtienes competencia en tiradas de salvación de Inteligencia o Carisma (a tu elección).",
+                  "efectos": [
+                    {
+                      "type": "competencia",
+                      "kind": "salvacion",
+                      "value": "sabiduria"
+                    }
+                  ]
+                }
+              }
+            },
+            "9": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros del Acechador en la Penumbra",
+                  "subTitleName": "✦ CONJUROS DEL ACECHADOR EN LA PENUMBRA ✦",
+                  "subDescripcion": "Siempre tienes preparado: Temor (ver Conjuros del Acechador en la Penumbra, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Miedo"
+                    }
+                  ]
+                }
+              }
+            },
+            "11": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Ráfaga del Acechador",
+                  "subTitleName": "✦ RÁFAGA DEL ACECHADOR ✦",
+                  "subDescripcion": "El daño Psíquico de tu Golpe Temible se convierte en 2d8. Además, cuando usas el efecto de Golpe Temible de tu característica de Emboscador Temible, puedes causar uno de los siguientes efectos adicionales:\n\n<b>Golpe Repentino.</b> Puedes hacer otro ataque con el mismo arma contra una criatura diferente que esté dentro de 5 pies del objetivo original y que esté dentro del alcance del arma.\n\n<b>Temor Masivo.</b> El objetivo y cada criatura dentro de 10 pies de él deben hacer una tirada de salvación de Sabiduría contra tu DC de salvación de conjuros. En caso de fallo, una criatura tiene la condición de Aterrorizado hasta el inicio de tu próximo turno."
+                }
+              }
+            },
+            "13": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros del Acechador en la Penumbra",
+                  "subTitleName": "✦ CONJUROS DEL ACECHADOR EN LA PENUMBRA ✦",
+                  "subDescripcion": "Siempre tienes preparado: Invisibilidad Superior (ver Conjuros del Acechador en la Penumbra, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Invisibilidad mejorada"
+                    }
+                  ]
+                }
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Esquiva Sombría",
+                  "subTitleName": "✦ ESQUIVA SOMBRÍA ✦",
+                  "subDescripcion": "Cuando una criatura hace una tirada de ataque contra ti, puedes tomar una Reacción para imponer Desventaja en esa tirada. Ya sea que el ataque acierte o falle, puedes teletransportarte hasta 30 pies a un espacio desocupado que puedas ver."
+                }
+              }
+            },
+            "17": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros del Acechador en la Penumbra",
+                  "subTitleName": "✦ CONJUROS DEL ACECHADOR EN LA PENUMBRA ✦",
+                  "subDescripcion": "Siempre tienes preparado: Apariencia (ver Conjuros del Acechador en la Penumbra, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Apariencia"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "cazador": {
+          "subNombre": "Cazador",
+          "fuente": "Manual del Jugador",
+          "subDescripcion": "✦ CAZADOR ✦\nProtege la Naturaleza y a las Personas de la Destrucción\n\nSigues a tus presas en la naturaleza y en otros lugares, usando tus habilidades como Cazador para proteger la naturaleza y a las personas de las fuerzas que buscan destruirlas.",
+          "listasDeEleccion": {
+            "presa-cazador": {
+              "titulo": "Presa del Cazador",
+              "cambiable": true,
+              "ayuda": "Puedes cambiarla al terminar un Descanso Corto o Largo.",
+              "opciones": [
+                {
+                  "id": "asesino-colosos",
+                  "nombre": "Asesino de Colosos",
+                  "descripcion": "Tu tenacidad puede desgastar incluso a los enemigos más resilientes. Cuando golpeas a una criatura con un arma, el arma inflige un daño extra de 1d8 al objetivo si le faltan Puntos de Golpe. Solo puedes infligir este daño extra una vez por turno."
+                },
+                {
+                  "id": "rompehuespedes",
+                  "nombre": "Rompehuéspedes",
+                  "descripcion": "Una vez en cada uno de tus turnos, cuando haces un ataque con un arma, puedes hacer otro ataque con la misma arma contra una criatura diferente que esté dentro de 5 pies del objetivo original, que esté dentro del alcance del arma y que no hayas atacado en este turno."
+                }
+              ]
+            },
+            "tacticas-defensivas": {
+              "titulo": "Tácticas Defensivas",
+              "cambiable": true,
+              "ayuda": "Puedes cambiarla al terminar un Descanso Corto o Largo.",
+              "opciones": [
+                {
+                  "id": "escape-horda",
+                  "nombre": "Escape de la Horda",
+                  "descripcion": "Los Ataques de Oportunidad tienen Desventaja contra ti."
+                },
+                {
+                  "id": "multiples-ataques",
+                  "nombre": "Defensa de Múltiples Ataques",
+                  "descripcion": "Cuando una criatura te golpea con una tirada de ataque, esa criatura tiene Desventaja en todas las demás tiradas de ataque contra ti en este turno."
+                }
+              ]
+            }
+          },
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conocimiento del Cazador",
+                  "subTitleName": "✦ CONOCIMIENTO DEL CAZADOR ✦",
+                  "subDescripcion": "Puedes invocar las fuerzas de la naturaleza para revelar ciertas fortalezas y debilidades de tu presa. Mientras una criatura esté marcada por tu Marca del Cazador, sabes si esa criatura tiene alguna Inmunidad, Resistencia o Vulnerabilidad, y si la criatura tiene alguna, sabes cuáles son."
+                },
+                "subBlockDos": {
+                  "subName": "Presa del Cazador",
+                  "subTitleName": "✦ PRESA DEL CAZADOR ✦",
+                  "subDescripcion": "Obtienes una de las siguientes opciones de características a tu elección. Siempre que termines un Descanso Corto o Largo, puedes reemplazar la opción elegida con la otra.\n<b>Asesino de Colosos.</b> Tu tenacidad puede desgastar incluso a los enemigos más resilientes. Cuando golpeas a una criatura con un arma, el arma inflige un daño extra de 1d8 al objetivo si le faltan Puntos de Golpe. Solo puedes infligir este daño extra una vez por turno.\n<b>Rompehuéspedes.</b> Una vez en cada uno de tus turnos, cuando haces un ataque con un arma, puedes hacer otro ataque con la misma arma contra una criatura diferente que esté dentro de 5 pies del objetivo original, que esté dentro del alcance del arma y que no hayas atacado en este turno.",
+                  "elegir": {
+                    "lista": "presa-cazador",
+                    "cantidad": 1
+                  }
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Tácticas Defensivas",
+                  "subTitleName": "✦ TÁCTICAS DEFENSIVAS ✦",
+                  "subDescripcion": "Obtienes una de las siguientes opciones de características a tu elección. Siempre que termines un Descanso Corto o Largo, puedes reemplazar la opción elegida con la otra.\n<b>Escape de la Horda.</b> Los Ataques de Oportunidad tienen Desventaja contra ti.\n<b>Defensa de Múltiples Ataques.</b> Cuando una criatura te golpea con una tirada de ataque, esa criatura tiene Desventaja en todas las demás tiradas de ataque contra ti en este turno.",
+                  "elegir": {
+                    "lista": "tacticas-defensivas",
+                    "cantidad": 1
+                  }
+                }
+              }
+            },
+            "11": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Presa Superior del Cazador",
+                  "subTitleName": "✦ PRESA SUPERIOR DEL CAZADOR ✦",
+                  "subDescripcion": "Una vez por turno, cuando causes daño a una criatura marcada por tu Marca del Cazador, también puedes causar el daño extra de ese hechizo a una criatura diferente que puedas ver dentro de 30 pies de la primera criatura."
+                }
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Defensa Superior del Cazador",
+                  "subTitleName": "✦ DEFENSA SUPERIOR DEL CAZADOR ✦",
+                  "subDescripcion": "Cuando recibes daño, puedes tomar una Reacción para darte Resistencia a ese daño y a cualquier otro daño del mismo tipo hasta el final del turno actual."
+                }
+              }
+            }
+          }
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Enemigo Favorito",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "2",
+            "4",
+            "3"
+          ]
+        ]
+      }
+    },
+    "4": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Mejora de Puntuación de Característica",
+          "titleName": "✦ MEJORA DE PUNTUACIÓN DE CARACTERÍSTICA ✦",
+          "descripcion": "Obtienes la hazaña de Mejora de Puntuación de Característica (consulta el capítulo 5) u otra hazaña de tu elección para la que califiques. Obtienes esta característica nuevamente en los niveles 8, 12 y 16 como Explorador."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Enemigo Favorito",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "2",
+            "5",
+            "3"
+          ]
+        ]
+      }
+    },
+    "5": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Ataque Adicional",
+          "titleName": "✦ ATAQUE ADICIONAL ✦",
+          "descripcion": "Puedes atacar dos veces en lugar de una cuando realices la acción de Ataque en tu turno."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Enemigo Favorito",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "6",
+            "4 · 2"
+          ]
+        ]
+      }
+    },
+    "6": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Errante",
+          "titleName": "✦ ERRANTE ✦",
+          "descripcion": "Tu velocidad aumenta en 10 pies mientras no lleves armadura pesada. También tienes una velocidad de escalada y una velocidad de nado igual a tu velocidad.",
+          "efectos": [
+            {
+              "type": "bono",
+              "target": "velocidad",
+              "value": 10
+            }
+          ]
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Enemigo Favorito",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "6",
+            "4 · 2"
+          ]
+        ]
+      }
+    },
+    "7": {
+      "infoCubo": {
+        "columnas": [
+          "Enemigo Favorito",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "7",
+            "4 · 3"
+          ]
+        ]
+      }
+    },
+    "8": {
+      "infoCubo": {
+        "columnas": [
+          "Enemigo Favorito",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "7",
+            "4 · 3"
+          ]
+        ]
+      }
+    },
+    "9": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Pericia",
+          "titleName": "✦ PERICIA ✦",
+          "descripcion": "Elige dos de tus competencias de habilidades en las que no tengas pericia. Obtienes pericia en esas habilidades."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Enemigo Favorito",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "4",
+            "9",
+            "4 · 3 · 2"
+          ]
+        ]
+      }
+    },
+    "10": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Incansable",
+          "titleName": "✦ INCANSABLE ✦",
+          "descripcion": "Las fuerzas primordiales ahora te ayudan en tus viajes, otorgándote los siguientes beneficios:\n<b>Puntos de Golpe Temporales:</b> Como acción mágica, puedes darte a ti mismo un número de puntos de golpe temporales igual a 1d8 más tu modificador de Sabiduría (mínimo de 1). Puedes usar esta acción un número de veces igual a tu modificador de Sabiduría (mínimo una vez), y recuperas todos los usos gastados cuando terminas un descanso largo.\n<b>Disminuir el Agotamiento:</b> Siempre que terminas un descanso corto, tu nivel de agotamiento, si tienes alguno, disminuye en 1."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Enemigo Favorito",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "4",
+            "9",
+            "4 · 3 · 2"
+          ]
+        ]
+      }
+    },
+    "11": {
+      "infoCubo": {
+        "columnas": [
+          "Enemigo Favorito",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "4",
+            "10",
+            "4 · 3 · 3"
+          ]
+        ]
+      }
+    },
+    "12": {
+      "infoCubo": {
+        "columnas": [
+          "Enemigo Favorito",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "4",
+            "10",
+            "4 · 3 · 3"
+          ]
+        ]
+      }
+    },
+    "13": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Cazador Implacable",
+          "titleName": "✦ CAZADOR IMPLACABLE ✦",
+          "descripcion": "Recibir daño no puede romper tu concentración en Marca del Cazador."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Enemigo Favorito",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "5",
+            "11",
+            "4 · 3 · 3 · 1"
+          ]
+        ]
+      }
+    },
+    "14": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Velo de la Naturaleza",
+          "titleName": "✦ VELO DE LA NATURALEZA ✦",
+          "descripcion": "Invocas espíritus de la naturaleza para esconderte mágicamente. Como acción adicional, puedes darte la condición de Invisible hasta el final de tu siguiente turno. Puedes usar esta característica un número de veces igual a tu modificador de Sabiduría (mínimo una vez), y recuperas todos los usos gastados cuando terminas un descanso largo."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Enemigo Favorito",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "5",
+            "11",
+            "4 · 3 · 3 · 1"
+          ]
+        ]
+      }
+    },
+    "15": {
+      "infoCubo": {
+        "columnas": [
+          "Enemigo Favorito",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "5",
+            "12",
+            "4 · 3 · 3 · 2"
+          ]
+        ]
+      }
+    },
+    "16": {
+      "infoCubo": {
+        "columnas": [
+          "Enemigo Favorito",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "5",
+            "12",
+            "4 · 3 · 3 · 2"
+          ]
+        ]
+      }
+    },
+    "17": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Cazador Preciso",
+          "titleName": "✦ CAZADOR PRECISO ✦",
+          "descripcion": "Tienes ventaja en las tiradas de ataque contra la criatura actualmente marcada por tu Marca del Cazador."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Enemigo Favorito",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "6",
+            "14",
+            "4 · 3 · 3 · 3 · 1"
+          ]
+        ]
+      }
+    },
+    "18": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Sentidos Salvajes",
+          "titleName": "✦ SENTIDOS SALVAJES ✦",
+          "descripcion": "Tu conexión con las fuerzas de la naturaleza te otorga Vista Ciega con un alcance de 30 pies."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Enemigo Favorito",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "6",
+            "14",
+            "4 · 3 · 3 · 3 · 1"
+          ]
+        ]
+      }
+    },
+    "19": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Don Épico",
+          "titleName": "✦ DON ÉPICO ✦",
+          "descripcion": "Obtienes una hazaña de Don Épico (ver capítulo 5) u otra hazaña de tu elección para la que califiques. Se recomienda el Don de Viaje Dimensional."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Enemigo Favorito",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "6",
+            "15",
+            "4 · 3 · 3 · 3 · 2"
+          ]
+        ]
+      }
+    },
+    "20": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Asesino de Enemigos",
+          "titleName": "✦ ASESINO DE ENEMIGOS ✦",
+          "descripcion": "El dado de daño de tu Marca del Cazador es un d10 en lugar de un d6."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Enemigo Favorito",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "6",
+            "15",
+            "4 · 3 · 3 · 3 · 2"
+          ]
+        ]
+      }
+    }
+  }
 }

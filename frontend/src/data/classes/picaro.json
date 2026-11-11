@@ -110,7 +110,7 @@
         "blockTres": {
           "name": "Jerga de Ladrones",
           "titleName": "✦ JERGA DE LADRONES ✦",
-          "descripcion": "Has aprendido varios idiomas en las comunidades donde ejerciste tus talentos de pícaro. Conoces la Jerga de Ladrones y otro idioma de tu elección, que eliges de las tablas de idiomas.",
+          "descripcion": "Has aprendido varios idiomas en las comunidades donde ejerciste tus talentos de pícaro. Conoces la Jerga de Ladrones y otro idioma de tu elección, que eliges de las tablas de idiomas en el capítulo 2.",
           "efectos": [
             {
               "type": "competencia",
@@ -143,6 +143,16 @@
           "titleName": "✦ ACCIÓN ASTUTA ✦",
           "descripcion": "Tu pensamiento rápido y agilidad te permiten moverte y actuar con rapidez. En tu turno, puedes realizar una de las siguientes acciones como Acción Bónus: Correr, Desengancharte o Esconderte."
         }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Ataque Furtivo"
+        ],
+        "filas": [
+          [
+            "1d6"
+          ]
+        ]
       }
     },
     "3": {
@@ -169,7 +179,7 @@
                 "subBlockUno": {
                   "subName": "Conjuración",
                   "subTitleName": "✦ CONJURACIÓN ✦",
-                  "subDescripcion": "Has aprendido a lanzar hechizos. La información a continuación detalla cómo usas esas reglas como Embaucador Arcano.\n\n<b>Trucos.</b> Conoces tres trucos: Mano Mágica y otros dos trucos a tu elección de la lista de hechizos de Mago (consulta la sección de esa clase para su lista). Se recomienda Silbido Mental y Pequeña Ilusión.\nCada vez que subas de nivel como Pícaro, puedes reemplazar uno de tus trucos, excepto Mano Mágica, por otro truco de Mago de tu elección.\nCuando llegues al nivel 10 como Pícaro, aprendes otro truco de Mago a tu elección.\n\n<b>Espacios de Hechizo.</b> La tabla de Conjuración del Embaucador Arcano muestra cuántos espacios de hechizo tienes para lanzar tus hechizos de nivel 1 o superior. Recuperas todos los espacios de hechizo gastados cuando terminas un Descanso Largo.\n\n<b>Hechizos Preparados de Nivel 1+.</b> Preparas la lista de hechizos de nivel 1 o superior que están disponibles para que los lances con esta característica. Para empezar, elige tres hechizos de nivel 1 de Mago. Se recomiendan Encantar Persona, Disfrazarse y Nube de Niebla.\nEl número de hechizos en tu lista aumenta a medida que subes de nivel como Pícaro, como se muestra en la columna de Hechizos Preparados de la tabla de Conjuración del Embaucador Arcano. Cada vez que ese número aumente, elige hechizos adicionales de Mago hasta que el número de hechizos en tu lista coincida con el número en la tabla de Conjuración del Embaucador Arcano. Los hechizos elegidos deben ser de un nivel para el que tengas espacios de hechizo. Por ejemplo, si eres un Pícaro de nivel 7, tu lista de hechizos preparados puede incluir cinco hechizos de Mago de nivel 1 o 2 en cualquier combinación.\n\n<b>Conjuración del Embaucador Arcano</b> (espacios de hechizo por nivel de hechizo)\n<table><thead><tr><th>Nivel de Pícaro</th><th>Hechizos preparados</th><th>Nv. 1</th><th>Nv. 2</th><th>Nv. 3</th><th>Nv. 4</th></tr></thead><tbody><tr><td>3</td><td>3</td><td>2</td><td>—</td><td>—</td><td>—</td></tr><tr><td>4</td><td>4</td><td>3</td><td>—</td><td>—</td><td>—</td></tr><tr><td>5</td><td>4</td><td>3</td><td>—</td><td>—</td><td>—</td></tr><tr><td>6</td><td>4</td><td>3</td><td>—</td><td>—</td><td>—</td></tr><tr><td>7</td><td>5</td><td>4</td><td>2</td><td>—</td><td>—</td></tr><tr><td>8</td><td>6</td><td>4</td><td>2</td><td>—</td><td>—</td></tr><tr><td>9</td><td>6</td><td>4</td><td>2</td><td>—</td><td>—</td></tr><tr><td>10</td><td>7</td><td>4</td><td>3</td><td>—</td><td>—</td></tr><tr><td>11</td><td>8</td><td>4</td><td>3</td><td>—</td><td>—</td></tr><tr><td>12</td><td>8</td><td>4</td><td>3</td><td>—</td><td>—</td></tr><tr><td>13</td><td>9</td><td>4</td><td>3</td><td>2</td><td>—</td></tr><tr><td>14</td><td>10</td><td>4</td><td>3</td><td>2</td><td>—</td></tr><tr><td>15</td><td>10</td><td>4</td><td>3</td><td>2</td><td>—</td></tr><tr><td>16</td><td>11</td><td>4</td><td>3</td><td>3</td><td>—</td></tr><tr><td>17</td><td>11</td><td>4</td><td>3</td><td>3</td><td>—</td></tr><tr><td>18</td><td>11</td><td>4</td><td>3</td><td>3</td><td>—</td></tr><tr><td>19</td><td>12</td><td>4</td><td>3</td><td>3</td><td>1</td></tr><tr><td>20</td><td>13</td><td>4</td><td>3</td><td>3</td><td>1</td></tr></tbody></table>\n\n<b>Cambiar Tus Hechizos Preparados.</b> Siempre que ganes un nivel de Pícaro, puedes reemplazar un hechizo en tu lista con otro hechizo de Mago para el cual tengas ranuras de hechizos.\n<b>Habilidad para Lanzar Hechizos.</b> Inteligencia es tu habilidad para lanzar hechizos para tus hechizos de Mago.\n<b>Foco de Lanzamiento de Hechizos.</b> Puedes usar un Foco Arcano como un foco de lanzador de hechizos para tus hechizos de Mago."
+                  "subDescripcion": "Has aprendido a lanzar hechizos. Consulta el capítulo 7 para las reglas sobre la conjuración de hechizos. La información a continuación detalla cómo usas esas reglas como Embaucador Arcano.\n\n<b>Trucos.</b> Conoces tres trucos: Mano Mágica y otros dos trucos a tu elección de la lista de hechizos de Mago (consulta la sección de esa clase para su lista). Se recomienda Silbido Mental y Pequeña Ilusión.\nCada vez que subas de nivel como Pícaro, puedes reemplazar uno de tus trucos, excepto Mano Mágica, por otro truco de Mago de tu elección.\nCuando llegues al nivel 10 como Pícaro, aprendes otro truco de Mago a tu elección.\n\n<b>Espacios de Hechizo.</b> La tabla de Conjuración del Embaucador Arcano muestra cuántos espacios de hechizo tienes para lanzar tus hechizos de nivel 1 o superior. Recuperas todos los espacios de hechizo gastados cuando terminas un Descanso Largo.\n\n<b>Hechizos Preparados de Nivel 1+.</b> Preparas la lista de hechizos de nivel 1 o superior que están disponibles para que los lances con esta característica. Para empezar, elige tres hechizos de nivel 1 de Mago. Se recomiendan Encantar Persona, Disfrazarse y Nube de Niebla.\nEl número de hechizos en tu lista aumenta a medida que subes de nivel como Pícaro, como se muestra en la columna de Hechizos Preparados de la tabla de Conjuración del Embaucador Arcano. Cada vez que ese número aumente, elige hechizos adicionales de Mago hasta que el número de hechizos en tu lista coincida con el número en la tabla de Conjuración del Embaucador Arcano. Los hechizos elegidos deben ser de un nivel para el que tengas espacios de hechizo. Por ejemplo, si eres un Pícaro de nivel 7, tu lista de hechizos preparados puede incluir cinco hechizos de Mago de nivel 1 o 2 en cualquier combinación.\n\n<b>Conjuración del Embaucador Arcano</b> (espacios de hechizo por nivel de hechizo)\n<table><thead><tr><th>Nivel de Pícaro</th><th>Hechizos preparados</th><th>Nv. 1</th><th>Nv. 2</th><th>Nv. 3</th><th>Nv. 4</th></tr></thead><tbody><tr><td>3</td><td>3</td><td>2</td><td>—</td><td>—</td><td>—</td></tr><tr><td>4</td><td>4</td><td>3</td><td>—</td><td>—</td><td>—</td></tr><tr><td>5</td><td>4</td><td>3</td><td>—</td><td>—</td><td>—</td></tr><tr><td>6</td><td>4</td><td>3</td><td>—</td><td>—</td><td>—</td></tr><tr><td>7</td><td>5</td><td>4</td><td>2</td><td>—</td><td>—</td></tr><tr><td>8</td><td>6</td><td>4</td><td>2</td><td>—</td><td>—</td></tr><tr><td>9</td><td>6</td><td>4</td><td>2</td><td>—</td><td>—</td></tr><tr><td>10</td><td>7</td><td>4</td><td>3</td><td>—</td><td>—</td></tr><tr><td>11</td><td>8</td><td>4</td><td>3</td><td>—</td><td>—</td></tr><tr><td>12</td><td>8</td><td>4</td><td>3</td><td>—</td><td>—</td></tr><tr><td>13</td><td>9</td><td>4</td><td>3</td><td>2</td><td>—</td></tr><tr><td>14</td><td>10</td><td>4</td><td>3</td><td>2</td><td>—</td></tr><tr><td>15</td><td>10</td><td>4</td><td>3</td><td>2</td><td>—</td></tr><tr><td>16</td><td>11</td><td>4</td><td>3</td><td>3</td><td>—</td></tr><tr><td>17</td><td>11</td><td>4</td><td>3</td><td>3</td><td>—</td></tr><tr><td>18</td><td>11</td><td>4</td><td>3</td><td>3</td><td>—</td></tr><tr><td>19</td><td>12</td><td>4</td><td>3</td><td>3</td><td>1</td></tr><tr><td>20</td><td>13</td><td>4</td><td>3</td><td>3</td><td>1</td></tr></tbody></table>\n\n<b>Cambiar Tus Hechizos Preparados.</b> Siempre que ganes un nivel de Pícaro, puedes reemplazar un hechizo en tu lista con otro hechizo de Mago para el cual tengas ranuras de hechizos.\n<b>Habilidad para Lanzar Hechizos.</b> Inteligencia es tu habilidad para lanzar hechizos para tus hechizos de Mago.\n<b>Foco de Lanzamiento de Hechizos.</b> Puedes usar un Foco Arcano como un foco de lanzador de hechizos para tus hechizos de Mago."
                 },
                 "subBlockDos": {
                   "subName": "Prestidigitación con Mano Mágica",
@@ -362,54 +372,6 @@
               }
             }
           }
-        },
-        "espadachin": {
-          "subNombre": "Espadachín",
-          "subDescripcion": "✦ ESPADACHÍN ✦\nBusca un Duelo elegante\n\nEl Pícaro Espadachín es un duelista carismático que lucha con golpes rápidos, un posicionamiento inteligente y mucha confianza. Introducida en la Guía de Xanathar para Todo, esta subclase es ideal para jugadores que disfrutan del combate cuerpo a cuerpo y los encuentros sociales.",
-          "fuente": "Guía de Xanathar para Todo",
-          "subNivel": {
-            "3": {
-              "infoSubBlock": {
-                "subBlockUno": {
-                  "subName": "Elegante Juego de Pies",
-                  "subTitleName": "✦ ELEGANTE JUEGO DE PIES ✦",
-                  "subDescripcion": "Al nivel 3, si atacas a una criatura cuerpo a cuerpo, esta no puede hacerte ataques de oportunidad durante el resto de tu turno, sin importar si te mueves o no. No necesitas gastar tu acción en Destrabarse."
-                },
-                "subBlockDos": {
-                  "subName": "Audacia Gallarda",
-                  "subTitleName": "✦ AUDACIA GALLARDA ✦",
-                  "subDescripcion": "Sumas tu modificador de Carisma a tus tiradas de iniciativa.\n\nPuedes aplicar tu Ataque Furtivo en un enfrentamiento uno contra uno (a 5 pies del objetivo y sin ninguna otra criatura a 5 pies de ti), incluso si no tienes ventaja, siempre y cuando no tengas desventaja."
-                }
-              }
-            },
-            "9": {
-              "infoSubBlock": {
-                "subBlockUno": {
-                  "subName": "Panache",
-                  "subTitleName": "✦ PANACHE ✦",
-                  "subDescripcion": "Te permite usar una acción para enfrentar tu Persuasión contra la Perspicacia de un objetivo para controlarlo (darle desventaja en ataques contra otros o encantarlo si no es hostil)."
-                }
-              }
-            },
-            "13": {
-              "infoSubBlock": {
-                "subBlockUno": {
-                  "subName": "Maniobra Elegante",
-                  "subTitleName": "✦ MANIOBRA ELEGANTE ✦",
-                  "subDescripcion": "Obtienes ventaja en tu siguiente prueba de Acrobacias o Atletismo usando una acción adicional."
-                }
-              }
-            },
-            "17": {
-              "infoSubBlock": {
-                "subBlockUno": {
-                  "subName": "Maestro Duelista",
-                  "subTitleName": "✦ MAESTRO DUELISTA ✦",
-                  "subDescripcion": "Si fallas un ataque cuerpo a cuerpo, puedes volver a tirarlo con ventaja una vez por descanso."
-                }
-              }
-            }
-          }
         }
       },
       "infoCubo": {
@@ -428,8 +390,18 @@
         "blockUno": {
           "name": "Mejora de Puntuación de Habilidad",
           "titleName": "✦ MEJORA DE PUNTUACIÓN DE HABILIDAD ✦",
-          "descripcion": "Obtienes la hazaña de Mejora de Puntuación de Habilidad u otra hazaña de tu elección para la que califiques. Obtienes esta característica nuevamente en los niveles 8, 10, 12 y 16 de Pícaro."
+          "descripcion": "Obtienes la hazaña de Mejora de Puntuación de Habilidad (ver capítulo 5) u otra hazaña de tu elección para la que califiques. Obtienes esta característica nuevamente en los niveles 8, 10, 12 y 16 de Pícaro."
         }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Ataque Furtivo"
+        ],
+        "filas": [
+          [
+            "2d6"
+          ]
+        ]
       }
     },
     "5": {
@@ -456,7 +428,18 @@
         ]
       }
     },
-    "6": {},
+    "6": {
+      "infoCubo": {
+        "columnas": [
+          "Ataque Furtivo"
+        ],
+        "filas": [
+          [
+            "3d6"
+          ]
+        ]
+      }
+    },
     "7": {
       "infoBlock": {
         "blockUno": {
@@ -476,7 +459,18 @@
         ]
       }
     },
-    "8": {},
+    "8": {
+      "infoCubo": {
+        "columnas": [
+          "Ataque Furtivo"
+        ],
+        "filas": [
+          [
+            "4d6"
+          ]
+        ]
+      }
+    },
     "9": {
       "infoCubo": {
         "columnas": [
@@ -496,6 +490,16 @@
           "titleName": "✦ TALENTO FIABLE ✦",
           "descripcion": "Siempre que realices una prueba de habilidad que use una de tus proficiencias en habilidades o herramientas, puedes tratar una tirada de d20 de 9 o menos como un 10."
         }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Ataque Furtivo"
+        ],
+        "filas": [
+          [
+            "5d6"
+          ]
+        ]
       }
     },
     "11": {
@@ -517,7 +521,18 @@
         ]
       }
     },
-    "12": {},
+    "12": {
+      "infoCubo": {
+        "columnas": [
+          "Ataque Furtivo"
+        ],
+        "filas": [
+          [
+            "6d6"
+          ]
+        ]
+      }
+    },
     "13": {
       "infoCubo": {
         "columnas": [
@@ -537,6 +552,16 @@
           "titleName": "✦ GOLPES INGENIOSOS ✦",
           "descripcion": "Has practicado nuevas formas de utilizar tu Ataque Furtivo de manera ingeniosa. Los siguientes efectos ahora están entre tus opciones de Golpe Astuto:\n<b>Aturdir (Costo: 2d6):</b> El objetivo debe tener éxito en una tirada de salvación de Constitución, o en su siguiente turno, solo puede hacer una de las siguientes cosas: moverse o realizar una acción o una Acción Adicional.\n<b>Golpe Adormecedor (Costo: 6d6):</b> El objetivo debe tener éxito en una tirada de salvación de Constitución o quedará bajo la condición de Incapacitado durante 1 minuto o hasta que reciba algún daño. El objetivo Incapacitado repite la tirada de salvación al final de cada uno de sus turnos, terminando el efecto sobre sí mismo si tiene éxito.\n<b>Oscurecer (Costo: 3d6):</b> El objetivo debe tener éxito en una tirada de salvación de Destreza o quedará bajo la condición de Cegado hasta el final de su siguiente turno."
         }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Ataque Furtivo"
+        ],
+        "filas": [
+          [
+            "7d6"
+          ]
+        ]
       }
     },
     "15": {
@@ -570,7 +595,18 @@
         ]
       }
     },
-    "16": {},
+    "16": {
+      "infoCubo": {
+        "columnas": [
+          "Ataque Furtivo"
+        ],
+        "filas": [
+          [
+            "8d6"
+          ]
+        ]
+      }
+    },
     "17": {
       "infoCubo": {
         "columnas": [
@@ -590,6 +626,16 @@
           "titleName": "✦ ESCURRIDIZO ✦",
           "descripcion": "Eres tan evasivo que los atacantes rara vez obtienen ventaja sobre ti. Ninguna tirada de ataque puede tener Ventaja contra ti a menos que tengas la condición de Incapacitado."
         }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Ataque Furtivo"
+        ],
+        "filas": [
+          [
+            "9d6"
+          ]
+        ]
       }
     },
     "19": {
@@ -597,7 +643,7 @@
         "blockUno": {
           "name": "Bendición Épica",
           "titleName": "✦ BENDICIÓN ÉPICA ✦",
-          "descripcion": "Obtienes una hazaña de Bendición Épica u otra hazaña de tu elección para la cual califiques. Se recomienda la Bendición del Espíritu Nocturno."
+          "descripcion": "Obtienes una hazaña de Bendición Épica (ver capítulo 5) u otra hazaña de tu elección para la cual califiques. Se recomienda la Bendición del Espíritu Nocturno."
         }
       },
       "infoCubo": {
@@ -618,6 +664,16 @@
           "titleName": "✦ TOQUE DE SUERTE ✦",
           "descripcion": "Tienes una habilidad maravillosa para tener éxito cuando lo necesitas. Si fallas una Prueba de d20, puedes convertir la tirada en un 20.\nUna vez que uses esta característica, no podrás usarla nuevamente hasta que termines un Descanso Corto o Largo."
         }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Ataque Furtivo"
+        ],
+        "filas": [
+          [
+            "10d6"
+          ]
+        ]
       }
     }
   }

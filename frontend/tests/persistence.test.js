@@ -6,7 +6,8 @@ import { createLocalStore } from '../src/services/local-store.js';
 import { createCharacterService } from '../src/services/characters.js';
 import { serializeForExport, parseCharacterText, exportFileName, readCharacterFile } from '../src/services/file-transfer.js';
 import { ApiError, createApi } from '../src/services/api.js';
-import { applyLevelUp, applyLevelDown, setRace, setRaceAbilityChoice, validateImprovement, addEpicBoon } from '../src/domain/progression.js';
+import { applyLevelDown, setRace, setRaceAbilityChoice, validateImprovement, addEpicBoon } from '../src/domain/progression.js';
+import { applyLevelUp } from './helpers/auto-choices.js';
 import { abilityScores } from '../src/domain/rules.js';
 
 function sampleCharacter() {

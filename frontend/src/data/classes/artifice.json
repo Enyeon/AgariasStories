@@ -2,111 +2,65 @@
   "nombre": "Artífice",
   "claseName": "artifice",
   "seccion": "tasha",
-  "dadoDeGolpe": 6,
+  "icono": "⚙️",
+  "fuenteReglas": "Eberron — Forja del Artífice",
+  "dadoDeGolpe": 8,
   "nivelesDeAumento": [
     4,
     8,
     12,
-    16,
-    19
+    16
   ],
   "conjurador": true,
   "attribute": "inteligencia",
-  "niveles": {
-    "1": {
-      "descripcion": "Inventor arcano que fusiona magia y tecnología en artefactos extraordinarios.",
-      "descripcionLarga": "El Artífice entiende que la magia puede construirse. Canaliza energía arcana en objetos, armaduras y constructos, transformando herramientas en armas y teoría en ingeniería aplicada. Es alquimista, ingeniero y estratega creativo. Donde otros lanzan conjuros, él los ensambla.",
-      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Constitución y Inteligencia.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d6.\n    :: Nivel 1: 6 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d6 (o 4) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Armadura ligera, Armadura media y Escudos.\n    :: Armas: Armas simples.\n    :: Herramientas: Herramientas de ladrón, Herramientas de hojalatero y Un tipo de herramientas de artesano a tu elección.\n    :: Habilidades: escoge dos de entre Conocimiento Arcano, Historia, Investigación, Juego de Manos, Medicina, Naturaleza y Percepción.\n❖ Equipo. Comienzas con el siguiente equipo, además del que te dé tu trasfondo:\n    :: Dos armas simples cualesquiera.\n    :: Una ballesta ligera y 20 virotes.\n    :: (a) una armadura de cuero tachonado o (b) una cota de escamas.\n    :: Herramientas de ladrón y un paquete de explorador de mazmorras.\n    :: Alternativa: 5d4 × 10 po en lugar del equipo de clase.\n❖ Fuente: Tasha's Cauldron of Everything.",
-      "informacionNivel": "✦  ✦\n\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n\n✦  ✦"
-    },
-    "2": {
-      "informacionNivel": "✦  ✦"
-    },
-    "3": {
-      "informacionNivel": "✦ CONOCIMIENTO PRIMITIVO ✦",
-      "subClase": {
-        "alquimista": {
-          "subNombre": "Alquimista",
-          "subDescripcion": "Elixires experimentales y curación potenciada.",
-          "subNivel": {},
-          "rasgosPendientes": true,
-          "fuente": "Tasha's Cauldron of Everything"
-        },
-        "armero": {
-          "subNombre": "Armero",
-          "subDescripcion": "Una armadura arcana que sirve de arma y protección.",
-          "subNivel": {},
-          "rasgosPendientes": true,
-          "fuente": "Tasha's Cauldron of Everything"
-        },
-        "artillero": {
-          "subNombre": "Artillero",
-          "subDescripcion": "Un cañón arcano y conjuros destructivos.",
-          "subNivel": {},
-          "rasgosPendientes": true,
-          "fuente": "Tasha's Cauldron of Everything"
-        },
-        "herrero-batalla": {
-          "subNombre": "Herrero de Batalla",
-          "subDescripcion": "Un defensor de acero que combate a tu lado.",
-          "subNivel": {},
-          "rasgosPendientes": true,
-          "fuente": "Tasha's Cauldron of Everything"
-        }
-      }
-    },
-    "4": {
-      "informacionNivel": "✦  ✦"
-    },
-    "5": {
-      "informacionNivel": "✦  ✦"
-    },
-    "6": {
-      "informacionNivel": "✦  ✦"
-    },
-    "7": {
-      "informacionNivel": "✦  ✦"
-    },
-    "8": {
-      "informacionNivel": "✦  ✦"
-    },
-    "9": {
-      "informacionNivel": "✦  ✦"
-    },
-    "10": {
-      "informacionNivel": "✦  ✦"
-    },
-    "11": {
-      "informacionNivel": "✦  ✦"
-    },
-    "12": {
-      "informacionNivel": "✦  ✦"
-    },
-    "13": {
-      "informacionNivel": "✦  ✦"
-    },
-    "14": {
-      "informacionNivel": "✦  ✦"
-    },
-    "15": {
-      "informacionNivel": "✦  ✦"
-    },
-    "16": {
-      "informacionNivel": "✦  ✦"
-    },
-    "17": {
-      "informacionNivel": "✦  ✦"
-    },
-    "18": {
-      "informacionNivel": "✦  ✦"
-    },
-    "19": {
-      "informacionNivel": "✦  ✦"
-    },
-    "20": {
-      "informacionNivel": "✦  ✦"
-    }
+  "lanzamiento": {
+    "progression": "artificer",
+    "cantripsKnown": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      3,
+      3,
+      3,
+      3,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "preparedTable": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      6,
+      7,
+      7,
+      9,
+      9,
+      10,
+      10,
+      11,
+      11,
+      12,
+      12,
+      14,
+      14,
+      15,
+      15
+    ]
   },
+  "subclaseNombre": "Especialidad de artífice",
   "competencias": {
     "salvaciones": [
       "constitucion",
@@ -122,8 +76,7 @@
     ],
     "herramientas": [
       "Herramientas de ladrón",
-      "Herramientas de hojalatero",
-      "Un tipo de herramientas de artesano a tu elección"
+      "Herramientas de hojalatero"
     ],
     "habilidades": {
       "elegir": 2,
@@ -131,10 +84,10 @@
         "Conocimiento Arcano",
         "Historia",
         "Investigación",
-        "Juego de Manos",
         "Medicina",
         "Naturaleza",
-        "Percepción"
+        "Percepción",
+        "Juego de Manos"
       ]
     }
   },
@@ -146,24 +99,2051 @@
     ],
     "armas": [],
     "herramientas": [
-      "Herramientas de ladrón",
       "Herramientas de hojalatero"
     ],
-    "habilidades": null
+    "habilidades": {
+      "elegir": 1,
+      "de": [
+        "Conocimiento Arcano",
+        "Historia",
+        "Investigación",
+        "Medicina",
+        "Naturaleza",
+        "Percepción",
+        "Juego de Manos"
+      ]
+    }
   },
   "equipoInicial": [
-    "Dos armas simples cualesquiera.",
-    "Una ballesta ligera y 20 virotes.",
-    "(a) una armadura de cuero tachonado o (b) una cota de escamas.",
-    "Herramientas de ladrón y un paquete de explorador de mazmorras."
+    "(A) Armadura de cuero tachonado, Daga, Herramientas de ladrón, Herramientas de hojalatero, Paquete de explorador de mazmorras y 16 PO.",
+    "(B) 150 PO."
   ],
-  "oroInicial": "5d4 × 10",
-  "fuenteReglas": "Tasha's Cauldron of Everything",
-  "subclaseNombre": "Especialidad de artífice",
+  "listasDeEleccion": {
+    "herramienta-artesano": {
+      "titulo": "Herramientas de artesano",
+      "libre": true,
+      "placeholder": "Tipo de herramientas de artesano",
+      "efectoLibre": {
+        "type": "competencia",
+        "kind": "herramienta"
+      }
+    },
+    "planes": {
+      "titulo": "Planes de objetos mágicos",
+      "reemplazarAlSubir": true,
+      "ayuda": "Los planes de nivel 6, 10 y 14 aparecen bloqueados hasta ese nivel de Artífice. Al subir de nivel puedes reemplazar uno.",
+      "opciones": [
+        {
+          "id": "jarra-alquimica",
+          "nombre": "Jarra alquímica",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 2
+          }
+        },
+        {
+          "id": "bolsa-de-contencion",
+          "nombre": "Bolsa de contención",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 2
+          }
+        },
+        {
+          "id": "gorro-de-respiracion-acuatica",
+          "nombre": "Gorro de respiración acuática",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 2
+          }
+        },
+        {
+          "id": "objeto-magico-comun-que-no-sea-una-pocion-un-perga",
+          "nombre": "Objeto mágico común que no sea una poción, un pergamino ni esté maldito",
+          "descripcion": "Sintonización: Varía. Puedes aprender esta opción varias veces; elige un objeto diferente cada vez (cada uno cuenta como un plan distinto).",
+          "requisitos": {
+            "nivel": 2
+          },
+          "repetible": true,
+          "elegir": {
+            "lista": "objeto-comun",
+            "cantidad": 1
+          }
+        },
+        {
+          "id": "gafas-nocturnas",
+          "nombre": "Gafas nocturnas",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 2
+          }
+        },
+        {
+          "id": "herramienta-de-coleccionista",
+          "nombre": "Herramienta de coleccionista",
+          "descripcion": "Sintonización: Sí.",
+          "requisitos": {
+            "nivel": 2
+          }
+        },
+        {
+          "id": "arma-de-repeticion",
+          "nombre": "Arma de repetición",
+          "descripcion": "Sintonización: Sí.",
+          "requisitos": {
+            "nivel": 2
+          }
+        },
+        {
+          "id": "arma-arrojadiza-que-regresa",
+          "nombre": "Arma arrojadiza que regresa",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 2
+          }
+        },
+        {
+          "id": "cuerda-de-escalada",
+          "nombre": "Cuerda de escalada",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 2
+          }
+        },
+        {
+          "id": "piedras-mensajeras",
+          "nombre": "Piedras mensajeras",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 2
+          }
+        },
+        {
+          "id": "escudo-1",
+          "nombre": "Escudo +1",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 2
+          }
+        },
+        {
+          "id": "varita-de-deteccion-magica",
+          "nombre": "Varita de detección mágica",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 2
+          }
+        },
+        {
+          "id": "varita-de-secretos",
+          "nombre": "Varita de secretos",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 2
+          }
+        },
+        {
+          "id": "varita-del-mago-de-guerra-1",
+          "nombre": "Varita del mago de guerra +1",
+          "descripcion": "Sintonización: Sí.",
+          "requisitos": {
+            "nivel": 2
+          }
+        },
+        {
+          "id": "arma-1",
+          "nombre": "Arma +1",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 2
+          }
+        },
+        {
+          "id": "vendas-de-poder-desarmado-1",
+          "nombre": "Vendas de poder desarmado +1",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 2
+          }
+        },
+        {
+          "id": "armadura-1",
+          "nombre": "Armadura +1",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "botas-elficas",
+          "nombre": "Botas élficas",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "botas-de-los-caminos-sinuosos",
+          "nombre": "Botas de los caminos sinuosos",
+          "descripcion": "Sintonización: Sí.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "capa-elfica",
+          "nombre": "Capa élfica",
+          "descripcion": "Sintonización: Sí.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "capa-de-la-mantarraya",
+          "nombre": "Capa de la mantarraya",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "arma-deslumbrante",
+          "nombre": "Arma deslumbrante",
+          "descripcion": "Sintonización: Sí.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "ojos-hechizantes",
+          "nombre": "Ojos hechizantes",
+          "descripcion": "Sintonización: Sí.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "ojos-de-la-vision-minuciosa",
+          "nombre": "Ojos de la visión minuciosa",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "guantes-de-ladron",
+          "nombre": "Guantes de ladrón",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "yelmo-de-comprension-de-idiomas",
+          "nombre": "Yelmo de comprensión de idiomas",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "linterna-reveladora",
+          "nombre": "Linterna reveladora",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "afilador-mental",
+          "nombre": "Afilador mental",
+          "descripcion": "Sintonización: Sí.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "collar-de-adaptacion",
+          "nombre": "Collar de adaptación",
+          "descripcion": "Sintonización: Sí.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "gaitas-espectrales",
+          "nombre": "Gaitas espectrales",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "escudo-de-repulsion",
+          "nombre": "Escudo de repulsión",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "anillo-de-natacion",
+          "nombre": "Anillo de natación",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "anillo-de-caminar-sobre-el-agua",
+          "nombre": "Anillo de caminar sobre el agua",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "escudo-centinela",
+          "nombre": "Escudo centinela",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "anillo-de-almacenar-conjuros",
+          "nombre": "Anillo de almacenar conjuros",
+          "descripcion": "Sintonización: Sí.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "varita-de-proyectiles-magicos",
+          "nombre": "Varita de proyectiles mágicos",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "varita-de-telaranas",
+          "nombre": "Varita de telarañas",
+          "descripcion": "Sintonización: Sí.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "arma-de-advertencia",
+          "nombre": "Arma de advertencia",
+          "descripcion": "Sintonización: Sí.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "armadura-de-resistencia",
+          "nombre": "Armadura de resistencia",
+          "descripcion": "Sintonización: Sí.",
+          "requisitos": {
+            "nivel": 10
+          }
+        },
+        {
+          "id": "daga-venenosa",
+          "nombre": "Daga venenosa",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 10
+          }
+        },
+        {
+          "id": "cota-de-malla-elfica",
+          "nombre": "Cota de malla élfica",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 10
+          }
+        },
+        {
+          "id": "anillo-de-caida-de-pluma",
+          "nombre": "Anillo de caída de pluma",
+          "descripcion": "Sintonización: Sí.",
+          "requisitos": {
+            "nivel": 10
+          }
+        },
+        {
+          "id": "anillo-de-salto",
+          "nombre": "Anillo de salto",
+          "descripcion": "Sintonización: Sí.",
+          "requisitos": {
+            "nivel": 10
+          }
+        },
+        {
+          "id": "anillo-de-escudo-mental",
+          "nombre": "Anillo de escudo mental",
+          "descripcion": "Sintonización: Sí.",
+          "requisitos": {
+            "nivel": 10
+          }
+        },
+        {
+          "id": "escudo-2",
+          "nombre": "Escudo +2",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 10
+          }
+        },
+        {
+          "id": "objeto-maravilloso-poco-comun-que-no-este-maldito",
+          "nombre": "Objeto maravilloso poco común que no esté maldito",
+          "descripcion": "Sintonización: Varía. Puedes aprender esta opción varias veces; elige un objeto diferente cada vez (cada uno cuenta como un plan distinto).",
+          "requisitos": {
+            "nivel": 10
+          },
+          "repetible": true,
+          "elegir": {
+            "lista": "objeto-poco-comun",
+            "cantidad": 1
+          }
+        },
+        {
+          "id": "varita-del-mago-de-guerra-2",
+          "nombre": "Varita del mago de guerra +2",
+          "descripcion": "Sintonización: Sí.",
+          "requisitos": {
+            "nivel": 10
+          }
+        },
+        {
+          "id": "arma-2",
+          "nombre": "Arma +2",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 10
+          }
+        },
+        {
+          "id": "vendas-de-poder-desarmado-2",
+          "nombre": "Vendas de poder desarmado +2",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 10
+          }
+        },
+        {
+          "id": "armadura-2",
+          "nombre": "Armadura +2",
+          "descripcion": "Sintonización: No.",
+          "requisitos": {
+            "nivel": 14
+          }
+        },
+        {
+          "id": "escudo-atrapaflechas",
+          "nombre": "Escudo atrapaflechas",
+          "descripcion": "Sintonización: Sí.",
+          "requisitos": {
+            "nivel": 14
+          }
+        },
+        {
+          "id": "lengua-de-fuego",
+          "nombre": "Lengua de fuego",
+          "descripcion": "Sintonización: Sí.",
+          "requisitos": {
+            "nivel": 14
+          }
+        },
+        {
+          "id": "objeto-maravilloso-raro-que-no-este-maldito",
+          "nombre": "Objeto maravilloso raro que no esté maldito",
+          "descripcion": "Sintonización: Varía. Puedes aprender esta opción varias veces; elige un objeto diferente cada vez (cada uno cuenta como un plan distinto).",
+          "requisitos": {
+            "nivel": 14
+          },
+          "repetible": true,
+          "elegir": {
+            "lista": "objeto-raro",
+            "cantidad": 1
+          }
+        },
+        {
+          "id": "anillo-de-accion-libre",
+          "nombre": "Anillo de acción libre",
+          "descripcion": "Sintonización: Sí.",
+          "requisitos": {
+            "nivel": 14
+          }
+        },
+        {
+          "id": "anillo-de-proteccion",
+          "nombre": "Anillo de protección",
+          "descripcion": "Sintonización: Sí.",
+          "requisitos": {
+            "nivel": 14
+          }
+        },
+        {
+          "id": "anillo-del-carnero",
+          "nombre": "Anillo del carnero",
+          "descripcion": "Sintonización: Sí.",
+          "requisitos": {
+            "nivel": 14
+          }
+        }
+      ]
+    },
+    "objeto-comun": {
+      "titulo": "Objeto mágico común (plan)",
+      "libre": true,
+      "placeholder": "Nombre del objeto común"
+    },
+    "objeto-poco-comun": {
+      "titulo": "Objeto maravilloso poco común (plan)",
+      "libre": true,
+      "placeholder": "Nombre del objeto poco común"
+    },
+    "objeto-raro": {
+      "titulo": "Objeto maravilloso raro (plan)",
+      "libre": true,
+      "placeholder": "Nombre del objeto raro"
+    }
+  },
   "subclasesRetiradas": [
     "senda1",
     "senda2",
     "senda3",
     "senda4"
-  ]
+  ],
+  "niveles": {
+    "1": {
+      "descripcion": "Maestros de la invención que usan el ingenio y la magia para desbloquear capacidades extraordinarias en los objetos.",
+      "descripcionLarga": "Maestros de la invención, los artífices utilizan el ingenio y la magia para desbloquear capacidades extraordinarias en los objetos. Ven la magia como un sistema complejo que espera ser descifrado y luego aprovechado en sus conjuros e inventos.",
+      "atributoInicial": "Atributos de clase:\n❖ Habilidad principal: Inteligencia.\n❖ Tiradas de Salvación: Constitución e Inteligencia.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d8.\n    :: Nivel 1: 8 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d8 (o 5) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Armadura ligera y media, y escudos.\n    :: Armas: Armas simples.\n    :: Herramientas: Herramientas de ladrón, Herramientas de hojalatero y un tipo de herramientas de artesano a tu elección (se elige al subir a nivel 1).\n    :: Habilidades: elige 2 entre Arcanos, Historia, Investigación, Medicina, Naturaleza, Percepción o Juego de Manos.\n❖ Equipo inicial: elige A o B.\n    :: (A) Armadura de cuero tachonado, Daga, Herramientas de ladrón, Herramientas de hojalatero, Paquete de explorador de mazmorras y 16 PO.\n    :: (B) 150 PO.\n❖ Multiclase: dado de golpe, competencia con Herramientas de hojalatero, una habilidad de la lista del Artífice y entrenamiento con armadura ligera y media y escudos. Para los espacios, suma la mitad de tus niveles de Artífice (redondeando hacia arriba).\n❖ Fuente: Eberron — Forja del Artífice.",
+      "elegir": {
+        "lista": "herramienta-artesano",
+        "cantidad": 1,
+        "multiclase": 0,
+        "rasgo": "Competencias de clase"
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Lanzamiento de Conjuros",
+          "titleName": "✦ LANZAMIENTO DE CONJUROS ✦",
+          "descripcion": "Has aprendido a canalizar energía mágica a través de objetos. Consulta el Manual del Jugador para las reglas de lanzamiento de conjuros. La información a continuación detalla cómo usas esas reglas con los conjuros de Artífice, que aparecen en la lista de conjuros de Artífice.\n<b>Herramientas necesarias.</b> Produces tus conjuros de Artífice a través de herramientas. Puedes usar Herramientas de ladrón, Herramientas de hojalatero u otro tipo de Herramientas de artesano con las que tengas competencia como Foco de Lanzamiento de Conjuros, y debes tener uno de esos focos en la mano cuando lanzas un conjuro de Artífice (lo que significa que el conjuro tiene un componente M cuando lo lanzas).\n<b>Trucos.</b> Conoces dos trucos de Artífice de tu elección. Se recomiendan Salpicadura ácida y Prestidigitación. Cada vez que termines un Descanso Largo, puedes reemplazar uno de tus trucos de esta característica por otro truco de Artífice de tu elección.\nCuando alcanzas los niveles 10 y 14 de Artífice, aprendes otro truco de Artífice de tu elección, como se muestra en la columna de Trucos de la tabla de Características del Artífice.\n<b>Espacios de conjuro.</b> La tabla de Características del Artífice muestra cuántos espacios de conjuro tienes para lanzar tus conjuros de nivel 1+. Recuperas todos los espacios gastados cuando terminas un Descanso Largo.\n<b>Conjuros preparados de nivel 1+.</b> Preparas la lista de conjuros de nivel 1+ que tienes disponibles para lanzar con esta característica. Para empezar, elige dos conjuros de Artífice de nivel 1. Se recomiendan Curar heridas y Grasa.\nLa cantidad de conjuros de tu lista aumenta a medida que ganas niveles de Artífice, como se muestra en la columna de Conjuros preparados de la tabla de Características del Artífice. Cada vez que ese número aumente, elige conjuros de Artífice adicionales hasta que el número de conjuros de tu lista coincida con el de la tabla. Los conjuros elegidos deben ser de un nivel para el que tengas espacios de conjuro. Por ejemplo, si eres un Artífice de nivel 5, tu lista de conjuros preparados puede incluir seis conjuros de Artífice de niveles 1 y 2 en cualquier combinación.\nSi otra característica de Artífice te da conjuros que siempre tienes preparados, esos conjuros no cuentan para la cantidad de conjuros que puedes preparar con esta característica, pero cuentan como conjuros de Artífice para ti.\n<b>Cambiar tus conjuros preparados.</b> Cada vez que termines un Descanso Largo, puedes cambiar tu lista de conjuros preparados, reemplazando cualquiera de ellos por otros conjuros de Artífice para los que tengas espacios de conjuro.\n<b>Aptitud mágica.</b> La Inteligencia es tu aptitud mágica para tus conjuros de Artífice."
+        },
+        "blockDos": {
+          "name": "Magia de Hojalatero",
+          "titleName": "✦ MAGIA DE HOJALATERO ✦",
+          "descripcion": "Conoces el truco Reparar.\nComo acción mágica mientras sostienes las Herramientas de hojalatero, puedes crear un objeto en un espacio desocupado a 5 pies o menos de ti, eligiéndolo de la siguiente lista:\n\n<table><thead><tr><th>Objetos</th><th></th><th></th></tr></thead><tbody><tr><td>Rodamientos de bolas</td><td>Frasco</td><td>Bolsa</td></tr><tr><td>Cesta</td><td>Garfio de escalada</td><td>Cuerda</td></tr><tr><td>Petate</td><td>Trampa de caza</td><td>Saco</td></tr><tr><td>Campana</td><td>Jarra</td><td>Pala</td></tr><tr><td>Manta</td><td>Lámpara</td><td>Pitones de hierro</td></tr><tr><td>Polea y aparejo</td><td>Grilletes</td><td>Cadena</td></tr><tr><td>Botella de cristal</td><td>Red</td><td>Tiza</td></tr><tr><td>Cubo</td><td>Aceite</td><td>Antorcha</td></tr><tr><td>Abrojos</td><td>Papel</td><td>Vial</td></tr><tr><td>Vela</td><td>Pergamino</td><td>Palanca</td></tr><tr><td>Pértiga</td><td></td><td></td></tr></tbody></table>\n\nConsulta las reglas de los objetos en el Manual del Jugador. El objeto dura hasta que terminas un Descanso Largo, momento en el que desaparece.\nPuedes usar esta característica un número de veces igual a tu modificador de Inteligencia (mínimo una vez) y recuperas todos los usos gastados cuando terminas un Descanso Largo.",
+          "efectos": [
+            {
+              "type": "conjuro_preparado",
+              "value": "Reparar"
+            }
+          ]
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Planes conocidos",
+          "Objetos mágicos",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "-",
+            "-",
+            "2",
+            "2",
+            "2"
+          ]
+        ]
+      }
+    },
+    "2": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Replicar Objeto Mágico",
+          "titleName": "✦ REPLICAR OBJETO MÁGICO ✦",
+          "descripcion": "Has aprendido planes arcanos que utilizas para fabricar objetos mágicos.\n<b>Planes conocidos.</b> Cuando obtienes esta característica, elige cuatro planes para aprender de la tabla Planes de objetos mágicos (Artífice de nivel 2+). Se recomiendan Bolsa de contención, Gorro de respiración acuática, Piedras mensajeras y Varita del mago de guerra. Cada vez que obtengas un nivel de Artífice, puedes reemplazar uno de los planes que conoces por un nuevo plan para el que califiques.\nAprendes otro plan de tu elección cuando alcanzas ciertos niveles de Artífice, como se muestra en la columna de Planes conocidos de la tabla de Características del Artífice. Cuando eliges un plan para aprender, lo eliges de cualquier tabla de Planes de objetos mágicos para la que califiques; tu calificación se basa en tu nivel de Artífice.\n<b>Crear un objeto.</b> Cuando terminas un Descanso Largo, puedes crear uno o dos objetos mágicos diferentes si tienes las Herramientas de hojalatero en la mano. Cada objeto se basa en uno de los planes que conoces para esta característica.\nSi un objeto creado requiere sintonización, puedes sintonizarte con él en el instante en que lo creas. Si decides sintonizarlo más tarde, debes hacerlo mediante el proceso normal de Sintonización.\nCuando alcanzas ciertos niveles de Artífice especificados en la columna de Objetos mágicos de la tabla de Características del Artífice, aumenta la cantidad de objetos mágicos que puedes crear al final de un Descanso Largo. Cada objeto que crees debe basarse en un plan diferente que conozcas.\nNo puedes tener más objetos mágicos de esta característica que el número que muestra la columna de Objetos mágicos para tu nivel. Si intentas superarlo, el objeto más antiguo desaparece y luego aparece el nuevo.\n<b>Duración.</b> Un objeto mágico creado con esta característica funciona como el objeto mágico normal, salvo que su magia no es permanente; cuando mueres, el objeto desaparece después de 1d4 días. Si reemplazas un plan que conoces por uno nuevo, cualquier objeto mágico creado con el plan reemplazado desaparece inmediatamente.\nSi un objeto que creaste con esta característica es un contenedor, como una bolsa de contención, y desaparece, su contenido aparece inofensivamente dentro y alrededor de su espacio.\n<b>Foco de lanzamiento de conjuros.</b> Puedes usar cualquier varita o arma creada con esta característica como Foco de Lanzamiento de Conjuros en lugar de un conjunto de herramientas de artesano.\n\n<b>Planes de objetos mágicos (Artífice de nivel 2+)</b>\n<table><thead><tr><th>Plan</th><th>Sintonización</th></tr></thead><tbody><tr><td>Jarra alquímica</td><td>No</td></tr><tr><td>Bolsa de contención</td><td>No</td></tr><tr><td>Gorro de respiración acuática</td><td>No</td></tr><tr><td>Objeto mágico común que no sea una poción, un pergamino ni esté maldito</td><td>Varía</td></tr><tr><td>Gafas nocturnas</td><td>No</td></tr><tr><td>Herramienta de coleccionista</td><td>Sí</td></tr><tr><td>Arma de repetición</td><td>Sí</td></tr><tr><td>Arma arrojadiza que regresa</td><td>No</td></tr><tr><td>Cuerda de escalada</td><td>No</td></tr><tr><td>Piedras mensajeras</td><td>No</td></tr><tr><td>Escudo +1</td><td>No</td></tr><tr><td>Varita de detección mágica</td><td>No</td></tr><tr><td>Varita de secretos</td><td>No</td></tr><tr><td>Varita del mago de guerra +1</td><td>Sí</td></tr><tr><td>Arma +1</td><td>No</td></tr><tr><td>Vendas de poder desarmado +1</td><td>No</td></tr></tbody></table>\n\n<b>Planes de objetos mágicos (Artífice de nivel 6+)</b>\n<table><thead><tr><th>Plan</th><th>Sintonización</th></tr></thead><tbody><tr><td>Armadura +1</td><td>No</td></tr><tr><td>Botas élficas</td><td>No</td></tr><tr><td>Botas de los caminos sinuosos</td><td>Sí</td></tr><tr><td>Capa élfica</td><td>Sí</td></tr><tr><td>Capa de la mantarraya</td><td>No</td></tr><tr><td>Arma deslumbrante</td><td>Sí</td></tr><tr><td>Ojos hechizantes</td><td>Sí</td></tr><tr><td>Ojos de la visión minuciosa</td><td>No</td></tr><tr><td>Guantes de ladrón</td><td>No</td></tr><tr><td>Yelmo de comprensión de idiomas</td><td>No</td></tr><tr><td>Linterna reveladora</td><td>No</td></tr><tr><td>Afilador mental</td><td>Sí</td></tr><tr><td>Collar de adaptación</td><td>Sí</td></tr><tr><td>Gaitas espectrales</td><td>No</td></tr><tr><td>Escudo de repulsión</td><td>No</td></tr><tr><td>Anillo de natación</td><td>No</td></tr><tr><td>Anillo de caminar sobre el agua</td><td>No</td></tr><tr><td>Escudo centinela</td><td>No</td></tr><tr><td>Anillo de almacenar conjuros</td><td>Sí</td></tr><tr><td>Varita de proyectiles mágicos</td><td>No</td></tr><tr><td>Varita de telarañas</td><td>Sí</td></tr><tr><td>Arma de advertencia</td><td>Sí</td></tr></tbody></table>\n\n<b>Planes de objetos mágicos (Artífice de nivel 10+)</b>\n<table><thead><tr><th>Plan</th><th>Sintonización</th></tr></thead><tbody><tr><td>Armadura de resistencia</td><td>Sí</td></tr><tr><td>Daga venenosa</td><td>No</td></tr><tr><td>Cota de malla élfica</td><td>No</td></tr><tr><td>Anillo de caída de pluma</td><td>Sí</td></tr><tr><td>Anillo de salto</td><td>Sí</td></tr><tr><td>Anillo de escudo mental</td><td>Sí</td></tr><tr><td>Escudo +2</td><td>No</td></tr><tr><td>Objeto maravilloso poco común que no esté maldito</td><td>Varía</td></tr><tr><td>Varita del mago de guerra +2</td><td>Sí</td></tr><tr><td>Arma +2</td><td>No</td></tr><tr><td>Vendas de poder desarmado +2</td><td>No</td></tr></tbody></table>\n\n<b>Planes de objetos mágicos (Artífice de nivel 14+)</b>\n<table><thead><tr><th>Plan</th><th>Sintonización</th></tr></thead><tbody><tr><td>Armadura +2</td><td>No</td></tr><tr><td>Escudo atrapaflechas</td><td>Sí</td></tr><tr><td>Lengua de fuego</td><td>Sí</td></tr><tr><td>Objeto maravilloso raro que no esté maldito</td><td>Varía</td></tr><tr><td>Anillo de acción libre</td><td>Sí</td></tr><tr><td>Anillo de protección</td><td>Sí</td></tr><tr><td>Anillo del carnero</td><td>Sí</td></tr></tbody></table>",
+          "elegir": {
+            "lista": "planes",
+            "cantidad": 4
+          }
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Planes conocidos",
+          "Objetos mágicos",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "4",
+            "2",
+            "2",
+            "3",
+            "2"
+          ]
+        ]
+      }
+    },
+    "3": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Subclase de Artífice",
+          "titleName": "✦ SUBCLASE DE ARTÍFICE ✦",
+          "descripcion": "Obtienes una subclase de Artífice de tu elección: Alquimista, Armero, Artillero, Herrero de Batalla, Cartógrafo o Reanimador. Una subclase es una especialización que te otorga características en ciertos niveles de Artífice. Durante el resto de tu carrera, obtienes cada una de las características de tu subclase que sean de tu nivel de Artífice o inferior."
+        }
+      },
+      "subClase": {
+        "alquimista": {
+          "subNombre": "Alquimista",
+          "fuente": "Eberron — Forja del Artífice",
+          "subDescripcion": "✦ ALQUIMISTA ✦\nCrea elixires y pociones mágicas\n\nUn alquimista es un experto en combinar reactivos para producir efectos mágicos. Los alquimistas usan sus creaciones para dar vida y para arrebatarla.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Herramientas del Oficio",
+                  "subTitleName": "✦ HERRAMIENTAS DEL OFICIO ✦",
+                  "subDescripcion": "Obtienes los siguientes beneficios:\n<b>Competencia con herramientas.</b> Obtienes competencia con los Suministros de alquimista y el Kit de herboristería. Si ya tienes una de estas competencias, obtienes competencia con otro tipo de herramientas de artesano de tu elección (o con otros dos si tienes ambas).\n<b>Elaboración de pociones.</b> Cuando elaboras una poción con las reglas de fabricación de la Guía del Dungeon Master, el tiempo necesario se reduce a la mitad.",
+                  "efectos": [
+                    {
+                      "type": "competencia",
+                      "kind": "herramienta",
+                      "value": "Suministros de alquimista"
+                    },
+                    {
+                      "type": "competencia",
+                      "kind": "herramienta",
+                      "value": "Kit de herbalismo"
+                    }
+                  ]
+                },
+                "subBlockDos": {
+                  "subName": "Conjuros de Alquimista",
+                  "subTitleName": "✦ CONJUROS DE ALQUIMISTA ✦",
+                  "subDescripcion": "Cuando alcanzas un nivel de Artífice especificado en la tabla de Conjuros de Alquimista, a partir de entonces siempre tienes preparados los conjuros indicados.\n\n<b>Conjuros de Alquimista</b>\n<table><thead><tr><th>Nivel de Artífice</th><th>Conjuros</th></tr></thead><tbody><tr><td>3</td><td>Palabra Curativa, Rayo de Enfermedad</td></tr><tr><td>5</td><td>Esfera Llameante, Flecha ácida de Melf</td></tr><tr><td>9</td><td>Forma gaseosa, Palabra Curativa en Masa</td></tr><tr><td>13</td><td>Guardia contra la Muerte, Esfera vitriólica</td></tr><tr><td>17</td><td>Nube aniquiladora, Revivir a los Muertos</td></tr></tbody></table>",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Palabra de curación"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Rayo de enfermedad"
+                    }
+                  ]
+                },
+                "subBlockTres": {
+                  "subName": "Elixir Experimental",
+                  "subTitleName": "✦ ELIXIR EXPERIMENTAL ✦",
+                  "subDescripcion": "Cada vez que terminas un Descanso Largo mientras sostienes los Suministros de alquimista, puedes usar esa herramienta para producir mágicamente dos elixires. Para cada elixir, tira en la tabla de Elixir experimental para ver su efecto, que se activa cuando alguien lo bebe. El elixir aparece en un vial, y el vial desaparece cuando se bebe o se vierte el elixir. Si queda algún elixir cuando terminas un Descanso Largo, el elixir y su vial desaparecen.\n<b>Beber un elixir.</b> Como Acción Adicional, una criatura puede beber el elixir o administrárselo a otra criatura a 5 pies o menos de ella.\n<b>Crear elixires adicionales.</b> Como acción mágica mientras sostienes los Suministros de alquimista, puedes gastar un espacio de conjuro para crear otro elixir. Cuando lo haces, eliges su efecto de la tabla en lugar de tirar.\nCuando alcanzas ciertos niveles de Artífice, puedes hacer un elixir adicional al final de cada Descanso Largo: tres en total en el nivel 5, cuatro en el 9 y cinco en el 15.\n\n<b>Elixir experimental</b>\n<table><thead><tr><th>1d6</th><th>Efecto</th></tr></thead><tbody><tr><td>1</td><td><b>Curación.</b> El bebedor recupera puntos de golpe iguales a 2d8 más tu modificador de Inteligencia. Aumenta en 1d8 en los niveles de Artífice 9 (3d8) y 15 (4d8).</td></tr><tr><td>2</td><td><b>Rapidez.</b> La Velocidad del bebedor aumenta en 10 pies durante 1 hora. Aumenta en los niveles 9 (15 pies) y 15 (20 pies).</td></tr><tr><td>3</td><td><b>Resiliencia.</b> El bebedor obtiene +1 a la CA durante 10 minutos. La duración aumenta en los niveles 9 (1 hora) y 15 (8 horas).</td></tr><tr><td>4</td><td><b>Audacia.</b> El bebedor puede tirar 1d4 y sumar el resultado a cada tirada de ataque y de salvación que haga durante el siguiente minuto. La duración aumenta en los niveles 9 (10 minutos) y 15 (1 hora).</td></tr><tr><td>5</td><td><b>Vuelo.</b> El bebedor obtiene una Velocidad de vuelo de 10 pies durante 10 minutos. Aumenta en los niveles 9 (20 pies) y 15 (30 pies).</td></tr><tr><td>6</td><td>Determinas el efecto del elixir eligiendo una de las otras filas de esta tabla.</td></tr></tbody></table>"
+                }
+              }
+            },
+            "5": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Sabio Alquímico",
+                  "subTitleName": "✦ SABIO ALQUÍMICO ✦",
+                  "subDescripcion": "Cada vez que lanzas un conjuro usando tus Suministros de alquimista como Foco de Lanzamiento de Conjuros, obtienes una bonificación a una tirada del conjuro. Esa tirada debe restaurar puntos de golpe o ser una tirada de daño que inflija daño de Ácido, Fuego o Veneno. La bonificación es igual a tu modificador de Inteligencia (mínimo +1)."
+                },
+                "subBlockDos": {
+                  "subName": "Conjuros de Alquimista",
+                  "subTitleName": "✦ CONJUROS DE ALQUIMISTA ✦",
+                  "subDescripcion": "Siempre tienes preparados: Esfera Llameante, Flecha ácida de Melf (ver Conjuros de Alquimista, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Esfera de llamas"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Flecha ácida de Melf"
+                    }
+                  ]
+                }
+              }
+            },
+            "9": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Reactivos Restauradores",
+                  "subTitleName": "✦ REACTIVOS RESTAURADORES ✦",
+                  "subDescripcion": "Puedes lanzar Restablecimiento menor sin gastar un espacio de conjuro y sin preparar el conjuro, siempre que uses los Suministros de alquimista como Foco de Lanzamiento de Conjuros. Puedes hacerlo un número de veces igual a tu modificador de Inteligencia (mínimo una vez) y recuperas todos los usos gastados cuando terminas un Descanso Largo."
+                },
+                "subBlockDos": {
+                  "subName": "Conjuros de Alquimista",
+                  "subTitleName": "✦ CONJUROS DE ALQUIMISTA ✦",
+                  "subDescripcion": "Siempre tienes preparados: Forma gaseosa, Palabra Curativa en Masa (ver Conjuros de Alquimista, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Forma gaseosa"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Palabra de curación en masa"
+                    }
+                  ]
+                }
+              }
+            },
+            "13": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros de Alquimista",
+                  "subTitleName": "✦ CONJUROS DE ALQUIMISTA ✦",
+                  "subDescripcion": "Siempre tienes preparados: Guardia contra la Muerte, Esfera vitriólica (ver Conjuros de Alquimista, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Guardia contra la muerte"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Esfera vitriólica"
+                    }
+                  ]
+                }
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Dominio Químico",
+                  "subTitleName": "✦ DOMINIO QUÍMICO ✦",
+                  "subDescripcion": "Obtienes los siguientes beneficios:\n<b>Erupción alquímica.</b> Cuando lanzas un conjuro de Artífice que inflige daño de Ácido, Fuego o Veneno a un objetivo, también puedes infligirle 2d8 de daño de Fuerza. Solo puedes usar este beneficio una vez en cada uno de tus turnos.\n<b>Resistencia química.</b> Obtienes Resistencia al daño de Ácido y de Veneno. También obtienes Inmunidad a la condición de Envenenado.\n<b>Caldero conjurado.</b> Puedes lanzar El caldero burbujeante de Tasha sin gastar un espacio de conjuro, sin preparar el conjuro y sin componentes materiales, siempre que uses los Suministros de alquimista como Foco de Lanzamiento de Conjuros. Una vez que uses este beneficio, no puedes volver a hacerlo hasta que termines un Descanso Largo.",
+                  "efectos": [
+                    {
+                      "type": "resistencia",
+                      "value": "acido"
+                    },
+                    {
+                      "type": "resistencia",
+                      "value": "veneno"
+                    },
+                    {
+                      "type": "inmunidad_condicion",
+                      "value": "Envenenado"
+                    }
+                  ]
+                }
+              }
+            },
+            "17": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros de Alquimista",
+                  "subTitleName": "✦ CONJUROS DE ALQUIMISTA ✦",
+                  "subDescripcion": "Siempre tienes preparados: Nube aniquiladora, Revivir a los Muertos (ver Conjuros de Alquimista, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Nube aniquiladora"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Revivir a los muertos"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "armero": {
+          "subNombre": "Armero",
+          "fuente": "Eberron — Forja del Artífice",
+          "subDescripcion": "✦ ARMERO ✦\nCrea una armadura mágica para mejorar tus capacidades\n\nUn Armero modifica la armadura para que funcione casi como una segunda piel. La armadura está mejorada para perfeccionar la magia del Armero, desatar ataques potentes y generar una defensa formidable.",
+          "listasDeEleccion": {
+            "modelo-armadura": {
+              "titulo": "Modelo de armadura",
+              "cambiable": true,
+              "ayuda": "Puedes cambiarlo al terminar un Descanso Corto o Largo si tienes las Herramientas de herrero en la mano.",
+              "opciones": [
+                {
+                  "id": "acorazado",
+                  "nombre": "Acorazado",
+                  "descripcion": "Demoledor de fuerza (arma Simple cuerpo a cuerpo con Alcance, 1d10 de Fuerza; empuja o atrae 10 pies a criaturas más pequeñas) y Estatura gigante."
+                },
+                {
+                  "id": "guardian",
+                  "nombre": "Guardián",
+                  "descripcion": "Pulso atronador (arma Simple cuerpo a cuerpo, 1d8 de Trueno; desventaja para atacar a otros) y Campo defensivo."
+                },
+                {
+                  "id": "infiltrador",
+                  "nombre": "Infiltrador",
+                  "descripcion": "Lanzador de rayos (arma Simple a distancia 90/300 pies, 1d6 de Rayo), Pasos potenciados (+5 pies de Velocidad) y Campo amortiguador (ventaja en Sigilo).",
+                  "efectos": [
+                    {
+                      "type": "bono",
+                      "target": "velocidad",
+                      "value": 5
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Herramientas del Oficio",
+                  "subTitleName": "✦ HERRAMIENTAS DEL OFICIO ✦",
+                  "subDescripcion": "Obtienes los siguientes beneficios:\n<b>Entrenamiento con armadura.</b> Obtienes entrenamiento con armadura pesada.\n<b>Competencia con herramientas.</b> Obtienes competencia con las Herramientas de herrero. Si ya la tienes, obtienes competencia con otro tipo de herramientas de artesano de tu elección.\n<b>Fabricación de armaduras.</b> Cuando fabricas una armadura mágica o no mágica, el tiempo necesario se reduce a la mitad.",
+                  "efectos": [
+                    {
+                      "type": "competencia",
+                      "kind": "armadura",
+                      "value": "Armadura pesada"
+                    },
+                    {
+                      "type": "competencia",
+                      "kind": "herramienta",
+                      "value": "Herramientas de herrero"
+                    }
+                  ]
+                },
+                "subBlockDos": {
+                  "subName": "Conjuros de Armero",
+                  "subTitleName": "✦ CONJUROS DE ARMERO ✦",
+                  "subDescripcion": "Cuando alcanzas un nivel de Artífice especificado en la tabla de Conjuros de Armero, a partir de entonces siempre tienes preparados los conjuros indicados.\n\n<b>Conjuros de Armero</b>\n<table><thead><tr><th>Nivel de Artífice</th><th>Conjuros</th></tr></thead><tbody><tr><td>3</td><td>Misil Mágico, Ola atronadora</td></tr><tr><td>5</td><td>Imagen múltiple, Estallar</td></tr><tr><td>9</td><td>Patrón hipnótico, Relámpago</td></tr><tr><td>13</td><td>Escudo de fuego, Invisibilidad mejorada</td></tr><tr><td>17</td><td>Atravesar Paredes, Muro de fuerza</td></tr></tbody></table>",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Proyectil mágico"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Ola atronadora"
+                    }
+                  ]
+                },
+                "subBlockTres": {
+                  "subName": "Armadura Arcana",
+                  "subTitleName": "✦ ARMADURA ARCANA ✦",
+                  "subDescripcion": "Como acción mágica, mientras tienes las Herramientas de herrero en la mano, puedes convertir una armadura que llevas puesta en Armadura Arcana. La armadura sigue siendo Armadura Arcana hasta que te pones otra armadura o mueres.\nObtienes los siguientes beneficios mientras llevas tu Armadura Arcana:\n<b>Sin requisito de Fuerza.</b> Si la armadura normalmente tiene un requisito de Fuerza, la Armadura Arcana carece de él para ti.\n<b>Ponérsela y quitársela rápido.</b> Puedes ponerte o quitarte la armadura con la acción Usar un objeto. La armadura no se te puede quitar contra tu voluntad.\n<b>Foco de lanzamiento de conjuros.</b> Puedes usar la Armadura Arcana como Foco de Lanzamiento de Conjuros para tus conjuros de Artífice."
+                },
+                "subBlockCuatro": {
+                  "subName": "Modelo de Armadura",
+                  "subTitleName": "✦ MODELO DE ARMADURA ✦",
+                  "subDescripcion": "Puedes personalizar tu Armadura Arcana. Cuando lo hagas, elige uno de los siguientes modelos: Acorazado, Guardián o Infiltrador. El modelo que elijas te da beneficios especiales mientras lo llevas.\nCada modelo incluye un arma especial. Cuando atacas con esa arma, puedes sumar tu modificador de Inteligencia, en lugar del de Fuerza o Destreza, a las tiradas de ataque y daño.\nPuedes cambiar el modelo cada vez que termines un Descanso Corto o Largo si tienes las Herramientas de herrero en la mano.\n\n<b>Acorazado.</b> Diseñas tu armadura para convertirte en un gigante imponente en la batalla.\n<b>Demoledor de fuerza.</b> Una bola de demolición arcana o un mazo sobresale de tu armadura. Cuenta como un arma Simple cuerpo a cuerpo con la propiedad Alcance y causa 1d10 de daño de Fuerza al impactar. Si golpeas con él a una criatura al menos un tamaño más pequeña que tú, puedes empujarla hasta 10 pies directamente lejos de ti o atraerla hasta 10 pies hacia ti.\n<b>Estatura gigante.</b> Como Acción Adicional, transformas y agrandas tu armadura durante 1 minuto. Durante ese tiempo, tu alcance aumenta en 5 pies y, si eres más pequeño que Grande, pasas a ser Grande junto con todo lo que llevas. Si no hay espacio suficiente, tu tamaño no cambia. Puedes usar esta Acción Adicional un número de veces igual a tu modificador de Inteligencia (mínimo una vez) y recuperas todos los usos gastados cuando terminas un Descanso Largo.\n\n<b>Guardián.</b> Diseñas tu armadura para estar en la primera línea del conflicto.\n<b>Pulso atronador.</b> Puedes disparar explosiones aturdidoras con los golpes de tu armadura. El pulso cuenta como un arma Simple cuerpo a cuerpo y causa 1d8 de daño de Trueno al impactar. Una criatura golpeada por el pulso tiene Desventaja en las tiradas de ataque contra objetivos distintos de ti hasta el comienzo de tu siguiente turno.\n<b>Campo defensivo.</b> Mientras estés Maltrecho, puedes usar una Acción Adicional para obtener puntos de golpe temporales iguales a tu nivel de Artífice. Pierdes estos puntos de golpe temporales si te quitas la armadura.\n\n<b>Infiltrador.</b> Personalizas tu armadura para tareas más sutiles.\n<b>Lanzador de rayos.</b> Aparece en tu armadura un nodo parecido a una gema desde el que puedes disparar rayos. El lanzador cuenta como un arma Simple a distancia con un alcance normal de 90 pies y largo de 300 pies, y causa 1d6 de daño de Rayo al impactar. Una vez en cada uno de tus turnos, cuando golpeas a una criatura con el lanzador, puedes infligirle 1d6 de daño de Rayo adicional.\n<b>Pasos potenciados.</b> Tu Velocidad aumenta en 5 pies.\n<b>Campo amortiguador.</b> Tienes Ventaja en las pruebas de Destreza (Sigilo). Si la armadura impone Desventaja en esas pruebas, la Ventaja y la Desventaja se anulan, como de costumbre.",
+                  "elegir": {
+                    "lista": "modelo-armadura",
+                    "cantidad": 1
+                  }
+                }
+              }
+            },
+            "5": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Ataque Adicional",
+                  "subTitleName": "✦ ATAQUE ADICIONAL ✦",
+                  "subDescripcion": "Puedes atacar dos veces en lugar de una cada vez que uses la acción de Ataque en tu turno."
+                },
+                "subBlockDos": {
+                  "subName": "Conjuros de Armero",
+                  "subTitleName": "✦ CONJUROS DE ARMERO ✦",
+                  "subDescripcion": "Siempre tienes preparados: Imagen múltiple, Estallar (ver Conjuros de Armero, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Imagen múltiple"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Estallar"
+                    }
+                  ]
+                }
+              }
+            },
+            "9": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Armero Mejorado",
+                  "subTitleName": "✦ ARMERO MEJORADO ✦",
+                  "subDescripcion": "Obtienes los siguientes beneficios:\n<b>Replicación de armaduras.</b> Aprendes un plan adicional para tu característica Replicar Objeto Mágico, y debe ser de la categoría Armadura. Si reemplazas ese plan, debes reemplazarlo por otro plan de Armadura.\nAdemás, puedes crear un objeto adicional con esa característica, y ese objeto también debe ser de la categoría Armadura.\n<b>Arsenal mejorado.</b> Obtienes +1 a las tiradas de ataque y daño hechas con el arma especial de tu modelo de Armadura Arcana."
+                },
+                "subBlockDos": {
+                  "subName": "Conjuros de Armero",
+                  "subTitleName": "✦ CONJUROS DE ARMERO ✦",
+                  "subDescripcion": "Siempre tienes preparados: Patrón hipnótico, Relámpago (ver Conjuros de Armero, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Patrón hipnótico"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Relámpago"
+                    }
+                  ]
+                }
+              },
+              "elegir": {
+                "lista": "planes",
+                "cantidad": 1,
+                "rasgo": "Armero Mejorado (plan de Armadura)"
+              }
+            },
+            "13": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros de Armero",
+                  "subTitleName": "✦ CONJUROS DE ARMERO ✦",
+                  "subDescripcion": "Siempre tienes preparados: Escudo de fuego, Invisibilidad mejorada (ver Conjuros de Armero, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Escudo de fuego"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Invisibilidad mejorada"
+                    }
+                  ]
+                }
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Armadura Perfeccionada",
+                  "subTitleName": "✦ ARMADURA PERFECCIONADA ✦",
+                  "subDescripcion": "Tu Armadura Arcana obtiene beneficios adicionales según su modelo:\n<b>Acorazado.</b> El dado de daño de tu Demoledor de fuerza aumenta a 2d6 de daño de Fuerza. Además, cuando usas tu Estatura gigante, tu alcance aumenta en 10 pies, tu tamaño puede aumentar a Grande o Enorme (a tu elección) y tienes Ventaja en las pruebas de Fuerza y en las tiradas de salvación de Fuerza mientras dure.\n<b>Guardián.</b> El daño de tu Pulso atronador aumenta a 1d10 de daño de Trueno. Además, cuando una criatura Enorme o más pequeña que puedas ver termina su turno a 30 pies o menos de ti, puedes usar una Reacción para obligarla mágicamente a hacer una tirada de salvación de Fuerza contra tu CD de salvación de conjuros. Si falla, la atraes hasta 25 pies directamente hacia ti a un espacio desocupado. Si la atraes a un espacio a 5 pies o menos de ti, puedes hacer un ataque con arma cuerpo a cuerpo contra ella como parte de esta Reacción. Puedes usar esta Reacción un número de veces igual a tu modificador de Inteligencia (mínimo una vez) y recuperas todos los usos gastados cuando terminas un Descanso Largo.\n<b>Infiltrador.</b> El daño de tu Lanzador de rayos aumenta a 2d6 de daño de Rayo. Cualquier criatura que reciba daño de Rayo de tu Lanzador de rayos brilla con luz mágica hasta el comienzo de tu siguiente turno: emite Luz Tenue en un radio de 5 pies y tiene Desventaja en las tiradas de ataque contra ti, ya que la luz la sacude si te ataca. Además, como Acción Adicional, puedes obtener una Velocidad de vuelo igual al doble de tu Velocidad hasta el final del turno actual. Puedes usar esta Acción Adicional un número de veces igual a tu modificador de Inteligencia (mínimo una vez) y recuperas todos los usos gastados cuando terminas un Descanso Largo."
+                }
+              }
+            },
+            "17": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros de Armero",
+                  "subTitleName": "✦ CONJUROS DE ARMERO ✦",
+                  "subDescripcion": "Siempre tienes preparados: Atravesar Paredes, Muro de fuerza (ver Conjuros de Armero, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Atravesar paredes"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Muro de fuerza"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "artillero": {
+          "subNombre": "Artillero",
+          "fuente": "Eberron — Forja del Artífice",
+          "subDescripcion": "✦ ARTILLERO ✦\nEjerce un poder destructivo desde lejos\n\nUn Artillero se especializa en usar la magia para lanzar energía, proyectiles y explosiones en el campo de batalla.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Herramientas del Oficio",
+                  "subTitleName": "✦ HERRAMIENTAS DEL OFICIO ✦",
+                  "subDescripcion": "Obtienes los siguientes beneficios:\n<b>Armamento a distancia.</b> Obtienes competencia con las armas Marciales a distancia.\n<b>Competencia con herramientas.</b> Obtienes competencia con las Herramientas de tallista. Si ya la tienes, obtienes competencia con otro tipo de herramientas de artesano de tu elección.\n<b>Fabricación de varitas.</b> Cuando fabricas una varita mágica, el tiempo necesario se reduce a la mitad.",
+                  "efectos": [
+                    {
+                      "type": "competencia",
+                      "kind": "arma",
+                      "value": "Armas marciales a distancia"
+                    },
+                    {
+                      "type": "competencia",
+                      "kind": "herramienta",
+                      "value": "Herramientas de tallista"
+                    }
+                  ]
+                },
+                "subBlockDos": {
+                  "subName": "Conjuros de Artillero",
+                  "subTitleName": "✦ CONJUROS DE ARTILLERO ✦",
+                  "subDescripcion": "Cuando alcanzas un nivel de Artífice especificado en la tabla de Conjuros de Artillero, a partir de entonces siempre tienes preparados los conjuros indicados.\n\n<b>Conjuros de Artillero</b>\n<table><thead><tr><th>Nivel de Artífice</th><th>Conjuros</th></tr></thead><tbody><tr><td>3</td><td>Escudo, Ola atronadora</td></tr><tr><td>5</td><td>Rayo abrasador, Estallar</td></tr><tr><td>9</td><td>Bola de Fuego, Muro de viento</td></tr><tr><td>13</td><td>Tormenta de hielo, Muro de fuego</td></tr><tr><td>17</td><td>Cono de frío, Muro de fuerza</td></tr></tbody></table>",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Escudo"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Ola atronadora"
+                    }
+                  ]
+                },
+                "subBlockTres": {
+                  "subName": "Cañón Arcano",
+                  "subTitleName": "✦ CAÑÓN ARCANO ✦",
+                  "subDescripcion": "Usando las Herramientas de herrero o las Herramientas de tallista, puedes usar una acción mágica para crear un Cañón arcano Pequeño o Diminuto en un espacio desocupado sobre una superficie horizontal a 5 pies o menos de ti. Tú decides su apariencia, incluido si lo llevas encima y si tiene patas o ruedas. Desaparece si queda reducido a 0 puntos de golpe o después de 1 hora. Puedes descartarlo antes con una acción mágica.\nUna vez que creas un cañón, no puedes volver a hacerlo hasta que termines un Descanso Largo o gastes un espacio de conjuro para crear uno. Solo puedes tener un cañón a la vez.\n\n<b>Cañón arcano</b> — Objeto Pequeño o Diminuto\n<b>CA</b> 18 · <b>PG</b> 5 × tu nivel de Artífice (lanzar Reparar sobre el cañón le devuelve 2d6 PG) · <b>Inmunidades</b> Veneno, Psíquico\n<b>Activar el cañón</b> (debes estar a 60 pies o menos): como Acción Adicional, ordenas al cañón que use una de estas opciones; puede moverse hasta 15 pies antes o después:\n<b>Lanzallamas.</b> Exhala fuego en un Cono de 15 pies. Cada criatura en el área hace una tirada de salvación de Destreza contra tu CD de salvación de conjuros; recibe 2d8 de daño de Fuego si falla, o la mitad si tiene éxito. Los objetos inflamables que nadie lleve empiezan a arder.\n<b>Balista de fuerza.</b> Haz un ataque de conjuro a distancia desde el cañón contra una criatura u objeto a 120 pies o menos. Si impacta, el objetivo recibe 2d8 de daño de Fuerza y, si es una criatura, es empujado hasta 5 pies lejos del cañón.\n<b>Protector.</b> El cañón emite una ráfaga de energía positiva que le da a él y a cada criatura de tu elección a 10 pies o menos puntos de golpe temporales iguales a 1d8 más tu modificador de Inteligencia (mínimo 1)."
+                }
+              }
+            },
+            "5": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Arma de Fuego Arcana",
+                  "subTitleName": "✦ ARMA DE FUEGO ARCANA ✦",
+                  "subDescripcion": "Cuando terminas un Descanso Largo, puedes usar las Herramientas de tallista para grabar sigilos especiales en una vara, bastón, varita o arma Marcial a distancia y convertirla en tu arma de fuego arcana. Los sigilos desaparecen si después los grabas en otro objeto; de lo contrario, duran indefinidamente.\nPuedes usar tu arma de fuego arcana como Foco de Lanzamiento de Conjuros para tus conjuros de Artífice. Cuando lanzas un conjuro de Artífice a través de ella, tira 1d8 y suma el resultado a una de las tiradas de daño del conjuro."
+                },
+                "subBlockDos": {
+                  "subName": "Conjuros de Artillero",
+                  "subTitleName": "✦ CONJUROS DE ARTILLERO ✦",
+                  "subDescripcion": "Siempre tienes preparados: Rayo abrasador, Estallar (ver Conjuros de Artillero, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Rayo abrasador"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Estallar"
+                    }
+                  ]
+                }
+              }
+            },
+            "9": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Cañón Explosivo",
+                  "subTitleName": "✦ CAÑÓN EXPLOSIVO ✦",
+                  "subDescripcion": "Cada Cañón arcano que creas es ahora más destructivo. Obtienes los siguientes beneficios:\n<b>Detonar.</b> Cuando tu cañón recibe daño, puedes usar una Reacción para ordenarle que detone si estás a 60 pies o menos de él. Al hacerlo, el cañón se destruye y cada criatura a 20 pies o menos de él hace una tirada de salvación de Destreza contra tu CD de salvación de conjuros; recibe 3d10 de daño de Fuerza si falla, o la mitad si tiene éxito.\n<b>Potencia de fuego.</b> Las tiradas de daño del cañón y los puntos de golpe temporales que da el Protector aumentan en 1d8."
+                },
+                "subBlockDos": {
+                  "subName": "Conjuros de Artillero",
+                  "subTitleName": "✦ CONJUROS DE ARTILLERO ✦",
+                  "subDescripcion": "Siempre tienes preparados: Bola de Fuego, Muro de viento (ver Conjuros de Artillero, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Bola de Fuego"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Muro de viento"
+                    }
+                  ]
+                }
+              }
+            },
+            "13": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros de Artillero",
+                  "subTitleName": "✦ CONJUROS DE ARTILLERO ✦",
+                  "subDescripcion": "Siempre tienes preparados: Tormenta de hielo, Muro de fuego (ver Conjuros de Artillero, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Tormenta de hielo"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Muro de fuego"
+                    }
+                  ]
+                }
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Posición Fortificada",
+                  "subTitleName": "✦ POSICIÓN FORTIFICADA ✦",
+                  "subDescripcion": "Eres un maestro en formar emplazamientos bien defendidos con tu Cañón arcano. Obtienes los siguientes beneficios:\n<b>Doble potencia de fuego.</b> Ahora puedes tener dos cañones a la vez y crear dos con la misma acción mágica (si gastas un espacio de conjuro para crear el primero, debes gastar otro para el segundo). Puedes activar ambos con la misma Acción Adicional, con la misma opción o con opciones distintas. No puedes crear un tercer cañón mientras tengas dos.\n<b>Campo de protección.</b> Tú y tus aliados tenéis Media cobertura mientras estéis a 10 pies o menos de vuestro Cañón arcano."
+                }
+              }
+            },
+            "17": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros de Artillero",
+                  "subTitleName": "✦ CONJUROS DE ARTILLERO ✦",
+                  "subDescripcion": "Siempre tienes preparados: Cono de frío, Muro de fuerza (ver Conjuros de Artillero, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Cono de frío"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Muro de fuerza"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "herrero-batalla": {
+          "subNombre": "Herrero de Batalla",
+          "fuente": "Eberron — Forja del Artífice",
+          "subDescripcion": "✦ HERRERO DE BATALLA ✦\nDirige a un guardián autómata\n\nUn Herrero de Batalla es una combinación de protector y médico, experto en defender a otros y en reparar tanto material como personal. Para ayudarle en su trabajo, lo acompaña un Defensor de acero, un compañero protector de su propia creación.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Herramientas del Oficio",
+                  "subTitleName": "✦ HERRAMIENTAS DEL OFICIO ✦",
+                  "subDescripcion": "Obtienes los siguientes beneficios:\n<b>Competencia con herramientas.</b> Obtienes competencia con las Herramientas de herrero. Si ya la tienes, obtienes competencia con otro tipo de herramientas de artesano de tu elección.\n<b>Fabricación de armas.</b> Cuando fabricas un arma mágica o no mágica, el tiempo necesario se reduce a la mitad.",
+                  "efectos": [
+                    {
+                      "type": "competencia",
+                      "kind": "herramienta",
+                      "value": "Herramientas de herrero"
+                    }
+                  ]
+                },
+                "subBlockDos": {
+                  "subName": "Conjuros de Herrero de Batalla",
+                  "subTitleName": "✦ CONJUROS DE HERRERO DE BATALLA ✦",
+                  "subDescripcion": "Cuando alcanzas un nivel de Artífice especificado en la tabla de Conjuros de Herrero de Batalla, a partir de entonces siempre tienes preparados los conjuros indicados.\n\n<b>Conjuros de Herrero de Batalla</b>\n<table><thead><tr><th>Nivel de Artífice</th><th>Conjuros</th></tr></thead><tbody><tr><td>3</td><td>Heroísmo, Escudo</td></tr><tr><td>5</td><td>Castigo Resplandeciente, Vínculo Protector</td></tr><tr><td>9</td><td>Aura de vitalidad, Conjurar andanada</td></tr><tr><td>13</td><td>Aura de pureza, Escudo de fuego</td></tr><tr><td>17</td><td>Castigo desterrador, Curar heridas en masa</td></tr></tbody></table>",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Heroísmo"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Escudo"
+                    }
+                  ]
+                },
+                "subBlockTres": {
+                  "subName": "Listo para la Batalla",
+                  "subTitleName": "✦ LISTO PARA LA BATALLA ✦",
+                  "subDescripcion": "Tu entrenamiento de combate y tus experimentos con la magia han dado fruto de dos maneras:\n<b>Potenciación arcana.</b> Cuando atacas con un arma mágica, puedes usar tu modificador de Inteligencia, en lugar del de Fuerza o Destreza, para las tiradas de ataque y daño.\n<b>Conocimiento de armas.</b> Obtienes competencia con las armas Marciales. Puedes usar un arma con la que tengas competencia como Foco de Lanzamiento de Conjuros para tus conjuros de Artífice.",
+                  "efectos": [
+                    {
+                      "type": "competencia",
+                      "kind": "arma",
+                      "value": "Armas marciales"
+                    }
+                  ]
+                },
+                "subBlockCuatro": {
+                  "subName": "Defensor de Acero",
+                  "subTitleName": "✦ DEFENSOR DE ACERO ✦",
+                  "subDescripcion": "Tus ajustes te han dado un compañero, un Defensor de acero. Tú decides su apariencia y si tiene dos o cuatro patas; tus elecciones no afectan a sus estadísticas.\nEl defensor es Amistoso contigo y con tus aliados y te obedece. Desaparece si mueres.\n<b>El defensor en combate.</b> En combate, el defensor actúa durante tu turno. Puede moverse y usar su Reacción por sí mismo, pero la única acción que realiza es Esquivar, a menos que uses una Acción Adicional para ordenarle otra acción. Si tienes la condición de Incapacitado, el defensor actúa por sí mismo y no se limita a Esquivar.\n<b>Restaurar o reemplazar al defensor.</b> Si el defensor ha muerto en la última hora, puedes usar una acción mágica para tocarlo y gastar un espacio de conjuro. Vuelve a la vida después de 1 minuto con todos sus puntos de golpe.\nCada vez que terminas un Descanso Largo, puedes crear un nuevo defensor si tienes las Herramientas de herrero en la mano. Si ya tienes uno, el anterior desaparece.\n\n<b>Defensor de acero</b> — Autómata Mediano\n<b>CA</b> 12 + tu modificador de Inteligencia · <b>PG</b> 5 + cinco veces tu nivel de Artífice (dados de golpe d8 igual a tu nivel de Artífice) · <b>Velocidad</b> 40 pies\n<table><thead><tr><th>FUE</th><th>DES</th><th>CON</th><th>INT</th><th>SAB</th><th>CAR</th></tr></thead><tbody><tr><td>14 (+2)</td><td>12 (+1)</td><td>14 (+2)</td><td>4 (−3)</td><td>10 (+0)</td><td>6 (−2)</td></tr></tbody></table>\n<b>Inmunidades</b> Veneno; Hechizado, Agotado, Envenenado · <b>Sentidos</b> Visión en la oscuridad 60 pies, Percepción pasiva 10 · <b>Idiomas</b> Entiende los idiomas que conoces · <b>VD</b> Ninguno (BC igual al tuyo)\n<b>Vínculo de acero.</b> Suma tu Bonificador de Competencia a cualquier prueba de característica o tirada de salvación que haga el defensor.\n<b>Desgarro potenciado.</b> Ataque cuerpo a cuerpo: bonificador igual a tu modificador de ataque de conjuros, alcance 5 pies. Impacto: 1d8 + 2 + tu modificador de Inteligencia de daño de Fuerza.\n<b>Reparar (3/día).</b> El defensor, o un autómata u objeto que pueda ver a 5 pies o menos, recupera puntos de golpe iguales a 2d8 más tu modificador de Inteligencia.\n<b>Desviar ataque (Reacción).</b> Cuando una criatura que el defensor puede ver a 5 pies o menos ataca a otra criatura, el atacante tiene Desventaja en esa tirada."
+                }
+              }
+            },
+            "5": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Ataque Adicional",
+                  "subTitleName": "✦ ATAQUE ADICIONAL ✦",
+                  "subDescripcion": "Puedes atacar dos veces en lugar de una cada vez que uses la acción de Ataque en tu turno. Puedes renunciar a uno de tus ataques al usar la acción de Ataque para ordenar a tu Defensor de acero que use su Desgarro potenciado."
+                },
+                "subBlockDos": {
+                  "subName": "Conjuros de Herrero de Batalla",
+                  "subTitleName": "✦ CONJUROS DE HERRERO DE BATALLA ✦",
+                  "subDescripcion": "Siempre tienes preparados: Castigo Resplandeciente, Vínculo Protector (ver Conjuros de Herrero de Batalla, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Castigo marcador"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Vínculo protector"
+                    }
+                  ]
+                }
+              }
+            },
+            "9": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Sacudida Arcana",
+                  "subTitleName": "✦ SACUDIDA ARCANA ✦",
+                  "subDescripcion": "Cuando golpeas a un objetivo con una tirada de ataque usando un arma mágica, o tu Defensor de acero golpea a un objetivo, puedes canalizar energía mágica a través del golpe para crear uno de estos efectos:\n<b>Energía destructiva.</b> El objetivo recibe 2d6 de daño de Fuerza adicional.\n<b>Energía restauradora.</b> Elige una criatura u objeto que puedas ver a 30 pies o menos del objetivo. Energía curativa fluye hacia él y le devuelve 2d6 puntos de golpe.\nPuedes usar esta energía un número de veces igual a tu modificador de Inteligencia (mínimo una vez), pero no más de una vez por turno. Recuperas todos los usos gastados cuando terminas un Descanso Largo."
+                },
+                "subBlockDos": {
+                  "subName": "Conjuros de Herrero de Batalla",
+                  "subTitleName": "✦ CONJUROS DE HERRERO DE BATALLA ✦",
+                  "subDescripcion": "Siempre tienes preparados: Aura de vitalidad, Conjurar andanada (ver Conjuros de Herrero de Batalla, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Aura de vitalidad"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Conjurar andanada"
+                    }
+                  ]
+                }
+              }
+            },
+            "13": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros de Herrero de Batalla",
+                  "subTitleName": "✦ CONJUROS DE HERRERO DE BATALLA ✦",
+                  "subDescripcion": "Siempre tienes preparados: Aura de pureza, Escudo de fuego (ver Conjuros de Herrero de Batalla, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Aura de pureza"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Escudo de fuego"
+                    }
+                  ]
+                }
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Defensor Mejorado",
+                  "subTitleName": "✦ DEFENSOR MEJORADO ✦",
+                  "subDescripcion": "Tu Sacudida Arcana y tu Defensor de acero se vuelven más poderosos:\n<b>Sacudida mejorada.</b> El daño adicional y la curación de tu Sacudida Arcana aumentan a 4d6.\n<b>Desvío mejorado.</b> Cada vez que tu Defensor de acero usa Desviar ataque, el atacante recibe daño de Fuerza igual a 1d4 más tu modificador de Inteligencia."
+                }
+              }
+            },
+            "17": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros de Herrero de Batalla",
+                  "subTitleName": "✦ CONJUROS DE HERRERO DE BATALLA ✦",
+                  "subDescripcion": "Siempre tienes preparados: Castigo desterrador, Curar heridas en masa (ver Conjuros de Herrero de Batalla, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Castigo desterrador"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Curar heridas en masa"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "cartografo": {
+          "subNombre": "Cartógrafo",
+          "fuente": "Eberron — Forja del Artífice",
+          "subDescripcion": "✦ CARTÓGRAFO ✦\nTraza rumbos ventajosos a través del caos\n\nLos Cartógrafos son navegantes y exploradores de primer nivel. Con sus creaciones, pueden señalar amenazas, proteger a sus aliados y crear portales a lugares lejanos.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Herramientas del Oficio",
+                  "subTitleName": "✦ HERRAMIENTAS DEL OFICIO ✦",
+                  "subDescripcion": "Obtienes los siguientes beneficios:\n<b>Competencia con herramientas.</b> Obtienes competencia con los Suministros de calígrafo y las Herramientas de cartógrafo. Si ya tienes una de ellas, obtienes competencia con otro tipo de herramientas de artesano de tu elección (o con otros dos si tienes ambas).\n<b>Creación de pergaminos.</b> Cuando escribes un pergamino con las reglas de fabricación del Manual del Jugador, el tiempo necesario se reduce a la mitad.",
+                  "efectos": [
+                    {
+                      "type": "competencia",
+                      "kind": "herramienta",
+                      "value": "Suministros de calígrafo"
+                    },
+                    {
+                      "type": "competencia",
+                      "kind": "herramienta",
+                      "value": "Herramientas de cartógrafo"
+                    }
+                  ]
+                },
+                "subBlockDos": {
+                  "subName": "Conjuros de Cartógrafo",
+                  "subTitleName": "✦ CONJUROS DE CARTÓGRAFO ✦",
+                  "subDescripcion": "Cuando alcanzas un nivel de Artífice especificado en la tabla de Conjuros de Cartógrafo, a partir de entonces siempre tienes preparados los conjuros indicados.\n\n<b>Conjuros de Cartógrafo</b>\n<table><thead><tr><th>Nivel de Artífice</th><th>Conjuros</th></tr></thead><tbody><tr><td>3</td><td>Fuego feérico, Saeta guiada, Palabra Curativa</td></tr><tr><td>5</td><td>Localizar objeto, Púa Mental</td></tr><tr><td>9</td><td>Invocar Relámpagos, Clarividencia</td></tr><tr><td>13</td><td>Destierro, Localizar criatura</td></tr><tr><td>17</td><td>Escudriñar, Círculo de Teletransporte</td></tr></tbody></table>",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Fuego feérico"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Saeta guiada"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Palabra de curación"
+                    }
+                  ]
+                },
+                "subBlockTres": {
+                  "subName": "Atlas del Aventurero",
+                  "subTitleName": "✦ ATLAS DEL AVENTURERO ✦",
+                  "subDescripcion": "Cada vez que terminas un Descanso Largo mientras sostienes las Herramientas de cartógrafo, puedes usarlas para crear un conjunto de mapas mágicos tocando al menos a dos criaturas (una puede ser tú), hasta un máximo igual a 1 más tu modificador de Inteligencia (mínimo dos criaturas). Cada objetivo recibe un mapa mágico que se actualiza constantemente para mostrar la posición relativa de todos los poseedores, pero que es ilegible para los demás. Los mapas duran hasta que mueres o vuelves a usar esta característica, momento en el que los mapas existentes desaparecen.\nMientras lleva el mapa, un objetivo obtiene los siguientes beneficios:\n<b>Conciencia.</b> El objetivo añade 1d4 a sus tiradas de Iniciativa.\n<b>Posicionamiento.</b> El objetivo conoce la ubicación de los demás poseedores de mapas que estén en su mismo plano de existencia. Al lanzar un conjuro o crear otro efecto que requiera ver al objetivo, un poseedor puede apuntar a otro poseedor sin importar la visión o la cobertura, siempre que esté dentro del alcance del efecto."
+                },
+                "subBlockCuatro": {
+                  "subName": "Magia Cartográfica",
+                  "subTitleName": "✦ MAGIA CARTOGRÁFICA ✦",
+                  "subDescripcion": "Obtienes los siguientes beneficios:\n<b>Cartografía iluminada.</b> Puedes lanzar Fuego feérico sin gastar un espacio de conjuro, delineando a las criaturas afectadas como si estuvieran en tinta. Puedes hacerlo un número de veces igual a tu modificador de Inteligencia (mínimo una vez) y recuperas todos los usos gastados cuando terminas un Descanso Largo.\n<b>Salto de portal.</b> En tu turno, puedes gastar una cantidad de movimiento igual a la mitad de tu Velocidad (redondeando hacia abajo) para teletransportarte a un espacio desocupado que puedas ver a 10 pies o menos de ti, o a 5 pies o menos de una criatura a 30 pies o menos que lleve uno de tus mapas del Atlas del Aventurero. No puedes usar este beneficio si tu Velocidad es 0."
+                }
+              }
+            },
+            "5": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Precisión Guiada",
+                  "subTitleName": "✦ PRECISIÓN GUIADA ✦",
+                  "subDescripcion": "Una vez por turno, cuando lanzas un conjuro de tu lista de Conjuros de Cartógrafo o golpeas con una tirada de ataque a una criatura afectada por tu Fuego feérico, puedes sumar tu modificador de Inteligencia a una tirada de daño del conjuro o del ataque.\nAdemás, recibir daño no puede hacerte perder la Concentración en Fuego feérico."
+                },
+                "subBlockDos": {
+                  "subName": "Conjuros de Cartógrafo",
+                  "subTitleName": "✦ CONJUROS DE CARTÓGRAFO ✦",
+                  "subDescripcion": "Siempre tienes preparados: Localizar objeto, Púa Mental (ver Conjuros de Cartógrafo, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Localizar objeto"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Púa mental"
+                    }
+                  ]
+                }
+              }
+            },
+            "9": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Movimiento Ingenioso",
+                  "subTitleName": "✦ MOVIMIENTO INGENIOSO ✦",
+                  "subDescripcion": "Cuando usas tu Destello de Genialidad, tú o una criatura voluntaria de tu elección que puedas ver a 30 pies o menos podéis teletransportaros hasta 30 pies a un espacio desocupado que puedas ver, como parte de esa misma Reacción."
+                },
+                "subBlockDos": {
+                  "subName": "Conjuros de Cartógrafo",
+                  "subTitleName": "✦ CONJUROS DE CARTÓGRAFO ✦",
+                  "subDescripcion": "Siempre tienes preparados: Invocar Relámpagos, Clarividencia (ver Conjuros de Cartógrafo, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Llamar al relámpago"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Clarividencia"
+                    }
+                  ]
+                }
+              }
+            },
+            "13": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros de Cartógrafo",
+                  "subTitleName": "✦ CONJUROS DE CARTÓGRAFO ✦",
+                  "subDescripcion": "Siempre tienes preparados: Destierro, Localizar criatura (ver Conjuros de Cartógrafo, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Destierro"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Localizar criatura"
+                    }
+                  ]
+                }
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Atlas Superior",
+                  "subTitleName": "✦ ATLAS SUPERIOR ✦",
+                  "subDescripcion": "Tu Atlas del Aventurero mejora y obtiene los siguientes beneficios:\n<b>Refugio seguro.</b> Cuando un poseedor de mapa queda reducido a 0 puntos de golpe pero no muere directamente, puede destruir su mapa. Si lo hace, sus puntos de golpe pasan a ser iguales al doble de tu nivel de Artífice, y se teletransporta a un espacio desocupado a 5 pies o menos de ti o de otro poseedor de mapa de su elección.\n<b>Camino infalible.</b> Si eres uno de los poseedores de mapas de tu Atlas del Aventurero, puedes lanzar Encontrar el camino sin gastar un espacio de conjuro, sin prepararlo y sin componentes. Una vez que uses este beneficio, no puedes volver a hacerlo hasta que termines un Descanso Largo."
+                }
+              }
+            },
+            "17": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros de Cartógrafo",
+                  "subTitleName": "✦ CONJUROS DE CARTÓGRAFO ✦",
+                  "subDescripcion": "Siempre tienes preparados: Escudriñar, Círculo de Teletransporte (ver Conjuros de Cartógrafo, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Escudriñar"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Círculo de teletransportación"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "reanimador": {
+          "subNombre": "Reanimador",
+          "fuente": "Ravenloft — Los horrores internos",
+          "subDescripcion": "✦ REANIMADOR ✦\nReensambla cadáveres y devuelve la vida a los muertos\n\nLos Reanimadores desafían las leyes de la naturaleza en busca de experimentos espantosos. Estos sombríos Artífices cosen sirvientes con cadáveres dispares, usan magia repugnante para fortalecer a los vivos y convierten el arte de la nigromancia en una ciencia aterradora.",
+          "listasDeEleccion": {
+            "modificaciones": {
+              "titulo": "Modificaciones extrañas (preferidas)",
+              "cambiable": true,
+              "ayuda": "Se eligen cada vez que creas al compañero; aquí anotas las habituales y las cambias cuando quieras.",
+              "opciones": [
+                {
+                  "id": "conducto-arcano",
+                  "nombre": "Conducto arcano",
+                  "descripcion": "Puedes lanzar conjuros como si estuvieras en el espacio del compañero; una vez por turno, + Inteligencia a una tirada de daño de un conjuro de Evocación o Nigromancia."
+                },
+                {
+                  "id": "ferocidad",
+                  "nombre": "Ferocidad",
+                  "descripcion": "El daño del Zarpazo terrible del compañero aumenta a 1d6."
+                },
+                {
+                  "id": "hinchado",
+                  "nombre": "Hinchado",
+                  "descripcion": "El compañero pasa a ser Grande y empuja 10 pies con su Zarpazo terrible; sumas tu Inteligencia al daño de su Estallido mortal.",
+                  "requisitos": {
+                    "nivel": 9
+                  }
+                },
+                {
+                  "id": "demacrado",
+                  "nombre": "Demacrado",
+                  "descripcion": "Velocidad 45 pies y de trepar; las criaturas que empiecen su turno a 10 pies de él hacen una salvación de Sabiduría o quedan Asustadas.",
+                  "requisitos": {
+                    "nivel": 9
+                  }
+                },
+                {
+                  "id": "humedo",
+                  "nombre": "Húmedo",
+                  "descripcion": "Velocidad de nado y se cuela por huecos de 1 pulgada; quien lo golpee a 10 pies recibe daño de Ácido igual a tu Inteligencia.",
+                  "requisitos": {
+                    "nivel": 9
+                  }
+                }
+              ]
+            }
+          },
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros de Reanimador",
+                  "subTitleName": "✦ CONJUROS DE REANIMADOR ✦",
+                  "subDescripcion": "Cuando alcanzas un nivel de Artífice especificado en la tabla de Conjuros de Reanimador, a partir de entonces siempre tienes preparados los conjuros indicados.\n\n<b>Conjuros de Reanimador</b>\n<table><thead><tr><th>Nivel de Artífice</th><th>Conjuros</th></tr></thead><tbody><tr><td>3</td><td>Vida falsa, Piedad con los Moribundos, Rayo de bruja</td></tr><tr><td>5</td><td>Sordera/Ceguera, Potenciar Característica</td></tr><tr><td>9</td><td>Animar a los Muertos, Relámpago</td></tr><tr><td>13</td><td>Plaga, Guardia contra la Muerte</td></tr><tr><td>17</td><td>Caparazón Antivida, Revivir a los Muertos</td></tr></tbody></table>",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Vida falsa"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Piedad con los moribundos"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Rayo de bruja"
+                    }
+                  ]
+                },
+                "subBlockDos": {
+                  "subName": "Habilidades del Reanimador",
+                  "subTitleName": "✦ HABILIDADES DEL REANIMADOR ✦",
+                  "subDescripcion": "Obtienes los siguientes beneficios:\n<b>Descarga vital.</b> Cuando lanzas Piedad con los moribundos, puedes modificar el conjuro para que envíe una descarga eléctrica a través del objetivo y lo reviva. El objetivo recupera puntos de golpe iguales a tu nivel de Artífice, y cada criatura de tu elección en una Emanación de 10 pies centrada en el objetivo hace una tirada de salvación de Destreza contra tu CD de salvación de conjuros; recibe 2d4 de daño de Rayo si falla, o la mitad si tiene éxito.\nPuedes modificar el conjuro así un número de veces igual a tu modificador de Inteligencia y recuperas todos los usos gastados cuando terminas un Descanso Largo. El daño de Rayo aumenta en 1d4 en los niveles de Artífice 11 (3d4) y 17 (4d4).\n<b>Herramientas del reanimador.</b> Obtienes competencia con los Suministros de alquimista. Si ya la tienes, obtienes competencia con otro tipo de herramientas de artesano de tu elección.",
+                  "efectos": [
+                    {
+                      "type": "competencia",
+                      "kind": "herramienta",
+                      "value": "Suministros de alquimista"
+                    }
+                  ]
+                },
+                "subBlockTres": {
+                  "subName": "Compañero Reanimado",
+                  "subTitleName": "✦ COMPAÑERO REANIMADO ✦",
+                  "subDescripcion": "Usando las Herramientas de hojalatero u otro tipo de herramientas de artesano con las que tengas competencia, puedes usar una acción mágica para crear un Compañero reanimado mediante el poder de la nigromancia y la ciencia. Aparece en un espacio desocupado a 5 pies o menos de ti. Tú decides su apariencia; tus elecciones no afectan a sus estadísticas.\nEl compañero es Amistoso contigo y con tus aliados y te obedece. Dura hasta que terminas un Descanso Largo o hasta que uses una acción mágica para descartarlo antes, momento en el que se desploma inofensivamente en un montón de vísceras. Si mueres, cae inmediatamente a 0 puntos de golpe y muere (activando su Estallido mortal).\nUna vez que creas un compañero, no puedes volver a hacerlo hasta que termines un Descanso Largo o gastes un espacio de conjuro para crear uno. Solo puedes tener un compañero a la vez.\n<b>El compañero en combate.</b> En combate, el compañero actúa durante tu turno. Puede moverse y usar su Reacción por sí mismo, pero la única acción que realiza es Esquivar, a menos que uses una Acción Adicional para ordenarle otra acción. Si tienes la condición de Incapacitado, actúa por sí mismo y no se limita a Esquivar.\n\n<b>Compañero reanimado</b> — No muerto Mediano, neutral\n<b>CA</b> 10 + tu modificador de Inteligencia · <b>PG</b> 5 + cinco veces tu nivel de Artífice (dados de golpe d8 igual a tu nivel de Artífice) · <b>Velocidad</b> 30 pies\n<table><thead><tr><th>FUE</th><th>DES</th><th>CON</th><th>INT</th><th>SAB</th><th>CAR</th></tr></thead><tbody><tr><td>11 (+0)</td><td>10 (+0)</td><td>16 (+3)</td><td>4 (−3)</td><td>10 (+0)</td><td>6 (−2)</td></tr></tbody></table>\n<b>Resistencias</b> Necrótico, Veneno · <b>Inmunidades</b> Rayo; Hechizado, Agotado, Envenenado · <b>Sentidos</b> Vista ciega 60 pies, Percepción pasiva 10 · <b>Idiomas</b> Entiende los idiomas que conoces · <b>VD</b> Ninguno (BC igual al tuyo)\n<b>Estallido mortal.</b> El compañero explota al morir. Cada criatura en una Emanación de 10 pies centrada en él hace una tirada de salvación de Destreza contra tu CD de salvación de conjuros: 2d4 de daño Necrótico si falla, la mitad si tiene éxito.\n<b>Absorción de rayos.</b> Cuando el compañero recibe daño de Rayo, recupera puntos de golpe iguales a ese daño.\n<b>Zarpazo terrible.</b> Ataque cuerpo a cuerpo: bonificador igual a tu modificador de ataque de conjuros, alcance 5 pies. Impacto: 1d4 + tu modificador de Inteligencia de daño Necrótico, y el objetivo no puede hacer Ataques de oportunidad hasta el comienzo de su siguiente turno."
+                }
+              }
+            },
+            "5": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Modificaciones Extrañas",
+                  "subTitleName": "✦ MODIFICACIONES EXTRAÑAS ✦",
+                  "subDescripcion": "Cada vez que creas un Compañero reanimado, obtiene una de las siguientes opciones de tu elección, elegida al crearlo:\n<b>Conducto arcano.</b> Puedes lanzar conjuros como si estuvieras en el espacio del compañero, pero usando tus propios sentidos. Una vez por turno, cuando lanzas un conjuro de Artífice de la escuela de Evocación o Nigromancia e infliges daño mientras tu compañero está a 120 pies o menos de ti, puedes sumar tu modificador de Inteligencia a una tirada de daño de ese conjuro.\n<b>Ferocidad.</b> El daño del Zarpazo terrible del compañero aumenta a 1d6.",
+                  "elegir": {
+                    "lista": "modificaciones",
+                    "cantidad": 1
+                  }
+                },
+                "subBlockDos": {
+                  "subName": "Conjuros de Reanimador",
+                  "subTitleName": "✦ CONJUROS DE REANIMADOR ✦",
+                  "subDescripcion": "Siempre tienes preparados: Sordera/Ceguera, Potenciar Característica (ver Conjuros de Reanimador, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Sordera / Ceguera"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Potenciar característica"
+                    }
+                  ]
+                }
+              }
+            },
+            "9": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Reanimación Mejorada",
+                  "subTitleName": "✦ REANIMACIÓN MEJORADA ✦",
+                  "subDescripcion": "El daño del Estallido mortal de tu Compañero reanimado aumenta a 4d4. El daño Necrótico que causa tu compañero ignora la Resistencia."
+                },
+                "subBlockDos": {
+                  "subName": "Modificaciones Macabras",
+                  "subTitleName": "✦ MODIFICACIONES MACABRAS ✦",
+                  "subDescripcion": "Experimentas y modificas aún más a tu compañero. Cada vez que creas un Compañero reanimado, obtiene dos opciones de Modificaciones extrañas en lugar de una. Además, al elegirlas, también puedes elegir entre estas opciones:\n<b>Hinchado.</b> El compañero pasa a ser Grande. Cada vez que golpea con su Zarpazo terrible a una criatura Grande o más pequeña, la empuja hasta 10 pies lejos de él. Además, puedes sumar tu modificador de Inteligencia al daño de su Estallido mortal.\n<b>Demacrado.</b> La Velocidad del compañero aumenta a 45 pies y obtiene una Velocidad de trepar igual a su Velocidad. Puede trepar por superficies difíciles, incluso por techos, sin pruebas de característica. Además, cada vez que una criatura de tu elección empieza su turno en una Emanación de 10 pies centrada en tu compañero, debe superar una tirada de salvación de Sabiduría contra tu CD de salvación de conjuros o tener la condición de Asustado hasta el comienzo de su siguiente turno.\n<b>Húmedo.</b> El compañero obtiene una Velocidad de nado igual a su Velocidad y puede moverse por un espacio de apenas 1 pulgada sin gastar movimiento adicional. Además, cada vez que una criatura a 10 pies o menos lo golpea con una tirada de ataque, el atacante recibe daño de Ácido igual a tu modificador de Inteligencia."
+                },
+                "subBlockTres": {
+                  "subName": "Conjuros de Reanimador",
+                  "subTitleName": "✦ CONJUROS DE REANIMADOR ✦",
+                  "subDescripcion": "Siempre tienes preparados: Animar a los Muertos, Relámpago (ver Conjuros de Reanimador, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Animar a los muertos"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Relámpago"
+                    }
+                  ]
+                }
+              },
+              "elegir": {
+                "lista": "modificaciones",
+                "cantidad": 1,
+                "rasgo": "Modificaciones Macabras"
+              }
+            },
+            "13": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros de Reanimador",
+                  "subTitleName": "✦ CONJUROS DE REANIMADOR ✦",
+                  "subDescripcion": "Siempre tienes preparados: Plaga, Guardia contra la Muerte (ver Conjuros de Reanimador, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Marchitar"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Guardia contra la muerte"
+                    }
+                  ]
+                }
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Reanimación Refinada",
+                  "subTitleName": "✦ REANIMACIÓN REFINADA ✦",
+                  "subDescripcion": "Has dominado la ciencia de la revivificación y obtienes los siguientes beneficios:\n<b>Renacimiento facilitado.</b> Puedes lanzar Revivir a los muertos una vez sin gastar un espacio de conjuro y sin componentes materiales, siempre que uses Herramientas de hojalatero u otro tipo de herramientas de artesano con las que tengas competencia como Foco de Lanzamiento de Conjuros. Una vez que uses este beneficio, no puedes volver a hacerlo hasta que termines un Descanso Largo.\n<b>Transferencia vital.</b> Cuando tú o tu compañero recibís daño, puedes usar una Reacción para obtener puntos de golpe iguales a los puntos de golpe actuales de tu Compañero reanimado. Después, el compañero cae inmediatamente a 0 puntos de golpe y muere (activando su Estallido mortal).\n<b>Modificaciones superiores.</b> Cada vez que creas un Compañero reanimado, ahora obtiene tres opciones de Modificaciones extrañas."
+                }
+              },
+              "elegir": {
+                "lista": "modificaciones",
+                "cantidad": 1,
+                "rasgo": "Modificaciones Superiores"
+              }
+            },
+            "17": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Conjuros de Reanimador",
+                  "subTitleName": "✦ CONJUROS DE REANIMADOR ✦",
+                  "subDescripcion": "Siempre tienes preparados: Caparazón Antivida, Revivir a los Muertos (ver Conjuros de Reanimador, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Caparazón antivida"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Revivir a los muertos"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Planes conocidos",
+          "Objetos mágicos",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "4",
+            "2",
+            "2",
+            "4",
+            "3"
+          ]
+        ]
+      }
+    },
+    "4": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Mejora de Puntuación de Característica",
+          "titleName": "✦ MEJORA DE PUNTUACIÓN DE CARACTERÍSTICA ✦",
+          "descripcion": "Obtienes la dote Mejora de Puntuación de Característica u otra dote de tu elección para la que califiques. Obtienes esta característica de nuevo en los niveles 8, 12 y 16 de Artífice."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Planes conocidos",
+          "Objetos mágicos",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "4",
+            "2",
+            "2",
+            "5",
+            "3"
+          ]
+        ]
+      }
+    },
+    "5": {
+      "infoCubo": {
+        "columnas": [
+          "Planes conocidos",
+          "Objetos mágicos",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "4",
+            "2",
+            "2",
+            "6",
+            "4 · 2"
+          ]
+        ]
+      }
+    },
+    "6": {
+      "elegir": {
+        "lista": "planes",
+        "cantidad": 1,
+        "rasgo": "Replicar Objeto Mágico"
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Ajustes de Objetos Mágicos",
+          "titleName": "✦ AJUSTES DE OBJETOS MÁGICOS ✦",
+          "descripcion": "Tu característica Replicar Objeto Mágico obtiene las siguientes opciones.\n<b>Cargar un objeto mágico.</b> Como Acción Adicional, puedes tocar un objeto mágico a 5 pies o menos de ti que hayas creado con Replicar Objeto Mágico y que use cargas. Gastas un espacio de conjuro de nivel 1+ y recargas el objeto. La cantidad de cargas que recupera es igual al nivel del espacio gastado.\n<b>Drenar un objeto mágico.</b> Como Acción Adicional, puedes tocar un objeto mágico a 5 pies o menos de ti que hayas creado con Replicar Objeto Mágico y hacer que desaparezca, convirtiendo su energía mágica en un espacio de conjuro. El espacio es de nivel 1 si el objeto es común, o de nivel 2 si es poco común o raro. Una vez que uses esta opción, no puedes volver a hacerlo hasta que termines un Descanso Largo. Cualquier espacio de conjuro que crees así desaparece cuando terminas un Descanso Largo.\n<b>Transmutar un objeto mágico.</b> Como acción mágica, puedes tocar un objeto mágico a 5 pies o menos de ti que hayas creado con Replicar Objeto Mágico y transformarlo en un objeto mágico diferente. El objeto resultante debe basarse en un plan que conozcas. Una vez que uses esta opción, no puedes volver a hacerlo hasta que termines un Descanso Largo."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Planes conocidos",
+          "Objetos mágicos",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "5",
+            "3",
+            "2",
+            "6",
+            "4 · 2"
+          ]
+        ]
+      }
+    },
+    "7": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Destello de Genialidad",
+          "titleName": "✦ DESTELLO DE GENIALIDAD ✦",
+          "descripcion": "Cuando tú o una criatura que puedas ver a 30 pies o menos de ti falláis una prueba de característica o una tirada de salvación, puedes usar una Reacción para añadir una bonificación a la tirada, lo que puede hacer que tenga éxito. La bonificación es igual a tu modificador de Inteligencia (mínimo +1).\nPuedes usar esta Reacción un número de veces igual a tu modificador de Inteligencia (mínimo una vez). Recuperas todos los usos gastados cuando terminas un Descanso Largo."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Planes conocidos",
+          "Objetos mágicos",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "5",
+            "3",
+            "2",
+            "7",
+            "4 · 3"
+          ]
+        ]
+      }
+    },
+    "8": {
+      "infoCubo": {
+        "columnas": [
+          "Planes conocidos",
+          "Objetos mágicos",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "5",
+            "3",
+            "2",
+            "7",
+            "4 · 3"
+          ]
+        ]
+      }
+    },
+    "9": {
+      "infoCubo": {
+        "columnas": [
+          "Planes conocidos",
+          "Objetos mágicos",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "5",
+            "3",
+            "2",
+            "9",
+            "4 · 3 · 2"
+          ]
+        ]
+      }
+    },
+    "10": {
+      "elegir": {
+        "lista": "planes",
+        "cantidad": 1,
+        "rasgo": "Replicar Objeto Mágico"
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Experto en Objetos Mágicos",
+          "titleName": "✦ EXPERTO EN OBJETOS MÁGICOS ✦",
+          "descripcion": "Ahora puedes sintonizarte con hasta cuatro objetos mágicos a la vez."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Planes conocidos",
+          "Objetos mágicos",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "6",
+            "4",
+            "3",
+            "9",
+            "4 · 3 · 2"
+          ]
+        ]
+      }
+    },
+    "11": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Objeto Almacena Conjuros",
+          "titleName": "✦ OBJETO ALMACENA CONJUROS ✦",
+          "descripcion": "Cada vez que termines un Descanso Largo, puedes tocar un arma Simple o Marcial o un objeto que puedas usar como Foco de Lanzamiento de Conjuros, y almacenar un conjuro en él, eligiendo un conjuro de Artífice de nivel 1, 2 o 3 que tenga un tiempo de lanzamiento de una acción y no requiera un componente Material que el conjuro consuma (no hace falta que lo tengas preparado).\nMientras sostiene el objeto, una criatura puede usar una acción mágica para producir el efecto del conjuro con él, usando tu modificador de aptitud mágica. Si el conjuro requiere concentración, la criatura debe concentrarse. Una vez que una criatura ha usado el objeto para producir el efecto del conjuro, no puede volver a usarlo así hasta el comienzo de su siguiente turno.\nEl conjuro permanece en el objeto hasta que se ha usado un número de veces igual al doble de tu modificador de Inteligencia (mínimo dos veces) o hasta que vuelves a usar esta característica para almacenar un conjuro en un objeto."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Planes conocidos",
+          "Objetos mágicos",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "6",
+            "4",
+            "3",
+            "10",
+            "4 · 3 · 3"
+          ]
+        ]
+      }
+    },
+    "12": {
+      "infoCubo": {
+        "columnas": [
+          "Planes conocidos",
+          "Objetos mágicos",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "6",
+            "4",
+            "3",
+            "10",
+            "4 · 3 · 3"
+          ]
+        ]
+      }
+    },
+    "13": {
+      "infoCubo": {
+        "columnas": [
+          "Planes conocidos",
+          "Objetos mágicos",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "6",
+            "4",
+            "3",
+            "11",
+            "4 · 3 · 3 · 1"
+          ]
+        ]
+      }
+    },
+    "14": {
+      "elegir": {
+        "lista": "planes",
+        "cantidad": 1,
+        "rasgo": "Replicar Objeto Mágico"
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Artificio Avanzado",
+          "titleName": "✦ ARTIFICIO AVANZADO ✦",
+          "descripcion": "Obtienes los siguientes beneficios:\n<b>Sabio de los objetos mágicos.</b> Ahora puedes sintonizarte con hasta cinco objetos mágicos a la vez.\n<b>Genio renovado.</b> Cuando terminas un Descanso Corto, recuperas un uso gastado de tu Destello de Genialidad."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Planes conocidos",
+          "Objetos mágicos",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "7",
+            "5",
+            "4",
+            "11",
+            "4 · 3 · 3 · 1"
+          ]
+        ]
+      }
+    },
+    "15": {
+      "infoCubo": {
+        "columnas": [
+          "Planes conocidos",
+          "Objetos mágicos",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "7",
+            "5",
+            "4",
+            "12",
+            "4 · 3 · 3 · 2"
+          ]
+        ]
+      }
+    },
+    "16": {
+      "infoCubo": {
+        "columnas": [
+          "Planes conocidos",
+          "Objetos mágicos",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "7",
+            "5",
+            "4",
+            "12",
+            "4 · 3 · 3 · 2"
+          ]
+        ]
+      }
+    },
+    "17": {
+      "infoCubo": {
+        "columnas": [
+          "Planes conocidos",
+          "Objetos mágicos",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "7",
+            "5",
+            "4",
+            "14",
+            "4 · 3 · 3 · 3 · 1"
+          ]
+        ]
+      }
+    },
+    "18": {
+      "elegir": {
+        "lista": "planes",
+        "cantidad": 1,
+        "rasgo": "Replicar Objeto Mágico"
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Maestro de los Objetos Mágicos",
+          "titleName": "✦ MAESTRO DE LOS OBJETOS MÁGICOS ✦",
+          "descripcion": "Ahora puedes sintonizarte con hasta seis objetos mágicos a la vez."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Planes conocidos",
+          "Objetos mágicos",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "8",
+            "6",
+            "4",
+            "14",
+            "4 · 3 · 3 · 3 · 1"
+          ]
+        ]
+      }
+    },
+    "19": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Don Épico",
+          "titleName": "✦ DON ÉPICO ✦",
+          "descripcion": "Obtienes una dote de Don Épico u otra dote de tu elección para la que califiques. Se recomienda el Don de resistencia a la energía."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Planes conocidos",
+          "Objetos mágicos",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "8",
+            "6",
+            "4",
+            "15",
+            "4 · 3 · 3 · 3 · 2"
+          ]
+        ]
+      }
+    },
+    "20": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Alma del Artificio",
+          "titleName": "✦ ALMA DEL ARTIFICIO ✦",
+          "descripcion": "Has desarrollado una conexión mística con tus objetos mágicos, a los que puedes recurrir en busca de ayuda. Obtienes los siguientes beneficios:\n<b>Engañar a la muerte.</b> Si quedas reducido a 0 puntos de golpe pero no mueres directamente, puedes desintegrar cualquier cantidad de objetos mágicos poco comunes o raros creados con tu característica Replicar Objeto Mágico. Si lo haces, tus puntos de golpe pasan a ser iguales a 20 veces la cantidad de objetos mágicos desintegrados.\n<b>Guía mágica.</b> Cuando terminas un Descanso Corto, recuperas todos los usos gastados de tu Destello de Genialidad si estás sintonizado con al menos un objeto mágico."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Planes conocidos",
+          "Objetos mágicos",
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–5.º)"
+        ],
+        "filas": [
+          [
+            "8",
+            "6",
+            "4",
+            "15",
+            "4 · 3 · 3 · 3 · 2"
+          ]
+        ]
+      }
+    }
+  }
 }

@@ -2,6 +2,8 @@
   "nombre": "Brujo",
   "claseName": "brujo",
   "seccion": "manual",
+  "icono": "👁️",
+  "fuenteReglas": "Manual del Jugador",
   "dadoDeGolpe": 8,
   "nivelesDeAumento": [
     4,
@@ -10,95 +12,137 @@
     16
   ],
   "conjurador": true,
-  "attribute": "sabiduria",
-  "niveles": {
-    "1": {
-      "descripcion": "Usuario de magia obtenida mediante un pacto con una entidad superior.",
-      "descripcionLarga": "El Brujo no hereda poder ni lo estudia: lo negocia. Su magia proviene de un pacto con fuerzas antiguas, entidades cósmicas o presencias que existen más allá de la comprensión mortal. Cada conjuro es una extensión de esa alianza. Es un caminante entre la voluntad propia y la influencia ajena, entre la ambición y la dependencia. Su poder es eficiente, directo y marcado por la firma de aquello que lo concedió.",
-      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Sabiduría y Carisma.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d8.\n    :: Nivel 1: 8 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d8 (o 5) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Armadura ligera.\n    :: Armas: Armas simples.\n    :: Herramientas: Ninguna.\n    :: Habilidades: escoge dos de entre Conocimiento Arcano, Engaño, Historia, Intimidación, Investigación, Naturaleza y Religión.\n❖ Equipo. Comienzas con el siguiente equipo, además del que te dé tu trasfondo:\n    :: (a) una ballesta ligera y 20 virotes o (b) cualquier arma simple.\n    :: (a) una bolsa de componentes o (b) un canalizador arcano.\n    :: (a) un paquete de erudito o (b) un paquete de explorador de mazmorras.\n    :: Armadura de cuero, cualquier arma simple y dos dagas.\n    :: Alternativa: 4d4 × 10 po en lugar del equipo de clase.\n❖ Fuente: Manual del Jugador.",
-      "informacionNivel": "✦  ✦\n\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n\n✦  ✦",
-      "subClase": {
-        "archihada": {
-          "subNombre": "El Archihada",
-          "subDescripcion": "Un señor o señora feérico: hechizos de encantamiento e ilusión y presencia feérica.",
-          "subNivel": {},
-          "rasgosPendientes": true,
-          "fuente": "Manual del Jugador"
-        },
-        "infernal": {
-          "subNombre": "El Infernal",
-          "subDescripcion": "Un pacto con un demonio de los planos inferiores: puntos de golpe temporales y fuego.",
-          "subNivel": {},
-          "rasgosPendientes": true,
-          "fuente": "Manual del Jugador"
-        },
-        "primigenio": {
-          "subNombre": "El Primigenio",
-          "subDescripcion": "Una entidad incomprensible del más allá: telepatía y magia que quiebra la mente.",
-          "subNivel": {},
-          "rasgosPendientes": true,
-          "fuente": "Manual del Jugador"
-        }
-      }
-    },
-    "2": {
-      "informacionNivel": "✦ ATAQUE TEMERARIO ✦"
-    },
-    "3": {
-      "informacionNivel": "✦ CONOCIMIENTO PRIMITIVO ✦"
-    },
-    "4": {
-      "informacionNivel": "✦  ✦"
-    },
-    "5": {
-      "informacionNivel": "✦  ✦"
-    },
-    "6": {
-      "informacionNivel": "✦  ✦"
-    },
-    "7": {
-      "informacionNivel": "✦  ✦"
-    },
-    "8": {
-      "informacionNivel": "✦  ✦"
-    },
-    "9": {
-      "informacionNivel": "✦  ✦"
-    },
-    "10": {
-      "informacionNivel": "✦  ✦"
-    },
-    "11": {
-      "informacionNivel": "✦  ✦"
-    },
-    "12": {
-      "informacionNivel": "✦  ✦"
-    },
-    "13": {
-      "informacionNivel": "✦  ✦"
-    },
-    "14": {
-      "informacionNivel": "✦  ✦"
-    },
-    "15": {
-      "informacionNivel": "✦  ✦"
-    },
-    "16": {
-      "informacionNivel": "✦  ✦"
-    },
-    "17": {
-      "informacionNivel": "✦  ✦"
-    },
-    "18": {
-      "informacionNivel": "✦  ✦"
-    },
-    "19": {
-      "informacionNivel": "✦  ✦"
-    },
-    "20": {
-      "informacionNivel": "✦  ✦"
-    }
+  "attribute": "carisma",
+  "lanzamiento": {
+    "progression": "pact",
+    "espaciosPacto": [
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        3,
+        5
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "cantripsKnown": [
+      2,
+      2,
+      2,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "preparedTable": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      10,
+      11,
+      11,
+      12,
+      12,
+      13,
+      13,
+      14,
+      14,
+      15,
+      15
+    ]
   },
+  "subclaseNombre": "Patrón sobrenatural",
   "competencias": {
     "salvaciones": [
       "sabiduria",
@@ -135,18 +179,1489 @@
     "habilidades": null
   },
   "equipoInicial": [
-    "(a) una ballesta ligera y 20 virotes o (b) cualquier arma simple.",
-    "(a) una bolsa de componentes o (b) un canalizador arcano.",
-    "(a) un paquete de erudito o (b) un paquete de explorador de mazmorras.",
-    "Armadura de cuero, cualquier arma simple y dos dagas."
+    "(A) Armadura de cuero, Hoz, 2 Dagas, Enfoque arcano (orbe), Libro (sabiduría oculta), Mochila del erudito y 15 PO.",
+    "(B) 100 PO."
   ],
-  "oroInicial": "4d4 × 10",
-  "fuenteReglas": "Manual del Jugador",
-  "subclaseNombre": "Patrón sobrenatural",
+  "listasDeEleccion": {
+    "invocaciones": {
+      "titulo": "Invocaciones Arcanas",
+      "reemplazarAlSubir": true,
+      "ayuda": "Las bloqueadas muestran su requisito (nivel o invocación previa). Al subir de nivel puedes reemplazar una, salvo si es requisito de otra que conserves.",
+      "opciones": [
+        {
+          "id": "explosion-agonizante",
+          "nombre": "Explosión Agonizante",
+          "descripcion": "Requisito: un truco de Brujo que haga daño.\nElige uno de tus trucos de Brujo conocidos que haga daño. Puedes añadir tu modificador de Carisma a las tiradas de daño de ese hechizo. Repetible. Puedes obtener esta invocación más de una vez. Cada vez que lo hagas, elige un truco elegible diferente.",
+          "requisitos": {
+            "nivel": 2
+          },
+          "repetible": true
+        },
+        {
+          "id": "armadura-sombras",
+          "nombre": "Armadura de Sombras",
+          "descripcion": "Puedes lanzar Armadura de Magos sobre ti mismo sin gastar una ranura de hechizo."
+        },
+        {
+          "id": "paso-ascendente",
+          "nombre": "Paso Ascendente",
+          "descripcion": "Puedes lanzar Levitar sobre ti mismo sin gastar una ranura de hechizo.",
+          "requisitos": {
+            "nivel": 5
+          }
+        },
+        {
+          "id": "vision-infernal",
+          "nombre": "Visión Infernal",
+          "descripcion": "Puedes ver normalmente en Luz Tenue y Oscuridad —tanto mágica como no mágica— dentro de un radio de 120 pies desde ti.",
+          "requisitos": {
+            "nivel": 2
+          }
+        },
+        {
+          "id": "espada-devoradora",
+          "nombre": "Espada Devoradora",
+          "descripcion": "El Ataque Adicional de tu invocación Espada Sedienta otorga dos ataques adicionales en lugar de uno.",
+          "requisitos": {
+            "nivel": 12,
+            "opcion": "espada-sedienta"
+          }
+        },
+        {
+          "id": "mente-arcana",
+          "nombre": "Mente Arcana",
+          "descripcion": "Tienes Ventaja en las tiradas de salvación de Constitución que realices para mantener la Concentración."
+        },
+        {
+          "id": "golpe-arcano",
+          "nombre": "Golpe Arcano",
+          "descripcion": "Una vez por turno, cuando golpeas a una criatura con tu arma de pacto, puedes gastar una ranura de hechizo de Magia del Pacto para hacer un daño adicional de 1d8 de Fuerza al objetivo, más otro 1d8 por nivel de la ranura de hechizo, y puedes darle al objetivo la condición de Tumbado si es de Tamaño Enorme o menor.",
+          "requisitos": {
+            "nivel": 5,
+            "opcion": "pacto-espada"
+          }
+        },
+        {
+          "id": "lanza-arcana",
+          "nombre": "Lanza Arcana",
+          "descripcion": "Requisito: un truco de Brujo que haga daño.\nElige uno de tus trucos de Brujo conocidos que haga daño y tenga un alcance de 10 pies o más. Cuando lances ese hechizo, su alcance aumenta en una cantidad de pies igual a 30 veces tu nivel de Warlock. Repetible. Puedes obtener esta invocación más de una vez. Cada vez que lo hagas, elige un truco elegible diferente.",
+          "requisitos": {
+            "nivel": 2
+          },
+          "repetible": true
+        },
+        {
+          "id": "vigor-infernal",
+          "nombre": "Vigor Infernal",
+          "descripcion": "Puedes lanzar Vida Falsa sobre ti mismo sin gastar una ranura de hechizo. Cuando lances el hechizo con esta característica, no lanzas el dado para los Puntos de Golpe Temporales; automáticamente obtienes el número más alto en el dado.",
+          "requisitos": {
+            "nivel": 2
+          }
+        },
+        {
+          "id": "mirada-dos-mentes",
+          "nombre": "Mirada de Dos Mentes",
+          "descripcion": "Puedes usar una Acción Bonus para tocar a una criatura dispuesta y percibir a través de sus sentidos hasta el final de tu siguiente turno. Mientras la criatura esté en el mismo plano de existencia que tú, puedes usar una Acción Bonus en turnos posteriores para mantener esta conexión, extendiendo la duración hasta el final de tu siguiente turno. La conexión termina si no la mantienes de esta manera.\nMientras percibes a través de los sentidos de la otra criatura, te beneficias de cualquier sentido especial que posea esa criatura, y puedes lanzar hechizos como si estuvieras en tu espacio o en el espacio de la otra criatura si ambos están a 60 pies de distancia o menos.",
+          "requisitos": {
+            "nivel": 5
+          }
+        },
+        {
+          "id": "regalo-profundidades",
+          "nombre": "Regalo de las Profundidades",
+          "descripcion": "Puedes respirar bajo el agua y obtienes una Velocidad de Nado igual a tu Velocidad.\nTambién puedes lanzar Respirar Bajo el Agua una vez sin gastar una ranura de hechizo. Recuperas la capacidad de lanzarlo de esta manera cuando terminas un Descanso Largo.",
+          "requisitos": {
+            "nivel": 5
+          }
+        },
+        {
+          "id": "regalo-protectores",
+          "nombre": "Regalo de los Protectores",
+          "descripcion": "Una nueva página aparece en tu Libro de las Sombras cuando lo conjuras. Con tu permiso, una criatura puede tomar una acción para escribir su nombre en esa página, que puede contener un número de nombres igual a tu modificador de Carisma (mínimo de un nombre).\nCuando cualquier criatura cuyo nombre esté en la página se reduzca a 0 Puntos de Golpe pero no muera de inmediato, la criatura mágicamente baja a 1 Punto de Golpe en su lugar. Una vez que esta magia se activa, ninguna criatura puede beneficiarse de ella hasta que termines un Descanso Largo.\nComo acción mágica, puedes borrar un nombre en la página tocándolo.",
+          "requisitos": {
+            "nivel": 9,
+            "opcion": "pacto-tomo"
+          }
+        },
+        {
+          "id": "maestro-cadena",
+          "nombre": "Inversión del Maestro de la Cadena",
+          "descripcion": "Cuando lances Encontrar Familiar, infundes al familiar convocado con una medida de tu poder arcano, otorgándole los siguientes beneficios:\n<b>Aéreo o Acuático.</b> El familiar obtiene una Velocidad de Vuelo o una Velocidad de Nado (a tu elección) de 40 pies.\n<b>Ataque Rápido.</b> Como una Acción Bonus, puedes ordenar al familiar que tome la acción de Ataque.\n<b>Daño Necrótico o Radiante.</b> Siempre que el familiar haga daño de Aturdimiento, Perforación o Corte, puedes hacer que cause daño Necrótico o Radiante en su lugar.\n<b>Tu DC de Salvación.</b> Si el familiar obliga a una criatura a hacer una tirada de salvación, utiliza tu DC de salvación de hechizos.\n<b>Resistencia.</b> Cuando el familiar recibe daño, puedes tomar una Reacción para concederle Resistencia contra ese daño.",
+          "requisitos": {
+            "nivel": 5,
+            "opcion": "pacto-cadena"
+          }
+        },
+        {
+          "id": "lecciones-primeros",
+          "nombre": "Lecciones de los Primeros",
+          "descripcion": "Has recibido conocimiento de una entidad anciana del multiverso, lo que te permite obtener una hazaña de Origen de tu elección (consulta el capítulo 5).\nRepetible. Puedes obtener esta invocación más de una vez. Cada vez que lo hagas, elige una hazaña de Origen diferente.",
+          "requisitos": {
+            "nivel": 2
+          },
+          "repetible": true,
+          "elegir": {
+            "lista": "dote-origen",
+            "cantidad": 1
+          }
+        },
+        {
+          "id": "chupador-vida",
+          "nombre": "Chupador de Vida",
+          "descripcion": "Una vez por turno, cuando golpees a una criatura con tu arma de pacto, puedes hacer un daño adicional de 1d6 Necrótico, Psíquico o Radiante (a tu elección) a la criatura, y puedes gastar uno de tus Dados de Puntos de Golpe para lanzarlo y recuperar una cantidad de Puntos de Golpe igual a la tirada más tu modificador de Constitución (mínimo de 1 Punto de Golpe).",
+          "requisitos": {
+            "nivel": 9,
+            "opcion": "pacto-espada"
+          }
+        },
+        {
+          "id": "mascara-caras",
+          "nombre": "Máscara de Muchas Caras",
+          "descripcion": "Puedes lanzar Disfrazarse sin gastar una ranura de hechizo.",
+          "requisitos": {
+            "nivel": 2
+          }
+        },
+        {
+          "id": "mil-formas",
+          "nombre": "Maestro de las Mil Formas",
+          "descripcion": "Puedes lanzar Adivinar sin gastar una ranura de hechizo.",
+          "requisitos": {
+            "nivel": 5
+          }
+        },
+        {
+          "id": "visiones-nebulosas",
+          "nombre": "Visiones Nebulosas",
+          "descripcion": "Puedes lanzar Imagen Silenciosa sin gastar una ranura de hechizo.",
+          "requisitos": {
+            "nivel": 2
+          }
+        },
+        {
+          "id": "uno-sombras",
+          "nombre": "Uno con las Sombras",
+          "descripcion": "Mientras estés en un área de Luz Tenue u Oscuridad, puedes lanzar Invisibilidad sobre ti mismo sin gastar una ranura de hechizo.",
+          "requisitos": {
+            "nivel": 5
+          }
+        },
+        {
+          "id": "salto-sobrenatural",
+          "nombre": "Salto Sobrenatural",
+          "descripcion": "Puedes lanzar Salto sobre ti mismo sin gastar una ranura de hechizo.",
+          "requisitos": {
+            "nivel": 2
+          }
+        },
+        {
+          "id": "pacto-espada",
+          "nombre": "Pacto de la Espada",
+          "descripcion": "Como una Acción Bonus, puedes conjurar un arma de pacto en tu mano —un arma cuerpo a cuerpo Simple o Marcial de tu elección con la que te unes— o crear un vínculo con un arma mágica que toques; no puedes vincularte con un arma mágica si otra persona está sintonizada con ella o si otro Warlock está vinculado con ella. Hasta que el vínculo termine, tienes competencia con el arma y puedes usarla como un Foco de Hechizos.\nSiempre que ataques con el arma vinculada, puedes usar tu modificador de Carisma para las tiradas de ataque y daño en lugar de usar Fuerza o Destreza; y puedes hacer que el arma cause daño Necrótico, Psíquico o Radiante o su tipo de daño normal.\nTu vínculo con el arma termina si usas nuevamente la Acción Bonus de esta característica, si el arma está a más de 5 pies de ti durante 1 minuto o más, o si mueres. Un arma conjurada desaparece cuando el vínculo termina."
+        },
+        {
+          "id": "pacto-cadena",
+          "nombre": "Pacto de la Cadena",
+          "descripcion": "Aprendes el hechizo Encontrar Familiar y puedes lanzarlo como una acción mágica sin gastar una ranura de hechizo.\nCuando lances el hechizo, eliges una de las formas normales para tu familiar o una de las siguientes formas especiales: Imp, Pseudodragón, Quasit, Esqueleto, Renacuajo de Slaad, Esfinge de Maravillas, Hada o Serpiente Venenosa (consulta el apéndice B para la ficha del familiar).\nAdemás, cuando tomas la acción de Ataque, puedes renunciar a uno de tus propios ataques para permitir que tu familiar haga un ataque propio con su Reacción.",
+          "efectos": [
+            {
+              "type": "conjuro_preparado",
+              "value": "Encontrar familiar"
+            }
+          ]
+        },
+        {
+          "id": "pacto-tomo",
+          "nombre": "Pacto del Tomo",
+          "descripcion": "Unificando hebras de sombra, conjuras un libro en tu mano al final de un Descanso Corto o Largo. Este Libro de las Sombras (determinas su apariencia) contiene magia arcana a la que solo tú puedes acceder, otorgándote los siguientes beneficios. El libro desaparece si conjuras otro libro con esta característica o si mueres.\n<b>Trucos y Rituales.</b> Cuando aparece el libro, elige tres trucos y dos hechizos de nivel 1 que tengan la etiqueta de Ritual. Los hechizos pueden ser de cualquier lista de hechizos de clase y deben ser hechizos que no tengas ya preparados. Mientras el libro esté contigo, tendrás los hechizos elegidos preparados, y funcionarán como hechizos de Warlock para ti.\n<b>Foco de Hechizos.</b> Puedes usar el libro como un Foco de Hechizos."
+        },
+        {
+          "id": "explosion-repulsiva",
+          "nombre": "Explosión Repulsiva",
+          "descripcion": "Requisito: un truco de Brujo que haga daño mediante una tirada de ataque.\nElige uno de tus trucos de Warlock conocidos que requiera una tirada de ataque. Cuando aciertes a una criatura de Tamaño Grande o menor con ese truco, puedes empujar a la criatura hasta 10 pies directamente lejos de ti. Repetible. Puedes obtener esta invocación más de una vez. Cada vez que lo hagas, elige un truco elegible diferente.",
+          "requisitos": {
+            "nivel": 2
+          },
+          "repetible": true
+        },
+        {
+          "id": "espada-sedienta",
+          "nombre": "Espada Sedienta",
+          "descripcion": "Obtienes la característica Ataque Extra solo para tu arma de pacto. Con esta característica, puedes atacar dos veces con el arma en lugar de una cuando tomas la acción de Ataque en tu turno.",
+          "requisitos": {
+            "nivel": 5,
+            "opcion": "pacto-espada"
+          }
+        },
+        {
+          "id": "visiones-reinos",
+          "nombre": "Visiones de Reinos Distantes",
+          "descripcion": "Puedes lanzar Ojo Arcano sin gastar una ranura de hechizo.",
+          "requisitos": {
+            "nivel": 9
+          }
+        },
+        {
+          "id": "susurros-tumba",
+          "nombre": "Susurros de la Tumba",
+          "descripcion": "Puedes lanzar Hablar con los Muertos sin gastar una ranura de hechizo.",
+          "requisitos": {
+            "nivel": 7
+          }
+        },
+        {
+          "id": "vista-bruja",
+          "nombre": "Vista de Bruja",
+          "descripcion": "Tienes Visión Verdadera con un alcance de 30 pies.",
+          "requisitos": {
+            "nivel": 15
+          }
+        }
+      ]
+    },
+    "dote-origen": {
+      "titulo": "Hazaña de Origen (Lecciones de los Primeros)",
+      "libre": true,
+      "placeholder": "Nombre de la hazaña de Origen (capítulo 5)"
+    },
+    "arcanum-6": {
+      "titulo": "Arcanum Místico (nivel 6)",
+      "desde": "conjuros",
+      "clase": "brujo",
+      "niveles": [
+        6
+      ],
+      "siemprePreparados": true,
+      "reemplazarAlSubir": true,
+      "ayuda": "Lo lanzas una vez por Descanso Largo sin gastar espacio."
+    },
+    "arcanum-7": {
+      "titulo": "Arcanum Místico (nivel 7)",
+      "desde": "conjuros",
+      "clase": "brujo",
+      "niveles": [
+        7
+      ],
+      "siemprePreparados": true,
+      "reemplazarAlSubir": true,
+      "ayuda": "Lo lanzas una vez por Descanso Largo sin gastar espacio."
+    },
+    "arcanum-8": {
+      "titulo": "Arcanum Místico (nivel 8)",
+      "desde": "conjuros",
+      "clase": "brujo",
+      "niveles": [
+        8
+      ],
+      "siemprePreparados": true,
+      "reemplazarAlSubir": true,
+      "ayuda": "Lo lanzas una vez por Descanso Largo sin gastar espacio."
+    },
+    "arcanum-9": {
+      "titulo": "Arcanum Místico (nivel 9)",
+      "desde": "conjuros",
+      "clase": "brujo",
+      "niveles": [
+        9
+      ],
+      "siemprePreparados": true,
+      "reemplazarAlSubir": true,
+      "ayuda": "Lo lanzas una vez por Descanso Largo sin gastar espacio."
+    }
+  },
   "subclasesRetiradas": [
     "senda1",
     "senda2",
     "senda3",
     "senda4"
-  ]
+  ],
+  "niveles": {
+    "1": {
+      "descripcion": "Usuario de magia obtenida mediante un pacto con una entidad superior.",
+      "descripcionLarga": "El Brujo no hereda poder ni lo estudia: lo negocia. Su magia proviene de un pacto con fuerzas antiguas, entidades cósmicas o presencias que existen más allá de la comprensión mortal. Cada conjuro es una extensión de esa alianza. Es un caminante entre la voluntad propia y la influencia ajena, entre la ambición y la dependencia. Su poder es eficiente, directo y marcado por la firma de aquello que lo concedió.",
+      "atributoInicial": "Atributos de clase:\n❖ Habilidad principal: Carisma.\n❖ Tiradas de Salvación: Sabiduría y Carisma.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d8.\n    :: Nivel 1: 8 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d8 (o 5) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Armadura ligera.\n    :: Armas: Armas simples.\n    :: Herramientas: Ninguna.\n    :: Habilidades: elige 2 entre Arcanos, Engaño, Historia, Intimidación, Investigación, Naturaleza o Religión.\n❖ Equipo inicial: elige A o B.\n    :: (A) Armadura de cuero, Hoz, 2 Dagas, Enfoque arcano (orbe), Libro (sabiduría oculta), Mochila del erudito y 15 PO.\n    :: (B) 100 PO.\n❖ Fuente: Manual del Jugador.",
+      "infoBlock": {
+        "blockUno": {
+          "name": "Invocaciones Arcanas",
+          "titleName": "✦ INVOCACIONES ARCANAS ✦",
+          "descripcion": "Has desenterrado Invocaciones Arcanas, fragmentos de conocimiento prohibido que te imbuyen con una habilidad mágica duradera u otras lecciones. Obtienes una invocación a tu elección, como el Pacto del Tomo. Las invocaciones se describen en la sección «Opciones de Invocaciones Arcanas» más adelante en la descripción de esta clase.\n<b>Requisitos.</b> Si una invocación tiene un requisito, debes cumplirlo para aprenderla. Por ejemplo, si una invocación requiere que seas un Warlock de nivel 5, puedes seleccionar la invocación una vez que alcances el nivel 5 de Warlock.\n<b>Reemplazar y Obtener Invocaciones.</b> Siempre que ganes un nivel de Warlock, puedes reemplazar una de tus invocaciones con otra para la que califiques. No puedes reemplazar una invocación si es un requisito para otra invocación que tengas.\nCuando alcances ciertos niveles de Warlock, obtienes más invocaciones a tu elección, como se muestra en la columna de Invocaciones de la tabla de Características del Warlock.\nNo puedes elegir la misma invocación más de una vez a menos que su descripción indique lo contrario.\n\n<b>Opciones de Invocaciones Arcanas</b> (en orden alfabético)\n\n<b>Explosión Agonizante</b> (Requisito: Nivel 2+ de Brujo)\nRequisito: un truco de Brujo que haga daño.\nElige uno de tus trucos de Brujo conocidos que haga daño. Puedes añadir tu modificador de Carisma a las tiradas de daño de ese hechizo. Repetible. Puedes obtener esta invocación más de una vez. Cada vez que lo hagas, elige un truco elegible diferente.\n\n<b>Armadura de Sombras</b>\nPuedes lanzar Armadura de Magos sobre ti mismo sin gastar una ranura de hechizo.\n\n<b>Paso Ascendente</b> (Requisito: Nivel 5+ de Brujo)\nPuedes lanzar Levitar sobre ti mismo sin gastar una ranura de hechizo.\n\n<b>Visión Infernal</b> (Requisito: Nivel 2+ de Brujo)\nPuedes ver normalmente en Luz Tenue y Oscuridad —tanto mágica como no mágica— dentro de un radio de 120 pies desde ti.\n\n<b>Espada Devoradora</b> (Requisito: Nivel 12+ de Brujo, invocación Espada Sedienta)\nEl Ataque Adicional de tu invocación Espada Sedienta otorga dos ataques adicionales en lugar de uno.\n\n<b>Mente Arcana</b>\nTienes Ventaja en las tiradas de salvación de Constitución que realices para mantener la Concentración.\n\n<b>Golpe Arcano</b> (Requisito: Nivel 5+ de Brujo, invocación Pacto de la Espada)\nUna vez por turno, cuando golpeas a una criatura con tu arma de pacto, puedes gastar una ranura de hechizo de Magia del Pacto para hacer un daño adicional de 1d8 de Fuerza al objetivo, más otro 1d8 por nivel de la ranura de hechizo, y puedes darle al objetivo la condición de Tumbado si es de Tamaño Enorme o menor.\n\n<b>Lanza Arcana</b> (Requisito: Nivel 2+ de Brujo)\nRequisito: un truco de Brujo que haga daño.\nElige uno de tus trucos de Brujo conocidos que haga daño y tenga un alcance de 10 pies o más. Cuando lances ese hechizo, su alcance aumenta en una cantidad de pies igual a 30 veces tu nivel de Warlock. Repetible. Puedes obtener esta invocación más de una vez. Cada vez que lo hagas, elige un truco elegible diferente.\n\n<b>Vigor Infernal</b> (Requisito: Nivel 2+ de Brujo)\nPuedes lanzar Vida Falsa sobre ti mismo sin gastar una ranura de hechizo. Cuando lances el hechizo con esta característica, no lanzas el dado para los Puntos de Golpe Temporales; automáticamente obtienes el número más alto en el dado.\n\n<b>Mirada de Dos Mentes</b> (Requisito: Nivel 5+ de Brujo)\nPuedes usar una Acción Bonus para tocar a una criatura dispuesta y percibir a través de sus sentidos hasta el final de tu siguiente turno. Mientras la criatura esté en el mismo plano de existencia que tú, puedes usar una Acción Bonus en turnos posteriores para mantener esta conexión, extendiendo la duración hasta el final de tu siguiente turno. La conexión termina si no la mantienes de esta manera.\nMientras percibes a través de los sentidos de la otra criatura, te beneficias de cualquier sentido especial que posea esa criatura, y puedes lanzar hechizos como si estuvieras en tu espacio o en el espacio de la otra criatura si ambos están a 60 pies de distancia o menos.\n\n<b>Regalo de las Profundidades</b> (Requisito: Nivel 5+ de Brujo)\nPuedes respirar bajo el agua y obtienes una Velocidad de Nado igual a tu Velocidad.\nTambién puedes lanzar Respirar Bajo el Agua una vez sin gastar una ranura de hechizo. Recuperas la capacidad de lanzarlo de esta manera cuando terminas un Descanso Largo.\n\n<b>Regalo de los Protectores</b> (Requisito: Nivel 9+ de Brujo, invocación Pacto del Tomo)\nUna nueva página aparece en tu Libro de las Sombras cuando lo conjuras. Con tu permiso, una criatura puede tomar una acción para escribir su nombre en esa página, que puede contener un número de nombres igual a tu modificador de Carisma (mínimo de un nombre).\nCuando cualquier criatura cuyo nombre esté en la página se reduzca a 0 Puntos de Golpe pero no muera de inmediato, la criatura mágicamente baja a 1 Punto de Golpe en su lugar. Una vez que esta magia se activa, ninguna criatura puede beneficiarse de ella hasta que termines un Descanso Largo.\nComo acción mágica, puedes borrar un nombre en la página tocándolo.\n\n<b>Inversión del Maestro de la Cadena</b> (Requisito: Nivel 5+ de Brujo, invocación Pacto de la Cadena)\nCuando lances Encontrar Familiar, infundes al familiar convocado con una medida de tu poder arcano, otorgándole los siguientes beneficios:\n<b>Aéreo o Acuático.</b> El familiar obtiene una Velocidad de Vuelo o una Velocidad de Nado (a tu elección) de 40 pies.\n<b>Ataque Rápido.</b> Como una Acción Bonus, puedes ordenar al familiar que tome la acción de Ataque.\n<b>Daño Necrótico o Radiante.</b> Siempre que el familiar haga daño de Aturdimiento, Perforación o Corte, puedes hacer que cause daño Necrótico o Radiante en su lugar.\n<b>Tu DC de Salvación.</b> Si el familiar obliga a una criatura a hacer una tirada de salvación, utiliza tu DC de salvación de hechizos.\n<b>Resistencia.</b> Cuando el familiar recibe daño, puedes tomar una Reacción para concederle Resistencia contra ese daño.\n\n<b>Lecciones de los Primeros</b> (Requisito: Nivel 2+ de Brujo)\nHas recibido conocimiento de una entidad anciana del multiverso, lo que te permite obtener una hazaña de Origen de tu elección (consulta el capítulo 5).\nRepetible. Puedes obtener esta invocación más de una vez. Cada vez que lo hagas, elige una hazaña de Origen diferente.\n\n<b>Chupador de Vida</b> (Requisito: Nivel 9+ de Brujo, invocación Pacto de la Espada)\nUna vez por turno, cuando golpees a una criatura con tu arma de pacto, puedes hacer un daño adicional de 1d6 Necrótico, Psíquico o Radiante (a tu elección) a la criatura, y puedes gastar uno de tus Dados de Puntos de Golpe para lanzarlo y recuperar una cantidad de Puntos de Golpe igual a la tirada más tu modificador de Constitución (mínimo de 1 Punto de Golpe).\n\n<b>Máscara de Muchas Caras</b> (Requisito: Nivel 2+ de Brujo)\nPuedes lanzar Disfrazarse sin gastar una ranura de hechizo.\n\n<b>Maestro de las Mil Formas</b> (Requisito: Nivel 5+ de Brujo)\nPuedes lanzar Adivinar sin gastar una ranura de hechizo.\n\n<b>Visiones Nebulosas</b> (Requisito: Nivel 2+ de Brujo)\nPuedes lanzar Imagen Silenciosa sin gastar una ranura de hechizo.\n\n<b>Uno con las Sombras</b> (Requisito: Nivel 5+ de Brujo)\nMientras estés en un área de Luz Tenue u Oscuridad, puedes lanzar Invisibilidad sobre ti mismo sin gastar una ranura de hechizo.\n\n<b>Salto Sobrenatural</b> (Requisito: Nivel 2+ de Brujo)\nPuedes lanzar Salto sobre ti mismo sin gastar una ranura de hechizo.\n\n<b>Pacto de la Espada</b>\nComo una Acción Bonus, puedes conjurar un arma de pacto en tu mano —un arma cuerpo a cuerpo Simple o Marcial de tu elección con la que te unes— o crear un vínculo con un arma mágica que toques; no puedes vincularte con un arma mágica si otra persona está sintonizada con ella o si otro Warlock está vinculado con ella. Hasta que el vínculo termine, tienes competencia con el arma y puedes usarla como un Foco de Hechizos.\nSiempre que ataques con el arma vinculada, puedes usar tu modificador de Carisma para las tiradas de ataque y daño en lugar de usar Fuerza o Destreza; y puedes hacer que el arma cause daño Necrótico, Psíquico o Radiante o su tipo de daño normal.\nTu vínculo con el arma termina si usas nuevamente la Acción Bonus de esta característica, si el arma está a más de 5 pies de ti durante 1 minuto o más, o si mueres. Un arma conjurada desaparece cuando el vínculo termina.\n\n<b>Pacto de la Cadena</b>\nAprendes el hechizo Encontrar Familiar y puedes lanzarlo como una acción mágica sin gastar una ranura de hechizo.\nCuando lances el hechizo, eliges una de las formas normales para tu familiar o una de las siguientes formas especiales: Imp, Pseudodragón, Quasit, Esqueleto, Renacuajo de Slaad, Esfinge de Maravillas, Hada o Serpiente Venenosa (consulta el apéndice B para la ficha del familiar).\nAdemás, cuando tomas la acción de Ataque, puedes renunciar a uno de tus propios ataques para permitir que tu familiar haga un ataque propio con su Reacción.\n\n<b>Pacto del Tomo</b>\nUnificando hebras de sombra, conjuras un libro en tu mano al final de un Descanso Corto o Largo. Este Libro de las Sombras (determinas su apariencia) contiene magia arcana a la que solo tú puedes acceder, otorgándote los siguientes beneficios. El libro desaparece si conjuras otro libro con esta característica o si mueres.\n<b>Trucos y Rituales.</b> Cuando aparece el libro, elige tres trucos y dos hechizos de nivel 1 que tengan la etiqueta de Ritual. Los hechizos pueden ser de cualquier lista de hechizos de clase y deben ser hechizos que no tengas ya preparados. Mientras el libro esté contigo, tendrás los hechizos elegidos preparados, y funcionarán como hechizos de Warlock para ti.\n<b>Foco de Hechizos.</b> Puedes usar el libro como un Foco de Hechizos.\n\n<b>Explosión Repulsiva</b> (Requisito: Nivel 2+ de Brujo)\nRequisito: un truco de Brujo que haga daño mediante una tirada de ataque.\nElige uno de tus trucos de Warlock conocidos que requiera una tirada de ataque. Cuando aciertes a una criatura de Tamaño Grande o menor con ese truco, puedes empujar a la criatura hasta 10 pies directamente lejos de ti. Repetible. Puedes obtener esta invocación más de una vez. Cada vez que lo hagas, elige un truco elegible diferente.\n\n<b>Espada Sedienta</b> (Requisito: Nivel 5+ de Brujo, invocación Pacto de la Espada)\nObtienes la característica Ataque Extra solo para tu arma de pacto. Con esta característica, puedes atacar dos veces con el arma en lugar de una cuando tomas la acción de Ataque en tu turno.\n\n<b>Visiones de Reinos Distantes</b> (Requisito: Nivel 9+ de Brujo)\nPuedes lanzar Ojo Arcano sin gastar una ranura de hechizo.\n\n<b>Susurros de la Tumba</b> (Requisito: Nivel 7+ de Brujo)\nPuedes lanzar Hablar con los Muertos sin gastar una ranura de hechizo.\n\n<b>Vista de Bruja</b> (Requisito: Nivel 15+ de Brujo)\nTienes Visión Verdadera con un alcance de 30 pies.",
+          "elegir": {
+            "lista": "invocaciones",
+            "cantidad": 1
+          }
+        },
+        "blockDos": {
+          "name": "Magia del Pacto",
+          "titleName": "✦ MAGIA DEL PACTO ✦",
+          "descripcion": "A través de una ceremonia oculta, has formado un pacto con una entidad misteriosa para obtener poderes mágicos. La entidad es una voz en las sombras —su identidad no está clara— pero su don para ti es concreto: la capacidad de lanzar hechizos. Consulta el capítulo 7 para las reglas sobre el lanzamiento de hechizos. La información a continuación detalla cómo usas esas reglas con los hechizos de Warlock, que aparecen en la lista de hechizos de Warlock más adelante en la descripción de la clase.\n<b>Trucos.</b> Conoces dos trucos de Warlock de tu elección. Se recomiendan Eldritch Blast y Prestidigitation. Siempre que ganes un nivel de Warlock, puedes reemplazar uno de tus trucos de esta característica con otro truco de Warlock de tu elección.\nCuando alcances los niveles 4 y 10 de Warlock, aprendes otro truco de Warlock de tu elección, como se muestra en la columna de Trucos de la tabla de Características del Warlock.\n<b>Ranuras de Hechizos.</b> La tabla de Características del Warlock muestra cuántas ranuras de hechizos tienes para lanzar tus hechizos de Warlock de niveles 1-5. La tabla también muestra el nivel de esas ranuras, que son todas del mismo nivel. Recuperas todas las ranuras de hechizos de Magia del Pacto gastadas cuando terminas un Descanso Corto o Largo.\nPor ejemplo, cuando eres un Warlock de nivel 5, tienes dos ranuras de hechizo de nivel 3. Para lanzar el hechizo de nivel 1 Rayo de Bruja, debes gastar una de esas ranuras, y lo lanzas como un hechizo de nivel 3.\n<b>Hechizos Preparados de Nivel 1+.</b> Preparas la lista de hechizos de nivel 1 disponibles para lanzar con esta característica. Para comenzar, elige dos hechizos de Warlock de nivel 1. Se recomiendan Encantar Persona y Maldición.\nEl número de hechizos en tu lista aumenta a medida que ganas niveles de Warlock, como se muestra en la columna de Hechizos Preparados de la tabla de Características del Warlock. Siempre que ese número aumente, elige hechizos adicionales de Warlock hasta que el número de hechizos en tu lista coincida con el número en la tabla. Los hechizos elegidos deben ser de un nivel no superior al mostrado en la columna de Nivel de Ranura de la tabla para tu nivel. Por ejemplo, cuando alcanzas el nivel 6, aprendes un nuevo hechizo de Warlock, que puede ser de niveles 1-3.\nSi otra característica de Warlock te otorga hechizos que siempre tienes preparados, esos hechizos no cuentan contra el número de hechizos que puedes preparar con esta característica, pero esos hechizos cuentan como hechizos de Warlock para ti de otra manera.\n<b>Cambiar tus Hechizos Preparados.</b> Siempre que ganes un nivel de Warlock, puedes reemplazar un hechizo en tu lista con otro hechizo de Warlock de un nivel elegible.\n<b>Habilidad para Lanzar Hechizos.</b> Carisma es tu habilidad para lanzar hechizos para tus hechizos de Warlock.\n<b>Foco de Lanzamiento de Hechizos.</b> Puedes usar un Foco Arcano como un Foco de Lanzamiento de Hechizos para tus hechizos de Warlock.\n\n<b>Trucos de Brujo (lista parcial de las imágenes)</b>\n<table><thead><tr><th>Truco</th><th>Escuela</th><th>Especial</th></tr></thead><tbody><tr><td>Guardia de la Espada</td><td>Abjuración</td><td>C</td></tr><tr><td>Toque Helado</td><td>Necromancia</td><td></td></tr><tr><td>Explosión Eldritch</td><td>Evocación</td><td></td></tr><tr><td>Amigos</td><td>Encantamiento</td><td>C</td></tr><tr><td>Mano Mágica</td><td>Conjuración</td><td></td></tr><tr><td>Estremecimiento Mental</td><td>Encantamiento</td><td></td></tr><tr><td>Ilusión Menor</td><td>Ilusión</td><td></td></tr><tr><td>Rocío Venenoso</td><td>Necromancia</td><td></td></tr></tbody></table>\nC: requiere Concentración."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Invocaciones",
+          "Trucos",
+          "Hechizos preparados",
+          "Espacios de pacto"
+        ],
+        "filas": [
+          [
+            "1",
+            "2",
+            "2",
+            "1 × nv. 1"
+          ]
+        ]
+      }
+    },
+    "2": {
+      "elegir": {
+        "lista": "invocaciones",
+        "cantidad": 2,
+        "rasgo": "Invocaciones Arcanas"
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Astucia Mágica",
+          "titleName": "✦ ASTUCIA MÁGICA ✦",
+          "descripcion": "Puedes realizar un rito esotérico durante 1 minuto. Al final de este, recuperas las ranuras de hechizos de Magia del Pacto gastadas, pero no más de un número igual a la mitad de tu máximo (redondeado hacia arriba). Una vez que uses esta característica, no podrás hacerlo de nuevo hasta que termines un Descanso Largo."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Invocaciones",
+          "Trucos",
+          "Hechizos preparados",
+          "Espacios de pacto"
+        ],
+        "filas": [
+          [
+            "3",
+            "2",
+            "3",
+            "2 × nv. 1"
+          ]
+        ]
+      }
+    },
+    "3": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Subclase de Brujo",
+          "titleName": "✦ SUBCLASE DE BRUJO ✦",
+          "descripcion": "Obtienes una subclase de Warlock de tu elección. Las subclases Patrón de los Archifey, Patrón Celestial, Patrón de los Demonios y Patrón de los Grandes Antiguos se detallan después de la descripción de esta clase. Una subclase es una especialización que te otorga características en ciertos niveles de Warlock. Durante el resto de tu carrera, obtienes cada una de las características de tu subclase que sean de tu nivel de Warlock o inferiores."
+        }
+      },
+      "subClase": {
+        "archihada": {
+          "subNombre": "Patrón Feérico",
+          "fuente": "Manual del Jugador",
+          "subDescripcion": "✦ PATRÓN FEÉRICO ✦\nTrato con los Caprichos de los Fey\n\nTu pacto se basa en el poder del Plano Fey. Cuando eliges esta subclase, podrías hacer un trato con un archfey, como el Príncipe de la Escarcha, la Reina del Aire y la Oscuridad, gobernante de la Corte del Crepúsculo; Titania de la Corte de Verano; o una antigua bruja. O podrías invocar un espectro de Fey, tejiendo una red de favores y deudas. Sea quien sea, tu patrón suele ser enigmático y caprichoso.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Hechizos de Archifey",
+                  "subTitleName": "✦ HECHIZOS DE ARCHIFEY ✦",
+                  "subDescripcion": "La magia de tu patrón asegura que siempre tengas ciertos hechizos listos; cuando alcances un nivel de Brujo especificado en la tabla de Hechizos de Archifey, a partir de ese momento siempre tendrás preparados los hechizos listados.\n\n<b>Hechizos de Archifey</b>\n<table><thead><tr><th>Nivel de Brujo</th><th>Hechizos</th></tr></thead><tbody><tr><td>3</td><td>Calmar Emociones, Fuego Feérico, Paso Brumoso, Fuerza Fantasmal, Sueño</td></tr><tr><td>5</td><td>Intermitencia, Crecimiento Vegetal</td></tr><tr><td>7</td><td>Dominar Bestia, Invisibilidad Mayor</td></tr><tr><td>9</td><td>Dominar Persona, Apariencia</td></tr></tbody></table>",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Calmar emociones"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Fuego feérico"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Paso brumoso"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Fuerza Fantasmal"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Dormir"
+                    }
+                  ]
+                },
+                "subBlockDos": {
+                  "subName": "Pasos de los Fey",
+                  "subTitleName": "✦ PASOS DE LOS FEY ✦",
+                  "subDescripcion": "Tu patrón te otorga la habilidad de moverte entre los límites de los planos. Puedes lanzar Paso Brumoso sin gastar una ranura de hechizo un número de veces igual a tu modificador de Carisma (mínimo una vez), y recuperas todos los usos gastados cuando terminas un Descanso Largo.\nAdemás, siempre que lances ese hechizo, puedes elegir uno de los siguientes efectos adicionales:\n<b>Paso Refrescante.</b> Inmediatamente después de teletransportarte, tú o una criatura que puedas ver dentro de 10 pies de ti ganan 1d10 Puntos de Golpe Temporales.\n<b>Paso Provocador.</b> Las criaturas dentro de 5 pies del espacio que dejaste deben tener éxito en una tirada de salvación de Sabiduría contra tu DC de salvación de hechizos o tendrán Desventaja en las tiradas de ataque contra criaturas distintas a ti hasta el comienzo de tu próximo turno."
+                }
+              }
+            },
+            "5": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Hechizos de Archifey",
+                  "subTitleName": "✦ HECHIZOS DE ARCHIFEY ✦",
+                  "subDescripcion": "Siempre tienes preparados: Intermitencia, Crecimiento Vegetal (ver Hechizos de Archifey, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Intermitencia"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Crecimiento vegetal"
+                    }
+                  ]
+                }
+              }
+            },
+            "6": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Escape Brumoso",
+                  "subTitleName": "✦ ESCAPE BRUMOSO ✦",
+                  "subDescripcion": "Puedes lanzar Paso Brumoso como una Reacción en respuesta a recibir daño.\nAdemás, los siguientes efectos ahora están entre tus opciones de Pasos de los Fey:\n\n<b>Paso Desaparecedor.</b> Tienes la condición de Invisible hasta el comienzo de tu próximo turno o hasta que inmediatamente después realices una tirada de ataque, causes daño, o lances un hechizo.\n<b>Paso Aterrador.</b> Las criaturas dentro de 5 pies del espacio que dejaste o del espacio en el que apareces (a tu elección) deben tener éxito en una tirada de salvación de Sabiduría contra tu DC de salvación de hechizos o recibirán 2d10 de daño Psíquico."
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Hechizos de Archifey",
+                  "subTitleName": "✦ HECHIZOS DE ARCHIFEY ✦",
+                  "subDescripcion": "Siempre tienes preparados: Dominar Bestia, Invisibilidad Mayor (ver Hechizos de Archifey, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Dominar bestia"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Invisibilidad mejorada"
+                    }
+                  ]
+                }
+              }
+            },
+            "9": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Hechizos de Archifey",
+                  "subTitleName": "✦ HECHIZOS DE ARCHIFEY ✦",
+                  "subDescripcion": "Siempre tienes preparados: Dominar Persona, Apariencia (ver Hechizos de Archifey, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Dominar persona"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Apariencia"
+                    }
+                  ]
+                }
+              }
+            },
+            "10": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Defensas Encantadoras",
+                  "subTitleName": "✦ DEFENSAS ENCANTADORAS ✦",
+                  "subDescripcion": "Tu patrón te enseña cómo proteger tu mente y cuerpo. Eres inmune a la condición de Encantado.\nAdemás, inmediatamente después de que una criatura que puedes ver te golpee con una tirada de ataque, puedes tomar una Reacción para reducir el daño que recibes a la mitad (redondeado hacia abajo), y puedes forzar al atacante a realizar una tirada de salvación de Sabiduría contra tu DC de salvación de hechizos. En caso de que falle la salvación, el atacante recibe daño Psíquico igual al daño que recibiste.\nUna vez que uses esta Reacción, no podrás usarla de nuevo hasta que termines un Descanso Largo, a menos que gastes una ranura de hechizo de Pacto (sin requerir acción) para restaurar su uso.",
+                  "efectos": [
+                    {
+                      "type": "inmunidad_condicion",
+                      "value": "Hechizado"
+                    }
+                  ]
+                }
+              }
+            },
+            "14": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Magia Encantadora",
+                  "subTitleName": "✦ MAGIA ENCANTADORA ✦",
+                  "subDescripcion": "Tu patrón te concede la habilidad de entrelazar tu magia con la teletransportación. Inmediatamente después de lanzar un hechizo de Encantamiento o Ilusión usando una acción y una ranura de hechizo, puedes lanzar Paso Brumoso como parte de la misma acción y sin gastar una ranura de hechizo."
+                }
+              }
+            }
+          }
+        },
+        "celestial": {
+          "subNombre": "Patrón Celestial",
+          "fuente": "Manual del Jugador",
+          "subDescripcion": "✦ PATRÓN CELESTIAL ✦\nLlama al Poder de los Cielos\n\nTu pacto se basa en los Planos Superiores, los reinos de felicidad eterna. Puedes haber hecho un acuerdo con un empíreo, un couatl, una esfinge, un unicornio, u otra entidad celestial. O puedes invocar a numerosos seres de este tipo mientras persigues metas alineadas con las suyas. Tu pacto te permite experimentar un atisbo de la luz sagrada que ilumina el multiverso.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Hechizos Celestiales",
+                  "subTitleName": "✦ HECHIZOS CELESTIALES ✦",
+                  "subDescripcion": "La magia de tu patrón asegura que siempre tengas ciertos hechizos listos; cuando alcances un nivel de Brujo especificado en la tabla de Hechizos Celestiales, a partir de ese momento siempre tendrás preparados los hechizos listados.\n\n<b>Hechizos Celestiales</b>\n<table><thead><tr><th>Nivel de Brujo</th><th>Hechizos</th></tr></thead><tbody><tr><td>3</td><td>Luz, Flama Sagrada, Rayo Guiador, Curar Heridas, Restauración Menor</td></tr><tr><td>5</td><td>Revivir, Día Radiante</td></tr><tr><td>7</td><td>Guardia de la Fe, Muro de Fuego</td></tr><tr><td>9</td><td>Restauración Mayor, Invocar Celestial</td></tr></tbody></table>",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Luz"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Llama sagrada"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Saeta guiada"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Curar heridas"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Restablecimiento menor"
+                    }
+                  ]
+                },
+                "subBlockDos": {
+                  "subName": "Luz Curativa",
+                  "subTitleName": "✦ LUZ CURATIVA ✦",
+                  "subDescripcion": "Obtienes la capacidad de canalizar energía celestial para sanar heridas. Tienes un pool de dados de 6 caras (d6) para alimentar esta curación. El número de dados en el pool es igual a 1 más tu nivel de Warlock.\nComo Acción Adicional, puedes sanar a ti mismo o a una criatura que puedas ver dentro de un radio de 60 pies, gastando dados del pool. El número máximo de dados que puedes gastar de una vez es igual a tu modificador de Carisma (mínimo de un dado). Lanza los dados que gastas y restaura una cantidad de Puntos de Golpe igual al total de la tirada. Tu pool recupera todos los dados gastados cuando terminas un Descanso Largo."
+                }
+              }
+            },
+            "5": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Hechizos Celestiales",
+                  "subTitleName": "✦ HECHIZOS CELESTIALES ✦",
+                  "subDescripcion": "Siempre tienes preparados: Revivir, Día Radiante (ver Hechizos Celestiales, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Revivir"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Luz del día"
+                    }
+                  ]
+                }
+              }
+            },
+            "6": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Alma Radiante",
+                  "subTitleName": "✦ ALMA RADIANTE ✦",
+                  "subDescripcion": "Tu conexión con tu patrón te permite servir como un conducto de energía radiante. Tienes Resistencia al daño Radiante. Una vez por turno, cuando un hechizo que lanzas inflige daño Radiante o de Fuego, puedes añadir tu modificador de Carisma al daño del hechizo contra uno de los objetivos del hechizo.",
+                  "efectos": [
+                    {
+                      "type": "resistencia",
+                      "value": "radiante"
+                    }
+                  ]
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Hechizos Celestiales",
+                  "subTitleName": "✦ HECHIZOS CELESTIALES ✦",
+                  "subDescripcion": "Siempre tienes preparados: Guardia de la Fe, Muro de Fuego (ver Hechizos Celestiales, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Guardián de la fe"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Muro de fuego"
+                    }
+                  ]
+                }
+              }
+            },
+            "9": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Hechizos Celestiales",
+                  "subTitleName": "✦ HECHIZOS CELESTIALES ✦",
+                  "subDescripcion": "Siempre tienes preparados: Restauración Mayor, Invocar Celestial (ver Hechizos Celestiales, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Restablecimiento mayor"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Invocar celestial"
+                    }
+                  ]
+                }
+              }
+            },
+            "10": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Resiliencia Celestial",
+                  "subTitleName": "✦ RESILIENCIA CELESTIAL ✦",
+                  "subDescripcion": "Obtienes Puntos de Golpe Temporales siempre que uses tu característica de Magia Astuta o termines un Descanso Corto o Largo. Estos Puntos de Golpe Temporales son iguales a tu nivel de Warlock más tu modificador de Carisma.\nAdemás, elige hasta cinco criaturas que puedas ver cuando obtengas estos puntos. Esas criaturas obtienen Puntos de Golpe Temporales iguales a la mitad de tu nivel de Warlock más tu modificador de Carisma."
+                }
+              }
+            },
+            "14": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Venganza Ardiente",
+                  "subTitleName": "✦ VENGANZA ARDIENTE ✦",
+                  "subDescripcion": "Cuando tú o un aliado dentro de un radio de 60 pies esté a punto de realizar una Tirada de Salvación contra la Muerte, puedes desatar energía radiante para salvar a la criatura. La criatura recupera Puntos de Golpe iguales a la mitad de su máximo de Puntos de Golpe y puede terminar la condición de Caído en sí misma. Cada criatura de tu elección que esté dentro de un radio de 30 pies de la criatura recibe daño Radiante igual a 2d8 más tu modificador de Carisma, y cada una queda Cegada hasta el final del turno actual.\nUna vez que uses esta característica, no puedes usarla de nuevo hasta que termines un Descanso Largo."
+                }
+              }
+            }
+          }
+        },
+        "infernal": {
+          "subNombre": "Patrón Infernal",
+          "fuente": "Manual del Jugador",
+          "subDescripcion": "✦ PATRÓN INFERNAL ✦",
+          "listasDeEleccion": {
+            "resiliencia-infernal": {
+              "titulo": "Resiliencia Infernal",
+              "cambiable": true,
+              "ayuda": "Un tipo de daño distinto de Fuerza. Puedes cambiarlo al terminar un Descanso Corto o Largo (botón «Cambiar» en la ficha).",
+              "opciones": [
+                {
+                  "id": "acido",
+                  "nombre": "Ácido",
+                  "descripcion": "Resistencia al daño Ácido.",
+                  "efectos": [
+                    {
+                      "type": "resistencia",
+                      "value": "acido"
+                    }
+                  ]
+                },
+                {
+                  "id": "contundente",
+                  "nombre": "Contundente",
+                  "descripcion": "Resistencia al daño Contundente.",
+                  "efectos": [
+                    {
+                      "type": "resistencia",
+                      "value": "contundente"
+                    }
+                  ]
+                },
+                {
+                  "id": "cortante",
+                  "nombre": "Cortante",
+                  "descripcion": "Resistencia al daño Cortante.",
+                  "efectos": [
+                    {
+                      "type": "resistencia",
+                      "value": "cortante"
+                    }
+                  ]
+                },
+                {
+                  "id": "frio",
+                  "nombre": "Frío",
+                  "descripcion": "Resistencia al daño Frío.",
+                  "efectos": [
+                    {
+                      "type": "resistencia",
+                      "value": "frio"
+                    }
+                  ]
+                },
+                {
+                  "id": "fuego",
+                  "nombre": "Fuego",
+                  "descripcion": "Resistencia al daño Fuego.",
+                  "efectos": [
+                    {
+                      "type": "resistencia",
+                      "value": "fuego"
+                    }
+                  ]
+                },
+                {
+                  "id": "necrotico",
+                  "nombre": "Necrótico",
+                  "descripcion": "Resistencia al daño Necrótico.",
+                  "efectos": [
+                    {
+                      "type": "resistencia",
+                      "value": "necrotico"
+                    }
+                  ]
+                },
+                {
+                  "id": "perforante",
+                  "nombre": "Perforante",
+                  "descripcion": "Resistencia al daño Perforante.",
+                  "efectos": [
+                    {
+                      "type": "resistencia",
+                      "value": "perforante"
+                    }
+                  ]
+                },
+                {
+                  "id": "psiquico",
+                  "nombre": "Psíquico",
+                  "descripcion": "Resistencia al daño Psíquico.",
+                  "efectos": [
+                    {
+                      "type": "resistencia",
+                      "value": "psiquico"
+                    }
+                  ]
+                },
+                {
+                  "id": "radiante",
+                  "nombre": "Radiante",
+                  "descripcion": "Resistencia al daño Radiante.",
+                  "efectos": [
+                    {
+                      "type": "resistencia",
+                      "value": "radiante"
+                    }
+                  ]
+                },
+                {
+                  "id": "relampago",
+                  "nombre": "Relámpago",
+                  "descripcion": "Resistencia al daño Relámpago.",
+                  "efectos": [
+                    {
+                      "type": "resistencia",
+                      "value": "relampago"
+                    }
+                  ]
+                },
+                {
+                  "id": "trueno",
+                  "nombre": "Trueno",
+                  "descripcion": "Resistencia al daño Trueno.",
+                  "efectos": [
+                    {
+                      "type": "resistencia",
+                      "value": "trueno"
+                    }
+                  ]
+                },
+                {
+                  "id": "veneno",
+                  "nombre": "Veneno",
+                  "descripcion": "Resistencia al daño Veneno.",
+                  "efectos": [
+                    {
+                      "type": "resistencia",
+                      "value": "veneno"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Bendición del Oscuro",
+                  "subTitleName": "✦ BENDICIÓN DEL OSCURO ✦",
+                  "subDescripcion": "Cuando reduces a un enemigo a 0 Puntos de Golpe, obtienes Puntos de Golpe Temporales iguales a tu modificador de Carisma más tu nivel de Warlock (mínimo de 1 Punto de Golpe Temporal). También obtienes este beneficio si alguien más reduce a un enemigo dentro de 10 pies de ti a 0 Puntos de Golpe."
+                },
+                "subBlockDos": {
+                  "subName": "Hechizos Infernales",
+                  "subTitleName": "✦ HECHIZOS INFERNALES ✦",
+                  "subDescripcion": "La magia de tu patrón asegura que siempre tengas ciertos hechizos listos; cuando alcances un nivel de Brujo especificado en la tabla de Hechizos Infernales, a partir de ese momento siempre tendrás preparados los hechizos listados.\n\n<b>Hechizos Infernales</b>\n<table><thead><tr><th>Nivel de Brujo</th><th>Hechizos</th></tr></thead><tbody><tr><td>3</td><td>Manos Ardientes, Ordenar, Rayo Abrasador, Sugerencia</td></tr><tr><td>5</td><td>Bola de Fuego, Nube Pestilente</td></tr><tr><td>7</td><td>Escudo de Fuego, Murallas de Fuego</td></tr><tr><td>9</td><td>Destierro, Plaga de Insectos</td></tr></tbody></table>",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Manos ardientes"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Orden imperiosa"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Rayo abrasador"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Sugestión"
+                    }
+                  ]
+                }
+              }
+            },
+            "5": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Hechizos Infernales",
+                  "subTitleName": "✦ HECHIZOS INFERNALES ✦",
+                  "subDescripcion": "Siempre tienes preparados: Bola de Fuego, Nube Pestilente (ver Hechizos Infernales, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Bola de Fuego"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Nube apestosa"
+                    }
+                  ]
+                }
+              }
+            },
+            "6": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Suerte del Propio Oscuro",
+                  "subTitleName": "✦ SUERTE DEL PROPIO OSCURO ✦",
+                  "subDescripcion": "Puedes invocar a tu patrón infernal para que favorezca tu suerte. Cuando realices una prueba de habilidad o una tirada de salvación, puedes usar esta característica para añadir 1d10 a tu tirada. Puedes hacerlo después de ver la tirada pero antes de que ocurra cualquier efecto de la misma. Puedes usar esta característica un número de veces igual a tu modificador de Carisma (mínimo una vez), pero no puedes usarla más de una vez por tirada. Recuperas todos los usos gastados cuando terminas un Descanso Largo."
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Hechizos Infernales",
+                  "subTitleName": "✦ HECHIZOS INFERNALES ✦",
+                  "subDescripcion": "Siempre tienes preparados: Escudo de Fuego, Murallas de Fuego (ver Hechizos Infernales, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Escudo de fuego"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Muro de fuego"
+                    }
+                  ]
+                }
+              }
+            },
+            "9": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Hechizos Infernales",
+                  "subTitleName": "✦ HECHIZOS INFERNALES ✦",
+                  "subDescripcion": "Siempre tienes preparados: Destierro, Plaga de Insectos (ver Hechizos Infernales, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Destierro"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Plaga de insectos"
+                    }
+                  ]
+                }
+              }
+            },
+            "10": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Resiliencia Infernal",
+                  "subTitleName": "✦ RESILIENCIA INFERNAL ✦",
+                  "subDescripcion": "Elige un tipo de daño, diferente de Fuerza, cada vez que termines un Descanso Corto o Largo. Tienes Resistencia a ese tipo de daño hasta que elijas uno diferente con esta característica.",
+                  "elegir": {
+                    "lista": "resiliencia-infernal",
+                    "cantidad": 1
+                  }
+                }
+              }
+            },
+            "14": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Lanzar a Través del Infierno",
+                  "subTitleName": "✦ LANZAR A TRAVÉS DEL INFIERNO ✦",
+                  "subDescripcion": "Una vez por turno, cuando aciertes a una criatura con una tirada de ataque, puedes intentar transportar instantáneamente al objetivo a través de los Planos Inferiores. El objetivo debe tener éxito en una tirada de salvación de Carisma contra tu DC de salvación de hechizo, o el objetivo desaparece y atraviesa un paisaje de pesadilla. El objetivo recibe 8d10 de daño Psíquico si no es un Demonio, y tiene la condición de Incapacitado hasta el final de tu siguiente turno, cuando regresa al espacio que ocupaba previamente o al espacio no ocupado más cercano. Una vez que uses esta característica, no puedes usarla de nuevo hasta que termines un Descanso Largo, a menos que gastes un espacio de hechizo de Magia de Pacto (no se requiere acción) para restaurar su uso."
+                }
+              }
+            }
+          }
+        },
+        "primigenio": {
+          "subNombre": "Patrón Gran Antiguo",
+          "fuente": "Manual del Jugador",
+          "subDescripcion": "✦ PATRÓN GRAN ANTIGUO ✦\nDesenterrar el Conocimiento Prohibido de Seres Inefables\n\nCuando elijas esta subclase, podrías atarte a un ser indescriptible del Reino Lejano o a un dios anciano, como Tharizdun, el Dios Encadenado; Zargon, el Retornador; Hadar, el Hambre Oscura; o el Gran Cthulhu. O podrías invocar a varias entidades sin atarte a una sola. Los motivos de estos seres son incomprensibles, y el Gran Viejo podría ser indiferente a tu existencia. Pero los secretos que has aprendido te permiten extraer magia extraña de ellos.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Mente Despertada",
+                  "subTitleName": "✦ MENTE DESPERTADA ✦",
+                  "subDescripcion": "Puedes formar una conexión telepática entre tu mente y la mente de otro. Como Acción Adicional, elige una criatura que puedas ver a 30 pies de ti. Tú y la criatura elegida pueden comunicarse telepáticamente mientras ambos estén dentro de un número de millas igual a tu modificador de Carisma (mínimo 1 milla). Para entenderse, cada uno debe usar mentalmente un idioma que el otro conozca.\nLa conexión telepática dura un número de minutos igual a tu nivel de Brujo. Termina antes si usas esta característica para conectar con una criatura diferente."
+                },
+                "subBlockDos": {
+                  "subName": "Hechizos del Gran Antiguo",
+                  "subTitleName": "✦ HECHIZOS DEL GRAN ANTIGUO ✦",
+                  "subDescripcion": "La magia de tu patrón asegura que siempre tengas ciertos hechizos listos; cuando alcances un nivel de Brujo especificado en la tabla de Hechizos del Gran Antiguo, a partir de ese momento siempre tendrás preparados los hechizos listados.\n\n<b>Hechizos del Gran Antiguo</b>\n<table><thead><tr><th>Nivel de Brujo</th><th>Hechizos</th></tr></thead><tbody><tr><td>3</td><td>Detectar Pensamientos, Susurros Disonantes, Fuerza Fantasmal, Risa Horrible de Tasha</td></tr><tr><td>5</td><td>Clarividencia, Hambre de Hadar</td></tr><tr><td>7</td><td>Confusión, Invocar Aberración</td></tr><tr><td>9</td><td>Modificar Memoria, Telequinesis</td></tr></tbody></table>",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Detectar pensamientos"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Susurros disonantes"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Fuerza Fantasmal"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Risa horrible de Tasha"
+                    }
+                  ]
+                },
+                "subBlockTres": {
+                  "subName": "Hechizos Psíquicos",
+                  "subTitleName": "✦ HECHIZOS PSÍQUICOS ✦",
+                  "subDescripcion": "Cuando lances un hechizo de Brujo que cause daño, puedes cambiar su tipo de daño a Psíquico. Además, cuando lances un hechizo de Brujo que sea un Encantamiento o Ilusión, puedes hacerlo sin componentes Verbal o Somático."
+                }
+              }
+            },
+            "5": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Hechizos del Gran Antiguo",
+                  "subTitleName": "✦ HECHIZOS DEL GRAN ANTIGUO ✦",
+                  "subDescripcion": "Siempre tienes preparados: Clarividencia, Hambre de Hadar (ver Hechizos del Gran Antiguo, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Clarividencia"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Hambre de Hadar"
+                    }
+                  ]
+                }
+              }
+            },
+            "6": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Combatiente Clarividente",
+                  "subTitleName": "✦ COMBATIENTE CLARIVIDENTE ✦",
+                  "subDescripcion": "Cuando formes un vínculo telepático con una criatura usando tu Mente Despertada, puedes obligar a esa criatura a hacer una tirada de salvación de Sabiduría contra tu DC de salvación de hechizo. En caso de fallo, la criatura tiene Desventaja en las tiradas de ataque contra ti, y tú tienes Ventaja en las tiradas de ataque contra esa criatura durante la duración del vínculo.\nUna vez que uses esta característica, no podrás usarla de nuevo hasta que termines un Descanso Corto o Largo, a menos que gastes un espacio de hechizo de Magia de Pacto (no se requiere acción) para restaurar su uso."
+                }
+              }
+            },
+            "7": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Hechizos del Gran Antiguo",
+                  "subTitleName": "✦ HECHIZOS DEL GRAN ANTIGUO ✦",
+                  "subDescripcion": "Siempre tienes preparados: Confusión, Invocar Aberración (ver Hechizos del Gran Antiguo, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Confusión"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Invocar aberración"
+                    }
+                  ]
+                }
+              }
+            },
+            "9": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Hechizos del Gran Antiguo",
+                  "subTitleName": "✦ HECHIZOS DEL GRAN ANTIGUO ✦",
+                  "subDescripcion": "Siempre tienes preparados: Modificar Memoria, Telequinesis (ver Hechizos del Gran Antiguo, nivel 3).",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Alterar recuerdos"
+                    },
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Telequinesis"
+                    }
+                  ]
+                }
+              }
+            },
+            "10": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Maldición Arcanita",
+                  "subTitleName": "✦ MALDICIÓN ARCANITA ✦",
+                  "subDescripcion": "Tu patrón alienígena te concede una poderosa maldición. Siempre tienes preparado el hechizo Maldición. Cuando lances Maldición y elijas una habilidad, el objetivo también tiene Desventaja en las tiradas de salvación de la habilidad elegida durante la duración del hechizo.",
+                  "efectos": [
+                    {
+                      "type": "conjuro_preparado",
+                      "value": "Maldición"
+                    }
+                  ]
+                },
+                "subBlockDos": {
+                  "subName": "Escudo Mental",
+                  "subTitleName": "✦ ESCUDO MENTAL ✦",
+                  "subDescripcion": "Tus pensamientos no pueden ser leídos por telepatía u otros medios, a menos que lo permitas. También tienes Resistencia al daño Psíquico, y siempre que una criatura te cause daño Psíquico, esa criatura recibe la misma cantidad de daño que tú recibes.",
+                  "efectos": [
+                    {
+                      "type": "resistencia",
+                      "value": "psiquico"
+                    }
+                  ]
+                }
+              }
+            },
+            "14": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Crear Esclavo",
+                  "subTitleName": "✦ CREAR ESCLAVO ✦",
+                  "subDescripcion": "Cuando lances Invocar Aberración, puedes modificarlo para que no requiera Concentración. Si lo haces, la duración del hechizo se convierte en 1 minuto para esa invocación, y cuando se invoca, la Aberración tiene un número de Puntos de Golpe Temporales igual a tu nivel de Brujo más tu modificador de Carisma.\nAdemás, la primera vez que cada turno la Aberración golpee a una criatura bajo el efecto de tu Maldición, la Aberración inflige daño Psíquico adicional al objetivo igual al daño adicional de ese hechizo."
+                }
+              }
+            }
+          }
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Invocaciones",
+          "Trucos",
+          "Hechizos preparados",
+          "Espacios de pacto"
+        ],
+        "filas": [
+          [
+            "3",
+            "2",
+            "4",
+            "2 × nv. 2"
+          ]
+        ]
+      }
+    },
+    "4": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Mejora de Puntaje de Habilidad",
+          "titleName": "✦ MEJORA DE PUNTAJE DE HABILIDAD ✦",
+          "descripcion": "Obtienes la hazaña de Mejora de Puntaje de Habilidad (consulta los capítulos 5) u otra hazaña de tu elección para la que califiques. Obtienes esta característica nuevamente en los niveles 8, 12 y 16 de Warlock."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Invocaciones",
+          "Trucos",
+          "Hechizos preparados",
+          "Espacios de pacto"
+        ],
+        "filas": [
+          [
+            "3",
+            "3",
+            "5",
+            "2 × nv. 2"
+          ]
+        ]
+      }
+    },
+    "5": {
+      "elegir": {
+        "lista": "invocaciones",
+        "cantidad": 2,
+        "rasgo": "Invocaciones Arcanas"
+      },
+      "infoCubo": {
+        "columnas": [
+          "Invocaciones",
+          "Trucos",
+          "Hechizos preparados",
+          "Espacios de pacto"
+        ],
+        "filas": [
+          [
+            "5",
+            "3",
+            "6",
+            "2 × nv. 3"
+          ]
+        ]
+      }
+    },
+    "6": {
+      "infoCubo": {
+        "columnas": [
+          "Invocaciones",
+          "Trucos",
+          "Hechizos preparados",
+          "Espacios de pacto"
+        ],
+        "filas": [
+          [
+            "5",
+            "3",
+            "7",
+            "2 × nv. 3"
+          ]
+        ]
+      }
+    },
+    "7": {
+      "elegir": {
+        "lista": "invocaciones",
+        "cantidad": 1,
+        "rasgo": "Invocaciones Arcanas"
+      },
+      "infoCubo": {
+        "columnas": [
+          "Invocaciones",
+          "Trucos",
+          "Hechizos preparados",
+          "Espacios de pacto"
+        ],
+        "filas": [
+          [
+            "6",
+            "3",
+            "8",
+            "2 × nv. 4"
+          ]
+        ]
+      }
+    },
+    "8": {
+      "infoCubo": {
+        "columnas": [
+          "Invocaciones",
+          "Trucos",
+          "Hechizos preparados",
+          "Espacios de pacto"
+        ],
+        "filas": [
+          [
+            "6",
+            "3",
+            "9",
+            "2 × nv. 4"
+          ]
+        ]
+      }
+    },
+    "9": {
+      "elegir": {
+        "lista": "invocaciones",
+        "cantidad": 1,
+        "rasgo": "Invocaciones Arcanas"
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Contacto con el Patrón",
+          "titleName": "✦ CONTACTO CON EL PATRÓN ✦",
+          "descripcion": "En el pasado, solías contactar a tu patrón a través de intermediarios. Ahora puedes comunicarte directamente; siempre tienes el hechizo Contactar Otro Plano preparado. Con esta característica, puedes lanzar el hechizo sin gastar una ranura de hechizo para contactar a tu patrón, y automáticamente tienes éxito en la tirada de salvación del hechizo.\nUna vez que lances el hechizo con esta característica, no podrás hacerlo de esta manera nuevamente hasta que termines un Descanso Largo.",
+          "efectos": [
+            {
+              "type": "conjuro_preparado",
+              "value": "Contactar con otro plano"
+            }
+          ]
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Invocaciones",
+          "Trucos",
+          "Hechizos preparados",
+          "Espacios de pacto"
+        ],
+        "filas": [
+          [
+            "7",
+            "3",
+            "10",
+            "2 × nv. 5"
+          ]
+        ]
+      }
+    },
+    "10": {
+      "infoCubo": {
+        "columnas": [
+          "Invocaciones",
+          "Trucos",
+          "Hechizos preparados",
+          "Espacios de pacto"
+        ],
+        "filas": [
+          [
+            "7",
+            "4",
+            "10",
+            "2 × nv. 5"
+          ]
+        ]
+      }
+    },
+    "11": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Arcanum Místico (hechizo de nivel 6)",
+          "titleName": "✦ ARCANUM MÍSTICO (HECHIZO DE NIVEL 6) ✦",
+          "descripcion": "Tu patrón te concede un secreto mágico llamado arcanum. Elige un hechizo de Warlock de nivel 6 como este arcanum.\nPuedes lanzar tu hechizo arcanum una vez sin gastar una ranura de hechizo, y debes terminar un Descanso Largo antes de poder lanzarlo de esta manera nuevamente.\nComo se muestra en la tabla de Características del Warlock, obtienes otro hechizo de Warlock de tu elección que puede ser lanzado de esta manera cuando alcances los niveles 13 (hechizo de nivel 7), 15 (hechizo de nivel 8) y 17 (hechizo de nivel 9) de Warlock. Recuperas todos los usos de tu Arcanum Místico cuando terminas un Descanso Largo.\nSiempre que ganes un nivel de Warlock, puedes reemplazar uno de tus hechizos arcanum con otro hechizo de Warlock del mismo nivel.",
+          "elegir": {
+            "lista": "arcanum-6",
+            "cantidad": 1
+          }
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Invocaciones",
+          "Trucos",
+          "Hechizos preparados",
+          "Espacios de pacto"
+        ],
+        "filas": [
+          [
+            "7",
+            "4",
+            "11",
+            "3 × nv. 5"
+          ]
+        ]
+      }
+    },
+    "12": {
+      "elegir": {
+        "lista": "invocaciones",
+        "cantidad": 1,
+        "rasgo": "Invocaciones Arcanas"
+      },
+      "infoCubo": {
+        "columnas": [
+          "Invocaciones",
+          "Trucos",
+          "Hechizos preparados",
+          "Espacios de pacto"
+        ],
+        "filas": [
+          [
+            "8",
+            "4",
+            "11",
+            "3 × nv. 5"
+          ]
+        ]
+      }
+    },
+    "13": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Arcanum Místico (hechizo de nivel 7)",
+          "titleName": "✦ ARCANUM MÍSTICO (HECHIZO DE NIVEL 7) ✦",
+          "descripcion": "Obtienes otro hechizo de Warlock de nivel 7 como arcanum (ver Arcanum Místico, nivel 11).",
+          "elegir": {
+            "lista": "arcanum-7",
+            "cantidad": 1
+          }
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Invocaciones",
+          "Trucos",
+          "Hechizos preparados",
+          "Espacios de pacto"
+        ],
+        "filas": [
+          [
+            "8",
+            "4",
+            "12",
+            "3 × nv. 5"
+          ]
+        ]
+      }
+    },
+    "14": {
+      "infoCubo": {
+        "columnas": [
+          "Invocaciones",
+          "Trucos",
+          "Hechizos preparados",
+          "Espacios de pacto"
+        ],
+        "filas": [
+          [
+            "8",
+            "4",
+            "12",
+            "3 × nv. 5"
+          ]
+        ]
+      }
+    },
+    "15": {
+      "elegir": {
+        "lista": "invocaciones",
+        "cantidad": 1,
+        "rasgo": "Invocaciones Arcanas"
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Arcanum Místico (hechizo de nivel 8)",
+          "titleName": "✦ ARCANUM MÍSTICO (HECHIZO DE NIVEL 8) ✦",
+          "descripcion": "Obtienes otro hechizo de Warlock de nivel 8 como arcanum (ver Arcanum Místico, nivel 11).",
+          "elegir": {
+            "lista": "arcanum-8",
+            "cantidad": 1
+          }
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Invocaciones",
+          "Trucos",
+          "Hechizos preparados",
+          "Espacios de pacto"
+        ],
+        "filas": [
+          [
+            "9",
+            "4",
+            "13",
+            "3 × nv. 5"
+          ]
+        ]
+      }
+    },
+    "16": {
+      "infoCubo": {
+        "columnas": [
+          "Invocaciones",
+          "Trucos",
+          "Hechizos preparados",
+          "Espacios de pacto"
+        ],
+        "filas": [
+          [
+            "9",
+            "4",
+            "13",
+            "3 × nv. 5"
+          ]
+        ]
+      }
+    },
+    "17": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Arcanum Místico (hechizo de nivel 9)",
+          "titleName": "✦ ARCANUM MÍSTICO (HECHIZO DE NIVEL 9) ✦",
+          "descripcion": "Obtienes otro hechizo de Warlock de nivel 9 como arcanum (ver Arcanum Místico, nivel 11).",
+          "elegir": {
+            "lista": "arcanum-9",
+            "cantidad": 1
+          }
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Invocaciones",
+          "Trucos",
+          "Hechizos preparados",
+          "Espacios de pacto"
+        ],
+        "filas": [
+          [
+            "9",
+            "4",
+            "14",
+            "4 × nv. 5"
+          ]
+        ]
+      }
+    },
+    "18": {
+      "elegir": {
+        "lista": "invocaciones",
+        "cantidad": 1,
+        "rasgo": "Invocaciones Arcanas"
+      },
+      "infoCubo": {
+        "columnas": [
+          "Invocaciones",
+          "Trucos",
+          "Hechizos preparados",
+          "Espacios de pacto"
+        ],
+        "filas": [
+          [
+            "10",
+            "4",
+            "14",
+            "4 × nv. 5"
+          ]
+        ]
+      }
+    },
+    "19": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Don Épico",
+          "titleName": "✦ DON ÉPICO ✦",
+          "descripcion": "Obtienes una hazaña de Don Épico (consulta el capítulo 5) u otra hazaña de tu elección para la que califiques. Se recomienda el Don del Destino."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Invocaciones",
+          "Trucos",
+          "Hechizos preparados",
+          "Espacios de pacto"
+        ],
+        "filas": [
+          [
+            "10",
+            "4",
+            "15",
+            "4 × nv. 5"
+          ]
+        ]
+      }
+    },
+    "20": {
+      "infoBlock": {
+        "blockUno": {
+          "name": "Maestro Arcano",
+          "titleName": "✦ MAESTRO ARCANO ✦",
+          "descripcion": "Cuando uses tu característica Astucia Mágica, recuperas todas tus ranuras de hechizo de Magia del Pacto gastadas."
+        }
+      },
+      "infoCubo": {
+        "columnas": [
+          "Invocaciones",
+          "Trucos",
+          "Hechizos preparados",
+          "Espacios de pacto"
+        ],
+        "filas": [
+          [
+            "10",
+            "4",
+            "15",
+            "4 × nv. 5"
+          ]
+        ]
+      }
+    }
+  }
 }

@@ -11,7 +11,7 @@ import { castingConfig, computeSpellSlots } from './spellcasting.js';
 import {
   proficiencySources, isGranted, effectSources, classChoiceStatus, pendingClassChoices,
 } from './proficiencies.js';
-import { sumBonus } from './effects.js';
+import { sumBonus, sumClassBonus } from './effects.js';
 import { permissionsFor } from '../content/rules.js';
 import { extensionSubclassOptions, extensionFeatures } from './extensions.js';
 import { engineOf } from '../content/registry.js';
@@ -238,7 +238,9 @@ export function grantedSkills(c) {
   return [...proficiencySources(c).skills].filter(([, src]) => isGranted(src)).map(([name]) => name);
 }
 
-export function skillBonuses(c, scores, prof, sources = proficiencySources(c)) {
+export function skillBonuses(c, scores, prof, sources = proficiencySources(c), fx = effectSources(c)) {
+  // «Experto en todos los oficios»: mitad del bono en pruebas sin competencia.
+  const half = hasHalfProficiency(fx) ? Math.floor(prof / 2) : 0;
   return SKILLS.map((s) => {
     const src = sources.skills.get(s.name) ?? [];
     const proficient = src.length > 0;
@@ -246,9 +248,9 @@ export function skillBonuses(c, scores, prof, sources = proficiencySources(c)) {
     const fromBackground = src.some((x) => x.kind === 'trasfondo');
     // La pericia sólo cuenta si hay competencia (regla 5e).
     const expert = proficient && (c.proficiencies.expertise ?? []).includes(s.name);
-    const bonus = scores[s.ability].modifier + (expert ? prof * 2 : proficient ? prof : 0);
+    const bonus = scores[s.ability].modifier + (expert ? prof * 2 : proficient ? prof : half) + sumBonus(fx, `habilidad:${s.name}`, scores) + sumBonus(fx, `pruebas:${s.ability}`, scores);
     return {
-      ...s, proficient, expert, granted, fromBackground, sources: src,
+      ...s, proficient, expert, granted, fromBackground, sources: src, halfProficiency: !proficient && half > 0,
       bonus, passive: 10 + bonus + passiveFeatBonus(c, s.name),
     };
   });
@@ -279,8 +281,9 @@ export function expertiseAllowance(c) {
   return { total: sources.reduce((a, b) => a + b.amount, 0), sources };
 }
 
-export function savingThrows(c, scores, prof, sources = proficiencySources(c)) {
-  const allBonus = sumBonus(effectSources(c), 'salvaciones');
+export function savingThrows(c, scores, prof, sources = proficiencySources(c), fx = effectSources(c)) {
+  // Con `scores`, los bonos «desdeAtributo» (p. ej. Aura de Protección: + Carisma) también cuentan.
+  const allBonus = sumBonus(fx, 'salvaciones', scores);
   const resilient = allFeats(c).filter((f) => getFeat(f.name)?.salvacionDelAtributoElegido && f.ability);
   return ABILITY_KEYS.map((k) => {
     const src = [...(sources.saves.get(k) ?? [])];
@@ -366,7 +369,7 @@ export function languageInfo(c) {
 
 // ── Conjuros ─────────────────────────────────────────────────────────────
 
-export function spellcasting(c, scores, prof) {
+export function spellcasting(c, scores, prof, fx = effectSources(c)) {
   const levels = classLevels(c);
   const entries = [];
   const notes = [];
@@ -381,12 +384,15 @@ export function spellcasting(c, scores, prof) {
     const mod = scores[cls.attribute].modifier;
     const idx = Math.min(MAX_LEVEL, level) - 1;
     let prepared = null;
-    if (cfg?.preparedFrom === 'full') prepared = Math.max(1, mod + level);
+    // Tabla fija de conjuros preparados (reglas 2024: columna «Conjuros preparados»).
+    if (cfg?.preparedTable) prepared = cfg.preparedTable[idx];
+    else if (cfg?.preparedFrom === 'full') prepared = Math.max(1, mod + level);
     if (cfg?.preparedFrom === 'half') prepared = Math.max(1, mod + Math.floor(level / 2));
     entries.push({
       classKey, className: cls.nombre, level, ability: cls.attribute, modifier: mod,
       attack: mod + prof, dc: 8 + prof + mod,
-      cantrips: cfg?.cantripsKnown?.[idx] ?? null,
+      // Trucos extra de los rasgos de la propia clase (p. ej. Orden Divina: Taumaturgo).
+      cantrips: cfg?.cantripsKnown ? cfg.cantripsKnown[idx] + sumClassBonus(fx, 'trucos', classKey) : null,
       known: cfg?.spellsKnown?.[idx] ?? null,
       prepared,
       spellbook: cfg?.spellbook ? cfg.spellbook(level) : null,
@@ -570,16 +576,52 @@ export function defenses(fx) {
 // ── Vista completa de la ficha ───────────────────────────────────────────
 
 /** Calcula todos los valores derivados de la ficha de una sola vez. */
+export const hasHalfProficiency = (fx) => fx.some((s) => s.effects.some((e) => e.type === 'medio_competencia'));
+
+/** Conjuros que los rasgos dejan siempre preparados (no cuentan para el límite). */
+export function alwaysPreparedSpells(fx) {
+  const out = new Map();
+  for (const s of fx) for (const e of s.effects) {
+    // «Descubrimientos Mágicos: Luz» → «Descubrimientos Mágicos» (el nombre ya se muestra).
+    if (e.type === 'conjuro_preparado' && !out.has(e.value)) out.set(e.value, s.label.endsWith(`: ${e.value}`) ? s.label.slice(0, -(e.value.length + 2)) : s.label);
+  }
+  return [...out].map(([name, source]) => ({ name, source }));
+}
+
+/** Listas de otras clases de las que se pueden preparar conjuros (p. ej. Secretos mágicos). */
+export const extraSpellLists = (fx) => [...new Set(fx.flatMap((s) => s.effects.filter((e) => e.type === 'lista_conjuros').map((e) => e.value)))];
+
+/**
+ * Opciones de «Defensa sin armadura» de los rasgos (efecto ca_sin_armadura).
+ * La CA de la ficha es manual (la app no sabe qué armadura llevas): esto se
+ * muestra como cálculo listo para usar.
+ */
+export function unarmoredDefense(fx, scores) {
+  const out = [];
+  for (const s of fx) {
+    for (const e of s.effects) {
+      if (e.type !== 'ca_sin_armadura') continue;
+      const value = e.base + e.atributos.reduce((sum, a) => sum + scores[a].modifier, 0);
+      out.push({ label: s.label, value, base: e.base, atributos: e.atributos, escudo: e.escudo });
+    }
+  }
+  return out.sort((a, b) => b.value - a.value);
+}
+
 export function computeSheet(c) {
   const level = totalLevel(c);
   const prof = proficiencyBonus(Math.max(1, level));
   const scores = abilityScores(c);
-  const casting = spellcasting(c, scores, prof);
+  const fx = effectSources(c);
+  const casting = spellcasting(c, scores, prof, fx);
   const hp = hitPoints(c, scores);
   const sources = proficiencySources(c);
-  const skills = skillBonuses(c, scores, prof, sources);
+  const skills = skillBonuses(c, scores, prof, sources, fx);
   const allowance = expertiseAllowance(c);
-  const fx = effectSources(c);
+  casting.alwaysPrepared = alwaysPreparedSpells(fx);
+  casting.extraLists = extraSpellLists(fx);
+  // Libro de conjuros: los añadidos al subir de nivel (Mago) forman parte del grimorio.
+  casting.bookSpells = [...new Set(fx.flatMap((s) => s.effects.filter((e) => e.type === 'conjuro_libro').map((e) => e.value)))];
   return {
     background: backgroundDefinition(c),
     pendingBackground: pendingBackgroundChoices(c),
@@ -589,8 +631,9 @@ export function computeSheet(c) {
     proficiency: prof,
     scores,
     skills,
-    saves: savingThrows(c, scores, prof, sources),
-    initiative: scores.destreza.modifier + sumBonus(fx, 'iniciativa'),
+    saves: savingThrows(c, scores, prof, sources, fx),
+    // La iniciativa es una prueba de Destreza: cuentan también los bonos a `pruebas:destreza`.
+    initiative: scores.destreza.modifier + sumBonus(fx, 'iniciativa', scores) + sumBonus(fx, 'pruebas:destreza', scores) + (hasHalfProficiency(fx) ? Math.floor(prof / 2) : 0),
     proficiencies: {
       armaduras: [...sources.armaduras].map(([name, src]) => ({ name, sources: src })),
       armas: [...sources.armas].map(([name, src]) => ({ name, sources: src })),
@@ -600,6 +643,7 @@ export function computeSheet(c) {
     classChoices: classChoiceStatus(c),
     pendingClassChoices: pendingClassChoices(c),
     defenses: defenses(fx),
+    unarmoredDefense: unarmoredDefense(fx, scores),
     passivePerception: skills.find((s) => s.name === 'Percepción').passive,
     hp,
     speeds: speeds(c),

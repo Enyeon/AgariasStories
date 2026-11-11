@@ -50,6 +50,17 @@ function abilityCard(ctx, a) {
     </div>`;
 }
 
+/** «Defensa sin armadura» calculada por los rasgos: la CA sigue siendo manual. */
+function unarmoredHint(ctx) {
+  const u = ctx.sheet.unarmoredDefense?.[0];
+  if (!u) return '';
+  const formula = `${u.base} + ${u.atributos.map((k) => ABILITY_LABEL[k].slice(0, 3).toUpperCase()).join(' + ')}`;
+  return html`<p class="stat-box__hint" title="${u.label}: ${formula}, sin armadura${u.escudo ? ' (admite escudo)' : ' ni escudo'}">
+    Sin armadura: <strong>${out('unarmoredAc', u.value)}</strong>${u.escudo ? ' + escudo' : ''}
+    ${ctx.readOnly ? '' : html`<button type="button" class="link-btn" data-action="use-unarmored-ac">Usar</button>`}
+  </p>`;
+}
+
 function combatStrip(ctx) {
   const { character: c, sheet } = ctx;
   const walk = sheet.speeds.find((s) => s.key === 'velocidad');
@@ -60,6 +71,7 @@ function combatStrip(ctx) {
         <div class="stat-box">
           <label class="stat-box__label" for="ac-input">Clase de armadura</label>
           <input id="ac-input" class="input input--num stat-box__input" type="number" min="0" max="99" value="${c.combat.armorClass}" ${bindAttrs('combat.armorClass', 'int', ctx.readOnly)} data-min="0" data-max="99">
+          ${unarmoredHint(ctx)}
         </div>
         <div class="stat-box"><span class="stat-box__label">Iniciativa</span><span class="stat-box__value">${out('initiative', mod(sheet.initiative))}</span></div>
         <div class="stat-box"><span class="stat-box__label">Velocidad</span><span class="stat-box__value">${walk?.value ?? 30}<small> pies</small></span></div>
@@ -125,7 +137,7 @@ function skillsList(ctx) {
           : raw(`data-action="toggle-expertise" data-key="${s.name}" title="Pericia en ${s.name}"`);
         return html`<li class="prof-item ${s.expert ? 'is-expert' : ''}">
           ${profToggle(ctx, { on: s.proficient, granted: s.granted, sources: s.sources, action: 'toggle-skill', key: s.name, label: `Competencia en ${s.name}` })}
-          <span class="prof-item__name">${s.name} <small>(${ABILITY_LABEL[s.ability].slice(0, 3)})</small>${sourceTag(s.sources)}</span>
+          <span class="prof-item__name">${s.name} <small>(${ABILITY_LABEL[s.ability].slice(0, 3)})</small>${sourceTag(s.sources)}${s.halfProficiency ? html` <span class="badge" title="Mitad de tu bono de competencia (rasgo de clase)">½</span>` : ''}</span>
           <button type="button" class="expert-toggle ${s.expert ? 'is-on' : ''}" ${expertAttrs} aria-pressed="${s.expert}" aria-label="Pericia en ${s.name}">★</button>
           <span class="prof-item__bonus">${out(`skill.${s.name}`, mod(s.bonus))}</span>
           <span class="prof-item__passive" title="Pasiva">${out(`skill.${s.name}.passive`, s.passive)}</span>
@@ -217,5 +229,9 @@ export const summaryActions = {
     const i = list.indexOf(el.dataset.key);
     if (i >= 0) list.splice(i, 1); else list.push(el.dataset.key);
   }),
+  'use-unarmored-ac': (ed) => {
+    const value = ed.sheet.unarmoredDefense?.[0]?.value;
+    if (Number.isInteger(value)) ed.update((c) => { c.combat.armorClass = value; }, { structural: true, message: `CA: ${value} (sin armadura).` });
+  },
   'toggle-inspiration': (ed) => ed.update((c) => { c.combat.inspiration = !c.combat.inspiration; }),
 };

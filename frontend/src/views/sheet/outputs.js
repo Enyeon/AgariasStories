@@ -13,6 +13,7 @@ export function computeOutputs(character, sheet) {
     passivePerception: sheet.passivePerception,
     hpMax: sheet.hp.max,
     xpLevel: sheet.xpLevel,
+    unarmoredAc: sheet.unarmoredDefense?.[0]?.value ?? '—',
   };
   for (const k of ABILITY_KEYS) {
     const s = sheet.scores[k];

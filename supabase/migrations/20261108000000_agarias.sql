@@ -62,7 +62,8 @@ begin
   if doc->>'format' is distinct from 'agarias-dnd-character' then perform agarias.fail('invalid'); end if;
   if jsonb_typeof(doc->'schemaVersion') <> 'number' then perform agarias.fail('invalid'); end if;
   v := (doc->>'schemaVersion')::int;
-  if v < 1 or v > 3 then perform agarias.fail('invalid'); end if;
+  -- Margen para versiones futuras del formato (la app migra al leer).
+  if v < 1 or v > 50 then perform agarias.fail('invalid'); end if;
   if jsonb_typeof(doc->'character') <> 'object' then perform agarias.fail('invalid'); end if;
 
   -- Personaje de una campaña: todo su Homebrew de esa campaña debe estar

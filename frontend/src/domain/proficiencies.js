@@ -5,6 +5,7 @@
 // resultado para calcular bonificadores, mostrar de dónde viene cada cosa y
 // detectar duplicados, sin contar nada dos veces.
 
+import { choiceEffectSources } from './class-choices.js';
 import { ABILITY_KEYS, ABILITY_LABEL, SKILL_NAMES } from './constants.js';
 import { getClass, getFeat, getRace } from '../data/index.js';
 import { normalizeEffects } from './effects.js';
@@ -88,6 +89,22 @@ export function classChoices(c, classKey) {
  * Todas las fuentes de efectos activas: [{ kind, label, effects }].
  * Hoy: dotes con `efectos` en sus datos y rasgos personalizados activos.
  */
+/**
+ * Número de una columna de la tabla de progresión al nivel dado (el último
+ * valor definido hasta ese nivel). «+15 pies.» → 15; «-» o vacío → 0.
+ */
+export function tableNumber(cls, level, column) {
+  for (let n = level; n >= 1; n--) {
+    const cube = cls?.niveles?.[n]?.infoCubo;
+    const i = cube?.columnas?.indexOf(column) ?? -1;
+    if (i >= 0) {
+      const m = String(cube.filas?.[0]?.[i] ?? '').match(/[+-]?\d+/);
+      return m ? Number(m[0]) : 0;
+    }
+  }
+  return 0;
+}
+
 export function effectSources(c) {
   const out = [];
   const race = getRace(c.race?.key);
@@ -97,7 +114,7 @@ export function effectSources(c) {
     const cls = getClass(classKey);
     const sub = Object.values(cls?.niveles ?? {}).find((l) => l.subClase)?.subClase?.[subKey];
     const fx = normalizeEffects(sub?.efectos);
-    if (fx.length) out.push({ kind: 'clase', label: sub.subNombre ?? subKey, effects: fx });
+    if (fx.length) out.push({ kind: 'clase', classKey, label: sub.subNombre ?? subKey, effects: fx });
   }
   // Rasgos de clase y de subclase con `efectos` en los datos (blocks de cada
   // nivel alcanzado). Así una clase declara su mecánica sin código propio.
@@ -105,14 +122,17 @@ export function effectSources(c) {
     const cls = getClass(classKey);
     const subKey = c.subclasses?.[classKey];
     const sub = subKey ? Object.values(cls?.niveles ?? {}).find((l) => l.subClase)?.subClase?.[subKey] : null;
+    const fromTable = (fx) => fx.map((e) => (e.desdeTabla ? { type: e.type, target: e.target, value: tableNumber(cls, level, e.desdeTabla) }
+      : e.desdeNivel ? { type: e.type, target: e.target, value: level + (e.mas ?? 0) } : e))
+      .filter((e) => e.type !== 'bono' || e.desdeAtributo || (Number.isFinite(e.value) && e.value !== 0));
     for (let n = 1; n <= level; n++) {
       for (const b of Object.values(cls?.niveles?.[n]?.infoBlock ?? {})) {
-        const fx = normalizeEffects(b?.efectos);
-        if (fx.length) out.push({ kind: 'clase', label: b.name || cls.nombre, effects: fx });
+        const fx = fromTable(normalizeEffects(b?.efectos));
+        if (fx.length) out.push({ kind: 'clase', classKey, label: b.name || cls.nombre, effects: fx });
       }
       for (const b of Object.values(sub?.subNivel?.[n]?.infoSubBlock ?? {})) {
-        const fx = normalizeEffects(b?.efectos);
-        if (fx.length) out.push({ kind: 'clase', label: b.subName || sub.subNombre, effects: fx });
+        const fx = fromTable(normalizeEffects(b?.efectos));
+        if (fx.length) out.push({ kind: 'clase', classKey, label: b.subName || sub.subNombre, effects: fx });
       }
     }
   }
@@ -122,6 +142,8 @@ export function effectSources(c) {
       if (f.effects?.length) out.push({ kind: 'clase', label: f.title, effects: f.effects });
     }
   }
+  // Elecciones de rasgos (p. ej. una habilidad o herramienta elegida).
+  out.push(...choiceEffectSources(c));
   for (const f of allFeats(c)) {
     const effects = normalizeEffects(getFeat(f.name)?.efectos);
     if (effects.length) out.push({ kind: 'dote', label: getFeat(f.name)?.nombre ?? f.name, effects });

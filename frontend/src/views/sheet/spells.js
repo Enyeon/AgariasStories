@@ -99,12 +99,13 @@ function spellMeta(s) {
 }
 
 function spellItem(ctx, name, s, { compact = false } = {}) {
-  const known = ctx.character.spells.known.includes(name);
+  const inBook = (ctx.sheet.spellcasting.bookSpells ?? []).includes(name);
+  const known = inBook || ctx.character.spells.known.includes(name);
   const prepared = ctx.character.spells.prepared.includes(name);
   const actions = ctx.readOnly ? '' : html`<div class="row">
     ${known
       ? html`<button type="button" class="btn btn--sm ${prepared ? 'btn--gold' : 'btn--ghost'}" data-action="spell-prepare" data-spell="${name}" aria-pressed="${prepared}">${prepared ? '★ Preparado' : '☆ Preparar'}</button>
-             <button type="button" class="btn btn--sm btn--ghost" data-action="spell-forget" data-spell="${name}">Quitar</button>`
+             ${inBook ? html`<span class="badge" title="Añadido a tu libro al subir de nivel; se cambia desde la subida de nivel o la pestaña Rasgos">En tu libro</span>` : html`<button type="button" class="btn btn--sm btn--ghost" data-action="spell-forget" data-spell="${name}">Quitar</button>`}`
       : html`<button type="button" class="btn btn--sm btn--primary" data-action="spell-learn" data-spell="${name}">＋ Añadir</button>`}
   </div>`;
   return html`<details class="disclosure spell ${prepared ? 'is-prepared' : ''}" data-key="${compact ? 'g' : 'l'}:${name}">
@@ -121,7 +122,8 @@ function spellItem(ctx, name, s, { compact = false } = {}) {
 }
 
 function grimoire(ctx) {
-  const { known, prepared } = ctx.character.spells;
+  const { prepared } = ctx.character.spells;
+  const known = [...new Set([...(ctx.sheet.spellcasting.bookSpells ?? []), ...ctx.character.spells.known])];
   if (!known.length) return html`<p class="muted">Aún no has añadido conjuros. Búscalos en la biblioteca de abajo.</p>`;
   const missing = known.filter((n) => !ctx.spells[n]);
   const groups = {};
@@ -137,12 +139,32 @@ function grimoire(ctx) {
     ${missing.length ? html`<p class="callout callout--warning">Conjuros que ya no existen en los datos: ${missing.join(', ')}.</p>` : ''}`;
 }
 
+/** Conjuros que los rasgos dejan siempre preparados: no ocupan grimorio ni límite. */
+function alwaysPrepared(ctx) {
+  const list = ctx.sheet.spellcasting.alwaysPrepared ?? [];
+  if (!list.length) return '';
+  return sectionCard({
+    title: 'Siempre preparados',
+    subtitle: 'Por tus rasgos. No cuentan para el número de conjuros preparados.',
+    body: html`<div class="spell-list">${list.map(({ name, source }) => {
+      const s = ctx.spells[name];
+      return s
+        ? html`<details class="disclosure spell is-prepared" data-key="a:${name}">
+            <summary><span class="spell__title">${name}</span><span class="spell__badges"><span class="badge ${s.nivel === 'Truco' ? 'badge--accent' : ''}">${levelLabel(s.nivel)}</span><span class="badge badge--gold">${source}</span></span></summary>
+            <div class="disclosure__body">${spellMeta(s)}<div class="rich">${richText(s.descripcion)}</div></div>
+          </details>`
+        : html`<div class="disclosure spell is-prepared"><div class="row row--between spell__static"><span class="spell__title">${name}</span><span class="spell__badges"><span class="badge badge--gold">${source}</span><span class="badge">No está en el catálogo</span></span></div></div>`;
+    })}</div>`,
+  });
+}
+
 function library(ctx) {
   const f = ctx.ui.spells;
   const all = Object.values(ctx.spells);
   const schools = [...new Set(all.map(spellSchool))].filter((s) => s && !/acción/.test(s)).sort((a, b) => a.localeCompare(b, 'es'));
   const types = [...new Set(all.flatMap(spellTypes))].sort((a, b) => a.localeCompare(b, 'es'));
-  const classKeys = ctx.sheet.spellcasting.classKeys;
+  // Listas de otras clases que los rasgos permiten usar (p. ej. Secretos mágicos).
+  const classKeys = [...new Set([...ctx.sheet.spellcasting.classKeys, ...(ctx.sheet.spellcasting.extraLists ?? [])])];
   const results = filterSpells(ctx.spells, f, classKeys);
   const pages = Math.max(1, Math.ceil(results.length / PAGE_SIZE));
   const page = Math.min(f.page, pages);
@@ -172,6 +194,7 @@ export function renderSpells(ctx) {
   }
   return html`<div class="stack">
     ${sc.isCaster ? sectionCard({ title: 'Lanzamiento de conjuros', body: html`${statsCards(ctx)}${slotsTable(ctx)}` }) : html`<div class="callout"><p>Tu personaje no tiene una clase lanzadora de conjuros. Puedes anotar igualmente conjuros obtenidos por objetos o rasgos.</p></div>`}
+    ${alwaysPrepared(ctx)}
     ${sectionCard({ title: 'Mi grimorio', body: grimoire(ctx) })}
     ${ctx.readOnly ? '' : sectionCard({ title: 'Biblioteca de conjuros', subtitle: 'Añade conjuros a tu grimorio y marca los preparados.', body: library(ctx) })}
   </div>`;
