@@ -1,7 +1,7 @@
 // Progresión del personaje: raza, subida y bajada de nivel.
 // Todas las funciones devuelven un personaje NUEVO (no mutan el recibido).
 
-import { pendingChoices, knownChoices, validateChoices, hasRequiredChoices, expandGrants } from './class-choices.js';
+import { pendingChoices, knownChoices, validateChoices, hasRequiredChoices, expandGrants, deferSpellChoices } from './class-choices.js';
 import { ABILITY_KEYS, MAX_LEVEL, ABILITY_LABEL } from './constants.js';
 import { getClass, getRace, getFeat, getEpicBoon } from '../data/index.js';
 import { permissionsFor } from '../content/rules.js';
@@ -100,7 +100,11 @@ export function planLevelUp(c, classKey, { subclass = null } = {}) {
     featureChoice: choice
       ? { count: Number(choice.count) || 1, bonus: Number(choice.bonus) || 0, allowed: choice.allowedChoices ?? [...ABILITY_KEYS] }
       : null,
-    choices: pendingChoices(c, classKey, newClassLevel, subKey),
+    // Los conjuros se eligen después, desde la pestaña Conjuros.
+    ...(() => {
+      const { groups, deferred } = deferSpellChoices(pendingChoices(c, classKey, newClassLevel, subKey));
+      return { choices: groups, deferredSpells: deferred };
+    })(),
   };
 }
 
@@ -177,7 +181,7 @@ export function applyLevelUp(c, choices) {
     }
   }
   const subKey = c.subclasses[plan.classKey] ?? (plan.needsSubclass ? choices.subclass : null);
-  const grants = expandGrants(plan.classKey, subKey, plan.choices, choices.featureChoices?.elecciones);
+  const grants = deferSpellChoices(expandGrants(plan.classKey, subKey, plan.choices, choices.featureChoices?.elecciones)).groups;
   const picked = validateChoices(knownChoices(c, plan.classKey), grants, choices.featureChoices?.elecciones, { spells: choices.spells ?? null });
   errors.push(...picked.errors);
   if (errors.length) return { character: c, errors };

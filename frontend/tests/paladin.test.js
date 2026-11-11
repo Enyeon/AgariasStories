@@ -4,7 +4,7 @@ import { createCharacter } from '../src/domain/schema.js';
 import { computeSheet, classFeatures } from '../src/domain/rules.js';
 import { computeSpellSlots } from '../src/domain/spellcasting.js';
 import { applyLevelUp, applyLevelDowns, planLevelUp, setRace } from '../src/domain/progression.js';
-import { knownChoices } from '../src/domain/class-choices.js';
+import { knownChoices, pendingSpellChoices } from '../src/domain/class-choices.js';
 import { autoChoices } from './helpers/auto-choices.js';
 
 const ASI = { type: 'asi', increases: { carisma: 2 } };
@@ -48,16 +48,21 @@ describe('Paladín', () => {
   it('Estilo de Combate: dote (se escribe) o Guerrero Bendito (abre la elección de 2 trucos de Clérigo)', () => {
     const plan = planLevelUp(paladin(1), 'paladin');
     expect(plan.choices.map((g) => g.lista)).toEqual(['estilo-combate-paladin']);
-    // Sin los trucos, Guerrero Bendito no deja continuar.
-    const bad = applyLevelUp(paladin(1), { classKey: 'paladin', hpRoll: 6, featureChoices: { elecciones: { 'estilo-combate-paladin': { add: ['guerrero-bendito'] } } } });
-    expect(bad.errors.join(' ')).toMatch(/Trucos de Guerrero Bendito: elige 2/);
+    // Los trucos de Guerrero Bendito no frenan la subida: quedan pendientes
+    // para elegirlos en la pestaña Conjuros.
+    const later = applyLevelUp(paladin(1), { classKey: 'paladin', hpRoll: 6, featureChoices: { elecciones: { 'estilo-combate-paladin': { add: ['guerrero-bendito'] } } } });
+    expect(later.errors).toEqual([]);
+    expect(pendingSpellChoices(later.character, 'paladin')).toEqual([expect.objectContaining({ lista: 'trucos-guerrero-bendito', cantidad: 2 })]);
+    // Más de los que tocan, no.
+    const tooMany = applyLevelUp(paladin(1), { classKey: 'paladin', hpRoll: 6, featureChoices: { elecciones: { 'estilo-combate-paladin': { add: ['guerrero-bendito'] }, 'trucos-guerrero-bendito': { add: ['Guía', 'Llama sagrada', 'Taumaturgia'] } } } });
+    expect(tooMany.errors.join(' ')).toMatch(/como mucho 2/);
     const gb = paladin(2, { estilo: 'guerrero-bendito' });
     expect(prepared(gb)).toEqual(expect.arrayContaining(['Guía', 'Llama sagrada']));
     expect(knownChoices(gb, 'paladin')['dote-estilo-combate']).toBeUndefined();
     const dote = paladin(2, { estilo: 'dote' });
     expect(knownChoices(dote, 'paladin')['dote-estilo-combate']).toEqual(['Defensa']);
     // Al nivel 3 se ofrece cambiar un truco de Guerrero Bendito (opcional).
-    expect(planLevelUp(gb, 'paladin').choices.find((g) => g.lista === 'trucos-guerrero-bendito')).toMatchObject({ cantidad: 0, reemplazar: 1 });
+    expect(planLevelUp(gb, 'paladin').choices.find((g) => g.lista === 'trucos-guerrero-bendito')).toMatchObject({ cantidad: 0, reemplazar: 1, opcional: true });
   });
 
   it('Golpe Divino y Encontrar Corcel siempre preparados; maestría en 2 armas', () => {

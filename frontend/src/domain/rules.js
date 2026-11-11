@@ -239,9 +239,11 @@ export function grantedSkills(c) {
 }
 
 export function skillBonuses(c, scores, prof, sources = proficiencySources(c), fx = effectSources(c)) {
-  // «Experto en todos los oficios»: mitad del bono en pruebas sin competencia.
-  const half = hasHalfProficiency(fx) ? Math.floor(prof / 2) : 0;
+  // «Experto en todos los oficios»: mitad del bono en pruebas sin competencia
+  // (con `atributos`, sólo en las habilidades de esos atributos).
+  const halfOf = (ability) => (hasHalfProficiency(fx, ability) ? Math.floor(prof / 2) : 0);
   return SKILLS.map((s) => {
+    const half = halfOf(s.ability);
     const src = sources.skills.get(s.name) ?? [];
     const proficient = src.length > 0;
     const granted = isGranted(src);
@@ -576,7 +578,9 @@ export function defenses(fx) {
 // ── Vista completa de la ficha ───────────────────────────────────────────
 
 /** Calcula todos los valores derivados de la ficha de una sola vez. */
-export const hasHalfProficiency = (fx) => fx.some((s) => s.effects.some((e) => e.type === 'medio_competencia'));
+/** ¿Hay mitad de competencia? Sin `ability`, sólo cuenta la que vale para todas las pruebas. */
+export const hasHalfProficiency = (fx, ability = null) => fx.some((s) => s.effects.some((e) => e.type === 'medio_competencia'
+  && (!e.atributos?.length || (ability !== null && e.atributos.includes(ability)))));
 
 /** Conjuros que los rasgos dejan siempre preparados (no cuentan para el límite). */
 export function alwaysPreparedSpells(fx) {
@@ -633,7 +637,7 @@ export function computeSheet(c) {
     skills,
     saves: savingThrows(c, scores, prof, sources, fx),
     // La iniciativa es una prueba de Destreza: cuentan también los bonos a `pruebas:destreza`.
-    initiative: scores.destreza.modifier + sumBonus(fx, 'iniciativa', scores) + sumBonus(fx, 'pruebas:destreza', scores) + (hasHalfProficiency(fx) ? Math.floor(prof / 2) : 0),
+    initiative: scores.destreza.modifier + sumBonus(fx, 'iniciativa', scores) + sumBonus(fx, 'pruebas:destreza', scores) + (hasHalfProficiency(fx, 'destreza') ? Math.floor(prof / 2) : 0),
     proficiencies: {
       armaduras: [...sources.armaduras].map(([name, src]) => ({ name, sources: src })),
       armas: [...sources.armas].map(([name, src]) => ({ name, sources: src })),

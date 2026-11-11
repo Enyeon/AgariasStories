@@ -13,7 +13,7 @@ import {
   planLevelUp, applyLevelUp, applyLevelUps, levelNeedsDecisions, rollDie, validateImprovement, canLevelUp,
   levelDownPreview, forgetSpells,
 } from '../domain/progression.js';
-import { knownChoices, listSource, validateChoices, expandGrants } from '../domain/class-choices.js';
+import { knownChoices, listSource, validateChoices, expandGrants, deferSpellChoices, levelUpVisibleChoices } from '../domain/class-choices.js';
 import { choiceGroupsHtml, bindChoiceGroups, choicesError, choicesSummary, choicesPayload } from './components/choice-picker.js';
 
 const normalize = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
@@ -169,7 +169,10 @@ export function openLevelUpWizard(character, opts = {}) {
       let spells = null;
       let spellsRequested = false;
       // Elecciones del nivel, incluidas las que abre una opción ya marcada.
-      const choiceGroups = () => expandGrants(state.classKey, character.subclasses[state.classKey] ?? state.subclass, state.plan?.choices ?? [], choicesPayload(state.elecciones));
+      // Los conjuros no se piden aquí: se eligen después en la pestaña Conjuros.
+      const expanded = () => deferSpellChoices(expandGrants(state.classKey, character.subclasses[state.classKey] ?? state.subclass, state.plan?.choices ?? [], choicesPayload(state.elecciones)));
+      const choiceGroups = () => levelUpVisibleChoices(expanded().groups);
+      const deferredSpells = () => expanded().deferred;
       const needsSpells = () => choiceGroups().some((g) => listSource(g.def) === 'conjuros');
       function ensureSpells() {
         if (spells || spellsRequested || !needsSpells()) return;
@@ -192,7 +195,7 @@ export function openLevelUpWizard(character, opts = {}) {
         const s = ['class'];
         if (state.plan?.needsSubclass) s.push('subclass');
         if (state.plan?.needsImprovement) s.push('improvement');
-        if (state.plan?.choices?.length) s.push('choices');
+        if (levelUpVisibleChoices(state.plan?.choices ?? []).length) s.push('choices');
         if (state.plan?.featureChoice) s.push('feature');
         if (!multi || hpMode === 'ask' || state.plan?.isFirstLevel) s.push('hp');
         if (!multi) s.push('confirm');
@@ -269,7 +272,7 @@ export function openLevelUpWizard(character, opts = {}) {
 
       function stepChoices() {
         ensureSpells();
-        const required = state.plan.choices.some((g) => g.cantidad > 0);
+        const required = choiceGroups().some((g) => g.cantidad > 0);
         return html`<p class="muted">${state.plan.className} ${state.plan.newClassLevel}: ${required ? 'tus rasgos de este nivel te piden elegir.' : 'puedes cambiar una elección anterior (opcional).'}</p>
           ${choiceGroupsHtml(choiceGroups(), state.elecciones, { known: knownChoices(character, state.classKey), spells })}`;
       }
@@ -309,7 +312,8 @@ export function openLevelUpWizard(character, opts = {}) {
           ${choicesSummary(choiceGroups(), state.elecciones).map((t) => html`<li><span>Elección</span><strong>${t}</strong></li>`)}
           ${p.milestone?.statAmount ? html`<li><span>Bonificación de clase</span><strong>${Object.entries(p.milestone.statAmount).filter(([k]) => k !== 'choice').map(([k, v]) => `${ABILITY_LABEL[k]} +${v}`).join(', ')}</strong></li>` : ''}
           <li><span>Dado de golpe</span><strong>${hp} (d${p.hitDie})</strong></li>
-        </ul>`;
+        </ul>
+        ${spellNote(deferredSpells(), getClass(p.classKey)?.conjurador || spellcasting(character, scores, proficiencyBonus(Math.max(1, totalLevel(character)))).isCaster)}`;
       }
 
       const RENDER = { class: stepClass, subclass: stepSubclass, improvement: stepImprovement, feature: stepFeature, choices: stepChoices, hp: stepHp, confirm: stepConfirm };
@@ -517,11 +521,21 @@ function openMultiLevelSummary(original, final, steps) {
           <li><span>PG máximos</span><strong>${hitPointsMax(original)} → ${hitPointsMax(final)}</strong></li>
           ${changes.map((k) => html`<li><span>${ABILITY_LABEL[k]}</span><strong>${before[k].total} → ${after[k].total}</strong></li>`)}
         </ul>
+        ${spellNote(steps.flatMap((st) => planLevelUp(st.before, st.choices.classKey, { subclass: st.choices.subclass }).deferredSpells ?? []), spellcasting(final, after, proficiencyBonus(Math.max(1, totalLevel(final)))).isCaster)}
         <div class="dialog__footer"><button type="button" class="btn btn--ghost" data-dialog-close>Descartar todo</button><button type="button" class="btn btn--primary" data-ok autofocus>✓ Confirmar ${steps.length} niveles</button></div>
       </div>`);
       body.querySelector('[data-ok]').addEventListener('click', () => close(true));
     },
   });
+}
+
+/** Aviso de que los conjuros nuevos se eligen con calma en la pestaña Conjuros. */
+function spellNote(deferred, isCaster) {
+  if (!deferred.length && !isCaster) return '';
+  const total = deferred.reduce((t, d) => t + d.cantidad, 0);
+  return html`<p class="callout callout--accent">✨ ${total
+    ? html`Este nivel te da <strong>${total} conjuro${total === 1 ? '' : 's'}</strong> para elegir (${[...new Set(deferred.map((d) => d.titulo))].join(', ')}).`
+    : 'Puede que este nivel te dé trucos o conjuros nuevos.'} No hace falta elegirlos ahora: ve a la pestaña <strong>Conjuros</strong> y revísalos tranquilamente.</p>`;
 }
 
 function hitPointsMax(c) {

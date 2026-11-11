@@ -1,0 +1,1317 @@
+{
+  "nombre": "Ingeniero",
+  "claseName": "ingeniero",
+  "seccion": "agarias",
+  "icono": "🔧",
+  "fuenteReglas": "Agarias (inspirado en el Artífice)",
+  "dadoDeGolpe": 8,
+  "nivelesDeAumento": [
+    4,
+    8,
+    12,
+    16
+  ],
+  "conjurador": false,
+  "attribute": "inteligencia",
+  "cdClase": {
+    "nombre": "CD de artefacto",
+    "atributos": [
+      "inteligencia"
+    ]
+  },
+  "subclaseNombre": "Especialización de Ingeniero",
+  "pericias": {
+    "5": 2,
+    "7": 2
+  },
+  "competencias": {
+    "salvaciones": [
+      "constitucion",
+      "inteligencia"
+    ],
+    "armaduras": [
+      "Armadura ligera",
+      "Armadura media",
+      "Escudos"
+    ],
+    "armas": [
+      "Armas simples"
+    ],
+    "herramientas": [
+      "Herramientas de hojalatero",
+      "Herramientas de herrero"
+    ],
+    "habilidades": {
+      "elegir": 2,
+      "de": [
+        "Historia",
+        "Investigación",
+        "Juego de Manos",
+        "Medicina",
+        "Percepción",
+        "Perspicacia"
+      ]
+    }
+  },
+  "competenciasMulticlase": {
+    "armaduras": [
+      "Armadura ligera",
+      "Armadura media"
+    ],
+    "armas": [],
+    "herramientas": [
+      "Herramientas de hojalatero"
+    ],
+    "habilidades": {
+      "elegir": 1,
+      "de": [
+        "Historia",
+        "Investigación",
+        "Juego de Manos",
+        "Medicina",
+        "Percepción",
+        "Perspicacia"
+      ]
+    }
+  },
+  "equipoInicial": [
+    "(A) Armadura de cuero, Daga, Ballesta ligera y 20 virotes, Herramientas de hojalatero, Paquete de explorador de mazmorras, Diario de esquemas y 10 PO.",
+    "(B) 150 PO."
+  ],
+  "listasDeEleccion": {
+    "esquemas": {
+      "titulo": "Esquemas de artefactos",
+      "reemplazarAlSubir": true,
+      "ayuda": "Triviales desde el nivel 1, simples desde el 3, avanzados desde el 6 e intrincados desde el 11. Al subir de nivel puedes cambiar uno.",
+      "opciones": [
+        {
+          "id": "gafas-de-soldador",
+          "nombre": "Gafas de soldador",
+          "descripcion": "<b>Trivial</b> · Pasiva.\nLentes ahumadas con visera abatible. Tienes ventaja en las tiradas de salvación para no quedar Cegado por luz brillante o destellos.",
+          "requisitos": {
+            "nivel": 1
+          }
+        },
+        {
+          "id": "lentes-de-aumento",
+          "nombre": "Lentes de aumento",
+          "descripcion": "<b>Trivial</b> · Pasiva.\nUn monóculo de lentes intercambiables. +1 a las pruebas de Investigación y puedes leer letra diminuta o examinar mecanismos pequeños sin penalización.",
+          "requisitos": {
+            "nivel": 1
+          },
+          "efectos": [
+            {
+              "type": "bono",
+              "target": "habilidad:Investigación",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "id": "suelas-silenciosas",
+          "nombre": "Suelas silenciosas",
+          "descripcion": "<b>Trivial</b> · Pasiva.\nAlmohadillas de muelle y fieltro cosidas al calzado. +1 a las pruebas de Sigilo.",
+          "requisitos": {
+            "nivel": 1
+          },
+          "efectos": [
+            {
+              "type": "bono",
+              "target": "habilidad:Sigilo",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "id": "linterna-de-manivela",
+          "nombre": "Linterna de manivela",
+          "descripcion": "<b>Trivial</b> · Interacción con objeto.\nAl girar la manivela emite luz brillante en un cono de 9 m y luz tenue 9 m más, durante 10 minutos. No es mágica ni se apaga con el viento.",
+          "requisitos": {
+            "nivel": 1
+          }
+        },
+        {
+          "id": "brazo-extensible",
+          "nombre": "Brazo extensible",
+          "descripcion": "<b>Trivial</b> · Interacción con objeto.\nUna pinza telescópica en la muñeca. Puedes coger, mover o manipular un objeto de hasta 2,5 kg a 3 m de ti (no sirve para atacar ni para usar herramientas).",
+          "requisitos": {
+            "nivel": 1
+          }
+        },
+        {
+          "id": "encendedor-automatico",
+          "nombre": "Encendedor automático",
+          "descripcion": "<b>Trivial</b> · Interacción con objeto.\nChispero de pedernal con depósito de aceite. Enciendes una antorcha, una mecha o una fogata sin necesidad de yesca.",
+          "requisitos": {
+            "nivel": 1
+          }
+        },
+        {
+          "id": "alarma-de-perimetro",
+          "nombre": "Alarma de perímetro",
+          "descripcion": "<b>Trivial</b> · Acción (1 minuto para colocarla).\nCuatro estacas unidas por un hilo tensado delimitan un cuadrado de hasta 6 m de lado durante 8 horas. Si una criatura Pequeña o mayor cruza el hilo, suena un timbre audible a 18 m (o solo para ti, si lo eliges al colocarla).",
+          "requisitos": {
+            "nivel": 1
+          }
+        },
+        {
+          "id": "herramienta-multiusos",
+          "nombre": "Herramienta multiusos",
+          "descripcion": "<b>Trivial</b> · Pasiva.\nUna navaja con destornilladores, lima, sierra y tenazas plegables. Cuenta como Herramientas de hojalatero y como Herramientas de ladrón para quien tenga competencia con ellas.",
+          "requisitos": {
+            "nivel": 1
+          }
+        },
+        {
+          "id": "ganzua-neumatica",
+          "nombre": "Ganzúa neumática",
+          "descripcion": "<b>Trivial</b> · Interacción con objeto.\nUn pistón de aire comprimido que tensa los pernos. Tienes ventaja en las pruebas para abrir cerraduras mecánicas no mágicas.",
+          "requisitos": {
+            "nivel": 1
+          }
+        },
+        {
+          "id": "mascara-de-filtro",
+          "nombre": "Máscara de filtro",
+          "descripcion": "<b>Trivial</b> · Interacción con objeto.\nSe despliega desde el cuello. Mientras la llevas puesta tienes ventaja en las tiradas de salvación contra gases, humos y esporas inhalados. No filtra venenos de contacto ni ingeridos.",
+          "requisitos": {
+            "nivel": 1
+          }
+        },
+        {
+          "id": "gancho-propulsado",
+          "nombre": "Gancho propulsado",
+          "descripcion": "<b>Simple</b> · Acción.\nDisparas un garfio con 15 m de cable a una superficie que puedas ver. Puedes recogerlo para desplazarte hasta el punto de anclaje (no provoca ataques de oportunidad) o tirar de un objeto suelto de hasta 10 kg hacia ti.",
+          "requisitos": {
+            "nivel": 3
+          }
+        },
+        {
+          "id": "brazal-escudo",
+          "nombre": "Brazal escudo",
+          "descripcion": "<b>Simple</b> · Reacción · 1 Energía.\nCuando un ataque te impacta, despliegas un abanico de placas: +2 a la CA contra ese ataque, lo que puede hacer que falle. Dura hasta el inicio de tu siguiente turno.",
+          "requisitos": {
+            "nivel": 3
+          }
+        },
+        {
+          "id": "granada-de-humo",
+          "nombre": "Granada de humo",
+          "descripcion": "<b>Simple</b> · Acción · 1 Energía.\nLanzas el bote a un punto a 18 m. Crea una esfera de 6 m de radio de humo denso (zona muy oscura) que dura 1 minuto o hasta que un viento moderado lo disperse.",
+          "requisitos": {
+            "nivel": 3
+          }
+        },
+        {
+          "id": "petardo-cegador",
+          "nombre": "Petardo cegador",
+          "descripcion": "<b>Simple</b> · Acción · 1 Energía.\nLanzas el petardo a un punto a 18 m. Cada criatura a 3 m de él supera una salvación de Constitución contra tu CD de artefacto o queda Cegada hasta el final de su siguiente turno.",
+          "requisitos": {
+            "nivel": 3
+          }
+        },
+        {
+          "id": "pistola-de-clavos",
+          "nombre": "Pistola de clavos",
+          "descripcion": "<b>Simple</b> · Acción (ataque).\nArma a distancia con la que tienes competencia: ataque con Inteligencia, alcance 9/27 m, 1d8 de daño perforante. Si la cargas con 1 Energía, el impacto inflige 1d8 de daño adicional.",
+          "requisitos": {
+            "nivel": 3
+          }
+        },
+        {
+          "id": "inyector-estimulante",
+          "nombre": "Inyector estimulante",
+          "descripcion": "<b>Simple</b> · Acción adicional · 1 Energía.\nUna jeringa automática de reconstituyente. Tú o una criatura a tu alcance recupera 1d8 + tu modificador de Inteligencia puntos de golpe. Una misma criatura solo puede beneficiarse una vez por descanso breve.",
+          "requisitos": {
+            "nivel": 3
+          }
+        },
+        {
+          "id": "guantes-adherentes",
+          "nombre": "Guantes adherentes",
+          "descripcion": "<b>Simple</b> · Pasiva.\nVentosas y garfios retráctiles. Obtienes una velocidad de trepar igual a tu velocidad caminando y no necesitas las manos libres para mantenerte agarrado.",
+          "requisitos": {
+            "nivel": 3
+          }
+        },
+        {
+          "id": "amplificador-auditivo",
+          "nombre": "Amplificador auditivo",
+          "descripcion": "<b>Simple</b> · Pasiva.\nUna trompetilla con resonador. +1 a las pruebas de Percepción y tienes ventaja en las que se basan en el oído.",
+          "requisitos": {
+            "nivel": 3
+          },
+          "efectos": [
+            {
+              "type": "bono",
+              "target": "habilidad:Percepción",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "id": "resortes-de-carrera",
+          "nombre": "Resortes de carrera",
+          "descripcion": "<b>Simple</b> · Pasiva.\nMuelles de acero en las pantorrillas. Tu velocidad aumenta en 10 pies y tus saltos de longitud y altura se duplican.",
+          "requisitos": {
+            "nivel": 3
+          },
+          "efectos": [
+            {
+              "type": "bono",
+              "target": "velocidad",
+              "value": 10
+            }
+          ]
+        },
+        {
+          "id": "cepo-mecanico",
+          "nombre": "Cepo mecánico",
+          "descripcion": "<b>Simple</b> · Acción · 1 Energía.\nColocas un cepo en una casilla adyacente. La primera criatura que entre supera una salvación de Destreza o queda Apresada y recibe 1d6 de daño perforante. Puede liberarse con una acción y una prueba de Fuerza contra tu CD de artefacto.",
+          "requisitos": {
+            "nivel": 3
+          }
+        },
+        {
+          "id": "mochila-cohete",
+          "nombre": "Mochila cohete",
+          "descripcion": "<b>Avanzado</b> · Acción adicional · 3 Energía.\nObtienes una velocidad de volar de 30 pies durante 1 minuto. Si estás en el aire cuando termina, desciendes 18 m por asalto sin recibir daño por caída.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "arpon-electrico",
+          "nombre": "Arpón eléctrico",
+          "descripcion": "<b>Avanzado</b> · Acción (ataque) · 2 Energía.\nAtaque a distancia con Inteligencia, alcance 9/18 m. Si impacta, inflige 2d8 de daño de relámpago y el objetivo no puede realizar reacciones hasta el inicio de su siguiente turno.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "dron-explorador",
+          "nombre": "Dron explorador",
+          "descripcion": "<b>Avanzado</b> · Acción · 2 Energía.\nLiberas un dron Diminuto (CA 15, 1 PG, volar 40 pies) durante 1 hora. Puedes ver y oír lo que él percibe; controlarlo requiere tu acción adicional. No puede atacar ni interactuar con objetos.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "torreta-portatil",
+          "nombre": "Torreta portátil",
+          "descripcion": "<b>Avanzado</b> · Acción · 3 Energía.\nDespliegas una torreta en un espacio a 1,5 m (CA 16, PG iguales a 5 × tu nivel de Ingeniero) durante 1 minuto. Como acción adicional, dispara a una criatura a 18 m: ataque con tu bonificador de artefacto, 1d10 + tu modificador de Inteligencia de daño perforante.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "placa-reactiva",
+          "nombre": "Placa reactiva",
+          "descripcion": "<b>Avanzado</b> · Pasiva.\nLáminas superpuestas sobre tu armadura o ropa. Mientras está equipada, +1 a la CA. (La CA de la ficha es manual: súmalo tú.)",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "rejilla-de-enfriamiento",
+          "nombre": "Rejilla de enfriamiento",
+          "descripcion": "<b>Avanzado</b> · Pasiva.\nUn circuito de agua y vapor que disipa el calor. Tienes resistencia al daño de fuego.",
+          "requisitos": {
+            "nivel": 6
+          },
+          "efectos": [
+            {
+              "type": "resistencia",
+              "value": "fuego"
+            }
+          ]
+        },
+        {
+          "id": "detector-de-mecanismos",
+          "nombre": "Detector de mecanismos",
+          "descripcion": "<b>Avanzado</b> · Pasiva.\nUn péndulo magnético que vibra cerca del metal en movimiento. Tienes ventaja para detectar trampas mecánicas, puertas secretas con mecanismos y objetos metálicos ocultos a 9 m.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "campo-amortiguador",
+          "nombre": "Campo amortiguador",
+          "descripcion": "<b>Avanzado</b> · Reacción · 2 Energía.\nCuando recibes daño contundente, cortante o perforante, reduces ese daño en 1d10 + tu modificador de Inteligencia.",
+          "requisitos": {
+            "nivel": 6
+          }
+        },
+        {
+          "id": "exoesqueleto-hidraulico",
+          "nombre": "Exoesqueleto hidráulico",
+          "descripcion": "<b>Intrincado</b> · Pasiva.\nPistones en brazos y piernas. Tienes ventaja en las pruebas de Fuerza (Atletismo), tu capacidad de carga se duplica y tus ataques desarmados infligen 1d8 + tu modificador de Fuerza de daño contundente.",
+          "requisitos": {
+            "nivel": 11
+          }
+        },
+        {
+          "id": "generador-de-campo-de-fuerza",
+          "nombre": "Generador de campo de fuerza",
+          "descripcion": "<b>Intrincado</b> · Acción · 5 Energía.\nProyectas una cúpula de 3 m de radio centrada en ti durante 1 minuto (concentración, como un conjuro). Las criaturas dentro tienen cobertura de tres cuartos contra ataques que vengan de fuera.",
+          "requisitos": {
+            "nivel": 11
+          }
+        },
+        {
+          "id": "canon-de-rayos",
+          "nombre": "Cañón de rayos",
+          "descripcion": "<b>Intrincado</b> · Acción · 5 Energía.\nDescargas una línea de 18 m y 1,5 m de ancho. Cada criatura en ella hace una salvación de Destreza: 6d8 de daño de relámpago si falla, la mitad si tiene éxito.",
+          "requisitos": {
+            "nivel": 11
+          }
+        },
+        {
+          "id": "capa-de-camuflaje",
+          "nombre": "Capa de camuflaje óptico",
+          "descripcion": "<b>Intrincado</b> · Acción · 5 Energía.\nTe vuelves Invisible durante 1 minuto o hasta que ataques o actives otro artefacto.",
+          "requisitos": {
+            "nivel": 11
+          }
+        },
+        {
+          "id": "automata-reparador",
+          "nombre": "Autómata reparador",
+          "descripcion": "<b>Intrincado</b> · Acción · 4 Energía.\nUn insecto mecánico corre hasta una criatura a 9 m: recupera 3d8 + tu modificador de Inteligencia puntos de golpe y, si es un constructo o un objeto, también repara sus daños mecánicos.",
+          "requisitos": {
+            "nivel": 11
+          }
+        },
+        {
+          "id": "aislante-dielectrico",
+          "nombre": "Aislante dieléctrico",
+          "descripcion": "<b>Intrincado</b> · Pasiva.\nUn traje de malla de cobre conectado a tierra. Tienes resistencia al daño de relámpago y de trueno.",
+          "requisitos": {
+            "nivel": 11
+          },
+          "efectos": [
+            {
+              "type": "resistencia",
+              "value": "relampago"
+            },
+            {
+              "type": "resistencia",
+              "value": "trueno"
+            }
+          ]
+        },
+        {
+          "id": "nucleo-de-sobrecarga",
+          "nombre": "Núcleo de sobrecarga",
+          "descripcion": "<b>Intrincado</b> · Acción adicional.\nUna batería de reserva. Una vez por descanso largo, recuperas Energía igual a la mitad de tu nivel de Ingeniero (redondeando hacia arriba).",
+          "requisitos": {
+            "nivel": 11
+          }
+        }
+      ]
+    },
+    "dispositivo-caracteristico": {
+      "titulo": "Dispositivo característico",
+      "ayuda": "Su daño usa la columna «Dado del dispositivo». Las mejoras llegan solas a los niveles 7, 13 y 19.",
+      "opciones": [
+        {
+          "id": "lanzallamas",
+          "nombre": "Lanzallamas",
+          "descripcion": "Un depósito a la espalda y una boquilla en la mano. Como acción, gastas 1 Energía y rocías un cono de 4,5 m: cada criatura en él hace una salvación de Destreza contra tu CD de artefacto; recibe el dado del dispositivo × 2 de daño de fuego si falla, o la mitad si tiene éxito. Los objetos inflamables que no lleve nadie se prenden.\n<b>Mejora (nivel 7).</b> El cono pasa a 6 m y puedes excluir de él a un número de criaturas igual a tu modificador de Inteligencia.\n<b>Mejora (nivel 13).</b> Las criaturas que fallen arden: reciben un dado del dispositivo de daño de fuego al inicio de su turno hasta que una de ellas use una acción para apagarse.\n<b>Mejora (nivel 19).</b> Una vez por turno puedes activarlo sin gastar Energía, y el daño ignora la resistencia al fuego."
+        },
+        {
+          "id": "llave-inglesa-multiple",
+          "nombre": "Llave inglesa múltiple",
+          "descripcion": "Arma cuerpo a cuerpo con la que tienes competencia (versátil). Atacas con Fuerza o Inteligencia y causas el dado del dispositivo de daño contundente. Además, como acción y gastando 1 Energía, reparas 2d6 puntos de golpe de un constructo u objeto que toques.\n<b>Mejora (nivel 7).</b> Cuando impactas, puedes gastar 1 Energía para que el objetivo haga una salvación de Fuerza o quede Derribado.\n<b>Mejora (nivel 13).</b> Tus impactos infligen el doble de daño a objetos y estructuras, y la reparación pasa a 4d6.\n<b>Mejora (nivel 19).</b> Al impactar puedes gastar 2 Energía para que el objetivo quede Aturdido hasta el final de tu siguiente turno si falla una salvación de Constitución."
+        },
+        {
+          "id": "omnibaculo-magitecnico",
+          "nombre": "Omnibáculo magitécnico",
+          "descripcion": "Un bastón con engranajes y lentes. Como acción, gastas 1 Energía y disparas un haz a una criatura a 36 m: ataque con Inteligencia que causa el dado del dispositivo + tu modificador de Inteligencia de daño de fuerza. Puedes usarlo también como bastón (1d6 contundente).\n<b>Mejora (nivel 7).</b> Puedes disparar dos haces con la misma acción (al mismo o a distintos objetivos) gastando 1 Energía por haz.\n<b>Mejora (nivel 13).</b> El haz puede atravesar a una segunda criatura situada en línea recta detrás del objetivo; haz otra tirada de ataque contra ella.\n<b>Mejora (nivel 19).</b> Los impactos del haz hacen que el objetivo no pueda recuperar puntos de golpe hasta el inicio de tu siguiente turno."
+        },
+        {
+          "id": "guantelete-steam",
+          "nombre": "Guantelete S.T.E.A.M.",
+          "descripcion": "Un guante blindado impulsado por vapor. +2 a las pruebas para forzar puertas atascadas, cerradas o atrancadas. Tus impactos con él causan el dado del dispositivo + tu modificador de Fuerza de daño de fuerza.\n<b>Garfio cohete (2 Energía).</b> Como acción, apresas a distancia a una criatura a 3 m y la atraes hacia ti, o te impulsas hacia un objeto lejano.\n<b>Mejora (nivel 7).</b> El alcance del Garfio cohete pasa a 4,5 m y obtienes <b>Rompeyelmos (4 Energía)</b>: al impactar, empujas al objetivo 3 m y queda Derribado.\n<b>Mejora (nivel 13).</b> El Garfio cohete llega a 6 m y obtienes <b>Barrera de vapor (6 Energía)</b>: como acción adicional, la barrera absorbe 3d8 + tu modificador de Constitución de daño hasta que se agote o pase 1 minuto.\n<b>Mejora (nivel 19).</b> El Garfio cohete llega a 7,5 m, Rompeyelmos causa 2 dados adicionales y la Barrera de vapor absorbe 5d8 + tu modificador de Constitución."
+        },
+        {
+          "id": "dispositivo-granadas-elixir",
+          "nombre": "Dispositivo de granadas de elixir (D.G.E.)",
+          "descripcion": "Un lanzador de viales. Como acción, gastas 1 Energía y lanzas una granada a un punto a 18 m: cada criatura a 1,5 m hace una salvación de Destreza; recibe el dado del dispositivo × 2 de daño de ácido, fuego, frío o veneno (eliges al lanzarla), o la mitad si tiene éxito. Puedes cargar un elixir curativo: en vez de dañar, cada aliado en el área recupera el dado del dispositivo + tu modificador de Inteligencia PG.\n<b>Mejora (nivel 7).</b> El radio pasa a 3 m y puedes excluir a un número de criaturas igual a tu modificador de Inteligencia.\n<b>Mejora (nivel 13).</b> Las granadas añaden un efecto según su tipo: ácido (−1 a la CA hasta tu siguiente turno), fuego (arde), frío (velocidad −10 pies) o veneno (Envenenado).\n<b>Mejora (nivel 19).</b> Puedes lanzar dos granadas con la misma acción, gastando la Energía de cada una."
+        }
+      ]
+    }
+  },
+  "niveles": {
+    "1": {
+      "infoCubo": {
+        "columnas": [
+          "Energía",
+          "Esquemas conocidos",
+          "Artefactos equipados (T · S · A · I)",
+          "Dado del dispositivo"
+        ],
+        "filas": [
+          [
+            "-",
+            "2",
+            "2 · – · – · –",
+            "-"
+          ]
+        ]
+      },
+      "descripcion": "Inventores que convierten engranajes, vapor y química en artefactos sorprendentes.",
+      "descripcionLarga": "Los ingenieros no confían en la magia: confían en el cálculo, el metal y la presión del vapor. Donde otros rezan o recitan, ellos ajustan una válvula. Llevan encima decenas de artefactos de su invención, un dispositivo característico que es su obra maestra y una reserva de Energía que alimenta todo lo que construyen.",
+      "atributoInicial": "Atributos de clase:\n❖ Habilidad principal: Inteligencia.\n❖ Tiradas de Salvación: Constitución e Inteligencia.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d8.\n    :: Nivel 1: 8 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d8 (o 5) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Armadura ligera y media, y escudos.\n    :: Armas: Armas simples.\n    :: Herramientas: Herramientas de hojalatero y Herramientas de herrero.\n    :: Habilidades: elige 2 entre Historia, Investigación, Juego de Manos, Medicina, Percepción y Perspicacia.\n❖ Equipo inicial: elige A o B.\n    :: (A) Armadura de cuero, Daga, Ballesta ligera y 20 virotes, Herramientas de hojalatero, Paquete de explorador de mazmorras, Diario de esquemas y 10 PO.\n    :: (B) 150 PO.\n❖ Multiclase: dado de golpe, competencia con Herramientas de hojalatero, una habilidad de la lista del Ingeniero y entrenamiento con armadura ligera y media.\n❖ Fuente: Agarias (inspirado en el Artífice).",
+      "infoBlock": {
+        "blockUno": {
+          "name": "Esquemas de artefactos",
+          "titleName": "✦ ESQUEMAS DE ARTEFACTOS ✦",
+          "descripcion": "Tienes la habilidad de construir artefactos mecánicos que cumplen diversas funciones y de incorporarlos a tu vestimenta, armadura, armas y otro tipo de equipo. Algunos artefactos proporcionan un beneficio continuo mientras están equipados (salvo que el DM indique lo contrario). Otros tienen un efecto que requiere una acción para activarlos.\nLos artefactos se construyen a partir de esquemas que detallan los parámetros de diseño y el funcionamiento previsto del dispositivo. Cada esquema posee un nivel de complejidad: trivial, simple, avanzado o intrincado.\n<b>Esquemas conocidos.</b> Al nivel 1 conoces dos esquemas de tu elección de la Lista de Esquemas. La columna «Esquemas conocidos» de la tabla indica cuándo aprendes más. Además, cada vez que subes de nivel puedes sustituir uno de tus esquemas por otro distinto. Cualquier esquema nuevo debe ser de una complejidad que seas capaz de equipar.\n<b>Coste.</b> Aprender un esquema y convertirlo en un artefacto funcional cuesta dinero y tiempo según su complejidad (piezas, prototipos, pruebas y ajustes). Si un artefacto se pierde o es destruido, debe reconstruirse por completo.\n<table><thead><tr><th>Complejidad</th><th>Nivel de Ingeniero</th><th>Coste</th><th>Tiempo</th></tr></thead><tbody><tr><td>Trivial</td><td>1</td><td>10 po</td><td>1 hora</td></tr><tr><td>Simple</td><td>3</td><td>40 po</td><td>2 horas</td></tr><tr><td>Avanzado</td><td>6</td><td>250 po</td><td>8 horas</td></tr><tr><td>Intrincado</td><td>11</td><td>1.250 po</td><td>40 horas</td></tr></tbody></table>\n<b>Equipar artefactos.</b> La columna «Artefactos equipados» indica cuántos puedes llevar a la vez de cada complejidad (T · S · A · I). Un artefacto puede ocupar un hueco de su complejidad o de una superior. Cada uno se integra en una prenda u objeto (añade 1 kg) y puedes reorganizarlos al terminar un descanso largo. Solo tú sabes usar los artefactos que construyes.\n<b>Activar artefactos.</b> Cada esquema indica si es pasivo o si se activa con una interacción con objeto, una acción, una acción adicional o una reacción, y cuánta Energía cuesta. No puedes activar dos artefactos que requieran una acción en el mismo turno.\n<b>Ataques y salvaciones.</b> Bonificador de ataque de artefacto = tu bonificador por competencia + tu modificador de Inteligencia. CD de artefacto = 8 + tu bonificador por competencia + tu modificador de Inteligencia (la ficha la muestra como «CD de artefacto»).\n<b>No son mágicos.</b> Los artefactos y sus efectos no son magia: Detectar magia, Disipar magia, Contraconjuro o un campo antimagia no les afectan.",
+          "elegir": {
+            "lista": "esquemas",
+            "cantidad": 2
+          }
+        }
+      }
+    },
+    "2": {
+      "infoCubo": {
+        "columnas": [
+          "Energía",
+          "Esquemas conocidos",
+          "Artefactos equipados (T · S · A · I)",
+          "Dado del dispositivo"
+        ],
+        "filas": [
+          [
+            "4",
+            "3",
+            "3 · – · – · –",
+            "1d6"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Energía",
+          "titleName": "✦ ENERGÍA ✦",
+          "descripcion": "A nivel 2 obtienes una reserva de puntos de Energía igual al doble de tu nivel de Ingeniero, como indica la columna «Energía» de la tabla. Recuperas una cantidad de Energía igual a tu nivel de Ingeniero al terminar un descanso breve y toda al terminar un descanso largo.\nMuchos artefactos y rasgos del Ingeniero gastan Energía; su coste se indica en cada descripción. Cuanto más poderoso es el Ingeniero, más Energía puede invertir en sus artefactos y más eficaces llegan a ser."
+        },
+        "blockDos": {
+          "name": "Dispositivo característico",
+          "titleName": "✦ DISPOSITIVO CARACTERÍSTICO ✦",
+          "descripcion": "A nivel 2 construyes un arquetipo de invención que supone una contribución a la ciencia: tu dispositivo característico, un arma versátil y personalizable que demuestra tu genialidad. Elige entre el Lanzallamas, la Llave inglesa múltiple, el Omnibáculo magitécnico, el Guantelete S.T.E.A.M. o el Dispositivo de granadas de elixir (D.G.E.). Su daño usa la columna «Dado del dispositivo».\nSi pierdes tu dispositivo característico, puedes crear uno nuevo con tres días de trabajo (8 horas al día) y 100 po en metal y otras materias primas. Repararlo requiere una prueba de Inteligencia con CD 15 y la mitad del coste y del tiempo de construirlo.\nA los niveles 7, 13 y 19 obtienes las mejoras de tu dispositivo (se indican en su descripción).",
+          "elegir": {
+            "lista": "dispositivo-caracteristico",
+            "cantidad": 1
+          }
+        }
+      },
+      "elegir": {
+        "lista": "esquemas",
+        "cantidad": 1,
+        "rasgo": "Esquemas de artefactos"
+      }
+    },
+    "3": {
+      "infoCubo": {
+        "columnas": [
+          "Energía",
+          "Esquemas conocidos",
+          "Artefactos equipados (T · S · A · I)",
+          "Dado del dispositivo"
+        ],
+        "filas": [
+          [
+            "6",
+            "6",
+            "3 · 1 · – · –",
+            "1d6"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Especialización de Ingeniero",
+          "titleName": "✦ ESPECIALIZACIÓN DE INGENIERO ✦",
+          "descripcion": "Como ingeniero, a veces te inspiras en diversas fuentes para tus creaciones. Al nivel 3 sigues un campo de estudio que define tus habilidades, en el que normalmente te formaste en una institución de educación superior: el Mecha de Batalla, el Artilugio, la Tecnoteurgia o el Autómata. Cada uno te otorga rasgos a los niveles 3, 6, 10 y 14."
+        }
+      },
+      "elegir": {
+        "lista": "esquemas",
+        "cantidad": 3,
+        "rasgo": "Esquemas de artefactos"
+      },
+      "subClase": {
+        "mecha-batalla": {
+          "subNombre": "Discípulo del Mecha de Batalla",
+          "subDescripcion": "✦ DISCÍPULO DEL MECHA DE BATALLA ✦\nCrees que tanto lo biológico como lo mecánico pueden mejorarse. Construyes una armadura mecánica impulsada por vapor a la que llamas traje de poder. Obtienes competencia con armas marciales, escudos y armadura pesada.",
+          "efectos": [
+            {
+              "type": "competencia",
+              "kind": "arma",
+              "value": "Armas marciales"
+            },
+            {
+              "type": "competencia",
+              "kind": "armadura",
+              "value": "Armadura pesada"
+            },
+            {
+              "type": "competencia",
+              "kind": "armadura",
+              "value": "Escudos"
+            }
+          ],
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Traje de poder",
+                  "subTitleName": "✦ TRAJE DE PODER ✦",
+                  "subDescripcion": "A nivel 3 construyes el traje de poder. Funciona como una armadura de placas (CA 18) que puedes llevar sin requisito de Fuerza y sin desventaja en Sigilo. Tu dispositivo característico y tus artefactos se consideran parte de su estructura: no pesan ni te ralentizan.\n<b>Blindaje adaptativo.</b> Cuando eres objetivo de un ataque, puedes usar tu reacción y gastar 2 Energía para sumar tu modificador de Inteligencia a tu CA contra ese ataque y contra todos los demás durante 1 minuto, incluso si estás desprevenido."
+                }
+              }
+            },
+            "6": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Ventaja mecánica",
+                  "subTitleName": "✦ VENTAJA MECÁNICA ✦",
+                  "subDescripcion": "A nivel 6 combinas tus dispositivos para potenciar el traje. Como acción adicional, gastas 2 Energía: hasta el final de tu turno, tus ataques cuerpo a cuerpo infligen daño contundente adicional igual a tu modificador de Fuerza o de Inteligencia (el que sea mayor). Además, puedes atacar dos veces, en lugar de una, cuando realizas la acción de Ataque en tu turno."
+                }
+              }
+            },
+            "10": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Evasión volátil",
+                  "subTitleName": "✦ EVASIÓN VOLÁTIL ✦",
+                  "subDescripcion": "A partir del nivel 10, cuando un efecto de un enemigo que puedas ver te obliga a hacer una salvación para recibir solo la mitad del daño, no recibes daño si tienes éxito y solo la mitad si fallas. Además, puedes desenfundar un arma como parte de cualquier movimiento en tu turno."
+                }
+              }
+            },
+            "14": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Combate energético",
+                  "subTitleName": "✦ COMBATE ENERGÉTICO ✦",
+                  "subDescripcion": "A partir del nivel 14 te desenvuelves a la perfección en el fragor del combate. Tienes ventaja en las tiradas de iniciativa. Cuando impactas con tu dispositivo característico o con un artefacto, puedes hacer un ataque adicional como acción adicional.\n<b>A todo vapor.</b> Una vez por descanso breve o largo, si tienes algún nivel de Agotamiento, puedes gastar 5 Energía para recuperar tantos PG como tu nivel de Ingeniero y eliminar una condición."
+                }
+              }
+            }
+          }
+        },
+        "artilugio": {
+          "subNombre": "Discípulo del Artilugio",
+          "subDescripcion": "✦ DISCÍPULO DEL ARTILUGIO ✦\nTe conviertes en un adepto de la creación. Puedes elegir un segundo dispositivo característico distinto del primero, y construir artefactos te cuesta la mitad de dinero y de tiempo.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Familiaridad con los esquemas",
+                  "subTitleName": "✦ FAMILIARIDAD CON LOS ESQUEMAS ✦",
+                  "subDescripcion": "Al nivel 3 aprendes 2 esquemas adicionales de tu elección (además de los de la tabla) y otro más a los niveles 6, 10 y 14. Deben ser de una complejidad que puedas equipar. Además, eliges tu segundo dispositivo característico."
+                }
+              },
+              "elegir": [
+                {
+                  "lista": "esquemas",
+                  "cantidad": 2
+                },
+                {
+                  "lista": "dispositivo-caracteristico",
+                  "cantidad": 1
+                }
+              ]
+            },
+            "6": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Artilugio avanzado",
+                  "subTitleName": "✦ ARTILUGIO AVANZADO ✦",
+                  "subDescripcion": "A nivel 6, el coste de Energía de tus artefactos y dispositivos se reduce en 1 (mínimo 0). Cuando haces una prueba usando un artefacto, puedes sumar 1d6 al resultado."
+                }
+              },
+              "elegir": {
+                "lista": "esquemas",
+                "cantidad": 1
+              }
+            },
+            "10": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Configuración rápida",
+                  "subTitleName": "✦ CONFIGURACIÓN RÁPIDA ✦",
+                  "subDescripcion": "A partir del nivel 10, al terminar un descanso breve puedes reconfigurar hasta tres de tus artefactos equipados, sustituyéndolos por otros de los esquemas que conozcas. Necesitas tus herramientas de hojalatero. El número aumenta a cinco al nivel 13 y a siete al nivel 17."
+                }
+              },
+              "elegir": {
+                "lista": "esquemas",
+                "cantidad": 1
+              }
+            },
+            "14": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Experiencia del artesano",
+                  "subTitleName": "✦ EXPERIENCIA DEL ARTESANO ✦",
+                  "subDescripcion": "Al nivel 14 eliges otro dispositivo característico."
+                }
+              },
+              "elegir": [
+                {
+                  "lista": "esquemas",
+                  "cantidad": 1
+                },
+                {
+                  "lista": "dispositivo-caracteristico",
+                  "cantidad": 1
+                }
+              ]
+            }
+          }
+        },
+        "tecnoteurgia": {
+          "subNombre": "Discípulo de la Tecnoteurgia",
+          "subDescripcion": "✦ DISCÍPULO DE LA TECNOTEURGIA ✦\nNo lanzas conjuros: los desmontas. Estudias la magia como otra forma de energía, grabas runas en tus circuitos y construyes aparatos que la miden, la desvían y la anulan.",
+          "efectos": [
+            {
+              "type": "competencia",
+              "kind": "habilidad",
+              "value": "Conocimiento Arcano"
+            }
+          ],
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Circuitos rúnicos",
+                  "subTitleName": "✦ CIRCUITOS RÚNICOS ✦",
+                  "subDescripcion": "Al nivel 3 obtienes competencia en Conocimiento Arcano.\n<b>Descarga rúnica (1 Energía).</b> Como acción, haces un ataque a distancia con Inteligencia contra una criatura a 18 m: el dado del dispositivo + tu modificador de Inteligencia de daño de fuerza.\n<b>Sensor taumatúrgico (1 Energía).</b> Como acción, durante 10 minutos percibes la presencia de magia a 9 m de ti y puedes identificar su escuela, como el conjuro Detectar magia (pero no es un conjuro)."
+                }
+              }
+            },
+            "6": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Interferencia arcana",
+                  "subTitleName": "✦ INTERFERENCIA ARCANA ✦",
+                  "subDescripcion": "A nivel 6, cuando una criatura que puedas ver a 18 m lanza un conjuro, puedes usar tu reacción y gastar 3 Energía: hace una salvación de Inteligencia contra tu CD de artefacto. Si falla y el conjuro es de nivel igual o inferior a la mitad de tu nivel de Ingeniero (redondeando hacia abajo), el conjuro falla y el espacio se gasta. Puedes usarlo un número de veces igual a tu modificador de Inteligencia (mínimo 1) por descanso largo."
+                }
+              }
+            },
+            "10": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Blindaje rúnico",
+                  "subTitleName": "✦ BLINDAJE RÚNICO ✦",
+                  "subDescripcion": "A partir del nivel 10 tienes resistencia al daño de fuerza y ventaja en las tiradas de salvación contra conjuros.",
+                  "efectos": [
+                    {
+                      "type": "resistencia",
+                      "value": "fuerza"
+                    }
+                  ]
+                }
+              }
+            },
+            "14": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Sobrecarga arcana",
+                  "subTitleName": "✦ SOBRECARGA ARCANA ✦",
+                  "subDescripcion": "A partir del nivel 14, tu Descarga rúnica y tu dispositivo característico causan un dado del dispositivo adicional de daño de fuerza. Una vez por descanso largo, cuando superas una salvación contra un conjuro, recuperas Energía igual al nivel de ese conjuro × 2."
+                }
+              }
+            }
+          }
+        },
+        "automata": {
+          "subNombre": "Discípulo del Autómata",
+          "subDescripcion": "✦ DISCÍPULO DEL AUTÓMATA ✦\nTu mejor invento camina a tu lado. Construyes un autómata leal, un compañero de metal y vapor que crece contigo.",
+          "efectos": [
+            {
+              "type": "habilita",
+              "value": "companero"
+            }
+          ],
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Autómata compañero",
+                  "subTitleName": "✦ AUTÓMATA COMPAÑERO ✦",
+                  "subDescripcion": "Al nivel 3 construyes un autómata Mediano (constructo). Regístralo en la pestaña Criaturas. Sus estadísticas:\n<table><thead><tr><th>Rasgo</th><th>Valor</th></tr></thead><tbody><tr><td>CA</td><td>14 + tu bonificador por competencia</td></tr><tr><td>PG</td><td>5 × tu nivel de Ingeniero + su modificador de Constitución</td></tr><tr><td>Velocidad</td><td>30 pies</td></tr><tr><td>Atributos</td><td>FUE 14, DES 12, CON 14, INT 6, SAB 10, CAR 3</td></tr><tr><td>Ataque</td><td>Golpe: tu bonificador de artefacto, dado del dispositivo + tu modificador de Inteligencia de daño contundente</td></tr><tr><td>Inmunidades</td><td>Veneno; condiciones Envenenado, Hechizado y Agotamiento</td></tr></tbody></table>\nActúa en tu turno. Si no le das órdenes (acción adicional), esquiva. Si llega a 0 PG, puedes repararlo con 1 hora de trabajo y 25 po en piezas; si es destruido, reconstruirlo cuesta 8 horas y 100 po."
+                }
+              }
+            },
+            "6": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Protocolos de combate",
+                  "subTitleName": "✦ PROTOCOLOS DE COMBATE ✦",
+                  "subDescripcion": "A nivel 6, tu autómata puede atacar dos veces cuando le ordenas atacar. Además, como reacción, puede interponerse: cuando una criatura a 1,5 m de él ataca a otra que no sea el autómata, impone desventaja a ese ataque."
+                }
+              }
+            },
+            "10": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Enlace sensorial",
+                  "subTitleName": "✦ ENLACE SENSORIAL ✦",
+                  "subDescripcion": "A partir del nivel 10 puedes ver y oír a través de tu autómata a cualquier distancia en el mismo plano (acción adicional para activarlo o desactivarlo). Como acción, gastando 2 Energía, le reparas 2d8 + tu modificador de Inteligencia PG a hasta 18 m."
+                }
+              }
+            },
+            "14": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Autómata de guerra",
+                  "subTitleName": "✦ AUTÓMATA DE GUERRA ✦",
+                  "subDescripcion": "A partir del nivel 14 tu autómata pasa a ser Grande, sus golpes causan un dado del dispositivo adicional y obtiene resistencia al daño contundente, cortante y perforante no mágico. Una vez por descanso largo, cuando se reduce a 0 PG, se queda con 1 PG en su lugar."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "4": {
+      "infoCubo": {
+        "columnas": [
+          "Energía",
+          "Esquemas conocidos",
+          "Artefactos equipados (T · S · A · I)",
+          "Dado del dispositivo"
+        ],
+        "filas": [
+          [
+            "8",
+            "7",
+            "3 · 2 · – · –",
+            "1d6"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Mejora de Puntuación de Característica",
+          "titleName": "✦ MEJORA DE PUNTUACIÓN DE CARACTERÍSTICA ✦",
+          "descripcion": "Obtienes la dote Mejora de puntuación de característica u otra dote de tu elección para la que califiques. Vuelves a obtener este rasgo a los niveles 8, 12 y 16."
+        }
+      },
+      "elegir": {
+        "lista": "esquemas",
+        "cantidad": 1,
+        "rasgo": "Esquemas de artefactos"
+      }
+    },
+    "5": {
+      "infoCubo": {
+        "columnas": [
+          "Energía",
+          "Esquemas conocidos",
+          "Artefactos equipados (T · S · A · I)",
+          "Dado del dispositivo"
+        ],
+        "filas": [
+          [
+            "10",
+            "9",
+            "4 · 2 · – · –",
+            "1d8"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Alfabetización académica",
+          "titleName": "✦ ALFABETIZACIÓN ACADÉMICA ✦",
+          "descripcion": "Al nivel 5 eliges dos habilidades basadas en Inteligencia con las que tengas competencia (o una de ellas y unas herramientas con las que tengas competencia). Tu bonificador por competencia se duplica en cualquier prueba de característica que hagas con ellas.",
+          "efectos": [
+            {
+              "type": "pericia",
+              "amount": 2
+            }
+          ]
+        }
+      },
+      "elegir": {
+        "lista": "esquemas",
+        "cantidad": 2,
+        "rasgo": "Esquemas de artefactos"
+      }
+    },
+    "6": {
+      "infoCubo": {
+        "columnas": [
+          "Energía",
+          "Esquemas conocidos",
+          "Artefactos equipados (T · S · A · I)",
+          "Dado del dispositivo"
+        ],
+        "filas": [
+          [
+            "12",
+            "10",
+            "4 · 2 · 1 · –",
+            "1d8"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Magia mecánica",
+          "titleName": "✦ MAGIA MECÁNICA ✦",
+          "descripcion": "Tu ingeniería es tan precisa que atraviesa las defensas de las criaturas sobrenaturales. Los ataques y el daño de tus artefactos, tu dispositivo característico y tus constructos cuentan como mágicos a efectos de superar la resistencia y la inmunidad al daño no mágico (aunque siguen sin ser magia para Disipar magia y similares)."
+        }
+      },
+      "elegir": {
+        "lista": "esquemas",
+        "cantidad": 1,
+        "rasgo": "Esquemas de artefactos"
+      }
+    },
+    "7": {
+      "infoCubo": {
+        "columnas": [
+          "Energía",
+          "Esquemas conocidos",
+          "Artefactos equipados (T · S · A · I)",
+          "Dado del dispositivo"
+        ],
+        "filas": [
+          [
+            "14",
+            "11",
+            "4 · 3 · 1 · –",
+            "1d8"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Pericia de ingeniero",
+          "titleName": "✦ PERICIA DE INGENIERO ✦",
+          "descripcion": "Al nivel 7 eliges otras dos habilidades basadas en Inteligencia, una habilidad basada en Inteligencia y unas herramientas de artesano, o unas herramientas de artesano y otras herramientas con las que tengas competencia. Añades el doble de tu bonificador por competencia a esas pruebas. Además, puedes guardar o desenfundar un arma u objeto como acción adicional.",
+          "efectos": [
+            {
+              "type": "pericia",
+              "amount": 2
+            }
+          ]
+        },
+        "blockDos": {
+          "name": "Mejora del dispositivo",
+          "titleName": "✦ MEJORA DEL DISPOSITIVO ✦",
+          "descripcion": "Tu dispositivo característico obtiene su mejora de nivel 7 (ver su descripción en «Elecciones»)."
+        }
+      },
+      "elegir": {
+        "lista": "esquemas",
+        "cantidad": 1,
+        "rasgo": "Esquemas de artefactos"
+      }
+    },
+    "8": {
+      "infoCubo": {
+        "columnas": [
+          "Energía",
+          "Esquemas conocidos",
+          "Artefactos equipados (T · S · A · I)",
+          "Dado del dispositivo"
+        ],
+        "filas": [
+          [
+            "16",
+            "12",
+            "4 · 3 · 2 · –",
+            "1d8"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Mejora de Puntuación de Característica",
+          "titleName": "✦ MEJORA DE PUNTUACIÓN DE CARACTERÍSTICA ✦",
+          "descripcion": "Obtienes la dote Mejora de puntuación de característica u otra dote de tu elección para la que califiques."
+        }
+      },
+      "elegir": {
+        "lista": "esquemas",
+        "cantidad": 1,
+        "rasgo": "Esquemas de artefactos"
+      }
+    },
+    "9": {
+      "infoCubo": {
+        "columnas": [
+          "Energía",
+          "Esquemas conocidos",
+          "Artefactos equipados (T · S · A · I)",
+          "Dado del dispositivo"
+        ],
+        "filas": [
+          [
+            "18",
+            "14",
+            "5 · 3 · 2 · –",
+            "1d8"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Héroe del desguace",
+          "titleName": "✦ HÉROE DEL DESGUACE ✦",
+          "descripcion": "A partir del nivel 9 puedes aprovechar tu tiempo de inactividad para buscar piezas de repuesto, productos químicos útiles y materias primas. Debes estar en una ciudad, un vertedero o cualquier otro lugar donde puedan encontrarse; el DM puede limitar los materiales según el lugar. Por cada hora de búsqueda encuentras materiales por valor de 1d4 po + tu nivel de Ingeniero.\nPuedes usar esos recursos para pagar el coste en materiales de aprender esquemas, de construir o reparar artefactos, o como materia prima para fabricar objetos con herramientas con las que tengas competencia."
+        }
+      },
+      "elegir": {
+        "lista": "esquemas",
+        "cantidad": 2,
+        "rasgo": "Esquemas de artefactos"
+      }
+    },
+    "10": {
+      "infoCubo": {
+        "columnas": [
+          "Energía",
+          "Esquemas conocidos",
+          "Artefactos equipados (T · S · A · I)",
+          "Dado del dispositivo"
+        ],
+        "filas": [
+          [
+            "20",
+            "15",
+            "5 · 3 · 2 · –",
+            "1d8"
+          ]
+        ]
+      },
+      "elegir": {
+        "lista": "esquemas",
+        "cantidad": 1,
+        "rasgo": "Esquemas de artefactos"
+      }
+    },
+    "11": {
+      "infoCubo": {
+        "columnas": [
+          "Energía",
+          "Esquemas conocidos",
+          "Artefactos equipados (T · S · A · I)",
+          "Dado del dispositivo"
+        ],
+        "filas": [
+          [
+            "22",
+            "16",
+            "5 · 4 · 2 · 1",
+            "2d6"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Enciclopedia andante",
+          "titleName": "✦ ENCICLOPEDIA ANDANTE ✦",
+          "descripcion": "Has leído de todo. Sumas la mitad de tu bonificador por competencia (redondeando hacia abajo) a las pruebas de Inteligencia que no lo incluyan ya.",
+          "efectos": [
+            {
+              "type": "medio_competencia",
+              "atributos": [
+                "inteligencia"
+              ]
+            }
+          ]
+        }
+      },
+      "elegir": {
+        "lista": "esquemas",
+        "cantidad": 1,
+        "rasgo": "Esquemas de artefactos"
+      }
+    },
+    "12": {
+      "infoCubo": {
+        "columnas": [
+          "Energía",
+          "Esquemas conocidos",
+          "Artefactos equipados (T · S · A · I)",
+          "Dado del dispositivo"
+        ],
+        "filas": [
+          [
+            "24",
+            "16",
+            "5 · 4 · 3 · 1",
+            "2d6"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Mejora de Puntuación de Característica",
+          "titleName": "✦ MEJORA DE PUNTUACIÓN DE CARACTERÍSTICA ✦",
+          "descripcion": "Obtienes la dote Mejora de puntuación de característica u otra dote de tu elección para la que califiques."
+        }
+      }
+    },
+    "13": {
+      "infoCubo": {
+        "columnas": [
+          "Energía",
+          "Esquemas conocidos",
+          "Artefactos equipados (T · S · A · I)",
+          "Dado del dispositivo"
+        ],
+        "filas": [
+          [
+            "26",
+            "17",
+            "5 · 4 · 3 · 1",
+            "2d6"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Saboteador",
+          "titleName": "✦ SABOTEADOR ✦",
+          "descripcion": "A partir del nivel 13, en cada uno de tus turnos (dentro o fuera de combate) puedes intentar como acción adicional desactivar una trampa o abrir una cerradura con tus herramientas. También puedes bloquear una cerradura (abierta o cerrada), sabotear la rueda de un vehículo para que se desprenda, o examinar un mecanismo sencillo o pequeño y desactivarlo. Necesitas al menos una herramienta adecuada (ganzúa, palanca, sierra, lima…).\nLa CD depende de la complejidad: un dispositivo sencillo tiene CD 10, y los más complejos o intrincados, una CD mayor. Si tienes éxito, lo desactivas. Si fallas por 4 o menos, no lo consigues pero puedes volver a intentarlo. Si fallas por 5 o más, algo sale mal: una trampa se activa, o crees haber saboteado el mecanismo pero sigue funcionando con normalidad."
+        },
+        "blockDos": {
+          "name": "Mejora del dispositivo",
+          "titleName": "✦ MEJORA DEL DISPOSITIVO ✦",
+          "descripcion": "Tu dispositivo característico obtiene su mejora de nivel 13."
+        }
+      },
+      "elegir": {
+        "lista": "esquemas",
+        "cantidad": 1,
+        "rasgo": "Esquemas de artefactos"
+      }
+    },
+    "14": {
+      "infoCubo": {
+        "columnas": [
+          "Energía",
+          "Esquemas conocidos",
+          "Artefactos equipados (T · S · A · I)",
+          "Dado del dispositivo"
+        ],
+        "filas": [
+          [
+            "28",
+            "17",
+            "6 · 4 · 3 · 2",
+            "2d6"
+          ]
+        ]
+      }
+    },
+    "15": {
+      "infoCubo": {
+        "columnas": [
+          "Energía",
+          "Esquemas conocidos",
+          "Artefactos equipados (T · S · A · I)",
+          "Dado del dispositivo"
+        ],
+        "filas": [
+          [
+            "30",
+            "18",
+            "6 · 5 · 3 · 2",
+            "2d6"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Experiencia de crafteo",
+          "titleName": "✦ EXPERIENCIA DE CRAFTEO ✦",
+          "descripcion": "A partir del nivel 15 eres un maestro artesano, capaz de hacer un trabajo excelente, dentro del presupuesto y a tiempo. Cuando fabricas un objeto con herramientas con las que tienes competencia, cada día de trabajo avanzas 1d6 po + tu nivel de Ingeniero, hasta alcanzar el valor de mercado del objeto."
+        }
+      },
+      "elegir": {
+        "lista": "esquemas",
+        "cantidad": 1,
+        "rasgo": "Esquemas de artefactos"
+      }
+    },
+    "16": {
+      "infoCubo": {
+        "columnas": [
+          "Energía",
+          "Esquemas conocidos",
+          "Artefactos equipados (T · S · A · I)",
+          "Dado del dispositivo"
+        ],
+        "filas": [
+          [
+            "32",
+            "18",
+            "6 · 5 · 4 · 2",
+            "2d6"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Mejora de Puntuación de Característica",
+          "titleName": "✦ MEJORA DE PUNTUACIÓN DE CARACTERÍSTICA ✦",
+          "descripcion": "Obtienes la dote Mejora de puntuación de característica u otra dote de tu elección para la que califiques."
+        }
+      }
+    },
+    "17": {
+      "infoCubo": {
+        "columnas": [
+          "Energía",
+          "Esquemas conocidos",
+          "Artefactos equipados (T · S · A · I)",
+          "Dado del dispositivo"
+        ],
+        "filas": [
+          [
+            "34",
+            "19",
+            "6 · 5 · 4 · 3",
+            "2d8"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Maestría en artefactos",
+          "titleName": "✦ MAESTRÍA EN ARTEFACTOS ✦",
+          "descripcion": "Cuando tiras daño con un artefacto o con tu dispositivo característico, puedes volver a tirar los dados que saquen 1 (debes usar el nuevo resultado). Además, cuando uno de tus artefactos afecta a un área, puedes elegir un número de criaturas igual a tu modificador de Inteligencia − 2 (mínimo 1) que no se vean afectadas."
+        }
+      },
+      "elegir": {
+        "lista": "esquemas",
+        "cantidad": 1,
+        "rasgo": "Esquemas de artefactos"
+      }
+    },
+    "18": {
+      "infoCubo": {
+        "columnas": [
+          "Energía",
+          "Esquemas conocidos",
+          "Artefactos equipados (T · S · A · I)",
+          "Dado del dispositivo"
+        ],
+        "filas": [
+          [
+            "36",
+            "20",
+            "6 · 5 · 4 · 3",
+            "2d8"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Mente indomable",
+          "titleName": "✦ MENTE INDOMABLE ✦",
+          "descripcion": "Si el total de una prueba de Inteligencia es inferior a tu puntuación de Inteligencia, puedes usar tu puntuación en lugar del total."
+        }
+      },
+      "elegir": {
+        "lista": "esquemas",
+        "cantidad": 1,
+        "rasgo": "Esquemas de artefactos"
+      }
+    },
+    "19": {
+      "infoCubo": {
+        "columnas": [
+          "Energía",
+          "Esquemas conocidos",
+          "Artefactos equipados (T · S · A · I)",
+          "Dado del dispositivo"
+        ],
+        "filas": [
+          [
+            "38",
+            "21",
+            "7 · 6 · 4 · 3",
+            "2d8"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Don Épico",
+          "titleName": "✦ DON ÉPICO ✦",
+          "descripcion": "Obtienes una dote de Don Épico u otra dote de tu elección para la que califiques. Se recomienda el Don de la recuperación."
+        },
+        "blockDos": {
+          "name": "Mejora del dispositivo",
+          "titleName": "✦ MEJORA DEL DISPOSITIVO ✦",
+          "descripcion": "Tu dispositivo característico obtiene su mejora de nivel 19."
+        }
+      },
+      "elegir": {
+        "lista": "esquemas",
+        "cantidad": 1,
+        "rasgo": "Esquemas de artefactos"
+      }
+    },
+    "20": {
+      "infoCubo": {
+        "columnas": [
+          "Energía",
+          "Esquemas conocidos",
+          "Artefactos equipados (T · S · A · I)",
+          "Dado del dispositivo"
+        ],
+        "filas": [
+          [
+            "40",
+            "22",
+            "7 · 6 · 5 · 3",
+            "2d8"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Maestría mecánica",
+          "titleName": "✦ MAESTRÍA MECÁNICA ✦",
+          "descripcion": "Has llevado la ingeniería más allá de lo que nadie creía posible. Tu Inteligencia aumenta en 2 y su máximo pasa a 22. Además, aumenta en 2 tu Destreza o tu Constitución.\n<b>Canibalizar.</b> Como acción adicional, puedes desmontar uno de tus artefactos equipados para obtener Energía: queda inutilizado (pierdes sus beneficios) hasta que termines un descanso largo y recuperas Energía según su complejidad: 1 (trivial), 2 (simple), 4 (avanzado) u 8 (intrincado)."
+        }
+      },
+      "elegir": {
+        "lista": "esquemas",
+        "cantidad": 1,
+        "rasgo": "Esquemas de artefactos"
+      },
+      "requeridoTrue": {
+        "statAmount": {
+          "inteligencia": 2,
+          "choice": {
+            "count": 1,
+            "bonus": 2,
+            "allowedChoices": [
+              "destreza",
+              "constitucion"
+            ]
+          }
+        },
+        "statMax": {
+          "activos": [
+            "inteligencia"
+          ],
+          "stat": 22
+        }
+      }
+    }
+  }
+}

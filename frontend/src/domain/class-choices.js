@@ -169,8 +169,35 @@ export function expandGrants(classKey, subKey, grants, elecciones = {}) {
   return out;
 }
 
+/**
+ * Las elecciones de conjuros no son obligatorias al subir de nivel: se pueden
+ * hacer después, con calma, desde la pestaña Conjuros (lo no elegido queda
+ * pendiente en classChoiceStatus). Se marcan `opcional`: se acepta elegir de 0
+ * a `cantidad`. `deferred` resume lo que este nivel da para elegir.
+ * @returns {{ groups: Array, deferred: Array<{ lista, titulo, cantidad }> }}
+ */
+export function deferSpellChoices(groups) {
+  const deferred = [];
+  const out = groups.map((g) => {
+    if (listSource(g.def) !== 'conjuros') return g;
+    if (g.cantidad > 0) deferred.push({ lista: g.lista, titulo: g.def.titulo ?? g.lista, cantidad: g.cantidad });
+    return { ...g, opcional: true };
+  });
+  return { groups: out, deferred };
+}
+
+/** Lo que se muestra al subir: de las listas opcionales, sólo su cambio opcional. */
+export const levelUpVisibleChoices = (groups) => groups
+  .filter((g) => !g.opcional || g.reemplazar > 0)
+  .map((g) => (g.opcional ? { ...g, cantidad: 0, cantidadMulticlase: 0 } : g));
+
+/** Elecciones de conjuros que faltan en los niveles ya alcanzados. */
+export function pendingSpellChoices(c, classKey) {
+  return classChoiceStatus(c, classKey).missing.filter((m) => listSource(m.def) === 'conjuros');
+}
+
 /** ¿Hay que decidir algo obligatoriamente? (los cambios opcionales no cuentan) */
-export const hasRequiredChoices = (pending) => pending.some((g) => g.cantidad > 0);
+export const hasRequiredChoices = (pending) => pending.some((g) => g.cantidad > 0 && !g.opcional);
 
 // Escuela normalizada (el catálogo tiene erratas: «Trasmutación», «Necromancia»…).
 const SCHOOL_FIX = { trasmutacion: 'transmutacion', necromancia: 'nigromancia', ilucion: 'ilusion', rvocacion: 'evocacion' };
@@ -301,8 +328,9 @@ export function validateChoices(known, pending, input = {}, { spells = null } = 
     if (remove.length > g.reemplazar) errors.push(`${title}: sólo puedes reemplazar ${g.reemplazar}.`);
     if (remove.some((v) => !have.includes(v))) errors.push(`${title}: sólo puedes reemplazar algo que ya conozcas.`);
     const need = g.cantidad + remove.length;
-    if (add.length !== need) {
-      if (g.cantidad > 0 || remove.length) errors.push(`${title}: elige ${need}${remove.length ? ` (incluye ${remove.length} por el reemplazo)` : ''}.`);
+    if (g.opcional ? add.length > need : add.length !== need) {
+      if (g.opcional) errors.push(`${title}: elige como mucho ${need}.`);
+      else if (g.cantidad > 0 || remove.length) errors.push(`${title}: elige ${need}${remove.length ? ` (incluye ${remove.length} por el reemplazo)` : ''}.`);
     }
     const stillKnown = have.filter((v) => !remove.includes(v));
     if (add.some((v) => stillKnown.includes(v))) errors.push(`${title}: ya conoces alguna de las opciones elegidas.`);
@@ -408,8 +436,10 @@ export function fillMissingChoices(c, classKey, picks, { spells = null } = {}) {
     const key = `${m.level}:${m.lista}`;
     const add = cleanList(picks?.[key]);
     if (!add.length) continue;
+    // Se puede completar por partes: lo que falte sigue pendiente.
+    if (add.length > m.cantidad) { errors.push(`${m.def.titulo ?? m.lista}: elige como mucho ${m.cantidad}.`); continue; }
     const known = knownChoices(next, classKey);
-    const res = validateChoices(known, [{ ...m }], { [m.lista]: { add, remove: [] } }, { spells });
+    const res = validateChoices(known, [{ ...m, cantidad: add.length }], { [m.lista]: { add, remove: [] } }, { spells });
     if (res.errors.length) { errors.push(...res.errors); continue; }
     const entry = next.levels[m.levelIndex];
     entry.featureChoices ??= {};

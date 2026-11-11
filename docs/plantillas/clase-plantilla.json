@@ -758,6 +758,20 @@
           "name": "Golpe del alba mejorado",
           "titleName": "✦ GOLPE DEL ALBA MEJORADO ✦",
           "descripcion": "Tu Golpe del alba ignora la resistencia al daño radiante."
+        },
+        "blockDos": {
+          "name": "Erudito del alba",
+          "titleName": "✦ ERUDITO DEL ALBA ✦",
+          "descripcion": "Sumas la mitad de tu bono de competencia a las pruebas de Inteligencia y Sabiduría sin competencia.\n\n<i>Ejemplo de «medio_competencia» limitado a unos atributos (`atributos`). Sin `atributos` vale para todas las pruebas, como el Saber del alba; con `atributos`, sólo para esas (y para la iniciativa si incluye `destreza`). Lo usa la Enciclopedia andante del Ingeniero.</i>",
+          "efectos": [
+            {
+              "type": "medio_competencia",
+              "atributos": [
+                "inteligencia",
+                "sabiduria"
+              ]
+            }
+          ]
         }
       }
     },

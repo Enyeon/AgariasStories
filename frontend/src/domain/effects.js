@@ -135,10 +135,14 @@ export function normalizeEffect(raw) {
       return CONDITIONS.includes(raw.value) ? { type: raw.type, value: raw.value } : null;
     case 'habilita':
       return Object.hasOwn(RESOURCES, raw.value) ? { type: 'habilita', value: raw.value } : null;
-    case 'medio_competencia':
+    case 'medio_competencia': {
       // «Experto en todos los oficios»: mitad del bono (redondeo abajo) en
       // pruebas de característica sin competencia, incluida la iniciativa.
-      return { type: 'medio_competencia' };
+      // Con `atributos`, sólo en las pruebas de esos atributos (Enciclopedia
+      // andante del Ingeniero: Inteligencia); la iniciativa, si incluye Destreza.
+      const atributos = Array.isArray(raw.atributos) ? [...new Set(raw.atributos.filter((k) => ABILITY_KEYS.includes(k)))] : [];
+      return atributos.length ? { type: 'medio_competencia', atributos } : { type: 'medio_competencia' };
+    }
     case 'conjuro_preparado': {
       const value = typeof raw.value === 'string' ? raw.value.trim().slice(0, 80) : '';
       return value ? { type: 'conjuro_preparado', value } : null;
@@ -182,7 +186,7 @@ export function describeEffect(e) {
     case 'vulnerabilidad': return `Vulnerabilidad: ${DAMAGE_LABEL[e.value]}`;
     case 'inmunidad_condicion': return `Inmune a la condición ${e.value}`;
     case 'habilita': return RESOURCES[e.value];
-    case 'medio_competencia': return 'Mitad del bono de competencia en pruebas sin competencia';
+    case 'medio_competencia': return `Mitad del bono de competencia en pruebas ${e.atributos?.length ? `de ${e.atributos.map((k) => ABILITY_LABEL[k] ?? k).join(', ')} ` : ''}sin competencia`;
     case 'conjuro_preparado': return `Siempre preparado: ${e.value}`;
     case 'conjuro_libro': return `En tu libro de conjuros: ${e.value}`;
     case 'lista_conjuros': return `Puede preparar conjuros de la lista de ${e.value}`;

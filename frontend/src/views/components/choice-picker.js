@@ -134,11 +134,11 @@ export function bindChoiceGroups(root, groups, state, ctx = {}, onChange = () =>
 }
 
 /** Mensaje de lo que falta, o '' si está completo. */
-export function choicesError(groups, state) {
+export function choicesError(groups, state, { partial = false } = {}) {
   for (const g of groups) {
     const s = slot(g, state);
     const need = needed(g, s);
-    if (s.add.length !== need) return `${g.def.titulo ?? g.lista}: elige ${need} (llevas ${s.add.length}).`;
+    if (partial ? s.add.length > need : s.add.length !== need) return `${g.def.titulo ?? g.lista}: elige ${partial ? 'como mucho ' : ''}${need} (llevas ${s.add.length}).`;
     if (new Set(s.add.map(norm)).size !== s.add.length) return `${g.def.titulo ?? g.lista}: hay opciones repetidas.`;
   }
   return '';

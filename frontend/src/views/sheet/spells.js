@@ -5,6 +5,8 @@ import { html, raw, richText } from '../../ui/dom.js';
 import { ABILITY_LABEL } from '../../domain/constants.js';
 import { formatModifier } from '../../domain/rules.js';
 import { sectionCard, out } from './common.js';
+import { pendingSpellChoices } from '../../domain/class-choices.js';
+import { fillChoices } from './features.js';
 
 const PAGE_SIZE = 12;
 const LEVEL_NAMES = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
@@ -139,6 +141,55 @@ function grimoire(ctx) {
     ${missing.length ? html`<p class="callout callout--warning">Conjuros que ya no existen en los datos: ${missing.join(', ')}.</p>` : ''}`;
 }
 
+/**
+ * Lo que el personaje aún puede elegir: conjuros de sus rasgos (libro de
+ * conjuros, Arcanum…), trucos y conjuros preparados/conocidos libres.
+ * Al subir de nivel no se obliga a elegirlos: se avisa aquí.
+ */
+export function spellAllowance(ctx) {
+  const sc = ctx.sheet.spellcasting;
+  const always = new Set((sc.alwaysPrepared ?? []).map((x) => x.name));
+  const isCantrip = (n) => ctx.spells?.[n]?.nivel === 'Truco';
+  const own = ctx.character.spells.known.filter((n) => !always.has(n));
+  const sum = (key) => sc.entries.reduce((t, e) => (e[key] === null ? t : (t ?? 0) + e[key]), null);
+  const free = (limit, used) => (limit === null ? 0 : Math.max(0, limit - used));
+  const choices = [...new Set(sc.entries.map((e) => e.classKey).concat(Object.keys(ctx.character.subclasses ?? {})))]
+    .flatMap((classKey) => pendingSpellChoices(ctx.character, classKey).map((m) => ({ classKey, titulo: m.def.titulo ?? m.lista, cantidad: m.cantidad })));
+  const out = {
+    choices,
+    cantrips: ctx.spells ? free(sum('cantrips'), own.filter(isCantrip).length) : 0,
+    prepared: ctx.spells ? free(sum('prepared'), ctx.character.spells.prepared.filter((n) => !isCantrip(n) && !always.has(n)).length) : 0,
+    known: ctx.spells ? free(sum('known'), own.filter((n) => !isCantrip(n)).length) : 0,
+  };
+  out.total = choices.reduce((t, c) => t + c.cantidad, 0) + out.cantrips + out.prepared + out.known;
+  return out;
+}
+
+const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+
+function allowanceCallout(ctx) {
+  if (ctx.readOnly) return '';
+  const a = spellAllowance(ctx);
+  if (!a.total) return '';
+  // Una lista puede aparecer en varios niveles: se agrupa por clase y título.
+  const byList = new Map();
+  for (const c of a.choices) {
+    const k = `${c.classKey}|${c.titulo}`;
+    byList.set(k, { ...c, cantidad: (byList.get(k)?.cantidad ?? 0) + c.cantidad });
+  }
+  const classes = [...new Set(a.choices.map((c) => c.classKey))];
+  return html`<div class="callout callout--accent spell-allowance" role="status">
+    <p><strong>✨ Aún puedes elegir ${plural(a.total, 'conjuro', 'conjuros')}.</strong> Tómate tu tiempo: no hace falta hacerlo todo de una vez.</p>
+    <ul class="spell-allowance__list">
+      ${[...byList.values()].map((c) => html`<li>${c.titulo}: <strong>${c.cantidad}</strong></li>`)}
+      ${a.cantrips ? html`<li>Trucos: <strong>${a.cantrips}</strong> <span class="muted">(añádelos desde la biblioteca)</span></li>` : ''}
+      ${a.known ? html`<li>Conjuros conocidos: <strong>${a.known}</strong> <span class="muted">(añádelos desde la biblioteca)</span></li>` : ''}
+      ${a.prepared ? html`<li>Conjuros preparados: <strong>${a.prepared}</strong> <span class="muted">(añádelos a tu grimorio y márcalos con ☆)</span></li>` : ''}
+    </ul>
+    ${classes.length ? html`<div class="row">${classes.map((k) => html`<button type="button" class="btn btn--primary btn--sm" data-action="spell-choices-fill" data-class="${k}">Elegir ${classes.length > 1 ? `(${getClass(k)?.nombre ?? k})` : 'ahora'}</button>`)}</div>` : ''}
+  </div>`;
+}
+
 /** Conjuros que los rasgos dejan siempre preparados: no ocupan grimorio ni límite. */
 function alwaysPrepared(ctx) {
   const list = ctx.sheet.spellcasting.alwaysPrepared ?? [];
@@ -193,6 +244,7 @@ export function renderSpells(ctx) {
     return html`<div class="loading" role="status"><span class="spinner"></span> Cargando conjuros…</div>`;
   }
   return html`<div class="stack">
+    ${allowanceCallout(ctx)}
     ${sc.isCaster ? sectionCard({ title: 'Lanzamiento de conjuros', body: html`${statsCards(ctx)}${slotsTable(ctx)}` }) : html`<div class="callout"><p>Tu personaje no tiene una clase lanzadora de conjuros. Puedes anotar igualmente conjuros obtenidos por objetos o rasgos.</p></div>`}
     ${alwaysPrepared(ctx)}
     ${sectionCard({ title: 'Mi grimorio', body: grimoire(ctx) })}
@@ -212,6 +264,7 @@ export const spellsActions = {
     const n = el.dataset.spell;
     c.spells.prepared = c.spells.prepared.includes(n) ? c.spells.prepared.filter((x) => x !== n) : [...c.spells.prepared, n];
   }, { structural: true, keepScroll: true }),
+  'spell-choices-fill': (ed, el) => fillChoices(ed, el.dataset.class, 'conjuros'),
   'spell-page': (ed, el) => {
     ed.ui.spells.page = Math.max(1, Number(el.dataset.page));
     ed.rerender({ keepScroll: false, scrollTo: '.filters' });

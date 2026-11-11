@@ -301,12 +301,14 @@ function featureCard(item, subName) {
 function choicesPanel(ctx, f) {
   const st = classChoiceStatus(ctx.character, f.classKey, { spells: ctx.spells });
   if (!st.lists.length && !st.missing.length) return '';
-  const missing = st.missing.reduce((n, m) => n + m.cantidad, 0);
+  // Las de conjuros se avisan y se eligen en la pestaña Conjuros.
+  const others = st.missing.filter((m) => listSource(m.def) !== 'conjuros');
+  const missing = others.reduce((n, m) => n + m.cantidad, 0);
   return html`<div class="class-block choices-panel">
     <div class="class-block__head"><h4 class="class-block__title">Elecciones</h4></div>
     ${missing && !ctx.readOnly ? html`<div class="callout callout--warning row row--between">
-      <p>Te ${missing === 1 ? 'falta 1 elección' : `faltan ${missing} elecciones`} de tus rasgos (${[...new Set(st.missing.map((m) => m.def.titulo ?? m.lista))].join(', ')}).</p>
-      <button type="button" class="btn btn--primary btn--sm" data-action="choices-fill" data-class="${f.classKey}">Elegir ahora</button>
+      <p>Te ${missing === 1 ? 'falta 1 elección' : `faltan ${missing} elecciones`} de tus rasgos (${[...new Set(others.map((m) => m.def.titulo ?? m.lista))].join(', ')}).</p>
+      <button type="button" class="btn btn--primary btn--sm" data-action="choices-fill" data-class="${f.classKey}" data-only="otras">Elegir ahora</button>
     </div>` : ''}
     ${st.lists.filter((l) => l.values.length).map((l) => html`<div class="choices-panel__list" ${searchAttr(l.def.titulo, ...l.values.map((v) => v.label))}>
       <p class="eyebrow">${l.def.titulo ?? l.lista} · ${l.values.length}</p>
@@ -324,10 +326,16 @@ function choicesPanel(ctx, f) {
 
 const needsSpellCatalog = (groups) => groups.some((g) => listSource(g.def) === 'conjuros');
 
-async function fillChoices(ed, classKey) {
+/**
+ * Diálogo para completar las elecciones pendientes de una clase.
+ * @param {'conjuros'|'otras'|null} only  limita a las listas de conjuros o al resto
+ */
+export async function fillChoices(ed, classKey, only = null) {
   const status = classChoiceStatus(ed.character, classKey);
-  if (!status.missing.length) return;
-  const groups = status.missing.map((m) => ({ ...m, key: `${m.level}:${m.lista}`, features: [`nivel ${m.level}`, ...m.features] }));
+  const keep = (m) => !only || ((listSource(m.def) === 'conjuros') === (only === 'conjuros'));
+  const missing = status.missing.filter(keep);
+  if (!missing.length) return;
+  const groups = missing.map((m) => ({ ...m, key: `${m.level}:${m.lista}`, features: [`nivel ${m.level}`, ...m.features] }));
   const spells = needsSpellCatalog(groups) ? (ed.spells ?? await loadSpells().catch(() => null)) : null;
   const state = {};
   const ok = await openDialog({
@@ -337,13 +345,13 @@ async function fillChoices(ed, classKey) {
     render(body, close) {
       let error = '';
       const draw = () => {
-        setHtml(body, html`<p class="muted">Estas elecciones corresponden a niveles que ya tienes. Se guardan en su nivel: si bajas de nivel, se deshacen.</p>
+        setHtml(body, html`<p class="muted">${only === 'conjuros' ? 'Puedes elegir sólo algunos ahora y el resto más tarde. ' : ''}Estas elecciones corresponden a niveles que ya tienes. Se guardan en su nivel: si bajas de nivel, se deshacen.</p>
           ${choiceGroupsHtml(groups, state, { known: status.known, spells })}
           <p class="field__error" role="alert">${error}</p>
           <div class="dialog__footer"><button type="button" class="btn btn--ghost" data-dialog-close>Cancelar</button><button type="button" class="btn btn--primary" data-ok>Guardar</button></div>`);
         bindChoiceGroups(body, groups, state, { known: status.known, spells }, () => { body.querySelector('.field__error').textContent = ''; });
         body.querySelector('[data-ok]').addEventListener('click', () => {
-          error = choicesError(groups, state);
+          error = choicesError(groups, state, { partial: only === 'conjuros' });
           if (error) return draw();
           close(true);
         });
@@ -353,6 +361,7 @@ async function fillChoices(ed, classKey) {
   });
   if (!ok) return;
   const picks = Object.fromEntries(Object.entries(state).map(([k, s]) => [k, s.add]));
+  if (!Object.values(picks).some((a) => a.length)) return;
   const res = fillMissingChoices(ed.character, classKey, picks, { spells });
   if (res.errors.length) return toast(res.errors.join(' '), { type: 'error' });
   ed.replace(res.character, { keepScroll: true, message: 'Elecciones guardadas.' });
@@ -664,7 +673,7 @@ export const featuresActions = {
     if (ok) ed.replace(removeUnlock(ed.character, el.dataset.ref), { keepScroll: true });
   },
   'pick-subclass': (ed, el) => pickSubclass(ed, el.dataset.class),
-  'choices-fill': (ed, el) => fillChoices(ed, el.dataset.class),
+  'choices-fill': (ed, el) => fillChoices(ed, el.dataset.class, el.dataset.only || null),
   'choice-change': (ed, el) => changeChoice(ed, el.dataset.class, el.dataset.list, el.dataset.value),
   'trait-add': (ed) => editTrait(ed, null),
   'trait-edit': (ed, el) => editTrait(ed, el.dataset.id),

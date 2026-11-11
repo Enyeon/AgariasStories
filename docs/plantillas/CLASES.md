@@ -144,6 +144,13 @@ clase y todas sus subclases) o dentro de una subclase (sólo para esa subclase):
 | Opciones propias | `"opciones": [{ "id", "nombre", "descripcion", "efectos"? }]` | el `id` | los `efectos` de la opción; un efecto con `"nivel": N` sólo se aplica desde el nivel N de la clase |
 | Habilidades | `"desde": "habilidades", "de": [...]` (o `"cualquiera"`) | el nombre | competencia en la habilidad |
 | Conjuros del catálogo | `"desde": "conjuros", "clase": "mago"` (o `["clerigo", "druida", "mago"]`), `"niveles": [0]` (0 = trucos) | el nombre | con `"siemprePreparados": true`, el conjuro queda siempre preparado |
+
+> **Las listas de conjuros no se piden al subir de nivel.** Se pueden elegir de 0 a
+> `cantidad` en ese momento (la interfaz no las muestra; sólo ofrece el cambio
+> opcional de `reemplazarAlSubir`). Lo que falta queda pendiente: la pestaña
+> Conjuros lo avisa («Aún puedes elegir X conjuros») junto con los trucos y
+> conjuros preparados libres, y deja completarlo por partes. Ver
+> `deferSpellChoices` y `pendingSpellChoices` en `domain/class-choices.js`.
 | Libre (se escribe) | `"libre": true`, opcional `"placeholder"` y `"efectoLibre"` | el texto | `efectoLibre` con el texto como valor (p. ej. `{ "type": "competencia", "kind": "herramienta" }`) |
 
 **Elecciones dentro de una opción** (`"elegir"` en una opción): al marcar esa opción
@@ -241,7 +248,7 @@ Lo que la ficha **calcula sola**. Todo lo demás se muestra como texto.
 | `resistencia` / `inmunidad` / `vulnerabilidad` | `value`: tipo de daño (`fuego`, `necrotico`, `profano`…) | `{ "type": "resistencia", "value": "fuego" }` |
 | `inmunidad_condicion` | `value`: condición | `{ "type": "inmunidad_condicion", "value": "Asustado" }` |
 | `habilita` | `value`: `criaturas_de_sangre`, `companero` | `{ "type": "habilita", "value": "criaturas_de_sangre" }` |
-| `medio_competencia` | — | `{ "type": "medio_competencia" }` (Experto en todos los oficios / Mano para Todo: mitad del bono en pruebas sin competencia e iniciativa; la ficha marca «½») |
+| `medio_competencia` | `atributos` (opcional) | `{ "type": "medio_competencia" }` (Experto en todos los oficios / Mano para Todo: mitad del bono en pruebas sin competencia e iniciativa; la ficha marca «½»). Con `"atributos": ["inteligencia"]`, sólo en las pruebas de esos atributos (Enciclopedia andante del Ingeniero); la iniciativa, si incluye `destreza` |
 | `conjuro_preparado` | `value`: nombre del conjuro **como en el catálogo** | `{ "type": "conjuro_preparado", "value": "Hechizar persona" }` (si no está en el catálogo se muestra igual, marcado «No está en el catálogo») |
 | `lista_conjuros` | `value`: clave de clase | `{ "type": "lista_conjuros", "value": "clerigo" }` (Secretos Mágicos: la biblioteca, con «Sólo de mis clases», incluye esa lista) |
 | `ca_sin_armadura` | `atributos` (1–3), `base` (10 por defecto), `escudo` (si admite escudo) | `{ "type": "ca_sin_armadura", "base": 10, "atributos": ["destreza", "sabiduria"], "escudo": false }` |
@@ -300,7 +307,7 @@ Para la segunda etapa (comparar las clases completas con el motor):
 | Opciones con requisitos de nivel u otra opción, y repetibles (invocaciones) | ✅ Implementada (`requisitos`, `repetible`) |
 | Magia del Pacto 2024 (espacios del mismo nivel) | ✅ Implementada (`lanzamiento.espaciosPacto`) |
 | Libro de conjuros y conjuros por escuela (Mago) | ✅ Implementada (`libroConjuros`, `escuela` en listas de conjuros) |
-| Mitad de competencia (Experto en todos los oficios) | ✅ Implementada (`medio_competencia`) |
+| Mitad de competencia (Experto en todos los oficios), también sólo para unos atributos (Enciclopedia andante) | ✅ Implementada (`medio_competencia`, con `atributos` opcional) |
 | Conjuros de una subclase (Caballero Arcano, Embaucador Arcano) | ⚠️ Los trucos y hechizos se eligen y se guardan (elecciones); los espacios se muestran como tabla en el rasgo, sin pestaña de conjuros propia |
 | Tabla de progresión (usos, dados, etc.) | ⚠️ Se muestra, pero no hay contador de usos |
 | Ataque extra, Acción adicional, Reacciones | ⚠️ Sólo texto |

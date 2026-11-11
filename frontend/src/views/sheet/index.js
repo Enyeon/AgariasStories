@@ -11,6 +11,9 @@ import { renderDm, extrasActions } from './extras.js';
 import { renderCompanions, companionActions } from './companions.js';
 import { backgroundActions } from './background.js';
 import { contentStatus } from '../../content/snapshots.js';
+import { pendingSpellChoices } from '../../domain/class-choices.js';
+
+const hasPendingSpellChoices = (c) => [...new Set(c.levels.map((l) => l.classKey))].some((k) => pendingSpellChoices(c, k).length > 0);
 
 export const TABS = [
   { id: 'resumen', label: 'Resumen', render: renderSummary },
@@ -22,7 +25,9 @@ export const TABS = [
   { id: 'rasgos', label: 'Rasgos', render: renderFeatures },
   {
     id: 'conjuros', label: 'Conjuros', render: renderSpells, needsSpells: true,
-    visible: ({ character, sheet }) => sheet.spellcasting.isCaster || character.spells.known.length > 0,
+    visible: ({ character, sheet }) => sheet.spellcasting.isCaster || character.spells.known.length > 0 || hasPendingSpellChoices(character),
+    // Conjuros de rasgos que quedaron por elegir al subir de nivel.
+    attention: ({ character }) => hasPendingSpellChoices(character),
   },
   { id: 'equipo', label: 'Equipo', render: renderEquipment },
   { id: 'criaturas', label: 'Criaturas', render: renderCompanions, visible: ({ character, sheet, readOnly }) => !readOnly || sheet.bloodSummoning || (character.companions ?? []).length > 0 },

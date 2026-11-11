@@ -10,6 +10,7 @@ import {
 import { sectionCard, actionButton } from './common.js';
 import { openRacePicker } from '../race-picker.js';
 import { renderBackgroundCard } from './background.js';
+import { pendingSpellChoices } from '../../domain/class-choices.js';
 import { openLevelUpWizard, openFeatPicker, openMultiLevelUp, openMultiLevelDown } from '../level-up.js';
 import { confirmDialog, toast } from '../../ui/feedback.js';
 
@@ -140,6 +141,14 @@ export function renderProgression(ctx) {
   return html`<div class="stack">${raceCard(ctx)}${renderBackgroundCard(ctx)}${levelsCard(ctx)}</div>`;
 }
 
+/** Recordatorio tras subir: los conjuros se eligen en su pestaña. */
+function spellHint(c) {
+  const classes = [...new Set(c.levels.map((l) => l.classKey))];
+  const pending = classes.reduce((t, k) => t + pendingSpellChoices(c, k).reduce((n, m) => n + m.cantidad, 0), 0);
+  if (pending) return ` Tienes ${pending} conjuro${pending === 1 ? '' : 's'} por elegir en la pestaña Conjuros.`;
+  return getClass(c.levels.at(-1)?.classKey)?.conjurador ? ' Revisa tus conjuros nuevos en la pestaña Conjuros.' : '';
+}
+
 export const progressionActions = {
   async 'pick-race'(ed) {
     const c = ed.character;
@@ -167,12 +176,12 @@ export const progressionActions = {
     const gate = canLevelUp(ed.character);
     if (!gate.ok) return toast(gate.reason, { type: 'warning' });
     const next = await openLevelUpWizard(ed.character, { allow: ed.permissions });
-    if (next) ed.replace(next, { message: `¡Nivel ${next.levels.length}!` });
+    if (next) ed.replace(next, { message: `¡Nivel ${next.levels.length}!${spellHint(next)}` });
   },
   async 'level-up-multi'(ed) {
     const from = ed.character.levels.length;
     const next = await openMultiLevelUp(ed.character, { allow: ed.permissions });
-    if (next) ed.replace(next, { message: `Nivel ${from} → ${next.levels.length}.` });
+    if (next) ed.replace(next, { message: `Nivel ${from} → ${next.levels.length}.${spellHint(next)}` });
   },
   async 'level-down-multi'(ed) {
     const from = ed.character.levels.length;
