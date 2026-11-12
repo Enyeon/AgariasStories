@@ -4,9 +4,10 @@ import { parseDocument } from '../src/domain/validation.js';
 import { computeSheet } from '../src/domain/rules.js';
 import { applyLevelUp, planLevelUp, setRace } from '../src/domain/progression.js';
 import {
-  slotsFor, slotUsage, setEquipped, energyMax, energyNow, changeEnergy, payCoins, coinsInCp, buyMaterial, adjustMaterial,
+  slotsFor, slotUsage, setEquipped, energyMax, energyNow, changeEnergy, adjustMaterial,
   scavenge, planBuild, build, dismantle, saveDesign, knownGadgets, hasWorkshop,
 } from '../src/domain/workshop.js';
+import { payCoins, coinsInCp } from '../src/domain/money.js';
 import { autoChoices } from './helpers/auto-choices.js';
 
 const ASI = { type: 'asi', increases: { inteligencia: 2 } };
@@ -68,12 +69,8 @@ describe('Taller del Ingeniero', () => {
     expect(payCoins({ pp: 1, gp: 0, sp: 5, cp: 0 }, 250)).toEqual({ pp: 0, gp: 8, sp: 0, cp: 0 });
     expect(payCoins({ pp: 2, gp: 3, sp: 0, cp: 0 }, 150)).toEqual({ pp: 2, gp: 1, sp: 5, cp: 0 });
     expect(payCoins({ pp: 0, gp: 1, sp: 0, cp: 0 }, 150)).toBeNull();
-    const c = rich(ing(1), 10);
-    const res = buyMaterial(c, 'placas', 2);
-    expect(res.errors).toEqual([]);
-    expect(res.character.workshop.materials.placas).toBe(2);
-    expect(coinsInCp(res.character.equipment.coins)).toBe(0);
-    expect(buyMaterial(res.character, 'placas', 1).errors).toHaveLength(1);
+    expect(coinsInCp({ pp: 1, gp: 2, sp: 3, cp: 4 })).toBe(1234);
+    // La compra de materiales se prueba en shop.test.js (se compran en la Tienda).
   });
 
   it('Héroe del desguace (nivel 9): 1d4 + nivel de chatarra', () => {

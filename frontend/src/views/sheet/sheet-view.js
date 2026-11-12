@@ -34,7 +34,7 @@ function parseValue(el) {
  * @param {{ character: object, readOnly?: boolean, initialTab?: string, onChange?: (c: object) => void,
  *   listHomebrewBackgrounds?: () => Promise<object[]> }} opts
  */
-export function createSheetView(root, { character, readOnly = false, initialTab = 'resumen', onChange, listHomebrewBackgrounds = async () => [], campaigns = () => [] }) {
+export function createSheetView(root, { character, readOnly = false, initialTab = 'resumen', onChange, listHomebrewBackgrounds = async () => [], campaigns = () => [], recordId = null }) {
   const ed = {
     root,
     readOnly,
@@ -61,7 +61,8 @@ export function createSheetView(root, { character, readOnly = false, initialTab 
   root.append(tabsEl, panel);
 
   Object.defineProperty(ed, 'permissions', { get: () => permissionsFor(ed.character) });
-  const ctx = () => ({ character: ed.character, sheet: ed.sheet, readOnly, spells: ed.spells, ui: ed.ui, permissions: ed.permissions, campaigns: campaigns() });
+  // recordId: id local del personaje (para enlazar con la Tienda). null en la vista compartida.
+  const ctx = () => ({ character: ed.character, sheet: ed.sheet, readOnly, spells: ed.spells, ui: ed.ui, permissions: ed.permissions, campaigns: campaigns(), recordId });
 
   function visibleTabs() {
     const c = ctx();

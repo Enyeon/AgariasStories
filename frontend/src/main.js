@@ -14,6 +14,8 @@ import { mountReference } from './views/reference.js';
 import { mountAbout } from './views/about.js';
 import { mountNotFound } from './views/not-found.js';
 import { mountHomebrew, mountJoin } from './views/homebrew.js';
+// La Tienda se carga sólo al entrar (catálogo y simulación no pesan en el resto).
+const mountShop = async (...args) => (await import('./views/shop/index.js')).mountShop(...args);
 import { homebrew } from './services/homebrew.js';
 
 const services = { characters: createCharacterService(), homebrew };
@@ -28,6 +30,8 @@ const router = createRouter({
     { name: 'home', pattern: /^\/$/, view: (el) => mountLibrary(el, ctx) },
     { name: 'home', pattern: /^\/editar\/([\w-]{1,64})$/, view: (el, [id]) => mountEditor(el, ctx, id) },
     { name: 'home', pattern: /^\/personaje\/([\w-]{1,64})$/, view: (el, [id]) => mountShared(el, ctx, id) },
+    { name: 'shop', pattern: /^\/tienda$/, view: (el) => mountShop(el, ctx) },
+    { name: 'shop', pattern: /^\/tienda\/([\w-]{1,64})$/, view: (el, [id]) => mountShop(el, ctx, id) },
     { name: 'reference', pattern: /^\/referencia$/, view: (el) => mountReference(el, ctx) },
     { name: 'homebrew', pattern: /^\/homebrew$/, view: (el) => mountHomebrew(el, ctx) },
     { name: 'homebrew', pattern: /^\/homebrew\/([a-z0-9-]{1,40})$/, view: (el, [id]) => mountHomebrew(el, ctx, id) },

@@ -43,8 +43,8 @@ function itemsList(ctx) {
   const items = ctx.character.equipment.items;
   return sectionCard({
     title: 'Inventario',
-    subtitle: items.length ? `${items.length} objeto(s)` : '',
-    actions: actionButton(ctx, { action: 'add-item', label: '＋ Añadir objeto', variant: 'btn--ghost btn--sm' }),
+    subtitle: [items.length ? `${items.length} objeto(s)` : '', !ctx.readOnly && ctx.recordId ? 'Lo que compres en la Tienda aparece aquí.' : ''].filter(Boolean).join(' · '),
+    actions: html`<span class="row">${!ctx.readOnly && ctx.recordId ? html`<a class="btn btn--primary btn--sm" href="/tienda/${ctx.recordId}" data-link>🛒 Ir a la Tienda</a>` : ''}${actionButton(ctx, { action: 'add-item', label: '＋ Añadir objeto', variant: 'btn--ghost btn--sm' })}</span>`,
     body: items.length ? html`<div class="table-wrap"><table class="table table--edit">
         <thead><tr><th>Objeto</th><th class="num">Cant.</th><th>Notas</th><th><span class="visually-hidden">Acciones</span></th></tr></thead>
         <tbody>${items.map((it, i) => html`<tr>

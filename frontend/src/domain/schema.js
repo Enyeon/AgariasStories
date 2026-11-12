@@ -28,6 +28,11 @@ export function createWeapon(overrides = {}) {
   return { name: '', attackBonus: '', damage: '', ...overrides };
 }
 
+/**
+ * Objeto del inventario. `ref` (opcional, v3.2) enlaza con el catálogo de la
+ * Tienda (id del catálogo o «hb:…»): permite apilar compras y vender de vuelta.
+ * Los objetos escritos a mano no lo llevan.
+ */
 export function createItem(overrides = {}) {
   return { name: '', quantity: 1, notes: '', ...overrides };
 }

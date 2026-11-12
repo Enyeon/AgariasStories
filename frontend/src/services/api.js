@@ -153,9 +153,18 @@ export function createCampaignApi(rpc = createRpc()) {
   };
 }
 
+/** Mercado de la Tienda por campaña (sólo con Supabase). Ver supabase/migrations/20261112000000_tienda.sql. */
+export function createShopMarketApi(rpc = createRpc()) {
+  return {
+    get: (campaignId, key) => rpc('shop_market_get', { campaign_id: campaignId, key }),
+    save: (campaignId, key, world, expectedRevision) => rpc('shop_market_save', { campaign_id: campaignId, key, world, expected_revision: expectedRevision }),
+  };
+}
+
 /** Con Supabase configurado se usa para compartir; si no, el backend propio (/api). */
 export const api = hasSupabase() ? createSupabaseApi() : createApi();
 export const campaignApi = createCampaignApi();
+export const shopMarketApi = createShopMarketApi();
 
 /** URL pública de un personaje compartido. */
 export function shareUrl(cloudId) {

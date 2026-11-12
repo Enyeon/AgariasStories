@@ -120,6 +120,7 @@ export async function mountEditor(container, { services, navigate }, id) {
       return out;
     },
     campaigns: () => services.homebrew?.memberships() ?? [],
+    recordId: record.id,
     initialTab: opened.character.levels.length === 0 && !opened.character.race.key && opened.character.identity.name ? 'progresion' : 'resumen',
     onChange(character) {
       nameEl.textContent = character.identity.name.trim() || 'Personaje sin nombre';

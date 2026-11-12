@@ -3,6 +3,8 @@
 // diseños propios) con módulos. Funciones puras: reciben un personaje y
 // devuelven uno NUEVO (o errores), como el resto del dominio.
 //
+// Los materiales se compran en la Tienda general (domain/shop).
+//
 // Reglas (las de la clase): cada receta o módulo tiene una complejidad que fija
 // su valor total, su tiempo y el nivel de Ingeniero necesario. Los materiales
 // forman parte de ese valor; el resto se paga en oro. El Discípulo del
@@ -12,6 +14,7 @@
 import catalog from '../data/taller.json';
 import { getClass } from '../data/index.js';
 import { knownChoices, choiceListDef } from './class-choices.js';
+import { coinsInCp, payCoins } from './money.js';
 
 export const TIERS = Object.freeze(['Trivial', 'Simple', 'Avanzado', 'Intrincado']);
 export const TIER_ENERGY = Object.freeze({ Trivial: 1, Simple: 2, Avanzado: 4, Intrincado: 6 });
@@ -25,7 +28,8 @@ const TYPE_IDS = new Set(MODULE_TYPES.map((x) => x.id));
 export const materialName = (id) => MATERIALS.find((m) => m.id === id)?.nombre ?? id;
 export const categoryName = (id) => CATEGORIES.find((x) => x.id === id)?.nombre ?? id;
 export const moduleTypeName = (id) => MODULE_TYPES.find((x) => x.id === id)?.nombre ?? id;
-const materialPrice = (id) => MATERIALS.find((m) => m.id === id)?.precio ?? 0;
+/** Precio de referencia en po (el que fija el valor de una construcción). */
+export const materialPrice = (id) => MATERIALS.find((m) => m.id === id)?.precio ?? 0;
 
 const MAX_STOCK = 9999;
 const MAX_DESIGNS = 60;
@@ -141,25 +145,10 @@ export function changeEnergy(c, { delta = 0, rest = null, intMod = 0 } = {}) {
   return out;
 }
 
-// ── Monedas y materiales ─────────────────────────────────────────────────
-
-const COIN_CP = { pp: 1000, gp: 100, sp: 10, cp: 1 };
-export const coinsInCp = (coins) => Object.entries(COIN_CP).reduce((t, [k, v]) => t + (Number(coins?.[k]) || 0) * v, 0);
-
-/**
- * Paga `costCp` y devuelve las monedas resultantes (o null si no alcanza).
- * Conserva el platino que se pueda y da el cambio en oro, plata y cobre.
- */
-export function payCoins(coins, costCp) {
-  const total = coinsInCp(coins);
-  if (costCp > total) return null;
-  let rest = total - costCp;
-  const pp = Math.min(Number(coins.pp) || 0, Math.floor(rest / 1000));
-  rest -= pp * 1000;
-  const gp = Math.floor(rest / 100); rest -= gp * 100;
-  const sp = Math.floor(rest / 10); rest -= sp * 10;
-  return { ...coins, pp, gp, sp, cp: rest };
-}
+// ── Materiales ───────────────────────────────────────────────────────────
+// El dinero es el de la ficha (domain/money.js). Los materiales se COMPRAN en
+// la Tienda (domain/shop), que los añade a `workshop.materials`; aquí sólo se
+// administra el inventario del Taller.
 
 export function adjustMaterial(c, id, delta) {
   if (!MATERIAL_IDS.has(id)) return c;
@@ -169,15 +158,6 @@ export function adjustMaterial(c, id, delta) {
   out.workshop.materials = { ...out.workshop.materials, [id]: qty };
   if (!qty) delete out.workshop.materials[id];
   return out;
-}
-
-export function buyMaterial(c, id, qty = 1) {
-  if (!MATERIAL_IDS.has(id) || qty < 1) return { character: c, errors: ['Material desconocido.'] };
-  const coins = payCoins(c.equipment.coins, materialPrice(id) * qty * 100);
-  if (!coins) return { character: c, errors: [`No tienes suficiente oro (${materialPrice(id) * qty} po).`] };
-  const out = adjustMaterial(c, id, qty);
-  out.equipment.coins = coins;
-  return { character: out, errors: [] };
 }
 
 /** Héroe del desguace (nivel 9): `roll` = 1d4; añade 1d4 + nivel de Chatarra (1 po cada una). */

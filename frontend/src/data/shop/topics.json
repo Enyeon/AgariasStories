@@ -1,0 +1,20 @@
+{
+  "$comment": "Temas de conversación para la táctica «Charlar». Los vendedores declaran cuáles les gustan o disgustan.",
+  "topics": [
+    { "id": "forja", "label": "La forja y el metal", "icon": "🔥", "playerLine": "Comentas lo bien templado que se ve el acero de la tienda." },
+    { "id": "viajes", "label": "Viajes y caminos", "icon": "🧭", "playerLine": "Le cuentas de dónde vienes y le preguntas por los caminos." },
+    { "id": "magia", "label": "La magia", "icon": "✨", "playerLine": "Le preguntas qué opina de los encantamientos y la magia." },
+    { "id": "animales", "label": "Animales", "icon": "🐾", "playerLine": "Te fijas en los animales y preguntas por ellos." },
+    { "id": "chismes", "label": "Rumores del pueblo", "icon": "🗣️", "playerLine": "Bajas la voz y le preguntas qué se dice por el pueblo." },
+    { "id": "clima", "label": "El tiempo", "icon": "🌦️", "playerLine": "Comentas que el cielo amenaza tormenta." },
+    { "id": "batallas", "label": "Batallas y guerras", "icon": "⚔️", "playerLine": "Le cuentas tu última escaramuza." },
+    { "id": "historia", "label": "Historia antigua", "icon": "📜", "playerLine": "Le preguntas por la historia de la región y de su gente." },
+    { "id": "negocios", "label": "Negocios y dinero", "icon": "💰", "playerLine": "Le preguntas cómo le va al negocio últimamente." },
+    { "id": "secretos", "label": "Secretos y contactos", "icon": "🗝️", "playerLine": "Insinúas que buscas información… de la que no se pregunta en voz alta." },
+    { "id": "cocina", "label": "Comida y recetas", "icon": "🥧", "playerLine": "Elogias el aroma a comida casera de la tienda." },
+    { "id": "apuestas", "label": "Juegos y apuestas", "icon": "🎲", "playerLine": "Le propones apostar unas monedas a los dados." },
+    { "id": "familia", "label": "Familia", "icon": "🏡", "playerLine": "Le preguntas por su familia." },
+    { "id": "dioses", "label": "Dioses y templos", "icon": "⛪", "playerLine": "Mencionas al templo y a los dioses de la ciudad." },
+    { "id": "estrellas", "label": "Las estrellas", "icon": "🌌", "playerLine": "Comentas lo clara que estuvo la noche y sus constelaciones." }
+  ]
+}

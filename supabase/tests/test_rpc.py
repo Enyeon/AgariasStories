@@ -20,7 +20,7 @@ import pytest
 
 PG = os.environ.get("AGARIAS_TEST_PG")
 pytestmark = pytest.mark.skipif(not PG, reason="AGARIAS_TEST_PG no definido")
-MIGRATION = Path(__file__).resolve().parent.parent / "migrations" / "20261108000000_agarias.sql"
+MIGRATIONS = sorted((Path(__file__).resolve().parent.parent / "migrations").glob("*.sql"))
 DB = "agarias_test"
 
 
@@ -35,8 +35,9 @@ def database():
     psql("-c", f"create database {DB}", db="postgres")
     psql("-c", "do $$ begin create role anon nologin; exception when duplicate_object then null; end $$;"
                "do $$ begin create role authenticated nologin; exception when duplicate_object then null; end $$;")
-    res = psql("-f", str(MIGRATION))
-    assert res.returncode == 0, res.stderr
+    for migration in MIGRATIONS:
+        res = psql("-f", str(migration))
+        assert res.returncode == 0, res.stderr
     yield
 
 
@@ -156,3 +157,36 @@ def test_extension_unlock_codes_checked_on_share():
     assert call("share_create", d) == {"error": "unauthorized_content"}
     d["character"]["unlocks"] = [{"ref": ref, "code": code}]
     assert "id" in call("share_create", d)
+
+
+def market(day=1, seed="s", note="x"):
+    return {"format": "agarias-shop-world", "version": 1, "seed": seed, "day": day, "shops": {}, "ledger": [], "note": note}
+
+
+def test_shop_market_per_campaign():
+    camp = call("campaign_create", "Mercado")
+    cid, dm, inv = camp["id"], camp["dmKey"], camp["inviteCode"]
+    assert call("shop_market_get", cid, "nada") == {"error": "forbidden"}
+    empty = call("shop_market_get", cid, inv)
+    assert empty["world"] is None and empty["revision"] == 0 and empty["role"] == "jugador"
+
+    # El primero que entra crea el mercado; luego hace falta la revisión correcta.
+    assert call("shop_market_save", cid, inv, market(), 0)["revision"] == 1
+    assert call("shop_market_save", cid, inv, market(), 0) == {"error": "conflict"}
+    assert call("shop_market_save", cid, inv, market(), None) == {"error": "conflict"}
+    assert call("shop_market_save", cid, inv, market(note="compra"), 1)["revision"] == 2
+    assert call("shop_market_get", cid, dm)["world"]["note"] == "compra"
+
+    # Sólo el DM avanza el día o reinicia el mercado.
+    assert call("shop_market_save", cid, inv, market(day=2), 2) == {"error": "forbidden"}
+    assert call("shop_market_save", cid, inv, market(seed="otra"), 2) == {"error": "forbidden"}
+    assert call("shop_market_save", cid, dm, market(day=2), 2)["revision"] == 3
+
+    # Formato y tamaño.
+    assert call("shop_market_save", cid, dm, {"format": "otro", "day": 1, "shops": {}}, 3) == {"error": "invalid"}
+    big = market(day=2)
+    big["note"] = "x" * 1_600_000
+    assert call("shop_market_save", cid, dm, big, 3) == {"error": "payload_too_large"}
+
+    # Las tablas siguen cerradas para anon.
+    assert psql("-c", "set role anon; select * from agarias.shop_markets;").returncode != 0

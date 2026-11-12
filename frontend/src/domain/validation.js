@@ -347,7 +347,11 @@ export function normalizeCharacter(raw) {
     d.equipment.coins[key] = int(coins[key], { min: 0, max: 99_999_999, fallback: 0 });
   }
   d.equipment.items = list(eq.items, (it) => (isObject(it)
-    ? createItem({ name: text(it.name), quantity: int(it.quantity, { min: 0, max: 99_999, fallback: 1 }), notes: text(it.notes, LIMITS.mediumText) })
+    ? createItem({
+      name: text(it.name), quantity: int(it.quantity, { min: 0, max: 99_999, fallback: 1 }), notes: text(it.notes, LIMITS.mediumText),
+      // (v3.2) Referencia opcional al catálogo de la Tienda: sólo se guarda si existe.
+      ...(typeof it.ref === 'string' && /^[\w:.-]{1,120}$/.test(it.ref) ? { ref: it.ref } : {}),
+    })
     : null));
   d.equipment.treasure = text(eq.treasure, LIMITS.longText);
 

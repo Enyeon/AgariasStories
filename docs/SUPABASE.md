@@ -10,8 +10,9 @@ página y Supabase guarda los datos.
 
 1. Crea un proyecto en <https://supabase.com> (plan gratuito). Región cercana a
    tus jugadores (p. ej. `sa-east-1`, São Paulo).
-2. *SQL Editor* → pega el contenido de `supabase/migrations/20261108000000_agarias.sql`
-   → *Run*. Se puede ejecutar varias veces sin problema.
+2. *SQL Editor* → pega el contenido de cada archivo de `supabase/migrations/`, en
+   orden (`20261108000000_agarias.sql` y después `20261112000000_tienda.sql`)
+   → *Run*. Se pueden ejecutar varias veces sin problema.
 3. *Project Settings → API*: copia la **URL** del proyecto y la clave
    **anon / publishable**. Nunca uses la clave `service_role` en la web.
 4. En Netlify → *Site configuration → Environment variables* añade:
@@ -31,8 +32,17 @@ Para desarrollo local, pon las mismas variables en `frontend/.env`.
 | Ver la campaña y su contenido | DM y jugadores | Clave de DM o código de invitación (hash); los jugadores no ven borradores |
 | Cambiar reglas, estados, borrar, rotar invitación | Sólo el DM | Clave de DM |
 | Crear o editar Homebrew | DM; jugadores sólo si la regla del tipo es «propuestas» | Rol + regla; los jugadores sólo crean propuestas y sólo editan las suyas |
+| Ver y usar el mercado de la Tienda de una campaña | DM y jugadores | Clave de DM o código de invitación + revisión (dos compras a la vez no se pisan) |
+| Pasar días o reiniciar el mercado de la campaña | Sólo el DM | El servidor rechaza cambios de `day`/`seed` que no vengan del DM |
 
-Límites: documento de personaje ≤ 2 MB, elemento Homebrew ≤ 200 KB, reglas ≤ 10 KB,
+La Tienda no guarda monedas ni inventarios en Supabase: siguen dentro del
+documento del personaje. Si el personaje está compartido, cada compra publica
+su copia en línea (`share_update`). En `shop_markets` sólo vive el estado del
+mercado de cada campaña (existencias, eventos, día, relaciones con vendedores y
+registro de compras). Sin esta migración, la Tienda funciona con un mercado
+local en cada dispositivo y lo avisa.
+
+Límites: mercado de la Tienda ≤ 1,5 MB por campaña, documento de personaje ≤ 2 MB, elemento Homebrew ≤ 200 KB, reglas ≤ 10 KB,
 1000 elementos por campaña.
 
 No hay cuentas: quien tenga la clave de DM es DM. Si se filtra, el DM no puede

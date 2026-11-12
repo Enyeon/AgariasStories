@@ -8,9 +8,10 @@ import { knownChoices, choiceListDef, pendingDeferredChoices } from '../../domai
 import {
   TIERS, TIER_ENERGY, COMPLEXITY, MATERIALS, CATEGORIES, MODULE_TYPES, materialName, categoryName, moduleTypeName,
   workshopClass, hasWorkshop, energyMax, energyNow, changeEnergy, slotUsage, knownGadgets, setEquipped,
-  adjustMaterial, buyMaterial, scavenge, allRecipes, allModules, modulesFor, planBuild, build, dismantle,
-  saveDesign, removeDesign, coinsInCp,
+  adjustMaterial, scavenge, allRecipes, allModules, modulesFor, planBuild, build, dismantle,
+  saveDesign, removeDesign,
 } from '../../domain/workshop.js';
+import { coinsInCp } from '../../domain/money.js';
 import { sectionCard } from './common.js';
 import { fillChoices } from './features.js';
 
@@ -89,10 +90,10 @@ function materialsCard(ctx) {
   const ro = ctx.readOnly;
   return sectionCard({
     title: 'Materiales',
-    subtitle: `Tienes ${fmtGold(coinsInCp(ctx.character.equipment.coins))}. Comprar descuenta tus monedas; los materiales que te dé el DM, súmalos con +.`,
-    actions: !ro && w?.level >= 9 ? html`<button type="button" class="btn btn--gold btn--sm" data-action="workshop-scavenge" title="Héroe del desguace: 1d4 + tu nivel en chatarra">🎲 Desguace (1 hora)</button>` : '',
+    subtitle: `Tienes ${fmtGold(coinsInCp(ctx.character.equipment.coins))}. Los materiales se compran en la Tienda (puesto «El Engranaje Risueño»); los que te dé el DM, súmalos con +.`,
+    actions: ro ? '' : html`<span class="row">${ctx.recordId ? html`<a class="btn btn--primary btn--sm" href="/tienda/${ctx.recordId}" data-link>🛒 Comprar en la Tienda</a>` : ''}${w?.level >= 9 ? html`<button type="button" class="btn btn--gold btn--sm" data-action="workshop-scavenge" title="Héroe del desguace: 1d4 + tu nivel en chatarra">🎲 Desguace (1 hora)</button>` : ''}</span>`,
     body: html`<div class="table-wrap"><table class="table">
-      <thead><tr><th scope="col">Material</th><th class="num" scope="col">Precio</th><th class="num" scope="col">Tienes</th>${ro ? '' : html`<th scope="col"><span class="visually-hidden">Acciones</span></th>`}</tr></thead>
+      <thead><tr><th scope="col">Material</th><th class="num" scope="col">Valor</th><th class="num" scope="col">Tienes</th>${ro ? '' : html`<th scope="col"><span class="visually-hidden">Acciones</span></th>`}</tr></thead>
       <tbody>${MATERIALS.map((m) => html`<tr>
         <td><span title="${m.descripcion}">${m.nombre}</span></td>
         <td class="num">${m.precio} po</td>
@@ -100,7 +101,6 @@ function materialsCard(ctx) {
         ${ro ? '' : html`<td><div class="row row--end">
           <button type="button" class="icon-btn" data-action="workshop-mat" data-id="${m.id}" data-delta="-1" aria-label="Quitar 1 de ${m.nombre}" ${stock[m.id] ? '' : raw('disabled')}>−</button>
           <button type="button" class="icon-btn" data-action="workshop-mat" data-id="${m.id}" data-delta="1" aria-label="Sumar 1 de ${m.nombre}">+</button>
-          <button type="button" class="btn btn--ghost btn--sm" data-action="workshop-buy" data-id="${m.id}">Comprar</button>
         </div></td>`}
       </tr>`)}</tbody>
     </table></div>`,
@@ -335,11 +335,6 @@ export const workshopActions = {
   'workshop-fill': (ed, el) => fillChoices(ed, el.dataset.class, 'taller'),
   'workshop-energy': (ed, el) => ed.replace(changeEnergy(ed.character, { delta: Number(el.dataset.delta) || 0, rest: el.dataset.rest || null, intMod: ed.sheet.scores.inteligencia.modifier }), { keepScroll: true }),
   'workshop-mat': (ed, el) => ed.replace(adjustMaterial(ed.character, el.dataset.id, Number(el.dataset.delta) || 0), { keepScroll: true }),
-  'workshop-buy'(ed, el) {
-    const res = buyMaterial(ed.character, el.dataset.id, 1);
-    if (res.errors.length) return toast(res.errors.join(' '), { type: 'warning' });
-    ed.replace(res.character, { keepScroll: true });
-  },
   'workshop-scavenge'(ed) {
     const roll = 1 + Math.floor(Math.random() * 4);
     const res = scavenge(ed.character, roll);

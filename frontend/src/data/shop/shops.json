@@ -1,0 +1,595 @@
+{
+  "$comment": "Tiendas. assortment = surtido fijo (reglas sobre el catálogo; target = existencias normales, número o {rareza: n}; unlimited = siempre hay). rotating = huecos para objetos excepcionales que llegan y se van. buys = lo que acepta comprarle al jugador. cash = caja diaria en pc. specialties = categorías que trabaja a mejor precio.",
+  "market": {
+    "name": "Plaza del Mercado",
+    "tagline": "El corazón comercial de la ciudad"
+  },
+  "shops": [
+    {
+      "id": "yunque",
+      "name": "El Yunque Hendido",
+      "kind": "Herrería y armería",
+      "icon": "⚒️",
+      "keeperId": "gorvan",
+      "description": "Calor de fragua, olor a hierro y el golpe constante del martillo. Si es de metal y corta, Gorvan lo tiene.",
+      "specialties": [
+        "armas",
+        "armaduras"
+      ],
+      "cash": 60000,
+      "assortment": [
+        {
+          "category": "armas",
+          "sub": [
+            "sencilla-cc",
+            "marcial-cc"
+          ],
+          "maxRarity": "common",
+          "target": 3
+        },
+        {
+          "category": "armas",
+          "sub": [
+            "sencilla-dist",
+            "marcial-dist"
+          ],
+          "maxRarity": "common",
+          "target": 2
+        },
+        {
+          "category": "armas",
+          "sub": "municion",
+          "target": 8
+        },
+        {
+          "category": "armaduras",
+          "maxRarity": "uncommon",
+          "target": {
+            "common": 2,
+            "uncommon": 1
+          }
+        },
+        {
+          "ids": [
+            "herr-herrero",
+            "herr-hojalatero",
+            "cadena",
+            "grilletes",
+            "barda-cuero"
+          ],
+          "target": 2
+        }
+      ],
+      "rotating": {
+        "slots": 2,
+        "chance": 0.25,
+        "stayDays": [
+          8,
+          16
+        ],
+        "rules": [
+          {
+            "category": "magicos",
+            "sub": [
+              "arma",
+              "armadura"
+            ],
+            "rarities": [
+              "uncommon",
+              "rare",
+              "veryRare"
+            ]
+          }
+        ]
+      },
+      "buys": [
+        {
+          "category": "armas"
+        },
+        {
+          "category": "armaduras"
+        },
+        {
+          "category": "magicos",
+          "sub": [
+            "arma",
+            "armadura"
+          ]
+        },
+        {
+          "tags": [
+            "metal"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "linterna",
+      "name": "La Linterna del Viajero",
+      "kind": "Proveeduría general",
+      "icon": "🏮",
+      "keeperId": "marla",
+      "description": "Estantes hasta el techo, cestas de pan y un poco de todo. Si un aventurero lo necesita, Marla lo vende.",
+      "specialties": [
+        "equipo",
+        "consumibles",
+        "herramientas"
+      ],
+      "cash": 25000,
+      "assortment": [
+        {
+          "ids": [
+            "antorcha",
+            "vela",
+            "pan",
+            "cerveza",
+            "raciones",
+            "saco",
+            "yesquero",
+            "jabon"
+          ],
+          "unlimited": true
+        },
+        {
+          "category": "equipo",
+          "sub": [
+            "aventura",
+            "contenedor",
+            "luz",
+            "ropa"
+          ],
+          "maxRarity": "uncommon",
+          "target": {
+            "common": 4,
+            "uncommon": 1
+          },
+          "exclude": [
+            "catalejo",
+            "lupa",
+            "estuche-contrabandista"
+          ]
+        },
+        {
+          "ids": [
+            "catalejo",
+            "lupa"
+          ],
+          "target": 1
+        },
+        {
+          "category": "consumibles",
+          "sub": "comida",
+          "target": 6
+        },
+        {
+          "ids": [
+            "pocion-curacion-menor",
+            "antitoxina",
+            "agua-bendita"
+          ],
+          "target": 3
+        },
+        {
+          "category": "herramientas",
+          "sub": [
+            "artesano",
+            "juego",
+            "instrumento"
+          ],
+          "maxRarity": "common",
+          "target": 1,
+          "exclude": [
+            "herr-herrero",
+            "herr-hojalatero",
+            "herr-alquimista"
+          ]
+        },
+        {
+          "ids": [
+            "kit-herboristeria",
+            "herr-navegante"
+          ],
+          "target": 1
+        },
+        {
+          "ids": [
+            "daga",
+            "clava",
+            "baston",
+            "honda",
+            "lanza",
+            "hoz"
+          ],
+          "target": 2
+        },
+        {
+          "category": "armas",
+          "sub": "municion",
+          "target": 5
+        },
+        {
+          "ids": [
+            "silla-montar",
+            "alforjas",
+            "forraje",
+            "equipaje-montura-pequeno"
+          ],
+          "target": 2
+        }
+      ],
+      "buys": [
+        {
+          "category": "equipo"
+        },
+        {
+          "category": "herramientas"
+        },
+        {
+          "category": "consumibles"
+        },
+        {
+          "category": "armas",
+          "sub": [
+            "sencilla-cc",
+            "sencilla-dist",
+            "municion"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gabinete",
+      "name": "Gabinete de Curiosidades Arcanas",
+      "kind": "Objetos mágicos y alquimia",
+      "icon": "🔮",
+      "keeperId": "ilvaris",
+      "description": "Vitrinas de cristal, velas que no se consumen y un silencio de biblioteca. Cada objeto tiene su etiqueta escrita a mano.",
+      "specialties": [
+        "magicos",
+        "consumibles"
+      ],
+      "cash": 400000,
+      "assortment": [
+        {
+          "category": "consumibles",
+          "sub": "pocion",
+          "target": {
+            "common": 4,
+            "uncommon": 2,
+            "rare": 1
+          }
+        },
+        {
+          "category": "consumibles",
+          "sub": "alquimia",
+          "target": 2,
+          "exclude": [
+            "veneno-basico"
+          ]
+        },
+        {
+          "category": "equipo",
+          "sub": "canalizador",
+          "target": 2
+        },
+        {
+          "ids": [
+            "herr-alquimista",
+            "kit-herboristeria",
+            "zurron-herborista",
+            "libro",
+            "tinta",
+            "pergamino"
+          ],
+          "target": 2
+        },
+        {
+          "ids": [
+            "bolsa-contencion",
+            "capa-elfica",
+            "varita-proyectiles",
+            "anillo-salto"
+          ],
+          "target": 1
+        },
+        {
+          "tags": [
+            "homebrew"
+          ],
+          "target": 1
+        }
+      ],
+      "rotating": {
+        "slots": 3,
+        "chance": 0.3,
+        "stayDays": [
+          10,
+          20
+        ],
+        "rules": [
+          {
+            "category": "magicos",
+            "rarities": [
+              "uncommon",
+              "rare",
+              "veryRare",
+              "epic",
+              "legendary"
+            ]
+          }
+        ]
+      },
+      "buys": [
+        {
+          "category": "magicos"
+        },
+        {
+          "category": "consumibles",
+          "sub": [
+            "pocion",
+            "alquimia"
+          ]
+        },
+        {
+          "category": "equipo",
+          "sub": "canalizador"
+        },
+        {
+          "tags": [
+            "arcano"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "establos",
+      "name": "Establos del Cruce",
+      "kind": "Monturas, arreos y crías",
+      "icon": "🐴",
+      "keeperId": "brenna",
+      "description": "Paja fresca, relinchos y un corral a la vista. Brenna no le vende un animal a cualquiera.",
+      "specialties": [
+        "monturas",
+        "criaturas"
+      ],
+      "cash": 150000,
+      "assortment": [
+        {
+          "category": "monturas",
+          "sub": "montura",
+          "maxRarity": "uncommon",
+          "target": {
+            "common": 3,
+            "uncommon": 1
+          }
+        },
+        {
+          "category": "monturas",
+          "sub": "arreos",
+          "target": 2
+        },
+        {
+          "category": "monturas",
+          "sub": "vehiculo",
+          "maxRarity": "uncommon",
+          "target": 1
+        },
+        {
+          "category": "criaturas",
+          "maxRarity": "uncommon",
+          "target": {
+            "common": 2,
+            "uncommon": 1
+          }
+        }
+      ],
+      "rotating": {
+        "slots": 2,
+        "chance": 0.25,
+        "stayDays": [
+          8,
+          14
+        ],
+        "rules": [
+          {
+            "category": "monturas",
+            "sub": [
+              "montura",
+              "vehiculo"
+            ],
+            "rarities": [
+              "rare",
+              "veryRare",
+              "epic"
+            ]
+          },
+          {
+            "category": "criaturas",
+            "rarities": [
+              "rare",
+              "veryRare"
+            ]
+          }
+        ]
+      },
+      "buys": [
+        {
+          "category": "monturas"
+        },
+        {
+          "category": "criaturas"
+        }
+      ]
+    },
+    {
+      "id": "engranajes",
+      "name": "El Engranaje Risueño",
+      "kind": "Tecnología y materiales de taller",
+      "icon": "⚙️",
+      "keeperId": "pim",
+      "description": "Estanterías de cajones etiquetados, olor a aceite y chispas azules. Aquí se abastecen los Ingenieros: materiales del Taller y herramientas de precisión.",
+      "specialties": [
+        "tecnologia"
+      ],
+      "cash": 80000,
+      "assortment": [
+        {
+          "category": "tecnologia",
+          "sub": "material",
+          "ids": [
+            "taller-chatarra",
+            "taller-tela",
+            "taller-engranajes",
+            "taller-muelles",
+            "taller-tuberias",
+            "taller-cableado",
+            "taller-placas",
+            "taller-polvora"
+          ],
+          "unlimited": true
+        },
+        {
+          "ids": [
+            "taller-lentes",
+            "taller-quimicos",
+            "taller-precision"
+          ],
+          "target": 10
+        },
+        {
+          "ids": [
+            "taller-nucleo"
+          ],
+          "target": 3
+        },
+        {
+          "tags": [
+            "ingeniero"
+          ],
+          "category": "herramientas",
+          "target": 1
+        }
+      ],
+      "buys": [
+        {
+          "category": "tecnologia"
+        },
+        {
+          "tags": [
+            "ingeniero"
+          ]
+        },
+        {
+          "tags": [
+            "metal"
+          ],
+          "category": "herramientas"
+        }
+      ]
+    },
+    {
+      "id": "callejon",
+      "name": "El Callejón de las Sombras",
+      "kind": "Perista y vendedor de secretos",
+      "icon": "🗝️",
+      "keeperId": "vex",
+      "description": "Una puerta sin cartel al fondo de un callejón. Dentro, cosas que no deberían estar a la venta… y gente que sabe demasiado.",
+      "specialties": [
+        "pistas"
+      ],
+      "cash": 200000,
+      "assortment": [
+        {
+          "tags": [
+            "turbio"
+          ],
+          "category": "herramientas",
+          "target": 1
+        },
+        {
+          "ids": [
+            "veneno-basico",
+            "estuche-contrabandista",
+            "abrojos",
+            "ballesta-de-mano",
+            "cerbatana",
+            "agujas-cerbatana"
+          ],
+          "target": 1
+        },
+        {
+          "category": "pistas",
+          "rarities": [
+            "uncommon",
+            "rare",
+            "veryRare"
+          ],
+          "target": 1
+        }
+      ],
+      "rotating": {
+        "slots": 3,
+        "chance": 0.35,
+        "stayDays": [
+          5,
+          12
+        ],
+        "rules": [
+          {
+            "category": "pistas",
+            "rarities": [
+              "epic",
+              "legendary",
+              "unique"
+            ]
+          },
+          {
+            "category": "criaturas",
+            "rarities": [
+              "veryRare",
+              "epic",
+              "legendary"
+            ]
+          },
+          {
+            "category": "magicos",
+            "rarities": [
+              "rare",
+              "veryRare",
+              "epic"
+            ]
+          }
+        ]
+      },
+      "buys": [
+        {
+          "category": "magicos"
+        },
+        {
+          "category": "armas"
+        },
+        {
+          "category": "armaduras"
+        },
+        {
+          "category": "pistas"
+        },
+        {
+          "category": "criaturas"
+        },
+        {
+          "tags": [
+            "turbio"
+          ]
+        },
+        {
+          "category": "equipo",
+          "sub": [
+            "aventura",
+            "contenedor"
+          ]
+        }
+      ]
+    }
+  ]
+}

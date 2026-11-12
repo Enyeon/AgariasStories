@@ -1,0 +1,206 @@
+{
+  "$comment": "Vendedores. traits en 0..1: greed (avaricia), patience (paciencia), pride (orgullo), warmth (calidez), shrewdness (astucia). likes/dislikes son ids de topics.json. voice elige el juego de frases de dialogue.json; lines permite frases propias por clave.",
+  "keepers": [
+    {
+      "id": "gorvan",
+      "name": "Gorvan Yunquehierro",
+      "short": "Gorvan",
+      "title": "Maestro herrero enano",
+      "portrait": "⚒️",
+      "accent": "#d9822b",
+      "voice": "gruñon",
+      "bio": "Lleva sesenta años golpeando el mismo yunque. Habla poco, cobra lo justo y no soporta que le discutan la calidad de su acero.",
+      "traits": {
+        "greed": 0.5,
+        "patience": 0.45,
+        "pride": 0.85,
+        "warmth": 0.3,
+        "shrewdness": 0.6
+      },
+      "likes": [
+        "forja",
+        "batallas",
+        "historia"
+      ],
+      "dislikes": [
+        "magia",
+        "apuestas"
+      ],
+      "unafraid": true,
+      "topicLines": {
+        "forja": "¿Te interesa el acero? Mira esta hoja: plegada cuarenta veces, ni una más. Eso es oficio, no lo que venden los humanos en la costa.",
+        "batallas": "Hmpf. Estuve en el asedio de Karak-Dûm. Lo que salva vidas no es el valor: es un buen peto. Lo sé bien.",
+        "historia": "Mi clan forjaba para reyes cuando tu ciudad era un pantano. Me gusta que alguien recuerde esas cosas."
+      }
+    },
+    {
+      "id": "marla",
+      "name": "Marla Tresvientos",
+      "short": "Marla",
+      "title": "Mediana, proveedora de viajeros",
+      "portrait": "🏮",
+      "accent": "#e3b04b",
+      "voice": "campechana",
+      "bio": "Su tienda huele a pan y a cuero nuevo. Conoce a todos los viajeros de la región y casi todos sus secretos.",
+      "traits": {
+        "greed": 0.35,
+        "patience": 0.75,
+        "pride": 0.3,
+        "warmth": 0.85,
+        "shrewdness": 0.5
+      },
+      "likes": [
+        "chismes",
+        "cocina",
+        "viajes",
+        "familia"
+      ],
+      "dislikes": [
+        "apuestas"
+      ],
+      "topicLines": {
+        "chismes": "¡Ay, no me tires de la lengua! Bueno… dicen que el hijo del alcalde anda viéndose con la hija del molinero. Pero yo no te dije nada.",
+        "cocina": "¿Probaste mi pastel de setas? Receta de mi abuela. El secreto es la manteca, y no pienso decir cuánta.",
+        "viajes": "Yo crucé las Colinas Verdes tres veces con este carro. Si vas para allá, lleva cuerda extra. Siempre cuerda extra."
+      }
+    },
+    {
+      "id": "ilvaris",
+      "name": "Maese Ilvaris Quel'thar",
+      "short": "Ilvaris",
+      "title": "Elfo erudito y tasador arcano",
+      "portrait": "🔮",
+      "accent": "#8f7cff",
+      "voice": "erudito",
+      "bio": "Coleccionista paciente y tasador implacable. Sonríe siempre, pero nunca se le escapa una moneda.",
+      "traits": {
+        "greed": 0.6,
+        "patience": 0.85,
+        "pride": 0.6,
+        "warmth": 0.4,
+        "shrewdness": 0.85
+      },
+      "likes": [
+        "magia",
+        "historia",
+        "estrellas"
+      ],
+      "dislikes": [
+        "negocios",
+        "apuestas"
+      ],
+      "topicLines": {
+        "magia": "Ah, ¿percibes la resonancia de esa vitrina? Abjuración, tercera escuela. Muy pocos clientes lo notan. Me alegra la conversación.",
+        "historia": "Este orbe vio caer dos imperios. Los objetos recuerdan, ¿sabes? Por eso los trato con respeto.",
+        "estrellas": "Anoche se alinearon las Hermanas. Buen augurio para los encantamientos de protección… y para los tratos honestos."
+      }
+    },
+    {
+      "id": "brenna",
+      "name": "Brenna Cascoduro",
+      "short": "Brenna",
+      "title": "Criadora y maestra de establos",
+      "portrait": "🐴",
+      "accent": "#7fae5b",
+      "voice": "firme",
+      "bio": "Cría animales desde que tiene memoria. Trata mejor a sus caballos que a la mayoría de la gente, y no lo esconde.",
+      "traits": {
+        "greed": 0.4,
+        "patience": 0.55,
+        "pride": 0.5,
+        "warmth": 0.6,
+        "shrewdness": 0.45
+      },
+      "likes": [
+        "animales",
+        "clima",
+        "viajes"
+      ],
+      "dislikes": [
+        "batallas"
+      ],
+      "topicLines": {
+        "animales": "¿Ves a la yegua torda del fondo? Nació en plena tormenta y ahora no le teme a nada. Los animales saben quién los quiere bien.",
+        "clima": "Va a llover en tres días; las cabras ya lo saben. Si viajas, sal mañana temprano."
+      }
+    },
+    {
+      "id": "vex",
+      "name": "Vex «Siete Dedos»",
+      "short": "Vex",
+      "title": "Tiefling, perista del callejón",
+      "portrait": "🗝️",
+      "accent": "#c4475b",
+      "voice": "sombrio",
+      "bio": "Nadie sabe de dónde saca lo que vende y nadie pregunta. Paga poco, cobra mucho y siempre sabe algo que tú no.",
+      "traits": {
+        "greed": 0.8,
+        "patience": 0.35,
+        "pride": 0.45,
+        "warmth": 0.2,
+        "shrewdness": 0.9
+      },
+      "likes": [
+        "secretos",
+        "apuestas",
+        "negocios"
+      ],
+      "dislikes": [
+        "dioses",
+        "familia"
+      ],
+      "unafraid": true,
+      "topicLines": {
+        "secretos": "Je. Todos tenemos algo que esconder, ¿no? Yo vendo lo que otros esconden. Me caes bien: preguntas lo correcto.",
+        "apuestas": "¿Juegas? Los dados de la taberna del Ahorcado están cargados. Lo sé porque los cargué yo."
+      }
+    },
+    {
+      "id": "pim",
+      "name": "Pim Llavetuerca",
+      "short": "Pim",
+      "title": "Gnoma ingeniera y proveedora de taller",
+      "portrait": "⚙️",
+      "accent": "#4fb0a8",
+      "voice": "default",
+      "bio": "Lleva gafas de tres lentes, una llave inglesa en cada bolsillo y opina de todo lo que tenga engranajes. Vende lo que un Ingeniero necesita y presume de saber para qué sirve cada tornillo.",
+      "traits": {
+        "greed": 0.45,
+        "patience": 0.6,
+        "pride": 0.55,
+        "warmth": 0.7,
+        "shrewdness": 0.6
+      },
+      "likes": [
+        "forja",
+        "magia",
+        "historia"
+      ],
+      "dislikes": [
+        "batallas"
+      ],
+      "topicLines": {
+        "forja": "¿Forja? ¡Bah, eso es calentar y golpear! Pero el temple de un muelle… eso sí es ciencia. Me caes bien.",
+        "magia": "La magia es solo ingeniería que todavía nadie se ha molestado en explicar. Un cristal de arcanita bien cargado mueve más que diez magos."
+      },
+      "lines": {
+        "welcome": [
+          "¡Cuidado con el cable! Pasa, pasa: si chispea, no lo toques.",
+          "¡Bienvenido al Engranaje! Todo lo que ves funciona. Casi todo."
+        ],
+        "open_buy": [
+          "{item}: {price}. Calibrado, probado y sin explosiones (recientes).",
+          "Por {item}, {price}. Lo pesé yo misma."
+        ],
+        "insulted": [
+          "¿{offer}? ¡Eso no paga ni el aceite de los engranajes!",
+          "Con {offer} te puedo vender… el envoltorio."
+        ],
+        "accept_happy": [
+          "¡Trato! Y si te explota algo, no fue culpa de mis piezas.",
+          "¡Hecho! Vuelve y cuéntame qué construiste."
+        ]
+      }
+    }
+  ]
+}
