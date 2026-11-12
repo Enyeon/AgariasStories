@@ -130,7 +130,7 @@
   "listasDeEleccion": {
     "votos-alba": {
       "titulo": "Votos del alba",
-      "ayuda": "Ejemplo de lista con opciones propias: cada voto es una opción con id, nombre y descripción; puede tener efectos.",
+      "ayuda": "Ejemplo de lista con opciones propias: cada voto es una opción con id, nombre y descripción; puede tener efectos. Ejemplo de «diferir»: no es obligatorio elegirlos al subir de nivel; la pestaña Rasgos avisa de los que faltan.",
       "opciones": [
         {
           "id": "vigilia",
@@ -190,7 +190,8 @@
           "descripcion": "Ejemplo de opción «repetible»: se puede elegir más de una vez.",
           "repetible": true
         }
-      ]
+      ],
+      "diferir": true
     },
     "arma-del-alba": {
       "titulo": "Arma del alba",
@@ -453,7 +454,15 @@
                 "subBlockUno": {
                   "subName": "Mediodía",
                   "subTitleName": "✦ MEDIODÍA ✦",
-                  "subDescripcion": "Durante 1 minuto emites luz brillante en 9 m; los enemigos en ella tienen desventaja en las salvaciones contra tus conjuros."
+                  "subDescripcion": "Durante 1 minuto emites luz brillante en 9 m; los enemigos en ella tienen desventaja en las salvaciones contra tus conjuros.\n\n<i>Ejemplo de «maximo»: +1 a Carisma y su máximo sube a 21 (como Tecnomancia de élite del Ingeniero: +2 Inteligencia, máximo 22).</i>",
+                  "efectos": [
+                    {
+                      "type": "bono",
+                      "target": "atributo:carisma",
+                      "value": 1,
+                      "maximo": 21
+                    }
+                  ]
                 }
               }
             }

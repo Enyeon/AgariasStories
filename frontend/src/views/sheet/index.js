@@ -10,8 +10,10 @@ import { renderStory, storyActions } from './story.js';
 import { renderDm, extrasActions } from './extras.js';
 import { renderCompanions, companionActions } from './companions.js';
 import { backgroundActions } from './background.js';
+import { renderWorkshop, workshopActions, workshopChanges } from './workshop.js';
+import { hasWorkshop } from '../../domain/workshop.js';
 import { contentStatus } from '../../content/snapshots.js';
-import { pendingSpellChoices } from '../../domain/class-choices.js';
+import { pendingSpellChoices, pendingDeferredChoices } from '../../domain/class-choices.js';
 
 const hasPendingSpellChoices = (c) => [...new Set(c.levels.map((l) => l.classKey))].some((k) => pendingSpellChoices(c, k).length > 0);
 
@@ -28,6 +30,12 @@ export const TABS = [
     visible: ({ character, sheet }) => sheet.spellcasting.isCaster || character.spells.known.length > 0 || hasPendingSpellChoices(character),
     // Conjuros de rasgos que quedaron por elegir al subir de nivel.
     attention: ({ character }) => hasPendingSpellChoices(character),
+  },
+  {
+    id: 'taller', label: 'Taller', render: renderWorkshop,
+    visible: ({ character }) => hasWorkshop(character),
+    // Esquemas que quedaron por elegir al subir de nivel.
+    attention: ({ character }) => pendingDeferredChoices(character, 'taller').length > 0,
   },
   { id: 'equipo', label: 'Equipo', render: renderEquipment },
   { id: 'criaturas', label: 'Criaturas', render: renderCompanions, visible: ({ character, sheet, readOnly }) => !readOnly || sheet.bloodSummoning || (character.companions ?? []).length > 0 },
@@ -46,6 +54,7 @@ export const ACTIONS = {
   ...extrasActions,
   ...companionActions,
   ...backgroundActions,
+  ...workshopActions,
 };
 
-export const CHANGES = progressionChanges;
+export const CHANGES = { ...progressionChanges, 'workshop-equip': workshopChanges.equip, 'workshop-filter': workshopChanges.filter };

@@ -206,6 +206,15 @@ export function abilityCaps(c) {
   if (permissionsFor(c).epicBoons && c.epicBoons.length > 0) {
     for (const k of ABILITY_KEYS) caps[k] = Math.max(caps[k], EPIC_ABILITY_CAP);
   }
+  // Rasgos con «+N a un atributo, máximo M» (bono `atributo:<clave>` con `maximo`).
+  for (const s of effectSources(c)) {
+    for (const e of s.effects) {
+      if (e.type === 'bono' && e.maximo && e.target.startsWith('atributo:')) {
+        const k = e.target.slice('atributo:'.length);
+        if (k in caps) caps[k] = Math.max(caps[k], e.maximo);
+      }
+    }
+  }
   return caps;
 }
 

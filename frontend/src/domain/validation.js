@@ -16,6 +16,7 @@ import {
 import { normalizeEffects, CONDITIONS } from './effects.js';
 import { registerSnapshots, engineOf } from '../content/registry.js';
 import { migrateDocument } from './migrations.js';
+import { normalizeWorkshop } from './workshop.js';
 import { getClass, getRace, getFeat, getEpicBoon, getOfficialBackground } from '../data/index.js';
 
 export class InvalidDocumentError extends Error {
@@ -385,6 +386,7 @@ export function normalizeCharacter(raw) {
     return { ref, code, at: text(u.at, 40) };
   }, 60).filter((u, i, all) => all.findIndex((x) => x.ref === u.ref) === i);
   d.companions = list(src.companions, (x) => normalizeCompanion(x), 30);
+  d.workshop = normalizeWorkshop(src.workshop);
 
   if (isObject(src.campaign) && text(src.campaign.id, 40)) {
     d.campaign = { id: text(src.campaign.id, 40), name: text(src.campaign.name) };

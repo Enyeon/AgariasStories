@@ -64,6 +64,7 @@ nivel) y a `spellsKnown`; no se pueden combinar.
 | `subclaseNombre` | No | Cómo se llama la subclase (`"Juramento"`) | Textos del asistente y de la ficha |
 | `subclasePendiente` | No | `true` si aún no hay subclases | Muestra un aviso en vez de pedir subclase |
 | `pericias` | No | `{ "1": 2, "6": 2 }` | Cuenta de pericias que otorga la clase (orientativa) |
+| `taller` | No | `true` | Activa la pestaña **Taller** (Ingeniero): Energía (2 × nivel), artefactos equipados según la columna «Artefactos equipados (T · S · A · I)», inventario de materiales y construcción con módulos. El catálogo está en `frontend/src/data/taller.json` (generado por `tools/build_taller.py`); la lógica, en `domain/workshop.js`. Las listas con `"diferir": "taller"` se eligen desde esa pestaña |
 
 ### `competencias`
 
@@ -205,6 +206,7 @@ Opciones de la lista:
 | `nivelMax: "espacios"` | (listas de conjuros) El nivel máximo es el de los espacios de conjuro de la clase en cada momento, también en los cambios. Ej.: Descubrimientos Mágicos |
 | `reemplazarAlSubir: true` | Cada vez que se sube en la clase, se ofrece cambiar una elección (opcional). Ej.: estilos de combate, trucos y hechizos del Caballero Arcano |
 | `cambiable: true` | Se puede cambiar en cualquier momento desde la ficha (botón «Cambiar»). Ej.: maestría en armas tras un descanso largo |
+| `diferir: true` o `diferir: "taller"` | No se pide al subir de nivel: se puede elegir de 0 a `cantidad` y lo que falte queda pendiente en la pestaña indicada (`true` = Rasgos; `"taller"` = Taller del Ingeniero). Las listas de conjuros ya se comportan así (pestaña Conjuros). Ej.: esquemas del Ingeniero |
 
 **2. Concede elecciones** con `elegir` en el rasgo que las da (`infoBlock` o
 `infoSubBlock`), o en el propio nivel (`niveles.N.elegir` o `subNivel.N.elegir`)
@@ -269,6 +271,8 @@ habilidades; con `pruebas:destreza`, también la iniciativa). Ej. Glamour de Otr
 el bono vale el modificador del atributo, con un mínimo. Sirve para habilidades, `pruebas:…`, `iniciativa` (Acechador en la Penumbra) y
 `salvaciones` (Aura de Protección del Paladín: + Carisma, mínimo +1). Ej. del Taumaturgo:
 `{ "type": "bono", "target": "habilidad:Religión", "desdeAtributo": "sabiduria", "minimo": 1 }`.
+
+**Aumento de atributo con máximo** (`maximo`, sólo con `atributo:<clave>`): sube la puntuación y también su límite. Ej. Tecnomancia de élite (Ingeniero Tecnoteúrgo 20): `{ "type": "bono", "target": "atributo:inteligencia", "value": 2, "maximo": 22 }`. Sirve en rasgos de subclase, donde no existe `requeridoTrue`.
 
 **Bono igual a tu nivel en la clase** (`desdeNivel: true`, `mas` opcional): cuenta solo los
 niveles de la clase que da el rasgo, también en multiclase. Ej. Resiliencia Dracónica (PG

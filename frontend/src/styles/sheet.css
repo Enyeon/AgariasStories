@@ -449,3 +449,12 @@
 .callout--accent { border-left-color: var(--accent); }
 .spell-allowance { display: grid; gap: var(--space-2); }
 .spell-allowance__list { margin: 0; padding-left: var(--space-5); display: grid; gap: var(--space-1); }
+
+/* Taller del Ingeniero. */
+.workshop-stats { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
+.workshop-energy, .workshop-slots { display: grid; gap: var(--space-2); align-content: start; }
+.workshop-energy__value { font-size: var(--fs-xl, 1.5rem); font-family: var(--font-display, inherit); }
+.recipe-grid { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); margin-top: var(--space-3); }
+.recipe-card { display: grid; gap: var(--space-2); align-content: start; padding: var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface); }
+.recipe-card p { margin: 0; font-size: var(--fs-sm); }
+.recipe-card.is-locked { opacity: 0.7; }

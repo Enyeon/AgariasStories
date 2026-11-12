@@ -22,12 +22,22 @@ function rogueTo(n, sub) {
 }
 
 describe('Pícaro', () => {
-  it('conserva las claves de subclase que ya guardan los personajes y añade Soulknife', () => {
+  it('conserva las claves de subclase que ya guardan los personajes y añade Soulknife y Espadachín', () => {
     const subs = Object.keys(getClass('picaro').niveles['3'].subClase);
-    expect(subs.sort()).toEqual(['asesino', 'embaucador-arcano', 'ladron', 'soulknife']);
+    expect(subs.sort()).toEqual(['asesino', 'embaucador-arcano', 'espadachin', 'ladron', 'soulknife']);
   });
 
-  for (const sub of ['ladron', 'asesino', 'embaucador-arcano', 'soulknife']) {
+  it('Espadachín: rasgos a los niveles 3, 9, 13 y 17 y Carisma a la iniciativa', () => {
+    const sub = getClass('picaro').niveles['3'].subClase.espadachin;
+    expect(Object.keys(sub.subNivel)).toEqual(['3', '9', '13', '17']);
+    const c = rogueTo(3, 'espadachin');
+    c.abilities.carisma = 16;
+    const ladron = rogueTo(3, 'ladron');
+    ladron.abilities.carisma = 16;
+    expect(computeSheet(c).initiative - computeSheet(ladron).initiative).toBe(3);
+  });
+
+  for (const sub of ['ladron', 'asesino', 'embaucador-arcano', 'soulknife', 'espadachin']) {
     it(`sube de 1 a 20 como ${sub} y baja a 2`, () => {
       const c = rogueTo(20, sub);
       const f = classFeatures(c)[0];

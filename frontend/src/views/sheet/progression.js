@@ -10,7 +10,7 @@ import {
 import { sectionCard, actionButton } from './common.js';
 import { openRacePicker } from '../race-picker.js';
 import { renderBackgroundCard } from './background.js';
-import { pendingSpellChoices } from '../../domain/class-choices.js';
+import { pendingSpellChoices, pendingDeferredChoices } from '../../domain/class-choices.js';
 import { openLevelUpWizard, openFeatPicker, openMultiLevelUp, openMultiLevelDown } from '../level-up.js';
 import { confirmDialog, toast } from '../../ui/feedback.js';
 
@@ -141,12 +141,16 @@ export function renderProgression(ctx) {
   return html`<div class="stack">${raceCard(ctx)}${renderBackgroundCard(ctx)}${levelsCard(ctx)}</div>`;
 }
 
-/** Recordatorio tras subir: los conjuros se eligen en su pestaña. */
+/** Recordatorio tras subir: lo diferible (conjuros, esquemas) se elige en su pestaña. */
 function spellHint(c) {
   const classes = [...new Set(c.levels.map((l) => l.classKey))];
   const pending = classes.reduce((t, k) => t + pendingSpellChoices(c, k).reduce((n, m) => n + m.cantidad, 0), 0);
-  if (pending) return ` Tienes ${pending} conjuro${pending === 1 ? '' : 's'} por elegir en la pestaña Conjuros.`;
-  return getClass(c.levels.at(-1)?.classKey)?.conjurador ? ' Revisa tus conjuros nuevos en la pestaña Conjuros.' : '';
+  const taller = pendingDeferredChoices(c, 'taller').reduce((n, m) => n + m.cantidad, 0);
+  const parts = [];
+  if (pending) parts.push(`Tienes ${pending} conjuro${pending === 1 ? '' : 's'} por elegir en la pestaña Conjuros.`);
+  if (taller) parts.push(`Tienes ${taller} esquema${taller === 1 ? '' : 's'} por elegir en la pestaña Taller.`);
+  if (!parts.length && getClass(c.levels.at(-1)?.classKey)?.conjurador) parts.push('Revisa tus conjuros nuevos en la pestaña Conjuros.');
+  return parts.length ? ` ${parts.join(' ')}` : '';
 }
 
 export const progressionActions = {

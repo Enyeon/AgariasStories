@@ -372,6 +372,61 @@
               }
             }
           }
+        },
+        "espadachin": {
+          "subNombre": "Espadachín",
+          "subDescripcion": "✦ ESPADACHÍN ✦\nDuelista carismático de golpes rápidos\n\nEl Espadachín lucha con golpes rápidos, un posicionamiento inteligente y mucha confianza. A diferencia de otros Pícaros, que dependen en gran medida de esconderse, puede amenazar a sus enemigos a campo abierto: usa el Ataque Furtivo en los duelos y se escabulle fuera del alcance de los enemigos. Encaja con quien disfruta del combate cuerpo a cuerpo y de los encuentros sociales (Persuasión, Engaño y una personalidad memorable).",
+          "fuente": "Guía de Xanathar para Todo",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Juego de pies elegante",
+                  "subTitleName": "✦ JUEGO DE PIES ELEGANTE ✦",
+                  "subDescripcion": "Cuando realizas un ataque cuerpo a cuerpo contra una criatura en tu turno, esa criatura no puede realizar ataques de oportunidad contra ti durante el resto de ese turno. Funciona aunque falles el ataque, pero los demás enemigos aún pueden atacarte.\n<i>Ejemplo: atacas a un guardia con tu estoque y luego te alejas.</i>"
+                },
+                "subBlockDos": {
+                  "subName": "Audacia descarada",
+                  "subTitleName": "✦ AUDACIA DESCARADA ✦",
+                  "subDescripcion": "Sumas tu modificador de Carisma a tus tiradas de iniciativa.\nAdemás, puedes usar tu Ataque Furtivo sin tener ventaja en la tirada de ataque si tu objetivo está a 1,5 m de ti, no hay ninguna otra criatura a 1,5 m de ti y no tienes desventaja en la tirada. Los demás requisitos del Ataque Furtivo siguen vigentes.",
+                  "efectos": [
+                    {
+                      "type": "bono",
+                      "target": "iniciativa",
+                      "desdeAtributo": "carisma"
+                    }
+                  ]
+                }
+              }
+            },
+            "9": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Panache",
+                  "subTitleName": "✦ PANACHE ✦",
+                  "subDescripcion": "Como acción, haces una prueba de Carisma (Persuasión) enfrentada a una prueba de Sabiduría (Perspicacia) de una criatura. La criatura debe poder oírte y compartir un idioma contigo.\n<b>Criatura hostil.</b> Si tienes éxito, durante 1 minuto tiene desventaja en las tiradas de ataque contra objetivos que no seas tú y no puede realizar ataques de oportunidad contra ellos. El efecto termina antes si uno de tus compañeros la ataca o le lanza un conjuro, o si os separáis más de 18 m.\n<b>Criatura no hostil.</b> Si tienes éxito, queda Hechizada por ti durante 1 minuto. El efecto termina antes si tú o tus compañeros le hacéis daño."
+                }
+              }
+            },
+            "13": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Maniobra elegante",
+                  "subTitleName": "✦ MANIOBRA ELEGANTE ✦",
+                  "subDescripcion": "Puedes usar una acción adicional en tu turno para obtener ventaja en la siguiente prueba de Destreza (Acrobacias) o de Fuerza (Atletismo) que hagas durante ese mismo turno."
+                }
+              }
+            },
+            "17": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Maestro duelista",
+                  "subTitleName": "✦ MAESTRO DUELISTA ✦",
+                  "subDescripcion": "Cuando fallas una tirada de ataque, puedes volver a tirarla con ventaja. Una vez usas este rasgo, no puedes volver a usarlo hasta que termines un descanso corto o largo."
+                }
+              }
+            }
+          }
         }
       },
       "infoCubo": {

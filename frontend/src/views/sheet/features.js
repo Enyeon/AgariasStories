@@ -16,7 +16,7 @@ import {
   assignedExtensions, addableExtensions, addUnlock, removeUnlock, findByCode, normalizeUnlockCode,
 } from '../../domain/extensions.js';
 import { textArea } from './common.js';
-import { classChoiceStatus, fillMissingChoices, replaceChoice, choiceListDef, knownChoices, listSource } from '../../domain/class-choices.js';
+import { classChoiceStatus, fillMissingChoices, replaceChoice, choiceListDef, knownChoices, listSource, deferredTab } from '../../domain/class-choices.js';
 import { choiceGroupsHtml, bindChoiceGroups, choicesError } from '../components/choice-picker.js';
 
 const CLAMP_CHARS = 420;
@@ -301,8 +301,8 @@ function featureCard(item, subName) {
 function choicesPanel(ctx, f) {
   const st = classChoiceStatus(ctx.character, f.classKey, { spells: ctx.spells });
   if (!st.lists.length && !st.missing.length) return '';
-  // Las de conjuros se avisan y se eligen en la pestaña Conjuros.
-  const others = st.missing.filter((m) => listSource(m.def) !== 'conjuros');
+  // Las de conjuros y las del Taller se avisan y se eligen en su pestaña.
+  const others = st.missing.filter((m) => [null, 'rasgos'].includes(deferredTab(m.def)));
   const missing = others.reduce((n, m) => n + m.cantidad, 0);
   return html`<div class="class-block choices-panel">
     <div class="class-block__head"><h4 class="class-block__title">Elecciones</h4></div>
@@ -328,13 +328,16 @@ const needsSpellCatalog = (groups) => groups.some((g) => listSource(g.def) === '
 
 /**
  * Diálogo para completar las elecciones pendientes de una clase.
- * @param {'conjuros'|'otras'|null} only  limita a las listas de conjuros o al resto
+ * @param {string|null} only  'conjuros', 'otras' (las de Rasgos) o la pestaña de una lista `diferir` ('taller')
  */
 export async function fillChoices(ed, classKey, only = null) {
   const status = classChoiceStatus(ed.character, classKey);
-  const keep = (m) => !only || ((listSource(m.def) === 'conjuros') === (only === 'conjuros'));
+  // 'conjuros' / 'otras' (Rasgos) o el id de una pestaña de listas `diferir` (p. ej. 'taller').
+  const keep = (m) => !only || (only === 'otras' ? [null, 'rasgos'].includes(deferredTab(m.def)) : deferredTab(m.def) === only);
   const missing = status.missing.filter(keep);
   if (!missing.length) return;
+  // Las listas diferibles (conjuros, esquemas, `diferir`) se pueden completar por partes.
+  const partial = only !== null && (only !== 'otras' || missing.every((m) => deferredTab(m.def)));
   const groups = missing.map((m) => ({ ...m, key: `${m.level}:${m.lista}`, features: [`nivel ${m.level}`, ...m.features] }));
   const spells = needsSpellCatalog(groups) ? (ed.spells ?? await loadSpells().catch(() => null)) : null;
   const state = {};
@@ -345,13 +348,13 @@ export async function fillChoices(ed, classKey, only = null) {
     render(body, close) {
       let error = '';
       const draw = () => {
-        setHtml(body, html`<p class="muted">${only === 'conjuros' ? 'Puedes elegir sólo algunos ahora y el resto más tarde. ' : ''}Estas elecciones corresponden a niveles que ya tienes. Se guardan en su nivel: si bajas de nivel, se deshacen.</p>
+        setHtml(body, html`<p class="muted">${partial ? 'Puedes elegir sólo algunos ahora y el resto más tarde. ' : ''}Estas elecciones corresponden a niveles que ya tienes. Se guardan en su nivel: si bajas de nivel, se deshacen.</p>
           ${choiceGroupsHtml(groups, state, { known: status.known, spells })}
           <p class="field__error" role="alert">${error}</p>
           <div class="dialog__footer"><button type="button" class="btn btn--ghost" data-dialog-close>Cancelar</button><button type="button" class="btn btn--primary" data-ok>Guardar</button></div>`);
         bindChoiceGroups(body, groups, state, { known: status.known, spells }, () => { body.querySelector('.field__error').textContent = ''; });
         body.querySelector('[data-ok]').addEventListener('click', () => {
-          error = choicesError(groups, state, { partial: only === 'conjuros' });
+          error = choicesError(groups, state, { partial });
           if (error) return draw();
           close(true);
         });

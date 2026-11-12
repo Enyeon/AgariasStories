@@ -529,13 +529,24 @@ function openMultiLevelSummary(original, final, steps) {
   });
 }
 
-/** Aviso de que los conjuros nuevos se eligen con calma en la pestaña Conjuros. */
+const TAB_LABEL = { conjuros: 'Conjuros', taller: 'Taller', rasgos: 'Rasgos' };
+const TAB_NOUN = { conjuros: ['conjuro', 'conjuros'], taller: ['esquema', 'esquemas'], rasgos: ['elección', 'elecciones'] };
+
+/**
+ * Aviso de que lo diferible (conjuros, esquemas…) se elige con calma después,
+ * en su pestaña. Sin elecciones diferidas, a un lanzador se le recuerda igual.
+ */
 function spellNote(deferred, isCaster) {
-  if (!deferred.length && !isCaster) return '';
-  const total = deferred.reduce((t, d) => t + d.cantidad, 0);
-  return html`<p class="callout callout--accent">✨ ${total
-    ? html`Este nivel te da <strong>${total} conjuro${total === 1 ? '' : 's'}</strong> para elegir (${[...new Set(deferred.map((d) => d.titulo))].join(', ')}).`
-    : 'Puede que este nivel te dé trucos o conjuros nuevos.'} No hace falta elegirlos ahora: ve a la pestaña <strong>Conjuros</strong> y revísalos tranquilamente.</p>`;
+  const byTab = new Map();
+  for (const d of deferred) {
+    const t = byTab.get(d.pestana) ?? { total: 0, titles: new Set() };
+    t.total += d.cantidad;
+    t.titles.add(d.titulo);
+    byTab.set(d.pestana, t);
+  }
+  if (!byTab.size && !isCaster) return '';
+  if (!byTab.size) return html`<p class="callout callout--accent">✨ Puede que este nivel te dé trucos o conjuros nuevos. No hace falta elegirlos ahora: ve a la pestaña <strong>Conjuros</strong> y revísalos tranquilamente.</p>`;
+  return html`${[...byTab].map(([tab, t]) => html`<p class="callout callout--accent">✨ Este nivel te da <strong>${t.total} ${(TAB_NOUN[tab] ?? TAB_NOUN.rasgos)[t.total === 1 ? 0 : 1]}</strong> para elegir (${[...t.titles].join(', ')}). No hace falta elegirlos ahora: ve a la pestaña <strong>${TAB_LABEL[tab] ?? tab}</strong> y revísalos tranquilamente.</p>`)}`;
 }
 
 function hitPointsMax(c) {

@@ -2457,5 +2457,25 @@
       "Panencio"
     ],
     "info": "Rasgos de Raza:\n♻ Capacidad de Reparación. Puedes usar harina y agua para restaurar tu cuerpo. Como acción, puedes consumir 1 litro de agua y 1Kg de harina para recuperar 2d4 puntos de golpe. Esta curación no es compatible con pociones mágicas (no puedes beneficiarte de ellas). Puedes usar esta habilidad un número de veces igual a tu bonificador de competencia por descanso largo.\n♻ Aromaterapia. Su delicioso aroma puede calmar y aliviar el estrés de aquellos a su alrededor, siendo especialmente útil en situaciones de tensión. Como acción, puedes liberar un aroma calmante. Todas las criaturas aliadas a 10 pies que puedan olerlo tienen ventaja en su siguiente tirada de Carisma o Sabiduría (a elección), hasta el final de su siguiente turno. Usable 1 vez por descanso corto.\n♻ Habilidades Culinarias. Eres competente con Herramientas de cocinero. Puedes preparar platos especiales durante un descanso corto que otorgan una bonificación menor (como 1d4 PG adicionales, ventaja en una tirada de habilidad específica, o +1 a la CD de un hechizo de Carisma). Durante un descanso corto, puedes gastar 10 minutos y una ración de comida para preparar un platillo especial. Hasta 3 criaturas aliadas que lo consuman recuperan +1d4 PG adicionales al usar sus dados de golpe. [Consulta con tu DM los efectos posibles dependiendo del platillo creado.]\n♻ Fragilidad en Climas Húmedos. Cuando estás en un ambiente de humedad intensa (lluvia constante, selva, niebla mágica, etc.), tienes desventaja en tiradas de Atletismo y ataques con armas cuerpo a cuerpo debido a que tu cuerpo se vuelve blando."
+  },
+  "Kenku menor": {
+    "velocidad": 30,
+    "fly": 40,
+    "inteligencia": 2,
+    "destreza": 1,
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común y Cuervo (Kenku)",
+    "yaHabla": [
+      "Común",
+      "Cuervo (Kenku)"
+    ],
+    "descripcion": "Eres, literalmente, un cuervo: un pájaro despierto de mente aguda. Mides unos 10 cm de alto y pesas unos 56 g. Un año de cuervo equivale a unos 10 años humanos.",
+    "info": "Rasgos de Raza:\n♻ Cuervo. Tu tipo de criatura es bestia. Tu tamaño es Diminuto: mides unos 10 cm de alto y pesas unos 56 g. Un año de tu vida equivale a unos 10 años humanos.\n♻ Velocidad. Tu velocidad caminando es de 30 pies (6 casillas) y tienes una velocidad de vuelo de 40 pies (8 casillas).\n♻ Vuelo limitado. Puedes volar durante cierto tiempo: hasta 10 minutos seguidos. Después debes posarte y descansar al menos 1 minuto antes de volver a volar.\n♻ Escurridizo. Por tu tamaño puedes colarte por lugares a los que la gente no puede ir: atraviesas cualquier abertura de al menos 5 cm sin apretarte, puedes moverte a través del espacio de cualquier criatura de un tamaño mayor que el tuyo e intentar esconderte cuando solo te oculta una criatura al menos un tamaño mayor que tú.\n♻ Cuerpo diminuto. Solo puedes empuñar y usar con normalidad armas y objetos hechos a tu tamaño. Tienes desventaja en las pruebas de Fuerza y no puedes llevar armadura salvo que esté hecha para ti.\n♻ Afinidad animal. Tienes competencia en la habilidad Trato con Animales.\n♻ Mente aguda. Tu Inteligencia es notablemente alta para un ave (incluida en tu aumento de característica).",
+    "efectos": [
+      {
+        "type": "competencia",
+        "kind": "habilidad",
+        "value": "Trato con Animales"
+      }
+    ]
   }
 }

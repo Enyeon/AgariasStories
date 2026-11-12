@@ -170,17 +170,31 @@ export function expandGrants(classKey, subKey, grants, elecciones = {}) {
 }
 
 /**
- * Las elecciones de conjuros no son obligatorias al subir de nivel: se pueden
- * hacer después, con calma, desde la pestaña Conjuros (lo no elegido queda
- * pendiente en classChoiceStatus). Se marcan `opcional`: se acepta elegir de 0
- * a `cantidad`. `deferred` resume lo que este nivel da para elegir.
- * @returns {{ groups: Array, deferred: Array<{ lista, titulo, cantidad }> }}
+ * Pestaña donde se completa una lista que no se pide al subir de nivel: las de
+ * conjuros siempre (pestaña Conjuros) y las que declaran `"diferir"` (`true` →
+ * Rasgos, o el id de una pestaña, p. ej. `"taller"`). null = se pide al subir.
+ */
+export function deferredTab(def) {
+  if (!def) return null;
+  if (listSource(def) === 'conjuros') return 'conjuros';
+  if (def.diferir === true) return 'rasgos';
+  return typeof def.diferir === 'string' && /^[a-z]{1,20}$/.test(def.diferir) ? def.diferir : null;
+}
+
+/**
+ * Las elecciones diferibles (conjuros y listas con `diferir`) no son
+ * obligatorias al subir de nivel: se pueden hacer después, con calma, desde su
+ * pestaña (lo no elegido queda pendiente en classChoiceStatus). Se marcan
+ * `opcional`: se acepta elegir de 0 a `cantidad`. `deferred` resume lo que este
+ * nivel da para elegir y en qué pestaña.
+ * @returns {{ groups: Array, deferred: Array<{ lista, titulo, cantidad, pestana }> }}
  */
 export function deferSpellChoices(groups) {
   const deferred = [];
   const out = groups.map((g) => {
-    if (listSource(g.def) !== 'conjuros') return g;
-    if (g.cantidad > 0) deferred.push({ lista: g.lista, titulo: g.def.titulo ?? g.lista, cantidad: g.cantidad });
+    const pestana = deferredTab(g.def);
+    if (!pestana) return g;
+    if (g.cantidad > 0) deferred.push({ lista: g.lista, titulo: g.def.titulo ?? g.lista, cantidad: g.cantidad, pestana });
     return { ...g, opcional: true };
   });
   return { groups: out, deferred };
@@ -194,6 +208,12 @@ export const levelUpVisibleChoices = (groups) => groups
 /** Elecciones de conjuros que faltan en los niveles ya alcanzados. */
 export function pendingSpellChoices(c, classKey) {
   return classChoiceStatus(c, classKey).missing.filter((m) => listSource(m.def) === 'conjuros');
+}
+
+/** Elecciones diferidas a una pestaña (p. ej. «taller») que faltan, en todas las clases. */
+export function pendingDeferredChoices(c, pestana) {
+  return [...new Set(c.levels.map((l) => l.classKey))].flatMap((classKey) => classChoiceStatus(c, classKey).missing
+    .filter((m) => deferredTab(m.def) === pestana).map((m) => ({ ...m, classKey })));
 }
 
 /** ¿Hay que decidir algo obligatoriamente? (los cambios opcionales no cuentan) */

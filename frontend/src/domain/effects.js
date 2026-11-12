@@ -125,6 +125,10 @@ export function normalizeEffect(raw) {
       }
       const value = Math.trunc(Number(raw.value));
       if (!target || !Number.isFinite(value) || value === 0 || Math.abs(value) > 30) return null;
+      // Aumento de atributo que también sube su máximo (p. ej. +2 Inteligencia,
+      // máximo 22, en un rasgo de subclase). Sólo con `atributo:<clave>`.
+      const maximo = Math.trunc(Number(raw.maximo));
+      if (target.startsWith('atributo:') && Number.isFinite(maximo) && maximo > 20 && maximo <= 30) return { type: 'bono', target, value, maximo };
       return { type: 'bono', target, value };
     }
     case 'resistencia':
@@ -180,7 +184,7 @@ export function describeEffect(e) {
     case 'pericia': return `+${e.amount} pericia${e.amount > 1 ? 's' : ''}`;
     case 'bono': return e.desdeNivel ? `${BONUS_TARGETS[e.target]}: + tu nivel en la clase${e.mas ? ` ${e.mas > 0 ? '+' : '−'} ${Math.abs(e.mas)}` : ''}`
       : e.desdeAtributo ? `${BONUS_TARGETS[e.target]}: + mod. de ${ABILITY_LABEL[e.desdeAtributo]}${e.minimo != null ? ` (mínimo ${e.minimo > 0 ? '+' : ''}${e.minimo})` : ''}`
-      : e.desdeTabla ? `${BONUS_TARGETS[e.target]}: según «${e.desdeTabla}»` : `${e.value > 0 ? '+' : ''}${e.value} ${BONUS_TARGETS[e.target]}`;
+      : e.desdeTabla ? `${BONUS_TARGETS[e.target]}: según «${e.desdeTabla}»` : `${e.value > 0 ? '+' : ''}${e.value} ${BONUS_TARGETS[e.target]}${e.maximo ? ` (máximo ${e.maximo})` : ''}`;
     case 'resistencia': return `Resistencia: ${DAMAGE_LABEL[e.value]}`;
     case 'inmunidad': return `Inmunidad: ${DAMAGE_LABEL[e.value]}`;
     case 'vulnerabilidad': return `Vulnerabilidad: ${DAMAGE_LABEL[e.value]}`;

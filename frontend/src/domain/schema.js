@@ -127,6 +127,11 @@ export function createCharacter() {
     /** Vínculos con criaturas (mascota, familiar, montura...). Ver createCompanion. */
     companions: [],
     /**
+     * Taller del Ingeniero (ver domain/workshop.js): Energía actual (null = llena),
+     * artefactos equipados, materiales { id: cantidad }, creaciones y diseños propios.
+     */
+    workshop: { energy: null, equipped: [], materials: {}, creations: [], designs: [] },
+    /**
      * Campaña a la que pertenece el personaje: null | { id, name }.
      * El token de jugador NO se guarda aquí (no debe viajar al exportar).
      */
