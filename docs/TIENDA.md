@@ -36,4 +36,4 @@ Un personaje de una campaña de la que este dispositivo es miembro usa el mercad
 Lo ven todos los jugadores y solo el DM pasa los días. Un personaje sin campaña usa el mercado local.
 
 ## Aspecto
-El tema de la Tienda (madera, latón y pergamino) vive en `views/shop/shop.css`, dentro de `.shop-root`, así que no afecta al resto de la app. Las tipografías (Cinzel y Alegreya Sans) se sirven desde la propia app con `@fontsource`, porque la CSP no permite fuentes externas. Solo se cargan al entrar en `/tienda`.
+El tema de la Tienda (madera, latón y pergamino) vive en `views/shop/shop.css`, dentro de `.shop-root`, así que no afecta al resto de la app. Las tipografías (Cinzel y Alegreya Sans) están incluidas en el proyecto (`views/shop/fonts/`, licencia OFL), porque la CSP no permite fuentes externas. Solo se cargan al entrar en `/tienda`.
