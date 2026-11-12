@@ -9,6 +9,8 @@
 import { ABILITY_KEYS, SKILL_NAMES } from '../domain/constants.js';
 import { normalizeEffects, DAMAGE_TYPE_KEYS, CONDITIONS } from '../domain/effects.js';
 import { normalizeBackgroundDefinition } from '../domain/validation.js';
+import { normalizeMerchant, normalizeRegion, normalizeFaction, normalizeEvent } from './world-schema.js';
+export { WORLD_TYPES } from './world-schema.js';
 
 export const CONTENT_TYPES = Object.freeze({
   clase: { label: 'Clase', plural: 'Clases', icon: '⚔️' },
@@ -20,6 +22,11 @@ export const CONTENT_TYPES = Object.freeze({
   criatura: { label: 'Criatura', plural: 'Criaturas', icon: '🐺' },
   rasgo: { label: 'Rasgo', plural: 'Rasgos', icon: '✧' },
   extension: { label: 'Extensión de clase', plural: 'Extensiones de clase', icon: '⚜️' },
+  // Mundo de la Tienda: exclusivo del DM (dmOnly), nunca propuestas de jugadores.
+  mercader: { label: 'Comerciante', plural: 'Comerciantes', icon: '🧑‍💼', dmOnly: true },
+  region: { label: 'Región', plural: 'Regiones', icon: '🗺️', dmOnly: true },
+  faccion: { label: 'Facción', plural: 'Facciones', icon: '🏳️', dmOnly: true },
+  evento: { label: 'Evento del mundo', plural: 'Eventos del mundo', icon: '📰', dmOnly: true },
   otro: { label: 'Otro', plural: 'Otros', icon: '📎' },
 });
 export const CONTENT_TYPE_KEYS = Object.freeze(Object.keys(CONTENT_TYPES));
@@ -268,6 +275,12 @@ const NORMALIZERS = {
     };
   },
 
+  // Mundo de la Tienda (sólo el DM): ver content/world-schema.js
+  mercader: normalizeMerchant,
+  region: normalizeRegion,
+  faccion: normalizeFaction,
+  evento: normalizeEvent,
+
   otro() {
     return {};
   },
@@ -304,6 +317,10 @@ export function emptyContent(type) {
     case 'dote': return { ...base, prerequisites: { abilities: {}, level: null, caster: false }, abilityOptions: [], expertise: 0, repeatable: false, effects: [] };
     case 'hechizo': return { ...base, level: 1, school: '', castingTime: '1 acción', range: '', components: 'V, S', duration: 'Instantáneo', concentration: false, ritual: false, attack: '', classes: [] };
     case 'extension': return { ...base, classKey: '', kind: 'rasgos', access: 'desbloqueo', unlockHash: null, subclassLevel: 3, origin: 'bendicion', condition: '', features: [] };
+    case 'mercader': return { ...base, ...normalizeMerchant({ location: '', catalogMode: 'auto' }, []), location: '' };
+    case 'region': return { ...base, ...normalizeRegion({}) };
+    case 'faccion': return { ...base, ...normalizeFaction({}) };
+    case 'evento': return { ...base, ...normalizeEvent({}, []) };
     case 'criatura': return { ...base, size: 'Mediana', creatureType: 'Bestia', alignment: '', ac: 12, hp: 10, hitDice: '', speed: '30 pies', abilities: Object.fromEntries(ABILITY_KEYS.map((k) => [k, 10])), challenge: '1/4', resistances: [], immunities: [], vulnerabilities: [], conditionImmunities: [], traits: [], actions: [], reactions: [] };
     default: return { ...base };
   }

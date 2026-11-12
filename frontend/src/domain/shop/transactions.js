@@ -10,6 +10,8 @@ import { quoteBuy, quoteSell } from './pricing.js';
 import { cloneWorld, haggleKey, pushLedger } from './state.js';
 import { shopClosure } from './simulation.js';
 import { grantItem, takeItem, ownedUnits } from './inventory.js';
+import { availability } from './presence.js';
+import { remember } from './memory.js';
 
 /** Desglose del total: unidades al precio del trato + resto a precio de lista. */
 export function priceBreakdown(quote, qty) {
@@ -37,20 +39,32 @@ function ledgerEntry(world, { charId, charName, shopId, item, side, qty, breakdo
   };
 }
 
-function check(world, ctx, { shopId, qty, character }) {
+/**
+ * Comprobaciones comunes. `here` (ubicación del jugador) activa la regla de
+ * presencia: sólo se comercia con quien está en el mismo sitio y atiende.
+ */
+function check(world, ctx, { shopId, qty, character, here }) {
   const amount = Math.trunc(Number(qty));
   if (!Number.isInteger(amount) || amount < 1) return { error: 'Cantidad inválida.' };
   if (!character) return { error: 'Elige un personaje.' };
   const closure = shopClosure(world, ctx, shopId);
   if (closure) return { error: `${closure.name}: la tienda está cerrada hoy.` };
+  if (here !== undefined && here !== null) {
+    const keeper = ctx.keeperOf(shopId);
+    const status = availability(world, ctx, keeper);
+    if (status.location !== here) return { error: `${keeper?.short ?? 'El comerciante'} no está aquí.`, reason: 'absent' };
+    if (!status.open) return { error: status.reason ?? 'Ahora no atiende.', reason: 'closed' };
+  }
   return { amount };
 }
 
-export function buy(world, ctx, { charId = null, charName, shopId, itemId, qty = 1, character }) {
-  const ok = check(world, ctx, { shopId, qty, character });
+export function buy(world, ctx, { charId = null, charName, shopId, itemId, qty = 1, character, profile = null, here = undefined }) {
+  const ok = check(world, ctx, { shopId, qty, character, here });
   if (ok.error) return ok;
-  const quote = quoteBuy(world, ctx, { shopId, itemId, charId });
+  const quote = quoteBuy(world, ctx, { shopId, itemId, charId, profile });
   if (!quote) return { error: 'Este objeto no se vende aquí.' };
+  if (quote.refused) return { error: quote.refused, reason: 'refused' };
+  if (quote.locked) return { error: quote.locked, reason: 'locked' };
   if (quote.available < ok.amount) return { error: quote.available ? `Solo quedan ${quote.available}.` : 'Está agotado.' };
 
   const breakdown = priceBreakdown(quote, ok.amount);
@@ -69,17 +83,21 @@ export function buy(world, ctx, { charId = null, charName, shopId, itemId, qty =
   if (breakdown.dealQty) w.deals[haggleKey(charId, shopId, itemId, 'buy')].qty -= breakdown.dealQty;
   const ledger = ledgerEntry(w, { charId, charName, shopId, item, side: 'buy', qty: ok.amount, breakdown });
   pushLedger(w, ledger);
+  const keeper = ctx.keeperOf(shopId);
+  remember(w, ctx, charId, keeper, 'bought');
+  if (!breakdown.dealQty && quote.marketUnit && breakdown.total >= 1000 && quote.listUnit > quote.marketUnit * 1.15) remember(w, ctx, charId, keeper, 'overpaid');
   return { world: w, character: next, ledger };
 }
 
-export function sell(world, ctx, { charId = null, charName, shopId, itemId, qty = 1, character }) {
-  const ok = check(world, ctx, { shopId, qty, character });
+export function sell(world, ctx, { charId = null, charName, shopId, itemId, qty = 1, character, profile = null, here = undefined }) {
+  const ok = check(world, ctx, { shopId, qty, character, here });
   if (ok.error) return ok;
   const item = ctx.item(itemId);
   if (!item) return { error: 'La tienda no conoce ese objeto.' };
   if (ownedUnits(character, item) < ok.amount) return { error: item.bundle ? `Necesitas lotes completos de ${item.bundle}.` : 'No tienes tantas unidades.' };
-  const quote = quoteSell(world, ctx, { shopId, itemId, charId });
+  const quote = quoteSell(world, ctx, { shopId, itemId, charId, profile });
   if (!quote.unit) return { error: 'No le interesa comprar eso.' };
+  if (quote.refused) return { error: quote.refused, reason: 'refused' };
   const breakdown = priceBreakdown(quote, ok.amount);
   if ((world.shops[shopId]?.cash ?? 0) < breakdown.total) {
     return { error: `Hoy no tiene tanto en caja (tiene ${formatCp(world.shops[shopId].cash)}).`, reason: 'cash' };
@@ -102,5 +120,6 @@ export function sell(world, ctx, { charId = null, charName, shopId, itemId, qty 
   if (breakdown.dealQty) w.deals[haggleKey(charId, shopId, itemId, 'sell')].qty -= breakdown.dealQty;
   const ledger = ledgerEntry(w, { charId, charName, shopId, item, side: 'sell', qty: ok.amount, breakdown });
   pushLedger(w, ledger);
+  remember(w, ctx, charId, ctx.keeperOf(shopId), 'sold');
   return { world: w, character: next, ledger };
 }

@@ -10,6 +10,7 @@ import { toast, confirmDialog, openDialog, reportError, userMessageFor } from '.
 import { listEntries, onRegistryChange, getPack } from '../content/registry.js';
 import { CONTENT_TYPES, CONTENT_TYPE_KEYS, CONTENT_STATUS } from '../content/schema.js';
 import { HOMEBREW_MODES, OFFICIAL_TYPES, normalizeRules } from '../content/rules.js';
+import { setWorldEditingPack } from '../content/world-options.js';
 import { inviteUrl, parseInvite } from '../services/homebrew.js';
 import { downloadJson, readJsonFile } from '../services/file-transfer.js';
 import { openContentEditor } from './components/content-editor.js';
@@ -70,7 +71,9 @@ function rulesCard(pack) {
           <tbody>${CONTENT_TYPE_KEYS.map((t) => html`<tr>
             <th scope="row">${CONTENT_TYPES[t].icon} ${CONTENT_TYPES[t].plural}</th>
             <td>${OFFICIAL_TYPES.includes(t) ? html`<label class="check"><input type="checkbox" name="official-${t}" ${rules.official[t] ? raw('checked') : ''}> Permitido</label>` : html`<span class="muted">—</span>`}</td>
-            <td><select class="select" name="homebrew-${t}" aria-label="Homebrew de ${CONTENT_TYPES[t].plural}">${Object.entries(HOMEBREW_MODES).map(([k, l]) => html`<option value="${k}" ${rules.homebrew[t] === k ? raw('selected') : ''}>${l}</option>`)}</select></td>
+            <td>${CONTENT_TYPES[t].dmOnly
+              ? html`<span class="muted" title="El mundo de la Tienda sólo lo configura el DM">Sólo el DM (siempre)</span>`
+              : html`<select class="select" name="homebrew-${t}" aria-label="Homebrew de ${CONTENT_TYPES[t].plural}">${Object.entries(HOMEBREW_MODES).map(([k, l]) => html`<option value="${k}" ${rules.homebrew[t] === k ? raw('selected') : ''}>${l}</option>`)}</select>`}</td>
           </tr>`)}</tbody>
         </table></div>
         <label class="check"><input type="checkbox" name="epicBoons" ${rules.epicBoons ? raw('checked') : ''}> Se permiten bendiciones épicas (nivel 20, atributos hasta 30)</label>
@@ -278,12 +281,23 @@ export function mountHomebrew(container, ctx, packId = null) {
       if (res.errors.length) { toast(res.errors.join(' '), { type: 'error' }); return null; }
       return res;
     }
-    return run(() => svc.saveCampaignItem(pack.id, { type, data, contentId }), (r) => (r.status === 'propuesto' ? 'Propuesta enviada al DM.' : `«${data.name}» guardado (${CONTENT_STATUS[r.status]?.toLowerCase()}).`));
+    return run(async () => {
+      try {
+        return await svc.saveCampaignItem(pack.id, { type, data, contentId });
+      } catch (err) {
+        // Servidor sin la migración de comerciantes: se explica en vez de un error genérico.
+        if (CONTENT_TYPES[type]?.dmOnly && err?.code === 'invalid') {
+          throw Object.assign(new Error('server_not_ready'), { userMessage: `El servidor de la campaña todavía no admite ${CONTENT_TYPES[type].plural.toLowerCase()}: hay que aplicar las migraciones de Supabase 20261113000000_comerciantes.sql y 20261114000000_mundo_dm.sql. Mientras tanto, puedes crearlo en «Mi Homebrew» (local).` });
+        }
+        throw err;
+      }
+    }, (r) => (r.status === 'propuesto' ? 'Propuesta enviada al DM.' : `«${data.name}» guardado (${CONTENT_STATUS[r.status]?.toLowerCase()}).`));
   }
 
   async function editItem(pack, type, entry) {
     const dm = pack.role === 'dm';
     const isLocal = pack.kind === 'local';
+    setWorldEditingPack(pack.id); // las opciones del mundo (regiones, facciones…) son las de este paquete
     const item = await openContentEditor(type, entry?.item ?? null, {
       draftKey: `${pack.id}:${type}:${entry?.ref.split(':').at(-1) ?? 'nuevo'}`,
       note: isLocal ? '' : dm ? 'Los cambios en contenido publicado llegan a los jugadores al actualizar; sus fichas avisarán de la nueva versión.' : 'Tu propuesta la revisará el DM antes de que se pueda usar.',

@@ -1,5 +1,5 @@
 {
-  "$comment": "Vendedores. traits en 0..1: greed (avaricia), patience (paciencia), pride (orgullo), warmth (calidez), shrewdness (astucia). likes/dislikes son ids de topics.json. voice elige el juego de frases de dialogue.json; lines permite frases propias por clave.",
+  "$comment": "Comerciantes (PNJ). traits 0..1: greed, patience, pride, warmth, shrewdness. archetypes: ids de personalities.json. kinds: oficial|regional|racial|faccion|errante|unico|secreto|evento (etiquetas). race: familia de races.json. faction: id de factions.json. presence: {location} fija o {route:[{location,stay:[min,max]}], gap:[min,max]} para errantes. schedule: {phases, weekdays, events} (vacío = siempre). attitudes: [{when:{race|class|background|faction|origin|alignment|event|memory}, value, label, hidden, effects:{refuse,unlock,share}}]. knows: {topics, regions, rumors}. secrets: [{id,title,text,how,requires,reward}]. favors: [{id,title,text,kind:deliver|task,item,qty,minTier,days,reward}]. gifts: [{rule, mult}] cuánto le gusta recibir esos objetos. disguise: {name,short,portrait,title,revealedBy}. profession: id de professions.json (catálogo y comportamientos por defecto). schedule.hours: «08:00-20:00» (se traduce a franjas). reputation: {weight, good, bad, enemy, refuseEnemies, goodPct, badPct} cómo le afecta tu reputación con SU facción. negotiation: {enabled, reason, maxDiscount, patience}. hire: {enabled, minTier, fee, wage, mobile, share} contratación. lines: {clave: [frases]} sustituye las frases de su voz. prices: {itemId: precio en pc} en su tienda. priceMod: ajuste general (−0.5..1).",
   "keepers": [
     {
       "id": "gorvan",
@@ -31,6 +31,190 @@
         "forja": "¿Te interesa el acero? Mira esta hoja: plegada cuarenta veces, ni una más. Eso es oficio, no lo que venden los humanos en la costa.",
         "batallas": "Hmpf. Estuve en el asedio de Karak-Dûm. Lo que salva vidas no es el valor: es un buen peto. Lo sé bien.",
         "historia": "Mi clan forjaba para reyes cuando tu ciudad era un pantano. Me gusta que alguien recuerde esas cosas."
+      },
+      "race": "enano",
+      "faction": "clan-yunque",
+      "kinds": [
+        "oficial",
+        "racial"
+      ],
+      "archetypes": [
+        "orgulloso",
+        "honrado",
+        "rencoroso"
+      ],
+      "presence": {
+        "location": "barrio-fraguas"
+      },
+      "schedule": {
+        "phases": [
+          "manana",
+          "tarde"
+        ]
+      },
+      "attitudes": [
+        {
+          "when": {
+            "race": "enano"
+          },
+          "value": 20,
+          "label": "Saluda en khuzdul a otro enano",
+          "hidden": false
+        },
+        {
+          "when": {
+            "race": "elfo"
+          },
+          "value": -18,
+          "label": "Viejas rencillas entre enanos y elfos",
+          "hidden": true
+        },
+        {
+          "when": {
+            "race": "duergar"
+          },
+          "value": -30,
+          "label": "Para él, los duergar son traidores a la sangre",
+          "hidden": true
+        },
+        {
+          "when": {
+            "faction": "clan-yunque"
+          },
+          "value": 25,
+          "label": "Eres del clan: casi familia",
+          "effects": {
+            "unlock": [
+              "armadura-placas"
+            ]
+          }
+        },
+        {
+          "when": {
+            "class": "guerrero"
+          },
+          "value": 6,
+          "label": "Respeta a quien vive de la espada"
+        },
+        {
+          "when": {
+            "background": "artesano"
+          },
+          "value": 10,
+          "label": "Reconoce las manos de un artesano"
+        },
+        {
+          "when": {
+            "memory": "insulted"
+          },
+          "value": -10,
+          "label": "No olvida que le faltaste al respeto"
+        }
+      ],
+      "knows": {
+        "topics": [
+          "lugares",
+          "rutas",
+          "peligros"
+        ],
+        "regions": [
+          "valle",
+          "montes"
+        ]
+      },
+      "secrets": [
+        {
+          "id": "gorvan-hijo",
+          "title": "El hijo perdido de Gorvan",
+          "text": "Su hijo Durin bajó a la Veta Honda hace tres inviernos y nunca volvió. Gorvan aún guarda su martillo junto al yunque.",
+          "how": "trust",
+          "requires": {
+            "tier": "Favorable"
+          },
+          "reward": {
+            "rep": 4
+          }
+        },
+        {
+          "id": "gorvan-acero-negro",
+          "title": "El acero negro",
+          "text": "Gorvan sabe templar acero negro de las minas profundas, pero sólo trabaja para quien considera amigo.",
+          "how": "investigate",
+          "requires": {
+            "check": {
+              "skill": "investigation",
+              "dc": 14
+            },
+            "tier": "Amistoso"
+          },
+          "reward": {
+            "unlock": [
+              "espada-colmillo"
+            ]
+          }
+        }
+      ],
+      "favors": [
+        {
+          "id": "gorvan-carbon",
+          "title": "Carbón para la fragua",
+          "text": "Se le acaba el carbón de piedra. Si le traes un saco lleno (un saco del equipo), te lo agradecerá.",
+          "kind": "deliver",
+          "item": "saco",
+          "qty": 1,
+          "minTier": "Neutral",
+          "days": 7,
+          "reward": {
+            "rep": 8
+          }
+        },
+        {
+          "id": "gorvan-durin",
+          "title": "Noticias de Durin",
+          "text": "Baja a la Veta Honda y averigua qué fue de su hijo. (El DM confirma cuando lo cumplas).",
+          "kind": "task",
+          "minTier": "Favorable",
+          "reward": {
+            "rep": 30,
+            "memory": "saved-relative",
+            "standing": {
+              "faction": "clan-yunque",
+              "value": 20
+            }
+          }
+        }
+      ],
+      "gifts": [
+        {
+          "rule": {
+            "tags": [
+              "metal"
+            ]
+          },
+          "mult": 1.4
+        },
+        {
+          "rule": {
+            "ids": [
+              "cerveza",
+              "vino-fino"
+            ]
+          },
+          "mult": 1.6
+        },
+        {
+          "rule": {
+            "category": "magicos"
+          },
+          "mult": 0.6
+        }
+      ],
+      "profession": "herrero",
+      "reputation": {
+        "refuseEnemies": true
+      },
+      "hire": {
+        "enabled": false
       }
     },
     {
@@ -62,6 +246,141 @@
         "chismes": "¡Ay, no me tires de la lengua! Bueno… dicen que el hijo del alcalde anda viéndose con la hija del molinero. Pero yo no te dije nada.",
         "cocina": "¿Probaste mi pastel de setas? Receta de mi abuela. El secreto es la manteca, y no pienso decir cuánta.",
         "viajes": "Yo crucé las Colinas Verdes tres veces con este carro. Si vas para allá, lleva cuerda extra. Siempre cuerda extra."
+      },
+      "race": "mediano",
+      "faction": "gremio-mercaderes",
+      "kinds": [
+        "oficial"
+      ],
+      "archetypes": [
+        "amable",
+        "chismoso",
+        "bebedor"
+      ],
+      "presence": {
+        "location": "plaza-mayor"
+      },
+      "schedule": {
+        "phases": [
+          "manana",
+          "tarde",
+          "anochecer"
+        ]
+      },
+      "attitudes": [
+        {
+          "when": {
+            "race": "mediano"
+          },
+          "value": 10,
+          "label": "Le alegra ver a alguien de su pueblo"
+        },
+        {
+          "when": {
+            "background": "heroe-del-pueblo"
+          },
+          "value": 12,
+          "label": "Admira a los héroes del pueblo llano"
+        },
+        {
+          "when": {
+            "faction": "mano-gris"
+          },
+          "value": -15,
+          "label": "No quiere líos con la Mano Gris",
+          "hidden": true
+        },
+        {
+          "when": {
+            "faction": "gremio-mercaderes"
+          },
+          "value": 10,
+          "label": "Colega del Gremio"
+        }
+      ],
+      "knows": {
+        "topics": [
+          "personas",
+          "lugares",
+          "eventos",
+          "rutas",
+          "peligros"
+        ],
+        "regions": [
+          "valle"
+        ],
+        "rumors": [
+          "carro-lunas"
+        ]
+      },
+      "secrets": [
+        {
+          "id": "marla-deuda",
+          "title": "La deuda de Marla",
+          "text": "Marla debe dinero al Gremio desde que un incendio le quemó el almacén. Por eso nunca le lleva la contraria al alcalde.",
+          "how": "drink",
+          "requires": {
+            "tier": "Amistoso"
+          },
+          "reward": {
+            "rumor": "alcalde-deudas"
+          }
+        }
+      ],
+      "favors": [
+        {
+          "id": "marla-hierbas",
+          "title": "Hierbas para el pastel",
+          "text": "Necesita un kit de herboristería para preparar la feria. Te lo pagará en confianza (y en pastel).",
+          "kind": "deliver",
+          "item": "kit-herboristeria",
+          "qty": 1,
+          "minTier": "Neutral",
+          "days": 10,
+          "reward": {
+            "rep": 10,
+            "coins": 200
+          }
+        },
+        {
+          "id": "marla-ratas",
+          "title": "Ratas en el almacén",
+          "text": "Algo se come las provisiones del almacén por las noches. ¿Le echas una mano? (El DM confirma cuando lo resuelvas).",
+          "kind": "task",
+          "minTier": "Neutral",
+          "reward": {
+            "rep": 12,
+            "discount": {
+              "pct": 0.1,
+              "days": 7
+            }
+          }
+        }
+      ],
+      "gifts": [
+        {
+          "rule": {
+            "category": "consumibles",
+            "sub": "comida"
+          },
+          "mult": 1.5
+        },
+        {
+          "rule": {
+            "tags": [
+              "animal"
+            ]
+          },
+          "mult": 0.8
+        }
+      ],
+      "profession": "general",
+      "hire": {
+        "enabled": true,
+        "minTier": "amistoso",
+        "fee": 2000,
+        "wage": 50,
+        "mobile": true
       }
     },
     {
@@ -93,7 +412,151 @@
         "magia": "Ah, ¿percibes la resonancia de esa vitrina? Abjuración, tercera escuela. Muy pocos clientes lo notan. Me alegra la conversación.",
         "historia": "Este orbe vio caer dos imperios. Los objetos recuerdan, ¿sabes? Por eso los trato con respeto.",
         "estrellas": "Anoche se alinearon las Hermanas. Buen augurio para los encantamientos de protección… y para los tratos honestos."
-      }
+      },
+      "race": "elfo",
+      "faction": "circulo-velado",
+      "kinds": [
+        "oficial"
+      ],
+      "archetypes": [
+        "codicioso",
+        "desconfiado",
+        "cuentacuentos"
+      ],
+      "presence": {
+        "location": "plaza-mayor"
+      },
+      "schedule": {
+        "phases": [
+          "tarde",
+          "anochecer",
+          "noche"
+        ]
+      },
+      "attitudes": [
+        {
+          "when": {
+            "race": "elfo"
+          },
+          "value": 12,
+          "label": "Prefiere tratar con los suyos"
+        },
+        {
+          "when": {
+            "race": "enano"
+          },
+          "value": -10,
+          "label": "Considera a los enanos toscos e impacientes",
+          "hidden": true
+        },
+        {
+          "when": {
+            "race": "orco"
+          },
+          "value": -20,
+          "label": "Desprecia a los orcos",
+          "hidden": true
+        },
+        {
+          "when": {
+            "class": "mago"
+          },
+          "value": 15,
+          "label": "Respeta a un colega del arte",
+          "effects": {
+            "share": 0.2
+          }
+        },
+        {
+          "when": {
+            "background": "sabio"
+          },
+          "value": 12,
+          "label": "Aprecia la erudición"
+        },
+        {
+          "when": {
+            "faction": "circulo-velado"
+          },
+          "value": -12,
+          "label": "Le recuerdas a quienes lo expulsaron",
+          "hidden": true
+        }
+      ],
+      "knows": {
+        "topics": [
+          "personas",
+          "facciones",
+          "lugares"
+        ],
+        "regions": [
+          "valle",
+          "costa"
+        ],
+        "rumors": [
+          "ilvaris-pasado"
+        ]
+      },
+      "secrets": [
+        {
+          "id": "ilvaris-expulsion",
+          "title": "La expulsión de Ilvaris",
+          "text": "Ilvaris fue expulsado del Círculo Velado por estudiar la nigromancia de los antiguos reyes. Conserva un grimorio que el Círculo daría cualquier cosa por recuperar.",
+          "how": "investigate",
+          "requires": {
+            "check": {
+              "skill": "insight",
+              "dc": 15
+            }
+          },
+          "reward": {
+            "rep": -3,
+            "rumor": "ilvaris-pasado"
+          }
+        }
+      ],
+      "favors": [
+        {
+          "id": "ilvaris-tinta",
+          "title": "Tinta para un tratado",
+          "text": "Busca tinta de buena calidad para copiar un tratado raro.",
+          "kind": "deliver",
+          "item": "tinta",
+          "qty": 2,
+          "minTier": "Neutral",
+          "days": 10,
+          "reward": {
+            "rep": 8,
+            "coins": 500
+          }
+        }
+      ],
+      "gifts": [
+        {
+          "rule": {
+            "category": "magicos"
+          },
+          "mult": 1.6
+        },
+        {
+          "rule": {
+            "ids": [
+              "libro",
+              "pergamino"
+            ]
+          },
+          "mult": 1.4
+        },
+        {
+          "rule": {
+            "tags": [
+              "animal"
+            ]
+          },
+          "mult": 0.5
+        }
+      ],
+      "profession": "magico"
     },
     {
       "id": "brenna",
@@ -122,6 +585,108 @@
       "topicLines": {
         "animales": "¿Ves a la yegua torda del fondo? Nació en plena tormenta y ahora no le teme a nada. Los animales saben quién los quiere bien.",
         "clima": "Va a llover en tres días; las cabras ya lo saben. Si viajas, sal mañana temprano."
+      },
+      "race": "humano",
+      "kinds": [
+        "oficial"
+      ],
+      "archetypes": [
+        "desconfiado",
+        "honrado",
+        "generoso"
+      ],
+      "presence": {
+        "location": "puerta-este"
+      },
+      "schedule": {
+        "phases": [
+          "manana",
+          "tarde"
+        ]
+      },
+      "attitudes": [
+        {
+          "when": {
+            "class": "druida"
+          },
+          "value": 12,
+          "label": "Confía en quien entiende a los animales"
+        },
+        {
+          "when": {
+            "class": "explorador"
+          },
+          "value": 10,
+          "label": "Sabe que cuidarás bien de la montura"
+        },
+        {
+          "when": {
+            "background": "forastero"
+          },
+          "value": 6,
+          "label": "Gente de caminos, como ella"
+        },
+        {
+          "when": {
+            "race": "goblinoide"
+          },
+          "value": -15,
+          "label": "Los goblins le robaron dos potros",
+          "hidden": true
+        }
+      ],
+      "knows": {
+        "topics": [
+          "rutas",
+          "peligros"
+        ],
+        "regions": [
+          "valle",
+          "montes",
+          "marca"
+        ]
+      },
+      "favors": [
+        {
+          "id": "brenna-lobos",
+          "title": "Los lobos del camino viejo",
+          "text": "Los lobos atacan a sus potros. Si acabas con la manada, nunca lo olvidará. (El DM confirma).",
+          "kind": "task",
+          "minTier": "Neutral",
+          "reward": {
+            "rep": 20,
+            "memory": "helped",
+            "unlock": [
+              "caballo-guerra"
+            ]
+          }
+        }
+      ],
+      "gifts": [
+        {
+          "rule": {
+            "category": "monturas",
+            "sub": "arreos"
+          },
+          "mult": 1.4
+        },
+        {
+          "rule": {
+            "ids": [
+              "raciones",
+              "pan"
+            ]
+          },
+          "mult": 1.1
+        }
+      ],
+      "profession": "establero",
+      "hire": {
+        "enabled": true,
+        "minTier": "favorable",
+        "fee": 3000,
+        "wage": 60,
+        "mobile": false
       }
     },
     {
@@ -153,6 +718,158 @@
       "topicLines": {
         "secretos": "Je. Todos tenemos algo que esconder, ¿no? Yo vendo lo que otros esconden. Me caes bien: preguntas lo correcto.",
         "apuestas": "¿Juegas? Los dados de la taberna del Ahorcado están cargados. Lo sé porque los cargué yo."
+      },
+      "race": "tiefling",
+      "faction": "mano-gris",
+      "kinds": [
+        "oficial",
+        "faccion"
+      ],
+      "archetypes": [
+        "codicioso",
+        "embustero",
+        "desconfiado"
+      ],
+      "presence": {
+        "location": "callejon-ratas"
+      },
+      "schedule": {
+        "phases": [
+          "anochecer",
+          "noche"
+        ]
+      },
+      "attitudes": [
+        {
+          "when": {
+            "race": "tiefling"
+          },
+          "value": 15,
+          "label": "Entre marcados por el infierno nos entendemos"
+        },
+        {
+          "when": {
+            "background": "criminal"
+          },
+          "value": 15,
+          "label": "Reconoce a uno del oficio",
+          "effects": {
+            "share": 0.25
+          }
+        },
+        {
+          "when": {
+            "background": "charlatan"
+          },
+          "value": 8,
+          "label": "Le divierten los embaucadores"
+        },
+        {
+          "when": {
+            "class": "paladin"
+          },
+          "value": -15,
+          "label": "Los paladines traen problemas",
+          "hidden": true
+        },
+        {
+          "when": {
+            "faction": "guardia-norte"
+          },
+          "value": -30,
+          "label": "¿Un soldado? Aquí no vendemos nada.",
+          "effects": {
+            "refuse": true
+          }
+        },
+        {
+          "when": {
+            "faction": "mano-gris"
+          },
+          "value": 25,
+          "label": "Uno de la familia",
+          "effects": {
+            "unlock": [
+              "veneno-basico"
+            ]
+          }
+        },
+        {
+          "when": {
+            "alignment": "legal"
+          },
+          "value": -6,
+          "label": "Demasiado recto para su gusto",
+          "hidden": true
+        }
+      ],
+      "knows": {
+        "topics": [
+          "personas",
+          "facciones",
+          "lugares",
+          "eventos"
+        ],
+        "regions": [
+          "valle",
+          "costa"
+        ],
+        "rumors": [
+          "sotano-jabali",
+          "guardia-corrupta"
+        ]
+      },
+      "secrets": [
+        {
+          "id": "vex-coleccionista",
+          "title": "El Coleccionista",
+          "text": "Vex surte de mercancía robada a un comprador nocturno del sótano del Jabalí Tuerto. Te dice cómo bajar.",
+          "how": "trust",
+          "requires": {
+            "tier": "Amistoso"
+          },
+          "reward": {
+            "reveals": "sotano-jabali"
+          }
+        }
+      ],
+      "favors": [
+        {
+          "id": "vex-paquete",
+          "title": "Un paquete sin preguntas",
+          "text": "Lleva un paquete al Puerto de Salitre sin abrirlo. (El DM confirma).",
+          "kind": "task",
+          "minTier": "Neutral",
+          "days": 6,
+          "reward": {
+            "rep": 15,
+            "coins": 1500,
+            "standing": {
+              "faction": "mano-gris",
+              "value": 10
+            }
+          }
+        }
+      ],
+      "gifts": [
+        {
+          "rule": {
+            "tags": [
+              "turbio"
+            ]
+          },
+          "mult": 1.5
+        },
+        {
+          "rule": {
+            "category": "pistas"
+          },
+          "mult": 1.3
+        }
+      ],
+      "profession": "perista",
+      "reputation": {
+        "refuseEnemies": true
       }
     },
     {
@@ -200,6 +917,1156 @@
           "¡Trato! Y si te explota algo, no fue culpa de mis piezas.",
           "¡Hecho! Vuelve y cuéntame qué construiste."
         ]
+      },
+      "race": "gnomo",
+      "kinds": [
+        "oficial"
+      ],
+      "archetypes": [
+        "amable",
+        "chismoso",
+        "cuentacuentos"
+      ],
+      "presence": {
+        "location": "barrio-fraguas"
+      },
+      "schedule": {
+        "phases": [
+          "manana",
+          "tarde",
+          "anochecer"
+        ]
+      },
+      "attitudes": [
+        {
+          "when": {
+            "race": "gnomo"
+          },
+          "value": 12,
+          "label": "¡Otra mente brillante!"
+        },
+        {
+          "when": {
+            "class": "ingeniero"
+          },
+          "value": 18,
+          "label": "Colega de taller",
+          "effects": {
+            "share": 0.2
+          }
+        },
+        {
+          "when": {
+            "class": "artifice"
+          },
+          "value": 15,
+          "label": "Colega de taller"
+        },
+        {
+          "when": {
+            "background": "artesano"
+          },
+          "value": 8,
+          "label": "Le gusta la gente que construye cosas"
+        }
+      ],
+      "knows": {
+        "topics": [
+          "personas",
+          "lugares",
+          "rutas"
+        ],
+        "regions": [
+          "valle",
+          "montes"
+        ]
+      },
+      "favors": [
+        {
+          "id": "pim-engranajes",
+          "title": "Engranajes de repuesto",
+          "text": "Una máquina se le comió los engranajes. Tráele engranajes del Taller.",
+          "kind": "deliver",
+          "item": "taller-engranajes",
+          "qty": 3,
+          "minTier": "Neutral",
+          "days": 5,
+          "reward": {
+            "rep": 10,
+            "discount": {
+              "pct": 0.08,
+              "days": 10
+            }
+          }
+        }
+      ],
+      "gifts": [
+        {
+          "rule": {
+            "category": "tecnologia"
+          },
+          "mult": 1.4
+        },
+        {
+          "rule": {
+            "tags": [
+              "ingeniero"
+            ]
+          },
+          "mult": 1.5
+        }
+      ],
+      "profession": "tecnologico",
+      "hire": {
+        "enabled": true,
+        "minTier": "amistoso",
+        "fee": 5000,
+        "wage": 80,
+        "mobile": true
+      }
+    },
+    {
+      "id": "thrain",
+      "name": "Thrain Barbagris",
+      "short": "Thrain",
+      "title": "Mercader enano de Karak-Dûm",
+      "portrait": "⛏️",
+      "accent": "#9aa3ad",
+      "voice": "gruñon",
+      "bio": "Vende picos, lingotes y armaduras de la fortaleza. Tradicionalista hasta la médula: con los suyos es un pan, con los elfos, una piedra.",
+      "traits": {
+        "greed": 0.45,
+        "patience": 0.5,
+        "pride": 0.8,
+        "warmth": 0.35,
+        "shrewdness": 0.55
+      },
+      "likes": [
+        "forja",
+        "historia",
+        "batallas"
+      ],
+      "dislikes": [
+        "magia"
+      ],
+      "race": "enano",
+      "faction": "clan-yunque",
+      "kinds": [
+        "regional",
+        "racial"
+      ],
+      "archetypes": [
+        "orgulloso",
+        "rencoroso",
+        "bebedor"
+      ],
+      "presence": {
+        "location": "karak-dum"
+      },
+      "schedule": {
+        "hours": "08:00-20:00",
+        "weekdays": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "attitudes": [
+        {
+          "when": {
+            "race": "enano"
+          },
+          "value": 25,
+          "label": "Un hijo de la roca siempre es bienvenido",
+          "effects": {
+            "unlock": [
+              "armadura-placas"
+            ]
+          }
+        },
+        {
+          "when": {
+            "race": "elfo"
+          },
+          "value": -35,
+          "label": "No se fía de ningún elfo",
+          "hidden": true
+        },
+        {
+          "when": {
+            "race": "gnomo"
+          },
+          "value": 8,
+          "label": "Primos de las montañas"
+        },
+        {
+          "when": {
+            "race": "orco"
+          },
+          "value": -40,
+          "label": "Los orcos asolaron su hogar",
+          "effects": {
+            "refuse": true
+          },
+          "hidden": true
+        },
+        {
+          "when": {
+            "origin": "montes"
+          },
+          "value": 12,
+          "label": "Eres de los montes, como él"
+        },
+        {
+          "when": {
+            "faction": "clan-yunque"
+          },
+          "value": 20,
+          "label": "Del clan Yunquehierro: respeto"
+        }
+      ],
+      "knows": {
+        "topics": [
+          "rutas",
+          "peligros",
+          "personas"
+        ],
+        "regions": [
+          "montes"
+        ]
+      },
+      "secrets": [
+        {
+          "id": "thrain-paso",
+          "title": "El Paso Gris",
+          "text": "Thrain conoce un sendero enano por debajo del Paso Gris que evita los desprendimientos.",
+          "how": "drink",
+          "requires": {
+            "tier": "Amistoso"
+          },
+          "reward": {
+            "rumor": "ruta-paso-gris",
+            "rep": 3
+          }
+        }
+      ],
+      "favors": [
+        {
+          "id": "thrain-gusano",
+          "title": "La bestia de los túneles",
+          "text": "Algo devora los carros del campamento. Mátalo y tendrás un amigo en Karak-Dûm. (El DM confirma).",
+          "kind": "task",
+          "minTier": "Desconfiado",
+          "reward": {
+            "rep": 35,
+            "memory": "helped",
+            "standing": {
+              "faction": "clan-yunque",
+              "value": 15
+            }
+          }
+        }
+      ],
+      "gifts": [
+        {
+          "rule": {
+            "ids": [
+              "cerveza",
+              "vino-fino"
+            ]
+          },
+          "mult": 1.8
+        },
+        {
+          "rule": {
+            "tags": [
+              "metal"
+            ]
+          },
+          "mult": 1.2
+        }
+      ],
+      "profession": "armero",
+      "hire": {
+        "enabled": false
+      }
+    },
+    {
+      "id": "hilde",
+      "name": "Intendente Hilde Varga",
+      "short": "Hilde",
+      "title": "Intendente de la Guardia del Norte",
+      "portrait": "🎖️",
+      "accent": "#7a8f5a",
+      "voice": "firme",
+      "bio": "Lleva las cuentas del Fuerte del Cuervo con mano de hierro. Abastece a quien sirve a la Marca; a los demás, si sobra.",
+      "traits": {
+        "greed": 0.3,
+        "patience": 0.4,
+        "pride": 0.6,
+        "warmth": 0.3,
+        "shrewdness": 0.7
+      },
+      "likes": [
+        "batallas",
+        "viajes"
+      ],
+      "dislikes": [
+        "apuestas",
+        "chismes"
+      ],
+      "race": "humano",
+      "faction": "guardia-norte",
+      "kinds": [
+        "faccion",
+        "regional"
+      ],
+      "archetypes": [
+        "desconfiado",
+        "honrado"
+      ],
+      "presence": {
+        "location": "fuerte-cuervo"
+      },
+      "schedule": {
+        "phases": [
+          "manana",
+          "tarde",
+          "anochecer"
+        ]
+      },
+      "attitudes": [
+        {
+          "when": {
+            "faction": "guardia-norte"
+          },
+          "value": 25,
+          "label": "Sirves a la Marca: precio de intendencia",
+          "effects": {
+            "unlock": [
+              "pocion-curacion-moderada"
+            ]
+          }
+        },
+        {
+          "when": {
+            "faction": "mano-gris"
+          },
+          "value": -60,
+          "label": "Contrabandistas, no",
+          "effects": {
+            "refuse": true
+          }
+        },
+        {
+          "when": {
+            "background": "soldado"
+          },
+          "value": 15,
+          "label": "Reconoce a un veterano"
+        },
+        {
+          "when": {
+            "origin": "marca"
+          },
+          "value": 10,
+          "label": "Nacido en la Marca: uno de los nuestros"
+        }
+      ],
+      "knows": {
+        "topics": [
+          "peligros",
+          "facciones",
+          "eventos",
+          "rutas"
+        ],
+        "regions": [
+          "marca"
+        ]
+      },
+      "favors": [
+        {
+          "id": "hilde-flechas",
+          "title": "Flechas para la empalizada",
+          "text": "Faltan flechas en las murallas. Entrega flechas al almacén.",
+          "kind": "deliver",
+          "item": "flechas",
+          "qty": 2,
+          "minTier": "Neutral",
+          "days": 8,
+          "reward": {
+            "rep": 10,
+            "standing": {
+              "faction": "guardia-norte",
+              "value": 8
+            }
+          }
+        }
+      ],
+      "gifts": [
+        {
+          "rule": {
+            "category": "armas",
+            "sub": "municion"
+          },
+          "mult": 1.4
+        },
+        {
+          "rule": {
+            "category": "consumibles",
+            "sub": "pocion"
+          },
+          "mult": 1.5
+        }
+      ],
+      "profession": "armero",
+      "reputation": {
+        "refuseEnemies": true,
+        "enemy": -40,
+        "goodPct": -0.12
+      },
+      "negotiation": {
+        "enabled": false,
+        "reason": "Precio de intendencia: aquí no se regatea."
+      }
+    },
+    {
+      "id": "nerea",
+      "name": "Nerea Salmuera",
+      "short": "Nerea",
+      "title": "Comerciante del puerto",
+      "portrait": "🐚",
+      "accent": "#4fa3b8",
+      "voice": "campechana",
+      "bio": "Compra a los barcos lo que traen de ultramar y lo revende con una sonrisa de dientes de oro.",
+      "traits": {
+        "greed": 0.55,
+        "patience": 0.6,
+        "pride": 0.35,
+        "warmth": 0.6,
+        "shrewdness": 0.65
+      },
+      "likes": [
+        "viajes",
+        "chismes",
+        "apuestas"
+      ],
+      "dislikes": [],
+      "race": "semielfo",
+      "faction": "hermandad-mareas",
+      "kinds": [
+        "regional"
+      ],
+      "archetypes": [
+        "avaricioso",
+        "chismoso",
+        "bebedor"
+      ],
+      "presence": {
+        "location": "puerto-salitre"
+      },
+      "schedule": {
+        "phases": [
+          "manana",
+          "tarde",
+          "anochecer",
+          "noche"
+        ]
+      },
+      "attitudes": [
+        {
+          "when": {
+            "background": "marinero"
+          },
+          "value": 15,
+          "label": "Gente de mar: se nota en el andar"
+        },
+        {
+          "when": {
+            "faction": "hermandad-mareas"
+          },
+          "value": 15,
+          "label": "Hermano de las Mareas"
+        },
+        {
+          "when": {
+            "origin": "costa"
+          },
+          "value": 8,
+          "label": "De la costa, como ella"
+        }
+      ],
+      "knows": {
+        "topics": [
+          "lugares",
+          "peligros",
+          "rutas",
+          "facciones",
+          "personas"
+        ],
+        "regions": [
+          "costa"
+        ],
+        "rumors": [
+          "carro-lunas"
+        ]
+      },
+      "favors": [
+        {
+          "id": "nerea-cuerda",
+          "title": "Cabos para el Gaviota",
+          "text": "Su barco favorito necesita cuerda de cáñamo.",
+          "kind": "deliver",
+          "item": "cuerda-canamo",
+          "qty": 2,
+          "minTier": "Neutral",
+          "days": 6,
+          "reward": {
+            "rep": 8,
+            "coins": 300
+          }
+        }
+      ],
+      "gifts": [
+        {
+          "rule": {
+            "ids": [
+              "vino-fino",
+              "cerveza"
+            ]
+          },
+          "mult": 1.3
+        },
+        {
+          "rule": {
+            "category": "magicos",
+            "sub": "anillo"
+          },
+          "mult": 1.5
+        }
+      ],
+      "profession": "general",
+      "hire": {
+        "enabled": true,
+        "minTier": "favorable",
+        "fee": 4000,
+        "wage": 70,
+        "mobile": true
+      }
+    },
+    {
+      "id": "zahra",
+      "name": "Zahra de las Mil Lunas",
+      "short": "Zahra",
+      "title": "Mercader errante",
+      "portrait": "🐪",
+      "accent": "#e07b5f",
+      "voice": "erudito",
+      "bio": "Su carro pintado aparece sin avisar y desaparece igual. Vende rarezas de lugares que no salen en los mapas.",
+      "traits": {
+        "greed": 0.6,
+        "patience": 0.7,
+        "pride": 0.5,
+        "warmth": 0.55,
+        "shrewdness": 0.8
+      },
+      "likes": [
+        "viajes",
+        "historia",
+        "magia"
+      ],
+      "dislikes": [
+        "batallas"
+      ],
+      "race": "humano",
+      "kinds": [
+        "errante",
+        "unico"
+      ],
+      "archetypes": [
+        "cuentacuentos",
+        "generoso",
+        "codicioso"
+      ],
+      "presence": {
+        "route": [
+          {
+            "location": "plaza-mayor",
+            "stay": [
+              2,
+              4
+            ]
+          },
+          {
+            "location": "karak-dum",
+            "stay": [
+              2,
+              3
+            ]
+          },
+          {
+            "location": "puerto-salitre",
+            "stay": [
+              2,
+              4
+            ]
+          },
+          {
+            "location": "fuerte-cuervo",
+            "stay": [
+              1,
+              2
+            ]
+          }
+        ],
+        "gap": [
+          1,
+          3
+        ]
+      },
+      "schedule": {},
+      "attitudes": [
+        {
+          "when": {
+            "background": "forastero"
+          },
+          "value": 10,
+          "label": "Otra alma errante"
+        },
+        {
+          "when": {
+            "class": "bardo"
+          },
+          "value": 12,
+          "label": "Le encantan los bardos: cambia historias por descuentos"
+        }
+      ],
+      "knows": {
+        "topics": [
+          "lugares",
+          "personas",
+          "rutas",
+          "eventos"
+        ],
+        "regions": [
+          "valle",
+          "montes",
+          "costa",
+          "marca"
+        ],
+        "rumors": [
+          "isla-perla",
+          "carro-lunas"
+        ]
+      },
+      "secrets": [
+        {
+          "id": "zahra-mapa",
+          "title": "El mapa de las Mil Lunas",
+          "text": "Zahra guarda un mapa de rutas entre planos. Lo enseña sólo a quien le contó una historia que valiera la pena.",
+          "how": "trust",
+          "requires": {
+            "tier": "Favorable",
+            "memory": "told-story"
+          },
+          "reward": {
+            "unlock": [
+              "bolsa-contencion"
+            ],
+            "rep": 5
+          }
+        }
+      ],
+      "gifts": [
+        {
+          "rule": {
+            "category": "pistas"
+          },
+          "mult": 1.6
+        },
+        {
+          "rule": {
+            "category": "magicos"
+          },
+          "mult": 1.3
+        }
+      ],
+      "profession": "magico",
+      "negotiation": {
+        "maxDiscount": 0.12
+      }
+    },
+    {
+      "id": "coleccionista",
+      "name": "Lord Aurelio Venn",
+      "short": "Aurelio",
+      "title": "Noble arruinado y coleccionista",
+      "portrait": "🎩",
+      "accent": "#b0414f",
+      "voice": "sombrio",
+      "bio": "Un noble que perdió su fortuna y ahora vende, de noche, las piezas de su colección… y otras que no son suyas.",
+      "traits": {
+        "greed": 0.7,
+        "patience": 0.5,
+        "pride": 0.75,
+        "warmth": 0.25,
+        "shrewdness": 0.85
+      },
+      "likes": [
+        "historia",
+        "magia",
+        "apuestas"
+      ],
+      "dislikes": [
+        "chismes"
+      ],
+      "race": "humano",
+      "faction": "mano-gris",
+      "kinds": [
+        "secreto",
+        "unico"
+      ],
+      "archetypes": [
+        "orgulloso",
+        "avaricioso",
+        "desconfiado"
+      ],
+      "presence": {
+        "location": "sotano-jabali"
+      },
+      "schedule": {
+        "phases": [
+          "noche"
+        ]
+      },
+      "disguise": {
+        "name": "El Coleccionista",
+        "short": "El Coleccionista",
+        "portrait": "🎭",
+        "title": "Comprador enmascarado",
+        "revealedBy": "aurelio-identidad"
+      },
+      "attitudes": [
+        {
+          "when": {
+            "background": "noble"
+          },
+          "value": 15,
+          "label": "Entre gente de cuna"
+        },
+        {
+          "when": {
+            "faction": "guardia-norte"
+          },
+          "value": -50,
+          "label": "Huele a guardia",
+          "effects": {
+            "refuse": true
+          },
+          "hidden": true
+        },
+        {
+          "when": {
+            "faction": "mano-gris"
+          },
+          "value": 12,
+          "label": "Viene recomendado"
+        }
+      ],
+      "knows": {
+        "topics": [
+          "personas",
+          "facciones"
+        ],
+        "regions": [
+          "valle"
+        ],
+        "rumors": [
+          "guardia-corrupta"
+        ]
+      },
+      "secrets": [
+        {
+          "id": "aurelio-identidad",
+          "title": "¿Quién es el Coleccionista?",
+          "text": "Bajo la máscara está Lord Aurelio Venn, de la casa Venn, a quien todos dan por muerto.",
+          "how": "investigate",
+          "requires": {
+            "check": {
+              "skill": "investigation",
+              "dc": 16
+            }
+          },
+          "reward": {
+            "rep": -5
+          }
+        }
+      ],
+      "gifts": [
+        {
+          "rule": {
+            "category": "magicos"
+          },
+          "mult": 1.5
+        },
+        {
+          "rule": {
+            "ids": [
+              "vino-fino"
+            ]
+          },
+          "mult": 1.4
+        }
+      ],
+      "profession": "perista",
+      "negotiation": {
+        "maxDiscount": 0.08,
+        "patience": 3
+      }
+    },
+    {
+      "id": "bertilda",
+      "name": "Bertilda Cuentaferias",
+      "short": "Bertilda",
+      "title": "Feriante ambulante",
+      "portrait": "🎪",
+      "accent": "#e85d9a",
+      "voice": "campechana",
+      "bio": "Sólo viene con las fiestas: dulces, máscaras, baratijas y algún tesoro escondido entre la quincalla.",
+      "traits": {
+        "greed": 0.4,
+        "patience": 0.7,
+        "pride": 0.2,
+        "warmth": 0.9,
+        "shrewdness": 0.4
+      },
+      "likes": [
+        "cocina",
+        "chismes",
+        "apuestas",
+        "familia"
+      ],
+      "dislikes": [],
+      "race": "mediano",
+      "kinds": [
+        "evento",
+        "unico"
+      ],
+      "archetypes": [
+        "generoso",
+        "amable",
+        "chismoso"
+      ],
+      "presence": {
+        "location": "plaza-mayor"
+      },
+      "schedule": {
+        "events": [
+          "festival-cosecha",
+          "feria-bestias"
+        ]
+      },
+      "attitudes": [
+        {
+          "when": {
+            "race": "mediano"
+          },
+          "value": 8,
+          "label": "¡Paisana!"
+        }
+      ],
+      "knows": {
+        "topics": [
+          "eventos",
+          "personas"
+        ],
+        "regions": [
+          "valle"
+        ]
+      },
+      "gifts": [
+        {
+          "rule": {
+            "category": "consumibles",
+            "sub": "comida"
+          },
+          "mult": 1.3
+        }
+      ],
+      "profession": "tabernero"
+    },
+    {
+      "id": "grishka",
+      "name": "Grishka Colmillo Roto",
+      "short": "Grishka",
+      "title": "Chatarrera orca del campamento",
+      "portrait": "🪓",
+      "accent": "#6b8e23",
+      "voice": "gruñon",
+      "bio": "Compra y vende lo que los mineros pierden o abandonan. Al principio te mirará como a un enemigo; los que se ganan su respeto dicen que no hay aliada más leal.",
+      "traits": {
+        "greed": 0.45,
+        "patience": 0.3,
+        "pride": 0.7,
+        "warmth": 0.2,
+        "shrewdness": 0.5
+      },
+      "likes": [
+        "batallas",
+        "animales"
+      ],
+      "dislikes": [
+        "historia",
+        "magia"
+      ],
+      "race": "orco",
+      "kinds": [
+        "regional",
+        "unico"
+      ],
+      "archetypes": [
+        "desconfiado",
+        "rencoroso",
+        "bebedor"
+      ],
+      "disposition": -45,
+      "presence": {
+        "location": "campamento-minero"
+      },
+      "schedule": {
+        "phases": [
+          "tarde",
+          "anochecer",
+          "noche"
+        ]
+      },
+      "attitudes": [
+        {
+          "when": {
+            "race": "orco"
+          },
+          "value": 30,
+          "label": "Sangre de la tribu"
+        },
+        {
+          "when": {
+            "race": "semiorco"
+          },
+          "value": 20,
+          "label": "Medio hermano"
+        },
+        {
+          "when": {
+            "race": "enano"
+          },
+          "value": -15,
+          "label": "Los enanos la echaron de la mina",
+          "hidden": true
+        },
+        {
+          "when": {
+            "class": "barbaro"
+          },
+          "value": 12,
+          "label": "Respeta la furia"
+        },
+        {
+          "when": {
+            "memory": "helped"
+          },
+          "value": 25,
+          "label": "Le salvaste el pellejo: ahora es tu aliada"
+        }
+      ],
+      "knows": {
+        "topics": [
+          "peligros",
+          "lugares"
+        ],
+        "regions": [
+          "montes"
+        ],
+        "rumors": [
+          "gusano-roca",
+          "veta-plata"
+        ]
+      },
+      "favors": [
+        {
+          "id": "grishka-capataz",
+          "title": "El capataz abusón",
+          "text": "El capataz de la mina le quitó su pico. Recupéralo. (El DM confirma).",
+          "kind": "task",
+          "minTier": "Hostil",
+          "reward": {
+            "rep": 30,
+            "memory": "helped"
+          }
+        }
+      ],
+      "gifts": [
+        {
+          "rule": {
+            "category": "armas"
+          },
+          "mult": 1.4
+        },
+        {
+          "rule": {
+            "ids": [
+              "cerveza"
+            ]
+          },
+          "mult": 1.5
+        }
+      ],
+      "profession": "materiales",
+      "hire": {
+        "enabled": true,
+        "minTier": "favorable",
+        "fee": 1000,
+        "wage": 30,
+        "mobile": true
+      }
+    },
+    {
+      "id": "rolda",
+      "name": "Rolda Barrilhondo",
+      "short": "Rolda",
+      "title": "Tabernera del Jabalí Tuerto",
+      "portrait": "🍺",
+      "accent": "#c9853a",
+      "voice": "campechana",
+      "bio": "Sirve la cerveza más tibia del valle y los rumores más frescos. Dicen que nunca olvida una cara… ni una deuda.",
+      "traits": {
+        "greed": 0.4,
+        "patience": 0.6,
+        "pride": 0.3,
+        "warmth": 0.75,
+        "shrewdness": 0.6
+      },
+      "likes": [
+        "chismes",
+        "cocina",
+        "apuestas"
+      ],
+      "dislikes": [
+        "magia"
+      ],
+      "race": "humano",
+      "faction": "gremio-mercaderes",
+      "kinds": [
+        "oficial"
+      ],
+      "profession": "tabernero",
+      "archetypes": [
+        "bebedor",
+        "chismoso",
+        "generoso"
+      ],
+      "presence": {
+        "location": "jabali-tuerto"
+      },
+      "schedule": {
+        "hours": "12:00-02:00"
+      },
+      "attitudes": [
+        {
+          "when": {
+            "race": "enano"
+          },
+          "value": 8,
+          "label": "Los enanos pagan bien y beben mejor"
+        },
+        {
+          "when": {
+            "background": "marinero"
+          },
+          "value": 6,
+          "label": "Le recuerdas a su difunto marido"
+        },
+        {
+          "when": {
+            "faction": "guardia-norte"
+          },
+          "value": -8,
+          "label": "Los soldados rompen las sillas",
+          "hidden": true
+        }
+      ],
+      "knows": {
+        "topics": [
+          "personas",
+          "eventos",
+          "lugares",
+          "peligros",
+          "facciones"
+        ],
+        "regions": [
+          "valle",
+          "costa",
+          "montes"
+        ],
+        "rumors": [
+          "sotano-jabali",
+          "carro-lunas"
+        ]
+      },
+      "lines": {
+        "welcome": [
+          "¡Pasa, que hay estofado! ¿Qué te pongo?",
+          "Siéntate donde haya sitio. Cerveza, vino o algo más fuerte."
+        ],
+        "welcome_friend": [
+          "¡Mira quién vuelve! Tu jarra de siempre ya está servida."
+        ]
+      },
+      "favors": [
+        {
+          "id": "rolda-especias",
+          "title": "Especias para el guiso",
+          "text": "El guiso del festival necesita pimienta. Si le traes una libra, la casa invita durante una semana.",
+          "kind": "deliver",
+          "item": "pimienta",
+          "qty": 1,
+          "minTier": "Neutral",
+          "days": 8,
+          "reward": {
+            "rep": 10,
+            "discount": {
+              "pct": 0.15,
+              "days": 7
+            }
+          }
+        }
+      ],
+      "gifts": [
+        {
+          "rule": {
+            "tags": [
+              "especia"
+            ]
+          },
+          "mult": 1.5
+        },
+        {
+          "rule": {
+            "tags": [
+              "bebida"
+            ]
+          },
+          "mult": 1.2
+        }
+      ],
+      "hire": {
+        "enabled": true,
+        "minTier": "favorable",
+        "fee": 3000,
+        "wage": 60,
+        "mobile": true
       }
     }
   ]

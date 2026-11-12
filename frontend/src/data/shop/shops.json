@@ -1,5 +1,5 @@
 {
-  "$comment": "Tiendas. assortment = surtido fijo (reglas sobre el catálogo; target = existencias normales, número o {rareza: n}; unlimited = siempre hay). rotating = huecos para objetos excepcionales que llegan y se van. buys = lo que acepta comprarle al jugador. cash = caja diaria en pc. specialties = categorías que trabaja a mejor precio.",
+  "$comment": "Tiendas. assortment = surtido fijo (reglas sobre el catálogo; target = existencias normales, número o {rareza: n}; unlimited = siempre hay). rotating = huecos para objetos excepcionales que llegan y se van. buys = lo que acepta comprarle al jugador. cash = caja diaria en pc. specialties = categorías que trabaja a mejor precio. La ubicación de una tienda es la de su comerciante (keepers.json → presence). assortment[].requires: el objeto sólo se muestra a quien cumpla ALGUNA condición: {tier, faction, race, unlocked} (unlocked = desbloqueado por una actitud, secreto o favor). Una tienda sin assortment usa el catálogo de la profesión de su comerciante (professions.json).",
   "market": {
     "name": "Plaza del Mercado",
     "tagline": "El corazón comercial de la ciudad"
@@ -58,6 +58,18 @@
             "barda-cuero"
           ],
           "target": 2
+        },
+        {
+          "ids": [
+            "armadura-placas",
+            "espada-colmillo"
+          ],
+          "target": 1,
+          "requires": {
+            "tier": "Amigo",
+            "unlocked": true
+          },
+          "label": "Reservado para amigos de la casa"
         }
       ],
       "rotating": {
@@ -381,6 +393,17 @@
             "common": 2,
             "uncommon": 1
           }
+        },
+        {
+          "ids": [
+            "caballo-guerra"
+          ],
+          "target": 1,
+          "requires": {
+            "tier": "Favorable",
+            "unlocked": true
+          },
+          "label": "Brenna sólo se lo vende a jinetes de confianza"
         }
       ],
       "rotating": {
@@ -508,7 +531,6 @@
         },
         {
           "ids": [
-            "veneno-basico",
             "estuche-contrabandista",
             "abrojos",
             "ballesta-de-mano",
@@ -525,6 +547,19 @@
             "veryRare"
           ],
           "target": 1
+        },
+        {
+          "ids": [
+            "veneno-basico",
+            "kit-envenenador"
+          ],
+          "target": 2,
+          "requires": {
+            "faction": "mano-gris",
+            "tier": "Amistoso",
+            "unlocked": true
+          },
+          "label": "Sólo para gente de confianza"
         }
       ],
       "rotating": {
@@ -590,6 +625,500 @@
           ]
         }
       ]
+    },
+    {
+      "id": "karak",
+      "name": "Puesto de Piedra de Thrain",
+      "kind": "Armería y minería enana",
+      "icon": "⛏️",
+      "keeperId": "thrain",
+      "description": "Un mostrador tallado en la roca viva. Picos, lingotes y cotas de malla forjadas al calor de la montaña.",
+      "specialties": [
+        "armas",
+        "armaduras",
+        "herramientas"
+      ],
+      "cash": 90000,
+      "assortment": [
+        {
+          "category": "armas",
+          "sub": [
+            "sencilla-cc",
+            "marcial-cc"
+          ],
+          "maxRarity": "common",
+          "target": 2
+        },
+        {
+          "category": "armaduras",
+          "sub": [
+            "intermedia",
+            "pesada",
+            "escudo"
+          ],
+          "maxRarity": "uncommon",
+          "target": 1
+        },
+        {
+          "ids": [
+            "herr-herrero",
+            "herr-albanil",
+            "herr-joyero",
+            "pala",
+            "palanca",
+            "cadena",
+            "linterna-ojo-buey",
+            "cerveza"
+          ],
+          "target": 3
+        },
+        {
+          "ids": [
+            "armadura-placas"
+          ],
+          "target": 1,
+          "requires": {
+            "race": "enano",
+            "unlocked": true
+          },
+          "label": "Sólo para hijos de la roca"
+        }
+      ],
+      "buys": [
+        {
+          "tags": [
+            "metal"
+          ]
+        },
+        {
+          "category": "armas"
+        },
+        {
+          "category": "armaduras"
+        },
+        {
+          "category": "herramientas"
+        }
+      ]
+    },
+    {
+      "id": "intendencia",
+      "name": "Intendencia del Fuerte",
+      "kind": "Suministros militares",
+      "icon": "🎖️",
+      "keeperId": "hilde",
+      "description": "Un almacén de tablones con inventario a la vista. Todo está contado y anotado dos veces.",
+      "specialties": [
+        "armas",
+        "consumibles",
+        "equipo"
+      ],
+      "cash": 70000,
+      "assortment": [
+        {
+          "category": "armas",
+          "sub": [
+            "sencilla-cc",
+            "sencilla-dist",
+            "municion"
+          ],
+          "maxRarity": "common",
+          "target": 3
+        },
+        {
+          "ids": [
+            "raciones",
+            "saco-dormir",
+            "manta",
+            "tienda-campana",
+            "kit-sanador",
+            "antorcha",
+            "odre"
+          ],
+          "target": 4
+        },
+        {
+          "category": "armaduras",
+          "sub": [
+            "ligera",
+            "intermedia",
+            "escudo"
+          ],
+          "maxRarity": "common",
+          "target": 1
+        },
+        {
+          "ids": [
+            "pocion-curacion-menor",
+            "pocion-curacion-moderada"
+          ],
+          "target": 2,
+          "requires": {
+            "faction": "guardia-norte",
+            "unlocked": true
+          },
+          "label": "Reservado a quienes sirven a la Marca"
+        }
+      ],
+      "buys": [
+        {
+          "category": "armas"
+        },
+        {
+          "category": "armaduras"
+        },
+        {
+          "category": "consumibles"
+        }
+      ]
+    },
+    {
+      "id": "salitre",
+      "name": "Almacén de la Gaviota",
+      "kind": "Mercancía de ultramar",
+      "icon": "🐚",
+      "keeperId": "nerea",
+      "description": "Cajas con sellos de puertos lejanos, especias, cuerdas y algún cofre que nadie reclama.",
+      "specialties": [
+        "equipo",
+        "consumibles"
+      ],
+      "cash": 120000,
+      "assortment": [
+        {
+          "ids": [
+            "cuerda-canamo",
+            "cuerda-seda",
+            "garfio",
+            "catalejo",
+            "herr-navegante",
+            "barril",
+            "odre",
+            "vino-fino"
+          ],
+          "target": 3
+        },
+        {
+          "category": "consumibles",
+          "sub": "alquimia",
+          "target": 2
+        },
+        {
+          "category": "consumibles",
+          "sub": "comida",
+          "target": 4
+        }
+      ],
+      "rotating": {
+        "slots": 2,
+        "chance": 0.35,
+        "stayDays": [
+          4,
+          10
+        ],
+        "rules": [
+          {
+            "category": "magicos",
+            "rarities": [
+              "uncommon",
+              "rare"
+            ]
+          },
+          {
+            "category": "criaturas",
+            "rarities": [
+              "uncommon",
+              "rare"
+            ]
+          }
+        ]
+      },
+      "buys": [
+        {
+          "category": "equipo"
+        },
+        {
+          "category": "consumibles"
+        },
+        {
+          "category": "magicos"
+        }
+      ]
+    },
+    {
+      "id": "carro-lunas",
+      "name": "El Carro de las Mil Lunas",
+      "kind": "Rarezas de los caminos",
+      "icon": "🐪",
+      "keeperId": "zahra",
+      "description": "Un carro pintado de estrellas, cargado de baúles que huelen a especias y a lugares imposibles.",
+      "specialties": [
+        "magicos",
+        "pistas"
+      ],
+      "cash": 300000,
+      "assortment": [
+        {
+          "ids": [
+            "bolsa-contencion"
+          ],
+          "target": 1,
+          "requires": {
+            "unlocked": true,
+            "tier": "Amigo"
+          },
+          "label": "Lo saca del baúl sólo para quien se lo ganó"
+        }
+      ],
+      "rotating": {
+        "slots": 4,
+        "chance": 0.6,
+        "stayDays": [
+          3,
+          8
+        ],
+        "rules": [
+          {
+            "category": "magicos",
+            "rarities": [
+              "uncommon",
+              "rare",
+              "veryRare"
+            ]
+          },
+          {
+            "category": "pistas",
+            "rarities": [
+              "rare",
+              "veryRare",
+              "epic"
+            ]
+          },
+          {
+            "category": "criaturas",
+            "sub": "huevo"
+          }
+        ]
+      },
+      "buys": [
+        {
+          "category": "magicos"
+        },
+        {
+          "category": "pistas"
+        },
+        {
+          "category": "criaturas"
+        }
+      ]
+    },
+    {
+      "id": "sotano",
+      "name": "El Sótano del Coleccionista",
+      "kind": "Mercado negro",
+      "icon": "🎭",
+      "keeperId": "coleccionista",
+      "description": "Velas negras, terciopelo raído y vitrinas con piezas que figuran como robadas en tres reinos.",
+      "specialties": [
+        "magicos",
+        "pistas"
+      ],
+      "cash": 600000,
+      "assortment": [
+        {
+          "ids": [
+            "kit-falsificacion",
+            "kit-disfraz",
+            "estuche-contrabandista"
+          ],
+          "target": 1
+        }
+      ],
+      "rotating": {
+        "slots": 3,
+        "chance": 0.5,
+        "stayDays": [
+          4,
+          9
+        ],
+        "rules": [
+          {
+            "category": "magicos",
+            "rarities": [
+              "rare",
+              "veryRare",
+              "epic",
+              "legendary"
+            ]
+          },
+          {
+            "category": "pistas",
+            "rarities": [
+              "epic",
+              "legendary"
+            ]
+          }
+        ]
+      },
+      "buys": [
+        {
+          "category": "magicos"
+        },
+        {
+          "tags": [
+            "turbio"
+          ]
+        },
+        {
+          "category": "pistas"
+        }
+      ]
+    },
+    {
+      "id": "feria",
+      "name": "Puesto de Bertilda",
+      "kind": "Feria y baratijas",
+      "icon": "🎪",
+      "keeperId": "bertilda",
+      "description": "Banderines, dulces de miel, máscaras de fiesta y una caja de «sorpresas» a precio fijo.",
+      "specialties": [
+        "consumibles",
+        "herramientas"
+      ],
+      "cash": 20000,
+      "assortment": [
+        {
+          "ids": [
+            "pan",
+            "queso",
+            "vino-comun",
+            "cerveza",
+            "dados",
+            "baraja",
+            "flauta",
+            "tambor",
+            "campanilla",
+            "canicas"
+          ],
+          "target": 5
+        }
+      ],
+      "rotating": {
+        "slots": 1,
+        "chance": 0.5,
+        "stayDays": [
+          2,
+          4
+        ],
+        "rules": [
+          {
+            "category": "criaturas",
+            "sub": "cria",
+            "rarities": [
+              "common",
+              "uncommon"
+            ]
+          },
+          {
+            "category": "magicos",
+            "rarities": [
+              "uncommon"
+            ]
+          }
+        ]
+      },
+      "buys": [
+        {
+          "category": "consumibles",
+          "sub": "comida"
+        },
+        {
+          "category": "herramientas",
+          "sub": [
+            "juego",
+            "instrumento"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chatarra",
+      "name": "Montón de Grishka",
+      "kind": "Chatarra y botín minero",
+      "icon": "🪓",
+      "keeperId": "grishka",
+      "description": "Una lona sobre un montón de picos rotos, cascos abollados y cosas que «se encontraron».",
+      "specialties": [
+        "armas",
+        "herramientas"
+      ],
+      "cash": 30000,
+      "assortment": [
+        {
+          "category": "armas",
+          "sub": [
+            "sencilla-cc",
+            "marcial-cc"
+          ],
+          "maxRarity": "common",
+          "target": 1
+        },
+        {
+          "ids": [
+            "pala",
+            "palanca",
+            "cadena",
+            "grilletes",
+            "trampa-caza",
+            "cerveza"
+          ],
+          "target": 2
+        }
+      ],
+      "rotating": {
+        "slots": 1,
+        "chance": 0.3,
+        "stayDays": [
+          5,
+          10
+        ],
+        "rules": [
+          {
+            "category": "magicos",
+            "sub": [
+              "arma",
+              "armadura"
+            ],
+            "rarities": [
+              "uncommon",
+              "rare"
+            ]
+          }
+        ]
+      },
+      "buys": [
+        {
+          "category": "armas"
+        },
+        {
+          "category": "armaduras"
+        },
+        {
+          "tags": [
+            "metal"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jabali",
+      "name": "Barra del Jabalí Tuerto",
+      "kind": "Taberna",
+      "icon": "🍺",
+      "keeperId": "rolda",
+      "description": "Una barra pegajosa, barriles apilados y una pizarra con los platos del día.",
+      "cash": 40000,
+      "profession": "tabernero"
     }
   ]
 }

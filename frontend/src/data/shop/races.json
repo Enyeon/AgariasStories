@@ -1,0 +1,26 @@
+{
+  "$comment": "Familias de razas para las actitudes de los comerciantes. Las razas de la app (y las Homebrew) son nombres libres: se comparan sin tildes ni mayúsculas. match: si el nombre contiene alguno de estos textos; not: salvo que contenga alguno de estos. Una raza puede pertenecer a varias familias (un drow es «elfo» y «drow»).",
+  "families": [
+    { "id": "humano", "label": "Humanos", "match": ["humano"] },
+    { "id": "enano", "label": "Enanos", "match": ["enano", "duergar"] },
+    { "id": "duergar", "label": "Duergar", "match": ["duergar"] },
+    { "id": "semielfo", "label": "Semielfos", "match": ["medio elfo", "semielfo", "semi-elfo"] },
+    { "id": "elfo", "label": "Elfos", "match": ["elfo", "eladrin", "drow", "(draw)", "shadar"], "not": ["medio elfo", "semielfo", "semi-elfo"] },
+    { "id": "drow", "label": "Drow", "match": ["drow", "(draw)"] },
+    { "id": "mediano", "label": "Medianos", "match": ["mediano", "halfling"] },
+    { "id": "gnomo", "label": "Gnomos", "match": ["gnomo", "svirfneblin"] },
+    { "id": "semiorco", "label": "Semiorcos", "match": ["medio orco", "semiorco", "semi-orco"] },
+    { "id": "orco", "label": "Orcos", "match": ["orco"], "not": ["medio orco", "semiorco", "semi-orco"] },
+    { "id": "tiefling", "label": "Tieflings", "match": ["tiflin", "tiefling"] },
+    { "id": "draconido", "label": "Dracónidos", "match": ["draconido", "dragonborn"] },
+    { "id": "aasimar", "label": "Aasimar", "match": ["aasimar"] },
+    { "id": "goblinoide", "label": "Goblinoides", "match": ["goblin", "hobgoblin", "bugbear", "osgo"] },
+    { "id": "bestial", "label": "Pueblos bestiales", "match": ["tabaxi", "kenku", "lagarto", "tortle", "aracokra", "minotauro", "centauro", "loxodon", "kobold", "yuan-ti", "simic"] },
+    { "id": "gigante", "label": "Estirpe de gigantes", "match": ["goliath", "firbolg"] },
+    { "id": "genasi", "label": "Genasi", "match": ["genasi"] },
+    { "id": "gith", "label": "Gith", "match": ["gith"] },
+    { "id": "forjado", "label": "Forjados", "match": ["forjado", "warforged"] },
+    { "id": "cambiante", "label": "Cambiantes", "match": ["cambiante", "changeling"] },
+    { "id": "marino", "label": "Pueblos del mar", "match": ["triton", "sirena", "elfo del mar"] }
+  ]
+}

@@ -15,6 +15,10 @@ import { smoothNoise } from './rng.js';
 import { niceRound } from '../money.js';
 import { getCategory, matchesRule } from './catalog.js';
 import { getStockEntry, getRelation, getActiveDeal } from './state.js';
+import { activeEvents, eventReaches } from './world-events.js';
+import { shopRegion } from './presence.js';
+import { evaluateDisposition, tierAtLeast, meetsAny } from './disposition.js';
+import { createRng } from './rng.js';
 
 export const LIMITS = Object.freeze({
     scarcity: 0.25, // ±25 % como máximo por escasez/exceso
@@ -32,19 +36,7 @@ function clamp(v, min, max) {
     return Math.max(min, Math.min(max, v));
 }
 
-/** Intensidad de un evento: entra y sale de forma gradual (no hay saltos). */
-export function eventIntensity(evState, day, ramp = 2) {
-    if (day < evState.start || day > evState.end) return 0;
-    const rampIn = (day - evState.start + 1) / ramp;
-    const rampOut = (evState.end - day + 1) / ramp;
-    return clamp(Math.min(rampIn, rampOut), 0, 1);
-}
-
-export function activeEvents(world, ctx, day = world.day) {
-    return world.events
-        .map((state) => ({ state, def: ctx.events.get(state.id), intensity: eventIntensity(state, day) }))
-        .filter((e) => e.def && e.intensity > 0);
-}
+export { eventIntensity, activeEvents } from './world-events.js';
 
 /** ¿Afecta esta entrada de evento a esta tienda? */
 function appliesToShop(entry, shopId) {
@@ -71,7 +63,9 @@ export function scarcityFactor(entry) {
 
 function eventFactors(world, ctx, item, shopId, day) {
     const factors = [];
+    const region = shopRegion(world, ctx, shopId, day);
     for (const { def, intensity } of activeEvents(world, ctx, day)) {
+        if (!eventReaches(def, region)) continue;
         for (const mod of def.modifiers ?? []) {
             if (!appliesToShop(mod, shopId) || !matchesRule(item, mod.rule)) continue;
             factors.push({ key: `evento:${def.id}`, label: def.name, detail: mod.label ?? def.notice, pct: mod.pct * intensity, icon: def.icon });
@@ -85,13 +79,27 @@ function eventFactors(world, ctx, item, shopId, day) {
     return factors;
 }
 
-function isSpecialty(shop, item) {
-    return (shop.specialties ?? []).includes(item.category);
+/** Economía de la región donde está hoy la tienda (minera, agrícola, en guerra…). */
+export function regionFactors(world, ctx, item, shopId, day = world.day) {
+    const regionId = shopRegion(world, ctx, shopId, day);
+    const region = regionId ? ctx.regions.get(regionId) : null;
+    if (!region?.economy) return [];
+    const factors = [];
+    for (const mod of region.economy.modifiers ?? []) {
+        if (!matchesRule(item, mod.rule)) continue;
+        factors.push({ key: `region:${region.id}`, label: mod.label ?? region.name, detail: region.economy.kind, pct: mod.pct, icon: region.icon ?? '🗺️' });
+    }
+    return factors;
 }
 
-function relationFactor(rep) {
-    // Te aprecia: hasta −8 %. Te detesta: hasta +15 %.
-    return rep >= 0 ? -(rep / 100) * 0.08 : (-rep / 100) * 0.15;
+function isSpecialty(shop, item) {
+    return (shop.specialties ?? []).includes(item.category) || (shop.specialtyRules ?? []).some((rule) => matchesRule(item, rule));
+}
+
+/** Precio base del objeto en esta tienda (el DM puede fijar precios propios). */
+export function basePrice(shop, item) {
+    const own = Number(shop?.prices?.[item.id]);
+    return Number.isFinite(own) && own > 0 ? own : item.price;
 }
 
 function trendLabel(item, pct) {
@@ -121,12 +129,15 @@ function marketFactors(world, ctx, shop, item, day) {
     factors.push({ key: 'tendencia', label: trendLabel(item, trend), pct: trend, icon: trend > 0 ? '📈' : '📉' });
 
     factors.push(...eventFactors(world, ctx, item, shop.id, day));
+    factors.push(...regionFactors(world, ctx, item, shop.id, day));
 
     if (isSpecialty(shop, item)) {
         factors.push({ key: 'especialidad', label: 'Especialidad de la casa: lo consigue a buen precio', pct: -0.05, icon: '🏷️' });
     } else {
         factors.push({ key: 'especialidad', label: 'No es su especialidad: lo compra para revender', pct: 0.1, icon: '🏷️' });
     }
+
+    if (shop.priceMod) factors.push({ key: 'casa', label: shop.priceMod > 0 ? 'Precios de la casa: más caros de lo normal' : 'Precios de la casa: más baratos de lo normal', pct: shop.priceMod, icon: '🏠' });
 
     if (keeper) {
         const margin = (keeper.traits.greed - 0.5) * 0.2;
@@ -160,7 +171,8 @@ function previousRecorded(world, shopId, itemId, day) {
  */
 function marketValue(world, ctx, shop, item, day) {
     const factors = marketFactors(world, ctx, shop, item, day);
-    const raw = item.price * combine(item.price, factors);
+    const base = basePrice(shop, item);
+    const raw = base * combine(base, factors);
     const prev = previousRecorded(world, shop.id, item.id, day);
     let value = raw;
     if (prev) value = clamp(raw, prev * (1 - LIMITS.dailyMove), prev * (1 + LIMITS.dailyMove));
@@ -183,20 +195,65 @@ export function marketPrice(world, ctx, shopId, itemId, day = world.day) {
     return niceRound(marketValue(world, ctx, shop, item, day).value);
 }
 
-function relationEntry(world, keeper, charId, scale = 1) {
-    if (!keeper) return null;
-    const rep = getRelation(world, charId, keeper.id).rep;
-    const pct = relationFactor(rep) * scale;
-    if (Math.abs(pct) < 0.005) return null;
+const GUARANTEE_THRESHOLD = 5000; // 50 po: a partir de ahí el desconfiado pide fianza
+
+/** ¿Parece desesperado el jugador? (último ejemplar, ya insistió hoy, o hay demanda por un evento) */
+function looksDesperate(world, ctx, shopId, item, entry, charId) {
+    if (entry && !entry.unlimited && entry.qty <= 1) return true;
+    if (world.haggles?.[`${charId ?? '_'}|${shopId}|${item.id}|buy`]?.day === world.day) return true;
+    const region = shopRegion(world, ctx, shopId);
+    return activeEvents(world, ctx).some(({ def }) => eventReaches(def, region) && (def.demand ?? []).some((d) => d.mult > 1.3 && matchesRule(item, d.rule)));
+}
+
+/**
+ * Factores PERSONALES (del trato con este personaje): salen de la disposición
+ * y de las banderas de personalidad. Devuelve { factors, disposition, locked, refused }.
+ */
+export function personalFactors(world, ctx, { shop, item, entry, charId, profile, side, marketUnit = item.price }) {
+    const keeper = ctx.keepers.get(shop.keeperId);
+    if (!keeper) return { factors: [], disposition: null, locked: null, refused: null };
+    const disposition = evaluateDisposition(world, ctx, { keeper, charId, profile });
+    const rel = getRelation(world, charId, keeper.id);
     const who = keeper.short ?? keeper.name;
-    return { key: 'relacion', label: rep > 0 ? `${who} te aprecia` : `${who} desconfía de ti`, pct, icon: rep > 0 ? '🤝' : '😒' };
+    const factors = [];
+    const { tier } = disposition;
+    const pct = side === 'buy' ? disposition.price.buyPct : disposition.price.sellPct;
+    if (Math.abs(pct) >= 0.005) {
+        const good = side === 'buy' ? pct < 0 : pct > 0;
+        factors.push({ key: 'relacion', label: good ? `${who} te trata como ${tier.label.toLowerCase()}` : `${who} se muestra ${tier.label.toLowerCase()} contigo`, pct, icon: tier.icon });
+    }
+    // Reputación con la facción del comerciante (cómo le afecta lo decide cada comerciante).
+    const rep = disposition.reputation;
+    if (rep?.pct) factors.push({ key: 'faccion', label: rep.label, pct: side === 'buy' ? rep.pct : -rep.pct / 2, icon: rep.icon });
+    if (side === 'buy' && rep?.ally && keeper.faction) {
+        const goods = ctx.factions.get(keeper.faction)?.goodRules ?? [];
+        if (goods.some((rule) => matchesRule(item, rule))) factors.push({ key: 'bienes-faccion', label: `Mercancía de ${ctx.factions.get(keeper.faction).name}: precio de aliado`, pct: -0.05, icon: '🤝' });
+    }
+    if (side === 'buy') {
+        const flags = disposition.flags;
+        if (flags.has('spontaneousDiscount') && tierAtLeast(tier, 'neutral') && createRng(world.seed, 'gesto', keeper.id, charId ?? '_', world.day).chance(0.3)) {
+            factors.push({ key: 'gesto', label: `Hoy ${who} está de buen humor contigo`, pct: -0.05, icon: '😊' });
+        }
+        if (flags.has('loyaltyDiscount') && (rel.memory?.bought?.n ?? 0) >= 5) factors.push({ key: 'fidelidad', label: 'Descuento de cliente fiel', pct: -0.04, icon: '🎖️' });
+        if (rel.discount && rel.discount.until >= world.day) factors.push({ key: 'favor', label: 'Te lo debe por el favor que le hiciste', pct: -Math.abs(rel.discount.pct), icon: '🤝' });
+        if (flags.has('demandsGuarantee') && !tierAtLeast(tier, 'amistoso') && marketUnit >= GUARANTEE_THRESHOLD) {
+            factors.push({ key: 'garantia', label: 'Exige una fianza: aún no se fía de ti', pct: 0.1, icon: '🧾' });
+        }
+        if (flags.has('exploitDesperation') && looksDesperate(world, ctx, shop.id, item, entry, charId)) {
+            factors.push({ key: 'desesperacion', label: `${who} nota que lo necesitas y sube el precio`, pct: 0.12, icon: '🦊' });
+        }
+    } else if (rel.discount && rel.discount.until >= world.day) {
+        factors.push({ key: 'favor', label: 'Te paga mejor por el favor que le hiciste', pct: Math.abs(rel.discount.pct) / 2, icon: '🤝' });
+    }
+    const locked = entry?.requires && !meetsAny(entry.requires, { disposition, itemId: item.id, rel }) ? (entry.lockLabel ?? 'Reservado para gente de confianza') : null;
+    return { factors, disposition, locked, refused: disposition.refuses };
 }
 
 /**
  * Cotización de compra (el jugador compra a la tienda).
  * Devuelve { unit, listUnit, base, factors, entry, available, deal, trend } o null si no se vende aquí.
  */
-export function quoteBuy(world, ctx, { shopId, itemId, charId = null }) {
+export function quoteBuy(world, ctx, { shopId, itemId, charId = null, profile = null }) {
     const shop = ctx.shop(shopId);
     const item = ctx.item(itemId);
     const entry = getStockEntry(world, shopId, itemId);
@@ -206,10 +263,10 @@ export function quoteBuy(world, ctx, { shopId, itemId, charId = null }) {
     const market = marketValue(world, ctx, shop, item, world.day);
     const factors = market.factors;
     let value = market.value;
-    const rel = relationEntry(world, keeper, charId);
-    if (rel) {
-        factors.push(rel);
-        value *= 1 + rel.pct;
+    const personal = personalFactors(world, ctx, { shop, item, entry, charId, profile, side: 'buy', marketUnit: market.value });
+    for (const f of personal.factors) {
+        factors.push(f);
+        value *= 1 + f.pct;
     }
     const listUnit = niceRound(value);
     const deal = getActiveDeal(world, charId, shopId, itemId, 'buy');
@@ -221,12 +278,15 @@ export function quoteBuy(world, ctx, { shopId, itemId, charId = null }) {
         unit: deal ? deal.unit : listUnit,
         listUnit,
         marketUnit: current,
-        base: item.price,
+        base: basePrice(shop, item),
         factors: visible(factors),
         entry,
         available: entry.unlimited ? Infinity : entry.qty,
         deal,
         trend: { prev, current, dir: current > prev ? 1 : current < prev ? -1 : 0 },
+        locked: personal.locked,
+        refused: personal.refused,
+        tier: personal.disposition?.tier ?? null,
     };
 }
 
@@ -236,7 +296,9 @@ function referenceValue(world, ctx, shop, item) {
     const trend = marketTrend(world, item);
     factors.push({ key: 'tendencia', label: trendLabel(item, trend), pct: trend, icon: trend > 0 ? '📈' : '📉' });
     factors.push(...eventFactors(world, ctx, item, shop.id, world.day));
-    return { value: item.price * combine(item.price, factors), factors };
+    factors.push(...regionFactors(world, ctx, item, shop.id, world.day));
+    const base = basePrice(shop, item);
+    return { value: base * combine(base, factors), factors };
 }
 
 /**
@@ -245,7 +307,7 @@ function referenceValue(world, ctx, shop, item) {
  * referencia), así que tendencias y eventos se reflejan también al vender.
  * Devuelve { unit, ... } o { unit: null, reason } si no le interesa.
  */
-export function quoteSell(world, ctx, { shopId, itemId, charId = null }) {
+export function quoteSell(world, ctx, { shopId, itemId, charId = null, profile = null }) {
     const shop = ctx.shop(shopId);
     const item = ctx.item(itemId);
     if (!shop || !item) return { unit: null, reason: 'unknown-item' };
@@ -273,8 +335,8 @@ export function quoteSell(world, ctx, { shopId, itemId, charId = null }) {
         const greed = (0.5 - keeper.traits.greed) * 0.2;
         if (Math.abs(greed) >= 0.02) factors.push({ key: 'margen', label: greed < 0 ? `${who} aprieta al comprar` : `${who} paga con justicia`, pct: greed, icon: '🪙' });
     }
-    const rel = relationEntry(world, keeper, charId, -0.8);
-    if (rel) factors.push(rel);
+    const personal = personalFactors(world, ctx, { shop, item, entry, charId, profile, side: 'sell' });
+    factors.push(...personal.factors);
 
     const product = factors.reduce((acc, f) => acc * (1 + f.pct), 1);
     const listUnit = Math.max(1, niceRound(reference.value * clamp(product, 0.1, 0.8), 'down'));
@@ -284,12 +346,14 @@ export function quoteSell(world, ctx, { shopId, itemId, charId = null }) {
         unit: deal ? deal.unit : listUnit,
         listUnit,
         reference: niceRound(reference.value),
-        base: item.price,
+        base: basePrice(shop, item),
         factors: visible(factors),
         context: visible(reference.factors ?? []),
         entry,
         deal,
         cash: world.shops[shopId]?.cash ?? 0,
+        refused: personal.refused,
+        tier: personal.disposition?.tier ?? null,
     };
 }
 

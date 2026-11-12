@@ -511,3 +511,20 @@
 .persona-tag { display: inline-block; margin-left: 0.35rem; font-size: var(--fs-xs); font-style: normal; padding: 0 0.4rem; border-radius: 999px; border: 1px solid var(--border-strong); color: var(--text-muted); }
 .persona-tag--fits { border-color: var(--align-color, var(--success)); color: var(--align-color, var(--success)); }
 .persona-text { margin: 0; font-style: italic; }
+
+/* Origen y facciones (Historia) */
+.affil { display: grid; grid-template-columns: minmax(180px, 260px) 1fr; gap: var(--space-4); align-items: start; }
+.affil__value { font-weight: 600; }
+.affil__factions { border: 0; margin: 0; padding: 0; min-width: 0; }
+.affil__chips { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-1); }
+.affil__chip {
+  display: inline-flex; align-items: center; gap: 0.35rem; cursor: pointer;
+  font-size: var(--fs-sm); padding: 0.3rem 0.65rem; border-radius: 999px;
+  border: 1px solid var(--border-strong); background: var(--surface); color: var(--text-muted);
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.affil__chip input { position: absolute; opacity: 0; pointer-events: none; }
+.affil__chip:hover { color: var(--text); border-color: var(--accent); }
+.affil__chip.is-on { color: var(--accent-contrast); background: var(--accent); border-color: var(--accent); }
+.affil__chip:focus-within { box-shadow: var(--focus-ring); }
+@media (max-width: 640px) { .affil { grid-template-columns: 1fr; } }

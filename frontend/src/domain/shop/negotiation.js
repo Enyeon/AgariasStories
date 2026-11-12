@@ -22,6 +22,9 @@ import { RARITY_INDEX } from './catalog.js';
 import { quoteBuy, quoteSell, scarcityFactor, marketPrice } from './pricing.js';
 import { cloneWorld, getRelation, ensureRelation, changeReputation, haggleKey, getActiveDeal } from './state.js';
 import { shopClosure } from './simulation.js';
+import { evaluateDisposition } from './disposition.js';
+import { availability, shopRegion } from './presence.js';
+import { remember } from './memory.js';
 
 export const SKILLS = Object.freeze({
     persuasion: 'Persuasión',
@@ -29,6 +32,8 @@ export const SKILLS = Object.freeze({
     intimidation: 'Intimidación',
     insight: 'Perspicacia',
     investigation: 'Investigación',
+    performance: 'Interpretación',
+    sleight: 'Juego de Manos',
 });
 
 /** Catálogo de tácticas. La lógica vive en TACTIC_HANDLERS. */
@@ -87,7 +92,7 @@ function roundForKeeper(session, value) {
     return Math.max(1, fn(value / step) * step);
 }
 
-function line(ctx, keeper, key, vars, rng) {
+export function line(ctx, keeper, key, vars, rng) {
     const voices = ctx.dialogue?.voices ?? {};
     const own = keeper.lines?.[key];
     const options = own ?? voices[keeper.voice]?.[key] ?? voices.default?.[key] ?? [`(${key})`];
@@ -103,7 +108,7 @@ function sessionRng(world, session, ...extra) {
     return createRng(world.seed, 'haggle', session.id, session.day, session.round, ...extra);
 }
 
-function rollCheck(rng, modifier, dc, manualRoll) {
+export function rollCheck(rng, modifier, dc, manualRoll) {
     const manual = Number.isInteger(manualRoll) && manualRoll >= 1 && manualRoll <= 20;
     const d20 = manual ? manualRoll : rng.int(1, 20);
     const total = d20 + (Number(modifier) || 0);
@@ -112,7 +117,7 @@ function rollCheck(rng, modifier, dc, manualRoll) {
     return { d20, modifier: Number(modifier) || 0, total, dc, success, crit, manual };
 }
 
-function describeRoll(skillLabel, roll) {
+export function describeRoll(skillLabel, roll) {
     const mod = roll.modifier >= 0 ? `+${roll.modifier}` : `${roll.modifier}`;
     const verdict = roll.crit === 'success' ? '¡crítico!' : roll.crit === 'fail' ? 'pifia' : roll.success ? 'éxito' : 'fallo';
     return `${skillLabel}: d20 (${roll.d20}) ${mod} = ${roll.total} contra CD ${roll.dc} → ${verdict}`;
@@ -145,11 +150,21 @@ function moodLabel(mood) {
 // ───────────────────────────── inicio ─────────────────────────────
 
 /** ¿Se puede negociar? Devuelve { ok, reason, message }. */
-export function canNegotiate(world, ctx, { charId, shopId, itemId, side, qty }) {
+export function canNegotiate(world, ctx, { charId, shopId, itemId, side, qty, profile = null, here = undefined }) {
     const keeper = ctx.keeperOf(shopId);
     if (!keeper) return { ok: false, reason: 'no-keeper', message: 'No hay nadie atendiendo.' };
     const closure = shopClosure(world, ctx, shopId);
     if (closure) return { ok: false, reason: 'closed', message: `${closure.name}: la tienda está cerrada.` };
+    if (here !== undefined && here !== null) {
+        const status = availability(world, ctx, keeper);
+        if (status.location !== here) return { ok: false, reason: 'absent', message: `${keeper.short ?? keeper.name} no está aquí.` };
+        if (!status.open) return { ok: false, reason: 'closed', message: status.reason };
+    }
+    const disposition = evaluateDisposition(world, ctx, { keeper, charId, profile });
+    if (disposition.refuses) return { ok: false, reason: 'refuses', message: disposition.refuses };
+    if (disposition.haggle.refuse) return { ok: false, reason: 'refuses', message: disposition.haggle.refuse };
+    // Reglas de negociación del comerciante (configurables por el DM).
+    if (keeper.negotiation?.enabled === false) return { ok: false, reason: 'fixed', message: keeper.negotiation.reason || `${keeper.short ?? keeper.name} no regatea: precio fijo.` };
     const rel = getRelation(world, charId, keeper.id);
     if (rel.noHaggleUntil >= world.day) {
         return { ok: false, reason: 'refuses', message: `${keeper.short ?? keeper.name} no quiere regatear contigo por ahora (hasta el día ${rel.noHaggleUntil + 1}).` };
@@ -162,7 +177,8 @@ export function canNegotiate(world, ctx, { charId, shopId, itemId, side, qty }) 
     }
     if (getActiveDeal(world, charId, shopId, itemId, side)) return { ok: false, reason: 'deal', message: 'Ya tienes un trato vigente por esto.' };
     if (!previous && qty !== undefined) {
-        const quote = side === 'buy' ? quoteBuy(world, ctx, { shopId, itemId, charId }) : quoteSell(world, ctx, { shopId, itemId, charId });
+        const quote = side === 'buy' ? quoteBuy(world, ctx, { shopId, itemId, charId, profile }) : quoteSell(world, ctx, { shopId, itemId, charId, profile });
+        if (quote?.locked) return { ok: false, reason: 'locked', message: quote.locked };
         if (quote?.unit && quote.unit * Math.max(1, qty) < MIN_HAGGLE_TOTAL) {
             return { ok: false, reason: 'too-cheap', message: 'Nadie regatea por un par de monedas de cobre: el precio es el que es.' };
         }
@@ -174,29 +190,37 @@ export function canNegotiate(world, ctx, { charId, shopId, itemId, side, qty }) 
  * Empieza (o retoma) una negociación.
  * Devuelve { world, session } o { error }.
  */
-export function startNegotiation(world, ctx, { charId = null, shopId, itemId, side = 'buy', qty = 1 }) {
-    const check = canNegotiate(world, ctx, { charId, shopId, itemId, side, qty });
+export function startNegotiation(world, ctx, { charId = null, shopId, itemId, side = 'buy', qty = 1, profile = null, here = undefined }) {
+    const check = canNegotiate(world, ctx, { charId, shopId, itemId, side, qty, profile, here });
     if (!check.ok) return { error: check.message, reason: check.reason };
     const key = haggleKey(charId, shopId, itemId, side);
     if (check.resumable) return { world, session: world.haggles[key].session };
 
     const item = ctx.item(itemId);
     const keeper = ctx.keeperOf(shopId);
-    const quote = side === 'buy' ? quoteBuy(world, ctx, { shopId, itemId, charId }) : quoteSell(world, ctx, { shopId, itemId, charId });
+    const quote = side === 'buy' ? quoteBuy(world, ctx, { shopId, itemId, charId, profile }) : quoteSell(world, ctx, { shopId, itemId, charId, profile });
     if (!quote || !quote.unit) return { error: 'No le interesa negociar por eso.', reason: 'no-quote' };
     if (side === 'buy' && quote.available < qty) return { error: 'No tiene tantas unidades.', reason: 'stock' };
 
-    const rel = getRelation(world, charId, keeper.id);
     const t = keeper.traits;
     const rng = createRng(world.seed, 'haggle-setup', key, world.day);
     const f = favorable(side);
+    // La disposición (raza, trasfondo, facción, memoria, eventos…) sustituye a la simple reputación.
+    const disposition = evaluateDisposition(world, ctx, { keeper, charId, profile });
+    const score = disposition.score;
+    const flags = disposition.flags;
 
-    let maxConcession = 0.05 + 0.13 * (1 - t.greed) + 0.05 * (rel.rep / 100) + rng.range(-0.03, 0.03);
+    let maxConcession = 0.05 + 0.13 * (1 - t.greed) + 0.05 * (score / 100) + disposition.haggle.concession + rng.range(-0.03, 0.03);
     if (side === 'buy') {
         if (RARITY_INDEX[item.rarity] >= RARITY_INDEX.rare && quote.entry?.target <= 1) maxConcession *= 0.75;
         maxConcession *= 1 - Math.max(0, scarcityFactor(quote.entry));
+        // Poco stock: no hay rebaja que valga.
+        if (quote.entry && !quote.entry.unlimited && quote.entry.qty <= 1) maxConcession *= 0.4;
+        // El avaricioso que te nota desesperado apenas cede.
+        if (flags.has('exploitDesperation') && quote.factors.some((x) => x.key === 'desesperacion')) maxConcession *= 0.5;
     }
     maxConcession = clamp(maxConcession, 0.03, 0.3);
+    if (Number.isFinite(keeper.negotiation?.maxDiscount)) maxConcession = Math.min(maxConcession, Math.max(0.01, keeper.negotiation.maxDiscount));
 
     let hardLimit;
     if (side === 'buy') {
@@ -222,8 +246,9 @@ export function startNegotiation(world, ctx, { charId = null, shopId, itemId, si
         ask: quote.unit,
         reservation,
         hardLimit,
-        mood: clamp((t.warmth - 0.5) * 0.4 + (rel.rep / 100) * 0.5, -0.6, 0.6),
-        patience: 3 + Math.round(t.patience * 4) + (rel.rep >= 30 ? 1 : 0),
+        mood: clamp((t.warmth - 0.5) * 0.4 + disposition.haggle.mood, -0.6, 0.6),
+        patience: Number.isFinite(keeper.negotiation?.patience) ? Math.max(1, keeper.negotiation.patience) : Math.max(2, 3 + Math.round(t.patience * 4) + disposition.haggle.patience - (flags.has('proud') ? 1 : 0)),
+        disposition: score,
         maxPatience: 0,
         round: 0,
         lastOffer: null,
@@ -236,7 +261,7 @@ export function startNegotiation(world, ctx, { charId = null, shopId, itemId, si
     };
     session.maxPatience = session.patience;
 
-    const greetKey = rel.rep >= 30 ? 'greet_friend' : rel.rep <= -25 ? 'greet_cold' : 'greet';
+    const greetKey = score >= 30 ? 'greet_friend' : score <= -25 ? 'greet_cold' : 'greet';
     log(session, 'keeper', line(ctx, keeper, greetKey, vars(ctx, session, keeper), rng));
     log(session, 'keeper', line(ctx, keeper, side === 'buy' ? 'open_buy' : 'open_sell', vars(ctx, session, keeper), rng));
 
@@ -451,6 +476,7 @@ function closeDeal(world, ctx, session, keeper, rng, unit, lineKey) {
 
 function finish(world, ctx, session, keeper, rng, status, { angry = false } = {}) {
     session.status = status;
+    if (session.round > 0 || status !== 'left') remember(world, ctx, session.charId, keeper, 'haggled');
     const rel = ensureRelation(world, session.charId, keeper.id);
     if (status === 'deal') {
         rel.deals = (rel.deals ?? 0) + 1;
@@ -607,13 +633,15 @@ function handleTactic(world, ctx, session, keeper, rng, action, character) {
                 say('competitor_true', { competitor: rival.shop.name, price: money(ctx, session.ask), tone: 'good' });
             } else {
                 log(session, 'player', 'Dejas caer que "en otra tienda" lo tienen mejor.');
-                const roll = check(10 + Math.round(t.shrewdness * 9));
+                const liedBefore = (getRelation(world, session.charId, keeper.id).memory?.lied?.n ?? 0) > 0;
+                const roll = check(10 + Math.round(t.shrewdness * 9) + (liedBefore ? 3 : 0));
                 if (roll.success) {
                     moveToward(session, roll.crit ? 0.08 : 0.05, 0.03);
                     say('bluff_ok', { tone: 'good' });
                 } else {
                     session.mood -= roll.crit ? 0.3 : 0.2;
                     session.patience -= 1;
+                    if (roll.crit) remember(world, ctx, session.charId, keeper, 'lied', { note: 'Le mintió sobre los precios de otra tienda' });
                     say('bluff_fail', { tone: 'bad' });
                 }
             }
@@ -655,6 +683,7 @@ function handleTactic(world, ctx, session, keeper, rng, action, character) {
                 say('intimidate_ok', { tone: 'warn', price: money(ctx, session.ask) });
             } else {
                 changeReputation(world, session.charId, keeper.id, -12);
+                remember(world, ctx, session.charId, keeper, 'insulted', { note: 'Intentó intimidarle', rep: 0 });
                 const rel = ensureRelation(world, session.charId, keeper.id);
                 rel.noHaggleUntil = Math.max(rel.noHaggleUntil ?? 0, world.day + 2);
                 say('intimidate_fail', { tone: 'bad' });
@@ -672,12 +701,15 @@ function handleTactic(world, ctx, session, keeper, rng, action, character) {
 function findRival(world, ctx, session) {
     const f = favorable(session.side);
     let best = null;
+    const region = shopRegion(world, ctx, session.shopId);
     for (const shop of ctx.shopList) {
         if (shop.id === session.shopId || shopClosure(world, ctx, shop.id)) continue;
+        // Sólo cuentan las tiendas de la misma región que hoy estén abiertas.
+        if (shopRegion(world, ctx, shop.id) !== region || !availability(world, ctx, ctx.keeperOf(shop.id)).here) continue;
         const quote = session.side === 'buy'
             ? quoteBuy(world, ctx, { shopId: shop.id, itemId: session.itemId, charId: session.charId })
             : quoteSell(world, ctx, { shopId: shop.id, itemId: session.itemId, charId: session.charId });
-        if (!quote?.unit) continue;
+        if (!quote?.unit || quote.locked || quote.refused) continue;
         if (session.side === 'buy' && quote.available < session.qty) continue;
         if (f.better(quote.listUnit, session.ask) && (!best || f.better(quote.listUnit, best.unit))) best = { shop, unit: quote.listUnit };
     }

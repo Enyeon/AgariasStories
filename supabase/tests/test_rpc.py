@@ -190,3 +190,25 @@ def test_shop_market_per_campaign():
 
     # Las tablas siguen cerradas para anon.
     assert psql("-c", "set role anon; select * from agarias.shop_markets;").returncode != 0
+
+
+def test_merchant_content_type():
+    camp = call("campaign_create", "Mercaderes")
+    cid, dm = camp["id"], camp["dmKey"]
+    created = call("content_upsert", cid, dm, "mercader", {"name": "Odette", "location": "plaza-mayor", "sells": ["equipo"]}, None, "publicado")
+    assert created["status"] == "publicado"
+    assert call("content_upsert", cid, dm, "inventado", {"name": "X"}, None, None) == {"error": "invalid"}
+    items = call("campaign_get", cid, dm)["items"]
+    assert any(i["type"] == "mercader" for i in items)
+
+
+def test_world_content_is_dm_only():
+    camp = call("campaign_create", "Thaabdur")
+    cid, dm, inv = camp["id"], camp["dmKey"], camp["inviteCode"]
+    # Aunque las reglas permitan propuestas para todo, el mundo de la Tienda es sólo del DM.
+    rules = {"homebrew": {t: "propuestas" for t in ["mercader", "region", "faccion", "evento", "dote"]}}
+    call("campaign_update", cid, dm, None, rules)
+    for t in ["mercader", "region", "faccion", "evento"]:
+        assert call("content_upsert", cid, inv, t, {"name": "X"}, None, None) == {"error": "forbidden"}
+        assert call("content_upsert", cid, dm, t, {"name": "Y"}, None, "publicado")["status"] == "publicado"
+    assert call("content_upsert", cid, inv, "dote", {"name": "Mía"}, None, None)["status"] == "propuesto"

@@ -16,6 +16,7 @@ import {
 import { TRAIT_ORIGINS } from '../../domain/proficiencies.js';
 import { listClasses } from '../../data/index.js';
 import { effectsFieldset, bindEffectsEditor, readEffects } from './effects-editor.js';
+import { WORLD_FORMS } from './world-forms.js';
 
 const ABILITY_OPTIONS = Object.fromEntries(ABILITY_KEYS.map((k) => [k, ABILITY_LABEL[k]]));
 const DAMAGE_OPTIONS = Object.fromEntries(DAMAGE_TYPES.map((d) => [d.key, d.official ? d.label : `${d.label} (Agarias)`]));
@@ -172,6 +173,7 @@ export const FORMS = {
     ] },
     SOURCE,
   ],
+  ...WORLD_FORMS,
   otro: [...COMMON_HEAD, SOURCE],
 };
 
@@ -182,18 +184,30 @@ function optionsOf(f) {
   return typeof f.options === 'function' ? f.options() : f.options;
 }
 
+/** Valor de un desplegable de fila (los booleanos se guardan como sí/no). */
+function rowOption(v) {
+  if (v === true) return 'si';
+  if (v === false) return 'no';
+  return v ?? '';
+}
+
 function rowHtml(f, row = {}) {
+  // Filas antiguas guardadas como texto (p. ej. rumores): se editan como su primer campo.
+  if (typeof row === 'string') row = { [f.fields[0].key]: row };
   return html`<div class="content-row" data-row>
     <div class="content-row__fields">${f.fields.map((sf) => (sf.effects ? html`<div class="field--wide">${effectsFieldset(row[sf.key] ?? [], { legend: sf.label })}</div>` : html`<label class="field ${sf.long ? 'field--wide' : ''}"><span class="field__label">${sf.label}</span>
       ${sf.long
         ? html`<textarea class="textarea" rows="3" data-rf="${sf.key}" maxlength="20000">${row[sf.key] ?? ''}</textarea>`
-        : html`<input class="input ${sf.number ? 'input--num' : ''}" ${sf.number ? raw('type="number" min="1" max="20"') : raw('maxlength="120"')} data-rf="${sf.key}" value="${row[sf.key] ?? ''}">`}
+        : sf.options
+          ? html`<select class="select" data-rf="${sf.key}">${Object.entries(optionsOf(sf)).map(([k, l]) => html`<option value="${k}" ${String(rowOption(row[sf.key])) === k ? raw('selected') : ''}>${l}</option>`)}</select>`
+          : html`<input class="input ${sf.number ? 'input--num' : ''}" ${sf.number ? raw(`type="number" min="${Number(sf.min ?? 1)}" max="${Number(sf.max ?? 20)}" step="${Number(sf.step ?? 1)}"`) : raw(`maxlength="${Number(sf.maxlength ?? 120)}"`)} data-rf="${sf.key}" value="${row[sf.key] ?? ''}">`}
     </label>`))}</div>
     <button type="button" class="icon-btn" data-row-remove aria-label="Quitar">×</button>
   </div>`;
 }
 
 function fieldHtml(f, item) {
+  if (f.kind === 'note') return html`<p class="field__hint field--wide">${f.text}</p>`;
   const v = getPath(item, f.key);
   const id = fid();
   switch (f.kind) {
@@ -202,7 +216,7 @@ function fieldHtml(f, item) {
     case 'textarea':
       return html`<div class="field field--wide"><label class="field__label" for="${id}">${f.label}</label><textarea id="${id}" class="textarea" rows="${f.rows ?? 4}" data-f="${f.key}" data-kind="text" maxlength="20000">${v ?? ''}</textarea></div>`;
     case 'number':
-      return html`<div class="field"><label class="field__label" for="${id}">${f.label}</label><input id="${id}" class="input input--num" type="number" min="${f.min ?? 0}" max="${f.max ?? 999}" data-f="${f.key}" data-kind="number" value="${v ?? ''}"></div>`;
+      return html`<div class="field"><label class="field__label" for="${id}">${f.label}</label><input id="${id}" class="input input--num" type="number" min="${f.min ?? 0}" max="${f.max ?? 999}" step="${f.step ?? 1}" data-f="${f.key}" data-kind="number" value="${v ?? ''}"></div>`;
     case 'numbers':
       return html`<div class="field"><label class="field__label" for="${id}">${f.label}</label><input id="${id}" class="input" data-f="${f.key}" data-kind="numbers" value="${(v ?? []).join(', ')}">${f.hint ? html`<span class="field__hint">${f.hint}</span>` : ''}</div>`;
     case 'list':
@@ -217,7 +231,7 @@ function fieldHtml(f, item) {
       return html`<label class="check field--wide"><input type="checkbox" data-f="${f.key}" data-kind="bool" ${v ? raw('checked') : ''}> ${f.label}</label>`;
     case 'chips':
       return html`<fieldset class="choice-group field--wide" data-f="${f.key}" data-kind="chips" ${f.max ? raw(`data-max="${f.max}"`) : ''}><legend>${f.label}</legend>
-        <div class="chips">${Object.entries(optionsOf(f)).map(([k, l]) => html`<label class="chip"><input type="checkbox" value="${k}" ${(v ?? []).includes(k) ? raw('checked') : ''}>${l}</label>`)}</div></fieldset>`;
+        <div class="chips">${Object.entries(optionsOf(f)).map(([k, l]) => html`<label class="chip"><input type="checkbox" value="${k}" ${(v ?? []).map(String).includes(k) ? raw('checked') : ''}>${l}</label>`)}</div></fieldset>`;
     case 'abilities':
       return html`<fieldset class="choice-group field--wide" data-f="${f.key}" data-kind="abilities"><legend>${f.label}</legend>
         <div class="ability-inputs">${ABILITY_KEYS.map((k) => html`<label class="field"><span class="field__label">${ABILITY_LABEL[k].slice(0, 3)}</span><input class="input input--num" type="number" min="${f.min}" max="${f.max}" data-ab="${k}" value="${v?.[k] ?? ''}"></label>`)}</div></fieldset>`;

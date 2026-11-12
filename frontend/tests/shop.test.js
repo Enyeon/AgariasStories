@@ -162,6 +162,9 @@ describe('Tienda · servicio', () => {
 
   it('compra: guarda la ficha (monedas + material) y el mercado', async () => {
     const { characters, record, shop, market } = await setup();
+    // Los comerciantes no son globales: Pim está en el Barrio de las Fraguas.
+    expect((await shop.buy('engranajes', 'taller-engranajes', 2)).error).toMatch(/no está aquí/);
+    expect((await shop.travel('barrio-fraguas')).error).toBeUndefined();
     const res = await shop.buy('engranajes', 'taller-engranajes', 2);
     expect(res.error).toBeUndefined();
     const reopened = await characters.open(record.id);
@@ -173,9 +176,27 @@ describe('Tienda · servicio', () => {
   it('si otro jugador guardó el mercado a la vez, reintenta con datos frescos', async () => {
     const market = memoryMarket();
     const { shop } = await setup(market);
+    await shop.travel('barrio-fraguas');
     market.save = ((orig) => { let first = true; return async (...a) => { if (first) { first = false; market.store.revision += 1; throw new ApiError('conflict', 'x'); } return orig(...a); }; })(market.save.bind(market));
     const res = await shop.buy('engranajes', 'taller-chatarra', 1);
     expect(res.error).toBeUndefined();
+  });
+
+  it('conversar con un comerciante guarda la ficha y el mercado (pagar una ronda)', async () => {
+    const { characters, record, shop } = await setup();
+    expect(shop.here).toBe('plaza-mayor');
+    expect(shop.merchantsHere().map((m) => m.keeper.id)).toEqual(expect.arrayContaining(['marla']));
+    const res = await shop.talk('drink', 'marla');
+    if (!res.error) {
+      const reopened = await characters.open(record.id);
+      expect(coinsInCp(reopened.character.equipment.coins)).toBeLessThan(30000);
+      expect(shop.merchant('marla').relation.memory.drank.n).toBe(1);
+    } else {
+      expect(res.error).toBeTruthy();
+    }
+    const rumor = await shop.talk('rumor', 'marla');
+    expect(rumor.error).toBeUndefined();
+    expect(shop.journal().length).toBeGreaterThan(0);
   });
 
   it('un jugador de campaña no puede pasar el día', async () => {
@@ -213,6 +234,7 @@ describe('Tienda · mercado de campaña (Supabase)', () => {
     const { shop } = await campaignSetup(api);
     expect(shop.state.scope).toMatchObject({ kind: 'campaign', id: 'mesa' });
     expect(api.db.revision).toBe(1); // el primero en entrar crea el mercado
+    expect((await shop.travel('barrio-fraguas')).error).toBeUndefined();
     const res = await shop.buy('engranajes', 'taller-placas', 1);
     expect(res.error).toBeUndefined();
     expect(api.db.world.ledger[0]).toMatchObject({ itemId: 'taller-placas', charName: 'Aria' });
@@ -224,6 +246,7 @@ describe('Tienda · mercado de campaña (Supabase)', () => {
     const { shop } = await campaignSetup(api);
     expect(shop.state.scope.kind).toBe('local');
     expect(shop.state.notice).toMatch(/servidor/);
+    await shop.travel('barrio-fraguas');
     expect((await shop.buy('engranajes', 'taller-chatarra', 1)).error).toBeUndefined();
   });
 });

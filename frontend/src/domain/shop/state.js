@@ -7,7 +7,7 @@
  */
 
 export const WORLD_FORMAT = 'agarias-shop-world';
-export const WORLD_VERSION = 1;
+export const WORLD_VERSION = 2;
 export const LEDGER_LIMIT = 300;
 export const HISTORY_DAYS = 14;
 
@@ -28,6 +28,14 @@ export function emptyWorld(seed) {
         haggles: {},
         deals: {},
         ledger: [],
+        // v2: mundo vivo
+        phase: 0,
+        positions: {},
+        discovered: {},
+        standing: {},
+        journal: {},
+        settings: { freeTravel: true },
+        contracts: {},
     };
 }
 
@@ -39,19 +47,63 @@ export function getStockEntry(world, shopId, itemId) {
     return world.shops?.[shopId]?.stock?.[itemId] ?? null;
 }
 
-const DEFAULT_RELATION = Object.freeze({ rep: 0, known: { likes: [], dislikes: [], traits: [] }, gainedDay: 0, gainedToday: 0, noHaggleUntil: 0, deals: 0 });
+/**
+ * Relación de un personaje con un comerciante.
+ *  rep: trato acumulado (−100..100) · known: lo que el jugador descubrió de él
+ *  memory: { tipo: { n, day } } lo que el comerciante recuerda de ti
+ *  told: lo que le contaste de verdad · claims: lo que le contaste mintiendo
+ *  secrets: secretos suyos que conoces · unlocks: objetos que te reserva
+ *  favors: { id: { status: active|done|failed, day, due } } · rumors: ids ya oídos
+ *  discount: { pct, until } recompensa temporal · daily: acciones usadas hoy
+ */
+const DEFAULT_RELATION = Object.freeze({
+    rep: 0,
+    known: { likes: [], dislikes: [], traits: [] },
+    gainedDay: 0,
+    gainedToday: 0,
+    noHaggleUntil: 0,
+    deals: 0,
+    memory: {},
+    told: {},
+    claims: {},
+    secrets: [],
+    unlocks: [],
+    favors: {},
+    rumors: [],
+    discount: null,
+    banUntil: 0,
+    daily: { day: 0, used: [] },
+    lastGift: -99,
+});
+
+function withDefaults(rel) {
+    if (!rel) return DEFAULT_RELATION;
+    if (rel.memory && rel.daily) return rel;
+    return { ...structuredClone(DEFAULT_RELATION), ...rel, known: { ...DEFAULT_RELATION.known, ...rel.known } };
+}
 
 /** Relación de un personaje con un vendedor (solo lectura). */
 export function getRelation(world, charId, keeperId) {
-    return world.relations?.[charId ?? '_']?.[keeperId] ?? DEFAULT_RELATION;
+    return withDefaults(world.relations?.[charId ?? '_']?.[keeperId]);
 }
 
 /** Relación editable (la crea si no existe). Usar solo sobre un mundo clonado. */
 export function ensureRelation(world, charId, keeperId) {
     const key = charId ?? '_';
     world.relations[key] ??= {};
-    world.relations[key][keeperId] ??= structuredClone(DEFAULT_RELATION);
-    return world.relations[key][keeperId];
+    const rel = (world.relations[key][keeperId] = withDefaults(world.relations[key][keeperId]));
+    if (rel === DEFAULT_RELATION) return (world.relations[key][keeperId] = structuredClone(DEFAULT_RELATION));
+    return rel;
+}
+
+/** ¿Ya usó hoy esta acción con este comerciante? */
+export function usedToday(rel, action, day) {
+    return rel.daily?.day === day && rel.daily.used.includes(action);
+}
+
+export function markUsed(rel, action, day) {
+    if (rel.daily?.day !== day) rel.daily = { day, used: [] };
+    if (!rel.daily.used.includes(action)) rel.daily.used.push(action);
 }
 
 /**
@@ -96,8 +148,9 @@ export function migrateWorld(raw) {
     if (!raw || typeof raw !== 'object' || raw.format !== WORLD_FORMAT) return null;
     const world = structuredClone(raw);
     if (!Number.isInteger(world.version) || world.version > WORLD_VERSION) return null;
-    // v1 es la versión inicial. Las futuras migraciones se encadenan aquí:
-    // if (world.version === 1) { ...; world.version = 2; }
+    // v1 → v2: mundo vivo (franjas del día, posiciones, descubrimientos,
+    // reputación con facciones y diario de rumores). Nada de lo anterior cambia.
+    if (world.version === 1) world.version = 2;
     world.day = Math.max(1, Math.trunc(Number(world.day) || 1));
     world.events = Array.isArray(world.events) ? world.events : [];
     world.eventsEnded ??= {};
@@ -106,6 +159,13 @@ export function migrateWorld(raw) {
     world.haggles ??= {};
     world.deals ??= {};
     world.ledger = Array.isArray(world.ledger) ? world.ledger.slice(0, LEDGER_LIMIT) : [];
+    world.phase = Math.max(0, Math.min(3, Math.trunc(Number(world.phase) || 0)));
+    world.positions ??= {};
+    world.discovered ??= {};
+    world.standing ??= {};
+    world.journal ??= {};
+    world.settings = { freeTravel: true, ...world.settings };
+    world.contracts ??= {};
     for (const shop of Object.values(world.shops)) {
         shop.stock ??= {};
         shop.history ??= {};

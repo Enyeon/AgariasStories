@@ -13,6 +13,10 @@ import { priceBreakdown } from '../../domain/shop/transactions.js';
 import { h, replace, coins, pct, sparkline, debounce } from './dom.js';
 import { toast as appToast } from '../../ui/feedback.js';
 import { openNegotiation } from './negotiation-dialog.js';
+import { renderTalk } from './talk-panel.js';
+import { openMap, openJournal, openKnown, openDmTools } from './world-panels.js';
+import { openWorldAdmin } from './world-admin.js';
+import { visibleMemories } from '../../domain/shop/memory.js';
 
 const SORTS = [
     { id: 'default', label: 'Destacados' },
@@ -22,13 +26,6 @@ const SORTS = [
     { id: 'falling', label: 'Bajaron de precio' },
 ];
 
-const REL_LEVELS = [
-    { min: 60, label: 'Amistad', tone: 'good' },
-    { min: 25, label: 'Cordial', tone: 'good' },
-    { min: -24, label: 'Neutral', tone: 'neutral' },
-    { min: -59, label: 'Desconfianza', tone: 'bad' },
-    { min: -101, label: 'Hostilidad', tone: 'bad' },
-];
 
 /**
  * @param {{ onCharacterChange?: (id: string) => void }} [opts]
@@ -47,6 +44,9 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
         selectedItemId: null,
         qty: 1,
         detailOpen: false,
+        talkLog: null,
+        manualRoll: '',
+        rumorPrice: null,
     };
 
     // ── Estructura fija ──
@@ -78,6 +78,19 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
     const state = () => service.state;
     const shop = () => ctx.shop(ui.shopId);
     const keeper = () => ctx.keeperOf(ui.shopId);
+    /** Resumen del comerciante actual (trato, presencia, ofertas…). */
+    const merchant = () => (keeper() ? service.merchant(keeper().id) : null);
+    /** Tiendas cuyo comerciante está hoy en tu ubicación. */
+    const shopsHere = () => service.merchantsHere().filter((m) => m.shop);
+    /** ¿Se puede comerciar ahora con la tienda elegida? { ok, reason } */
+    function tradeState() {
+        const m = merchant();
+        if (!m) return { ok: false, reason: 'No hay nadie atendiendo.' };
+        if (m.location?.id !== service.here) return { ok: false, reason: `${m.keeper.short ?? m.keeper.name} no está aquí.` };
+        if (!m.status.open) return { ok: false, reason: m.status.reason };
+        if (m.disposition.refuses) return { ok: false, reason: m.disposition.refuses };
+        return { ok: true };
+    }
     const funds = () => (state().character ? coinsInCp(state().character.equipment.coins) : 0);
 
     function toast(text, kind = 'info') {
@@ -104,9 +117,6 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
         return { text: `${entry.qty} en estante`, tone: 'ok' };
     }
 
-    function relationLevel(rep) {
-        return REL_LEVELS.find((l) => rep >= l.min) ?? REL_LEVELS[2];
-    }
 
     // ── Cabecera: día, eventos, personaje, bolsa ──
     function renderHeader() {
@@ -151,11 +161,14 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
             h(
                 'div',
                 { class: 'market-day' },
-                h('div', { class: 'day-badge', title: 'Día de juego' }, h('span', { class: 'day-sun', 'aria-hidden': 'true' }, '☀'), h('span', {}, 'Día '), h('b', {}, String(s.world.day))),
+                h('div', { class: 'day-badge', title: `Día de juego · ${service.clock.weekday}` }, h('span', { class: 'day-sun', 'aria-hidden': 'true' }, service.clock.phase.icon), h('span', {}, 'Día '), h('b', {}, String(s.world.day)), h('small', { class: 'day-phase' }, `${service.clock.weekday} · ${service.clock.phase.label}`)),
+                h('button', { class: 'btn btn-ghost', disabled: !canTime, onclick: () => nextPhase(), title: canTime ? 'Pasa a la siguiente franja del día: cada comerciante tiene su horario. Después de la noche, amanece.' : timeHint }, 'Siguiente franja'),
                 h('button', { class: 'btn btn-ghost', disabled: !canTime, onclick: () => advance(1), title: canTime ? 'Avanza un día: otros clientes compran, llegan pedidos y cambian los eventos.' : timeHint }, 'Pasar el día'),
                 h('button', { class: 'btn btn-ghost', disabled: !canTime, onclick: () => advance(7), title: canTime ? '' : timeHint }, '+7 días'),
+                canTime ? h('button', { class: 'btn btn-ghost', onclick: () => openDmTools(root, service, { toast, keeperId: keeper()?.id }), title: 'Eventos, facciones, viajes y memoria de los comerciantes' }, '🎲 DM') : null,
+                service.canEditWorld ? h('button', { class: 'btn btn-ghost', onclick: () => openWorldAdmin(root, service, { toast }), title: 'Crear y editar regiones, facciones, comerciantes y eventos' }, '🌍 Mundo') : null,
                 events.length
-                    ? h('div', { class: 'event-chips', 'aria-label': 'Eventos activos' }, events.map(({ def }) => h('span', { class: 'event-chip', title: def.notice }, h('span', { 'aria-hidden': 'true' }, def.icon), def.name)))
+                    ? h('div', { class: 'event-chips', 'aria-label': 'Eventos activos' }, events.map(({ def }) => h('span', { class: 'event-chip', title: def.notice }, h('span', { 'aria-hidden': 'true' }, def.icon), def.name, def.regions?.length ? h('small', {}, ` · ${def.regions.map((r) => ctx.regions.get(r)?.name ?? r).join(', ')}`) : null)))
                     : null,
             ),
             h(
@@ -171,23 +184,38 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
 
     // ── Letreros de tiendas ──
     function renderSigns() {
+        const loc = service.location;
+        const region = service.region;
+        const here = shopsHere();
         replace(
             signs,
-            ctx.shopList.map((s) => {
-                const k = ctx.keepers.get(s.keeperId);
-                const status = service.shopStatus(s.id);
-                return h(
+            h(
+                'div',
+                { class: 'location-bar' },
+                h('div', { class: 'location-now' }, h('span', { class: 'location-icon', 'aria-hidden': 'true' }, loc?.icon ?? '📍'), h('div', {}, h('small', {}, region ? `${region.icon} ${region.name}` : 'Estás en'), h('b', {}, loc?.name ?? '—'))),
+                loc?.description ? h('p', { class: 'location-desc muted small' }, loc.description) : null,
+                h(
+                    'div',
+                    { class: 'location-actions' },
+                    h('button', { class: 'btn btn-sm', onclick: () => openMap(root, service, { toast, onTravel: (l) => toast(`Llegas a ${l.name}.`, 'info') }) }, '🗺️ Viajar'),
+                    h('button', { class: 'btn btn-sm btn-ghost', onclick: () => openKnown(root, service, { onGo: goTo }) }, '👥 Conocidos'),
+                    h('button', { class: 'btn btn-sm btn-ghost', onclick: () => openJournal(root, service, { toast }) }, '📔 Rumores'),
+                    service.contracts().length ? h('button', { class: 'btn btn-sm btn-ghost', onclick: () => openKnown(root, service, { onGo: goTo, contracts: true }) }, `📜 Empleados (${service.contracts().length})`) : null,
+                ),
+            ),
+            here.length
+                ? here.map(({ keeper: k, shop: sh, status, tier }) => h(
                     'button',
                     {
-                        class: ['shop-sign', s.id === ui.shopId && 'active', status.closed && 'closed'],
+                        class: ['shop-sign', sh.id === ui.shopId && 'active', !status.open && 'closed'],
                         style: { '--accent': k?.accent ?? '#c9a45c' },
-                        'aria-pressed': String(s.id === ui.shopId),
-                        onclick: () => selectShop(s.id),
+                        'aria-pressed': String(sh.id === ui.shopId),
+                        onclick: () => selectShop(sh.id),
                     },
-                    h('span', { class: 'sign-icon', 'aria-hidden': 'true' }, s.icon),
-                    h('span', { class: 'sign-text' }, h('b', {}, s.name), h('small', {}, status.closed ? `Cerrado · ${status.closedBy.name}` : s.kind)),
-                );
-            }),
+                    h('span', { class: 'sign-icon', 'aria-hidden': 'true' }, sh.icon),
+                    h('span', { class: 'sign-text' }, h('b', {}, sh.name), h('small', {}, status.open ? `${k.portrait} ${k.short ?? k.name} · ${tier.icon} ${tier.label}` : status.reason)),
+                ))
+                : h('p', { class: 'signs-empty muted' }, 'Aquí no hay nadie comerciando hoy. Prueba en otro lugar del mapa… o vuelve en otra franja del día.'),
         );
     }
 
@@ -196,10 +224,16 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
         const k = keeper();
         const s = shop();
         if (!k || !s) return replace(keeperPanel);
-        const rel = service.relation(k.id);
-        const level = relationLevel(rel.rep);
-        const status = service.shopStatus(s.id);
-        const known = rel.known;
+        const m = merchant();
+        const rel = m.relation;
+        const shown = m.keeper; // con disfraz si aún no sabes quién es
+        const tier = m.disposition.tier;
+        const score = m.disposition.score;
+        const trade = tradeState();
+        const status = { closed: !trade.ok, reason: trade.reason };
+        const known = { ...rel.known, traits: rel.known.traits.filter((t) => !/^(att|arch):/.test(t)) };
+        const memories = visibleMemories(rel);
+        const archetypes = m.archetypes.filter((a) => a.known);
         const topic = (id) => ctx.topics.get(id);
         const events = activeEvents(state().world, ctx);
         const world = state().world;
@@ -209,21 +243,38 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
             h(
                 'div',
                 { class: 'keeper-card', style: { '--accent': k.accent } },
-                h('div', { class: 'keeper-portrait', 'aria-hidden': 'true' }, k.portrait),
-                h('div', { class: 'keeper-id' }, h('h2', {}, k.name), h('p', { class: 'keeper-title' }, k.title)),
-                h('blockquote', { class: 'speech' }, status.closed ? `(${status.closedBy.notice})` : service.welcomeLine(s.id)),
+                h('div', { class: 'keeper-portrait', 'aria-hidden': 'true' }, shown.portrait),
+                h('div', { class: 'keeper-id' }, h('h2', {}, shown.name), h('p', { class: 'keeper-title' }, shown.title)),
+                h('blockquote', { class: 'speech' }, status.closed && !m.disposition.refuses ? `(${status.reason})` : service.welcomeLine(s.id)),
                 h(
                     'div',
                     { class: 'relation' },
-                    h('div', { class: 'relation-head' }, h('span', {}, 'Relación'), h('b', { class: `tone-${level.tone}` }, level.label)),
-                    h('div', { class: 'relation-bar', role: 'meter', 'aria-valuemin': '-100', 'aria-valuemax': '100', 'aria-valuenow': String(rel.rep), 'aria-label': 'Relación con el vendedor' }, h('span', { style: { left: `${(rel.rep + 100) / 2}%` } })),
-                    rel.deals ? h('p', { class: 'muted small' }, `${rel.deals} ${rel.deals === 1 ? 'trato cerrado' : 'tratos cerrados'} con ${k.short ?? k.name}.`) : null,
+                    h('div', { class: 'relation-head' }, h('span', {}, 'Relación'), h('b', { class: 'tier-badge', style: { '--tier': tier.color } }, tier.icon, ' ', tier.label)),
+                    h('div', { class: 'relation-bar', role: 'meter', 'aria-valuemin': '-100', 'aria-valuemax': '100', 'aria-valuenow': String(score), 'aria-label': 'Relación con el comerciante' }, h('span', { style: { left: `${(score + 100) / 2}%` } })),
+                    rel.deals ? h('p', { class: 'muted small' }, `${rel.deals} ${rel.deals === 1 ? 'trato cerrado' : 'tratos cerrados'} con ${shown.short ?? shown.name}.`) : null,
+                    h(
+                        'details',
+                        { class: 'known why-tier' },
+                        h('summary', {}, 'Por qué te trata así'),
+                        h('ul', {}, m.reasons.slice(0, 8).map((r) => h('li', { class: r.value > 0 ? 'like' : 'dislike' }, h('span', { 'aria-hidden': 'true' }, r.masked ? '❔ ' : `${r.icon ?? '•'} `), r.label, h('small', { class: 'muted' }, ` ${r.value > 0 ? '+' : ''}${r.value}`)))),
+                        m.reasons.some((r) => r.masked) ? h('p', { class: 'muted small' }, 'Hay cosas que no te dice. En «Conversar», intenta leerle.') : null,
+                    ),
                 ),
-                h('p', { class: 'keeper-bio' }, k.bio),
+                h('p', { class: 'keeper-bio' }, shown.bio),
+                h(
+                    'p',
+                    { class: 'keeper-tags' },
+                    m.faction ? h('span', { class: 'tag', title: m.faction.description }, `${m.faction.icon} ${m.faction.name}`) : null,
+                    archetypes.map((a) => h('span', { class: 'tag', title: a.description }, `${a.icon} ${a.label}`)),
+                    m.status.travel?.leavesIn ? h('span', { class: 'tag warn', title: 'Comerciante errante' }, `🐪 Se va en ${m.status.travel.leavesIn} día${m.status.travel.leavesIn === 1 ? '' : 's'}`) : null,
+                ),
+                memories.length
+                    ? h('details', { class: 'known' }, h('summary', {}, `Lo que recuerda de ti (${memories.length})`), h('ul', {}, memories.map((mm) => h('li', {}, h('span', { 'aria-hidden': 'true' }, `${mm.icon} `), mm.label, mm.n > 1 ? h('small', { class: 'muted' }, ` ×${mm.n}`) : null, mm.note ? h('small', { class: 'muted' }, ` · ${mm.note}`) : null))))
+                    : null,
                 h(
                     'details',
                     { class: 'known', open: true },
-                    h('summary', {}, 'Lo que sabes de ' + (k.short ?? k.name)),
+                    h('summary', {}, 'Lo que sabes de ' + (shown.short ?? shown.name)),
                     known.likes.length || known.dislikes.length || known.traits.length
                         ? h(
                             'ul',
@@ -232,7 +283,7 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
                             known.dislikes.map((id) => h('li', { class: 'dislike' }, h('span', { 'aria-hidden': 'true' }, '💢 '), `No soporta hablar de ${topic(id)?.label.toLowerCase() ?? id}.`)),
                             known.traits.map((t) => h('li', {}, h('span', { 'aria-hidden': 'true' }, '👁️ '), t)),
                         )
-                        : h('p', { class: 'muted small' }, 'Aún no sabes mucho. Durante una negociación, charla o intenta leer sus intenciones: lo que descubras quedará anotado aquí.'),
+                        : h('p', { class: 'muted small' }, 'Aún no sabes mucho. Charla con él al negociar o en «Conversar»: lo que descubras quedará anotado aquí.'),
                 ),
             ),
             h('div', { class: 'shop-blurb' }, h('p', {}, s.description), h('p', { class: 'cash' }, 'Caja de hoy: ', coins(world.shops[s.id]?.cash ?? 0, { size: 'sm' }))),
@@ -253,12 +304,19 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
     // ── Pestañas y barra de herramientas ──
     function renderTabs() {
         const tab = (id, label) => h('button', { role: 'tab', class: ['tab', ui.tab === id && 'active'], 'aria-selected': String(ui.tab === id), onclick: () => setTab(id) }, label);
-        replace(tabs, tab('buy', '🛒 Comprar'), tab('sell', '💰 Vender'), tab('ledger', '📒 Registro'));
+        const offers = merchant()?.offers.length ?? 0;
+        replace(tabs, tab('buy', '🛒 Comprar'), tab('sell', '💰 Vender'), tab('talk', offers ? `💬 Conversar (${offers})` : '💬 Conversar'), tab('ledger', '📒 Registro'));
     }
 
     function stockedItems() {
         const stock = state().world.shops[ui.shopId]?.stock ?? {};
-        return Object.keys(stock).map((id) => ctx.item(id)).filter(Boolean);
+        return Object.keys(stock).map((id) => ctx.item(id)).filter(Boolean).filter((item) => !service.quoteBuy(ui.shopId, item.id)?.locked);
+    }
+
+    /** Objetos reservados que aún no te enseña. */
+    function lockedCount() {
+        const stock = state().world.shops[ui.shopId]?.stock ?? {};
+        return Object.keys(stock).filter((id) => ctx.item(id) && service.quoteBuy(ui.shopId, id)?.locked).length;
     }
 
     function renderToolbar() {
@@ -293,8 +351,10 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
 
     // ── Contenido ──
     function renderContent() {
+        if (!shop() && ui.tab !== 'ledger') return replace(content, h('div', { class: 'empty' }, h('span', { 'aria-hidden': 'true' }, '🧭'), h('p', {}, 'No hay ningún puesto abierto en este lugar. Abre el mapa para ir a otro sitio.')));
         if (ui.tab === 'buy') return renderGrid();
         if (ui.tab === 'sell') return renderSell();
+        if (ui.tab === 'talk') return keeper() ? renderTalk(content, { service, keeperId: keeper().id, ui, toast, rerender: () => { renderKeeper(); renderTabs(); renderContent(); } }) : replace(content);
         return renderLedger();
     }
 
@@ -324,16 +384,21 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
 
     function closedNotice() {
         const status = service.shopStatus(ui.shopId);
-        if (!status.closed) return null;
-        return h('div', { class: 'closed-sign' }, h('span', { 'aria-hidden': 'true' }, '🚫'), h('div', {}, h('b', {}, 'Cerrado'), h('p', {}, `${status.closedBy.name}. ${status.closedBy.notice}`)));
+        if (status.closed) return h('div', { class: 'closed-sign' }, h('span', { 'aria-hidden': 'true' }, '🚫'), h('div', {}, h('b', {}, 'Cerrado'), h('p', {}, `${status.closedBy.name}. ${status.closedBy.notice}`)));
+        const trade = tradeState();
+        if (trade.ok) return null;
+        const refused = merchant()?.disposition.refuses;
+        return h('div', { class: 'closed-sign' }, h('span', { 'aria-hidden': 'true' }, refused ? '😠' : '🚪'), h('div', {}, h('b', {}, refused ? 'No quiere tratos contigo' : 'Ahora no atiende'), h('p', {}, trade.reason)));
     }
 
     function renderGrid() {
         const rows = filteredItems();
         const money = funds();
         const closed = closedNotice();
+        const locked = lockedCount();
+        const lockedNote = locked ? h('p', { class: 'locked-note muted small' }, `🔒 ${merchant()?.keeper.short ?? 'El comerciante'} guarda ${locked === 1 ? 'una pieza reservada' : `${locked} piezas reservadas`} para gente de su confianza.`) : null;
         if (!rows.length) {
-            return replace(content, closed, h('div', { class: 'empty' }, h('span', { 'aria-hidden': 'true' }, '🕸️'), h('p', {}, ui.search || ui.category !== 'all' || ui.onlyAffordable ? 'Nada en el estante coincide con la búsqueda.' : 'Los estantes están vacíos.')));
+            return replace(content, closed, lockedNote, h('div', { class: 'empty' }, h('span', { 'aria-hidden': 'true' }, '🕸️'), h('p', {}, ui.search || ui.category !== 'all' || ui.onlyAffordable ? 'Nada en el estante coincide con la búsqueda.' : 'Los estantes están vacíos.')));
         }
         replace(
             content,
@@ -376,6 +441,7 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
                     );
                 }),
             ),
+            lockedNote,
         );
     }
 
@@ -415,7 +481,7 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
                         { class: 'sell-actions' },
                         h('span', { class: 'sell-offer' }, r.quote.deal ? h('span', { class: 'deal-badge' }, 'Trato') : null, coins(r.quote.unit), h('small', {}, 'c/u')),
                         r.units > 1 ? qtyInput : null,
-                        h('button', { class: 'btn btn-primary btn-sm', disabled: Boolean(closed) || r.units < 1, onclick: () => doSell(r.item.id, Number(qtyInput.value) || 1) }, 'Vender'),
+                        h('button', { class: 'btn btn-primary btn-sm', disabled: Boolean(closed) || r.units < 1 || r.quote.refused, onclick: () => doSell(r.item.id, Number(qtyInput.value) || 1) }, 'Vender'),
                         h('button', { class: 'btn btn-ghost btn-sm', disabled: !haggle?.ok, title: haggle?.ok ? 'Negociar el precio' : haggle?.message, onclick: () => haggleSell(r.item.id, Number(qtyInput.value) || 1) }, 'Regatear'),
                     )
                     : h('span', { class: 'muted small' }, r.quote.reason === 'unknown-item' ? 'No sabe qué valor darle.' : 'No le interesa.'),
@@ -424,7 +490,7 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
         replace(
             content,
             closed,
-            h('div', { class: 'sell-head' }, h('p', {}, `${keeper()?.short ?? 'El vendedor'} tiene en caja `, coins(cash, { size: 'sm' }), ' para comprar hoy.')),
+            h('div', { class: 'sell-head' }, h('p', {}, `${merchant()?.keeper.short ?? 'El vendedor'} tiene en caja `, coins(cash, { size: 'sm' }), ' para comprar hoy.')),
             interested.length ? h('ul', { class: 'sell-list' }, interested.map(row)) : h('div', { class: 'empty' }, h('p', {}, 'No tienes nada que le interese a esta tienda.')),
             others.length ? h('details', { class: 'sell-others' }, h('summary', {}, `Otros objetos (${others.length}) que no le interesan`), h('ul', { class: 'sell-list' }, others.map(row))) : null,
         );
@@ -480,10 +546,14 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
         const status = service.shopStatus(ui.shopId);
         const haggle = service.haggleState(ui.shopId, item.id, 'buy', ui.qty);
         const history = world.shops[ui.shopId].history?.[item.id] ?? [];
+        const trade = tradeState();
         const others = ctx.shopList
             .filter((s) => s.id !== ui.shopId)
-            .map((s) => ({ shop: s, quote: service.quoteBuy(s.id, item.id) }))
-            .filter((r) => r.quote);
+            .map((s) => {
+                const m = service.merchant(s.keeperId);
+                return { shop: s, quote: service.quoteBuy(s.id, item.id), where: m?.status.here ? m.location : null };
+            })
+            .filter((r) => r.quote && !r.quote.locked && r.where);
 
         const qtyControl = h(
             'div',
@@ -546,7 +616,7 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
                         'div',
                         { class: 'elsewhere' },
                         h('small', {}, 'En otras tiendas'),
-                        h('ul', {}, others.map((r) => h('li', {}, h('button', { class: 'link', onclick: () => { selectShop(r.shop.id); selectItem(item.id); } }, r.shop.name), r.quote.available === 0 ? h('span', { class: 'muted' }, 'agotado') : coins(r.quote.listUnit, { size: 'sm' })))),
+                        h('ul', {}, others.map((r) => h('li', {}, h('button', { class: 'link', title: r.where.id === service.here ? 'Está aquí mismo' : `Viajar a ${r.where.name}`, onclick: () => goToShop(r.shop.id, item.id) }, r.shop.name), h('small', { class: 'muted' }, r.where.id === service.here ? ' · aquí' : ` · ${r.where.name}`), r.quote.available === 0 ? h('span', { class: 'muted' }, 'agotado') : coins(r.quote.listUnit, { size: 'sm' })))),
                     )
                     : null,
             ),
@@ -560,10 +630,10 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
                 h(
                     'div',
                     { class: 'buy-actions' },
-                    h('button', { class: 'btn btn-primary', disabled: status.closed || quote.available === 0 || !state().character, onclick: () => doBuy(item.id, ui.qty) }, quote.available === 0 ? 'Agotado' : 'Comprar'),
+                    h('button', { class: 'btn btn-primary', disabled: status.closed || !trade.ok || quote.available === 0 || !state().character, title: trade.ok ? '' : trade.reason, onclick: () => doBuy(item.id, ui.qty) }, quote.available === 0 ? 'Agotado' : 'Comprar'),
                     h(
                         'button',
-                        { class: 'btn btn-haggle', disabled: !haggle.ok || quote.available === 0 || status.closed, title: haggle.ok ? 'Habla con el vendedor para conseguir un mejor precio' : haggle.message, onclick: () => haggleBuy(item.id) },
+                        { class: 'btn btn-haggle', disabled: !haggle.ok || !trade.ok || quote.available === 0 || status.closed, title: haggle.ok ? 'Habla con el vendedor para conseguir un mejor precio' : haggle.message, onclick: () => haggleBuy(item.id) },
                         haggle.resumable ? '💬 Retomar negociación' : '💬 Regatear',
                     ),
                 ),
@@ -573,8 +643,8 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
     }
 
     // ── Acciones ──
-    function selectShop(id) {
-        if (ui.shopId === id) return;
+    function selectShop(id, { force = false } = {}) {
+        if (ui.shopId === id && !force) return;
         ui.shopId = id;
         ui.category = 'all';
         ui.sub = null;
@@ -640,6 +710,34 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
         openNegotiation({ service, shopId: ui.shopId, itemId, side: 'sell', qty, onToast: toast, onSell: (q) => doSell(itemId, q) });
     }
 
+    /** Ir a donde está un comerciante conocido. */
+    async function goTo(m) {
+        if (m.location.id !== service.here) {
+            const res = await service.travel(m.location.id);
+            if (res.error) return toast(res.error, 'error');
+        }
+        const sh = ctx.shopOf(m.keeper.id);
+        if (sh) selectShop(sh.id, { force: true });
+        root.querySelector('dialog[open]')?.close();
+    }
+    async function goToShop(shopId, itemId) {
+        const where = service.merchant(ctx.shop(shopId).keeperId)?.location;
+        if (where && where.id !== service.here) {
+            const res = await service.travel(where.id);
+            if (res.error) return toast(res.error, 'error');
+            toast(`Vas a ${where.name}.`, 'info');
+        }
+        selectShop(shopId, { force: true });
+        selectItem(itemId);
+    }
+
+    async function nextPhase() {
+        const res = await service.advancePhase();
+        if (res.error) return toast(res.error, 'error');
+        if (res.newDay) showReport(res.report, 1);
+        else toast(`${service.clock.phase.icon} Ahora es ${service.clock.phase.label.toLowerCase()}.`, 'info');
+    }
+
     async function advance(days) {
         const res = await service.advanceDays(days);
         if (res.error) return toast(res.error, 'error');
@@ -657,6 +755,10 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
             if (r.type === 'event-start') lines.push({ icon: ev?.icon ?? '🔔', text: `${ev?.name}: ${ev?.notice}`, tone: 'event', order: 0 });
             if (r.type === 'event-end') lines.push({ icon: '✔️', text: `Terminó: ${ev?.name}.`, tone: 'muted', order: 3 });
             if (r.type === 'new-item') lines.push({ icon: '✨', text: `Nuevo en ${shopName(r.shopId)}: ${name(r.itemId)}.`, tone: 'rare', order: 1 });
+            if (r.type === 'favor-failed' && r.charId === state().characterId) {
+                const k = ctx.keepers.get(r.keeperId);
+                lines.push({ icon: '❌', text: `No cumpliste a tiempo el favor de ${k?.short ?? k?.name ?? 'un comerciante'}: lo recordará.`, tone: 'low', order: 1 });
+            }
             if (r.type === 'gone') lines.push({ icon: '💨', text: r.expired ? `${name(r.itemId)} ya no está en ${shopName(r.shopId)}: se lo llevaron a otro mercado.` : `Otro cliente compró ${name(r.itemId)} en ${shopName(r.shopId)}.`, tone: 'muted', order: 2 });
         }
         const byShop = (type) => {
@@ -725,7 +827,20 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
         dialog.showModal();
     }
 
+    /** Si la tienda elegida no está en tu ubicación, se elige una que sí. */
+    function syncShop() {
+        const here = shopsHere();
+        if (!here.some((m) => m.shop.id === ui.shopId)) {
+            ui.shopId = (here.find((m) => m.status.open) ?? here[0])?.shop.id ?? null;
+            ui.selectedItemId = null;
+            ui.detailOpen = false;
+            ui.category = 'all';
+            ui.sub = null;
+        }
+    }
+
     function renderAll() {
+        syncShop();
         renderHeader();
         renderSigns();
         renderKeeper();
@@ -739,7 +854,7 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
         if (change.type === 'error') toast(change.message, 'error');
         if (change.type === 'prefs') return;
         ctx = service.ctx;
-        if (!ctx.shop(ui.shopId)) ui.shopId = ctx.shopList[0]?.id;
+        if (ui.shopId && !ctx.shop(ui.shopId)) ui.shopId = null;
         if (ui.selectedItemId && !ctx.item(ui.selectedItemId)) ui.selectedItemId = null;
         if (change.type === 'negotiation') {
             // La negociación solo afecta a relación/detalle; evitar repintar todo.

@@ -1,0 +1,100 @@
+{
+  "$comment": "phases[].from/to: horas de cada franja (to > 24 = madrugada); los horarios «08:00-20:00» se traducen a franjas. Geografía y economía del mundo de la Tienda. phases: franjas del día (los horarios de los comerciantes las usan). weekdays: nombres de los días (día de juego 1 = primer día). regions[].economy.modifiers: ajustes de precio de la región (mismo formato de reglas que los eventos). demand: multiplica la demanda de otros clientes. restock: leadMult/qtyMult para la reposición. Opcionales por región (también en las regiones Homebrew): type, danger 0-5, factions, races (predominantes), resources / common / scarce (claves de producto: «categoria», «categoria/sub» o «#etiqueta»). locations[].hidden: la ubicación sólo aparece cuando el personaje la descubre (por un secreto o rumor).",
+  "start": "plaza-mayor",
+  "phases": [
+    { "id": "manana", "label": "Mañana", "icon": "🌅", "from": 6, "to": 12 },
+    { "id": "tarde", "label": "Tarde", "icon": "☀️", "from": 12, "to": 18 },
+    { "id": "anochecer", "label": "Anochecer", "icon": "🌇", "from": 18, "to": 21 },
+    { "id": "noche", "label": "Noche", "icon": "🌙", "from": 21, "to": 30 }
+  ],
+  "weekdays": ["Lunardía", "Ferrodía", "Aguadía", "Raízdía", "Fuegodía", "Mercadía", "Descanso"],
+  "regions": [
+    {
+      "id": "valle",
+      "name": "Valle de Agarias",
+      "icon": "🌾",
+      "description": "Tierra de cultivos y cruce de caminos. Pan barato, de todo un poco y mucha gente de paso.",
+      "type": "Agrícola", "danger": 1, "factions": ["gremio-mercaderes", "mano-gris"], "races": ["humano", "mediano"], "common": ["consumibles/ingrediente"], "scarce": ["equipo/valor"],
+      "economy": {
+        "kind": "Agrícola y comercial",
+        "modifiers": [
+          { "rule": { "category": "consumibles", "sub": "comida" }, "pct": -0.12, "label": "En el valle sobra la comida" },
+          { "rule": { "category": "criaturas" }, "pct": -0.05, "label": "Las granjas crían de todo" }
+        ],
+        "demand": [{ "rule": { "category": "equipo" }, "mult": 1.2 }]
+      },
+      "locations": [
+        { "id": "plaza-mayor", "name": "Plaza del Mercado", "icon": "🏛️", "description": "El corazón comercial de Agarias: toldos, pregones y olor a pan." },
+        { "id": "barrio-fraguas", "name": "Barrio de las Fraguas", "icon": "🔥", "description": "Humo, martillazos y talleres. Aquí se trabaja el metal." },
+        { "id": "puerta-este", "name": "Puerta del Este", "icon": "🐴", "description": "Caballerizas, carros y caravanas que entran y salen del valle." },
+        { "id": "callejon-ratas", "name": "Callejón de las Ratas", "icon": "🕯️", "description": "Callejuelas sin farolas detrás del muelle de carga. Mejor no venir solo." },
+        { "id": "jabali-tuerto", "name": "Taberna del Jabalí Tuerto", "icon": "🍺", "description": "Cerveza tibia, música desafinada y la mejor fuente de rumores del valle." },
+        { "id": "sotano-jabali", "name": "El sótano del Jabalí", "icon": "🚪", "description": "Una trampilla tras la barra. Abajo, velas, terciopelo y gente que no da su nombre.", "hidden": true }
+      ]
+    },
+    {
+      "id": "montes",
+      "name": "Montes de Hierro",
+      "icon": "⛰️",
+      "description": "Minas, fortalezas enanas y hornos que no se apagan. Sobra el metal y falta todo lo demás.",
+      "type": "Minera", "danger": 3, "factions": ["clan-yunque"], "races": ["enano", "gnomo", "orco"], "resources": ["tecnologia/material"], "scarce": ["#tela"],
+      "economy": {
+        "kind": "Minera",
+        "modifiers": [
+          { "rule": { "tags": ["metal"] }, "pct": -0.12, "label": "En los montes el metal sale de la tierra" },
+          { "rule": { "category": "herramientas", "sub": "artesano" }, "pct": -0.08, "label": "Herramientas de cantero a buen precio" },
+          { "rule": { "category": "consumibles", "sub": "comida" }, "pct": 0.18, "label": "La comida sube la montaña en mula: cara" },
+          { "rule": { "category": "monturas" }, "pct": 0.1, "label": "Pocos pastos: los animales escasean" }
+        ],
+        "demand": [{ "rule": { "category": "consumibles", "sub": "comida" }, "mult": 1.5 }],
+        "restock": [{ "rule": { "tags": ["metal"] }, "leadMult": 0.6 }]
+      },
+      "locations": [
+        { "id": "karak-dum", "name": "Mercado de Karak-Dûm", "icon": "⚒️", "description": "Una sala excavada en la roca con puestos de piedra y antorchas eternas." },
+        { "id": "campamento-minero", "name": "Campamento de la Veta Honda", "icon": "⛏️", "description": "Tiendas de lona, barro y mineros cansados con oro en los bolsillos." }
+      ]
+    },
+    {
+      "id": "marca",
+      "name": "Marca del Norte",
+      "icon": "🛡️",
+      "description": "La frontera en guerra. Todo lo que sirva para sobrevivir vale el doble; lo demás, poco.",
+      "type": "Frontera en guerra", "danger": 5, "factions": ["guardia-norte"], "races": ["humano", "semiorco"], "scarce": ["#especia", "#bebida"],
+      "economy": {
+        "kind": "Zona de guerra",
+        "modifiers": [
+          { "rule": { "category": "armas" }, "pct": 0.18, "label": "En la frontera las armas se pagan caras" },
+          { "rule": { "category": "armaduras" }, "pct": 0.15, "label": "Todos quieren protección en la Marca" },
+          { "rule": { "category": "consumibles", "sub": "pocion" }, "pct": 0.22, "label": "Las curaciones escasean en la frontera" },
+          { "rule": { "category": "herramientas", "sub": ["juego", "instrumento"] }, "pct": -0.15, "label": "Nadie tiene tiempo para lujos" }
+        ],
+        "demand": [
+          { "rule": { "category": "armas" }, "mult": 1.6 },
+          { "rule": { "category": "consumibles", "sub": "pocion" }, "mult": 1.8 }
+        ],
+        "restock": [{ "rule": { "category": "consumibles", "sub": "pocion" }, "leadMult": 1.6, "qtyMult": 0.6 }]
+      },
+      "locations": [
+        { "id": "fuerte-cuervo", "name": "Fuerte del Cuervo", "icon": "🏰", "description": "Empalizadas, estandartes negros y patrullas que vuelven con menos hombres." }
+      ]
+    },
+    {
+      "id": "costa",
+      "name": "Costa de la Sal",
+      "icon": "⚓",
+      "description": "Puertos, salazones y barcos de tierras lejanas. Lo exótico llega aquí primero.",
+      "type": "Marítima", "danger": 2, "factions": ["hermandad-mareas", "mano-gris"], "races": ["humano", "semielfo", "marino"], "resources": ["#especia"], "common": ["#tela"],
+      "economy": {
+        "kind": "Marítima",
+        "modifiers": [
+          { "rule": { "category": "consumibles", "sub": "alquimia" }, "pct": -0.1, "label": "Los barcos traen reactivos de ultramar" },
+          { "rule": { "category": "equipo", "sub": "aventura" }, "pct": -0.05, "label": "Cuerda y lona de sobra en el puerto" },
+          { "rule": { "tags": ["metal"] }, "pct": 0.08, "label": "El salitre se come el hierro: cuesta más" }
+        ]
+      },
+      "locations": [
+        { "id": "puerto-salitre", "name": "Puerto de Salitre", "icon": "⚓", "description": "Muelles atestados, gaviotas y marineros que juran haber visto de todo." }
+      ]
+    }
+  ]
+}

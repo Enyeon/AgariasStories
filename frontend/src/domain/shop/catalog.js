@@ -66,7 +66,8 @@ export const CATEGORIES = Object.freeze([
             { id: 'contenedor', label: 'Contenedores', icon: '🎒' },
             { id: 'luz', label: 'Luz y fuego', icon: '🕯️' },
             { id: 'canalizador', label: 'Canalizadores', icon: '🔮' },
-            { id: 'ropa', label: 'Ropa', icon: '👘' },
+            { id: 'ropa', label: 'Ropa y telas', icon: '👘' },
+            { id: 'valor', label: 'Joyas y objetos de valor', icon: '💍' },
         ],
     },
     {
@@ -75,6 +76,7 @@ export const CATEGORIES = Object.freeze([
             { id: 'pocion', label: 'Pociones', icon: '🧪' },
             { id: 'alquimia', label: 'Alquimia', icon: '⚗️' },
             { id: 'comida', label: 'Comida y bebida', icon: '🍞' },
+            { id: 'ingrediente', label: 'Ingredientes y especias', icon: '🧂' },
         ],
     },
     {

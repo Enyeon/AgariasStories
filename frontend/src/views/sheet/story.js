@@ -6,6 +6,57 @@ import {
   TRAIT_SETS, traitSetKey, slotsFor, optionsFor, getEntry, setEntry, rollEntry, pickEntry, emptyPersonality,
 } from '../../domain/personality.js';
 import { alignmentStyle } from '../../domain/alignment.js';
+import { setOrigin, toggleFaction } from '../../domain/affiliations.js';
+import worldData from '../../data/shop/world.json';
+import factionsData from '../../data/shop/factions.json';
+import { listEntries, getPack } from '../../content/registry.js';
+import { worldId } from '../../domain/shop/homebrew-world.js';
+
+/** Regiones y facciones oficiales + las del DM de la campaña del personaje (o el Homebrew local). */
+function worldChoices(character) {
+  const campaignId = character.campaign?.id ?? null;
+  const visible = (e) => (campaignId ? e.packId === campaignId : getPack(e.packId)?.kind === 'local');
+  const merge = (official, type) => {
+    const out = new Map(official.map((x) => [x.id, x]));
+    for (const e of listEntries(type).filter(visible)) out.set(worldId(e.ref, e.item), { id: worldId(e.ref, e.item), name: e.item.name, icon: e.item.icon, description: e.item.ideology || e.item.description || '' });
+    return [...out.values()];
+  };
+  return { regions: merge(worldData.regions, 'region'), factions: merge(factionsData.factions, 'faccion') };
+}
+
+/** Origen y facciones: los comerciantes reaccionan a esto cuando se lo cuentas. */
+function affiliationsCard(ctx) {
+  const aff = ctx.character.affiliations ?? {};
+  const mine = new Set((aff.factions ?? []).map((f) => f.id));
+  const ro = ctx.readOnly;
+  const { regions, factions } = worldChoices(ctx.character);
+  const origin = regions.find((r) => r.id === aff.origin);
+  const body = html`<div class="affil">
+    <label class="field affil__origin">
+      <span class="field__label">Región de origen</span>
+      ${ro
+        ? html`<span class="affil__value">${origin ? `${origin.icon} ${origin.name}` : '—'}</span>`
+        : html`<select class="select" data-affiliation="origin">
+            <option value="">— Sin especificar —</option>
+            ${regions.map((r) => html`<option value="${r.id}" ${raw(r.id === aff.origin ? 'selected' : '')}>${r.icon} ${r.name}</option>`)}
+          </select>`}
+    </label>
+    <fieldset class="affil__factions">
+      <legend class="field__label">Facciones a las que perteneces</legend>
+      <div class="affil__chips">
+        ${factions.map((f) => html`<label class="affil__chip ${mine.has(f.id) ? 'is-on' : ''}" title="${f.description}">
+          <input type="checkbox" data-affiliation="faction" value="${f.id}" ${raw(mine.has(f.id) ? 'checked' : '')} ${raw(ro ? 'disabled' : '')}>
+          <span>${f.icon} ${f.name}</span>
+        </label>`)}
+      </div>
+    </fieldset>
+  </div>`;
+  return sectionCard({
+    title: 'Origen y facciones',
+    subtitle: 'Los comerciantes sólo lo tienen en cuenta si se lo cuentas (o si te ganas una reputación).',
+    body,
+  });
+}
 
 const MODES = [
   { id: 'custom', icon: '✏️', label: 'Personalizado' },
@@ -133,6 +184,7 @@ export function renderStory(ctx) {
       })}
     </div>
     ${personalityCard(ctx)}
+    ${affiliationsCard(ctx)}
     ${sectionCard({
       title: 'Historia',
       body: textArea(ctx, { label: 'Historia', path: 'notes.backstory', rows: 14, tall: true, hideLabel: true, placeholder: 'Escribe aquí la historia, el pasado o la mitología de tu personaje…' }),
@@ -174,6 +226,10 @@ export const storyActions = {
 };
 
 export const storyChanges = {
+  affiliation: (ed, el) => ed.update((c) => {
+    if (el.dataset.affiliation === 'origin') setOrigin(c, el.value);
+    else toggleFaction(c, el.value, el.checked);
+  }),
   'persona-set': (ed, el) => ed.update((c) => {
     c.personality = c.personality ?? emptyPersonality();
     c.personality.set = el.value || null;

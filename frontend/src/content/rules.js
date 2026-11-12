@@ -5,7 +5,10 @@
 // La interfaz lo usa para ocultar opciones; el servidor (Supabase) aplica las
 // mismas reglas al crear contenido y al publicar personajes.
 
-import { CONTENT_TYPE_KEYS } from './schema.js';
+import { CONTENT_TYPE_KEYS, CONTENT_TYPES } from './schema.js';
+
+/** El mundo de la Tienda (comerciantes, regiones, facciones, eventos) es exclusivo del DM. */
+const isDmOnly = (t) => CONTENT_TYPES[t]?.dmOnly === true;
 import { getPack } from './registry.js';
 
 /** Quién puede crear Homebrew de un tipo. */
@@ -32,7 +35,7 @@ export function normalizeRules(raw) {
   const d = defaultRules();
   const src = raw && typeof raw === 'object' ? raw : {};
   for (const t of OFFICIAL_TYPES) if (typeof src.official?.[t] === 'boolean') d.official[t] = src.official[t];
-  for (const t of CONTENT_TYPE_KEYS) if (Object.hasOwn(HOMEBREW_MODES, src.homebrew?.[t])) d.homebrew[t] = src.homebrew[t];
+  for (const t of CONTENT_TYPE_KEYS) if (!isDmOnly(t) && Object.hasOwn(HOMEBREW_MODES, src.homebrew?.[t])) d.homebrew[t] = src.homebrew[t];
   d.epicBoons = src.epicBoons === true;
   d.traitEffects = src.traitEffects === 'dm' ? 'dm' : 'todos';
   return d;
@@ -60,7 +63,7 @@ export function permissionsFor(character) {
     campaign: { id: pack.id, name: pack.name },
     role: pack.role,
     official: rules.official,
-    homebrew: Object.fromEntries(CONTENT_TYPE_KEYS.map((t) => [t, rules.homebrew[t] !== 'no'])),
+    homebrew: Object.fromEntries(CONTENT_TYPE_KEYS.map((t) => [t, isDmOnly(t) ? pack.role === 'dm' : rules.homebrew[t] !== 'no'])),
     epicBoons: rules.epicBoons,
     traitEffects: rules.traitEffects === 'todos' || pack.role === 'dm',
     linked: true,

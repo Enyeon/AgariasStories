@@ -2,143 +2,651 @@
   "$comment": "Frases por voz. Si una voz no define una clave se usa «default». Variables: {item} {price} {offer} {name} {shop} {competitor} {topic}.",
   "voices": {
     "default": {
-      "welcome": ["Bienvenido. Mira lo que quieras.", "Pasa, pasa. ¿Qué te trae por aquí?"],
-      "welcome_friend": ["¡Mira quién volvió! Siempre es un gusto.", "Mi cliente favorito. ¿Qué necesitas hoy?"],
-      "welcome_cold": ["Tú otra vez. Mira, pero no toques.", "Hmm. ¿Qué quieres?"],
-      "greet": ["¿Quieres hablar del precio? Te escucho.", "Hablemos, entonces."],
-      "greet_friend": ["Para ti siempre hay un trato. Dime.", "Contigo da gusto negociar. Adelante."],
-      "greet_cold": ["Rápido, que tengo trabajo.", "No esperes milagros."],
-      "open_buy": ["{item}… pido {price}. Es un precio justo.", "Por {item}, {price}. No encontrarás nada mejor."],
-      "open_sell": ["Por {item} te puedo dar {price}.", "Te ofrezco {price} por {item}. Es lo que vale para mí."],
-      "counter_far": ["Estás muy lejos. Puedo dejarlo en {price}.", "Ni de broma. Te lo dejo en {price}, y ya estoy siendo generoso."],
-      "counter_near": ["Nos vamos acercando… {price}.", "Casi. Dejémoslo en {price}."],
-      "insulted": ["¿{offer}? ¿Me tomas por tonto?", "Eso es un insulto. Piénsalo mejor."],
-      "repeat": ["Ya me ofreciste eso. Sigue siendo no.", "Repetirlo no lo mejora."],
-      "accept_offer": ["Está bien, {price}. Trato hecho.", "De acuerdo. {price}, y que te sirva."],
-      "accept_ask": ["Trato hecho. Un placer.", "Sabia decisión."],
-      "accept_happy": ["¡Trato hecho! Da gusto negociar contigo.", "Hecho, y con una sonrisa. Vuelve cuando quieras."],
-      "final_offer": ["Mi última palabra: {price}. Lo tomas o lo dejas.", "{price}. No bajo más."],
-      "walkout": ["Basta. No pienso seguir con esto.", "Se acabó. Vuelve cuando aprendas modales."],
-      "leave_good": ["Si cambias de idea, aquí estaré.", "Vuelve cuando quieras."],
-      "leave_bad": ["Mejor así.", "Adiós."],
-      "flatter_ok": ["Bueno… es cierto que es buena mercancía. Me caes bien.", "Hmm, tienes buen ojo. Eso se valora."],
-      "flatter_fail": ["Ahórrate los halagos.", "Las palabras bonitas no pagan."],
-      "flatter_again": ["Ya me lo dijiste. ¿Vas a comprar o a cantarme?", "Suficiente adulación por hoy."],
-      "chat_like": ["¡Ah, {topic}! Por fin alguien con quien hablar de eso.", "Me gusta hablar de {topic}. Tienes tiempo, ¿no?"],
-      "chat_dislike": ["No me interesa hablar de {topic}.", "{topic}… preferiría no tocar ese tema."],
-      "chat_neutral": ["Ajá. Sí, supongo.", "Mm-hm. Interesante."],
-      "insight_caught": ["¿Qué tanto me miras?", "¿Se me ve algo en la cara?"],
-      "flaw_ok": ["Bueno… sí, tiene ese detalle. Algo puedo ajustar.", "Tienes razón. No es perfecto. Lo tendré en cuenta."],
-      "flaw_fail": ["¿Defectos? ¡Esto está impecable!", "No sabes de lo que hablas."],
-      "quality_ok": ["Mm. Es verdad, está bien cuidado. Puedo mejorar la oferta.", "Vale, se nota la calidad. Subo un poco."],
-      "quality_fail": ["He visto cosas mejores ayer mismo.", "No exageres. Vale lo que vale."],
-      "competitor_true": ["¿En {competitor}? Hmph… Está bien, igualo: {price}.", "Vaya, lo sabes. Dejémoslo en {price}, que no se diga."],
-      "bluff_ok": ["¿Ah, sí? Bueno… no quiero perder un cliente. Algo bajaré.", "Hmm. Está bien, puedo mejorar algo."],
-      "bluff_fail": ["¿Ah, sí? Pues ve con ellos.", "Mientes fatal, ¿lo sabías?"],
-      "bulk": ["Por todo junto… sí, puedo hacer algo. {price} cada uno.", "Si te llevas varios, te los dejo a {price}."],
-      "walk_back": ["¡Espera, espera! {price}, ¿te va?", "Vuelve aquí. Hagamos {price} y no se hable más."],
-      "walk_let_go": ["Ahí tienes la puerta.", "Como quieras. Que te vaya bien."],
-      "walk_shrug": ["Haz lo que quieras.", "No voy a correr detrás de ti."],
-      "intimidate_ok": ["Va… vale, vale. {price}. Pero tranquilízate.", "Está bien… {price}. No quiero problemas."],
-      "intimidate_fail": ["¿Me estás amenazando? ¡Fuera de mi tienda!", "Sal ahora mismo, o llamo a la guardia."]
+      "welcome": [
+        "Bienvenido. Mira lo que quieras.",
+        "Pasa, pasa. ¿Qué te trae por aquí?"
+      ],
+      "welcome_friend": [
+        "¡Mira quién volvió! Siempre es un gusto.",
+        "Mi cliente favorito. ¿Qué necesitas hoy?"
+      ],
+      "welcome_cold": [
+        "Tú otra vez. Mira, pero no toques.",
+        "Hmm. ¿Qué quieres?"
+      ],
+      "greet": [
+        "¿Quieres hablar del precio? Te escucho.",
+        "Hablemos, entonces."
+      ],
+      "greet_friend": [
+        "Para ti siempre hay un trato. Dime.",
+        "Contigo da gusto negociar. Adelante."
+      ],
+      "greet_cold": [
+        "Rápido, que tengo trabajo.",
+        "No esperes milagros."
+      ],
+      "open_buy": [
+        "{item}… pido {price}. Es un precio justo.",
+        "Por {item}, {price}. No encontrarás nada mejor."
+      ],
+      "open_sell": [
+        "Por {item} te puedo dar {price}.",
+        "Te ofrezco {price} por {item}. Es lo que vale para mí."
+      ],
+      "counter_far": [
+        "Estás muy lejos. Puedo dejarlo en {price}.",
+        "Ni de broma. Te lo dejo en {price}, y ya estoy siendo generoso."
+      ],
+      "counter_near": [
+        "Nos vamos acercando… {price}.",
+        "Casi. Dejémoslo en {price}."
+      ],
+      "insulted": [
+        "¿{offer}? ¿Me tomas por tonto?",
+        "Eso es un insulto. Piénsalo mejor."
+      ],
+      "repeat": [
+        "Ya me ofreciste eso. Sigue siendo no.",
+        "Repetirlo no lo mejora."
+      ],
+      "accept_offer": [
+        "Está bien, {price}. Trato hecho.",
+        "De acuerdo. {price}, y que te sirva."
+      ],
+      "accept_ask": [
+        "Trato hecho. Un placer.",
+        "Sabia decisión."
+      ],
+      "accept_happy": [
+        "¡Trato hecho! Da gusto negociar contigo.",
+        "Hecho, y con una sonrisa. Vuelve cuando quieras."
+      ],
+      "final_offer": [
+        "Mi última palabra: {price}. Lo tomas o lo dejas.",
+        "{price}. No bajo más."
+      ],
+      "walkout": [
+        "Basta. No pienso seguir con esto.",
+        "Se acabó. Vuelve cuando aprendas modales."
+      ],
+      "leave_good": [
+        "Si cambias de idea, aquí estaré.",
+        "Vuelve cuando quieras."
+      ],
+      "leave_bad": [
+        "Mejor así.",
+        "Adiós."
+      ],
+      "flatter_ok": [
+        "Bueno… es cierto que es buena mercancía. Me caes bien.",
+        "Hmm, tienes buen ojo. Eso se valora."
+      ],
+      "flatter_fail": [
+        "Ahórrate los halagos.",
+        "Las palabras bonitas no pagan."
+      ],
+      "flatter_again": [
+        "Ya me lo dijiste. ¿Vas a comprar o a cantarme?",
+        "Suficiente adulación por hoy."
+      ],
+      "chat_like": [
+        "¡Ah, {topic}! Por fin alguien con quien hablar de eso.",
+        "Me gusta hablar de {topic}. Tienes tiempo, ¿no?"
+      ],
+      "chat_dislike": [
+        "No me interesa hablar de {topic}.",
+        "{topic}… preferiría no tocar ese tema."
+      ],
+      "chat_neutral": [
+        "Ajá. Sí, supongo.",
+        "Mm-hm. Interesante."
+      ],
+      "insight_caught": [
+        "¿Qué tanto me miras?",
+        "¿Se me ve algo en la cara?"
+      ],
+      "flaw_ok": [
+        "Bueno… sí, tiene ese detalle. Algo puedo ajustar.",
+        "Tienes razón. No es perfecto. Lo tendré en cuenta."
+      ],
+      "flaw_fail": [
+        "¿Defectos? ¡Esto está impecable!",
+        "No sabes de lo que hablas."
+      ],
+      "quality_ok": [
+        "Mm. Es verdad, está bien cuidado. Puedo mejorar la oferta.",
+        "Vale, se nota la calidad. Subo un poco."
+      ],
+      "quality_fail": [
+        "He visto cosas mejores ayer mismo.",
+        "No exageres. Vale lo que vale."
+      ],
+      "competitor_true": [
+        "¿En {competitor}? Hmph… Está bien, igualo: {price}.",
+        "Vaya, lo sabes. Dejémoslo en {price}, que no se diga."
+      ],
+      "bluff_ok": [
+        "¿Ah, sí? Bueno… no quiero perder un cliente. Algo bajaré.",
+        "Hmm. Está bien, puedo mejorar algo."
+      ],
+      "bluff_fail": [
+        "¿Ah, sí? Pues ve con ellos.",
+        "Mientes fatal, ¿lo sabías?"
+      ],
+      "bulk": [
+        "Por todo junto… sí, puedo hacer algo. {price} cada uno.",
+        "Si te llevas varios, te los dejo a {price}."
+      ],
+      "walk_back": [
+        "¡Espera, espera! {price}, ¿te va?",
+        "Vuelve aquí. Hagamos {price} y no se hable más."
+      ],
+      "walk_let_go": [
+        "Ahí tienes la puerta.",
+        "Como quieras. Que te vaya bien."
+      ],
+      "walk_shrug": [
+        "Haz lo que quieras.",
+        "No voy a correr detrás de ti."
+      ],
+      "intimidate_ok": [
+        "Va… vale, vale. {price}. Pero tranquilízate.",
+        "Está bien… {price}. No quiero problemas."
+      ],
+      "intimidate_fail": [
+        "¿Me estás amenazando? ¡Fuera de mi tienda!",
+        "Sal ahora mismo, o llamo a la guardia."
+      ],
+      "welcome_hostile": [
+        "¿Tú otra vez? Di lo que quieras y lárgate.",
+        "No eres bienvenido aquí. Que sea rápido."
+      ],
+      "refuse_trade": [
+        "A ti no te vendo nada. Ni hoy ni mañana.",
+        "Busca otro mostrador. Aquí no hay nada para ti."
+      ],
+      "closed_now": [
+        "(El puesto está cerrado a esta hora.)"
+      ],
+      "tell_like": [
+        "¿De verdad? Eso cambia las cosas. Siéntate, siéntate.",
+        "Vaya… no lo esperaba. Me caes mejor de lo que pensaba."
+      ],
+      "tell_dislike": [
+        "Ah. Ya veo. (Su gesto se enfría un poco).",
+        "Hmm. Preferiría no haberlo sabido."
+      ],
+      "tell_neutral": [
+        "Interesante. Gracias por contármelo.",
+        "Ajá. Cada uno con su historia."
+      ],
+      "story_good": [
+        "¡Qué historia! Hacía años que no escuchaba algo así. Te debo una.",
+        "Eso hay que contarlo en la taberna. ¡Bien narrado!"
+      ],
+      "story_meh": [
+        "Bonita historia. Algo exagerada, quizá.",
+        "Bueno… he oído mejores, pero gracias."
+      ],
+      "lie_ok": [
+        "¡No me digas! Entonces somos casi del mismo bando.",
+        "Si tú lo dices… te creo."
+      ],
+      "lie_caught": [
+        "¿Me tomas por idiota? Sé reconocer una mentira.",
+        "Mentiroso. Y lo peor es que mientes mal."
+      ],
+      "rumor_share": [
+        "Te diré algo, pero no lo has oído de mí…",
+        "Escucha esto, que te puede interesar…"
+      ],
+      "rumor_refuse": [
+        "No te conozco lo bastante para contarte nada.",
+        "Yo no sé nada. Y si supiera, no te lo diría."
+      ],
+      "rumor_price": [
+        "La información cuesta. {price} y hablamos.",
+        "Todo tiene un precio, amigo. Esto, {price}."
+      ],
+      "rumor_none": [
+        "Hoy no sé nada que no sepas ya.",
+        "Todo tranquilo. No hay mucho que contar."
+      ],
+      "drink_accept": [
+        "¡Una ronda! Eso es hablar mi idioma.",
+        "Acepto, pero la próxima la pago yo."
+      ],
+      "drink_decline": [
+        "Gracias, pero no bebo con desconocidos.",
+        "Ahora no. Quizá otro día."
+      ],
+      "drink_invite": [
+        "Oye, ¿te tomas una conmigo cuando cierre?",
+        "Esta noche bajo al Jabalí. ¿Me acompañas a una jarra?"
+      ],
+      "drink_paid_first": [
+        "¿Pagaste tú antes de que pudiera sacar la bolsa? Así se gana a uno. ¡Salud!"
+      ],
+      "gift_love": [
+        "¿Para mí? ¡Es justo lo que quería! No lo olvidaré.",
+        "¡Qué detalle! Me has ganado."
+      ],
+      "gift_ok": [
+        "Gracias, es un buen detalle.",
+        "Muy amable de tu parte."
+      ],
+      "gift_meh": [
+        "Ah… gracias. Supongo.",
+        "Bueno, se agradece la intención."
+      ],
+      "gift_bad": [
+        "¿Y esto para qué lo quiero yo?",
+        "No hacía falta… de verdad, no hacía falta."
+      ],
+      "favor_ask": [
+        "Tengo un problema y quizá puedas ayudarme.",
+        "¿Buscas trabajo? Tengo algo para ti."
+      ],
+      "favor_accept": [
+        "Trato hecho. Sabía que podía contar contigo.",
+        "Bien. No me falles."
+      ],
+      "favor_done": [
+        "¡Cumpliste! Eres de fiar. Ten, te lo has ganado.",
+        "Palabra cumplida. Eso vale más que el oro."
+      ],
+      "favor_late": [
+        "Me diste tu palabra y no cumpliste. Lo recordaré."
+      ],
+      "secret_reveal": [
+        "Está bien… te lo contaré, pero esto queda entre nosotros.",
+        "Nunca se lo he dicho a nadie, pero a ti sí."
+      ],
+      "secret_fail": [
+        "No sé de qué me hablas.",
+        "Hay preguntas que es mejor no hacer."
+      ],
+      "steal_caught": [
+        "¡Al ladrón! ¡Suelta eso ahora mismo!",
+        "¿Crees que no te vi? Fuera de aquí, ratero."
+      ],
+      "spontaneous_discount": [
+        "Hoy me has caído bien: te hago una rebaja.",
+        "Por ser tú, hoy te lo dejo un poco más barato."
+      ],
+      "small_gift": [
+        "Toma, llévate esto. Invita la casa.",
+        "Un regalito para el camino. No me des las gracias."
+      ],
+      "guarantee": [
+        "Para algo tan caro necesito garantías: te cobro una fianza por las dudas."
+      ],
+      "desperate": [
+        "Se te ve con prisa… y la prisa se paga."
+      ]
     },
     "gruñon": {
-      "welcome": ["Hmpf. Mira, pero no toques el yunque.", "Bienvenido a la fragua. Habla fuerte, que el martillo no para."],
-      "welcome_friend": ["¡Ja! El único que entiende de acero. Pasa.", "Ah, eres tú. Te guardé algo bueno."],
-      "welcome_cold": ["Tú. Compra rápido y vete.", "Mientras no me hagas perder el tiempo…"],
-      "open_buy": ["{item}. {price}. Forjado aquí, con estas manos.", "{price} por {item}. Y vale cada moneda."],
-      "open_sell": ["Hmm. Por esto, {price}. Y porque estoy de buen humor.", "Te doy {price}. El metal no es malo."],
-      "counter_far": ["¿Sabes cuánto cuesta el carbón? {price}.", "Hmpf. Bajo a {price}, y ya es mucho decir."],
-      "counter_near": ["Grmpf… {price}. Estás tentando a la suerte.", "Está bien… {price}."],
-      "insulted": ["¿{offer}? ¡Por eso no me pago ni el carbón! Respeta el oficio.", "¡¿{offer}?! Mi abuelo se revolvería en su tumba."],
-      "accept_offer": ["Hmpf. {price}. Llévatelo antes de que me arrepienta.", "Hecho. {price}. Cuídalo, que es buen acero."],
-      "accept_happy": ["¡Ja! Trato hecho. Eres de los que saben.", "Hecho, y lo celebro. Pocas veces se negocia así."],
-      "final_offer": ["{price}. Última palabra de enano.", "Ya está. {price}, o la puerta."],
-      "walkout": ["¡Fuera! No vendo a quien no respeta el oficio.", "Se acabó. Vuelve cuando tengas modales."],
-      "flatter_ok": ["Hmpf… Sí, es buena hoja. La mejor de la calle.", "Al fin alguien con ojo. Te escucho."],
-      "flatter_fail": ["No me engatuses. Paga o vete.", "Palabras. El acero habla solo."],
-      "flaw_ok": ["…El temple tiene una sombra, sí. Tienes buen ojo. Algo rebajo.", "Hmpf. Lo has visto. Pocos lo ven. Ajusto."],
-      "flaw_fail": ["¿Defectos? ¡Esto está más recto que tu espalda!", "¿Me vas a enseñar a mí a forjar?"],
-      "walk_let_go": ["Vete. Mi acero no necesita mendigar.", "La puerta pesa menos que mi martillo. Úsala."],
-      "intimidate_ok": ["…Hmpf. {price}. Pero no vuelvas a hacer eso.", "Bah. {price}. No vale la pena pelear por esto."],
-      "intimidate_fail": ["¿A mí? ¿Con un martillo en la mano? ¡FUERA!", "Ja. Vuelve a intentarlo y te forjo una lección."]
+      "welcome": [
+        "Hmpf. Mira, pero no toques el yunque.",
+        "Bienvenido a la fragua. Habla fuerte, que el martillo no para."
+      ],
+      "welcome_friend": [
+        "¡Ja! El único que entiende de acero. Pasa.",
+        "Ah, eres tú. Te guardé algo bueno."
+      ],
+      "welcome_cold": [
+        "Tú. Compra rápido y vete.",
+        "Mientras no me hagas perder el tiempo…"
+      ],
+      "open_buy": [
+        "{item}. {price}. Forjado aquí, con estas manos.",
+        "{price} por {item}. Y vale cada moneda."
+      ],
+      "open_sell": [
+        "Hmm. Por esto, {price}. Y porque estoy de buen humor.",
+        "Te doy {price}. El metal no es malo."
+      ],
+      "counter_far": [
+        "¿Sabes cuánto cuesta el carbón? {price}.",
+        "Hmpf. Bajo a {price}, y ya es mucho decir."
+      ],
+      "counter_near": [
+        "Grmpf… {price}. Estás tentando a la suerte.",
+        "Está bien… {price}."
+      ],
+      "insulted": [
+        "¿{offer}? ¡Por eso no me pago ni el carbón! Respeta el oficio.",
+        "¡¿{offer}?! Mi abuelo se revolvería en su tumba."
+      ],
+      "accept_offer": [
+        "Hmpf. {price}. Llévatelo antes de que me arrepienta.",
+        "Hecho. {price}. Cuídalo, que es buen acero."
+      ],
+      "accept_happy": [
+        "¡Ja! Trato hecho. Eres de los que saben.",
+        "Hecho, y lo celebro. Pocas veces se negocia así."
+      ],
+      "final_offer": [
+        "{price}. Última palabra de enano.",
+        "Ya está. {price}, o la puerta."
+      ],
+      "walkout": [
+        "¡Fuera! No vendo a quien no respeta el oficio.",
+        "Se acabó. Vuelve cuando tengas modales."
+      ],
+      "flatter_ok": [
+        "Hmpf… Sí, es buena hoja. La mejor de la calle.",
+        "Al fin alguien con ojo. Te escucho."
+      ],
+      "flatter_fail": [
+        "No me engatuses. Paga o vete.",
+        "Palabras. El acero habla solo."
+      ],
+      "flaw_ok": [
+        "…El temple tiene una sombra, sí. Tienes buen ojo. Algo rebajo.",
+        "Hmpf. Lo has visto. Pocos lo ven. Ajusto."
+      ],
+      "flaw_fail": [
+        "¿Defectos? ¡Esto está más recto que tu espalda!",
+        "¿Me vas a enseñar a mí a forjar?"
+      ],
+      "walk_let_go": [
+        "Vete. Mi acero no necesita mendigar.",
+        "La puerta pesa menos que mi martillo. Úsala."
+      ],
+      "intimidate_ok": [
+        "…Hmpf. {price}. Pero no vuelvas a hacer eso.",
+        "Bah. {price}. No vale la pena pelear por esto."
+      ],
+      "intimidate_fail": [
+        "¿A mí? ¿Con un martillo en la mano? ¡FUERA!",
+        "Ja. Vuelve a intentarlo y te forjo una lección."
+      ]
     },
     "campechana": {
-      "welcome": ["¡Bienvenido, bienvenido! ¿Un trozo de pan mientras miras?", "¡Pasa, que fuera hace frío! ¿Qué buscas?"],
-      "welcome_friend": ["¡Mi viajero preferido! Siéntate, que te sirvo algo.", "¡Volviste! Te tengo una novedad que te va a encantar."],
-      "welcome_cold": ["Ah… hola. Pasa, supongo.", "Buenos días. ¿Vas a comprar?"],
-      "greet": ["Ay, ¿regateamos? Vamos a ver qué podemos hacer.", "A ver, a ver. Hablemos."],
-      "open_buy": ["{item}… te lo dejo en {price}, cariño.", "Por {item}, {price}. Es lo que me cuesta traerlo, casi."],
-      "open_sell": ["Uy, por esto te puedo dar {price}.", "Mira, {price} por {item}. ¿Te parece?"],
-      "counter_far": ["Ay, no, no puedo tanto. ¿{price}?", "Me matas. {price}, y porque me caes bien."],
-      "counter_near": ["Ya casi… {price} y lo envuelvo.", "Vale, vale: {price}. ¿Trato?"],
-      "insulted": ["¡Ay, {offer}! ¿Quieres que cierre la tienda?", "Cariño, con {offer} no me alcanza ni para la harina."],
-      "accept_offer": ["¡Hecho! {price}. Que te dure mucho.", "¡Venga, {price}! Que tengas buen viaje."],
-      "accept_happy": ["¡Trato hecho! Y llévate esta galleta, invita la casa.", "¡Qué gusto! Hecho. Vuelve a contarme tus viajes."],
-      "final_offer": ["Mira, {price} es lo último. De verdad.", "No puedo bajar más que {price}, lo siento."],
-      "walkout": ["Mira, mejor dejémoslo aquí. Me pusiste de mal humor.", "Suficiente por hoy, ¿eh?"],
-      "flatter_ok": ["¡Ay, qué amable! Bueno, algo te puedo ajustar.", "Pues gracias, cielo. Me alegraste el día."],
-      "flatter_fail": ["Jaja, buen intento.", "Mucho azúcar y poca harina, ¿eh?"],
-      "chat_neutral": ["¿Ah, sí? Cuéntame más.", "Mira tú. ¡Lo que una aprende!"],
-      "walk_back": ["¡Ay, no te vayas así! {price}, ¿va?", "¡Espera! Que por {price} te lo llevas."],
-      "walk_shrug": ["Bueno, tú sabrás. Aquí sigo.", "Si vuelves, aquí estaré."],
-      "intimidate_ok": ["V-vale… {price}. Pero así no se hacen las cosas.", "Está bien… {price}. No hace falta ponerse así."],
-      "intimidate_fail": ["¿Perdona? ¡Fuera de mi tienda! ¡Y no vuelvas en días!", "Con esa actitud, aquí no compras."]
+      "welcome": [
+        "¡Bienvenido, bienvenido! ¿Un trozo de pan mientras miras?",
+        "¡Pasa, que fuera hace frío! ¿Qué buscas?"
+      ],
+      "welcome_friend": [
+        "¡Mi viajero preferido! Siéntate, que te sirvo algo.",
+        "¡Volviste! Te tengo una novedad que te va a encantar."
+      ],
+      "welcome_cold": [
+        "Ah… hola. Pasa, supongo.",
+        "Buenos días. ¿Vas a comprar?"
+      ],
+      "greet": [
+        "Ay, ¿regateamos? Vamos a ver qué podemos hacer.",
+        "A ver, a ver. Hablemos."
+      ],
+      "open_buy": [
+        "{item}… te lo dejo en {price}, cariño.",
+        "Por {item}, {price}. Es lo que me cuesta traerlo, casi."
+      ],
+      "open_sell": [
+        "Uy, por esto te puedo dar {price}.",
+        "Mira, {price} por {item}. ¿Te parece?"
+      ],
+      "counter_far": [
+        "Ay, no, no puedo tanto. ¿{price}?",
+        "Me matas. {price}, y porque me caes bien."
+      ],
+      "counter_near": [
+        "Ya casi… {price} y lo envuelvo.",
+        "Vale, vale: {price}. ¿Trato?"
+      ],
+      "insulted": [
+        "¡Ay, {offer}! ¿Quieres que cierre la tienda?",
+        "Cariño, con {offer} no me alcanza ni para la harina."
+      ],
+      "accept_offer": [
+        "¡Hecho! {price}. Que te dure mucho.",
+        "¡Venga, {price}! Que tengas buen viaje."
+      ],
+      "accept_happy": [
+        "¡Trato hecho! Y llévate esta galleta, invita la casa.",
+        "¡Qué gusto! Hecho. Vuelve a contarme tus viajes."
+      ],
+      "final_offer": [
+        "Mira, {price} es lo último. De verdad.",
+        "No puedo bajar más que {price}, lo siento."
+      ],
+      "walkout": [
+        "Mira, mejor dejémoslo aquí. Me pusiste de mal humor.",
+        "Suficiente por hoy, ¿eh?"
+      ],
+      "flatter_ok": [
+        "¡Ay, qué amable! Bueno, algo te puedo ajustar.",
+        "Pues gracias, cielo. Me alegraste el día."
+      ],
+      "flatter_fail": [
+        "Jaja, buen intento.",
+        "Mucho azúcar y poca harina, ¿eh?"
+      ],
+      "chat_neutral": [
+        "¿Ah, sí? Cuéntame más.",
+        "Mira tú. ¡Lo que una aprende!"
+      ],
+      "walk_back": [
+        "¡Ay, no te vayas así! {price}, ¿va?",
+        "¡Espera! Que por {price} te lo llevas."
+      ],
+      "walk_shrug": [
+        "Bueno, tú sabrás. Aquí sigo.",
+        "Si vuelves, aquí estaré."
+      ],
+      "intimidate_ok": [
+        "V-vale… {price}. Pero así no se hacen las cosas.",
+        "Está bien… {price}. No hace falta ponerse así."
+      ],
+      "intimidate_fail": [
+        "¿Perdona? ¡Fuera de mi tienda! ¡Y no vuelvas en días!",
+        "Con esa actitud, aquí no compras."
+      ]
     },
     "erudito": {
-      "welcome": ["Bienvenido al Gabinete. Por favor, no toque las vitrinas.", "Ah, un visitante. Cada objeto aquí tiene su historia."],
-      "welcome_friend": ["Un placer verle de nuevo. Le reservé algo singular.", "Mi estimado cliente. Pase, pase."],
-      "welcome_cold": ["Mire, pero con las manos a la espalda.", "Le ruego que sea breve."],
-      "greet": ["¿Desea discutir el valor? Con gusto.", "Hablemos, pues, de cifras."],
-      "open_buy": ["{item}: {price}. Una tasación justa, le aseguro.", "Para {item}, {price}. Su procedencia lo justifica."],
-      "open_sell": ["Interesante. Por {item}, {price}.", "Lo tasaría en {price}. Ni más ni menos."],
-      "counter_far": ["Me temo que no. {price}, con todo respeto.", "Esa cifra no refleja su valor. {price}."],
-      "counter_near": ["Nos aproximamos. {price}.", "Razonable… pongamos {price}."],
-      "insulted": ["¿{offer}? Eso no es una oferta: es una ofensa a la artesanía arcana.", "Le ruego que no me haga perder el tiempo con {offer}."],
-      "accept_offer": ["Aceptable. {price}. Cuídelo bien.", "De acuerdo. {price}. Que le sea útil."],
-      "accept_happy": ["Trato cerrado, y con gusto. Pocas veces se negocia con tanta elegancia.", "Excelente. Me alegra que acabe en buenas manos."],
-      "final_offer": ["{price}. No hay margen de discusión.", "Mi tasación final: {price}."],
-      "walkout": ["Creo que hemos terminado. Buenas tardes.", "Esta conversación ha perdido todo interés."],
-      "flatter_ok": ["Qué amable. Es usted un conocedor.", "Agradezco el comentario. No es común tanta sensibilidad."],
-      "flatter_fail": ["La adulación no cambia una tasación.", "Ya. ¿Algo más?"],
-      "bluff_fail": ["Conozco todos los inventarios de esta ciudad. Lo dudo mucho.", "Qué curioso: ninguna otra tienda tiene eso. Lo sé."],
-      "walk_let_go": ["Como guste. La puerta está a su derecha.", "Le deseo suerte encontrándolo en otro lugar."],
-      "intimidate_ok": ["…Muy bien. {price}. Recordaré esto.", "Hm. {price}. Ha sido muy poco elegante."],
-      "intimidate_fail": ["¿Amenazas? ¿Aquí, rodeado de objetos que pueden fulminarle? Retírese.", "Salga. Ahora. Mis guardas son menos pacientes que yo."]
+      "welcome": [
+        "Bienvenido al Gabinete. Por favor, no toque las vitrinas.",
+        "Ah, un visitante. Cada objeto aquí tiene su historia."
+      ],
+      "welcome_friend": [
+        "Un placer verle de nuevo. Le reservé algo singular.",
+        "Mi estimado cliente. Pase, pase."
+      ],
+      "welcome_cold": [
+        "Mire, pero con las manos a la espalda.",
+        "Le ruego que sea breve."
+      ],
+      "greet": [
+        "¿Desea discutir el valor? Con gusto.",
+        "Hablemos, pues, de cifras."
+      ],
+      "open_buy": [
+        "{item}: {price}. Una tasación justa, le aseguro.",
+        "Para {item}, {price}. Su procedencia lo justifica."
+      ],
+      "open_sell": [
+        "Interesante. Por {item}, {price}.",
+        "Lo tasaría en {price}. Ni más ni menos."
+      ],
+      "counter_far": [
+        "Me temo que no. {price}, con todo respeto.",
+        "Esa cifra no refleja su valor. {price}."
+      ],
+      "counter_near": [
+        "Nos aproximamos. {price}.",
+        "Razonable… pongamos {price}."
+      ],
+      "insulted": [
+        "¿{offer}? Eso no es una oferta: es una ofensa a la artesanía arcana.",
+        "Le ruego que no me haga perder el tiempo con {offer}."
+      ],
+      "accept_offer": [
+        "Aceptable. {price}. Cuídelo bien.",
+        "De acuerdo. {price}. Que le sea útil."
+      ],
+      "accept_happy": [
+        "Trato cerrado, y con gusto. Pocas veces se negocia con tanta elegancia.",
+        "Excelente. Me alegra que acabe en buenas manos."
+      ],
+      "final_offer": [
+        "{price}. No hay margen de discusión.",
+        "Mi tasación final: {price}."
+      ],
+      "walkout": [
+        "Creo que hemos terminado. Buenas tardes.",
+        "Esta conversación ha perdido todo interés."
+      ],
+      "flatter_ok": [
+        "Qué amable. Es usted un conocedor.",
+        "Agradezco el comentario. No es común tanta sensibilidad."
+      ],
+      "flatter_fail": [
+        "La adulación no cambia una tasación.",
+        "Ya. ¿Algo más?"
+      ],
+      "bluff_fail": [
+        "Conozco todos los inventarios de esta ciudad. Lo dudo mucho.",
+        "Qué curioso: ninguna otra tienda tiene eso. Lo sé."
+      ],
+      "walk_let_go": [
+        "Como guste. La puerta está a su derecha.",
+        "Le deseo suerte encontrándolo en otro lugar."
+      ],
+      "intimidate_ok": [
+        "…Muy bien. {price}. Recordaré esto.",
+        "Hm. {price}. Ha sido muy poco elegante."
+      ],
+      "intimidate_fail": [
+        "¿Amenazas? ¿Aquí, rodeado de objetos que pueden fulminarle? Retírese.",
+        "Salga. Ahora. Mis guardas son menos pacientes que yo."
+      ]
     },
     "firme": {
-      "welcome": ["Buenas. Mira los animales, pero sin asustarlos.", "Bienvenido a los establos. ¿Qué buscas?"],
-      "welcome_friend": ["¡Hey! Los caballos te reconocieron antes que yo.", "Pasa, pasa. Tengo algo que te va a gustar."],
-      "welcome_cold": ["Mira y no molestes a los animales.", "¿Qué quieres?"],
-      "open_buy": ["{item}: {price}. Está sano y bien cuidado.", "Por {item} pido {price}. Lo vale."],
-      "open_sell": ["Por {item} te doy {price}. Tendré que cuidarlo.", "{price}. Es lo que me cuesta mantenerlo."],
-      "counter_far": ["No. {price}, y lo dejo bien herrado.", "Eso no cubre ni el forraje. {price}."],
-      "counter_near": ["Está bien… {price}.", "Ni para ti ni para mí: {price}."],
-      "insulted": ["¿{offer}? Mis animales valen más que eso.", "Con {offer} no te llevas ni las herraduras."],
-      "accept_happy": ["Hecho. Trátalo bien, ¿eh? Me gusta saber que va con buena gente.", "¡Trato hecho! Pásate a contarme cómo le va."],
-      "walk_let_go": ["Vete, entonces. Ya habrá quien lo aprecie.", "Como quieras."],
-      "intimidate_fail": ["¿Me amenazas en mi propio establo? ¡Largo!", "Fuera, o te presento a mi mula. Patea fuerte."]
+      "welcome": [
+        "Buenas. Mira los animales, pero sin asustarlos.",
+        "Bienvenido a los establos. ¿Qué buscas?"
+      ],
+      "welcome_friend": [
+        "¡Hey! Los caballos te reconocieron antes que yo.",
+        "Pasa, pasa. Tengo algo que te va a gustar."
+      ],
+      "welcome_cold": [
+        "Mira y no molestes a los animales.",
+        "¿Qué quieres?"
+      ],
+      "open_buy": [
+        "{item}: {price}. Está sano y bien cuidado.",
+        "Por {item} pido {price}. Lo vale."
+      ],
+      "open_sell": [
+        "Por {item} te doy {price}. Tendré que cuidarlo.",
+        "{price}. Es lo que me cuesta mantenerlo."
+      ],
+      "counter_far": [
+        "No. {price}, y lo dejo bien herrado.",
+        "Eso no cubre ni el forraje. {price}."
+      ],
+      "counter_near": [
+        "Está bien… {price}.",
+        "Ni para ti ni para mí: {price}."
+      ],
+      "insulted": [
+        "¿{offer}? Mis animales valen más que eso.",
+        "Con {offer} no te llevas ni las herraduras."
+      ],
+      "accept_happy": [
+        "Hecho. Trátalo bien, ¿eh? Me gusta saber que va con buena gente.",
+        "¡Trato hecho! Pásate a contarme cómo le va."
+      ],
+      "walk_let_go": [
+        "Vete, entonces. Ya habrá quien lo aprecie.",
+        "Como quieras."
+      ],
+      "intimidate_fail": [
+        "¿Me amenazas en mi propio establo? ¡Largo!",
+        "Fuera, o te presento a mi mula. Patea fuerte."
+      ]
     },
     "sombrio": {
-      "welcome": ["Shh. Entra y cierra la puerta.", "No hago preguntas. Tú tampoco."],
-      "welcome_friend": ["Ah, mi socio favorito. Tengo algo… especial.", "Sabía que volverías. Siempre vuelven."],
-      "welcome_cold": ["Tú. Rápido, que llamas la atención.", "Si vienes a dar problemas, ya sabes dónde está la salida."],
-      "greet": ["¿Negociamos? Me encanta negociar.", "Hablemos. Pero bajito."],
-      "open_buy": ["{item}… {price}. Y no preguntes de dónde salió.", "{price}. Por {item}, es una ganga. Créeme."],
-      "open_sell": ["Hmm. {price}. Tendré que… limpiarlo un poco.", "Te doy {price}. Riesgo mío, ¿entiendes?"],
-      "counter_far": ["Je. No. {price}.", "Buen intento. {price}."],
-      "counter_near": ["Me gustas. {price}.", "Vale, vale… {price}, y no le digas a nadie."],
-      "insulted": ["¿{offer}? ¿Crees que soy idiota? Los idiotas no duran aquí.", "Je. {offer}. Gracioso. Ahora en serio."],
-      "accept_offer": ["Hecho. Y esta conversación no existió.", "{price}. Un placer hacer negocios."],
-      "accept_happy": ["Trato. Tú y yo vamos a llevarnos muy bien.", "Hecho. Avísame si necesitas… otras cosas."],
-      "final_offer": ["{price}. No regateo más.", "Última oferta: {price}. Tic, tac."],
-      "walkout": ["Se terminó. Y no me busques.", "Fuera. Y olvida que me viste."],
-      "flatter_fail": ["Los halagos son gratis. Mis cosas, no.", "Je. Lisonjero. No funciona conmigo."],
-      "bluff_fail": ["¿Otra tienda? Yo conozco todas las tiendas. Y a todos los que mienten.", "Mientes peor que un guardia borracho."],
-      "walk_let_go": ["Vete. Ya volverás.", "Tic, tac. Hay otros interesados."],
-      "walk_back": ["Ey… espera. {price}. Pero solo hoy.", "Bueno, bueno. {price}, y no se habla más."],
-      "intimidate_ok": ["Je… vale. {price}. Pero me lo apunto.", "{price}. Tienes agallas. Eso me gusta… a medias."],
-      "intimidate_fail": ["Qué tierno. Ahora date vuelta despacio: hay alguien detrás de ti.", "¿A mí? En mi callejón. Je. Vete antes de que me enfade de verdad."]
+      "welcome": [
+        "Shh. Entra y cierra la puerta.",
+        "No hago preguntas. Tú tampoco."
+      ],
+      "welcome_friend": [
+        "Ah, mi socio favorito. Tengo algo… especial.",
+        "Sabía que volverías. Siempre vuelven."
+      ],
+      "welcome_cold": [
+        "Tú. Rápido, que llamas la atención.",
+        "Si vienes a dar problemas, ya sabes dónde está la salida."
+      ],
+      "greet": [
+        "¿Negociamos? Me encanta negociar.",
+        "Hablemos. Pero bajito."
+      ],
+      "open_buy": [
+        "{item}… {price}. Y no preguntes de dónde salió.",
+        "{price}. Por {item}, es una ganga. Créeme."
+      ],
+      "open_sell": [
+        "Hmm. {price}. Tendré que… limpiarlo un poco.",
+        "Te doy {price}. Riesgo mío, ¿entiendes?"
+      ],
+      "counter_far": [
+        "Je. No. {price}.",
+        "Buen intento. {price}."
+      ],
+      "counter_near": [
+        "Me gustas. {price}.",
+        "Vale, vale… {price}, y no le digas a nadie."
+      ],
+      "insulted": [
+        "¿{offer}? ¿Crees que soy idiota? Los idiotas no duran aquí.",
+        "Je. {offer}. Gracioso. Ahora en serio."
+      ],
+      "accept_offer": [
+        "Hecho. Y esta conversación no existió.",
+        "{price}. Un placer hacer negocios."
+      ],
+      "accept_happy": [
+        "Trato. Tú y yo vamos a llevarnos muy bien.",
+        "Hecho. Avísame si necesitas… otras cosas."
+      ],
+      "final_offer": [
+        "{price}. No regateo más.",
+        "Última oferta: {price}. Tic, tac."
+      ],
+      "walkout": [
+        "Se terminó. Y no me busques.",
+        "Fuera. Y olvida que me viste."
+      ],
+      "flatter_fail": [
+        "Los halagos son gratis. Mis cosas, no.",
+        "Je. Lisonjero. No funciona conmigo."
+      ],
+      "bluff_fail": [
+        "¿Otra tienda? Yo conozco todas las tiendas. Y a todos los que mienten.",
+        "Mientes peor que un guardia borracho."
+      ],
+      "walk_let_go": [
+        "Vete. Ya volverás.",
+        "Tic, tac. Hay otros interesados."
+      ],
+      "walk_back": [
+        "Ey… espera. {price}. Pero solo hoy.",
+        "Bueno, bueno. {price}, y no se habla más."
+      ],
+      "intimidate_ok": [
+        "Je… vale. {price}. Pero me lo apunto.",
+        "{price}. Tienes agallas. Eso me gusta… a medias."
+      ],
+      "intimidate_fail": [
+        "Qué tierno. Ahora date vuelta despacio: hay alguien detrás de ti.",
+        "¿A mí? En mi callejón. Je. Vete antes de que me enfade de verdad."
+      ]
     }
   }
 }

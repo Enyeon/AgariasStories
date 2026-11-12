@@ -1,0 +1,27 @@
+{
+  "$comment": "Rumores. topic: lugares | personas | peligros | rutas | eventos | facciones. truth: cierto | parcial | falso | exagerado (el jugador no lo ve: lo intuye con Perspicacia o lo descubre jugando). region: sólo se cuenta en esa región (vacío = en todas). event: sólo mientras dure ese evento o después (se vuelve «viejo»). value: comun | valioso | secreto (los secretos sólo se cuentan con mucha confianza o pagando). reveals: id de ubicación oculta o de comerciante que el rumor permite descubrir.",
+  "rumors": [
+    { "id": "lobos-camino", "topic": "peligros", "region": "valle", "truth": "cierto", "value": "comun", "text": "Una manada de lobos grises baja de los bosques al anochecer y ataca a los viajeros del camino viejo." },
+    { "id": "molino-fantasma", "topic": "lugares", "region": "valle", "truth": "exagerado", "value": "comun", "text": "Dicen que en el molino abandonado del arroyo se oyen gritos de un fantasma. (Más bien serán lechuzas… o eso espero)." },
+    { "id": "alcalde-deudas", "topic": "personas", "region": "valle", "truth": "parcial", "value": "comun", "text": "El alcalde debe una fortuna al Gremio de Mercaderes y por eso les deja subir los impuestos de la plaza." },
+    { "id": "sotano-jabali", "topic": "lugares", "region": "valle", "truth": "cierto", "value": "secreto", "text": "Bajo la barra del Jabalí Tuerto hay una trampilla. Por las noches, un tal «Coleccionista» vende allí cosas que no existen en ningún catálogo.", "reveals": "sotano-jabali" },
+    { "id": "guardia-corrupta", "topic": "facciones", "region": "valle", "truth": "cierto", "value": "valioso", "text": "Dos sargentos de la guardia cobran de la Mano Gris para avisar antes de cada redada." },
+    { "id": "ruta-paso-gris", "topic": "rutas", "region": "montes", "truth": "cierto", "value": "valioso", "text": "El Paso Gris ahorra dos días hasta Karak-Dûm, pero sólo es seguro con buen tiempo: hay desprendimientos." },
+    { "id": "veta-plata", "topic": "lugares", "region": "montes", "truth": "falso", "value": "comun", "text": "En la Veta Honda encontraron un filón de plata tan grande que cualquiera puede hacerse rico con un pico." },
+    { "id": "gusano-roca", "topic": "peligros", "region": "montes", "truth": "cierto", "value": "comun", "text": "Algo enorme cava túneles bajo el campamento minero. Ya se tragó tres carros." },
+    { "id": "rey-enano", "topic": "personas", "region": "montes", "truth": "parcial", "value": "valioso", "text": "El rey de Karak-Dûm está enfermo y sus sobrinos ya se disputan la corona." },
+    { "id": "desertores", "topic": "facciones", "region": "marca", "truth": "cierto", "value": "comun", "text": "Cada semana desertan soldados de la Guardia del Norte. Los que atrapan, cuelgan de la empalizada." },
+    { "id": "horda-norte", "topic": "eventos", "region": "marca", "truth": "exagerado", "value": "comun", "text": "Una horda de diez mil orcos marcha hacia el Fuerte del Cuervo. Caerá antes del invierno." },
+    { "id": "camino-seguro-norte", "topic": "rutas", "region": "marca", "truth": "parcial", "value": "valioso", "text": "Las patrullas de la Guardia escoltan gratis a quien viaje con ellas los Ferrodías… si les caes bien." },
+    { "id": "barco-negro", "topic": "peligros", "region": "costa", "truth": "cierto", "value": "comun", "text": "Un barco de velas negras ronda la costa de noche. Los pescadores ya no salen después del ocaso." },
+    { "id": "isla-perla", "topic": "lugares", "region": "costa", "truth": "falso", "value": "comun", "text": "A tres días de navegación hay una isla con perlas del tamaño de un puño. Nadie que fue ha vuelto, claro." },
+    { "id": "hermandad-contrabando", "topic": "facciones", "region": "costa", "truth": "parcial", "value": "valioso", "text": "La Hermandad de las Mareas hace la vista gorda con el contrabando a cambio de un porcentaje." },
+    { "id": "carro-lunas", "topic": "personas", "truth": "cierto", "value": "comun", "text": "Zahra, la del Carro de las Mil Lunas, viaja entre el valle, los montes y la costa. Lleva cosas que nadie más tiene, pero nunca se queda mucho." },
+    { "id": "ilvaris-pasado", "topic": "personas", "region": "valle", "truth": "parcial", "value": "valioso", "text": "Ilvaris, el tasador elfo, fue expulsado del Círculo Velado por estudiar algo que no debía." },
+    { "id": "guerra-precios", "topic": "eventos", "event": "rumores-guerra", "truth": "cierto", "value": "comun", "text": "Con la frontera revuelta, el acero va a costar el doble antes de fin de mes. Quien compre ahora, gana." },
+    { "id": "bloqueo-causa", "topic": "eventos", "event": "bloqueo-puerto", "truth": "parcial", "value": "valioso", "text": "El bloqueo del puerto no es por los piratas: el Gremio quiere subir el precio de lo que ya tiene almacenado." },
+    { "id": "festival-premio", "topic": "eventos", "event": "festival-cosecha", "truth": "cierto", "value": "comun", "text": "En el Festival de la Cosecha hay concurso de fuerza: el premio es una bolsa de oro y un barril de cerveza." },
+    { "id": "redada-chivato", "topic": "eventos", "event": "redada-guardia", "truth": "cierto", "value": "valioso", "text": "La redada fue por un chivatazo: alguien de dentro vendió a la Mano Gris." },
+    { "id": "fiebre-origen", "topic": "eventos", "event": "fiebre-establos", "truth": "falso", "value": "comun", "text": "La fiebre de los establos la trajo un brujo que maldijo los pozos." }
+  ]
+}

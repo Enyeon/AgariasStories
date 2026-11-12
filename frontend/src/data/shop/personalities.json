@@ -1,0 +1,18 @@
+{
+  "$comment": "Arquetipos de personalidad. Un comerciante puede combinar varios. traits: se suman a los rasgos base del comerciante (0..1). flags: comportamientos del catálogo cerrado del motor (ver domain/shop/personality.js). disposition: ajuste fijo de trato inicial.",
+  "archetypes": [
+    { "id": "codicioso", "label": "Codicioso", "icon": "💰", "description": "Todo tiene precio, también la información. Cede poco al regatear, pero el dinero le abre la boca.", "traits": { "greed": 0.2 }, "flags": ["sellsInformation", "bribable"] },
+    { "id": "amable", "label": "Amable", "icon": "😊", "description": "Trata bien a casi todo el mundo y a veces hace rebajas porque sí.", "traits": { "warmth": 0.2, "patience": 0.1 }, "flags": ["spontaneousDiscount"], "disposition": 8 },
+    { "id": "desconfiado", "label": "Desconfiado", "icon": "🤨", "description": "A los desconocidos les exige garantías y no les cuenta nada hasta conocerlos.", "traits": { "shrewdness": 0.15, "warmth": -0.1 }, "flags": ["strangerWary", "demandsGuarantee"] },
+    { "id": "orgulloso", "label": "Orgulloso", "icon": "🦚", "description": "Le ofende que discutan su trabajo y se ablanda con un buen elogio.", "traits": { "pride": 0.2 }, "flags": ["proud"] },
+    { "id": "avaricioso", "label": "Avaricioso", "icon": "🦊", "description": "Si nota que lo necesitas de verdad, sube el precio.", "traits": { "greed": 0.25, "shrewdness": 0.1 }, "flags": ["exploitDesperation"] },
+    { "id": "generoso", "label": "Generoso", "icon": "🎁", "description": "Regala pequeñas cosas a quien le cae bien y premia la fidelidad.", "traits": { "greed": -0.15, "warmth": 0.15 }, "flags": ["smallGifts", "loyaltyDiscount"], "disposition": 5 },
+    { "id": "chismoso", "label": "Chismoso", "icon": "🗣️", "description": "Habla de todo y con todos. Comparte rumores con facilidad… aunque no siempre sean ciertos.", "traits": { "warmth": 0.05 }, "flags": ["gossip"] },
+    { "id": "honrado", "label": "Honrado", "icon": "🤝", "description": "Nunca miente sobre su mercancía ni sobre lo que sabe. No soporta a los mentirosos.", "traits": { "greed": -0.05 }, "flags": ["truthful", "hatesLiars"] },
+    { "id": "embustero", "label": "Embustero", "icon": "🎭", "description": "Miente con naturalidad: sus rumores hay que tomarlos con pinzas.", "traits": { "shrewdness": 0.1 }, "flags": ["liar"] },
+    { "id": "bebedor", "label": "Amigo de la jarra", "icon": "🍺", "description": "Una ronda compartida vale más que mil palabras. Si le invitas, te abre el corazón.", "traits": { "warmth": 0.05 }, "flags": ["drinks"] },
+    { "id": "rencoroso", "label": "Rencoroso", "icon": "🪨", "description": "No olvida una ofensa. Las malas experiencias pesan el doble.", "traits": { "patience": -0.1 }, "flags": ["grudges"] },
+    { "id": "indulgente", "label": "Indulgente", "icon": "🕊️", "description": "Perdona pronto: las ofensas pesan la mitad.", "traits": { "patience": 0.1 }, "flags": ["forgiving"] },
+    { "id": "cuentacuentos", "label": "Amante de las historias", "icon": "📖", "description": "Adora escuchar aventuras y premia a quien le cuenta una buena.", "traits": { "warmth": 0.05 }, "flags": ["lovesStories"] }
+  ]
+}

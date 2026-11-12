@@ -240,6 +240,7 @@ export function createSheetView(root, { character, readOnly = false, initialTab 
       if (el.matches('[data-race-choice]')) return CHANGES['race-choice'](ed, el);
       if (el.matches('[data-bg]')) return onBackgroundChange(ed, el);
       if (el.matches('[data-persona-set]')) return CHANGES['persona-set'](ed, el);
+      if (el.matches('[data-affiliation]')) return CHANGES.affiliation(ed, el);
       if (el.matches('[data-language]')) return CHANGES.language(ed, el);
       if (el.matches('[data-workshop-equip]')) return CHANGES['workshop-equip'](ed, el);
       if (el.matches('[data-workshop-filter]')) return CHANGES['workshop-filter'](ed, el);

@@ -14,8 +14,12 @@
 
 import { createRng } from './rng.js';
 import { matchesRule } from './catalog.js';
-import { activeEvents, marketPrice } from './pricing.js';
+import { marketPrice } from './pricing.js';
+import { activeEvents, eventReaches } from './world-events.js';
 import { cloneWorld, emptyWorld, HISTORY_DAYS } from './state.js';
+import { shopRegion } from './presence.js';
+import { remember } from './memory.js';
+import { accrueContracts, contractAssortment } from './hiring.js';
 
 const DEFAULT_TARGET = { common: 5, uncommon: 2, rare: 1, veryRare: 1, epic: 1, legendary: 1, unique: 1 };
 const DAILY_TURNOVER = { common: 0.12, uncommon: 0.07, rare: 0.04, veryRare: 0.03, epic: 0.02, legendary: 0.012, unique: 0.008 };
@@ -33,10 +37,11 @@ function targetFor(item, rule) {
 /** Surtido fijo de una tienda: { itemId: { target, unlimited } }. */
 export function computeAssortment(shop, ctx) {
     const result = {};
+    const exclude = new Set(shop.exclude ?? []);
     for (const rule of shop.assortment ?? []) {
         for (const item of ctx.catalog.list) {
-            if (!item.forSale || !matchesRule(item, rule)) continue;
-            result[item.id] = { target: targetFor(item, rule), unlimited: Boolean(rule.unlimited) };
+            if (!item.forSale || exclude.has(item.id) || !matchesRule(item, rule)) continue;
+            result[item.id] = { target: targetFor(item, rule), unlimited: Boolean(rule.unlimited), requires: rule.requires ?? null, lockLabel: rule.label ?? null };
         }
     }
     return result;
@@ -57,7 +62,9 @@ export function reconcileWorld(world, ctx) {
     const next = cloneWorld(world);
     for (const shop of ctx.shopList) {
         const state = (next.shops[shop.id] ??= { stock: {}, history: {}, cash: shop.cash ?? 0 });
-        const assortment = computeAssortment(shop, ctx);
+        // Un contrato puede pedir productos extra (el resto del catálogo es el de siempre).
+        const extra = contractAssortment(next, shop.keeperId);
+        const assortment = computeAssortment(extra.length ? { ...shop, assortment: [...(shop.assortment ?? []), ...extra] } : shop, ctx);
         for (const [itemId, spec] of Object.entries(assortment)) {
             const entry = state.stock[itemId];
             if (!entry) {
@@ -68,12 +75,21 @@ export function reconcileWorld(world, ctx) {
                 if (spec.unlimited) entry.unlimited = true;
                 else delete entry.unlimited;
                 delete entry.consigned;
+                delete entry.eventStock;
+            }
+            const e = state.stock[itemId];
+            if (spec.requires) {
+                e.requires = spec.requires;
+                if (spec.lockLabel) e.lockLabel = spec.lockLabel;
+            } else {
+                delete e.requires;
+                delete e.lockLabel;
             }
         }
         for (const [itemId, entry] of Object.entries(state.stock)) {
             const exists = ctx.item(itemId);
             const inAssortment = Boolean(assortment[itemId]);
-            if (!exists || (!inAssortment && !entry.rotating && !entry.consigned)) {
+            if (!exists || (!inAssortment && !entry.rotating && !entry.consigned && !entry.eventStock)) {
                 delete state.stock[itemId];
                 delete state.history[itemId];
             }
@@ -89,7 +105,7 @@ function startEvents(world, ctx, rng, report) {
     const active = world.events.filter((e) => world.day <= e.end);
     if (active.length >= MAX_CONCURRENT_EVENTS || !rng.chance(EVENT_START_CHANCE)) return;
     const candidates = [...ctx.events.values()].filter((def) => {
-        if (active.some((e) => e.id === def.id)) return false;
+        if (def.manual || active.some((e) => e.id === def.id)) return false;
         const lastEnd = world.eventsEnded[def.id];
         return lastEnd === undefined || world.day - lastEnd > (def.cooldown ?? 10);
     });
@@ -98,13 +114,69 @@ function startEvents(world, ctx, rng, report) {
     const [min, max] = def.duration ?? [3, 6];
     const state = { id: def.id, start: world.day, end: world.day + rng.int(min, max) - 1 };
     world.events.push(state);
+    addEventStock(world, ctx, def, report);
     report.push({ type: 'event-start', eventId: def.id });
+}
+
+/** Mercancía que trae un evento (se retira al terminar). */
+function addEventStock(world, ctx, def, report) {
+    for (const entry of def.stock ?? []) {
+        const shops = entry.shops ?? ctx.shopList.filter((s) => entry.regions?.includes(shopRegion(world, ctx, s.id))).map((s) => s.id);
+        for (const shopId of shops) {
+            const state = world.shops[shopId];
+            if (!state) continue;
+            for (const itemId of entry.ids ?? []) {
+                if (!ctx.item(itemId) || state.stock[itemId]) continue;
+                state.stock[itemId] = { qty: entry.qty ?? 1, target: entry.qty ?? 1, incoming: null, since: world.day, eventStock: def.id };
+                report?.push({ type: 'new-item', shopId, itemId });
+            }
+        }
+    }
+}
+
+function removeEventStock(world, eventId) {
+    for (const state of Object.values(world.shops)) {
+        for (const [itemId, entry] of Object.entries(state.stock)) {
+            if (entry.eventStock === eventId) {
+                delete state.stock[itemId];
+                delete state.history[itemId];
+            }
+        }
+    }
+}
+
+/** El DM lanza un evento a mano (también los marcados `manual`). */
+export function triggerEvent(world, ctx, eventId, days = null) {
+    const def = ctx.events.get(eventId);
+    if (!def) return { error: 'Ese evento no existe.' };
+    const next = cloneWorld(world);
+    next.events = next.events.filter((e) => e.id !== eventId);
+    const [min, max] = def.duration ?? [3, 6];
+    const length = Math.max(1, Math.min(60, Math.trunc(days ?? Math.round((min + max) / 2))));
+    // Empieza «ayer» para que se note desde hoy (los eventos entran gradualmente).
+    next.events.push({ id: def.id, start: next.day - 1, end: next.day + length - 1, manual: true });
+    const report = [];
+    addEventStock(next, ctx, def, report);
+    recordHistory(next, ctx);
+    return { world: next, report: [{ type: 'event-start', eventId }, ...report] };
+}
+
+/** El DM termina un evento antes de tiempo. */
+export function endEvent(world, ctx, eventId) {
+    const next = cloneWorld(world);
+    const had = next.events.some((e) => e.id === eventId);
+    if (!had) return { error: 'Ese evento no está activo.' };
+    next.events = next.events.filter((e) => e.id !== eventId);
+    next.eventsEnded[eventId] = next.day;
+    removeEventStock(next, eventId);
+    return { world: next, report: [{ type: 'event-end', eventId }] };
 }
 
 function endEvents(world, report) {
     world.events = world.events.filter((e) => {
         if (e.end >= world.day) return true;
         world.eventsEnded[e.id] = e.end;
+        removeEventStock(world, e.id);
         report.push({ type: 'event-end', eventId: e.id });
         return false;
     });
@@ -112,7 +184,13 @@ function endEvents(world, report) {
 
 function eventMultiplier(world, ctx, list, item, shopId, field, neutral) {
     let mult = neutral;
+    const regionId = shopRegion(world, ctx, shopId);
+    // Economía regional: la demanda y la reposición dependen de dónde esté la tienda.
+    for (const entry of ctx.regions.get(regionId)?.economy?.[list] ?? []) {
+        if (matchesRule(item, entry.rule)) mult *= entry[field] ?? neutral;
+    }
     for (const { def, intensity } of activeEvents(world, ctx)) {
+        if (!eventReaches(def, regionId)) continue;
         for (const entry of def[list] ?? []) {
             if (entry.shops && !entry.shops.includes(shopId)) continue;
             if (!matchesRule(item, entry.rule)) continue;
@@ -128,6 +206,7 @@ function simulateShopDay(world, ctx, shop, report) {
     const closed = shopClosure(world, ctx, shop.id);
 
     state.cash = Math.round((shop.cash ?? 0) * rng.range(0.85, 1.15));
+    state.revenue = 0; // ventas a otros clientes del día (las usan los contratos)
 
     for (const [itemId, entry] of Object.entries(state.stock)) {
         const item = ctx.item(itemId);
@@ -150,6 +229,7 @@ function simulateShopDay(world, ctx, shop, report) {
             const sold = Math.min(entry.qty, rng.poisson(base * elasticity * demand));
             if (sold > 0) {
                 entry.qty -= sold;
+                state.revenue = (state.revenue ?? 0) + sold * market;
                 if (entry.qty === 0) report.push({ type: entry.rotating ? 'gone' : 'sold-out', shopId: shop.id, itemId });
             }
         }
@@ -189,7 +269,7 @@ function rotate(world, ctx, shop, state, rng, report) {
     }
     let used = Object.values(state.stock).filter((e) => e.rotating).length;
     while (used < slots && rng.chance(chance)) {
-        const pool = ctx.catalog.list.filter((item) => item.forSale && !state.stock[item.id] && rules.some((r) => matchesRule(item, r)));
+        const pool = ctx.catalog.list.filter((item) => item.forSale && !state.stock[item.id] && !(shop.exclude ?? []).includes(item.id) && rules.some((r) => matchesRule(item, r)));
         const item = rng.weighted(pool, (i) => ROTATION_WEIGHT[i.rarity] ?? 1);
         if (!item) break;
         state.stock[item.id] = { qty: 1, target: 1, rotating: true, incoming: null, since: world.day, expires: world.day + rng.int(stayDays[0], stayDays[1]) };
@@ -209,6 +289,36 @@ function recordHistory(world, ctx) {
             if (history.length > HISTORY_DAYS) history.splice(0, history.length - HISTORY_DAYS);
         }
     }
+}
+
+/** Favores con plazo vencido: promesa rota (el comerciante lo recuerda). */
+function expireFavors(world, ctx, report) {
+    for (const [charId, rels] of Object.entries(world.relations ?? {})) {
+        for (const [keeperId, rel] of Object.entries(rels)) {
+            for (const [favorId, f] of Object.entries(rel.favors ?? {})) {
+                if (f.status !== 'active' || !f.due || f.due >= world.day) continue;
+                f.status = 'failed';
+                const keeper = ctx.keepers.get(keeperId);
+                remember(world, ctx, charId === '_' ? null : charId, keeper, 'promise-broken', { note: keeper?.favors?.find((x) => x.id === favorId)?.title ?? '' });
+                report.push({ type: 'favor-failed', keeperId, favorId, charId });
+            }
+        }
+    }
+}
+
+/**
+ * Pasa a la siguiente franja del día (mañana → tarde → anochecer → noche).
+ * Después de la noche empieza un día nuevo (con toda la simulación diaria).
+ */
+export function advancePhase(world, ctx) {
+    const phases = ctx.phases.length || 4;
+    if ((world.phase ?? 0) + 1 < phases) {
+        const next = cloneWorld(world);
+        next.phase = (world.phase ?? 0) + 1;
+        return { world: next, report: [], newDay: false };
+    }
+    const out = advanceDays(world, ctx, 1);
+    return { ...out, newDay: true };
 }
 
 function purgeDaily(world) {
@@ -231,7 +341,10 @@ export function advanceDays(world, ctx, days = 1) {
         }
         recordHistory(next, ctx);
         purgeDaily(next);
+        expireFavors(next, ctx, report);
+        accrueContracts(next, ctx, report);
     }
+    if (total > 0) next.phase = 0;
     next = reconcileWorld(next, ctx);
     return { world: next, report: compactReport(report, next) };
 }

@@ -65,3 +65,7 @@ export function catalogSources({ homebrew = [] } = {}) {
     { origin: 'homebrew', items: homebrewItems(homebrew) },
   ];
 }
+
+
+// El mundo Homebrew del DM (comerciantes, regiones, facciones, eventos) vive en homebrew-world.js.
+export { homebrewMerchants, worldId, homebrewLocations } from './homebrew-world.js';

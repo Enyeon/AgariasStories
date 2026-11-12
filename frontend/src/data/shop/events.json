@@ -1,21 +1,65 @@
 {
-  "$comment": "Eventos del mercado. Entran y salen gradualmente (2 días). modifiers: pct sobre el precio (0.15 = +15 %). demand: multiplica las compras de otros clientes. restock: leadMult acorta/alarga plazos, qtyMult cambia el tamaño de los lotes. closes: tiendas cerradas mientras dure. shops (opcional en cada entrada): limita la entrada a esas tiendas.",
+  "$comment": "Eventos del mercado. Entran y salen gradualmente (2 días). modifiers: pct sobre el precio (0.15 = +15 %). demand: multiplica las compras de otros clientes. restock: leadMult acorta/alarga plazos, qtyMult cambia el tamaño de los lotes. closes: tiendas cerradas mientras dure. shops (opcional en cada entrada): limita la entrada a esas tiendas. regions (opcional): el evento sólo afecta a tiendas de esas regiones. attitudes: [{when (condición sobre el personaje, opcional), keepers ({race,faction,region,ids}, opcional), value, label}] cambian el trato de los comerciantes mientras dure. stock: [{shops|regions, ids, qty}] mercancía temporal que llega con el evento. manual: true = sólo lo lanza el DM.",
   "events": [
     {
       "id": "rumores-guerra",
       "name": "Rumores de guerra",
       "icon": "⚔️",
       "notice": "Llegan noticias de escaramuzas en la frontera norte. Todo el mundo quiere acero.",
-      "duration": [5, 9],
+      "duration": [
+        5,
+        9
+      ],
       "weight": 3,
       "cooldown": 14,
       "modifiers": [
-        { "rule": { "category": "armas" }, "pct": 0.15, "label": "Todos quieren armas por los rumores de guerra" },
-        { "rule": { "category": "armaduras" }, "pct": 0.12, "label": "Las armaduras vuelan de los estantes" }
+        {
+          "rule": {
+            "category": "armas"
+          },
+          "pct": 0.15,
+          "label": "Todos quieren armas por los rumores de guerra"
+        },
+        {
+          "rule": {
+            "category": "armaduras"
+          },
+          "pct": 0.12,
+          "label": "Las armaduras vuelan de los estantes"
+        }
       ],
       "demand": [
-        { "rule": { "category": "armas" }, "mult": 1.8 },
-        { "rule": { "category": "armaduras" }, "mult": 1.6 }
+        {
+          "rule": {
+            "category": "armas"
+          },
+          "mult": 1.8
+        },
+        {
+          "rule": {
+            "category": "armaduras"
+          },
+          "mult": 1.6
+        }
+      ],
+      "attitudes": [
+        {
+          "when": {
+            "background": "soldado"
+          },
+          "value": 8,
+          "label": "En tiempos de guerra se aprecia a los soldados"
+        },
+        {
+          "when": {
+            "faction": "guardia-norte"
+          },
+          "value": 10,
+          "label": "La Guardia defiende la frontera",
+          "keepers": {
+            "region": "marca"
+          }
+        }
       ]
     },
     {
@@ -23,16 +67,46 @@
       "name": "Caravana enana en la plaza",
       "icon": "⛰️",
       "notice": "Una caravana de las montañas descarga herramientas y lingotes. Hay de todo y a buen precio.",
-      "duration": [3, 5],
+      "duration": [
+        3,
+        5
+      ],
       "weight": 3,
       "cooldown": 10,
       "modifiers": [
-        { "rule": { "category": "herramientas" }, "pct": -0.12, "label": "La caravana enana trajo herramientas de sobra" },
-        { "rule": { "tags": ["metal"] }, "pct": -0.06, "label": "Hay hierro barato gracias a la caravana" }
+        {
+          "rule": {
+            "category": "herramientas"
+          },
+          "pct": -0.12,
+          "label": "La caravana enana trajo herramientas de sobra"
+        },
+        {
+          "rule": {
+            "tags": [
+              "metal"
+            ]
+          },
+          "pct": -0.06,
+          "label": "Hay hierro barato gracias a la caravana"
+        }
       ],
       "restock": [
-        { "rule": { "category": "herramientas" }, "leadMult": 0.4, "qtyMult": 1.5 },
-        { "rule": { "tags": ["metal"] }, "leadMult": 0.6 }
+        {
+          "rule": {
+            "category": "herramientas"
+          },
+          "leadMult": 0.4,
+          "qtyMult": 1.5
+        },
+        {
+          "rule": {
+            "tags": [
+              "metal"
+            ]
+          },
+          "leadMult": 0.6
+        }
       ]
     },
     {
@@ -40,17 +114,65 @@
       "name": "Festival de la Cosecha",
       "icon": "🎉",
       "notice": "Guirnaldas, música y mesas largas en la plaza. La ciudad celebra la cosecha.",
-      "duration": [3, 4],
+      "duration": [
+        3,
+        4
+      ],
       "weight": 2,
       "cooldown": 20,
       "modifiers": [
-        { "rule": { "category": "consumibles", "sub": "comida" }, "pct": 0.1, "label": "Con el festival, la comida se paga más" },
-        { "rule": { "category": "herramientas", "sub": "instrumento" }, "pct": 0.15, "label": "Todos quieren tocar en el festival" },
-        { "rule": { "category": "herramientas", "sub": "juego" }, "pct": 0.1, "label": "Los juegos de mesa están de moda en el festival" }
+        {
+          "rule": {
+            "category": "consumibles",
+            "sub": "comida"
+          },
+          "pct": 0.1,
+          "label": "Con el festival, la comida se paga más"
+        },
+        {
+          "rule": {
+            "category": "herramientas",
+            "sub": "instrumento"
+          },
+          "pct": 0.15,
+          "label": "Todos quieren tocar en el festival"
+        },
+        {
+          "rule": {
+            "category": "herramientas",
+            "sub": "juego"
+          },
+          "pct": 0.1,
+          "label": "Los juegos de mesa están de moda en el festival"
+        }
       ],
       "demand": [
-        { "rule": { "category": "consumibles", "sub": "comida" }, "mult": 2 },
-        { "rule": { "category": "herramientas", "sub": "instrumento" }, "mult": 1.5 }
+        {
+          "rule": {
+            "category": "consumibles",
+            "sub": "comida"
+          },
+          "mult": 2
+        },
+        {
+          "rule": {
+            "category": "herramientas",
+            "sub": "instrumento"
+          },
+          "mult": 1.5
+        }
+      ],
+      "attitudes": [
+        {
+          "value": 6,
+          "label": "Las fiestas ponen a todos de buen humor",
+          "keepers": {
+            "region": "valle"
+          }
+        }
+      ],
+      "regions": [
+        "valle"
       ]
     },
     {
@@ -58,67 +180,376 @@
       "name": "Fiebre en los establos",
       "icon": "🤒",
       "notice": "Una fiebre se extiende entre los caballos de la región. Los animales sanos valen oro.",
-      "duration": [6, 10],
+      "duration": [
+        6,
+        10
+      ],
       "weight": 2,
       "cooldown": 18,
       "modifiers": [
-        { "rule": { "category": "monturas", "sub": "montura" }, "pct": 0.22, "label": "Escasean los animales sanos por la fiebre" }
+        {
+          "rule": {
+            "category": "monturas",
+            "sub": "montura"
+          },
+          "pct": 0.22,
+          "label": "Escasean los animales sanos por la fiebre"
+        }
       ],
-      "demand": [{ "rule": { "category": "monturas", "sub": "montura" }, "mult": 1.4 }],
-      "restock": [{ "rule": { "category": "monturas", "sub": "montura" }, "leadMult": 2 }]
+      "demand": [
+        {
+          "rule": {
+            "category": "monturas",
+            "sub": "montura"
+          },
+          "mult": 1.4
+        }
+      ],
+      "restock": [
+        {
+          "rule": {
+            "category": "monturas",
+            "sub": "montura"
+          },
+          "leadMult": 2
+        }
+      ]
     },
     {
       "id": "bloqueo-puerto",
       "name": "Bloqueo del puerto",
       "icon": "⚓",
       "notice": "Barcos piratas impiden el paso de mercancía importada. Los ingredientes arcanos escasean.",
-      "duration": [5, 8],
+      "duration": [
+        5,
+        8
+      ],
       "weight": 2,
       "cooldown": 15,
       "modifiers": [
-        { "rule": { "tags": ["arcano"] }, "pct": 0.12, "label": "El bloqueo del puerto encarece lo arcano" },
-        { "rule": { "category": "magicos" }, "pct": 0.06, "label": "Los objetos mágicos importados no llegan" }
+        {
+          "rule": {
+            "tags": [
+              "arcano"
+            ]
+          },
+          "pct": 0.12,
+          "label": "El bloqueo del puerto encarece lo arcano"
+        },
+        {
+          "rule": {
+            "category": "magicos"
+          },
+          "pct": 0.06,
+          "label": "Los objetos mágicos importados no llegan"
+        }
       ],
-      "restock": [{ "rule": { "tags": ["arcano"] }, "leadMult": 2 }]
+      "restock": [
+        {
+          "rule": {
+            "tags": [
+              "arcano"
+            ]
+          },
+          "leadMult": 2
+        }
+      ],
+      "attitudes": [
+        {
+          "when": {
+            "faction": "hermandad-mareas"
+          },
+          "value": -8,
+          "label": "Culpan a la Hermandad del bloqueo",
+          "keepers": {
+            "region": "valle"
+          }
+        }
+      ]
     },
     {
       "id": "temporada-expediciones",
       "name": "Temporada de expediciones",
       "icon": "🧭",
       "notice": "Los gremios de aventureros organizan expediciones a las ruinas. Cuerdas, raciones y antorchas escasean.",
-      "duration": [4, 7],
+      "duration": [
+        4,
+        7
+      ],
       "weight": 3,
       "cooldown": 12,
       "modifiers": [
-        { "rule": { "category": "equipo", "sub": ["aventura", "luz"] }, "pct": 0.1, "label": "Los gremios compran equipo para las expediciones" },
-        { "rule": { "ids": ["raciones", "kit-sanador", "pocion-curacion-menor"] }, "pct": 0.12, "label": "Todos se aprovisionan para las expediciones" }
+        {
+          "rule": {
+            "category": "equipo",
+            "sub": [
+              "aventura",
+              "luz"
+            ]
+          },
+          "pct": 0.1,
+          "label": "Los gremios compran equipo para las expediciones"
+        },
+        {
+          "rule": {
+            "ids": [
+              "raciones",
+              "kit-sanador",
+              "pocion-curacion-menor"
+            ]
+          },
+          "pct": 0.12,
+          "label": "Todos se aprovisionan para las expediciones"
+        }
       ],
-      "demand": [{ "rule": { "category": "equipo" }, "mult": 1.6 }]
+      "demand": [
+        {
+          "rule": {
+            "category": "equipo"
+          },
+          "mult": 1.6
+        }
+      ]
     },
     {
       "id": "redada-guardia",
       "name": "Redada de la guardia",
       "icon": "🚨",
       "notice": "La guardia patrulla el callejón día y noche. Mejor no dejarse ver por ahí.",
-      "duration": [2, 4],
+      "duration": [
+        2,
+        4
+      ],
       "weight": 1.5,
       "cooldown": 15,
-      "closes": ["callejon"],
-      "modifiers": [{ "rule": { "tags": ["turbio"] }, "pct": 0.2, "label": "Con la guardia encima, lo turbio cuesta más" }]
+      "closes": [
+        "callejon"
+      ],
+      "modifiers": [
+        {
+          "rule": {
+            "tags": [
+              "turbio"
+            ]
+          },
+          "pct": 0.2,
+          "label": "Con la guardia encima, lo turbio cuesta más"
+        }
+      ],
+      "attitudes": [
+        {
+          "when": {
+            "faction": "mano-gris"
+          },
+          "value": -15,
+          "label": "Con la guardia rondando, nadie quiere que lo vean contigo",
+          "keepers": {
+            "region": "valle"
+          }
+        }
+      ]
     },
     {
       "id": "feria-bestias",
       "name": "Feria de bestias",
       "icon": "🐾",
       "notice": "Criadores de toda la región traen animales a la plaza. Buen momento para comprar.",
-      "duration": [3, 5],
+      "duration": [
+        3,
+        5
+      ],
       "weight": 2,
       "cooldown": 16,
       "modifiers": [
-        { "rule": { "category": "criaturas" }, "pct": -0.1, "label": "La feria llenó la plaza de crías" },
-        { "rule": { "category": "monturas", "sub": "montura" }, "pct": -0.08, "label": "Sobran monturas con la feria" }
+        {
+          "rule": {
+            "category": "criaturas"
+          },
+          "pct": -0.1,
+          "label": "La feria llenó la plaza de crías"
+        },
+        {
+          "rule": {
+            "category": "monturas",
+            "sub": "montura"
+          },
+          "pct": -0.08,
+          "label": "Sobran monturas con la feria"
+        }
       ],
-      "restock": [{ "rule": { "category": "criaturas" }, "leadMult": 0.5, "qtyMult": 1.5 }]
+      "restock": [
+        {
+          "rule": {
+            "category": "criaturas"
+          },
+          "leadMult": 0.5,
+          "qtyMult": 1.5
+        }
+      ]
+    },
+    {
+      "id": "ataque-gusano",
+      "name": "Ataque en las minas",
+      "icon": "🪱",
+      "notice": "Una bestia excavadora arrasó el campamento de la Veta Honda. Faltan provisiones y todos quieren armas.",
+      "duration": [
+        4,
+        7
+      ],
+      "weight": 2,
+      "cooldown": 16,
+      "regions": [
+        "montes"
+      ],
+      "modifiers": [
+        {
+          "rule": {
+            "category": "consumibles"
+          },
+          "pct": 0.15,
+          "label": "Tras el ataque, las provisiones escasean"
+        },
+        {
+          "rule": {
+            "category": "armas"
+          },
+          "pct": 0.1,
+          "label": "Todos quieren con qué defenderse"
+        }
+      ],
+      "demand": [
+        {
+          "rule": {
+            "category": "consumibles"
+          },
+          "mult": 1.8
+        },
+        {
+          "rule": {
+            "category": "armas"
+          },
+          "mult": 1.5
+        }
+      ],
+      "attitudes": [
+        {
+          "when": {
+            "class": "guerrero"
+          },
+          "value": 6,
+          "label": "Hacen falta brazos fuertes",
+          "keepers": {
+            "region": "montes"
+          }
+        }
+      ]
+    },
+    {
+      "id": "nueva-ruta",
+      "name": "Nueva ruta comercial",
+      "icon": "🧭",
+      "notice": "Se abrió una ruta marítima con las islas del sur: llegan especias, reactivos y rarezas a buen precio.",
+      "duration": [
+        6,
+        10
+      ],
+      "weight": 2,
+      "cooldown": 20,
+      "regions": [
+        "costa",
+        "valle"
+      ],
+      "modifiers": [
+        {
+          "rule": {
+            "category": "consumibles",
+            "sub": "alquimia"
+          },
+          "pct": -0.12,
+          "label": "La nueva ruta trae reactivos baratos"
+        },
+        {
+          "rule": {
+            "category": "equipo"
+          },
+          "pct": -0.06,
+          "label": "Mercancía nueva por la ruta del sur"
+        }
+      ],
+      "restock": [
+        {
+          "rule": {
+            "category": "consumibles"
+          },
+          "leadMult": 0.6,
+          "qtyMult": 1.4
+        }
+      ],
+      "stock": [
+        {
+          "shops": [
+            "salitre"
+          ],
+          "ids": [
+            "pocion-resistencia",
+            "elixir-mana"
+          ],
+          "qty": 2
+        }
+      ],
+      "attitudes": [
+        {
+          "value": 4,
+          "label": "El negocio va bien y se nota",
+          "keepers": {
+            "faction": "hermandad-mareas"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cambio-politico",
+      "name": "Nuevo alcalde en Agarias",
+      "icon": "📜",
+      "notice": "El nuevo alcalde subió los impuestos del Gremio: los comerciantes de la plaza repercuten la subida.",
+      "duration": [
+        8,
+        14
+      ],
+      "weight": 1,
+      "cooldown": 30,
+      "regions": [
+        "valle"
+      ],
+      "manual": true,
+      "modifiers": [
+        {
+          "rule": {
+            "category": "equipo"
+          },
+          "pct": 0.08,
+          "label": "Impuesto nuevo del alcalde"
+        },
+        {
+          "rule": {
+            "category": "consumibles"
+          },
+          "pct": 0.06,
+          "label": "Impuesto nuevo del alcalde"
+        }
+      ],
+      "attitudes": [
+        {
+          "when": {
+            "faction": "gremio-mercaderes"
+          },
+          "value": -6,
+          "label": "El Gremio está de malas con el alcalde y con todos",
+          "keepers": {
+            "faction": "gremio-mercaderes"
+          }
+        }
+      ]
     }
   ]
 }

@@ -8,6 +8,7 @@
 // Sólo se lanza error cuando el documento no es un personaje en absoluto.
 
 import { normalizePersonality } from './personality.js';
+import { normalizeAffiliations } from './affiliations.js';
 import { sanitizeStoredChoices } from './class-choices.js';
 import { ABILITY_KEYS, SKILL_NAMES, SPEED_KEYS, MAX_LEVEL, MIN_ABILITY_SCORE, MAX_ABILITY_SCORE } from './constants.js';
 import {
@@ -394,6 +395,8 @@ export function normalizeCharacter(raw) {
   // Sólo se guarda si hay algo definido (las fichas viejas no cambian de huella).
   const personality = normalizePersonality(src.personality);
   if (personality) d.personality = personality;
+  const affiliations = normalizeAffiliations(src.affiliations);
+  if (affiliations) d.affiliations = affiliations;
   d.companions = list(src.companions, (x) => normalizeCompanion(x), 30);
   d.workshop = normalizeWorkshop(src.workshop);
 
