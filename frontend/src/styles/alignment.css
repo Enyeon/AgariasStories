@@ -1,0 +1,124 @@
+/* ==========================================================================
+   Decoración por alineamiento ("aura legendaria" del personaje).
+   La ficha lleva data-alignment="lb|nb|cb|ln|nn|cn|lm|nm|cm" (sheet-view.js).
+   Cada alineamiento define un color, un segundo tono y un efecto suave en el
+   emblema; el resto de la ficha sólo toma un acento discreto (pestaña activa,
+   borde de la identidad, marco del retrato) para no restar legibilidad.
+   ========================================================================== */
+
+[data-alignment] {
+  --align-color: var(--gold);
+  --align-2: var(--accent);
+  --align-glow: rgb(227 180 90 / 0.35);
+}
+[data-alignment="lb"] { --align-color: #f5d27a; --align-2: #fff4d1; --align-glow: rgb(245 210 122 / 0.40); }
+[data-alignment="nb"] { --align-color: #6fd39a; --align-2: #c9f2b8; --align-glow: rgb(111 211 154 / 0.35); }
+[data-alignment="cb"] { --align-color: #5fd0e6; --align-2: #c7b8ff; --align-glow: rgb(95 208 230 / 0.35); }
+[data-alignment="ln"] { --align-color: #93b4e0; --align-2: #dfe7f2; --align-glow: rgb(147 180 224 / 0.32); }
+[data-alignment="nn"] { --align-color: #c9b99a; --align-2: #8f9bb0; --align-glow: rgb(201 185 154 / 0.30); }
+[data-alignment="cn"] { --align-color: #f0a35a; --align-2: #e4d36b; --align-glow: rgb(240 163 90 / 0.35); }
+[data-alignment="lm"] { --align-color: #d9534f; --align-2: #8b93a5; --align-glow: rgb(217 83 79 / 0.32); }
+[data-alignment="nm"] { --align-color: #a77bd8; --align-2: #7ccf8a; --align-glow: rgb(167 123 216 / 0.32); }
+[data-alignment="cm"] { --align-color: #ff6b3d; --align-2: #ffcf5a; --align-glow: rgb(255 107 61 / 0.38); }
+
+/* ── Acentos discretos en toda la ficha ── */
+[data-alignment] .tab[aria-selected="true"] { box-shadow: inset 0 -2px 0 var(--align-color); }
+[data-alignment] .portrait__frame { border-color: var(--align-color); box-shadow: 0 0 0 4px var(--bg), 0 0 22px var(--align-glow); }
+.identity-strip--aligned {
+  position: relative;
+  border-color: color-mix(in srgb, var(--align-color) 45%, var(--border));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--align-color) 18%, transparent), 0 10px 34px -12px var(--align-glow);
+}
+/* Esquinas ornamentadas */
+.identity-strip--aligned::before,
+.identity-strip--aligned::after {
+  content: ''; position: absolute; width: 18px; height: 18px; pointer-events: none;
+  border: 2px solid var(--align-color); opacity: 0.7;
+}
+.identity-strip--aligned::before { top: 6px; left: 6px; border-right: 0; border-bottom: 0; border-top-left-radius: 6px; }
+.identity-strip--aligned::after { bottom: 6px; right: 6px; border-left: 0; border-top: 0; border-bottom-right-radius: 6px; }
+
+/* ── Emblema ── */
+.align-banner {
+  position: relative; overflow: hidden; isolation: isolate;
+  display: flex; align-items: center; gap: var(--space-3);
+  margin-bottom: var(--space-4); padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius);
+  border: 1px solid color-mix(in srgb, var(--align-color) 50%, transparent);
+  background:
+    linear-gradient(100deg, color-mix(in srgb, var(--align-color) 20%, var(--bg-elevated)) 0%, var(--bg-elevated) 70%);
+}
+.align-banner::before { /* capa de efecto, distinta por alineamiento */
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0.55;
+}
+.align-banner__sigil {
+  flex: 0 0 auto; position: relative; width: 52px; height: 52px; display: grid; place-items: center;
+  border-radius: 50%; font-size: 24px;
+  background: radial-gradient(circle at 40% 35%, color-mix(in srgb, var(--align-2) 40%, transparent), color-mix(in srgb, var(--align-color) 25%, var(--bg)) 70%);
+  border: 2px solid var(--align-color);
+  box-shadow: 0 0 0 3px var(--bg-elevated), 0 0 18px var(--align-glow);
+}
+.align-banner__sigil::after { /* anillo exterior */
+  content: ''; position: absolute; inset: -7px; border-radius: 50%;
+  border: 1px dashed color-mix(in srgb, var(--align-color) 60%, transparent);
+}
+.align-banner__text { display: grid; gap: 1px; min-width: 0; }
+.align-banner__name { font-size: var(--fs-xs); letter-spacing: 0.12em; text-transform: uppercase; color: var(--align-color); font-weight: 700; }
+.align-banner__title { font-family: var(--font-display); font-size: var(--fs-lg); color: var(--text); }
+.align-banner__motto { font-size: var(--fs-sm); color: var(--text-muted); }
+
+/* Efectos propios (lentos y sutiles) */
+[data-alignment="lb"] .align-banner::before { /* rayos de luz */
+  background: repeating-conic-gradient(from var(--align-angle) at 40px 50%, rgb(255 244 209 / 0.10) 0deg 6deg, transparent 6deg 18deg);
+  animation: align-turn 80s linear infinite;
+}
+[data-alignment="lb"] .align-banner__sigil { animation: align-breathe 5s ease-in-out infinite; }
+[data-alignment="nb"] .align-banner::before { /* luz de bosque */
+  background: radial-gradient(circle at 10% 120%, rgb(201 242 184 / 0.20), transparent 45%), radial-gradient(circle at 60% -20%, rgb(111 211 154 / 0.14), transparent 40%);
+  animation: align-breathe 7s ease-in-out infinite;
+}
+[data-alignment="cb"] .align-banner::before { /* brisa iridiscente */
+  background: linear-gradient(115deg, transparent 20%, rgb(95 208 230 / 0.14) 35%, rgb(199 184 255 / 0.14) 45%, transparent 60%);
+  background-size: 250% 100%; animation: align-drift 9s ease-in-out infinite;
+}
+[data-alignment="ln"] .align-banner::before { /* retícula de la ley */
+  background-image: linear-gradient(rgb(223 231 242 / 0.06) 1px, transparent 1px), linear-gradient(90deg, rgb(223 231 242 / 0.06) 1px, transparent 1px);
+  background-size: 16px 16px;
+  mask-image: linear-gradient(90deg, #000 0%, transparent 75%);
+}
+[data-alignment="nn"] .align-banner::before { /* balanza: luz y sombra */
+  background: linear-gradient(90deg, rgb(201 185 154 / 0.14) 0 50%, rgb(143 155 176 / 0.10) 50% 100%);
+  mask-image: radial-gradient(ellipse at 34px 50%, #000 0%, transparent 70%);
+}
+[data-alignment="nn"] .align-banner__sigil { animation: align-sway 8s ease-in-out infinite; }
+[data-alignment="cn"] .align-banner::before { /* remolino */
+  background: conic-gradient(from var(--align-angle) at 40px 50%, rgb(240 163 90 / 0.18), transparent 25%, rgb(228 211 107 / 0.14) 50%, transparent 75%, rgb(240 163 90 / 0.18));
+  animation: align-turn 20s linear infinite;
+}
+[data-alignment="lm"] .align-banner::before { /* barrotes de hierro y brasas */
+  background: repeating-linear-gradient(90deg, rgb(139 147 165 / 0.10) 0 2px, transparent 2px 22px), linear-gradient(0deg, rgb(217 83 79 / 0.16), transparent 70%);
+}
+[data-alignment="nm"] .align-banner::before { /* humo venenoso */
+  background: radial-gradient(ellipse at 20% 110%, rgb(124 207 138 / 0.14), transparent 50%), radial-gradient(ellipse at 70% -10%, rgb(167 123 216 / 0.18), transparent 50%);
+  animation: align-drift 14s ease-in-out infinite alternate; background-size: 160% 160%;
+}
+[data-alignment="cm"] .align-banner::before { /* brasas */
+  background: radial-gradient(circle at 15% 100%, rgb(255 107 61 / 0.30), transparent 40%), radial-gradient(circle at 45% 120%, rgb(255 207 90 / 0.18), transparent 35%);
+  animation: align-flicker 2.8s ease-in-out infinite;
+}
+[data-alignment="cm"] .align-banner__sigil { animation: align-flicker 2.8s ease-in-out infinite; }
+
+@property --align-angle { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+@keyframes align-turn { to { --align-angle: 360deg; } }
+@keyframes align-breathe { 0%, 100% { opacity: 0.55; filter: brightness(1); } 50% { opacity: 0.85; filter: brightness(1.12); } }
+@keyframes align-drift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+@keyframes align-sway { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(6deg); } }
+@keyframes align-flicker { 0%, 100% { opacity: 0.55; } 40% { opacity: 0.8; } 60% { opacity: 0.45; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .align-banner::before, .align-banner__sigil { animation: none !important; }
+}
+@media (max-width: 560px) {
+  .align-banner__motto { display: none; }
+}
+[data-alignment] select[data-bind="identity.alignment"] { border-color: color-mix(in srgb, var(--align-color) 60%, var(--border)); color: var(--align-color); font-weight: 600; }

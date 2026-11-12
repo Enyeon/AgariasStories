@@ -4,6 +4,13 @@
 // Homebrew/campañas) y no guarda dinero ni inventario propios. Lo comprado
 // aparece en la ficha del personaje (pestañas Equipo y Taller).
 
+// Tipografías de la Tienda, servidas desde la propia app (la CSP no permite
+// fuentes externas). Sólo se cargan al entrar en /tienda.
+import '@fontsource/cinzel/latin-600.css';
+import '@fontsource/cinzel/latin-700.css';
+import '@fontsource/alegreya-sans/latin-400.css';
+import '@fontsource/alegreya-sans/latin-500.css';
+import '@fontsource/alegreya-sans/latin-700.css';
 import './shop.css';
 import { html, setHtml } from '../../ui/dom.js';
 import { createShopService } from '../../services/shop.js';

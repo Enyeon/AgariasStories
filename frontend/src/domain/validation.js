@@ -7,6 +7,7 @@
 // Los problemas no fatales se devuelven como `warnings` legibles para el usuario.
 // Sólo se lanza error cuando el documento no es un personaje en absoluto.
 
+import { normalizePersonality } from './personality.js';
 import { sanitizeStoredChoices } from './class-choices.js';
 import { ABILITY_KEYS, SKILL_NAMES, SPEED_KEYS, MAX_LEVEL, MIN_ABILITY_SCORE, MAX_ABILITY_SCORE } from './constants.js';
 import {
@@ -389,6 +390,10 @@ export function normalizeCharacter(raw) {
     const code = typeof u.code === 'string' && /^[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(u.code) ? u.code : null;
     return { ref, code, at: text(u.at, 40) };
   }, 60).filter((u, i, all) => all.findIndex((x) => x.ref === u.ref) === i);
+  // (v3.2) Personalidad: rasgos, ideal, vínculo, defecto y tablas del trasfondo.
+  // Sólo se guarda si hay algo definido (las fichas viejas no cambian de huella).
+  const personality = normalizePersonality(src.personality);
+  if (personality) d.personality = personality;
   d.companions = list(src.companions, (x) => normalizeCompanion(x), 30);
   d.workshop = normalizeWorkshop(src.workshop);
 

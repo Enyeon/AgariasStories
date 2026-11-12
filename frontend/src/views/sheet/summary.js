@@ -6,14 +6,20 @@ import { classLevels } from '../../domain/rules.js';
 import { getClass, raceName } from '../../data/index.js';
 import { sourcesLabel } from '../../domain/proficiencies.js';
 import { DAMAGE_LABEL } from '../../domain/effects.js';
+import { alignmentStyle } from '../../domain/alignment.js';
 import { textField, numberField, selectField, out, mod, actionButton, sectionCard, bindAttrs } from './common.js';
 
 function identityStrip(ctx) {
   const { character: c, sheet } = ctx;
   const classes = Object.entries(classLevels(c)).map(([k, n]) => `${getClass(k)?.nombre ?? k} ${n}`).join(' / ');
   const nextXp = XP_BY_LEVEL[Math.min(sheet.level, 19)];
+  const align = alignmentStyle(c.identity.alignment);
   return html`
-    <section class="card identity-strip">
+    <section class="card identity-strip ${align ? 'identity-strip--aligned' : ''}">
+      ${align ? html`<div class="align-banner" role="note" aria-label="Alineamiento: ${align.name}">
+        <span class="align-banner__sigil" aria-hidden="true"><span>${align.icon}</span></span>
+        <span class="align-banner__text"><span class="align-banner__name">${align.name}</span><strong class="align-banner__title">${align.title}</strong><em class="align-banner__motto">${align.motto}</em></span>
+      </div>` : ''}
       <div class="form-grid">
         ${textField(ctx, { label: 'Nombre del personaje', path: 'identity.name', placeholder: 'Ej.: Kael, hija de la Tormenta' })}
         <div class="field">

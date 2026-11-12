@@ -2,6 +2,7 @@ import './styles/tokens.css';
 import './styles/base.css';
 import './styles/components.css';
 import './styles/sheet.css';
+import './styles/alignment.css';
 
 import { createRouter } from './ui/router.js';
 import { reportError } from './ui/feedback.js';

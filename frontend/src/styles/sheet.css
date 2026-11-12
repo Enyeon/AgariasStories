@@ -458,3 +458,56 @@
 .recipe-card { display: grid; gap: var(--space-2); align-content: start; padding: var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface); }
 .recipe-card p { margin: 0; font-size: var(--fs-sm); }
 .recipe-card.is-locked { opacity: 0.7; }
+
+/* ── Personalidad (pestaña Historia) ───────────────────────────────────── */
+.persona-set { display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--fs-sm); color: var(--text-muted); }
+.persona-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: var(--space-3); }
+.persona-slot {
+  display: grid; gap: var(--space-2); align-content: start;
+  padding: var(--space-3); border-radius: var(--radius);
+  border: 1px solid var(--border); background: var(--bg-elevated);
+  transition: border-color 0.2s;
+}
+.persona-slot:focus-within { border-color: var(--border-strong); }
+.persona-slot__head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); }
+.persona-slot__head h3 { margin: 0; font-family: var(--font-display); font-size: var(--fs-md); color: var(--gold); }
+.die-badge {
+  font-size: var(--fs-xs); font-weight: 700; padding: 0.1rem 0.45rem; border-radius: 999px;
+  color: var(--text-muted); border: 1px solid var(--border-strong);
+}
+.persona-modes {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; padding: 3px;
+  border-radius: var(--radius); background: var(--surface); border: 1px solid var(--border);
+}
+.persona-mode {
+  display: flex; flex-direction: column; align-items: center; gap: 1px;
+  font: inherit; font-size: var(--fs-xs); font-weight: 600; line-height: 1.2; text-align: center; color: var(--text-muted); cursor: pointer;
+  border: 0; border-radius: var(--radius-sm); padding: 0.35rem 0.3rem; background: transparent;
+  transition: background 0.15s, color 0.15s;
+}
+.persona-mode > span { font-size: 1rem; }
+.persona-mode:hover:not(:disabled) { color: var(--text); background: var(--surface-2); }
+.persona-mode[aria-pressed="true"] { color: var(--accent-contrast); background: var(--accent); }
+.persona-mode:disabled { opacity: 0.4; cursor: not-allowed; }
+.persona-mode:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+.persona-input { min-height: 3.2rem; }
+.persona-chosen {
+  margin: 0; display: grid; grid-template-columns: auto 1fr; gap: var(--space-2); align-items: start;
+  padding: var(--space-2) var(--space-3); border-radius: var(--radius-sm);
+  background: var(--accent-soft); border-left: 3px solid var(--accent); font-style: italic;
+}
+.persona-chosen__die { display: inline-flex; align-items: center; gap: 2px; font-style: normal; font-size: var(--fs-sm); color: var(--text-muted); }
+.persona-chosen__die b { color: var(--text); }
+.persona-actions { gap: var(--space-1); }
+.persona-options { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; max-height: 260px; overflow-y: auto; scrollbar-width: thin; }
+.persona-option {
+  width: 100%; display: grid; grid-template-columns: 1.6rem 1fr; gap: var(--space-2); align-items: start; text-align: left;
+  font: inherit; font-size: var(--fs-sm); color: var(--text); cursor: pointer;
+  padding: 0.4rem 0.55rem; border-radius: var(--radius-sm); border: 1px solid transparent; background: var(--surface);
+}
+.persona-option:hover { border-color: var(--accent); background: var(--surface-2); }
+.persona-option:focus-visible { box-shadow: var(--focus-ring); outline: none; }
+.persona-option__n { font-weight: 700; color: var(--gold); text-align: right; }
+.persona-tag { display: inline-block; margin-left: 0.35rem; font-size: var(--fs-xs); font-style: normal; padding: 0 0.4rem; border-radius: 999px; border: 1px solid var(--border-strong); color: var(--text-muted); }
+.persona-tag--fits { border-color: var(--align-color, var(--success)); color: var(--align-color, var(--success)); }
+.persona-text { margin: 0; font-style: italic; }

@@ -14,6 +14,8 @@ import { onSpellFilter } from './spells.js';
 import { applyTraitFilter } from './features.js';
 import { onBackgroundChange } from './background.js';
 import { computeOutputs, applyOutputs } from './outputs.js';
+import { setEntry } from '../../domain/personality.js';
+import { alignmentStyle } from '../../domain/alignment.js';
 
 function parseValue(el) {
   const type = el.dataset.type;
@@ -80,6 +82,10 @@ export function createSheetView(root, { character, readOnly = false, initialTab 
 
   function renderPanel() {
     const tab = TABS.find((t) => t.id === ed.tab) ?? TABS[0];
+    // Decoración del alineamiento en toda la ficha (ver styles/alignment.css).
+    const align = alignmentStyle(ed.character.identity.alignment);
+    if (align) root.dataset.alignment = align.id;
+    else delete root.dataset.alignment;
     if (tab.needsSpells && !ed.spells) {
       loadSpells().then((s) => { ed.spells = s; if (ed.tab === tab.id) ed.rerender({ keepScroll: true }); })
         .catch((err) => reportError(err, 'No se pudieron cargar los conjuros.'));
@@ -212,6 +218,11 @@ export function createSheetView(root, { character, readOnly = false, initialTab 
       ed.ui.traitsQuery = el.value;
       return applyTraitFilter(panel, el.value);
     }
+    if (el.matches('[data-persona-text]') && !readOnly) {
+      // Texto «Personalizado» de una característica (crea la estructura si falta).
+      setEntry(ed.character, el.dataset.personaText, { mode: 'custom', text: el.value.slice(0, 1000), index: null });
+      return changed({ structural: false });
+    }
     if (!el.matches('[data-bind]') || readOnly) return;
     if (el.type === 'checkbox' || el.tagName === 'SELECT') return; // se procesan en change
     const value = parseValue(el);
@@ -228,6 +239,7 @@ export function createSheetView(root, { character, readOnly = false, initialTab 
       if (el.matches('[data-spell-filter]') && el.type !== 'search') return onSpellFilter(ed, el);
       if (el.matches('[data-race-choice]')) return CHANGES['race-choice'](ed, el);
       if (el.matches('[data-bg]')) return onBackgroundChange(ed, el);
+      if (el.matches('[data-persona-set]')) return CHANGES['persona-set'](ed, el);
       if (el.matches('[data-language]')) return CHANGES.language(ed, el);
       if (el.matches('[data-workshop-equip]')) return CHANGES['workshop-equip'](ed, el);
       if (el.matches('[data-workshop-filter]')) return CHANGES['workshop-filter'](ed, el);

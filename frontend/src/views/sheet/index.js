@@ -6,7 +6,7 @@ import { renderProgression, progressionActions, progressionChanges } from './pro
 import { renderFeatures, featuresActions } from './features.js';
 import { renderEquipment, equipmentActions } from './equipment.js';
 import { renderSpells, spellsActions } from './spells.js';
-import { renderStory, storyActions } from './story.js';
+import { renderStory, storyActions, storyChanges } from './story.js';
 import { renderDm, extrasActions } from './extras.js';
 import { renderCompanions, companionActions } from './companions.js';
 import { backgroundActions } from './background.js';
@@ -57,4 +57,4 @@ export const ACTIONS = {
   ...workshopActions,
 };
 
-export const CHANGES = { ...progressionChanges, 'workshop-equip': workshopChanges.equip, 'workshop-filter': workshopChanges.filter };
+export const CHANGES = { ...progressionChanges, ...storyChanges, 'workshop-equip': workshopChanges.equip, 'workshop-filter': workshopChanges.filter };
