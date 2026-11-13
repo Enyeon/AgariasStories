@@ -306,6 +306,48 @@
               }
             }
           }
+        },
+        "senda6": {
+          "subNombre": "Senda del Coloso Herido",
+          "subDescripcion": "✦ SENDA DEL COLOSO HERIDO ✦ [Homebrew]\nCuanto más te hieren, más fuerte golpeas\n\nLos Bárbaros que siguen la Senda del Coloso Herido convierten el dolor en fuerza bruta. Su Furia no busca control: busca destrucción. Cada golpe recibido alimenta su Cólera, cada herida vuelve su cuerpo más peligroso y cada enemigo que se atreve a enfrentarlos solo despierta una fuerza mayor.\n\nPero ese poder tiene un precio. A medida que crece su Cólera, abandonan toda intención de protegerse. Su cuerpo se convierte en un arma y su propia vida, en combustible para seguir luchando.",
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Cólera",
+                  "subTitleName": "✦ Cólera ✦",
+                  "subDescripcion": "Cuando entras en Furia, empiezas con 0 puntos de Cólera. Puedes tener como máximo tantos puntos como tu bonificador por competencia. Mientras estés en Furia, ganas puntos de Cólera de estas formas:\n<b class=\"content_subrayado\">— Herida:</b> la primera vez en cada turno que una criatura hostil te inflige daño, ganas 1 punto.\n<b class=\"content_subrayado\">— Autolesión:</b> como Acción Adicional, ganas 1 punto y recibes daño igual a tu bonificador por competencia. Este daño no puede reducirse de ninguna forma (tampoco con Resistencia) y no puede dejarte por debajo de 1 punto de golpe.\n\nMientras estés en Furia, por cada punto de Cólera que tengas:\n<b class=\"content_subrayado\">— Golpes aplastantes:</b> ganas +1 al daño de tus ataques cuerpo a cuerpo que usen Fuerza (se suma a tu Daño de Furia).\n<b class=\"content_subrayado\">— Guardia abierta:</b> sufres −1 a tu Clase de Armadura.\n\nPierdes todos tus puntos de Cólera cuando termina tu Furia.\n\nCon al menos 1 punto de Cólera, tus golpes tienen una fuerza descomunal: parten madera, abollan metal, destrozan objetos frágiles que nadie lleve encima o lanzan a tus enemigos de forma espectacular. El DM decide los detalles narrativos."
+                }
+              }
+            },
+            "6": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Regeneración Brutal",
+                  "subTitleName": "✦ Regeneración Brutal ✦",
+                  "subDescripcion": "Tu cuerpo se niega a caer mientras tu Furia siga activa. Mientras estés en Furia, puedes usar una Acción Adicional y gastar 1 punto de Cólera y 1 Dado de Golpe: tiras el dado y recuperas tantos puntos de golpe como el resultado + tu modificador de Constitución (mínimo 1).\n\nPuedes usar este rasgo un número de veces igual a tu bonificador por competencia, y recuperas todos los usos al terminar un Descanso Largo.\n\nTu cuerpo no se cura porque estés tranquilo. Se cura porque todavía quiere seguir peleando."
+                }
+              }
+            },
+            "10": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Golpe Sísmico",
+                  "subTitleName": "✦ Golpe Sísmico ✦",
+                  "subDescripcion": "Tus golpes ya alcanzan incluso a quienes no estás atacando. Una vez por turno, mientras estés en Furia, cuando impactes a una criatura con un ataque cuerpo a cuerpo que use Fuerza, puedes desatar una onda de choque. El objetivo y cada criatura que elijas a 5 pies (1 casilla) o menos de él deben hacer una tirada de salvación de Fuerza (CD 8 + tu bonificador por competencia + tu modificador de Fuerza).\n<b class=\"content_subrayado\">— Si fallan:</b> reciben daño contundente igual a tu Daño de Furia + tu modificador de Fuerza y, si son de tamaño Grande o menor, son empujadas 5 pies (1 casilla) alejándose de ti.\n<b class=\"content_subrayado\">— Si la superan:</b> reciben la mitad del daño y no son empujadas.\n\nPuedes usar este rasgo un número de veces igual a tu bonificador por competencia, y recuperas todos los usos al terminar un Descanso Largo. Si no te quedan usos, puedes usarlo igualmente gastando 2 puntos de Cólera.\n\nEl suelo tiembla. Las armas se doblan. Tus enemigos empiezan a entender que quizá no deberían haberte golpeado."
+                }
+              }
+            },
+            "14": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Ira Imparable",
+                  "subTitleName": "✦ Ira Imparable ✦",
+                  "subDescripcion": "Tu Furia ya no es solo una emoción: es una fuerza destructiva. Mientras estés en Furia, puedes usar una Acción Adicional para desatar la Ira Imparable: tus puntos de Cólera suben al máximo y recibes daño igual al doble de tu bonificador por competencia. Este daño no puede reducirse de ninguna forma y no puede dejarte por debajo de 1 punto de golpe.\n\nHasta que termine tu Furia, obtienes estos beneficios:\n<b class=\"content_subrayado\">— Inamovible:</b> no puedes quedar Derribado y nadie puede moverte en contra de tu voluntad.\n<b class=\"content_subrayado\">— Piel de coloso:</b> el penalizador a la Clase de Armadura por tu Cólera se reduce a la mitad (redondeando hacia abajo).\n<b class=\"content_subrayado\">— Represalia aplastante:</b> cuando una criatura que puedas ver te impacta con un ataque cuerpo a cuerpo, puedes usar tu Reacción para hacer un ataque cuerpo a cuerpo contra ella. Si impactas, debe superar una tirada de salvación de Fuerza (CD 8 + tu bonificador por competencia + tu modificador de Fuerza) o quedar Derribada.\n\nUna vez que usas este rasgo, no puedes volver a usarlo hasta terminar un Descanso Largo.\n\nCuando tu Cólera llega a su punto máximo, ya no parece que luches contra tus enemigos. Parece que ellos intentan sobrevivir a ti."
+                }
+              }
+            }
+          }
         }
       },
       "infoCubo": {
