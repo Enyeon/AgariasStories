@@ -30,6 +30,23 @@ function matches(entry, item) {
   return name === searchKey(item.name).trim() || name === searchKey(inventoryName(item)).trim();
 }
 
+/**
+ * Inventos fabricados antes de que el Taller guardara `ref`: se reconocen por
+ * su nombre en `workshop.creations`. Devuelve una copia (no se guarda sola).
+ */
+export function withInventionRefs(character) {
+  if (!character?.equipment?.items?.length) return character;
+  const byName = new Map((character.workshop?.creations ?? []).map((c) => [c.name, c.recipeId]));
+  if (!byName.size) return character;
+  let changed = false;
+  const items = character.equipment.items.map((it) => {
+    if (it.ref || !String(it.notes ?? '').startsWith('Taller · ') || !byName.has(it.name)) return it;
+    changed = true;
+    return { ...it, ref: `taller-obra-${byName.get(it.name)}` };
+  });
+  return changed ? { ...character, equipment: { ...character.equipment, items } } : character;
+}
+
 /** Unidades de venta que tiene el personaje (un lote de 20 flechas = 1 unidad). */
 export function ownedUnits(character, item) {
   if (item.grant?.kind === 'workshop-material') return character.workshop?.materials?.[item.grant.id] ?? 0;

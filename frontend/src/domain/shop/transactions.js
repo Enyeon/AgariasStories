@@ -10,8 +10,9 @@ import { quoteBuy, quoteSell } from './pricing.js';
 import { cloneWorld, haggleKey, pushLedger } from './state.js';
 import { shopClosure } from './simulation.js';
 import { grantItem, takeItem, ownedUnits } from './inventory.js';
-import { availability } from './presence.js';
+import { availability, shopRegion } from './presence.js';
 import { remember } from './memory.js';
+import { bumpProduct, bumpRenown, countInventionSale } from './popularity.js';
 
 /** Desglose del total: unidades al precio del trato + resto a precio de lista. */
 export function priceBreakdown(quote, qty) {
@@ -121,5 +122,12 @@ export function sell(world, ctx, { charId = null, charName, shopId, itemId, qty 
   const ledger = ledgerEntry(w, { charId, charName, shopId, item, side: 'sell', qty: ok.amount, breakdown });
   pushLedger(w, ledger);
   remember(w, ctx, charId, ctx.keeperOf(shopId), 'sold');
+  // Vender tus inventos los da a conocer en la región (y a ti como inventor).
+  if (item.tags?.includes('invento')) {
+    const region = shopRegion(w, ctx, shopId);
+    bumpProduct(w, item.id, region, 3 * ok.amount);
+    bumpRenown(w, charId, region, 0.5 * ok.amount);
+    countInventionSale(w, charId, ok.amount);
+  }
   return { world: w, character: next, ledger };
 }

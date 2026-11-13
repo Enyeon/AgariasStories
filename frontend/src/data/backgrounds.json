@@ -1,7 +1,7 @@
 {
   "acolito": {
     "name": "Acólito",
-    "source": "Reglas 2024 (SRD 5.2)",
+    "source": "Reglas 2024",
     "description": "Dedicabas tu vida al servicio de un templo enclavado en un pueblo o apartado en un bosquecillo sagrado. En él, realizabas ceremonias en honor a un dios o panteón. Servías a las órdenes de un sacerdote y estudiaste la religión. Gracias a la tutela de ese sacerdote y a tu propia devoción, también aprendiste a canalizar un ápice de poder divino al servicio de tu lugar de culto y de la gente que rezaba en él.",
     "abilityOptions": [
       "inteligencia",
@@ -9,18 +9,195 @@
       "carisma"
     ],
     "feat": "Iniciado Mágico",
+    "featNote": "Clérigo",
     "skills": [
       "Perspicacia",
       "Religión"
     ],
     "tools": [
-      "Suministros de calígrafo"
+      "Utensilios de calígrafo"
     ],
     "languages": 0,
     "equipment": [
       {
         "label": "A",
-        "text": "Suministros de calígrafo, libro (de oraciones), pergamino (10 hojas), símbolo sagrado, túnica y 8 po"
+        "text": "Utensilios de calígrafo, libro (de oraciones), símbolo sagrado, pergamino (10 hojas), túnica y 8 po"
+      },
+      {
+        "label": "B",
+        "text": "50 po"
+      }
+    ]
+  },
+  "agricultor": {
+    "name": "Agricultor",
+    "source": "Reglas 2024",
+    "description": "Creciste trabajando la tierra y cuidando animales. Ese trabajo te dio paciencia, salud de hierro y un respeto profundo por la naturaleza, tanto por lo que da como por lo que puede quitar.",
+    "abilityOptions": [
+      "fuerza",
+      "constitucion",
+      "sabiduria"
+    ],
+    "feat": "Duro",
+    "featNote": "Robusto",
+    "skills": [
+      "Trato con Animales",
+      "Naturaleza"
+    ],
+    "tools": [
+      "Herramientas de carpintero"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "Hoz, herramientas de carpintero, kit de sanador, olla de hierro, pala, ropa de viajero y 30 po"
+      },
+      {
+        "label": "B",
+        "text": "50 po"
+      }
+    ]
+  },
+  "artesano": {
+    "name": "Artesano",
+    "source": "Reglas 2024",
+    "description": "Empezaste barriendo el taller de un artesano a cambio de unas monedas y acabaste como aprendiz. Aprendiste a fabricar piezas básicas de tu oficio, a tratar con clientes exigentes y a fijarte en cada detalle.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "inteligencia"
+    ],
+    "feat": "Artesano",
+    "skills": [
+      "Investigación",
+      "Persuasión"
+    ],
+    "tools": [
+      "Herramientas de artesano (a elegir)"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "Herramientas de artesano (las de tu competencia), 2 bolsas, ropa de viajero y 32 po"
+      },
+      {
+        "label": "B",
+        "text": "50 po"
+      }
+    ]
+  },
+  "artista": {
+    "name": "Artista",
+    "source": "Reglas 2024",
+    "description": "También llamado Entretenedor. Recorriste ferias y carnavales ambulantes haciendo cualquier trabajo a cambio de que músicos y acróbatas te enseñaran su arte. Hoy vives para el escenario y el aplauso del público.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "carisma"
+    ],
+    "feat": "Músico",
+    "skills": [
+      "Acrobacias",
+      "Interpretación"
+    ],
+    "tools": [
+      "Instrumento musical (a elegir)"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "Instrumento musical (el de tu competencia), 2 disfraces, espejo, perfume, ropa de viajero y 11 po"
+      },
+      {
+        "label": "B",
+        "text": "50 po"
+      }
+    ]
+  },
+  "caminante": {
+    "name": "Caminante",
+    "source": "Reglas 2024",
+    "description": "También llamado Viajero. Creciste en la calle entre otros desamparados, con amigos y rivales por igual. Dormías donde podías y, cuando el hambre apretaba, robabas; aun así, nunca perdiste el orgullo ni la esperanza.",
+    "abilityOptions": [
+      "destreza",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": "Afortunado",
+    "skills": [
+      "Perspicacia",
+      "Sigilo"
+    ],
+    "tools": [
+      "Herramientas de ladrón"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "2 dagas, herramientas de ladrón, juego (el que prefieras), saco de dormir, 2 bolsas, ropa de viajero y 16 po"
+      },
+      {
+        "label": "B",
+        "text": "50 po"
+      }
+    ]
+  },
+  "charlatan": {
+    "name": "Charlatán",
+    "source": "Reglas 2024",
+    "description": "En cuanto tuviste edad para entrar en una taberna, la convertiste en tu oficina. De local en local aprendiste a ofrecer a los desesperados justo la mentira que querían oír: una poción falsa, un árbol genealógico inventado…",
+    "abilityOptions": [
+      "destreza",
+      "constitucion",
+      "carisma"
+    ],
+    "feat": "Habilidoso",
+    "featNote": "Experimentado",
+    "skills": [
+      "Engaño",
+      "Juego de Manos"
+    ],
+    "tools": [
+      "Kit de falsificación"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "Kit de falsificación, kit de disfraz, ropa fina y 15 po"
+      },
+      {
+        "label": "B",
+        "text": "50 po"
+      }
+    ]
+  },
+  "comerciante": {
+    "name": "Comerciante",
+    "source": "Reglas 2024",
+    "description": "Fuiste aprendiz de un mercader, un caravanero o un tendero. Viajaste comprando materias primas para los artesanos y vendiendo sus obras, por tierra o por mar, o regentando tu propia tienda.",
+    "abilityOptions": [
+      "constitucion",
+      "inteligencia",
+      "carisma"
+    ],
+    "feat": "Afortunado",
+    "skills": [
+      "Trato con Animales",
+      "Persuasión"
+    ],
+    "tools": [
+      "Herramientas de navegante"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "Herramientas de navegante, 2 bolsas, ropa de viajero y 22 po"
       },
       {
         "label": "B",
@@ -30,7 +207,7 @@
   },
   "criminal": {
     "name": "Criminal",
-    "source": "Reglas 2024 (SRD 5.2)",
+    "source": "Reglas 2024",
     "description": "Te buscabas la vida en los callejones oscuros, birlando carteras o robando en comercios. Quizás formabas parte de una pequeña banda de malhechores con ideas afines y dispuestos a echarse una mano. O puede que fueras un lobo solitario que se desmarcaba del gremio de ladrones local y de otros delincuentes más temibles.",
     "abilityOptions": [
       "destreza",
@@ -49,7 +226,186 @@
     "equipment": [
       {
         "label": "A",
-        "text": "2 dagas, herramientas de ladrón, 2 bolsas, palanqueta, ropas de viaje y 16 po"
+        "text": "2 dagas, herramientas de ladrón, 2 bolsas, palanca, ropa de viajero y 16 po"
+      },
+      {
+        "label": "B",
+        "text": "50 po"
+      }
+    ]
+  },
+  "ermitano": {
+    "name": "Ermitaño",
+    "source": "Reglas 2024",
+    "description": "Pasaste tus primeros años apartado del mundo, en una cabaña o un monasterio lejos de todo. Tus únicos compañeros eran las criaturas del bosque y algún visitante ocasional; la soledad te dio tiempo para pensar en los misterios de la creación.",
+    "abilityOptions": [
+      "constitucion",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": "Curador",
+    "featNote": "Sanador",
+    "skills": [
+      "Medicina",
+      "Religión"
+    ],
+    "tools": [
+      "Kit de herboristería"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "Bastón, kit de herboristería, saco de dormir, libro (de filosofía), lámpara, 3 aceite (frasco), ropa de viajero y 16 po"
+      },
+      {
+        "label": "B",
+        "text": "50 po"
+      }
+    ]
+  },
+  "escriba": {
+    "name": "Escriba",
+    "source": "Reglas 2024",
+    "description": "Te formaste en un scriptorium, un monasterio o una oficina de gobierno, copiando textos y redactando documentos. Escribes con claridad y tienes un ojo implacable para los errores.",
+    "abilityOptions": [
+      "destreza",
+      "inteligencia",
+      "sabiduria"
+    ],
+    "feat": "Habilidoso",
+    "featNote": "Experto",
+    "skills": [
+      "Investigación",
+      "Percepción"
+    ],
+    "tools": [
+      "Utensilios de calígrafo"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "Utensilios de calígrafo, ropa fina, lámpara, 3 aceite (frasco), pergamino (12 hojas) y 23 po"
+      },
+      {
+        "label": "B",
+        "text": "50 po"
+      }
+    ]
+  },
+  "guardia": {
+    "name": "Guardia",
+    "source": "Reglas 2024",
+    "description": "Pasaste incontables horas de guardia en lo alto de una muralla, con un ojo puesto en los peligros de fuera y otro en los ladrones y alborotadores de dentro.",
+    "abilityOptions": [
+      "fuerza",
+      "inteligencia",
+      "sabiduria"
+    ],
+    "feat": "Alerta",
+    "skills": [
+      "Atletismo",
+      "Percepción"
+    ],
+    "tools": [
+      "Juego (a elegir)"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "Lanza, ballesta ligera, 20 virotes de ballesta, juego (el de tu competencia), linterna sorda, grilletes, carcaj, ropa de viajero y 12 po"
+      },
+      {
+        "label": "B",
+        "text": "50 po"
+      }
+    ]
+  },
+  "guia": {
+    "name": "Guía",
+    "source": "Reglas 2024",
+    "description": "Te hiciste adulto a la intemperie, lejos de los asentamientos, guiando a otros por bosques, ruinas y caminos olvidados. Algún sacerdote de la naturaleza al que acompañaste te enseñó a canalizar un poco de magia salvaje.",
+    "abilityOptions": [
+      "destreza",
+      "constitucion",
+      "sabiduria"
+    ],
+    "feat": "Iniciado Mágico",
+    "featNote": "Druida",
+    "skills": [
+      "Sigilo",
+      "Supervivencia"
+    ],
+    "tools": [
+      "Herramientas de cartógrafo"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "Arco corto, 20 flechas, herramientas de cartógrafo, saco de dormir, carcaj, tienda de campaña, ropa de viajero y 3 po"
+      },
+      {
+        "label": "B",
+        "text": "50 po"
+      }
+    ]
+  },
+  "marinero": {
+    "name": "Marinero",
+    "source": "Reglas 2024",
+    "description": "Viviste a bordo, con el viento a favor y la cubierta moviéndose bajo tus pies. Conoces tormentas, tabernas de mil puertos y las historias de quienes viven bajo las olas.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "sabiduria"
+    ],
+    "feat": "Peleador de taberna",
+    "featNote": "Luchador de taberna",
+    "skills": [
+      "Acrobacias",
+      "Percepción"
+    ],
+    "tools": [
+      "Herramientas de navegante"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "Daga, herramientas de navegante, cuerda de cáñamo (50 pies), ropa de viajero y 20 po"
+      },
+      {
+        "label": "B",
+        "text": "50 po"
+      }
+    ]
+  },
+  "noble": {
+    "name": "Noble",
+    "source": "Reglas 2024",
+    "description": "Te criaste en un castillo, entre riqueza, poder y privilegios. Tu familia te dio la mejor educación, y observar la vida de la corte te enseñó mucho sobre cómo se ejerce el liderazgo.",
+    "abilityOptions": [
+      "fuerza",
+      "inteligencia",
+      "carisma"
+    ],
+    "feat": "Habilidoso",
+    "featNote": "Experto",
+    "skills": [
+      "Historia",
+      "Persuasión"
+    ],
+    "tools": [
+      "Juego (a elegir)"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "Juego (el de tu competencia), ropa fina, perfume y 29 po"
       },
       {
         "label": "B",
@@ -59,8 +415,7 @@
   },
   "sabio": {
     "name": "Sabio",
-    "source": "Reglas 2024 (SRD 5.2)",
-    "verify": true,
+    "source": "Reglas 2024",
     "description": "Pasaste tus años de formación entre bibliotecas, maestros y manuscritos, estudiando el saber del multiverso.",
     "abilityOptions": [
       "constitucion",
@@ -68,18 +423,19 @@
       "sabiduria"
     ],
     "feat": "Iniciado Mágico",
+    "featNote": "Hechicero",
     "skills": [
       "Conocimiento Arcano",
       "Historia"
     ],
     "tools": [
-      "Suministros de calígrafo"
+      "Utensilios de calígrafo"
     ],
     "languages": 0,
     "equipment": [
       {
         "label": "A",
-        "text": "Bastón, suministros de calígrafo, libro (de historia), pergamino (8 hojas), túnica y 8 po"
+        "text": "Bastón, utensilios de calígrafo, libro (de historia), pergamino (8 hojas), túnica y 8 po"
       },
       {
         "label": "B",
@@ -89,9 +445,8 @@
   },
   "soldado": {
     "name": "Soldado",
-    "source": "Reglas 2024 (SRD 5.2)",
-    "verify": true,
-    "description": "Te entrenaste para la guerra desde joven y conoces la disciplina, las armas y la vida en campaña.",
+    "source": "Reglas 2024",
+    "description": "Empezaste a entrenar para la guerra en cuanto dejaste de ser un niño, y casi no recuerdas la vida antes de empuñar un arma. La batalla está en tu sangre: los ejercicios de combate te salen solos, y ya los pusiste a prueba defendiendo tu tierra.",
     "abilityOptions": [
       "fuerza",
       "destreza",
@@ -109,7 +464,7 @@
     "equipment": [
       {
         "label": "A",
-        "text": "Lanza, arco corto, 20 flechas, juego (el mismo que la competencia), kit de sanador, carcaj, ropas de viaje y 14 po"
+        "text": "Lanza, arco corto, 20 flechas, juego (el de tu competencia), kit de sanador, carcaj, ropa de viajero y 14 po"
       },
       {
         "label": "B",

@@ -20,6 +20,9 @@ import { cloneWorld, emptyWorld, HISTORY_DAYS } from './state.js';
 import { shopRegion } from './presence.js';
 import { remember } from './memory.js';
 import { accrueContracts, contractAssortment } from './hiring.js';
+import { simulateEstate } from './estate.js';
+import { simulateStaff } from './staff.js';
+import { decayPopularity } from './popularity.js';
 
 const DEFAULT_TARGET = { common: 5, uncommon: 2, rare: 1, veryRare: 1, epic: 1, legendary: 1, unique: 1 };
 const DAILY_TURNOVER = { common: 0.12, uncommon: 0.07, rare: 0.04, veryRare: 0.03, epic: 0.02, legendary: 0.012, unique: 0.008 };
@@ -343,6 +346,9 @@ export function advanceDays(world, ctx, days = 1) {
         purgeDaily(next);
         expireFavors(next, ctx, report);
         accrueContracts(next, ctx, report);
+        simulateEstate(next, ctx, report); // ventas de tus negocios, obras, mantenimiento
+        simulateStaff(next, ctx, report); // salarios, eventos, exploraciones
+        decayPopularity(next);
     }
     if (total > 0) next.phase = 0;
     next = reconcileWorld(next, ctx);

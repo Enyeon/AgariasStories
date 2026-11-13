@@ -22,15 +22,19 @@ import personalitiesData from '../data/shop/personalities.json';
 import racesData from '../data/shop/races.json';
 import rumorsData from '../data/shop/rumors.json';
 import professionsData from '../data/shop/professions.json';
+import estateData from '../data/shop/estate.json';
 import { buildCatalog } from '../domain/shop/catalog.js';
 import { catalogSources } from '../domain/shop/sources.js';
 import { assembleWorld, merchantToEditor, regionToEditor, factionToEditor, eventToEditor, worldId } from '../domain/shop/homebrew-world.js';
 import * as hiring from '../domain/shop/hiring.js';
+import * as estate from '../domain/shop/estate.js';
+import * as staff from '../domain/shop/staff.js';
+import { productPopularity, renown, popularityLabel } from '../domain/shop/popularity.js';
 import { createShopContext } from '../domain/shop/context.js';
 import { createWorld, reconcileWorld, advanceDays as simulateDays, shopClosure, advancePhase as simulatePhase, triggerEvent, endEvent } from '../domain/shop/simulation.js';
 import { quoteBuy, quoteSell } from '../domain/shop/pricing.js';
 import { buy as buyTx, sell as sellTx } from '../domain/shop/transactions.js';
-import { recognizedItems, unrecognizedItems } from '../domain/shop/inventory.js';
+import { recognizedItems, unrecognizedItems, withInventionRefs } from '../domain/shop/inventory.js';
 import * as negotiation from '../domain/shop/negotiation.js';
 import { getRelation, haggleKey } from '../domain/shop/state.js';
 import * as talk from '../domain/shop/talk.js';
@@ -39,7 +43,7 @@ import { playerLocation, visibleMap, merchantsAt, travel as travelTo, availabili
 import { displayKeeper } from '../domain/shop/personality.js';
 import { MEMORY_TYPES, DM_MEMORY_TYPES } from '../domain/shop/memory.js';
 import { createRng } from '../domain/shop/rng.js';
-import { computeSheet } from '../domain/rules.js';
+import { computeSheet, allFeats } from '../domain/rules.js';
 import { raceName, getClass, getOfficialBackground } from '../data/index.js';
 import { buildProfile } from '../domain/shop/profile.js';
 import { listEntries, getPack } from '../content/registry.js';
@@ -69,12 +73,14 @@ export function negotiationSkills(character) {
 
 /** Perfil del personaje para el trato con los comerciantes (raza, clase, trasfondo…). */
 export function characterProfile(character) {
-  return buildProfile(character, {
+  const profile = buildProfile(character, {
     raceName,
     className: (key) => getClass(key)?.nombre ?? key,
     backgroundName: (bg) => (bg?.source === 'custom' ? bg.custom?.name ?? '' : getOfficialBackground(bg?.key)?.name ?? bg?.key ?? ''),
     families: racesData.families,
   });
+  // Dotes del personaje (algunas cambian precios, p. ej. Artesano).
+  return profile && character ? { ...profile, feats: allFeats(character).map((f) => f.name) } : profile;
 }
 
 /**
@@ -106,6 +112,7 @@ export function buildShopContext({ campaignId = null } = {}) {
     raceFamilies: racesData.families,
     rumors: world.rumors,
     professions: professionsData.professions,
+    estate: estateData,
   });
 }
 
@@ -139,7 +146,8 @@ export function createShopService({ characters, homebrew, market = createMarketR
     queue = run.catch(() => {});
     return run;
   };
-  const shopCharacter = () => (state.character ? { ...state.character, skills: negotiationSkills(state.character) } : null);
+  // Los inventos fabricados antes de que el Taller guardara su referencia se reconocen por el nombre.
+  const shopCharacter = () => (state.character ? { ...withInventionRefs(state.character), skills: negotiationSkills(state.character) } : null);
   const charName = () => state.character?.identity?.name?.trim() || 'Personaje sin nombre';
 
   async function loadMarket(scope) {
@@ -412,6 +420,72 @@ export function createShopService({ characters, homebrew, market = createMarketR
       });
     },
 
+    // ── Propiedades, negocios y empleados ──
+    /** Terrenos del lugar donde está el personaje. */
+    plotsHere: () => estate.plotsAt(state.world, state.ctx, here(), state.characterId),
+    myProperties: () => estate.propertiesOf(state.world, state.ctx, state.characterId).map((p) => ({
+      ...p,
+      here: p.plot.location === here(),
+      location: state.ctx.location(p.plot.location),
+      reserved: estate.reservedCash(state.world, p.plot.id),
+      staff: staff.staffOf(state.world, state.characterId).filter((s) => s.assignment === p.plot.id),
+    })),
+    buildings: () => [...(state.ctx.estate?.buildings?.values() ?? [])],
+    jobBoard: () => staff.candidatesAt(state.world, state.ctx, here()),
+    myStaff: () => staff.staffOf(state.world, state.characterId),
+    staffRoles: () => [...(state.ctx.estate?.roles?.values() ?? [])],
+    myReports: () => staff.reportsFor(state.world, state.characterId),
+    pendingReports: () => (api.canControlTime ? staff.pendingReports(state.world) : []),
+    /** Popularidad: de un producto en la región actual y la fama del personaje. */
+    popularity(itemId) {
+      const region = state.ctx.location(here())?.regionId;
+      const value = productPopularity(state.world, itemId, region);
+      return { value, label: popularityLabel(value) };
+    },
+    get renown() {
+      const region = state.ctx.location(here())?.regionId;
+      const value = renown(state.world, state.characterId, region);
+      return { value, label: popularityLabel(value) };
+    },
+    /** Inventos del personaje que se pueden llevar a su negocio. */
+    stockable() {
+      if (!state.character) return [];
+      return recognizedItems(shopCharacter(), state.ctx.catalog).map(({ item, units }) => ({ item, units }));
+    },
+    /**
+     * Acción sobre propiedades/empleados. Las que mueven dinero u objetos
+     * cambian también la ficha; el resto sólo el mercado.
+     */
+    estate(action, params = {}) {
+      const withChar = {
+        buy: estate.buyPlot, sell: estate.sellPlot, build: estate.startWorks, deposit: estate.depositStock,
+        withdrawStock: estate.withdrawStock, withdrawCash: estate.withdrawCash, promote: estate.promote, payStaff: staff.payStaff,
+      };
+      const marketOnly = {
+        open: estate.openBusiness, price: estate.setStockPrice, hire: staff.hireStaff, assign: staff.assignStaff,
+        terms: staff.updateTerms, dismiss: staff.dismissStaff, explore: staff.sendExplorer,
+      };
+      return serial(async () => {
+        if (!state.characterId) return { error: 'Elige un personaje.' };
+        const base = { ...params, charId: state.characterId, here: here() };
+        let res;
+        if (withChar[action]) res = await withCharacter((world, character) => withChar[action](world, state.ctx, { ...base, character }));
+        else if (marketOnly[action]) res = await mutateMarket((world) => marketOnly[action](world, state.ctx, base));
+        else return { error: 'Acción desconocida.' };
+        if (!res.error) emit({ type: 'estate' });
+        return res;
+      });
+    },
+    /** El DM confirma (o cambia) el informe de un explorador. */
+    resolveReport(reportId, params = {}) {
+      return serial(async () => {
+        if (!api.canControlTime) return { error: 'Sólo el DM confirma los informes.' };
+        const res = await mutateMarket((world) => staff.resolveReport(world, state.ctx, { reportId, ...params }));
+        if (!res.error) emit({ type: 'estate' });
+        return res;
+      });
+    },
+
     /** Recarga el mercado (p. ej. para ver lo que compraron otros jugadores). */
     refresh() {
       return serial(async () => {
@@ -469,13 +543,13 @@ export function createShopService({ characters, homebrew, market = createMarketR
     /** Lo que el personaje podría vender aquí: objetos reconocidos + los que la Tienda no conoce. */
     sellableItems(shopId) {
       if (!state.character) return [];
-      const known = recognizedItems(state.character, state.ctx.catalog).map(({ item, units }) => ({
+      const known = recognizedItems(shopCharacter(), state.ctx.catalog).map(({ item, units }) => ({
         entry: { name: item.name, qty: units },
         item,
         units,
         quote: quoteSell(state.world, state.ctx, { shopId, itemId: item.id, charId: state.characterId }),
       }));
-      const unknown = unrecognizedItems(state.character, state.ctx.catalog).map((entry) => ({
+      const unknown = unrecognizedItems(shopCharacter(), state.ctx.catalog).map((entry) => ({
         entry: { name: entry.name || 'Objeto sin nombre', qty: entry.quantity }, item: null, units: 0, quote: { unit: null, reason: 'unknown-item' },
       }));
       return [...known, ...unknown];

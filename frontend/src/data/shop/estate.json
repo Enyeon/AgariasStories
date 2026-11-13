@@ -1,0 +1,29 @@
+{
+  "$comment": "Propiedades, mejoras y empleados. Precios en pc. plots: terrenos en venta por ubicación (los Homebrew del DM podrán añadir más). buildings: mejoras construibles; effects: business (permite abrir negocio), slots (tipos de producto que caben a la venta), popularity (ganancia diaria de popularidad del negocio), upkeep (pc/día que paga la caja), valueMult (cuánto del coste suma al valor). roles: funciones de empleado; wage: salario diario base [mín, máx]. names: nombres para los candidatos del tablón.",
+  "plots": [
+    { "id": "plaza-esquina", "location": "plaza-mayor", "name": "Local en la esquina de la plaza", "size": "pequeño", "price": 60000, "description": "Paso constante de clientes. Caro, pero se vende solo." },
+    { "id": "plaza-patio", "location": "plaza-mayor", "name": "Casa con patio junto a la plaza", "size": "mediano", "price": 90000, "description": "Espacio para tienda y almacén." },
+    { "id": "fraguas-nave", "location": "barrio-fraguas", "name": "Nave junto a las fraguas", "size": "grande", "price": 75000, "description": "Ideal para un taller: humo, ruido y nadie que se queje." },
+    { "id": "fraguas-cobertizo", "location": "barrio-fraguas", "name": "Cobertizo de herrero", "size": "pequeño", "price": 25000, "description": "Pequeño, barato y con chimenea." },
+    { "id": "puerta-almacen", "location": "puerta-este", "name": "Almacén de caravanas", "size": "grande", "price": 50000, "description": "Donde paran los carros que entran y salen del valle." },
+    { "id": "callejon-trastienda", "location": "callejon-ratas", "name": "Trastienda sin letrero", "size": "pequeño", "price": 15000, "description": "Nadie pregunta qué se vende aquí." },
+    { "id": "karak-puesto", "location": "karak-dum", "name": "Puesto de piedra en Karak-Dûm", "size": "pequeño", "price": 40000, "description": "Los enanos respetan a quien tiene puesto propio." },
+    { "id": "veta-solar", "location": "campamento-minero", "name": "Solar en la Veta Honda", "size": "mediano", "price": 12000, "description": "Barro y oportunidades. Los mineros pagan bien." },
+    { "id": "fuerte-barracon", "location": "fuerte-cuervo", "name": "Barracón de intendencia", "size": "mediano", "price": 30000, "description": "La guardia siempre necesita suministros." },
+    { "id": "salitre-muelle", "location": "puerto-salitre", "name": "Caseta del muelle", "size": "pequeño", "price": 35000, "description": "Marineros con la paga recién cobrada." }
+  ],
+  "buildings": [
+    { "id": "local", "label": "Local comercial", "icon": "🏪", "cost": 20000, "days": 6, "requires": [], "description": "Mostrador y estantes: permite abrir un negocio.", "effects": { "business": true, "slots": 4, "upkeep": 10, "valueMult": 0.8 } },
+    { "id": "almacen", "label": "Almacén", "icon": "📦", "cost": 15000, "days": 5, "requires": ["local"], "description": "Más productos distintos a la venta.", "effects": { "slots": 4, "upkeep": 5, "valueMult": 0.8 } },
+    { "id": "escaparate", "label": "Escaparate", "icon": "🪟", "cost": 12000, "days": 3, "requires": ["local"], "description": "Atrae miradas: el negocio gana popularidad cada día.", "effects": { "popularity": 0.6, "upkeep": 2, "valueMult": 0.9 } },
+    { "id": "taller", "label": "Taller", "icon": "⚙️", "cost": 25000, "days": 8, "requires": [], "description": "Banco de trabajo y herramientas: los inventos hechos aquí son más conocidos.", "effects": { "workshop": true, "upkeep": 8, "valueMult": 0.8 } },
+    { "id": "vivienda", "label": "Vivienda", "icon": "🏠", "cost": 18000, "days": 7, "requires": [], "description": "Un hogar propio. Sube el valor de la propiedad.", "effects": { "upkeep": 3, "valueMult": 1 } }
+  ],
+  "roles": [
+    { "id": "vendedor", "label": "Vendedor", "icon": "🧑‍💼", "wage": [30, 80], "description": "Atiende tu negocio cuando no estás. Cuanto más hábil, más vende." },
+    { "id": "constructor", "label": "Constructor", "icon": "🔨", "wage": [40, 100], "description": "Se encarga de obras y mejoras: las termina mucho antes." },
+    { "id": "explorador", "label": "Explorador", "icon": "🧭", "wage": [50, 120], "description": "Explora zonas en busca de información, lugares y recursos. El DM decide qué encuentra." }
+  ],
+  "names": ["Aldo", "Berta", "Cedric", "Dalia", "Emeric", "Fiona", "Gaspar", "Hilda", "Ivo", "Jana", "Korin", "Lena", "Milo", "Nadia", "Orrin", "Petra", "Quil", "Rosa", "Sven", "Tamsin", "Ulf", "Vera", "Wim", "Yara", "Zeno"],
+  "surnames": ["Pozoclaro", "Manoligera", "Tresvientos", "Piedrafría", "Robledal", "Caminante", "Cardo", "Hollín", "Barbarroja", "Sal", "Ventura", "Ceniza"]
+}

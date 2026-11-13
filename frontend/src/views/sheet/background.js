@@ -33,7 +33,7 @@ function equipmentSummary(text) {
 export function grantsList(def) {
   const rows = [
     ['Puntuaciones', def.abilityOptions.map((k) => ABILITY_LABEL[k]).join(', ')],
-    ['Dote', def.feat ? def.feat + (getFeat(def.feat) ? '' : ' (no está en los datos)') : ''],
+    ['Dote', def.feat ? def.feat + (def.featNote ? ` (${def.featNote})` : '') + (getFeat(def.feat) ? '' : ' (no está en los datos)') : ''],
     ['Habilidades', def.skills.join(', ')],
     ['Herramientas', def.tools.join(', ')],
     ['Idiomas', def.languages ? `${def.languages} a elegir` : ''],
@@ -72,7 +72,7 @@ function featBlock(ctx, def) {
   const options = featAbilityOptions(feat);
   const chosen = ctx.character.background.featAbility;
   return html`<fieldset class="choice-group">
-    <legend>Dote: ${def.feat} ${options.length ? (chosen ? html`<span class="badge badge--success">Listo</span>` : html`<span class="badge badge--warning">Elige atributo</span>`) : ''}</legend>
+    <legend>Dote: ${def.feat}${def.featNote ? ` (${def.featNote})` : ''} ${options.length ? (chosen ? html`<span class="badge badge--success">Listo</span>` : html`<span class="badge badge--warning">Elige atributo</span>`) : ''}</legend>
     ${options.length ? html`<div class="chips">${options.map((k) => html`<label class="chip"><input type="radio" name="bg-feat-ability" value="${k}" data-bg="feat-ability" ${chosen === k ? raw('checked') : ''} ${ctx.readOnly ? raw('disabled') : ''}>${ABILITY_LABEL[k]} +1</label>`)}</div>` : ''}
     ${feat ? html`<details class="disclosure disclosure--ghost" data-key="bg-feat"><summary>Ver descripción de la dote</summary><div class="disclosure__body rich">${prose(feat.habilidad)}</div></details>` : html`<p class="muted">Esta dote no está en los datos de la aplicación: anótala en «Rasgos».</p>`}
   </fieldset>`;
@@ -150,10 +150,10 @@ export function openBackgroundPicker(currentKey, homebrew = [], allow = {}) {
       const all = [...official, ...campaign, ...own];
       const list = () => {
         const q = norm(query);
-        const gs = groups.map((g) => ({ ...g, items: g.items.filter((i) => !q || norm(`${i.def.name} ${i.def.skills.join(' ')} ${i.def.feat ?? ''}`).includes(q)) })).filter((g) => g.items.length);
+        const gs = groups.map((g) => ({ ...g, items: g.items.filter((i) => !q || norm(`${i.def.name} ${i.def.skills.join(' ')} ${i.def.feat ?? ''} ${i.def.featNote ?? ''}`).includes(q)) })).filter((g) => g.items.length);
         return gs.length ? gs.map((g) => html`<h4 class="picker__group">${g.title}</h4>${g.items.map((i) => html`<button type="button" class="race-option ${selected?.id === i.id ? 'is-selected' : ''}" data-bg-id="${i.id}" aria-pressed="${selected?.id === i.id}">
           <span class="race-option__name">${i.def.name}</span>
-          <span class="race-option__bonus">${[i.def.skills.join(', '), i.def.feat].filter(Boolean).join(' · ') || 'Sin reglas definidas'}</span>
+          <span class="race-option__bonus">${[i.def.skills.join(', '), i.def.feat && (i.def.featNote ? `${i.def.feat} (${i.def.featNote})` : i.def.feat)].filter(Boolean).join(' · ') || 'Sin reglas definidas'}</span>
         </button>`)}`) : html`<p class="muted">Sin resultados.</p>`;
       };
       const detail = () => (selected ? html`<h3>${selected.def.name}</h3><p class="row">${sourceBadges(selected.def)}</p>

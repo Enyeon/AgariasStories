@@ -101,5 +101,17 @@ liquida al visitar a su empleado. Si la deuda crece, renuncia (y lo recuerda). E
 trasladarle (si acepta mudarse) y pedirle productos extra. Extensiones previstas: `employer.type`
 (facción u organización), lugar = propiedad del jugador, gastos y catálogos más finos.
 
+## Propiedades, negocios y empleados
+
+Todo vive en el JSON del mercado (`world.estate`, `world.staff`, `world.reports`, `world.popularity`); los datos base están en `data/shop/estate.json` (terrenos, mejoras, roles, nombres).
+
+- **Terrenos** (`domain/shop/estate.js`): se compran en persona. Las **mejoras** (local, almacén, escaparate, taller, vivienda) cuestan dinero y días, tienen requisitos y suben el valor. Al vender recuperas el 80 % (lo construido se queda en el terreno).
+- **Negocio**: necesita un local. Pones productos de tu inventario a la venta con tu precio; **sólo vende si hay un vendedor asignado**. La venta diaria depende de la popularidad del producto en la región, la del negocio, la habilidad del vendedor, tu fama y el precio frente al de referencia.
+- **Caja**: ahí entran las ventas y de ahí salen mantenimiento, salarios y comisiones. **Nada llega solo a la bolsa del personaje**: el dueño retira en persona lo que no esté reservado para salarios pendientes.
+- **Empleados** (`domain/shop/staff.js`): tablón semanal determinista por lugar. Roles: vendedor, constructor (acelera obras), explorador. Condiciones: salario diario, pago diario o semanal, % de las ventas, duración. Sin caja, el salario queda como deuda; impagos bajan el ánimo y por debajo de 15 renuncian. Eventos: enfermedad, pide aumento, buen día. Añadir roles = datos + una rama en la simulación.
+- **Exploradores**: al volver crean un **informe pendiente** con resultado sugerido (éxito / fracaso / descubrimiento), tirada y sugerencias (lugares ocultos, rumores). El DM lo confirma o cambia en «📨 Informes»; sólo entonces lo ve el jugador (y se revela el lugar o el rumor). La migración `20261116` impide que un jugador cree o confirme informes desde su cliente.
+- **Popularidad** (`domain/shop/popularity.js`): por producto y región, fama del personaje por región y del negocio. Sube con ventas y promociones, se desgasta con el tiempo. Más fama = más demanda y mejor precio de venta (hasta +30 %).
+- **Inventos del Taller**: cada receta es un producto del catálogo (`taller-obra-<receta>`, no se vende en tiendas). Lo fabricado guarda `ref`; los inventos viejos se reconocen por nombre. Progresión deducida del mundo: inventor → vendedor ocasional → comerciante → dueño de negocio → empresario reconocido.
+
 ## Aspecto
 El tema de la Tienda (madera, latón y pergamino) vive en `views/shop/shop.css`, dentro de `.shop-root`, así que no afecta al resto de la app. Las tipografías (Cinzel y Alegreya Sans) están incluidas en el proyecto (`views/shop/fonts/`, licencia OFL), porque la CSP no permite fuentes externas. Solo se cargan al entrar en `/tienda`.

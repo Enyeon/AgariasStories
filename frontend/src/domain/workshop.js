@@ -286,7 +286,8 @@ export function build(c, recipeId, moduleIds, opts = {}) {
   }
   out.workshop.materials = stock;
   out.equipment.coins = payCoins(out.equipment.coins, plan.gold * 100);
-  out.equipment.items = [...out.equipment.items, { name: plan.item.name, quantity: plan.item.quantity, notes: plan.item.notes }];
+  // `ref`: el invento se reconoce en la Tienda como producto vendible (taller-obra-<receta>).
+  out.equipment.items = [...out.equipment.items, { name: plan.item.name, quantity: plan.item.quantity, notes: plan.item.notes, ref: `taller-obra-${recipeId}` }];
   if (plan.item.weapon) {
     const i = out.equipment.weapons.findIndex((x) => !x.name && !x.damage && !x.attackBonus);
     if (i >= 0) out.equipment.weapons[i] = plan.item.weapon;

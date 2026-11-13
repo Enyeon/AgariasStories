@@ -379,7 +379,7 @@ export function journalOf(world, ctx, charId) {
     return (world.journal?.[charId ?? '_'] ?? []).map((j) => {
         const rumor = ctx.rumors.get(j.rumorId);
         const keeper = ctx.keepers.get(j.keeperId);
-        return rumor ? { ...j, rumor, from: keeper ? displayKeeper(keeper, getRelation(world, charId, keeper.id)).short : null, hint: j.verdict ? RUMOR_HINTS[j.verdict] : null } : null;
+        return rumor ? { ...j, rumor, from: keeper ? displayKeeper(keeper, getRelation(world, charId, keeper.id)).short : (j.from ?? null), hint: j.verdict ? RUMOR_HINTS[j.verdict] : null } : null;
     }).filter(Boolean);
 }
 

@@ -19,6 +19,7 @@ import { activeEvents, eventReaches } from './world-events.js';
 import { shopRegion } from './presence.js';
 import { evaluateDisposition, tierAtLeast, meetsAny } from './disposition.js';
 import { createRng } from './rng.js';
+import { productPopularity, sellBonus, popularityLabel } from './popularity.js';
 
 export const LIMITS = Object.freeze({
     scarcity: 0.25, // ±25 % como máximo por escasez/exceso
@@ -234,6 +235,8 @@ export function personalFactors(world, ctx, { shop, item, entry, charId, profile
         if (flags.has('spontaneousDiscount') && tierAtLeast(tier, 'neutral') && createRng(world.seed, 'gesto', keeper.id, charId ?? '_', world.day).chance(0.3)) {
             factors.push({ key: 'gesto', label: `Hoy ${who} está de buen humor contigo`, pct: -0.05, icon: '😊' });
         }
+        // Dote Artesano (reglas 2024): 20 % menos en objetos no mágicos.
+        if (profile?.feats?.includes('Artesano') && item.category !== 'magicos') factors.push({ key: 'dote-artesano', label: 'Dote Artesano: sabes lo que vale', pct: -0.2, icon: '🛠️' });
         if (flags.has('loyaltyDiscount') && (rel.memory?.bought?.n ?? 0) >= 5) factors.push({ key: 'fidelidad', label: 'Descuento de cliente fiel', pct: -0.04, icon: '🎖️' });
         if (rel.discount && rel.discount.until >= world.day) factors.push({ key: 'favor', label: 'Te lo debe por el favor que le hiciste', pct: -Math.abs(rel.discount.pct), icon: '🤝' });
         if (flags.has('demandsGuarantee') && !tierAtLeast(tier, 'amistoso') && marketUnit >= GUARANTEE_THRESHOLD) {
@@ -335,6 +338,10 @@ export function quoteSell(world, ctx, { shopId, itemId, charId = null, profile =
         const greed = (0.5 - keeper.traits.greed) * 0.2;
         if (Math.abs(greed) >= 0.02) factors.push({ key: 'margen', label: greed < 0 ? `${who} aprieta al comprar` : `${who} paga con justicia`, pct: greed, icon: '🪙' });
     }
+    // Un producto conocido en la región se paga mejor.
+    const pop = productPopularity(world, item.id, shopRegion(world, ctx, shopId));
+    const bonus = sellBonus(pop);
+    if (bonus >= 0.01) factors.push({ key: 'popularidad', label: `${popularityLabel(pop)} en la región: lo pagan mejor`, pct: bonus, icon: '🌟' });
     const personal = personalFactors(world, ctx, { shop, item, entry, charId, profile, side: 'sell' });
     factors.push(...personal.factors);
 

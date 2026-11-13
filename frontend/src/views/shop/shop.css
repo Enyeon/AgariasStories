@@ -965,3 +965,25 @@
 .tone-bad { color: #ff9b85; }
 .talk-card { min-width: 0; }
 .talk-controls .sort-select { min-width: 0; width: 100%; }
+
+/* Propiedades, negocio y empleados */
+.estate { display: grid; gap: 12px; }
+.estate fieldset { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; display: grid; gap: 8px; }
+.estate legend { font-family: var(--font-title); color: var(--brass-2); padding: 0 6px; }
+.estate-stage { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border-radius: 10px; background: #4a2b1040; border: 1px dashed #a0743a; }
+.estate-stage-icon { font-size: 26px; }
+.estate-stage p { margin: 4px 0 0; }
+.estate-property { display: grid; gap: 8px; padding: 10px 12px; border-radius: 10px; background: var(--panel); border: 1px solid var(--line); }
+.estate-property header h3 { margin: 0; font-size: 1em; }
+.estate-property p { margin: 0; }
+.estate-business { display: grid; gap: 8px; border-top: 1px dashed var(--line); padding-top: 8px; }
+.estate-cash { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+.estate-stock { width: 100%; border-collapse: collapse; font-size: 0.9em; }
+.estate-stock th, .estate-stock td { text-align: left; padding: 4px 6px; border-bottom: 1px solid var(--line); }
+.estate-stock .qty-input { width: 6em; }
+.estate textarea.qty-input { width: 100%; resize: vertical; font: inherit; }
+.estate-employee details { margin-top: 6px; }
+.estate-employee label { display: inline-flex; gap: 4px; align-items: center; }
+.estate .callout { margin: 0; }
+.shop-root .chip.muted { opacity: 0.7; cursor: default; }
+.btn.btn-alert { border-color: var(--brass); color: var(--brass-2); }

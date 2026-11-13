@@ -15,6 +15,7 @@ import { toast as appToast } from '../../ui/feedback.js';
 import { openNegotiation } from './negotiation-dialog.js';
 import { renderTalk } from './talk-panel.js';
 import { openMap, openJournal, openKnown, openDmTools } from './world-panels.js';
+import { openEstate, openReportsInbox } from './estate-panels.js';
 import { openWorldAdmin } from './world-admin.js';
 import { visibleMemories } from '../../domain/shop/memory.js';
 
@@ -167,6 +168,7 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
                 h('button', { class: 'btn btn-ghost', disabled: !canTime, onclick: () => advance(7), title: canTime ? '' : timeHint }, '+7 días'),
                 canTime ? h('button', { class: 'btn btn-ghost', onclick: () => openDmTools(root, service, { toast, keeperId: keeper()?.id }), title: 'Eventos, facciones, viajes y memoria de los comerciantes' }, '🎲 DM') : null,
                 service.canEditWorld ? h('button', { class: 'btn btn-ghost', onclick: () => openWorldAdmin(root, service, { toast }), title: 'Crear y editar regiones, facciones, comerciantes y eventos' }, '🌍 Mundo') : null,
+                canTime && service.pendingReports().length ? h('button', { class: 'btn btn-ghost btn-alert', onclick: () => openReportsInbox(root, service, { toast }), title: 'Lo que encontraron los exploradores de los jugadores: confírmalo o cámbialo' }, `📨 Informes (${service.pendingReports().length})`) : null,
                 events.length
                     ? h('div', { class: 'event-chips', 'aria-label': 'Eventos activos' }, events.map(({ def }) => h('span', { class: 'event-chip', title: def.notice }, h('span', { 'aria-hidden': 'true' }, def.icon), def.name, def.regions?.length ? h('small', {}, ` · ${def.regions.map((r) => ctx.regions.get(r)?.name ?? r).join(', ')}`) : null)))
                     : null,
@@ -200,6 +202,7 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
                     h('button', { class: 'btn btn-sm', onclick: () => openMap(root, service, { toast, onTravel: (l) => toast(`Llegas a ${l.name}.`, 'info') }) }, '🗺️ Viajar'),
                     h('button', { class: 'btn btn-sm btn-ghost', onclick: () => openKnown(root, service, { onGo: goTo }) }, '👥 Conocidos'),
                     h('button', { class: 'btn btn-sm btn-ghost', onclick: () => openJournal(root, service, { toast }) }, '📔 Rumores'),
+                    state().characterId ? h('button', { class: 'btn btn-sm btn-ghost', onclick: () => openEstate(root, service, { toast }), title: 'Terrenos, tu negocio, empleados e informes de exploración' }, `🏠 Propiedades${service.myStaff().length ? ` · 👷 ${service.myStaff().length}` : ''}`) : null,
                     service.contracts().length ? h('button', { class: 'btn btn-sm btn-ghost', onclick: () => openKnown(root, service, { onGo: goTo, contracts: true }) }, `📜 Empleados (${service.contracts().length})`) : null,
                 ),
             ),
@@ -759,6 +762,11 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
                 const k = ctx.keepers.get(r.keeperId);
                 lines.push({ icon: '❌', text: `No cumpliste a tiempo el favor de ${k?.short ?? k?.name ?? 'un comerciante'}: lo recordará.`, tone: 'low', order: 1 });
             }
+            const mine = r.charId !== undefined && r.charId === (state().characterId ?? '_');
+            if (r.type === 'works-done' && mine) lines.push({ icon: '🏗️', text: `Terminó la obra en ${ctx.estate?.plots?.get(r.plotId)?.name ?? 'tu terreno'}: ${ctx.estate?.buildings?.get(r.buildingId)?.label ?? ''}.`, tone: 'ok', order: 0 });
+            if ((r.type === 'staff-event' || r.type === 'staff-quit') && mine) lines.push({ icon: r.type === 'staff-quit' ? '🚪' : '👷', text: r.text, tone: r.type === 'staff-quit' ? 'low' : 'muted', order: 1 });
+            if (r.type === 'staff-ended' && mine) lines.push({ icon: '📜', text: `Terminó el contrato de ${state().world.staff?.[r.staffId]?.name ?? 'un empleado'}.`, tone: 'muted', order: 2 });
+            if (r.type === 'exploration-back' && (mine || state().role === 'dm')) lines.push({ icon: '🧭', text: `${state().world.staff?.[r.staffId]?.name ?? 'Un explorador'} volvió de explorar. ${state().role === 'dm' ? 'Su informe espera en tu bandeja.' : 'El DM revisará lo que encontró.'}`, tone: 'event', order: 0 });
             if (r.type === 'gone') lines.push({ icon: '💨', text: r.expired ? `${name(r.itemId)} ya no está en ${shopName(r.shopId)}: se lo llevaron a otro mercado.` : `Otro cliente compró ${name(r.itemId)} en ${shopName(r.shopId)}.`, tone: 'muted', order: 2 });
         }
         const byShop = (type) => {

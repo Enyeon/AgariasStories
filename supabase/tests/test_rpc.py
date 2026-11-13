@@ -223,3 +223,19 @@ def test_campaign_details():
     assert call("campaign_set_details", cid, dm, details)["details"] == details
     assert call("campaign_get", cid, inv)["details"] == details
     assert call("campaign_set_details", cid, dm, {"x": "y" * 30000}) == {"error": "payload_too_large"}
+
+
+def test_exploration_reports_are_dm_only():
+    camp = call("campaign_create", "Informes")
+    cid, dm, inv = camp["id"], camp["dmKey"], camp["inviteCode"]
+    assert call("shop_market_save", cid, inv, market(), 0)["revision"] == 1
+    # Un mercado viejo sin «reports» y uno con la lista vacía valen lo mismo.
+    assert call("shop_market_save", cid, inv, {**market(), "reports": []}, 1)["revision"] == 2
+    pending = {**market(), "reports": [{"id": "rep-1", "status": "pendiente", "outcome": "exito"}]}
+    assert call("shop_market_save", cid, inv, pending, 2) == {"error": "forbidden"}
+    assert call("shop_market_save", cid, dm, pending, 2)["revision"] == 3
+    confirmed = {**market(), "reports": [{"id": "rep-1", "status": "confirmado", "outcome": "descubrimiento"}]}
+    assert call("shop_market_save", cid, inv, confirmed, 3) == {"error": "forbidden"}
+    # El jugador puede seguir comprando sin tocar los informes.
+    assert call("shop_market_save", cid, inv, {**pending, "note": "compra"}, 3)["revision"] == 4
+    assert call("shop_market_save", cid, dm, confirmed, 4)["revision"] == 5

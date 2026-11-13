@@ -36,6 +36,11 @@ export function emptyWorld(seed) {
         journal: {},
         settings: { freeTravel: true },
         contracts: {},
+        // Propiedades, empleados, informes para el DM y popularidad
+        estate: { properties: {} },
+        staff: {},
+        reports: [],
+        popularity: { products: {}, renown: {} },
     };
 }
 
@@ -166,6 +171,10 @@ export function migrateWorld(raw) {
     world.journal ??= {};
     world.settings = { freeTravel: true, ...world.settings };
     world.contracts ??= {};
+    world.estate ??= { properties: {} };
+    world.staff ??= {};
+    world.reports ??= [];
+    world.popularity ??= { products: {}, renown: {} };
     for (const shop of Object.values(world.shops)) {
         shop.stock ??= {};
         shop.history ??= {};

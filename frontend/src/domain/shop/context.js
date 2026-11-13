@@ -32,6 +32,7 @@ export function createShopContext({
     raceFamilies = [],
     rumors = [],
     professions = [],
+    estate = null,
 }) {
     const professionMap = new Map(professions.map((p) => [p.id, p]));
     const phasesList = world?.phases?.length ? world.phases : DEFAULT_PHASES;
@@ -84,6 +85,13 @@ export function createShopContext({
         archetypes: archetypeMap,
         rumors: rumorMap,
         professions: professionMap,
+        estate: estate ? {
+            plots: new Map((estate.plots ?? []).map((p) => [p.id, p])),
+            buildings: new Map((estate.buildings ?? []).map((b) => [b.id, b])),
+            roles: new Map((estate.roles ?? []).map((r) => [r.id, r])),
+            names: estate.names ?? [],
+            surnames: estate.surnames ?? [],
+        } : null,
         raceFamilies,
         regions: regionMap,
         locations: locationMap,

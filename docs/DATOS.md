@@ -35,9 +35,16 @@ reglas.** Sólo se hicieron estas correcciones, todas puramente técnicas:
 | `pericias` en `classes/picaro.json` (`{"1":2,"6":2}`) y `classes/bardo.json` (`{"3":2,"10":2}`) | Regla estándar de 5e; los datos de esas clases no tenían el rasgo escrito |
 | `pericias: 1` en las dotes «Experto en habilidades» y «Prodigio» | Lo dice su propio texto |
 
-La dote del Acólito/Sabio se enlaza a «Iniciado Mágico» (nombre en `feats.json`
-de «Iniciado en la magia»). En 2024 esa dote fija la lista de conjuros (Clérigo /
-Mago); la dote de los datos no distingue listas.
+Están los 16 trasfondos del Manual del Jugador 2024 (más Solitario y Huérfano
+de Agarias, pendientes de reglas). Las dotes de origen se enlazan con su nombre
+en `feats.json` y `featNote` guarda el nombre o la variante del manual:
+Iniciado Mágico (Clérigo / Druida / Hechicero), Habilidoso («Experto» /
+«Experimentado»), Duro («Robusto»), Curador («Sanador»), Peleador de taberna
+(«Luchador de taberna»). Afortunado, Artesano y Músico se añadieron a
+`feats.json`. La dote Artesano da un 20 % de descuento en la Tienda en objetos no
+mágicos. El equipo usa los nombres del catálogo de la Tienda cuando hay uno
+equivalente (ropa fina, palanca, linterna sorda, grilletes…) para que se
+reconozca al vender. Las monedas del equipo son po.
 
 ### Cómo añadir trasfondos oficiales o de Agarias
 Añade una entrada a `backgrounds.json` con una clave única:
@@ -57,7 +64,7 @@ Añade una entrada a `backgrounds.json` con una clave única:
 ```
 
 `source` agrupa en el selector. Opcionales: `verify: true` (muestra «Verificar»)
-y `pending: true` (muestra «Sin reglas aún»). El test `background.test.js`
+y `pending: true` (muestra «Sin reglas aún»), `featNote` (variante de la dote). El test `background.test.js`
 comprueba que las habilidades y dotes de cada trasfondo existan.
 
 ## Shadow Knight (v2.2)

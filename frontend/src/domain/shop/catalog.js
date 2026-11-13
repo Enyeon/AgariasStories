@@ -107,6 +107,7 @@ export const CATEGORIES = Object.freeze([
         id: 'tecnologia', label: 'Tecnología', icon: '⚙️',
         subs: [
             { id: 'material', label: 'Materiales de taller', icon: '🔩' },
+            { id: 'invento', label: 'Inventos', icon: '🛠️' },
         ],
     },
     {

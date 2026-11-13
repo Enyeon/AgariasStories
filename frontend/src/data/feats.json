@@ -613,5 +613,14 @@
       }
     ],
     "habilidad": "Tienes práctica en el arte de aplastar a tus enemigos.\nObteniendo los siguientes beneficios:\n♻ Aumenta tu Fuerza o Constitución en 1, hasta un máximo de 20.\n♻ Una vez por turno, cuando golpeas a una criatura con un ataque que inflige daño contundente, puedes empujarla 5 pies (1 Casilla) a un espacio desocupado, siempre que el objetivo no sea más de un tamaño mayor que tú.\n♻ Cuando obtienes un golpe crítico que inflige daño contundente a una criatura, las tiradas de ataque contra esa criatura se realizan con ventaja hasta el comienzo de tu siguiente turno."
+  },
+  "Afortunado": {
+    "habilidad": "Tienes una suerte inexplicable que aparece justo cuando más la necesitas.\nObtienes los siguientes beneficios:\n♻ Puntos de suerte: tienes tantos como tu bonificador por competencia. Recuperas todos al terminar un descanso largo.\n♻ Ventaja: cuando haces una prueba de d20, puedes gastar 1 punto de suerte para tener ventaja en ella.\n♻ Desventaja: cuando una criatura hace una tirada de ataque contra ti, puedes gastar 1 punto de suerte para imponerle desventaja."
+  },
+  "Artesano": {
+    "habilidad": "Eres hábil fabricando objetos y sabes regatear con quienes los venden.\nObtienes los siguientes beneficios:\n♻ Competencia con tres herramientas de artesano de tu elección.\n♻ Descuento: cuando compras un objeto no mágico, obtienes un 20 % de descuento.\n♻ Fabricación rápida: al terminar un descanso largo, puedes fabricar una pieza de equipo relacionada con una de tus herramientas de artesano. Dura hasta que terminas otro descanso largo."
+  },
+  "Músico": {
+    "habilidad": "Eres un intérprete capaz de levantar el ánimo de cualquiera.\nObtienes los siguientes beneficios:\n♻ Competencia con tres instrumentos musicales de tu elección.\n♻ Canción de ánimo: al terminar un descanso corto o largo, puedes tocar una canción con un instrumento con el que tengas competencia y dar Inspiración heroica a tantos aliados que te oigan como tu bonificador por competencia."
   }
 }

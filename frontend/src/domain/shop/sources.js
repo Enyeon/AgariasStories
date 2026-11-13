@@ -25,6 +25,33 @@ export function tallerItems(catalog = taller) {
   }));
 }
 
+/**
+ * Inventos del Taller (una receta = un producto): no los tiene ningún
+ * comerciante en el estante (forSale: false), pero se pueden vender a quien
+ * compre tecnología o en tu propio negocio. Valor = complejidad + materiales.
+ */
+export function tallerProducts(catalog = taller) {
+  const material = Object.fromEntries(catalog.materiales.map((m) => [m.id, m.precio]));
+  return catalog.recetas.map((r) => {
+    const cx = catalog.complejidades?.[r.complejidad] ?? { valor: 40 };
+    const mats = Object.entries(r.materiales ?? {}).reduce((acc, [id, q]) => acc + (material[id] ?? 0) * q, 0);
+    return {
+      id: `taller-obra-${r.id}`,
+      name: r.nombre,
+      category: 'tecnologia',
+      sub: 'invento',
+      rarity: cx.nivel >= 11 ? 'rare' : cx.nivel >= 6 ? 'uncommon' : 'common',
+      price: Math.round((cx.valor + mats) * 100),
+      desc: r.descripcion ?? '',
+      props: { Origen: 'Invento del Taller', Complejidad: r.complejidad },
+      tags: ['ingeniero', 'invento', 'metal'],
+      stack: false,
+      forSale: false,
+      origin: 'taller',
+    };
+  });
+}
+
 const RARITY = { común: 'common', comun: 'common', 'poco común': 'uncommon', 'poco comun': 'uncommon', raro: 'rare', 'muy raro': 'veryRare', legendario: 'legendary', artefacto: 'unique' };
 const UNIT = { pc: 'cp', pp: 'sp', po: 'gp', ppt: 'pp', cp: 'cp', sp: 'sp', gp: 'gp' };
 
@@ -61,7 +88,7 @@ export function homebrewItems(entries) {
 export function catalogSources({ homebrew = [] } = {}) {
   return [
     { origin: 'data', items: baseItems.items },
-    { origin: 'taller', items: tallerItems() },
+    { origin: 'taller', items: [...tallerItems(), ...tallerProducts()] },
     { origin: 'homebrew', items: homebrewItems(homebrew) },
   ];
 }
