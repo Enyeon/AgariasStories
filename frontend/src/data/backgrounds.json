@@ -363,7 +363,7 @@
       "sabiduria"
     ],
     "feat": "Peleador de taberna",
-    "featNote": "Luchador de taberna",
+    "featNote": "Alborotador de taberna",
     "skills": [
       "Acrobacias",
       "Percepción"
@@ -423,7 +423,7 @@
       "sabiduria"
     ],
     "feat": "Iniciado Mágico",
-    "featNote": "Hechicero",
+    "featNote": "Mago",
     "skills": [
       "Conocimiento Arcano",
       "Historia"

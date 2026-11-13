@@ -415,7 +415,7 @@
         "constitucion": 1
       }
     ],
-    "habilidad": "Acostumbrado a peleas duras y violentas usando cualquier arma que esté a mano.\nObteniendo los siguientes beneficios:\n♻ Aumenta tu Fuerza o Constitución en 1, hasta un máximo de 20.\n♻ Eres competente con armas improvisadas.\n♻ Tu golpe desarmado usa un d4 para daño.\n♻ Cuando golpeas a una criatura con un golpe desarmado o un arma improvisada en tu turno, puedes usar una acción adicional para intentar agarrar al objetivo."
+    "habilidad": "Acostumbrado a peleas duras y violentas usando cualquier arma que esté a mano.\nObteniendo los siguientes beneficios:\n♻ Aumenta tu Fuerza o Constitución en 1, hasta un máximo de 20.\n♻ Eres competente con armas improvisadas y con golpes sin armas.\n♻ Tu golpe desarmado usa un d4 para daño.\n♻ Cuando golpeas a una criatura con un golpe desarmado o un arma improvisada en tu turno, puedes usar una acción adicional para intentar agarrar al objetivo."
   },
   "Perforador": {
     "aumentarStatOpcional": [

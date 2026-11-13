@@ -38,9 +38,9 @@ reglas.** Sólo se hicieron estas correcciones, todas puramente técnicas:
 Están los 16 trasfondos del Manual del Jugador 2024 (más Solitario y Huérfano
 de Agarias, pendientes de reglas). Las dotes de origen se enlazan con su nombre
 en `feats.json` y `featNote` guarda el nombre o la variante del manual:
-Iniciado Mágico (Clérigo / Druida / Hechicero), Habilidoso («Experto» /
+Iniciado Mágico (Clérigo / Druida / Mago), Habilidoso («Experto» /
 «Experimentado»), Duro («Robusto»), Curador («Sanador»), Peleador de taberna
-(«Luchador de taberna»). Afortunado, Artesano y Músico se añadieron a
+(«Alborotador de taberna»). Afortunado, Artesano y Músico se añadieron a
 `feats.json`. La dote Artesano da un 20 % de descuento en la Tienda en objetos no
 mágicos. El equipo usa los nombres del catálogo de la Tienda cuando hay uno
 equivalente (ropa fina, palanca, linterna sorda, grilletes…) para que se
