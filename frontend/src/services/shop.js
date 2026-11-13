@@ -99,7 +99,8 @@ export function buildShopContext({ campaignId = null } = {}) {
     events: world.events,
     topics: topicsData.topics,
     dialogue: dialogueData,
-    world: world.world,
+    // El DM puede elegir en la ficha de la campaña dónde empiezan los personajes.
+    world: { ...world.world, start: (campaignId && getPack(campaignId)?.details?.startLocation) || world.world.start },
     factions: world.factions,
     archetypes: personalitiesData.archetypes,
     raceFamilies: racesData.families,

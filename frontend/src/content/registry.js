@@ -65,7 +65,7 @@ function putEntry(raw, { packId, packName, origin }) {
  */
 export function installPack(pack) {
   for (const [ref, e] of entries) if (e.packId === pack.id && e.origin !== 'snapshot') entries.delete(ref);
-  packs.set(pack.id, { id: pack.id, name: pack.name, kind: pack.kind, campaignId: pack.campaignId ?? null, rules: pack.rules ?? null, role: pack.role ?? null });
+  packs.set(pack.id, { id: pack.id, name: pack.name, kind: pack.kind, campaignId: pack.campaignId ?? null, rules: pack.rules ?? null, role: pack.role ?? null, details: pack.details ?? null });
   const rejected = [];
   for (const raw of pack.items ?? []) {
     const errors = putEntry(raw, { packId: pack.id, packName: pack.name, origin: pack.kind });

@@ -10,6 +10,7 @@
 import { installPack, uninstallPack, listEntries } from '../content/registry.js';
 import { makeRef, parseRef, randomId, validateContent, CONTENT_TYPE_KEYS } from '../content/schema.js';
 import { normalizeRules } from '../content/rules.js';
+import { normalizeCampaignDetails } from '../domain/campaign.js';
 import { campaignApi as defaultApi, hasSupabase } from './api.js';
 
 const LS = 'agarias-dnd:';
@@ -70,6 +71,8 @@ function toPack(remote, membership) {
     campaignId: remote.id,
     role: remote.role ?? membership.role,
     rules: normalizeRules(remote.rules),
+    // Ficha de la campaña (sin la migración 20261115 el servidor no la envía: queda vacía).
+    details: normalizeCampaignDetails(remote.details),
     items: (remote.items ?? []).map((i) => ({
       ref: makeRef(remote.id, i.type, i.contentId),
       type: i.type, version: i.version, status: i.status, data: i.data, author: i.author,
@@ -220,6 +223,21 @@ export function createHomebrewService({ api = defaultApi } = {}) {
     async updateCampaign(id, { name, rules }) {
       const m = membership(id);
       await api.update(id, m.key, { name, rules });
+      return this.refresh(id);
+    },
+
+    /** Guarda la ficha de la campaña (sólo el DM). */
+    async updateDetails(id, details) {
+      const m = membership(id);
+      try {
+        await api.setDetails(id, m.key, normalizeCampaignDetails(details));
+      } catch (err) {
+        // Servidor sin la migración: PostgREST no encuentra la función.
+        if (err?.code === 'server_not_ready') {
+          throw Object.assign(new Error('server_not_ready'), { userMessage: 'El servidor todavía no admite la ficha de la campaña: aplica la migración 20261115000000_campanas.sql en Supabase.' });
+        }
+        throw err;
+      }
       return this.refresh(id);
     },
 

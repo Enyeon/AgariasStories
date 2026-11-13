@@ -147,6 +147,7 @@ export function createCampaignApi(rpc = createRpc()) {
     get: (id, key) => rpc('campaign_get', { campaign_id: id, key }),
     update: (id, dmKey, { name = null, rules = null } = {}) => rpc('campaign_update', { campaign_id: id, dm_key: dmKey, name, rules }),
     rotateInvite: (id, dmKey) => rpc('campaign_rotate_invite', { campaign_id: id, dm_key: dmKey }),
+    setDetails: (id, dmKey, details) => rpc('campaign_set_details', { campaign_id: id, dm_key: dmKey, details }),
     upsertContent: (id, key, { type, data, contentId = null, status = null }) => rpc('content_upsert', { campaign_id: id, key, type, data, content_id: contentId, status }),
     setStatus: (id, dmKey, contentId, status) => rpc('content_set_status', { campaign_id: id, dm_key: dmKey, content_id: contentId, status }),
     remove: (id, dmKey, contentId) => rpc('content_delete', { campaign_id: id, dm_key: dmKey, content_id: contentId }),

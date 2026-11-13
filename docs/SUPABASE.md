@@ -12,7 +12,8 @@ página y Supabase guarda los datos.
    tus jugadores (p. ej. `sa-east-1`, São Paulo).
 2. *SQL Editor* → pega el contenido de cada archivo de `supabase/migrations/`, en
    orden (`20261108000000_agarias.sql`, `20261112000000_tienda.sql`,
-   `20261113000000_comerciantes.sql` y `20261114000000_mundo_dm.sql`)
+   `20261113000000_comerciantes.sql`, `20261114000000_mundo_dm.sql` y
+   `20261115000000_campanas.sql`)
    → *Run*. Se pueden ejecutar varias veces sin problema.
 3. *Project Settings → API*: copia la **URL** del proyecto y la clave
    **anon / publishable**. Nunca uses la clave `service_role` en la web.

@@ -212,3 +212,14 @@ def test_world_content_is_dm_only():
         assert call("content_upsert", cid, inv, t, {"name": "X"}, None, None) == {"error": "forbidden"}
         assert call("content_upsert", cid, dm, t, {"name": "Y"}, None, "publicado")["status"] == "publicado"
     assert call("content_upsert", cid, inv, "dote", {"name": "Mía"}, None, None)["status"] == "propuesto"
+
+
+def test_campaign_details():
+    camp = call("campaign_create", "Thaabdur")
+    cid, dm, inv = camp["id"], camp["dmKey"], camp["inviteCode"]
+    assert call("campaign_get", cid, dm)["details"] == {}
+    details = {"synopsis": "Minas y conspiraciones.", "kind": "campana", "players": {"min": 3, "max": 5}}
+    assert call("campaign_set_details", cid, inv, details) == {"error": "forbidden"}
+    assert call("campaign_set_details", cid, dm, details)["details"] == details
+    assert call("campaign_get", cid, inv)["details"] == details
+    assert call("campaign_set_details", cid, dm, {"x": "y" * 30000}) == {"error": "payload_too_large"}

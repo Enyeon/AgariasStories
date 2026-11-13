@@ -261,3 +261,19 @@ describe('Contratación', () => {
     expect(getRelation(world, 'c1', 'grishka').memory['promise-broken'].n).toBeGreaterThan(0);
   });
 });
+
+describe('Ficha de la campaña', () => {
+  it('se normaliza, se resume y fija el lugar de inicio en la Tienda', async () => {
+    const { normalizeCampaignDetails, campaignSummary } = await import('../src/domain/campaign.js');
+    const d = normalizeCampaignDetails({
+      synopsis: '  Minas y conspiraciones.  ', kind: 'campana', status: 'curso', styles: ['combate', 'nada', 'intriga'],
+      players: { min: '5', max: '3' }, levels: { start: 1, max: 99 }, startLocation: 'karak-dum', safety: { lines: ['arañas', '', 'arañas'] }, tone: 'raro',
+    });
+    expect(d).toEqual({ synopsis: 'Minas y conspiraciones.', kind: 'campana', status: 'curso', styles: ['combate', 'intriga'], players: { min: 3, max: 5 }, levels: { start: 1, max: 20 }, startLocation: 'karak-dum', safety: { lines: ['arañas'] } });
+    expect(normalizeCampaignDetails({})).toEqual({});
+    expect(campaignSummary(d)).toBe('Campaña larga · ▶️ En curso · 3–5 jugadores · nivel 1–20');
+    installPack({ id: 'campD', name: 'Thaabdur', kind: 'campaign', role: 'dm', details: d, items: [] });
+    expect(buildShopContext({ campaignId: 'campD' }).startLocation).toBe('karak-dum');
+    expect(buildShopContext().startLocation).toBe('plaza-mayor');
+  });
+});

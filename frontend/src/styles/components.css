@@ -293,3 +293,10 @@
 .content-form__section { scroll-margin-top: 3.5rem; }
 @media (max-width: 640px) { .content-form__nav { top: calc(-1 * var(--space-4)); } }
 .unlock-code { margin: 0; padding: var(--space-4); text-align: center; font: 700 1.6rem/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0.12em; border: 1px dashed var(--gold); border-radius: var(--radius); color: var(--gold); user-select: all; }
+
+/* Ficha de la campaña */
+.campaign-list li { flex-wrap: wrap; }
+.campaign-list__summary { flex-basis: 100%; font-size: var(--fs-sm); }
+.campaign-card__synopsis { white-space: pre-line; margin: 0 0 var(--space-3); }
+.pre-line { white-space: pre-line; }
+.campaign-form .row .input--num { width: 5rem; }

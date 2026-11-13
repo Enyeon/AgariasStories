@@ -10,7 +10,10 @@ import { toast, confirmDialog, openDialog, reportError, userMessageFor } from '.
 import { listEntries, onRegistryChange, getPack } from '../content/registry.js';
 import { CONTENT_TYPES, CONTENT_TYPE_KEYS, CONTENT_STATUS } from '../content/schema.js';
 import { HOMEBREW_MODES, OFFICIAL_TYPES, normalizeRules } from '../content/rules.js';
-import { setWorldEditingPack } from '../content/world-options.js';
+import { setWorldEditingPack, locationOptions } from '../content/world-options.js';
+import {
+  CAMPAIGN_SYSTEMS, CAMPAIGN_KINDS, CAMPAIGN_STYLES, CAMPAIGN_TONES, CAMPAIGN_MODALITIES, CAMPAIGN_STATUS, normalizeCampaignDetails, campaignSummary,
+} from '../domain/campaign.js';
 import { inviteUrl, parseInvite } from '../services/homebrew.js';
 import { downloadJson, readJsonFile } from '../services/file-transfer.js';
 import { openContentEditor } from './components/content-editor.js';
@@ -49,6 +52,7 @@ function overview(svc) {
         ${ms.length ? html`<ul class="campaign-list">${ms.map((m) => html`<li>
             <a href="/homebrew/${m.id}" data-link><strong>${m.name}</strong></a>
             <span class="badge ${m.role === 'dm' ? 'badge--gold' : ''}">${roleLabel(m.role)}</span>
+            ${campaignSummary(getPack(m.id)?.details) ? html`<span class="muted campaign-list__summary">${campaignSummary(getPack(m.id)?.details)}</span>` : ''}
           </li>`)}</ul>` : html`<p class="muted">Todavía no participas en ninguna campaña.</p>`}
         <div class="row">
           <button type="button" class="btn btn--primary" data-act="create-campaign" ${online ? '' : raw('disabled')}>Crear campaña (soy DM)</button>
@@ -59,6 +63,35 @@ function overview(svc) {
 }
 
 // ── Detalle de un paquete ────────────────────────────────────────────────
+
+/** Ficha de la campaña: la ven todos los miembros; sólo el DM la edita. */
+function campaignCard(pack) {
+  const d = pack.details ?? {};
+  const dm = pack.role === 'dm';
+  const empty = !Object.keys(d).length;
+  const row = (label, value) => (value ? html`<li><span>${label}</span><strong>${value}</strong></li>` : '');
+  const start = d.startLocation ? (locationOptions()[d.startLocation] ?? d.startLocation) : '';
+  return html`<section class="card campaign-card">
+    <header class="card__header">
+      <div><h2 class="card__title">📖 Ficha de la campaña</h2><p class="card__subtitle">${campaignSummary(d) || (dm ? 'Cuéntales a tus jugadores de qué va la campaña.' : 'El DM todavía no ha rellenado la ficha.')}</p></div>
+      ${dm ? html`<button type="button" class="btn ${empty ? 'btn--primary' : 'btn--ghost'} btn--sm" data-act="edit-details">${empty ? '✏️ Rellenar ficha' : '✏️ Editar ficha'}</button>` : ''}
+    </header>
+    ${d.synopsis ? html`<p class="campaign-card__synopsis">${d.synopsis}</p>` : ''}
+    ${empty ? '' : html`<ul class="summary-list">
+      ${row('Dungeon Master', d.dmName)}
+      ${row('Ambientación', d.setting)}
+      ${row('Sistema', CAMPAIGN_SYSTEMS[d.system])}
+      ${row('Estilo de juego', (d.styles ?? []).map((x) => CAMPAIGN_STYLES[x]).join(', '))}
+      ${row('Tono', CAMPAIGN_TONES[d.tone])}
+      ${row('Modalidad', [CAMPAIGN_MODALITIES[d.modality], d.platform].filter(Boolean).join(' · '))}
+      ${row('Sesiones', d.schedule)}
+      ${row('Lugar de inicio', start)}
+      ${row('Líneas (no aparece nunca)', (d.safety?.lines ?? []).join(', '))}
+      ${row('Velos (ocurre fuera de escena)', (d.safety?.veils ?? []).join(', '))}
+    </ul>`}
+    ${d.houseRules ? html`<details class="disclosure"><summary>Reglas de la casa</summary><div class="disclosure__body"><p class="pre-line">${d.houseRules}</p></div></details>` : ''}
+  </section>`;
+}
 
 function rulesCard(pack) {
   const rules = normalizeRules(pack.rules);
@@ -139,6 +172,7 @@ function detail(svc, pack, state) {
         <button type="button" class="btn btn--ghost btn--sm" data-act="export">⤓ Exportar</button>
       </div>
     </header>
+    ${isLocal ? '' : campaignCard(pack)}
     ${dm ? html`<div class="stack">${inviteCard(m)}${rulesCard(pack)}</div>` : ''}
     ${!isLocal && !dm ? html`<details class="disclosure"><summary>Reglas de la campaña</summary><div class="disclosure__body">
       <ul class="summary-list">${CONTENT_TYPE_KEYS.map((t) => html`<li><span>${CONTENT_TYPES[t].plural}</span><strong>${OFFICIAL_TYPES.includes(t) ? (rules.official[t] ? 'Oficial permitido · ' : 'Oficial NO permitido · ') : ''}Homebrew: ${HOMEBREW_MODES[rules.homebrew[t]]}</strong></li>`)}
@@ -228,7 +262,78 @@ export function mountHomebrew(container, ctx, packId = null) {
     });
     if (!name) return;
     const m = await run(() => svc.create(name), 'Campaña creada.');
-    if (m) ctx.navigate(`/homebrew/${m.id}`);
+    if (!m) return;
+    ctx.navigate(`/homebrew/${m.id}`);
+    // Justo después de crearla, se ofrece rellenar la ficha.
+    const pack = getPack(m.id);
+    if (pack) await editDetails(pack);
+  }
+
+  /** Formulario de la ficha de la campaña (sólo el DM). */
+  async function editDetails(pack) {
+    const d = pack.details ?? {};
+    setWorldEditingPack(pack.id);
+    const opt = (map, value, empty = '— Sin especificar —') => html`<option value="">${empty}</option>${Object.entries(map).map(([k, l]) => html`<option value="${k}" ${value === k ? raw('selected') : ''}>${l}</option>`)}`;
+    const num = (name, value, min, max) => html`<input class="input input--num" type="number" name="${name}" min="${min}" max="${max}" value="${value ?? ''}">`;
+    const result = await openDialog({
+      title: `Ficha de «${pack.name}»`,
+      size: 'lg',
+      render(body, close) {
+        setHtml(body, html`<form class="stack campaign-form" data-f novalidate>
+          <div class="grid-2">
+            <div class="field"><label class="field__label" for="cd-name">Nombre de la campaña</label><input id="cd-name" class="input" name="name" maxlength="120" required value="${pack.name}"></div>
+            <div class="field"><label class="field__label" for="cd-dm">Dungeon Master</label><input id="cd-dm" class="input" name="dmName" maxlength="60" value="${d.dmName ?? ''}" placeholder="Tu nombre o apodo"></div>
+          </div>
+          <div class="field"><label class="field__label" for="cd-syn">Sinopsis</label><textarea id="cd-syn" class="textarea" name="synopsis" rows="4" maxlength="3000" placeholder="De qué va la campaña, sin destripar nada.">${d.synopsis ?? ''}</textarea></div>
+          <div class="grid-2">
+            <div class="field"><label class="field__label" for="cd-kind">Tipo de campaña</label><select id="cd-kind" class="select" name="kind">${opt(CAMPAIGN_KINDS, d.kind)}</select></div>
+            <div class="field"><label class="field__label" for="cd-status">Estado</label><select id="cd-status" class="select" name="status">${opt(CAMPAIGN_STATUS, d.status)}</select></div>
+            <div class="field"><label class="field__label" for="cd-system">Sistema</label><select id="cd-system" class="select" name="system">${opt(CAMPAIGN_SYSTEMS, d.system)}</select></div>
+            <div class="field"><label class="field__label" for="cd-setting">Ambientación / mundo</label><input id="cd-setting" class="input" name="setting" maxlength="120" value="${d.setting ?? ''}" placeholder="Agarias, Reinos Olvidados…"></div>
+            <div class="field"><label class="field__label" for="cd-tone">Tono</label><select id="cd-tone" class="select" name="tone">${opt(CAMPAIGN_TONES, d.tone)}</select></div>
+            <div class="field"><label class="field__label" for="cd-start">Lugar de inicio (en la Tienda los personajes empiezan aquí)</label><select id="cd-start" class="select" name="startLocation">${opt(locationOptions(), d.startLocation, '— El de siempre —')}</select></div>
+          </div>
+          <fieldset class="choice-group"><legend>Estilo de juego (tipo de rol)</legend><div class="chips">${Object.entries(CAMPAIGN_STYLES).map(([k, l]) => html`<label class="chip"><input type="checkbox" name="styles" value="${k}" ${(d.styles ?? []).includes(k) ? raw('checked') : ''}>${l}</label>`)}</div></fieldset>
+          <div class="grid-2">
+            <div class="field"><span class="field__label">Jugadores (mínimo – máximo)</span><div class="row">${num('playersMin', d.players?.min, 1, 12)}<span>–</span>${num('playersMax', d.players?.max, 1, 12)}</div></div>
+            <div class="field"><span class="field__label">Nivel (inicial – máximo previsto)</span><div class="row">${num('levelStart', d.levels?.start, 1, 20)}<span>–</span>${num('levelMax', d.levels?.max, 1, 20)}</div></div>
+            <div class="field"><label class="field__label" for="cd-mod">Modalidad</label><select id="cd-mod" class="select" name="modality">${opt(CAMPAIGN_MODALITIES, d.modality)}</select></div>
+            <div class="field"><label class="field__label" for="cd-plat">Dónde se juega</label><input id="cd-plat" class="input" name="platform" maxlength="80" value="${d.platform ?? ''}" placeholder="Discord, Foundry, en casa de…"></div>
+          </div>
+          <div class="field"><label class="field__label" for="cd-sch">Sesiones (día, hora, frecuencia)</label><input id="cd-sch" class="input" name="schedule" maxlength="120" value="${d.schedule ?? ''}" placeholder="Viernes 21:00, cada dos semanas"></div>
+          <div class="grid-2">
+            <div class="field"><label class="field__label" for="cd-lines">Líneas: temas que no aparecen nunca (uno por línea)</label><textarea id="cd-lines" class="textarea" name="lines" rows="3">${(d.safety?.lines ?? []).join('\n')}</textarea></div>
+            <div class="field"><label class="field__label" for="cd-veils">Velos: ocurren fuera de escena (uno por línea)</label><textarea id="cd-veils" class="textarea" name="veils" rows="3">${(d.safety?.veils ?? []).join('\n')}</textarea></div>
+          </div>
+          <div class="field"><label class="field__label" for="cd-rules">Reglas de la casa</label><textarea id="cd-rules" class="textarea" name="houseRules" rows="4" maxlength="4000">${d.houseRules ?? ''}</textarea></div>
+          <p class="field__hint">Todo es opcional y lo ven todos los jugadores de la campaña.</p>
+          <div class="dialog__footer"><button type="button" class="btn btn--ghost" data-dialog-close>Cancelar</button><button class="btn btn--primary">Guardar ficha</button></div>
+        </form>`);
+        const form = body.querySelector('[data-f]');
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const fd = new FormData(form);
+          const name = String(fd.get('name') ?? '').trim();
+          if (!name) { form.querySelector('#cd-name').focus(); return; }
+          close({
+            name,
+            details: {
+              dmName: fd.get('dmName'), synopsis: fd.get('synopsis'), kind: fd.get('kind'), status: fd.get('status'), system: fd.get('system'),
+              setting: fd.get('setting'), tone: fd.get('tone'), startLocation: fd.get('startLocation') || null, styles: fd.getAll('styles'),
+              players: { min: fd.get('playersMin'), max: fd.get('playersMax') }, levels: { start: fd.get('levelStart'), max: fd.get('levelMax') },
+              modality: fd.get('modality'), platform: fd.get('platform'), schedule: fd.get('schedule'),
+              safety: { lines: String(fd.get('lines') ?? '').split('\n'), veils: String(fd.get('veils') ?? '').split('\n') },
+              houseRules: fd.get('houseRules'),
+            },
+          });
+        });
+      },
+    });
+    if (!result) return;
+    await run(async () => {
+      if (result.name !== pack.name) await svc.updateCampaign(pack.id, { name: result.name });
+      return svc.updateDetails(pack.id, normalizeCampaignDetails(result.details));
+    }, 'Ficha de la campaña guardada.');
   }
 
   async function joinWithLink() {
@@ -357,6 +462,7 @@ export function mountHomebrew(container, ctx, packId = null) {
       }
       case 'export': return downloadJson(svc.exportPack(pack.id), `homebrew-${pack.name}`);
       case 'refresh': return run(() => svc.refresh(pack.id), 'Campaña actualizada.');
+      case 'edit-details': return pack && pack.role === 'dm' && editDetails(pack);
       case 'new': return editItem(pack, page.querySelector('[data-new-type]').value, null);
       case 'edit': return entry && editItem(pack, entry.type, entry);
       case 'code': return entry && codeFor(pack, entry);
