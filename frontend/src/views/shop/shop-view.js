@@ -16,6 +16,7 @@ import { openNegotiation } from './negotiation-dialog.js';
 import { renderTalk } from './talk-panel.js';
 import { openMap, openJournal, openKnown, openDmTools } from './world-panels.js';
 import { openEstate, openReportsInbox } from './estate-panels.js';
+import { openBusinesses } from './floors-panel.js';
 import { openWorldAdmin } from './world-admin.js';
 import { visibleMemories } from '../../domain/shop/memory.js';
 
@@ -207,6 +208,7 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
                     h('button', { class: 'btn btn-sm', onclick: () => openMap(root, service, { toast, onTravel: (l) => toast(`Llegas a ${l.name}.`, 'info') }) }, '🗺️ Viajar'),
                     h('button', { class: 'btn btn-sm btn-ghost', onclick: () => openKnown(root, service, { onGo: goTo }) }, '👥 Conocidos'),
                     h('button', { class: 'btn btn-sm btn-ghost', onclick: () => openJournal(root, service, { toast }) }, '📔 Rumores'),
+                    service.progress.enabled ? h('button', { class: 'btn btn-sm btn-ghost', onclick: () => openBusinesses(root, service), title: 'Qué negocios hay en este piso y cuáles piden algo más' }, `🏰 Piso ${service.progress.current}`) : null,
                     state().characterId ? h('button', { class: 'btn btn-sm btn-ghost', onclick: () => openEstate(root, service, { toast }), title: 'Terrenos, tu negocio, empleados e informes de exploración' }, `🏠 Propiedades${service.myStaff().length ? ` · 👷 ${service.myStaff().length}` : ''}`) : null,
                     service.contracts().length ? h('button', { class: 'btn btn-sm btn-ghost', onclick: () => openKnown(root, service, { onGo: goTo, contracts: true }) }, `📜 Empleados (${service.contracts().length})`) : null,
                 ),

@@ -9,12 +9,14 @@
  */
 
 import { h, replace } from './dom.js';
+import { renderFloorsAdmin } from './floors-panel.js';
 import { openContentEditor } from '../components/content-editor.js';
 import { setWorldEditingPack } from '../../content/world-options.js';
 import { CONTENT_TYPES } from '../../content/schema.js';
 
 const TABS = [
     { id: 'carpeta', label: '📁 Carpeta del DM' },
+    { id: 'pisos', label: '🏰 Pisos' },
     { id: 'region', label: '🗺️ Regiones' },
     { id: 'faccion', label: '🏳️ Facciones' },
     { id: 'mercader', label: '🧑‍💼 Comerciantes' },
@@ -121,6 +123,10 @@ export function openWorldAdmin(root, service, { toast }) {
         const tabs = h('nav', { class: 'admin-tabs', role: 'tablist' }, TABS.map((t) => h('button', { class: ['tab', t.id === tab && 'active'], role: 'tab', 'aria-selected': String(t.id === tab), onclick: () => { tab = t.id; render(); } }, t.label)));
         if (tab === 'carpeta') {
             replace(body, tabs, renderFolder());
+            return;
+        }
+        if (tab === 'pisos') {
+            replace(body, tabs, renderFloorsAdmin(service, { toast, rerender: render }));
             return;
         }
         const add = h('button', { class: 'btn btn-sm btn-primary', onclick: () => edit(tab) }, `➕ Nuevo: ${CONTENT_TYPES[tab].label.toLowerCase()}`);

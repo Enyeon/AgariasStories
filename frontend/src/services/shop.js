@@ -28,6 +28,7 @@ import { catalogSources } from '../domain/shop/sources.js';
 import { assembleWorld, merchantToEditor, regionToEditor, factionToEditor, eventToEditor, worldId } from '../domain/shop/homebrew-world.js';
 import * as hiring from '../domain/shop/hiring.js';
 import * as estate from '../domain/shop/estate.js';
+import * as floors from '../domain/shop/floors.js';
 import * as staff from '../domain/shop/staff.js';
 import { productPopularity, renown, popularityLabel } from '../domain/shop/popularity.js';
 import { createShopContext } from '../domain/shop/context.js';
@@ -193,6 +194,18 @@ export function createShopService({ characters, homebrew, market = createMarketR
     await loadMarket(scope);
     if (id) setPref('characterId', id);
   }
+
+  /** Cambio del mercado que sólo puede hacer el DM. */
+  function dmMarket(fn) {
+    return serial(async () => {
+      if (!api.canControlTime) return { error: 'Sólo el DM controla la progresión por pisos.' };
+      const res = await mutateMarket(fn);
+      if (!res.error) emit({ type: 'market' });
+      return res;
+    });
+  }
+
+  const discoveredKeepers = () => state.world?.discovered?.[state.characterId ?? '_']?.keepers ?? [];
 
   /** Abre el mercado de una campaña como DM (sin personaje). */
   async function enterAsDm(id) {
@@ -396,6 +409,41 @@ export function createShopService({ characters, homebrew, market = createMarketR
         await reloadIfCurrent(packId);
         return res;
       });
+    },
+
+    // ── Progresión por pisos (Lord 100) ──
+    get progress() {
+      return floors.progressOf(state.world);
+    },
+    /** Negocios por estado. Los jugadores no ven los de pisos superiores (sólo cuántos hay). */
+    businesses() {
+      const g = floors.businessesByState(state.world, state.ctx);
+      const dm = api.canControlTime;
+      const visible = (x) => !x.keeper.secret || dm || discoveredKeepers().includes(x.keeper.id);
+      const clean = (list) => list.filter(visible).map((x) => ({ ...x, location: state.ctx.location(x.keeper.presence?.location)?.name ?? (x.keeper.presence?.route ? 'Errante' : '—') }));
+      return {
+        abierto: clean(g.abierto), especial: clean(g.especial), condicionado: clean(g.condicionado),
+        cerrado: dm ? clean(g.cerrado) : [],
+        bloqueado: dm ? clean(g.bloqueado) : [],
+        hiddenCount: dm ? 0 : g.bloqueado.length,
+      };
+    },
+    definedFloors: () => floors.definedFloors(state.ctx),
+    /** DM: «los jugadores llegaron al piso N». Se reponen las novedades del piso. */
+    setFloor(floor) {
+      return dmMarket((w) => {
+        const res = floors.setFloor(w, state.ctx, floor);
+        return { world: reconcileWorld(res.world, state.ctx), result: res.result };
+      });
+    },
+    setProgressEnabled(enabled) {
+      return dmMarket((w) => ({ world: reconcileWorld(floors.setProgressEnabled(w, enabled).world, state.ctx) }));
+    },
+    setRequirementDone(keeperId, done) {
+      return dmMarket((w) => floors.setRequirementDone(w, keeperId, done));
+    },
+    setBusinessOverride(keeperId, mode) {
+      return dmMarket((w) => floors.setOverride(w, keeperId, mode));
     },
 
     // ── Carpeta del DM: tiendas propias por campaña ──

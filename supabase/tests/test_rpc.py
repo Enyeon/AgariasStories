@@ -239,3 +239,20 @@ def test_exploration_reports_are_dm_only():
     # El jugador puede seguir comprando sin tocar los informes.
     assert call("shop_market_save", cid, inv, {**pending, "note": "compra"}, 3)["revision"] == 4
     assert call("shop_market_save", cid, dm, confirmed, 4)["revision"] == 5
+
+
+def test_floor_progress_is_dm_only():
+    camp = call("campaign_create", "Lord 100")
+    cid, dm, inv = camp["id"], camp["dmKey"], camp["inviteCode"]
+    assert call("shop_market_save", cid, inv, market(), 0)["revision"] == 1
+    floor2 = {**market(), "progress": {"enabled": True, "current": 2, "done": {}, "overrides": {}, "log": []}}
+    assert call("shop_market_save", cid, inv, floor2, 1) == {"error": "forbidden"}
+    assert call("shop_market_save", cid, dm, floor2, 1)["revision"] == 2
+    # Un jugador sigue pudiendo comprar si no toca el piso…
+    assert call("shop_market_save", cid, inv, {**floor2, "note": "compra"}, 2)["revision"] == 3
+    # …pero no abrir un negocio ni marcar un requisito.
+    cheat = {**floor2, "progress": {**floor2["progress"], "done": {"forja": True}}}
+    assert call("shop_market_save", cid, inv, cheat, 3) == {"error": "forbidden"}
+    # Ni crear un mercado ya con piso.
+    other = call("campaign_create", "Otra")
+    assert call("shop_market_save", other["id"], other["inviteCode"], floor2, 0) == {"error": "forbidden"}

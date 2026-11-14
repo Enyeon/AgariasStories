@@ -12,6 +12,7 @@
  * con quien esté en su misma ubicación.
  */
 
+import { businessStatus, locationUnlocked } from './floors.js';
 import { createRng } from './rng.js';
 import { cloneWorld } from './state.js';
 import { activeEvents } from './world-events.js';
@@ -104,6 +105,10 @@ function joinLabels(list) {
 export function availability(world, ctx, keeper, { day = world.day, phase = world.phase ?? 0 } = {}) {
     if (!keeper) return { here: false, open: false, location: null, reason: 'No hay nadie.' };
     const location = keeperLocation(world, ctx, keeper, day);
+    // Progresión por pisos: los pisos superiores no existen todavía; un requisito pendiente cierra.
+    const floor = businessStatus(world, ctx, keeper);
+    if (floor.state === 'bloqueado') return { here: false, open: false, location: null, floor, reason: floor.reason };
+    if (!floor.open) return { here: true, open: false, location, floor, reason: `${floor.icon} ${floor.reason}` };
     const sched = keeper.schedule ?? {};
     const active = activeEvents(world, ctx, day);
     if (sched.events?.length && !active.some((e) => sched.events.includes(e.def.id))) {
@@ -145,6 +150,7 @@ export function discoveredOf(world, charId) {
 export function isLocationVisible(world, ctx, charId, locationId) {
     const loc = ctx.location(locationId);
     if (!loc) return false;
+    if (!locationUnlocked(world, ctx, locationId)) return false; // piso al que aún no llegaron
     return !loc.hidden || discoveredOf(world, charId).locations.includes(locationId);
 }
 
@@ -189,6 +195,7 @@ export function merchantsAt(world, ctx, locationId, charId) {
 /** ¿Puede el personaje viajar a esa ubicación? */
 export function canTravel(world, ctx, charId, locationId, { isDm = false } = {}) {
     if (!ctx.location(locationId)) return { ok: false, message: 'Ese lugar no existe.' };
+    if (!locationUnlocked(world, ctx, locationId)) return { ok: false, message: 'Todavía no llegaron a ese piso.' };
     if (!isLocationVisible(world, ctx, charId, locationId)) return { ok: false, message: 'No conoces ese lugar.' };
     const from = regionOfLocation(ctx, playerLocation(world, ctx, charId));
     const to = regionOfLocation(ctx, locationId);

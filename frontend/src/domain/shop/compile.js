@@ -110,6 +110,8 @@ export function compileShop(shop, keeper, { professions, factions }) {
     }
     out.assortment = [...(out.assortment ?? [])];
     if (shop.addItems?.length) out.assortment.push({ ids: shop.addItems, target: shop.addTarget ?? 2 });
+    // Novedades por piso: reglas con `floor` (sólo cuentan al llegar a ese piso).
+    if (shop.floorItems?.length) out.assortment.push(...shop.floorItems);
     if (shop.removeItems?.length) out.exclude = [...new Set([...(shop.exclude ?? []), ...shop.removeItems])];
     const faction = keeper?.faction ? factions.get(keeper.faction) : null;
     if (faction?.goodRules?.length) {

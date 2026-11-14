@@ -101,6 +101,19 @@ liquida al visitar a su empleado. Si la deuda crece, renuncia (y lo recuerda). E
 trasladarle (si acepta mudarse) y pedirle productos extra. Extensiones previstas: `employer.type`
 (facción u organización), lugar = propiedad del jugador, gastos y catálogos más finos.
 
+## Progresión por pisos (Lord 100)
+
+Para mundos que se abren piso a piso. Se activa en «🌍 Mundo → 🏰 Pisos» (sólo el DM) y se guarda en `world.progress` (`domain/shop/floors.js`); la migración `20261117` impide que un jugador lo cambie.
+
+- **Piso de cada negocio**: campo «Piso» del comerciante o, si no tiene, el de su región (campo «Piso» de la región: sus lugares tampoco se ven ni se viaja a ellos hasta llegar). Sin piso, existe siempre.
+- **«⬆️ Llegaron al piso N»**: abre todo lo de ese piso. Los pisos anteriores siguen abiertos. El aviso dice qué negocios se abrieron y cuáles piden algo más.
+- **Estados**: 🟢 desbloqueado · ⭐ especial/temporal · 🔒 en el piso pero con requisito pendiente (se ve, no atiende) · ⛔ piso superior (los jugadores sólo ven cuántos hay) · ✖ cerrado.
+- **Requisito**: texto en la ficha («Completar la misión X»); el DM lo marca como cumplido en la pestaña Pisos.
+- **Excepciones del DM**: forzar abierto (lore, recompensa) o forzar cerrado (el negocio cerró en el mundo).
+- **Temporales**: «Negocio especial» + «Cierra después del piso N».
+- **Novedades por piso**: productos que un comerciante suma al surtido al llegar a un piso.
+- Los jugadores ven «🏰 Piso N» en la Tienda con los negocios disponibles.
+
 ## Carpeta del DM (tiendas propias por campaña)
 
 En «🌍 Mundo → 📁 Carpeta del DM» hay una carpeta por cada campaña en la que eres DM (y otra para este dispositivo). Cada tienda que crees ahí es un comerciante Homebrew **nuevo** en el paquete de esa campaña: no sustituye nada oficial y sólo existe en esa campaña.

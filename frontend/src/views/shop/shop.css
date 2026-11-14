@@ -997,3 +997,12 @@
 .shop-root .tag.warn { color: #f0b35a; }
 .dm-folder .admin-card header { flex-wrap: wrap; }
 .dm-folder .admin-card header b { flex: 1 1 100%; }
+
+/* Progresión por pisos */
+.floors-admin { display: grid; gap: 12px; }
+.floors-admin fieldset { border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; display: grid; gap: 6px; }
+.floors-admin legend { font-family: var(--font-title); color: var(--brass-2); padding: 0 6px; }
+.floors-head { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; padding: 10px 12px; border-radius: 10px; background: var(--panel); border: 1px solid var(--brass); }
+.floors-current { display: grid; text-align: center; }
+.floors-current b { font-size: 1.6em; }
+.floor-business p { margin: 4px 0 0; }

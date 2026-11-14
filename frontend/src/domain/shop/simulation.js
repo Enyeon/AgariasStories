@@ -23,6 +23,7 @@ import { accrueContracts, contractAssortment } from './hiring.js';
 import { simulateEstate } from './estate.js';
 import { simulateStaff } from './staff.js';
 import { decayPopularity } from './popularity.js';
+import { currentFloor } from './floors.js';
 
 const DEFAULT_TARGET = { common: 5, uncommon: 2, rare: 1, veryRare: 1, epic: 1, legendary: 1, unique: 1 };
 const DAILY_TURNOVER = { common: 0.12, uncommon: 0.07, rare: 0.04, veryRare: 0.03, epic: 0.02, legendary: 0.012, unique: 0.008 };
@@ -38,10 +39,11 @@ function targetFor(item, rule) {
 }
 
 /** Surtido fijo de una tienda: { itemId: { target, unlimited } }. */
-export function computeAssortment(shop, ctx) {
+export function computeAssortment(shop, ctx, { floor = Infinity } = {}) {
     const result = {};
     const exclude = new Set(shop.exclude ?? []);
     for (const rule of shop.assortment ?? []) {
+        if (rule.floor && rule.floor > floor) continue; // novedad de un piso al que aún no llegaron
         for (const item of ctx.catalog.list) {
             if (!item.forSale || exclude.has(item.id) || !matchesRule(item, rule)) continue;
             result[item.id] = { target: targetFor(item, rule), unlimited: Boolean(rule.unlimited), requires: rule.requires ?? null, lockLabel: rule.label ?? null };
@@ -67,7 +69,7 @@ export function reconcileWorld(world, ctx) {
         const state = (next.shops[shop.id] ??= { stock: {}, history: {}, cash: shop.cash ?? 0 });
         // Un contrato puede pedir productos extra (el resto del catálogo es el de siempre).
         const extra = contractAssortment(next, shop.keeperId);
-        const assortment = computeAssortment(extra.length ? { ...shop, assortment: [...(shop.assortment ?? []), ...extra] } : shop, ctx);
+        const assortment = computeAssortment(extra.length ? { ...shop, assortment: [...(shop.assortment ?? []), ...extra] } : shop, ctx, { floor: currentFloor(next) });
         for (const [itemId, spec] of Object.entries(assortment)) {
             const entry = state.stock[itemId];
             if (!entry) {

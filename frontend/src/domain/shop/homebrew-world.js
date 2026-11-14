@@ -102,6 +102,10 @@ function merchantFrom(ref, item, { officialKeeper, officialShop, templateShop = 
         archetypes: item.archetypes ?? [],
         disposition: item.disposition || 0,
         secret: Boolean(item.secret),
+        ...(item.floor ? { floor: item.floor } : {}),
+        ...(item.requirement ? { requirement: item.requirement } : {}),
+        ...(item.special ? { special: true } : {}),
+        ...(item.untilFloor ? { untilFloor: item.untilFloor } : {}),
         presence,
         schedule: {
             ...(item.phases?.length ? { phases: item.phases } : {}),
@@ -194,6 +198,7 @@ function merchantFrom(ref, item, { officialKeeper, officialShop, templateShop = 
         prices: Object.fromEntries((item.prices ?? []).map((p) => [p.item, cp(p.price)])),
         priceMod: (item.priceMod ?? 0) / 100,
         profession: item.profession ?? undefined,
+        floorItems: (item.floorItems ?? []).map((r) => ({ ids: [r.item], target: r.qty ?? 2, floor: r.floor })),
         homebrew: true,
     };
     return { keeper, shop, rumors };
@@ -217,6 +222,11 @@ export function merchantToEditor(keeper, shop) {
         route: route.map((r) => ({ location: r.location, days: Math.round(((r.stay?.[0] ?? 2) + (r.stay?.[1] ?? 3)) / 2) })),
         gap: Math.round(((keeper.presence?.gap?.[0] ?? 1) + (keeper.presence?.gap?.[1] ?? 3)) / 2),
         secret: Boolean(keeper.secret),
+        floor: keeper.floor ?? null,
+        requirement: keeper.requirement ?? '',
+        special: Boolean(keeper.special),
+        untilFloor: keeper.untilFloor ?? null,
+        floorItems: (shop?.floorItems ?? []).map((r) => ({ floor: r.floor, item: r.ids?.[0], qty: r.target ?? 2 })).filter((r) => r.item),
         faction: keeper.faction ?? null,
         archetypes: keeper.archetypes ?? [],
         traits: Object.fromEntries(Object.entries(t).map(([k, v]) => [k, Math.round(v * 10)])),
@@ -278,6 +288,7 @@ function regionFrom(ref, item, official) {
         description: item.description || official?.description || '',
         type: item.type || official?.type || '',
         danger: item.danger,
+        floor: item.floor ?? official?.floor ?? null,
         factions: item.factions,
         races: item.races,
         resources: item.resources,
@@ -298,7 +309,7 @@ function regionFrom(ref, item, official) {
 export function regionToEditor(region) {
     return {
         name: region.name, description: region.description ?? '', source: '', base: region.id, icon: region.icon ?? '🗺️',
-        type: region.type ?? region.economy?.kind ?? '', danger: region.danger ?? 0, factions: region.factions ?? [], races: region.races ?? [],
+        type: region.type ?? region.economy?.kind ?? '', danger: region.danger ?? 0, floor: region.floor ?? null, factions: region.factions ?? [], races: region.races ?? [],
         resources: region.resources ?? [], common: region.common ?? [], scarce: region.scarce ?? [],
         economy: (region.economy?.modifiers ?? []).map((m) => ({ product: ruleToProduct(m.rule), pct: Math.round(m.pct * 100), label: m.label ?? '' })).filter((m) => m.product),
         demand: (region.economy?.demand ?? []).map((m) => ({ product: ruleToProduct(m.rule), mult: Math.round((m.mult - 1) * 100) })).filter((m) => m.product),
