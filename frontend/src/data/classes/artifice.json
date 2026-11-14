@@ -1828,26 +1828,7 @@
         ]
       }
     },
-    "8": {
-      "infoCubo": {
-        "columnas": [
-          "Planes conocidos",
-          "Objetos mágicos",
-          "Trucos",
-          "Conjuros preparados",
-          "Espacios (nv. 1.º–5.º)"
-        ],
-        "filas": [
-          [
-            "5",
-            "3",
-            "2",
-            "7",
-            "4 · 3"
-          ]
-        ]
-      }
-    },
+    "8": {},
     "9": {
       "infoCubo": {
         "columnas": [
@@ -1927,26 +1908,7 @@
         ]
       }
     },
-    "12": {
-      "infoCubo": {
-        "columnas": [
-          "Planes conocidos",
-          "Objetos mágicos",
-          "Trucos",
-          "Conjuros preparados",
-          "Espacios (nv. 1.º–5.º)"
-        ],
-        "filas": [
-          [
-            "6",
-            "4",
-            "3",
-            "10",
-            "4 · 3 · 3"
-          ]
-        ]
-      }
-    },
+    "12": {},
     "13": {
       "infoCubo": {
         "columnas": [
@@ -2019,26 +1981,7 @@
         ]
       }
     },
-    "16": {
-      "infoCubo": {
-        "columnas": [
-          "Planes conocidos",
-          "Objetos mágicos",
-          "Trucos",
-          "Conjuros preparados",
-          "Espacios (nv. 1.º–5.º)"
-        ],
-        "filas": [
-          [
-            "7",
-            "5",
-            "4",
-            "12",
-            "4 · 3 · 3 · 2"
-          ]
-        ]
-      }
-    },
+    "16": {},
     "17": {
       "infoCubo": {
         "columnas": [
@@ -2125,24 +2068,6 @@
           "titleName": "✦ ALMA DEL ARTIFICIO ✦",
           "descripcion": "Has desarrollado una conexión mística con tus objetos mágicos, a los que puedes recurrir en busca de ayuda. Obtienes los siguientes beneficios:\n<b>Engañar a la muerte.</b> Si quedas reducido a 0 puntos de golpe pero no mueres directamente, puedes desintegrar cualquier cantidad de objetos mágicos poco comunes o raros creados con tu característica Replicar Objeto Mágico. Si lo haces, tus puntos de golpe pasan a ser iguales a 20 veces la cantidad de objetos mágicos desintegrados.\n<b>Guía mágica.</b> Cuando terminas un Descanso Corto, recuperas todos los usos gastados de tu Destello de Genialidad si estás sintonizado con al menos un objeto mágico."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Planes conocidos",
-          "Objetos mágicos",
-          "Trucos",
-          "Conjuros preparados",
-          "Espacios (nv. 1.º–5.º)"
-        ],
-        "filas": [
-          [
-            "8",
-            "6",
-            "4",
-            "15",
-            "4 · 3 · 3 · 3 · 2"
-          ]
-        ]
       }
     }
   }

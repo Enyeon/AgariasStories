@@ -11,6 +11,7 @@
 // Artilugio paga la mitad de oro y tiempo; los Guantes maestros de hojalatero
 // equipados reducen el tiempo a la mitad.
 
+import { cubeAt } from './class-table.js';
 import catalog from '../data/taller.json';
 import { getClass } from '../data/index.js';
 import { knownChoices, choiceListDef } from './class-choices.js';
@@ -73,7 +74,7 @@ export function energyNow(c, intMod = 0) {
 export function slotsFor(c) {
   const w = workshopClass(c);
   if (!w) return Object.fromEntries(TIERS.map((t) => [t, 0]));
-  const cubo = getClass(w.classKey)?.niveles?.[String(w.level)]?.infoCubo;
+  const cubo = cubeAt(getClass(w.classKey), w.level); // la tabla se hereda de niveles anteriores
   const col = cubo?.columnas?.findIndex((x) => /artefactos equipados/i.test(x)) ?? -1;
   const cells = col >= 0 ? String(cubo.filas?.[0]?.[col] ?? '').split('·') : [];
   return Object.fromEntries(TIERS.map((t, i) => [t, Number.parseInt(cells[i], 10) || 0]));

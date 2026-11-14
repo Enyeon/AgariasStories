@@ -59,18 +59,6 @@
           "titleName": "✦ SENTIDO DEL PELIGRO ✦",
           "descripcion": "A partir del nivel 2, obtienes un asombroso sentido para percibir los elementos de tu entorno que presentan una amenaza, dándote ventaja cuando trates de apartarte del peligro.\n\nTienes ventaja en las tiradas de salvación de Destreza contra los efectos que puedas ver, como trampas y hechizos. Para beneficiarte de este rasgo no puedes estar ciego, sordo o incapacitado."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Furia",
-          "Daño de Furia"
-        ],
-        "filas": [
-          [
-            "2",
-            "+2"
-          ]
-        ]
       }
     },
     "3": {
@@ -370,18 +358,6 @@
           "titleName": "✦ MEJORA DE PUNTUACIÓN DE CARACTERÍSTICA ✦",
           "descripcion": "Cuando alcanzas el nivel 4, y nuevamente a los niveles 8, 12 y 16, puedes incrementar una puntuación de característica de tu elección en 2 puntos, o dos puntuaciones de característica de tu elección en 1 punto. Como es habitual, no puedes incrementar una puntuación de característica por encima de 20 usando este procedimiento."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Furia",
-          "Daño de Furia"
-        ],
-        "filas": [
-          [
-            "3",
-            "+2"
-          ]
-        ]
       }
     },
     "5": {
@@ -396,18 +372,6 @@
           "titleName": "✦ MOVIMIENTO RÁPIDO ✦",
           "descripcion": "A partir del nivel 5, tu velocidad se incrementa en +10 pies (2 casillas) mientras no estés usando armadura pesada."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Furia",
-          "Daño de Furia"
-        ],
-        "filas": [
-          [
-            "3",
-            "+2"
-          ]
-        ]
       }
     },
     "6": {
@@ -436,34 +400,9 @@
           "titleName": "✦ SALTO INSTINTIVO ✦",
           "descripcion": "Como parte de tu Acción Bonus que tomas para entrar en tu Furia, puedes moverte hasta la mitad de tu velocidad."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Furia",
-          "Daño de Furia"
-        ],
-        "filas": [
-          [
-            "4",
-            "+2"
-          ]
-        ]
       }
     },
-    "8": {
-      "infoCubo": {
-        "columnas": [
-          "Furia",
-          "Daño de Furia"
-        ],
-        "filas": [
-          [
-            "4",
-            "+2"
-          ]
-        ]
-      }
-    },
+    "8": {},
     "9": {
       "infoBlock": {
         "blockUno": {
@@ -485,20 +424,7 @@
         ]
       }
     },
-    "10": {
-      "infoCubo": {
-        "columnas": [
-          "Furia",
-          "Daño de Furia"
-        ],
-        "filas": [
-          [
-            "4",
-            "+3"
-          ]
-        ]
-      }
-    },
+    "10": {},
     "11": {
       "infoBlock": {
         "blockUno": {
@@ -506,18 +432,6 @@
           "titleName": "✦ FURIA IMPLACABLE ✦",
           "descripcion": "Empezando en el nivel 11, tu Furia puede mantenerte luchando a pesar de las graves heridas. Si tus Puntos de Golpe se reducen a cero mientras estás en Furia y no mueres en el momento, puedes hacer una tirada de salvación de Constitución CD 10. Si tienes éxito, tus Puntos de Golpe cambian a un número igual al doble de tu nivel de Bárbaro.\n\nCada vez que usas este rasgo después de la primera vez, la CD se incrementa en +5. Cuando terminas un descanso corto o prolongado, la CD vuelve a ser 10."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Furia",
-          "Daño de Furia"
-        ],
-        "filas": [
-          [
-            "4",
-            "+3"
-          ]
-        ]
       }
     },
     "12": {
@@ -541,34 +455,9 @@
           "titleName": "✦ GOLPE IMPRUDENTE MEJORADO ✦",
           "descripcion": "Has perfeccionado nuevas formas de atacar furiosamente. Los siguientes efectos ahora están entre tus opciones de Golpe Imprudente:\n<b class=\"content_subrayado\">♻ Golpe Aturdidor:</b> El objetivo tiene desventaja en la siguiente tirada de salvación que realice y no puede hacer Ataques de Oportunidad hasta el comienzo de tu siguiente turno.\n<b class=\"content_subrayado\">♻ Golpe Destructor:</b> Antes del comienzo de tu siguiente turno, la siguiente tirada de ataque que realizada por otra criatura contra el objetivo recive un bono de +5 a la tirada. Una tirada de ataque puede solo un bono de Golpe Destructor."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Furia",
-          "Daño de Furia"
-        ],
-        "filas": [
-          [
-            "5",
-            "+3"
-          ]
-        ]
       }
     },
-    "14": {
-      "infoCubo": {
-        "columnas": [
-          "Furia",
-          "Daño de Furia"
-        ],
-        "filas": [
-          [
-            "5",
-            "+3"
-          ]
-        ]
-      }
-    },
+    "14": {},
     "15": {
       "infoBlock": {
         "blockUno": {
@@ -576,18 +465,6 @@
           "titleName": "✦ FURIA PERSISTENTE ✦",
           "descripcion": "Empezando en el nivel 15, tu Furia es tan feroz que sólo termina prematuramente si usas armadura pesada, caes inconsciente o decides terminarla."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Furia",
-          "Daño de Furia"
-        ],
-        "filas": [
-          [
-            "5",
-            "+3"
-          ]
-        ]
       }
     },
     "16": {
@@ -632,18 +509,6 @@
           "titleName": "✦ PODER INDOMABLE ✦",
           "descripcion": "Empezando en el nivel 18, si tu puntuación total para una prueba de Fuerza o tirada de salvación de Fuerza es menor a tu puntuación de Fuerza, puedes usar esa puntuación en lugar del total."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Furia",
-          "Daño de Furia"
-        ],
-        "filas": [
-          [
-            "6",
-            "+4"
-          ]
-        ]
       }
     },
     "19": {
@@ -653,18 +518,6 @@
           "titleName": "✦ BENEFICIO ÉPICO ✦",
           "descripcion": "Obtienes una hazaña de Beneficio Épico u otra hazaña de tu elección para la cual calificas. Se recomienda el \"Beneficio de Oensa Irresistible\"."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Furia",
-          "Daño de Furia"
-        ],
-        "filas": [
-          [
-            "6",
-            "+4"
-          ]
-        ]
       },
       "requeridoTrue": {
         "statAmount": {

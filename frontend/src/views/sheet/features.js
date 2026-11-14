@@ -277,7 +277,7 @@ function progressionTable(f) {
     <div class="class-block__head"><h4 class="class-block__title">Progresión</h4></div>
     <div class="table-wrap"><table class="table progression-table">
       <thead><tr><th class="num" scope="col">Nivel</th>${f.table.columns.map((c) => html`<th class="num" scope="col">${c}</th>`)}</tr></thead>
-      <tbody>${f.table.rows.map((r) => html`<tr class="${r.level === f.level ? 'is-current' : ''}" ${r.level === f.level ? raw('aria-current="true"') : ''}>
+      <tbody>${f.table.rows.map((r) => html`<tr class="${r.level === f.table.currentRow ? 'is-current' : ''}" ${r.level === f.table.currentRow ? raw('aria-current="true"') : ''}>
         <td class="num">${r.level}</td>${f.table.columns.map((c) => html`<td class="num">${r[c] || '—'}</td>`)}
       </tr>`)}</tbody>
     </table></div>

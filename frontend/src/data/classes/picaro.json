@@ -143,16 +143,6 @@
           "titleName": "✦ ACCIÓN ASTUTA ✦",
           "descripcion": "Tu pensamiento rápido y agilidad te permiten moverte y actuar con rapidez. En tu turno, puedes realizar una de las siguientes acciones como Acción Bónus: Correr, Desengancharte o Esconderte."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Ataque Furtivo"
-        ],
-        "filas": [
-          [
-            "1d6"
-          ]
-        ]
       }
     },
     "3": {
@@ -447,16 +437,6 @@
           "titleName": "✦ MEJORA DE PUNTUACIÓN DE HABILIDAD ✦",
           "descripcion": "Obtienes la hazaña de Mejora de Puntuación de Habilidad (ver capítulo 5) u otra hazaña de tu elección para la que califiques. Obtienes esta característica nuevamente en los niveles 8, 10, 12 y 16 de Pícaro."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Ataque Furtivo"
-        ],
-        "filas": [
-          [
-            "2d6"
-          ]
-        ]
       }
     },
     "5": {
@@ -483,18 +463,7 @@
         ]
       }
     },
-    "6": {
-      "infoCubo": {
-        "columnas": [
-          "Ataque Furtivo"
-        ],
-        "filas": [
-          [
-            "3d6"
-          ]
-        ]
-      }
-    },
+    "6": {},
     "7": {
       "infoBlock": {
         "blockUno": {
@@ -514,18 +483,7 @@
         ]
       }
     },
-    "8": {
-      "infoCubo": {
-        "columnas": [
-          "Ataque Furtivo"
-        ],
-        "filas": [
-          [
-            "4d6"
-          ]
-        ]
-      }
-    },
+    "8": {},
     "9": {
       "infoCubo": {
         "columnas": [
@@ -545,16 +503,6 @@
           "titleName": "✦ TALENTO FIABLE ✦",
           "descripcion": "Siempre que realices una prueba de habilidad que use una de tus proficiencias en habilidades o herramientas, puedes tratar una tirada de d20 de 9 o menos como un 10."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Ataque Furtivo"
-        ],
-        "filas": [
-          [
-            "5d6"
-          ]
-        ]
       }
     },
     "11": {
@@ -576,18 +524,7 @@
         ]
       }
     },
-    "12": {
-      "infoCubo": {
-        "columnas": [
-          "Ataque Furtivo"
-        ],
-        "filas": [
-          [
-            "6d6"
-          ]
-        ]
-      }
-    },
+    "12": {},
     "13": {
       "infoCubo": {
         "columnas": [
@@ -607,16 +544,6 @@
           "titleName": "✦ GOLPES INGENIOSOS ✦",
           "descripcion": "Has practicado nuevas formas de utilizar tu Ataque Furtivo de manera ingeniosa. Los siguientes efectos ahora están entre tus opciones de Golpe Astuto:\n<b>Aturdir (Costo: 2d6):</b> El objetivo debe tener éxito en una tirada de salvación de Constitución, o en su siguiente turno, solo puede hacer una de las siguientes cosas: moverse o realizar una acción o una Acción Adicional.\n<b>Golpe Adormecedor (Costo: 6d6):</b> El objetivo debe tener éxito en una tirada de salvación de Constitución o quedará bajo la condición de Incapacitado durante 1 minuto o hasta que reciba algún daño. El objetivo Incapacitado repite la tirada de salvación al final de cada uno de sus turnos, terminando el efecto sobre sí mismo si tiene éxito.\n<b>Oscurecer (Costo: 3d6):</b> El objetivo debe tener éxito en una tirada de salvación de Destreza o quedará bajo la condición de Cegado hasta el final de su siguiente turno."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Ataque Furtivo"
-        ],
-        "filas": [
-          [
-            "7d6"
-          ]
-        ]
       }
     },
     "15": {
@@ -650,18 +577,7 @@
         ]
       }
     },
-    "16": {
-      "infoCubo": {
-        "columnas": [
-          "Ataque Furtivo"
-        ],
-        "filas": [
-          [
-            "8d6"
-          ]
-        ]
-      }
-    },
+    "16": {},
     "17": {
       "infoCubo": {
         "columnas": [
@@ -681,16 +597,6 @@
           "titleName": "✦ ESCURRIDIZO ✦",
           "descripcion": "Eres tan evasivo que los atacantes rara vez obtienen ventaja sobre ti. Ninguna tirada de ataque puede tener Ventaja contra ti a menos que tengas la condición de Incapacitado."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Ataque Furtivo"
-        ],
-        "filas": [
-          [
-            "9d6"
-          ]
-        ]
       }
     },
     "19": {
@@ -719,16 +625,6 @@
           "titleName": "✦ TOQUE DE SUERTE ✦",
           "descripcion": "Tienes una habilidad maravillosa para tener éxito cuando lo necesitas. Si fallas una Prueba de d20, puedes convertir la tirada en un 20.\nUna vez que uses esta característica, no podrás usarla nuevamente hasta que termines un Descanso Corto o Largo."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Ataque Furtivo"
-        ],
-        "filas": [
-          [
-            "10d6"
-          ]
-        ]
       }
     }
   }

@@ -810,20 +810,6 @@
             }
           ]
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Enemigo Favorito",
-          "Conjuros preparados",
-          "Espacios (nv. 1.º–5.º)"
-        ],
-        "filas": [
-          [
-            "3",
-            "6",
-            "4 · 2"
-          ]
-        ]
       }
     },
     "7": {
@@ -842,22 +828,7 @@
         ]
       }
     },
-    "8": {
-      "infoCubo": {
-        "columnas": [
-          "Enemigo Favorito",
-          "Conjuros preparados",
-          "Espacios (nv. 1.º–5.º)"
-        ],
-        "filas": [
-          [
-            "3",
-            "7",
-            "4 · 3"
-          ]
-        ]
-      }
-    },
+    "8": {},
     "9": {
       "infoBlock": {
         "blockUno": {
@@ -888,20 +859,6 @@
           "titleName": "✦ INCANSABLE ✦",
           "descripcion": "Las fuerzas primordiales ahora te ayudan en tus viajes, otorgándote los siguientes beneficios:\n<b>Puntos de Golpe Temporales:</b> Como acción mágica, puedes darte a ti mismo un número de puntos de golpe temporales igual a 1d8 más tu modificador de Sabiduría (mínimo de 1). Puedes usar esta acción un número de veces igual a tu modificador de Sabiduría (mínimo una vez), y recuperas todos los usos gastados cuando terminas un descanso largo.\n<b>Disminuir el Agotamiento:</b> Siempre que terminas un descanso corto, tu nivel de agotamiento, si tienes alguno, disminuye en 1."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Enemigo Favorito",
-          "Conjuros preparados",
-          "Espacios (nv. 1.º–5.º)"
-        ],
-        "filas": [
-          [
-            "4",
-            "9",
-            "4 · 3 · 2"
-          ]
-        ]
       }
     },
     "11": {
@@ -920,22 +877,7 @@
         ]
       }
     },
-    "12": {
-      "infoCubo": {
-        "columnas": [
-          "Enemigo Favorito",
-          "Conjuros preparados",
-          "Espacios (nv. 1.º–5.º)"
-        ],
-        "filas": [
-          [
-            "4",
-            "10",
-            "4 · 3 · 3"
-          ]
-        ]
-      }
-    },
+    "12": {},
     "13": {
       "infoBlock": {
         "blockUno": {
@@ -966,20 +908,6 @@
           "titleName": "✦ VELO DE LA NATURALEZA ✦",
           "descripcion": "Invocas espíritus de la naturaleza para esconderte mágicamente. Como acción adicional, puedes darte la condición de Invisible hasta el final de tu siguiente turno. Puedes usar esta característica un número de veces igual a tu modificador de Sabiduría (mínimo una vez), y recuperas todos los usos gastados cuando terminas un descanso largo."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Enemigo Favorito",
-          "Conjuros preparados",
-          "Espacios (nv. 1.º–5.º)"
-        ],
-        "filas": [
-          [
-            "5",
-            "11",
-            "4 · 3 · 3 · 1"
-          ]
-        ]
       }
     },
     "15": {
@@ -998,22 +926,7 @@
         ]
       }
     },
-    "16": {
-      "infoCubo": {
-        "columnas": [
-          "Enemigo Favorito",
-          "Conjuros preparados",
-          "Espacios (nv. 1.º–5.º)"
-        ],
-        "filas": [
-          [
-            "5",
-            "12",
-            "4 · 3 · 3 · 2"
-          ]
-        ]
-      }
-    },
+    "16": {},
     "17": {
       "infoBlock": {
         "blockUno": {
@@ -1044,20 +957,6 @@
           "titleName": "✦ SENTIDOS SALVAJES ✦",
           "descripcion": "Tu conexión con las fuerzas de la naturaleza te otorga Vista Ciega con un alcance de 30 pies."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Enemigo Favorito",
-          "Conjuros preparados",
-          "Espacios (nv. 1.º–5.º)"
-        ],
-        "filas": [
-          [
-            "6",
-            "14",
-            "4 · 3 · 3 · 3 · 1"
-          ]
-        ]
       }
     },
     "19": {
@@ -1090,20 +989,6 @@
           "titleName": "✦ ASESINO DE ENEMIGOS ✦",
           "descripcion": "El dado de daño de tu Marca del Cazador es un d10 en lugar de un d6."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Enemigo Favorito",
-          "Conjuros preparados",
-          "Espacios (nv. 1.º–5.º)"
-        ],
-        "filas": [
-          [
-            "6",
-            "15",
-            "4 · 3 · 3 · 3 · 2"
-          ]
-        ]
       }
     }
   }

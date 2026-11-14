@@ -46,8 +46,10 @@ describe('Pícaro', () => {
       expect(f.subclass.pending).toBe(false);
       expect(c.levels.filter((l) => l.improvement).length).toBe(5); // 4, 8, 10, 12, 16
       expect(f.table.columns).toEqual(['Ataque Furtivo']);
-      expect(f.table.rows.length).toBe(20);
-      expect(f.table.rows[19]).toMatchObject({ 'Ataque Furtivo': '10d6' });
+      // Una fila sólo cuando el Ataque Furtivo cambia (niveles impares): 10 filas.
+      expect(f.table.rows.map((r) => r.level)).toEqual([1, 3, 5, 7, 9, 11, 13, 15, 17, 19]);
+      expect(f.table.rows.at(-1)).toMatchObject({ 'Ataque Furtivo': '10d6' });
+      expect(f.table.currentRow).toBe(19);
       const titles = f.levels.flatMap((l) => l.features.map((x) => x.title));
       expect(titles).toEqual(expect.arrayContaining(['Ataque Furtivo', 'Maestría con Armas', 'Golpe Astuto', 'Mente Escurridiza', 'Bendición Épica', 'Toque de Suerte']));
       expect(titles.join()).not.toMatch(/Faro|Ceniza|Aura|Amanecer|Alba/);

@@ -25,6 +25,9 @@ import re
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from class_tables import dedupe_cubes, expand_cubes  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 CLASSES_DIR = ROOT / "frontend" / "src" / "data" / "classes"
 
@@ -239,6 +242,8 @@ def build(class_key: str, markdown: str) -> dict:
     # Volcar al JSON conservando todo lo que no son rasgos.
     names = ["Uno", "Dos", "Tres", "Cuatro", "Cinco", "Seis", "Siete", "Ocho", "Nueve", "Diez", "Once", "Doce"]
     col_name, col_values = cfg.get("extra_column", (None, {}))
+    # Las tablas sólo se guardan donde cambian: se despliegan para editarlas y se vuelven a compactar al final.
+    expand_cubes(cls["niveles"])
     for n in range(1, 21):
         lvl = cls["niveles"].setdefault(str(n), {})
         lvl.pop("infoBlock", None)
@@ -257,6 +262,7 @@ def build(class_key: str, markdown: str) -> dict:
                 cube["columnas"].append(col_name)
                 cube["filas"][0].append(value)
 
+    dedupe_cubes(cls["niveles"])
     if cfg.get("subclass_label"):
         cls["subclaseNombre"] = cfg["subclass_label"]
     if cfg.get("class_dc"):

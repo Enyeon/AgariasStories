@@ -797,20 +797,6 @@
             }
           ]
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Canalizar Divinidad",
-          "Hechizos preparados",
-          "Espacios (nv. 1.º–5.º)"
-        ],
-        "filas": [
-          [
-            "2",
-            "6",
-            "4 · 2"
-          ]
-        ]
       }
     },
     "7": {
@@ -829,22 +815,7 @@
         ]
       }
     },
-    "8": {
-      "infoCubo": {
-        "columnas": [
-          "Canalizar Divinidad",
-          "Hechizos preparados",
-          "Espacios (nv. 1.º–5.º)"
-        ],
-        "filas": [
-          [
-            "2",
-            "7",
-            "4 · 3"
-          ]
-        ]
-      }
-    },
+    "8": {},
     "9": {
       "infoBlock": {
         "blockUno": {
@@ -881,20 +852,6 @@
             }
           ]
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Canalizar Divinidad",
-          "Hechizos preparados",
-          "Espacios (nv. 1.º–5.º)"
-        ],
-        "filas": [
-          [
-            "2",
-            "9",
-            "4 · 3 · 2"
-          ]
-        ]
       }
     },
     "11": {
@@ -920,22 +877,7 @@
         ]
       }
     },
-    "12": {
-      "infoCubo": {
-        "columnas": [
-          "Canalizar Divinidad",
-          "Hechizos preparados",
-          "Espacios (nv. 1.º–5.º)"
-        ],
-        "filas": [
-          [
-            "3",
-            "10",
-            "4 · 3 · 3"
-          ]
-        ]
-      }
-    },
+    "12": {},
     "13": {
       "infoCubo": {
         "columnas": [
@@ -959,20 +901,6 @@
           "titleName": "✦ TOQUE RESTAURADOR ✦",
           "descripcion": "Cuando usas Imposición de Manos en una criatura, también puedes eliminar una o más de las siguientes condiciones de la criatura: Cegado, Hechizado, Ensordecido, Asustado, Paralizado o Aturdido. Debes gastar 5 Puntos de Golpe de la reserva de curación de Imposición de Manos por cada una de estas condiciones que elimines; esos puntos no restauran Puntos de Golpe a la criatura."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Canalizar Divinidad",
-          "Hechizos preparados",
-          "Espacios (nv. 1.º–5.º)"
-        ],
-        "filas": [
-          [
-            "3",
-            "11",
-            "4 · 3 · 3 · 1"
-          ]
-        ]
       }
     },
     "15": {
@@ -991,22 +919,7 @@
         ]
       }
     },
-    "16": {
-      "infoCubo": {
-        "columnas": [
-          "Canalizar Divinidad",
-          "Hechizos preparados",
-          "Espacios (nv. 1.º–5.º)"
-        ],
-        "filas": [
-          [
-            "3",
-            "12",
-            "4 · 3 · 3 · 2"
-          ]
-        ]
-      }
-    },
+    "16": {},
     "17": {
       "infoCubo": {
         "columnas": [
@@ -1030,20 +943,6 @@
           "titleName": "✦ EXPANSIÓN DE AURA ✦",
           "descripcion": "Tu Aura de Protección ahora es una Emisión de 30 pies."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Canalizar Divinidad",
-          "Hechizos preparados",
-          "Espacios (nv. 1.º–5.º)"
-        ],
-        "filas": [
-          [
-            "3",
-            "14",
-            "4 · 3 · 3 · 3 · 1"
-          ]
-        ]
       }
     },
     "19": {
@@ -1069,21 +968,6 @@
         ]
       }
     },
-    "20": {
-      "infoCubo": {
-        "columnas": [
-          "Canalizar Divinidad",
-          "Hechizos preparados",
-          "Espacios (nv. 1.º–5.º)"
-        ],
-        "filas": [
-          [
-            "3",
-            "15",
-            "4 · 3 · 3 · 3 · 2"
-          ]
-        ]
-      }
-    }
+    "20": {}
   }
 }

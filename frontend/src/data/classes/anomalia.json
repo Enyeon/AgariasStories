@@ -134,18 +134,6 @@
           }
         }
       },
-      "infoCubo": {
-        "columnas": [
-          "",
-          ""
-        ],
-        "filas": [
-          [
-            "",
-            ""
-          ]
-        ]
-      },
       "subClase": {
         "senda1": {
           "subNombre": "Hebra Paradoja",
@@ -271,18 +259,6 @@
             ]
           }
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "",
-          ""
-        ],
-        "filas": [
-          [
-            "",
-            ""
-          ]
-        ]
       }
     },
     "5": {

@@ -1491,24 +1491,7 @@
         ]
       }
     },
-    "14": {
-      "infoCubo": {
-        "columnas": [
-          "Invocaciones",
-          "Trucos",
-          "Hechizos preparados",
-          "Espacios de pacto"
-        ],
-        "filas": [
-          [
-            "8",
-            "4",
-            "12",
-            "3 × nv. 5"
-          ]
-        ]
-      }
-    },
+    "14": {},
     "15": {
       "elegir": {
         "lista": "invocaciones",
@@ -1543,24 +1526,7 @@
         ]
       }
     },
-    "16": {
-      "infoCubo": {
-        "columnas": [
-          "Invocaciones",
-          "Trucos",
-          "Hechizos preparados",
-          "Espacios de pacto"
-        ],
-        "filas": [
-          [
-            "9",
-            "4",
-            "13",
-            "3 × nv. 5"
-          ]
-        ]
-      }
-    },
+    "16": {},
     "17": {
       "infoBlock": {
         "blockUno": {
@@ -1645,22 +1611,6 @@
           "titleName": "✦ MAESTRO ARCANO ✦",
           "descripcion": "Cuando uses tu característica Astucia Mágica, recuperas todas tus ranuras de hechizo de Magia del Pacto gastadas."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Invocaciones",
-          "Trucos",
-          "Hechizos preparados",
-          "Espacios de pacto"
-        ],
-        "filas": [
-          [
-            "10",
-            "4",
-            "15",
-            "4 × nv. 5"
-          ]
-        ]
       }
     }
   }

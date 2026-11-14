@@ -52,18 +52,6 @@
           "titleName": "✦ REGENERACIÓN AGRESIVA ✦",
           "descripcion": "<b class=\"content_subrayado\">*Desde el nivel 2, tu sangre se conecta instintivamente con la de tus enemigos, deseando absorber su esencia y reforzar tu cuerpo.*</b>\n\nCuando infliges daño en tu turno, puedes optar por recuperar una cantidad de puntos de vida igual a la mitad del daño que infligiste, hasta un máximo igual a los puntos de vida que perdiste en el último ataque que te golpeó. Solo puedes recuperar puntos de vida si infliges daño durante tu turno.\n\nPuedes utilizar esta característica un número de veces igual a tu nivel de cazador de sangre (mínimo 1). Recuperas todos los usos después de finalizar un descanso largo."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Sangre Arcana",
-          "Puntos de Sangre Arcana"
-        ],
-        "filas": [
-          [
-            "1d4",
-            "1"
-          ]
-        ]
       }
     },
     "3": {
@@ -73,18 +61,6 @@
           "titleName": "✦ BALAS DE PLATA ✦",
           "descripcion": "<b class=\"content_subrayado\">*Tu control sobre tu propia sangre te permite transformarla en proyectiles.*</b>\nA partir del nivel 3, después de un descanso prolongado, puedes crear una cantidad de munición para armas a distancia de tu elección. La cantidad máxima es igual a tu modificador competencia. Esta munición cuenta como si fuera de plata, lo que te permite aprovechar debilidades a este tipo de material. Además, puedes elegir una de las siguientes maniobras defensivas para usar tus balas como reacción:\n— <b class=\"content_subrayado\">Desvío (Parry):</b> Si un oponente te golpea con un ataque, como reacción, puedes gastar 1 bala para atacar con tu arma a distancia al atacante. Si aciertas, evitas el golpe por completo, pero este ataque no causa daño.\n— <b class=\"content_subrayado\">Cotraataque (Counter):</b> Cuando un enemigo te golpea, antes de calcular el daño, puedes gastar 1 bala para hacer un contraataque contra él. Si aciertas, el enemigo recibe daño igual a tu Sangre Arcana y el ataque que te golpeó falla automáticamente."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Sangre Arcana",
-          "Puntos de Sangre Arcana"
-        ],
-        "filas": [
-          [
-            "1d4",
-            "1"
-          ]
-        ]
       },
       "subClase": {
         "senda1": {
@@ -525,18 +501,6 @@
           "titleName": "✦ MEJORA DE PUNTUACIÓN DE CARACTERÍSTICA ✦",
           "descripcion": "Cuando alcanzas el nivel 4, y nuevamente a los niveles 8, 12 y 16, puedes incrementar una puntuación de característica de tu elección en 2 puntos, o dos puntuaciones de característica de tu elección en 1 punto. Como es habitual, no puedes incrementar una puntuación de característica por encima de 20 usando este procedimiento."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Sangre Arcana",
-          "Puntos de Sangre Arcana"
-        ],
-        "filas": [
-          [
-            "1d4",
-            "1"
-          ]
-        ]
       }
     },
     "5": {
@@ -546,18 +510,6 @@
           "titleName": "✦ ATAQUE EXTRA ✦",
           "descripcion": "A partir del nivel 5, cuando realices la acción de Ataque en tu turno, puedes atacar dos veces en lugar de una y tres veces a nivel 17."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Sangre Arcana",
-          "Puntos de Sangre Arcana"
-        ],
-        "filas": [
-          [
-            "1d4",
-            "1"
-          ]
-        ]
       }
     },
     "6": {
@@ -581,34 +533,8 @@
         ]
       }
     },
-    "7": {
-      "infoCubo": {
-        "columnas": [
-          "Sangre Arcana",
-          "Puntos de Sangre Arcana"
-        ],
-        "filas": [
-          [
-            "2d6",
-            "2"
-          ]
-        ]
-      }
-    },
-    "8": {
-      "infoCubo": {
-        "columnas": [
-          "Sangre Arcana",
-          "Puntos de Sangre Arcana"
-        ],
-        "filas": [
-          [
-            "2d6",
-            "2"
-          ]
-        ]
-      }
-    },
+    "7": {},
+    "8": {},
     "9": {
       "infoBlock": {
         "blockUno": {
@@ -621,18 +547,6 @@
           "titleName": "✦ SENTIDO CIEGO ✦",
           "descripcion": "Al nivel 9, si eres capaz de oír, eres consciente de dónde se encuentra cualquier criatura escondida o invisible a 30 pies (6 casillas) o menos de ti."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Sangre Arcana",
-          "Puntos de Sangre Arcana"
-        ],
-        "filas": [
-          [
-            "2d6",
-            "2"
-          ]
-        ]
       }
     },
     "10": {
@@ -642,34 +556,9 @@
           "titleName": "✦ AUMENTO SANGUÍNEO ✦",
           "descripcion": "A partir del nivel 10, la Sangre Arcana inunda tu cuerpo para reforzar permanentemente tu resistencia igual a +2 a la CA con o sin armadura, tu velocidad aumenta en 5 pies (1 Casilla) y tienes una bonificación a las tiradas de salvación de Fuerza, Destreza y Constitución igual a tu \"Puntuación de Sangre Arcana\" (mínimo de +1)."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Sangre Arcana",
-          "Puntos de Sangre Arcana"
-        ],
-        "filas": [
-          [
-            "2d6",
-            "2"
-          ]
-        ]
       }
     },
-    "11": {
-      "infoCubo": {
-        "columnas": [
-          "Sangre Arcana",
-          "Puntos de Sangre Arcana"
-        ],
-        "filas": [
-          [
-            "2d6",
-            "2"
-          ]
-        ]
-      }
-    },
+    "11": {},
     "12": {
       "infoCubo": {
         "columnas": [
@@ -684,20 +573,7 @@
         ]
       }
     },
-    "13": {
-      "infoCubo": {
-        "columnas": [
-          "Sangre Arcana",
-          "Puntos de Sangre Arcana"
-        ],
-        "filas": [
-          [
-            "3d8",
-            "3"
-          ]
-        ]
-      }
-    },
+    "13": {},
     "14": {
       "infoBlock": {
         "blockUno": {
@@ -705,62 +581,11 @@
           "titleName": "✦ ALMA ENDURECIDA ✦",
           "descripcion": "Al alcanzar el nivel 14, los horrores que has enfrentado y la sangre que has derramado han templado tu espíritu de manera implacable, haciéndote prácticamente inmune a la manipulación emocional y mental.\n\nObtienes ventaja en todas las tiradas de salvación contra ser encantado. Además, si una criatura intenta afectarte con una de estas condiciones y fallas la tirada de salvación, puedes usar tu reacción para sufrir daño Psíquico igual a tu \"Sangre Arcana + tu Puntuación de Sangre Arcana\" (sin posibilidad de curación hasta tener un descanso largo) y repetir la tirada de salvación inmediatamente."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Sangre Arcana",
-          "Puntos de Sangre Arcana"
-        ],
-        "filas": [
-          [
-            "3d8",
-            "3"
-          ]
-        ]
       }
     },
-    "15": {
-      "infoCubo": {
-        "columnas": [
-          "Sangre Arcana",
-          "Puntos de Sangre Arcana"
-        ],
-        "filas": [
-          [
-            "3d8",
-            "3"
-          ]
-        ]
-      }
-    },
-    "16": {
-      "infoCubo": {
-        "columnas": [
-          "Sangre Arcana",
-          "Puntos de Sangre Arcana"
-        ],
-        "filas": [
-          [
-            "3d8",
-            "3"
-          ]
-        ]
-      }
-    },
-    "17": {
-      "infoCubo": {
-        "columnas": [
-          "Sangre Arcana",
-          "Puntos de Sangre Arcana"
-        ],
-        "filas": [
-          [
-            "3d8",
-            "3"
-          ]
-        ]
-      }
-    },
+    "15": {},
+    "16": {},
+    "17": {},
     "18": {
       "infoCubo": {
         "columnas": [
@@ -782,18 +607,6 @@
           "titleName": "✦ SANGRE ANCESTRAL ✦",
           "descripcion": "A nivel 19, has alcanzado una conexión con las antiguas corrientes de poder que fluyen a través de la Sangre Arcana dentro de ti, permitiéndote desatar su potencial ancestral.\n\nCuando una criatura muere dentro de 60 pies (12 casillas) de ti, puedes usar tu reacción para consumir su esencia vital y restaurarte una cantidad de \"PG igual a tu nivel de cazador + tu modificador de Constitución + Sangre Arcana\". Si es una criatura con sangre, también puedes elegir invocar una \"Criatura de Sangre\" adicional sin sufrir daño necrótico en tu próximo turno. Solo puedes usar esta habilidad una vez por descanso corto o largo.\n\nSi ya eres de la orden del \"Invocador de Sangre\", puedes usar tu sangre para crear hasta <b class=\"content_subrayado\">dos Criaturas de Sangre</b> simultáneamente, sin sufrir el daño necrótico. Sin embargo, invocar más de dos Criaturas de Sangre requiere el sacrificio de tu vitalidad, sufriendo daño necrótico como de costumbre (Y si no eres de esta Orden y el doble si no eres)."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Sangre Arcana",
-          "Puntos de Sangre Arcana"
-        ],
-        "filas": [
-          [
-            "4d10",
-            "4"
-          ]
-        ]
       }
     },
     "20": {
@@ -803,18 +616,6 @@
           "titleName": "✦ SUEÑO LÚCIDO ✦",
           "descripcion": "Al alcanzar el nivel 20, te conviertes en la personificación de la Sangre Arcana, dominando su poder al punto de poder controlar la sangre misma con una precisión letal.\n\nTu conexión con el plano onírico y tu dominio de la energía arcana te permiten trascender la muerte misma. Al alcanzar el nivel 20, si eres derrotado, asesinado o caes a 0 puntos de golpe, puedes regresar al campo de batalla como si despertaras de un sueño. Cuando esto ocurre, recuperas la mitad de tus puntos de golpe máximos y te levantas en el mismo lugar donde caíste. Puedes usar esta habilidad un número de veces igual a tu \"Puntuación de Sangre Arcana (mínimo 1 vez)\".\n\nCada vez que utilizas \"Sueño Lúcido\", el Señor de los Sueños se manifiesta brevemente en tu mente. Si el Señor de los Sueños conoce la debilidad de tu enemigo, te la revelará. Además, obtienes ventaja en todas tus tiradas de ataque contra esa debilidad durante el resto del combate. El Señor de los Sueños solo compartirá esta información una vez por enemigo, si es que conoce la debilidad del mismo.\n\nDespués de usar todas las veces permitidas, necesitarás un descanso prolongado para recuperar el uso de esta habilidad."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Sangre Arcana",
-          "Puntos de Sangre Arcana"
-        ],
-        "filas": [
-          [
-            "4d10",
-            "4"
-          ]
-        ]
       }
     }
   },

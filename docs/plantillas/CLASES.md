@@ -92,7 +92,7 @@ Un objeto con las claves `"1"` a `"20"`. Cada nivel puede tener:
 | `descripcion` (nivel 1) | Resumen de una línea |
 | `descripcionLarga` (nivel 1) | Presentación de la clase |
 | `atributoInicial` (nivel 1) | Texto de «Atributos de clase» que se copia a las notas del personaje (formato `❖ Título:` y `    :: línea`) |
-| `infoCubo` | Fila de la tabla de progresión: `{ "columnas": ["Furia", "Daño"], "filas": [["2", "+2"]] }` |
+| `infoCubo` | Fila de la tabla de progresión: `{ "columnas": ["Furia", "Daño"], "filas": [["2", "+2"]] }`. **Sólo en los niveles donde algo cambia**: los niveles sin `infoCubo` heredan la última tabla declarada (la app no repite filas iguales). `python3 tools/class_tables.py` quita las repetidas. |
 | `infoBlock` | Rasgos que se obtienen en ese nivel: `{ "blockUno": { "name", "titleName", "descripcion", "efectos" } }` |
 | `subClase` | **Sólo en el nivel en que se elige la subclase.** Ver abajo |
 | `requeridoTrue` | Aumentos fijos de atributos (p. ej. nivel 20): `{ "statAmount": { "fuerza": 4, "choice": { "count": 1, "bonus": 2, "allowedChoices": [...] } }, "statMax": { "activos": ["fuerza"], "stat": 24 } }` |

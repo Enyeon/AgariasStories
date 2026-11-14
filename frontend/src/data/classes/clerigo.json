@@ -946,24 +946,7 @@
         ]
       }
     },
-    "12": {
-      "infoCubo": {
-        "columnas": [
-          "Canalizar Divinidad",
-          "Trucos",
-          "Conjuros preparados",
-          "Espacios (nv. 1.º–9.º)"
-        ],
-        "filas": [
-          [
-            "3",
-            "5",
-            "16",
-            "4 · 3 · 3 · 3 · 2 · 1"
-          ]
-        ]
-      }
-    },
+    "12": {},
     "13": {
       "infoCubo": {
         "columnas": [
@@ -989,22 +972,6 @@
           "titleName": "✦ MEJORA DE GOLPES BENDITOS ✦",
           "descripcion": "La opción que elegiste para Golpes Benditos se vuelve más poderosa.\n<b>Golpe Divino.</b> El daño adicional de tu Golpe Divino aumenta a 2d8.\n<b>Conjuros Potentes.</b> Cuando lanzas un truco de clérigo e infliges daño a una criatura con él, puedes otorgar vitalidad a ti mismo o a otra criatura dentro de un rango de 60 pies, otorgando un número de Puntos de Golpe Temporales igual al doble de tu modificador de Sabiduría."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Canalizar Divinidad",
-          "Trucos",
-          "Conjuros preparados",
-          "Espacios (nv. 1.º–9.º)"
-        ],
-        "filas": [
-          [
-            "3",
-            "5",
-            "17",
-            "4 · 3 · 3 · 3 · 2 · 1 · 1"
-          ]
-        ]
       }
     },
     "15": {
@@ -1025,24 +992,7 @@
         ]
       }
     },
-    "16": {
-      "infoCubo": {
-        "columnas": [
-          "Canalizar Divinidad",
-          "Trucos",
-          "Conjuros preparados",
-          "Espacios (nv. 1.º–9.º)"
-        ],
-        "filas": [
-          [
-            "3",
-            "5",
-            "18",
-            "4 · 3 · 3 · 3 · 2 · 1 · 1 · 1"
-          ]
-        ]
-      }
-    },
+    "16": {},
     "17": {
       "infoCubo": {
         "columnas": [

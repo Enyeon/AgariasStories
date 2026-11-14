@@ -989,20 +989,6 @@
         "lista": "libro-conjuros",
         "cantidad": 2,
         "rasgo": "Libro de Conjuros"
-      },
-      "infoCubo": {
-        "columnas": [
-          "Trucos",
-          "Conjuros preparados",
-          "Espacios (nv. 1.º–9.º)"
-        ],
-        "filas": [
-          [
-            "5",
-            "16",
-            "4 · 3 · 3 · 3 · 2 · 1"
-          ]
-        ]
       }
     },
     "13": {

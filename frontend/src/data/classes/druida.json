@@ -990,24 +990,7 @@
         ]
       }
     },
-    "12": {
-      "infoCubo": {
-        "columnas": [
-          "Forma Salvaje",
-          "Trucos",
-          "Conjuros preparados",
-          "Espacios (nv. 1.º–9.º)"
-        ],
-        "filas": [
-          [
-            "3",
-            "4",
-            "16",
-            "4 · 3 · 3 · 3 · 2 · 1"
-          ]
-        ]
-      }
-    },
+    "12": {},
     "13": {
       "infoCubo": {
         "columnas": [
@@ -1026,24 +1009,7 @@
         ]
       }
     },
-    "14": {
-      "infoCubo": {
-        "columnas": [
-          "Forma Salvaje",
-          "Trucos",
-          "Conjuros preparados",
-          "Espacios (nv. 1.º–9.º)"
-        ],
-        "filas": [
-          [
-            "3",
-            "4",
-            "17",
-            "4 · 3 · 3 · 3 · 2 · 1 · 1"
-          ]
-        ]
-      }
-    },
+    "14": {},
     "15": {
       "infoBlock": {
         "blockUno": {
@@ -1069,24 +1035,7 @@
         ]
       }
     },
-    "16": {
-      "infoCubo": {
-        "columnas": [
-          "Forma Salvaje",
-          "Trucos",
-          "Conjuros preparados",
-          "Espacios (nv. 1.º–9.º)"
-        ],
-        "filas": [
-          [
-            "3",
-            "4",
-            "18",
-            "4 · 3 · 3 · 3 · 2 · 1 · 1 · 1"
-          ]
-        ]
-      }
-    },
+    "16": {},
     "17": {
       "infoCubo": {
         "columnas": [

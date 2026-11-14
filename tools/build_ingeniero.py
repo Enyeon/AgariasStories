@@ -541,5 +541,8 @@ cls = {
     },
     "niveles": N,
 }
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parent))
+from class_tables import dedupe_cubes  # noqa: E402  (las tablas sólo donde cambian)
+dedupe_cubes(cls["niveles"])
 json.dump(cls, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
 print("ok", len(ESQUEMAS), "esquemas:", {c: sum(1 for x in G if x[2] == c) for c in (T, S, A, I)})

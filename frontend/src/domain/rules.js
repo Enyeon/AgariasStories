@@ -2,6 +2,7 @@
 // Funciones puras, sin DOM y sin estado global, para poder testearlas y
 // reutilizarlas (ficha, vista compartida, futuras exportaciones a PDF...).
 
+import { cubeRow, sameCube } from './class-table.js';
 import {
   ABILITY_KEYS, SKILLS, SPEEDS, MAX_LEVEL, BASE_ABILITY_CAP, EPIC_ABILITY_CAP, XP_BY_LEVEL,
 } from './constants.js';
@@ -491,6 +492,7 @@ export function classFeatures(c) {
     const out = [];
     const tableCols = [];
     const tableRows = [];
+    let lastCube = null;
     const featuresAt = (n) => ({
       features: [
         ...blocks(cls.niveles[n]?.infoBlock, (b) => ({
@@ -511,13 +513,13 @@ export function classFeatures(c) {
     for (let n = 1; n <= level; n++) {
       const l = cls.niveles[n];
       const { features, subFeatures } = featuresAt(n);
+      // Sólo hay fila cuando la tabla CAMBIA (una tabla igual a la anterior no se repite).
       const cube = l?.infoCubo;
-      if (cube?.columnas?.some(Boolean)) {
+      if (cube?.columnas?.some(Boolean) && !(lastCube && sameCube(cube, lastCube))) {
         cube.columnas.forEach((col) => { if (col && !tableCols.includes(col)) tableCols.push(col); });
-        const row = { level: n };
-        cube.columnas.forEach((col, i) => { if (col) row[col] = cube.filas?.[0]?.[i] ?? ''; });
-        tableRows.push(row);
+        tableRows.push({ level: n, ...cubeRow(cube) });
       }
+      if (cube?.columnas?.some(Boolean)) lastCube = cube;
       out.push({ level: n, defined: definedLevels.includes(n), features, subFeatures });
     }
     const next = level < MAX_LEVEL ? { level: level + 1, defined: definedLevels.includes(level + 1), ...featuresAt(level + 1) } : null;
@@ -533,7 +535,8 @@ export function classFeatures(c) {
       subclass: sub ? { key: subKey, name: sub.subNombre, description: sub.subDescripcion, pending: Boolean(sub.rasgosPendientes), source: sub.fuente ?? null, homebrew: Boolean(sub.homebrew) } : null,
       startingInfo: cls.niveles?.[1]?.atributoInicial ?? '',
       levels: out,
-      table: tableCols.length ? { columns: tableCols, rows: tableRows } : null,
+      // currentRow: la fila vigente al nivel del personaje (la última hasta ese nivel).
+      table: tableCols.length ? { columns: tableCols, rows: tableRows, currentRow: tableRows.at(-1)?.level ?? null } : null,
       missingLevels: out.filter((l) => !l.defined).map((l) => l.level),
     };
   });

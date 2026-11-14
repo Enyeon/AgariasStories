@@ -135,18 +135,6 @@
           "titleName": "✦ MENTE TÁCTICA ✦",
           "descripcion": "Tienes una mente para las tácticas en y fuera del campo de batalla. Cuando falles una prueba de habilidad, puedes gastar un uso de tu Segundo Aliento para impulsarte hacia el éxito. En lugar de recuperar Puntos de Golpe, lanzas 1d10 y añades el número obtenido a la prueba de habilidad, potencialmente convirtiéndola en un éxito. Si la prueba aún falla, este uso del Segundo Aliento no se gasta."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Segundo Aliento",
-          "Maestría en Armas"
-        ],
-        "filas": [
-          [
-            "2",
-            "3"
-          ]
-        ]
       }
     },
     "3": {
@@ -675,18 +663,6 @@
             }
           }
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Segundo Aliento",
-          "Maestría en Armas"
-        ],
-        "filas": [
-          [
-            "2",
-            "3"
-          ]
-        ]
       }
     },
     "4": {
@@ -727,62 +703,11 @@
           "titleName": "✦ CAMBIO TÁCTICO ✦",
           "descripcion": "Siempre que actives tu Segundo Viento con una Acción Adicional, puedes moverte hasta la mitad de tu Velocidad sin provocar Ataques de Oportunidad."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Segundo Aliento",
-          "Maestría en Armas"
-        ],
-        "filas": [
-          [
-            "3",
-            "4"
-          ]
-        ]
       }
     },
-    "6": {
-      "infoCubo": {
-        "columnas": [
-          "Segundo Aliento",
-          "Maestría en Armas"
-        ],
-        "filas": [
-          [
-            "3",
-            "4"
-          ]
-        ]
-      }
-    },
-    "7": {
-      "infoCubo": {
-        "columnas": [
-          "Segundo Aliento",
-          "Maestría en Armas"
-        ],
-        "filas": [
-          [
-            "3",
-            "4"
-          ]
-        ]
-      }
-    },
-    "8": {
-      "infoCubo": {
-        "columnas": [
-          "Segundo Aliento",
-          "Maestría en Armas"
-        ],
-        "filas": [
-          [
-            "3",
-            "4"
-          ]
-        ]
-      }
-    },
+    "6": {},
+    "7": {},
+    "8": {},
     "9": {
       "infoBlock": {
         "blockUno": {
@@ -795,18 +720,6 @@
           "titleName": "✦ MAESTRO TÁCTICO ✦",
           "descripcion": "Cuando ataques con un arma cuya propiedad de maestría puedes usar, puedes reemplazar esa propiedad con la propiedad Empujar, Aturdir o Lentitud para ese ataque."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Segundo Aliento",
-          "Maestría en Armas"
-        ],
-        "filas": [
-          [
-            "3",
-            "4"
-          ]
-        ]
       }
     },
     "10": {
@@ -835,34 +748,9 @@
           "titleName": "✦ DOS ATAQUES ADICIONALES ✦",
           "descripcion": "Puedes atacar tres veces en lugar de una siempre que realices la acción de Ataque en tu turno."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Segundo Aliento",
-          "Maestría en Armas"
-        ],
-        "filas": [
-          [
-            "4",
-            "5"
-          ]
-        ]
       }
     },
-    "12": {
-      "infoCubo": {
-        "columnas": [
-          "Segundo Aliento",
-          "Maestría en Armas"
-        ],
-        "filas": [
-          [
-            "4",
-            "5"
-          ]
-        ]
-      }
-    },
+    "12": {},
     "13": {
       "infoBlock": {
         "blockUno": {
@@ -875,48 +763,10 @@
           "titleName": "✦ INDOMABLE (2) ✦",
           "descripcion": "Puedes usar Indomable dos veces antes de un Descanso Largo."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Segundo Aliento",
-          "Maestría en Armas"
-        ],
-        "filas": [
-          [
-            "4",
-            "5"
-          ]
-        ]
       }
     },
-    "14": {
-      "infoCubo": {
-        "columnas": [
-          "Segundo Aliento",
-          "Maestría en Armas"
-        ],
-        "filas": [
-          [
-            "4",
-            "5"
-          ]
-        ]
-      }
-    },
-    "15": {
-      "infoCubo": {
-        "columnas": [
-          "Segundo Aliento",
-          "Maestría en Armas"
-        ],
-        "filas": [
-          [
-            "4",
-            "5"
-          ]
-        ]
-      }
-    },
+    "14": {},
+    "15": {},
     "16": {
       "elegir": {
         "lista": "maestria-armas",
@@ -943,34 +793,9 @@
           "titleName": "✦ IMPULSO DE ACCIÓN (2) E INDOMABLE (3) ✦",
           "descripcion": "Puedes usar Impulso de Acción dos veces antes de un descanso, pero solo una vez por turno. Puedes usar Indomable tres veces antes de un Descanso Largo."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Segundo Aliento",
-          "Maestría en Armas"
-        ],
-        "filas": [
-          [
-            "4",
-            "6"
-          ]
-        ]
       }
     },
-    "18": {
-      "infoCubo": {
-        "columnas": [
-          "Segundo Aliento",
-          "Maestría en Armas"
-        ],
-        "filas": [
-          [
-            "4",
-            "6"
-          ]
-        ]
-      }
-    },
+    "18": {},
     "19": {
       "infoBlock": {
         "blockUno": {
@@ -978,18 +803,6 @@
           "titleName": "✦ BENEFICIO ÉPICO ✦",
           "descripcion": "Obtienes un feat de Beneficio Épico (consulta el capítulo 5) u otro feat de tu elección para el cual calificas. Se recomienda el Beneficio de Destreza en Combate."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Segundo Aliento",
-          "Maestría en Armas"
-        ],
-        "filas": [
-          [
-            "4",
-            "6"
-          ]
-        ]
       }
     },
     "20": {
@@ -999,18 +812,6 @@
           "titleName": "✦ TRES ATAQUES ADICIONALES ✦",
           "descripcion": "Puedes atacar cuatro veces en lugar de una siempre que realices la acción de Ataque en tu turno."
         }
-      },
-      "infoCubo": {
-        "columnas": [
-          "Segundo Aliento",
-          "Maestría en Armas"
-        ],
-        "filas": [
-          [
-            "4",
-            "6"
-          ]
-        ]
       }
     }
   }

@@ -97,7 +97,8 @@ describe('formato JSON de clases', () => {
     expect(sheet.skills.find((x) => !x.proficient).halfProficiency).toBe(true);
     // CA sin armadura: 10 + DES + SAB, admite escudo.
     expect(sheet.unarmoredDefense[0]).toMatchObject({ value: 10 + sheet.scores.destreza.modifier + sheet.scores.sabiduria.modifier, escudo: true });
-    expect(f.table.rows[19]).toMatchObject({ 'Daño radiante': '2d8' });
+    expect(f.table.rows.at(-1)).toMatchObject({ 'Daño radiante': '2d8' });
+    expect(f.table.currentRow).toBe(f.table.rows.at(-1).level);
     expect(f.levels[4].features.map((x) => x.title)).toEqual(['Ataque extra', 'Tomo del alba']);
     // Efectos automáticos de rasgos de clase y subclase.
     expect(sheet.skills.find((s) => s.name === 'Percepción').sources[0]).toMatchObject({ kind: 'clase', label: 'Vigilia' });
@@ -141,5 +142,30 @@ describe('formato JSON de clases', () => {
     const spells = { Luz: { nivel: 'Truco' }, 'Bola de fuego': { nivel: '3' } };
     const mine = filterSpells(spells, { query: '', onlyMine: true }, [KEY]).map(([n]) => n);
     expect(mine).toEqual(['Luz']);
+  });
+});
+
+describe('tablas de progresión (infoCubo) sin repetir', () => {
+  it('ninguna clase oficial repite la tabla del nivel anterior', async () => {
+    const dir = path.resolve(__dirname, '../src/data/classes');
+    for (const f of fs.readdirSync(dir).filter((x) => x.endsWith('.json'))) {
+      const cls = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
+      let prev = null;
+      for (let n = 1; n <= 20; n++) {
+        const cube = cls.niveles?.[n]?.infoCubo;
+        if (!cube) continue;
+        expect(JSON.stringify(cube), `${f} nivel ${n}`).not.toBe(JSON.stringify(prev));
+        prev = cube;
+      }
+    }
+  });
+
+  it('los niveles sin tabla heredan la última, y una tabla repetida (Homebrew viejo) no crea fila', async () => {
+    const { cubeAt, cubeValue } = await import('../src/domain/class-table.js');
+    const cube = (v) => ({ columnas: ['Furia', 'Daño de Furia'], filas: [[v, '+2']] });
+    const cls = { niveles: { 1: { infoCubo: cube('2') }, 2: {}, 3: { infoCubo: cube('3') }, 4: {} } };
+    expect(cubeValue(cls, 2, 'Furia')).toBe('2');
+    expect(cubeValue(cls, 4, 'Furia')).toBe('3');
+    expect(cubeAt(cls, 0)).toBeNull();
   });
 });
