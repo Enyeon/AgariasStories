@@ -48,7 +48,7 @@ import { raceName, getClass, getOfficialBackground } from '../data/index.js';
 import { buildProfile } from '../domain/shop/profile.js';
 import { listEntries, getPack } from '../content/registry.js';
 import { createMarketRepository, marketScope, sameScope } from './shop-market.js';
-import { ApiError } from './api.js';
+import { ApiError, hasSupabase } from './api.js';
 
 const PREFS_KEY = 'agarias-dnd:shop-prefs';
 const SKILL_KEYS = { persuasion: 'Persuasión', deception: 'Engaño', intimidation: 'Intimidación', insight: 'Perspicacia', investigation: 'Investigación', performance: 'Interpretación', sleight: 'Juego de Manos' };
@@ -134,6 +134,8 @@ export function createShopService({ characters, homebrew, market = createMarketR
     records: [],
     characters: [],
     characterId: null,
+    // Campaña abierta «como DM» (sin personaje): el DM entra al mercado de su campaña.
+    dmCampaign: null,
     record: null,
     character: null,
     profile: null,
@@ -184,11 +186,41 @@ export function createShopService({ characters, homebrew, market = createMarketR
 
   /** Abre personaje + mercado de su ámbito + catálogo visible para él. */
   async function select(id) {
+    state.dmCampaign = null;
     await loadCharacter(id);
     const scope = marketScope(state.character, homebrew?.memberships?.() ?? [], remoteEnabled);
     state.ctx = buildShopContext({ campaignId: scope.kind === 'campaign' ? scope.id : null });
     await loadMarket(scope);
     if (id) setPref('characterId', id);
+  }
+
+  /** Abre el mercado de una campaña como DM (sin personaje). */
+  async function enterAsDm(id) {
+    const m = api.dmCampaigns().find((x) => x.id === id);
+    if (!m) return select(null);
+    await loadCharacter(null);
+    const scope = marketScope({ campaign: { id } }, [m], remoteEnabled);
+    state.ctx = buildShopContext({ campaignId: scope.kind === 'campaign' ? scope.id : null });
+    await loadMarket(scope);
+    state.dmCampaign = scope.kind === 'campaign' ? id : null;
+    setPref('dmCampaign', state.dmCampaign);
+  }
+
+  /** ¿Dónde se guarda y quién puede? Local = este dispositivo; campaña = sólo su DM. */
+  function packInfo(packId) {
+    const local = homebrew?.localPack?.();
+    if (local && packId === local.id) return { id: packId, kind: 'local', canEdit: state.scope.kind === 'local' ? api.canControlTime : true };
+    const m = homebrew?.membership?.(packId);
+    return m ? { id: packId, kind: 'campaign', canEdit: m.role === 'dm' } : null;
+  }
+
+  /** Si lo cambiado es el mundo abierto, se recompila y se recarga el mercado. */
+  async function reloadIfCurrent(packId) {
+    const current = state.scope.kind === 'campaign' ? state.scope.id : homebrew?.localPack?.()?.id;
+    if (packId !== current) return;
+    state.ctx = buildShopContext({ campaignId: state.scope.kind === 'campaign' ? state.scope.id : null });
+    await loadMarket(state.scope);
+    emit({ type: 'market' });
   }
 
   function setPref(key, value) {
@@ -292,7 +324,9 @@ export function createShopService({ characters, homebrew, market = createMarketR
       state.records = await characters.list();
       state.characters = state.records.map((r) => ({ id: r.id, name: r.summary?.name || 'Personaje sin nombre', subtitle: r.summary?.classes }));
       const preferred = [characterId, state.prefs.characterId].find((id) => id && state.records.some((r) => r.id === id)) ?? state.records[0]?.id ?? null;
-      await select(preferred);
+      const dmPref = !characterId && state.prefs.dmCampaign && api.dmCampaigns().some((m) => m.id === state.prefs.dmCampaign) ? state.prefs.dmCampaign : null;
+      if (dmPref) await enterAsDm(dmPref);
+      else await select(preferred);
       state.ready = true;
       emit({ type: 'ready' });
       return api;
@@ -306,6 +340,7 @@ export function createShopService({ characters, homebrew, market = createMarketR
     selectCharacter(id) {
       return serial(async () => {
         const prevScope = state.scope;
+        setPref('dmCampaign', null);
         await select(id);
         emit({ type: sameScope(prevScope, state.scope) ? 'character' : 'market' });
       });
@@ -344,23 +379,94 @@ export function createShopService({ characters, homebrew, market = createMarketR
       return null;
     },
     /** Guarda (y publica) una pieza del mundo y recarga la Tienda con ella. */
-    saveWorld(type, data, contentId = null) {
+    saveWorld(type, data, contentId = null, packId = api.worldPackId()) {
       return serial(async () => {
-        if (!api.canControlTime) return { error: 'Sólo el DM puede configurar el mundo de la Tienda.' };
+        const pack = packInfo(packId);
+        if (!pack || !pack.canEdit) return { error: 'Sólo el DM puede configurar el mundo de la Tienda.' };
         let res;
         try {
-          res = state.scope?.kind === 'campaign'
-            ? await homebrew.saveCampaignItem(state.scope.id, { type, data, contentId, status: 'publicado' })
+          res = pack.kind === 'campaign'
+            ? await homebrew.saveCampaignItem(pack.id, { type, data, contentId, status: 'publicado' })
             : homebrew.saveLocalItem({ type, data, contentId });
         } catch (err) {
           if (err instanceof ApiError && err.code === 'invalid') return { error: 'El servidor de la campaña aún no admite el mundo configurable: aplica las migraciones 20261113 y 20261114 de Supabase.' };
           return { error: err?.userMessage ?? 'No se pudo guardar.' };
         }
         if (res.errors?.length) return { error: res.errors.join(' ') };
-        state.ctx = buildShopContext({ campaignId: state.scope?.kind === 'campaign' ? state.scope.id : null });
-        await loadMarket(state.scope);
-        emit({ type: 'market' });
+        await reloadIfCurrent(packId);
         return res;
+      });
+    },
+
+    // ── Carpeta del DM: tiendas propias por campaña ──
+    /** Campañas de este dispositivo en las que el usuario es DM. */
+    dmCampaigns: () => (remoteEnabled ?? hasSupabase() ? (homebrew?.memberships?.() ?? []).filter((m) => m.role === 'dm') : []),
+    /** Abre el mercado de una campaña como DM, sin personaje. */
+    enterCampaignAsDm(id) {
+      return serial(async () => {
+        await enterAsDm(id);
+        emit({ type: 'market' });
+      });
+    },
+    /**
+     * Carpetas del DM: una por campaña (y una para este dispositivo), con las
+     * tiendas propias (nuevas o copias) y los comerciantes oficiales modificados.
+     */
+    dmFolders() {
+      const local = homebrew?.localPack?.();
+      const packs = [
+        ...api.dmCampaigns().map((m) => ({ id: m.id, name: m.name, kind: 'campaign' })),
+        ...(local ? [{ id: local.id, name: 'Este dispositivo (sin campaña)', kind: 'local' }] : []),
+      ];
+      return packs.map((p) => {
+        const current = p.kind === 'campaign' ? state.scope.kind === 'campaign' && state.scope.id === p.id : state.scope.kind === 'local';
+        // Para nombrar los lugares (también los Homebrew de esa campaña).
+        const ctx = current ? state.ctx : buildShopContext({ campaignId: p.kind === 'campaign' ? p.id : null });
+        const info = (e) => ({
+          ref: e.ref,
+          contentId: e.ref.split(':').at(-1),
+          name: e.item.name,
+          portrait: e.item.portrait || '🧑‍💼',
+          shopName: e.item.shopName || `Puesto de ${e.item.name}`,
+          shopIcon: e.item.shopIcon || '🏪',
+          location: ctx.location(e.item.location)?.name ?? (e.item.route?.length ? 'Errante' : e.item.location || '—'),
+          copyOf: e.item.copyOf ? keepersData.keepers.find((k) => k.id === e.item.copyOf)?.name ?? e.item.copyOf : null,
+          base: e.item.base ? keepersData.keepers.find((k) => k.id === e.item.base)?.name ?? e.item.base : null,
+          extras: (e.item.addItems ?? []).length,
+          prices: (e.item.prices ?? []).length,
+          status: e.status,
+        });
+        const entries = listEntries('mercader', { selectable: false, packId: p.id }).filter((e) => e.status !== 'retirado');
+        return { ...p, current, shops: entries.filter((e) => !e.item.base).map(info), modified: entries.filter((e) => e.item.base).map(info) };
+      });
+    },
+    /** Datos de una tienda de la carpeta para el editor. */
+    dmShopData(packId, contentId) {
+      const e = listEntries('mercader', { selectable: false, packId }).find((x) => x.ref.split(':').at(-1) === contentId);
+      return e ? e.item : null;
+    },
+    /** Formulario de una tienda NUEVA que parte de un comerciante oficial (no lo sustituye). */
+    officialCopy(keeperId) {
+      const keeper = keepersData.keepers.find((k) => k.id === keeperId);
+      if (!keeper) return null;
+      const shop = shopsData.shops.find((sh) => sh.keeperId === keeperId);
+      const data = merchantToEditor(keeper, shop);
+      return { ...data, base: null, copyOf: keeperId, name: `${keeper.name} (copia)`, shopName: shop ? `${shop.name} (copia)` : '', secrets: [], favors: [] };
+    },
+    officialMerchants: () => keepersData.keepers.map((k) => ({ id: k.id, name: k.name, shop: shopsData.shops.find((s) => s.keeperId === k.id)?.name ?? null })),
+    /** Retira una tienda de la carpeta (lo publicado se retira, no se borra). */
+    retireDmShop(packId, ref) {
+      return serial(async () => {
+        const pack = packInfo(packId);
+        if (!pack?.canEdit) return { error: 'Sólo el DM puede retirar tiendas.' };
+        try {
+          if (pack.kind === 'campaign') await homebrew.removeCampaignItem(pack.id, ref);
+          else homebrew.removeLocalItem(ref);
+        } catch (err) {
+          return { error: err?.userMessage ?? 'No se pudo retirar.' };
+        }
+        await reloadIfCurrent(packId);
+        return { ok: true };
       });
     },
     /** Resumen del mundo para el panel del DM. */

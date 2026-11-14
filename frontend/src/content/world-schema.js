@@ -100,7 +100,10 @@ export function normalizeMerchant(src, errors) {
   const location = idRef(src.location);
   if (!location && !route.length && !base) errors.push('Elige dónde está el comerciante (o su ruta, si es errante).');
   const trait = (k) => int(src.traits?.[k], 0, 10, 5);
-  const catalogMode = Object.hasOwn(CATALOG_MODES, src.catalogMode) ? src.catalogMode : base ? 'original' : 'auto';
+  // Copia de un comerciante oficial: personaje y tienda NUEVOS que parten de su catálogo (no lo sustituyen).
+  const copyOf = base ? null : idRef(src.copyOf);
+  let catalogMode = Object.hasOwn(CATALOG_MODES, src.catalogMode) ? src.catalogMode : base || copyOf ? 'original' : 'auto';
+  if (catalogMode === 'original' && !base && !copyOf) catalogMode = 'auto';
   const sells = pick(src.sells, CATEGORY_IDS);
   const profession = idRef(src.profession);
   const addItems = rows(src.addItems, 40, (r) => (idRef(r.item) ? { item: r.item, qty: int(r.qty, 1, 50, 2) } : null));
@@ -110,6 +113,7 @@ export function normalizeMerchant(src, errors) {
   if (hours && !/^\s*\d{1,2}(:\d{2})?\s*[-–]\s*\d{1,2}(:\d{2})?\s*$/.test(hours)) errors.push('El horario debe tener la forma 08:00-20:00.');
   return {
     base,
+    copyOf,
     title: str(src.title, 80),
     portrait: str(src.portrait, 8) || '🧑‍💼',
     race: Object.hasOwn(RACE_FAMILY_OPTIONS, src.race) ? src.race : null,

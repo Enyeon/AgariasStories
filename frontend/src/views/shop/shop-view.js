@@ -129,11 +129,16 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
                 class: 'char-select',
                 'aria-label': 'Personaje que compra',
                 onchange: (e) => {
-                    service.selectCharacter(e.target.value);
-                    onCharacterChange?.(e.target.value);
+                    const v = e.target.value;
+                    if (v.startsWith('dm:')) return service.enterCampaignAsDm(v.slice(3));
+                    service.selectCharacter(v);
+                    onCharacterChange?.(v);
                 },
             },
-            s.characters.map((c) => h('option', { value: c.id, selected: c.id === s.characterId }, c.name)),
+            h('optgroup', { label: 'Personajes' }, s.characters.map((c) => h('option', { value: c.id, selected: !s.dmCampaign && c.id === s.characterId }, c.name))),
+            service.dmCampaigns().length
+                ? h('optgroup', { label: 'Como DM (sin personaje)' }, service.dmCampaigns().map((m) => h('option', { value: `dm:${m.id}`, selected: s.dmCampaign === m.id }, `🎲 ${m.name}`)))
+                : null,
         );
         const character = s.character;
         const canTime = service.canControlTime;

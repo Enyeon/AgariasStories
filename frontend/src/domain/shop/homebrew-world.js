@@ -72,7 +72,7 @@ function rumorsFrom(prefix, rows, region = null) {
 
 // ─────────────────────────── comerciantes ───────────────────────────
 
-function merchantFrom(ref, item, { officialKeeper, officialShop, regionOf }) {
+function merchantFrom(ref, item, { officialKeeper, officialShop, templateShop = null, regionOf }) {
     const id = item.base && officialKeeper ? officialKeeper.id : ref;
     const t = item.traits ?? {};
     const rumors = rumorsFrom(id, item.rumors);
@@ -162,10 +162,12 @@ function merchantFrom(ref, item, { officialKeeper, officialShop, regionOf }) {
     let assortment;
     let buys;
     let rotating;
-    if (mode === 'original' && officialShop) {
-        assortment = [...(officialShop.assortment ?? [])];
-        buys = officialShop.buys;
-        rotating = officialShop.rotating;
+    // El catálogo «original» es el del comerciante sustituido o, en una copia, el del que se copió.
+    const catalogShop = officialShop ?? templateShop;
+    if (mode === 'original' && catalogShop) {
+        assortment = [...(catalogShop.assortment ?? [])];
+        buys = catalogShop.buys;
+        rotating = catalogShop.rotating;
     } else {
         assortment = (item.sells ?? []).map((category) => ({ category, maxRarity: item.maxRarity || 'uncommon', target: 2 }));
         buys = (item.buys ?? []).map((category) => ({ category }));
@@ -182,7 +184,7 @@ function merchantFrom(ref, item, { officialKeeper, officialShop, regionOf }) {
         icon: item.shopIcon || officialShop?.icon || '🏪',
         keeperId: id,
         description: officialShop?.description ?? item.description ?? '',
-        specialties: mode === 'original' ? officialShop?.specialties ?? [] : item.sells ?? [],
+        specialties: mode === 'original' ? catalogShop?.specialties ?? [] : item.sells ?? [],
         cash: cp(item.cash),
         assortment: useProfession ? [] : assortment,
         addItems: useProfession ? (item.addItems ?? []).map((a) => a.item) : undefined,
@@ -390,7 +392,8 @@ export function assembleWorld(official, homebrew = {}) {
         const ki = item.base ? keepers.findIndex((k) => k.id === item.base) : -1;
         const officialKeeper = ki >= 0 ? keepers[ki] : null;
         const si = officialKeeper ? shops.findIndex((s) => s.keeperId === officialKeeper.id) : -1;
-        const { keeper, shop, rumors: extra } = merchantFrom(ref, item, { officialKeeper, officialShop: si >= 0 ? shops[si] : null, regionOf });
+        const templateShop = item.copyOf ? official.shops.find((s) => s.keeperId === item.copyOf) ?? null : null;
+        const { keeper, shop, rumors: extra } = merchantFrom(ref, item, { officialKeeper, officialShop: si >= 0 ? shops[si] : null, templateShop, regionOf });
         if (ki >= 0) keepers[ki] = keeper;
         else keepers.push(keeper);
         if (si >= 0) shops[si] = shop;

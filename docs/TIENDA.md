@@ -101,6 +101,15 @@ liquida al visitar a su empleado. Si la deuda crece, renuncia (y lo recuerda). E
 trasladarle (si acepta mudarse) y pedirle productos extra. Extensiones previstas: `employer.type`
 (facción u organización), lugar = propiedad del jugador, gastos y catálogos más finos.
 
+## Carpeta del DM (tiendas propias por campaña)
+
+En «🌍 Mundo → 📁 Carpeta del DM» hay una carpeta por cada campaña en la que eres DM (y otra para este dispositivo). Cada tienda que crees ahí es un comerciante Homebrew **nuevo** en el paquete de esa campaña: no sustituye nada oficial y sólo existe en esa campaña.
+
+- **➕ Nueva tienda**: comerciante y tienda desde cero (profesión, categorías, objetos sueltos, precios propios…).
+- **📄 Copiar una tienda oficial**: crea una tienda nueva (`copyOf`) que parte del catálogo de la oficial, sin sustituirla. Puedes cambiar nombre, lugar, productos y precios.
+- **Modificar lo oficial** sigue en la pestaña «Comerciantes» (capa `base` encima del original); la carpeta las muestra aparte.
+- **🏪 Abrir su mercado**: el DM entra al mercado de esa campaña sin personaje. También está en el selector de personaje («Como DM»).
+
 ## Propiedades, negocios y empleados
 
 Todo vive en el JSON del mercado (`world.estate`, `world.staff`, `world.reports`, `world.popularity`); los datos base están en `data/shop/estate.json` (terrenos, mejoras, roles, nombres).

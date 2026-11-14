@@ -61,6 +61,7 @@ export const WORLD_FORMS = {
   mercader: [
     ...HEAD,
     baseField(merchantOptions, 'Sustituye a un comerciante existente (conserva su relación y memoria con los personajes)'),
+    { key: 'copyOf', label: '…o es una tienda propia que parte del catálogo de (no sustituye a nadie)', kind: 'select', options: merchantOptions, empty: '— Catálogo propio —' },
     { key: 'title', label: 'Oficio o título', kind: 'text', placeholder: 'Herrero del puerto, tabernera…' },
     { key: 'portrait', label: 'Icono (emoji)', kind: 'text' },
     { key: 'profession', label: 'Profesión (decide catálogo y costumbres)', kind: 'select', options: professionOptions },

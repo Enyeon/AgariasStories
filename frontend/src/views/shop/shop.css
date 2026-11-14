@@ -987,3 +987,13 @@
 .estate .callout { margin: 0; }
 .shop-root .chip.muted { opacity: 0.7; cursor: default; }
 .btn.btn-alert { border-color: var(--brass); color: var(--brass-2); }
+
+/* Carpeta del DM */
+.dm-folders { display: grid; gap: 14px; }
+.dm-folder { border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; display: grid; gap: 10px; background: var(--panel); }
+.dm-folder.is-current { border-color: var(--brass); }
+.dm-folder-head { display: flex; gap: 8px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.dm-folder-head h3 { margin: 0; font-size: 1.05em; }
+.shop-root .tag.warn { color: #f0b35a; }
+.dm-folder .admin-card header { flex-wrap: wrap; }
+.dm-folder .admin-card header b { flex: 1 1 100%; }

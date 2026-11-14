@@ -14,6 +14,7 @@ import { setWorldEditingPack } from '../../content/world-options.js';
 import { CONTENT_TYPES } from '../../content/schema.js';
 
 const TABS = [
+    { id: 'carpeta', label: '📁 Carpeta del DM' },
     { id: 'region', label: '🗺️ Regiones' },
     { id: 'faccion', label: '🏳️ Facciones' },
     { id: 'mercader', label: '🧑‍💼 Comerciantes' },
@@ -21,7 +22,7 @@ const TABS = [
 ];
 
 export function openWorldAdmin(root, service, { toast }) {
-    let tab = 'region';
+    let tab = 'carpeta';
     const body = h('div', { class: 'world-admin' });
     const dialog = h(
         'dialog',
@@ -53,12 +54,75 @@ export function openWorldAdmin(root, service, { toast }) {
         openWorldAdmin(root, service, { toast }).select(tab);
     }
 
+    /** Editor de una tienda de la carpeta (nueva, copia o existente) en el paquete indicado. */
+    async function editShop(folder, contentId = null, preset = null) {
+        setWorldEditingPack(folder.id);
+        const current = contentId ? service.dmShopData(folder.id, contentId) : preset;
+        dialog.close();
+        const item = await openContentEditor('mercader', current, {
+            title: contentId ? `Editar tienda: ${current?.shopName || current?.name}` : `Nueva tienda en ${folder.name}`,
+            note: `Se guarda en la carpeta «${folder.name}». ${folder.kind === 'campaign' ? 'Sólo existe en esa campaña: los jugadores la ven al entrar en su mercado.' : 'Sólo existe en este dispositivo.'} No cambia nada oficial.`,
+            draftKey: `carpeta:${folder.id}:${contentId ?? (preset?.copyOf ? `copia-${preset.copyOf}` : 'nueva')}`,
+        });
+        if (item) {
+            const res = await service.saveWorld('mercader', item, contentId, folder.id);
+            if (res.error) toast(res.error, 'error');
+            else toast(`«${item.shopName || item.name}» guardada en ${folder.name}.`, 'success');
+        }
+        openWorldAdmin(root, service, { toast }).select('carpeta');
+    }
+
+    function renderFolder() {
+        const folders = service.dmFolders();
+        const officials = service.officialMerchants();
+        if (!folders.length) return h('p', { class: 'muted' }, 'Aún no eres DM de ninguna campaña en este dispositivo. Crea una en Homebrew → Campañas.');
+        return h('div', { class: 'dm-folders' },
+            h('p', { class: 'muted small admin-intro' }, 'Tus tiendas propias, separadas de lo oficial. Cada carpeta es una campaña: sus tiendas sólo existen en ella y las ven sus jugadores. Para cambiar una tienda oficial en el mundo abierto, usa la pestaña «🧑‍💼 Comerciantes».'),
+            folders.map((f) => {
+                const copyPick = h('select', { class: 'sort-select', 'aria-label': 'Tienda oficial que copiar' },
+                    h('option', { value: '' }, '📄 Copiar una tienda oficial…'),
+                    officials.filter((o) => o.shop).map((o) => h('option', { value: o.id }, `${o.shop} (${o.name})`)));
+                copyPick.addEventListener('change', () => {
+                    if (copyPick.value) editShop(f, null, service.officialCopy(copyPick.value));
+                });
+                const shopCard = (s, modified = false) => h('article', { class: 'admin-card' },
+                    h('header', {},
+                        h('b', {}, `${s.shopIcon} ${s.shopName}`),
+                        modified ? h('span', { class: 'tag' }, `Modifica a ${s.base}`) : s.copyOf ? h('span', { class: 'tag' }, `Copia de ${s.copyOf}`) : h('span', { class: 'tag' }, 'Propia'),
+                        s.status !== 'publicado' ? h('span', { class: 'tag warn' }, s.status) : null,
+                        h('button', { class: 'btn btn-sm btn-ghost', onclick: () => editShop(f, s.contentId) }, '✏️ Editar')),
+                    h('p', { class: 'small muted' }, `${s.portrait} ${s.name} · 📍 ${s.location}`, s.extras ? ` · ${s.extras} productos añadidos` : '', s.prices ? ` · ${s.prices} precios propios` : ''),
+                    modified ? null : h('button', { class: 'btn btn-sm btn-ghost', onclick: async (e) => {
+                        const b = e.currentTarget;
+                        if (!b.dataset.armed) { b.dataset.armed = '1'; b.textContent = '¿Seguro? Pulsa otra vez'; return; }
+                        const res = await service.retireDmShop(f.id, s.ref);
+                        toast(res.error ?? 'Tienda retirada.', res.error ? 'error' : 'success');
+                        render();
+                    } }, '🗑️ Retirar'));
+                return h('section', { class: ['dm-folder', f.current && 'is-current'] },
+                    h('header', { class: 'dm-folder-head' },
+                        h('h3', {}, `${f.kind === 'campaign' ? '🎲' : '💾'} ${f.name}`),
+                        f.current ? h('span', { class: 'tag' }, 'Abierta ahora') : f.kind === 'campaign'
+                            ? h('button', { class: 'btn btn-sm btn-ghost', title: 'Entrar al mercado de esta campaña como DM', onclick: async () => { dialog.close(); await service.enterCampaignAsDm(f.id); toast(`Mercado de ${f.name} abierto como DM.`, 'success'); } }, '🏪 Abrir su mercado')
+                            : null),
+                    h('div', { class: 'admin-actions' },
+                        h('button', { class: 'btn btn-sm btn-primary', onclick: () => editShop(f) }, '➕ Nueva tienda'),
+                        copyPick),
+                    f.shops.length ? h('div', { class: 'admin-grid' }, f.shops.map((s) => shopCard(s))) : h('p', { class: 'small muted' }, 'Todavía no hay tiendas propias en esta carpeta.'),
+                    f.modified.length ? h('details', { class: 'small' }, h('summary', {}, `Comerciantes oficiales modificados aquí (${f.modified.length})`), h('div', { class: 'admin-grid' }, f.modified.map((s) => shopCard(s, true)))) : null);
+            }));
+    }
+
     const editBtn = (type, id) => h('button', { class: 'btn btn-sm btn-ghost', onclick: () => edit(type, id) }, '✏️ Editar');
     const badge = (x) => (x?.homebrew ? h('span', { class: 'tag' }, x.kinds?.includes('modificado') || x.base ? 'Modificado' : 'Homebrew') : null);
 
     function render() {
         const o = service.worldOverview();
         const tabs = h('nav', { class: 'admin-tabs', role: 'tablist' }, TABS.map((t) => h('button', { class: ['tab', t.id === tab && 'active'], role: 'tab', 'aria-selected': String(t.id === tab), onclick: () => { tab = t.id; render(); } }, t.label)));
+        if (tab === 'carpeta') {
+            replace(body, tabs, renderFolder());
+            return;
+        }
         const add = h('button', { class: 'btn btn-sm btn-primary', onclick: () => edit(tab) }, `➕ Nuevo: ${CONTENT_TYPES[tab].label.toLowerCase()}`);
         let list;
         if (tab === 'region') {
@@ -106,9 +170,9 @@ export function openWorldAdmin(root, service, { toast }) {
         }
         replace(
             body,
-            h('p', { class: 'muted small admin-intro' }, 'Todo está conectado: la región da economía, razas y peligro; la facción, reputación y mercancías; el comerciante, personalidad, prejuicios, horarios y catálogo. Lo que cambies aquí lo verán todos los jugadores de la campaña.'),
-            o.problems.length ? h('details', { class: 'admin-problems' }, h('summary', {}, `⚠️ ${o.problems.length} referencias rotas`), h('ul', {}, o.problems.map((p) => h('li', { class: 'small' }, p)))) : null,
             tabs,
+            h('p', { class: 'muted small admin-intro' }, `🏛️ Mundo abierto: ${service.market.name}. Aquí puedes modificar también lo oficial (como una capa encima, sin borrarlo). `, 'Todo está conectado: la región da economía, razas y peligro; la facción, reputación y mercancías; el comerciante, personalidad, prejuicios, horarios y catálogo. Lo que cambies aquí lo verán todos los jugadores de la campaña.'),
+            o.problems.length ? h('details', { class: 'admin-problems' }, h('summary', {}, `⚠️ ${o.problems.length} referencias rotas`), h('ul', {}, o.problems.map((p) => h('li', { class: 'small' }, p)))) : null,
             h('div', { class: 'admin-actions' }, add),
             h('div', { class: 'admin-grid' }, list),
         );
