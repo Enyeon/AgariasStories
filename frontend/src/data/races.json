@@ -2477,5 +2477,333 @@
         "value": "Trato con Animales"
       }
     ]
+  },
+  "Kobold (Monstruos del Multiverso)": {
+    "velocidad": 30,
+    "choices": [
+      {
+        "count": 1,
+        "bonus": 2
+      },
+      {
+        "count": 1,
+        "bonus": 1
+      }
+    ],
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común y un idioma más que acuerdes con tu DM",
+    "languageElection": 1,
+    "yaHabla": [
+      "Común"
+    ],
+    "doteOpciones": [
+      "Legado Kobold: Astucia",
+      "Legado Kobold: Desafiante",
+      "Legado Kobold: Hechicería Dracónica"
+    ],
+    "descripcion": "Pequeños dracónidos cuyo linaje brilla en sus escamas y resuena en su grito.",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres un humanoide Pequeño.\n♻ Grito Dracónico. Como acción adicional, lanzas un grito a tus enemigos a 10 pies (2 casillas) o menos de ti. Hasta el principio de tu siguiente turno, tus aliados y tú tenéis ventaja en las tiradas de ataque contra cualquiera de esos enemigos que haya podido oírte. Puedes usarlo tantas veces como tu bonificador por competencia y recuperas todos los usos al terminar un descanso largo.\n♻ Legado Kobold. El vínculo de los kobolds con los dragones se manifiesta de forma distinta en cada uno. Elige un legado en «Dote racial»: Astucia (Talento artesano), Desafiante (Tenacidad) o Hechicería Dracónica.\n♻ Visión en la Oscuridad. Puedes ver con luz tenue a 60 pies (12 casillas) o menos de ti como si hubiera luz brillante, y en la oscuridad como si hubiera luz tenue. En la oscuridad solo distingues tonos de gris."
+  },
+  "Kobold de Cobalto (Calderis)": {
+    "velocidad": 30,
+    "choices": [
+      {
+        "count": 1,
+        "bonus": 2
+      },
+      {
+        "count": 1,
+        "bonus": 1
+      }
+    ],
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común y un idioma a tu elección",
+    "languageElection": 1,
+    "yaHabla": [
+      "Común"
+    ],
+    "doteOpciones": [
+      "Legado Kobold: Astucia",
+      "Legado Kobold: Desafiante",
+      "Legado Kobold: Hechicería Dracónica"
+    ],
+    "descripcion": "Kobolds verdes que sirven a los dragones de cobalto en tierras gélidas, como guerreros y defensores de sus aldeas.",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres un humanoide Pequeño.\n♻ Edad. Son adultos a los 6 años y pueden vivir hasta 120.\n♻ Alineamiento. Al servir a dragones metálicos que buscan el bien, tienden a ser legales o neutrales.\n♻ Visión en la Oscuridad. Puedes ver con luz tenue a 60 pies (12 casillas) o menos de ti como si hubiera luz brillante, y en la oscuridad como si hubiera luz tenue. En la oscuridad solo distingues tonos de gris.\n♻ Legado Kobold. El vínculo de los kobolds con los dragones se manifiesta de forma distinta en cada uno. Elige un legado en «Dote racial»: Astucia (Talento artesano), Desafiante (Tenacidad) o Hechicería Dracónica.\n♻ Grito de Guerra. Como acción adicional, lanzas un grito que se oye en 30 pies (6 casillas) a tu alrededor. Cada criatura hostil en esa área hace una tirada de salvación de Sabiduría (CD 8 + tu bonificador por competencia + tu modificador de Carisma); si falla, tiene desventaja en sus tiradas de ataque hasta el inicio de tu siguiente turno. Puedes usarlo tantas veces como tu modificador de Carisma (mínimo 1) y recuperas los usos al terminar un descanso largo."
+  },
+  "Kobold (Calderis)": {
+    "velocidad": 30,
+    "choices": [
+      {
+        "count": 1,
+        "bonus": 2
+      },
+      {
+        "count": 1,
+        "bonus": 1
+      }
+    ],
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común y un idioma a tu elección",
+    "languageElection": 1,
+    "yaHabla": [
+      "Común"
+    ],
+    "doteOpciones": [
+      "Legado Kobold: Astucia",
+      "Legado Kobold: Desafiante",
+      "Legado Kobold: Hechicería Dracónica"
+    ],
+    "descripcion": "Kobolds pequeños, insulares e industriosos: trampas, emboscadas y minería. Sirven a dragones y urds.",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres un humanoide Pequeño.\n♻ Edad. Son adultos a los 6 años y pueden vivir hasta 120.\n♻ Alineamiento. Suelen ser legales malvados, siguiendo jerarquías religiosas ligadas a los dragones.\n♻ Visión en la Oscuridad. Puedes ver con luz tenue a 60 pies (12 casillas) o menos de ti como si hubiera luz brillante, y en la oscuridad como si hubiera luz tenue. En la oscuridad solo distingues tonos de gris.\n♻ Legado Kobold. El vínculo de los kobolds con los dragones se manifiesta de forma distinta en cada uno. Elige un legado en «Dote racial»: Astucia (Talento artesano), Desafiante (Tenacidad) o Hechicería Dracónica.\n♻ Llanto Dracónido. Como acción adicional, lanzas un grito a tus enemigos a 10 pies (2 casillas) o menos de ti. Hasta el principio de tu siguiente turno, tus aliados y tú tenéis ventaja en las tiradas de ataque contra cualquiera de esos enemigos que haya podido oírte. Puedes usarlo tantas veces como tu bonificador por competencia y recuperas todos los usos al terminar un descanso largo."
+  },
+  "Kobold (Aster)": {
+    "velocidad": 30,
+    "destreza": 2,
+    "choice": {
+      "count": 1,
+      "bonus": 1,
+      "allowedChoices": [
+        "sabiduria",
+        "carisma"
+      ]
+    },
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común, Dracónico",
+    "yaHabla": [
+      "Común",
+      "Dracónico"
+    ],
+    "descripcion": "Kobolds del Compendio de Aster: rastreros, gregarios y muy ruidosos.",
+    "info": "Rasgos de Raza:\n♻ Tamaño. Miden entre 2 y 3 pies y pesan entre 25 y 35 libras. Tu tamaño es Pequeño.\n♻ Edad. Son adultos a los 6 años y pueden llegar a los 120, aunque rara vez lo consiguen.\n♻ Alineamiento. Egoístas y por eso malvados, pero su confianza en el grupo los inclina hacia la ley.\n♻ Visión en la Oscuridad. Puedes ver con luz tenue a 60 pies (12 casillas) o menos de ti como si hubiera luz brillante, y en la oscuridad como si hubiera luz tenue. En la oscuridad solo distingues tonos de gris.\n♻ Arrastrarse, Acurrucarse y Suplicar. Como acción en tu turno, te arrastras de forma patética para distraer a los enemigos cercanos. Hasta el final de tu turno, tus aliados tienen ventaja en las tiradas de ataque contra enemigos a 10 pies (2 casillas) o menos de ti que puedan verte. Una vez lo uses, no puedes volver a hacerlo hasta terminar un descanso corto o largo.\n♻ Grito Dracónico. Como acción adicional, lanzas un grito a tus enemigos a 10 pies (2 casillas) o menos de ti. Hasta el principio de tu siguiente turno, tus aliados y tú tenéis ventaja en las tiradas de ataque contra cualquiera de esos enemigos que haya podido oírte. Puedes usarlo tantas veces como tu bonificador por competencia y recuperas todos los usos al terminar un descanso largo.\n♻ Competencia. Elige una habilidad entre Acrobacias, Interpretación y Percepción (márcala en Habilidades)."
+  },
+  "Dracónido Metálico (Oro)": {
+    "velocidad": 30,
+    "fuerza": 2,
+    "choice": {
+      "count": 1,
+      "bonus": 1,
+      "allowedChoices": [
+        "sabiduria",
+        "carisma"
+      ]
+    },
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común, Dracónico",
+    "yaHabla": [
+      "Común",
+      "Dracónico"
+    ],
+    "descripcion": "Linaje de los dragones de oro: protectores, orgullosos y fieles a su palabra. [Agarias]",
+    "info": "Rasgos de Raza:\n♻ Ascendencia Metálica. Desciendes de los dragones de oro. Tus escamas brillan como el metal pulido y los kobolds metálicos te reconocen como de su sangre.\n♻ Arma de Aliento. Como acción, exhalas energía destructiva en un cono de 15 pies (3 casillas). Cada criatura en el área hace una tirada de salvación de Destreza (CD 8 + tu modificador de Constitución + tu bonificador por competencia). Recibe 2d6 de daño de Fuego si falla, o la mitad si la supera. El daño aumenta a 3d6 a nivel 6, 4d6 a nivel 11 y 5d6 a nivel 16. Tras usarla, no puedes volver a hacerlo hasta terminar un descanso corto o largo.\n♻ Resistencia al Daño. Tienes resistencia al daño de Fuego.\n♻ Aliento Debilitante (nivel 5). Puedes usar tu Arma de Aliento de otra forma: en la misma área, cada criatura hace una tirada de salvación de Fuerza con la misma CD; si falla, no recibe daño pero tiene desventaja en las tiradas de ataque, pruebas y salvaciones de Fuerza hasta el final de tu siguiente turno. Puedes usar esta versión una vez y recuperas el uso al terminar un descanso largo. No gasta tu Arma de Aliento normal.\n♻ Juramento de Escama. Cuando un aliado que puedas ver a 5 pies (1 casilla) o menos de ti recibe un ataque, puedes usar tu reacción para imponer desventaja a esa tirada de ataque. Una vez lo uses, no puedes volver a hacerlo hasta terminar un descanso corto o largo."
+  },
+  "Dracónido Metálico (Plata)": {
+    "velocidad": 30,
+    "fuerza": 2,
+    "choice": {
+      "count": 1,
+      "bonus": 1,
+      "allowedChoices": [
+        "sabiduria",
+        "carisma"
+      ]
+    },
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común, Dracónico",
+    "yaHabla": [
+      "Común",
+      "Dracónico"
+    ],
+    "descripcion": "Linaje de los dragones de plata: protectores, orgullosos y fieles a su palabra. [Agarias]",
+    "info": "Rasgos de Raza:\n♻ Ascendencia Metálica. Desciendes de los dragones de plata. Tus escamas brillan como el metal pulido y los kobolds metálicos te reconocen como de su sangre.\n♻ Arma de Aliento. Como acción, exhalas energía destructiva en un cono de 15 pies (3 casillas). Cada criatura en el área hace una tirada de salvación de Constitución (CD 8 + tu modificador de Constitución + tu bonificador por competencia). Recibe 2d6 de daño de Frío si falla, o la mitad si la supera. El daño aumenta a 3d6 a nivel 6, 4d6 a nivel 11 y 5d6 a nivel 16. Tras usarla, no puedes volver a hacerlo hasta terminar un descanso corto o largo.\n♻ Resistencia al Daño. Tienes resistencia al daño de Frío.\n♻ Aliento Entumecedor (nivel 5). Puedes usar tu Arma de Aliento de otra forma: en la misma área, cada criatura hace una tirada de salvación de Constitución con la misma CD; si falla, no recibe daño pero su velocidad se reduce a la mitad y no puede usar reacciones hasta el final de tu siguiente turno. Puedes usar esta versión una vez y recuperas el uso al terminar un descanso largo. No gasta tu Arma de Aliento normal.\n♻ Juramento de Escama. Cuando un aliado que puedas ver a 5 pies (1 casilla) o menos de ti recibe un ataque, puedes usar tu reacción para imponer desventaja a esa tirada de ataque. Una vez lo uses, no puedes volver a hacerlo hasta terminar un descanso corto o largo."
+  },
+  "Dracónido Metálico (Bronce)": {
+    "velocidad": 30,
+    "fuerza": 2,
+    "choice": {
+      "count": 1,
+      "bonus": 1,
+      "allowedChoices": [
+        "sabiduria",
+        "carisma"
+      ]
+    },
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común, Dracónico",
+    "yaHabla": [
+      "Común",
+      "Dracónico"
+    ],
+    "descripcion": "Linaje de los dragones de bronce: protectores, orgullosos y fieles a su palabra. [Agarias]",
+    "info": "Rasgos de Raza:\n♻ Ascendencia Metálica. Desciendes de los dragones de bronce. Tus escamas brillan como el metal pulido y los kobolds metálicos te reconocen como de su sangre.\n♻ Arma de Aliento. Como acción, exhalas energía destructiva en un línea de 5x30 pies (1x6 casillas). Cada criatura en el área hace una tirada de salvación de Destreza (CD 8 + tu modificador de Constitución + tu bonificador por competencia). Recibe 2d6 de daño de Relámpago si falla, o la mitad si la supera. El daño aumenta a 3d6 a nivel 6, 4d6 a nivel 11 y 5d6 a nivel 16. Tras usarla, no puedes volver a hacerlo hasta terminar un descanso corto o largo.\n♻ Resistencia al Daño. Tienes resistencia al daño de Relámpago.\n♻ Aliento Repulsor (nivel 5). Puedes usar tu Arma de Aliento de otra forma: en la misma área, cada criatura hace una tirada de salvación de Fuerza con la misma CD; si falla, no recibe daño pero es empujada 15 pies (3 casillas) en dirección opuesta a ti. Puedes usar esta versión una vez y recuperas el uso al terminar un descanso largo. No gasta tu Arma de Aliento normal.\n♻ Juramento de Escama. Cuando un aliado que puedas ver a 5 pies (1 casilla) o menos de ti recibe un ataque, puedes usar tu reacción para imponer desventaja a esa tirada de ataque. Una vez lo uses, no puedes volver a hacerlo hasta terminar un descanso corto o largo."
+  },
+  "Dracónido Metálico (Latón)": {
+    "velocidad": 30,
+    "fuerza": 2,
+    "choice": {
+      "count": 1,
+      "bonus": 1,
+      "allowedChoices": [
+        "sabiduria",
+        "carisma"
+      ]
+    },
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común, Dracónico",
+    "yaHabla": [
+      "Común",
+      "Dracónico"
+    ],
+    "descripcion": "Linaje de los dragones de latón: protectores, orgullosos y fieles a su palabra. [Agarias]",
+    "info": "Rasgos de Raza:\n♻ Ascendencia Metálica. Desciendes de los dragones de latón. Tus escamas brillan como el metal pulido y los kobolds metálicos te reconocen como de su sangre.\n♻ Arma de Aliento. Como acción, exhalas energía destructiva en un línea de 5x30 pies (1x6 casillas). Cada criatura en el área hace una tirada de salvación de Destreza (CD 8 + tu modificador de Constitución + tu bonificador por competencia). Recibe 2d6 de daño de Fuego si falla, o la mitad si la supera. El daño aumenta a 3d6 a nivel 6, 4d6 a nivel 11 y 5d6 a nivel 16. Tras usarla, no puedes volver a hacerlo hasta terminar un descanso corto o largo.\n♻ Resistencia al Daño. Tienes resistencia al daño de Fuego.\n♻ Aliento Soporífero (nivel 5). Puedes usar tu Arma de Aliento de otra forma: en la misma área, cada criatura hace una tirada de salvación de Constitución con la misma CD; si falla, no recibe daño pero no puede usar reacciones y tiene desventaja en las pruebas de Sabiduría (Percepción) hasta el final de tu siguiente turno. Puedes usar esta versión una vez y recuperas el uso al terminar un descanso largo. No gasta tu Arma de Aliento normal.\n♻ Juramento de Escama. Cuando un aliado que puedas ver a 5 pies (1 casilla) o menos de ti recibe un ataque, puedes usar tu reacción para imponer desventaja a esa tirada de ataque. Una vez lo uses, no puedes volver a hacerlo hasta terminar un descanso corto o largo."
+  },
+  "Dracónido Metálico (Cobre)": {
+    "velocidad": 30,
+    "fuerza": 2,
+    "choice": {
+      "count": 1,
+      "bonus": 1,
+      "allowedChoices": [
+        "sabiduria",
+        "carisma"
+      ]
+    },
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común, Dracónico",
+    "yaHabla": [
+      "Común",
+      "Dracónico"
+    ],
+    "descripcion": "Linaje de los dragones de cobre: protectores, orgullosos y fieles a su palabra. [Agarias]",
+    "info": "Rasgos de Raza:\n♻ Ascendencia Metálica. Desciendes de los dragones de cobre. Tus escamas brillan como el metal pulido y los kobolds metálicos te reconocen como de su sangre.\n♻ Arma de Aliento. Como acción, exhalas energía destructiva en un línea de 5x30 pies (1x6 casillas). Cada criatura en el área hace una tirada de salvación de Destreza (CD 8 + tu modificador de Constitución + tu bonificador por competencia). Recibe 2d6 de daño de Ácido si falla, o la mitad si la supera. El daño aumenta a 3d6 a nivel 6, 4d6 a nivel 11 y 5d6 a nivel 16. Tras usarla, no puedes volver a hacerlo hasta terminar un descanso corto o largo.\n♻ Resistencia al Daño. Tienes resistencia al daño de Ácido.\n♻ Aliento Ralentizador (nivel 5). Puedes usar tu Arma de Aliento de otra forma: en la misma área, cada criatura hace una tirada de salvación de Constitución con la misma CD; si falla, no recibe daño pero su velocidad se reduce en 10 pies (2 casillas) y no puede usar la acción de Correr hasta el final de tu siguiente turno. Puedes usar esta versión una vez y recuperas el uso al terminar un descanso largo. No gasta tu Arma de Aliento normal.\n♻ Juramento de Escama. Cuando un aliado que puedas ver a 5 pies (1 casilla) o menos de ti recibe un ataque, puedes usar tu reacción para imponer desventaja a esa tirada de ataque. Una vez lo uses, no puedes volver a hacerlo hasta terminar un descanso corto o largo."
+  },
+  "Dracónido Metálico (Cobalto)": {
+    "velocidad": 30,
+    "fuerza": 2,
+    "choice": {
+      "count": 1,
+      "bonus": 1,
+      "allowedChoices": [
+        "sabiduria",
+        "carisma"
+      ]
+    },
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común, Dracónico",
+    "yaHabla": [
+      "Común",
+      "Dracónico"
+    ],
+    "descripcion": "Linaje de los dragones de cobalto: protectores, orgullosos y fieles a su palabra. [Agarias]",
+    "info": "Rasgos de Raza:\n♻ Ascendencia Metálica. Desciendes de los dragones de cobalto. Tus escamas brillan como el metal pulido y los kobolds metálicos te reconocen como de su sangre.\n♻ Arma de Aliento. Como acción, exhalas energía destructiva en un cono de 15 pies (3 casillas). Cada criatura en el área hace una tirada de salvación de Constitución (CD 8 + tu modificador de Constitución + tu bonificador por competencia). Recibe 2d6 de daño de Frío si falla, o la mitad si la supera. El daño aumenta a 3d6 a nivel 6, 4d6 a nivel 11 y 5d6 a nivel 16. Tras usarla, no puedes volver a hacerlo hasta terminar un descanso corto o largo.\n♻ Resistencia al Daño. Tienes resistencia al daño de Frío.\n♻ Aliento de Escarcha Viva (nivel 5). Puedes usar tu Arma de Aliento de otra forma: en la misma área, cada criatura hace una tirada de salvación de Fuerza con la misma CD; si falla, no recibe daño pero queda envuelta en escarcha: su velocidad es 0 hasta el final de tu siguiente turno. Puedes usar esta versión una vez y recuperas el uso al terminar un descanso largo. No gasta tu Arma de Aliento normal.\n♻ Juramento de Escama. Cuando un aliado que puedas ver a 5 pies (1 casilla) o menos de ti recibe un ataque, puedes usar tu reacción para imponer desventaja a esa tirada de ataque. Una vez lo uses, no puedes volver a hacerlo hasta terminar un descanso corto o largo."
+  },
+  "Kobold Metálico (Oro)": {
+    "velocidad": 30,
+    "destreza": 2,
+    "choice": {
+      "count": 1,
+      "bonus": 1,
+      "allowedChoices": [
+        "sabiduria",
+        "carisma"
+      ]
+    },
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común, Dracónico",
+    "yaHabla": [
+      "Común",
+      "Dracónico"
+    ],
+    "doteOpciones": [
+      "Legado Kobold: Astucia",
+      "Legado Kobold: Desafiante",
+      "Legado Kobold: Hechicería Dracónica"
+    ],
+    "descripcion": "Kobolds de escamas de oro que sirven a los dragones metálicos y a sus dracónidos. [Agarias]",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres un humanoide Pequeño.\n♻ Visión en la Oscuridad. Puedes ver con luz tenue a 60 pies (12 casillas) o menos de ti como si hubiera luz brillante, y en la oscuridad como si hubiera luz tenue. En la oscuridad solo distingues tonos de gris.\n♻ Escamas de Oro. Tienes resistencia al daño de Fuego.\n♻ Grito Protector. Como acción adicional, lanzas un grito metálico: tú y tus aliados a 10 pies (2 casillas) o menos que puedan oírte ganáis puntos de golpe temporales iguales a tu bonificador por competencia. Puedes usarlo tantas veces como tu bonificador por competencia y recuperas los usos al terminar un descanso largo.\n♻ Escudero Dracónico. Cuando un dracónido o un dragón metálico aliado a 5 pies (1 casilla) o menos de ti hace una tirada de ataque, puedes usar tu reacción para darle ventaja. Una vez lo uses, no puedes volver a hacerlo hasta terminar un descanso corto o largo.\n♻ Legado Kobold. El vínculo de los kobolds con los dragones se manifiesta de forma distinta en cada uno. Elige un legado en «Dote racial»: Astucia (Talento artesano), Desafiante (Tenacidad) o Hechicería Dracónica."
+  },
+  "Kobold Metálico (Plata)": {
+    "velocidad": 30,
+    "destreza": 2,
+    "choice": {
+      "count": 1,
+      "bonus": 1,
+      "allowedChoices": [
+        "sabiduria",
+        "carisma"
+      ]
+    },
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común, Dracónico",
+    "yaHabla": [
+      "Común",
+      "Dracónico"
+    ],
+    "doteOpciones": [
+      "Legado Kobold: Astucia",
+      "Legado Kobold: Desafiante",
+      "Legado Kobold: Hechicería Dracónica"
+    ],
+    "descripcion": "Kobolds de escamas de plata que sirven a los dragones metálicos y a sus dracónidos. [Agarias]",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres un humanoide Pequeño.\n♻ Visión en la Oscuridad. Puedes ver con luz tenue a 60 pies (12 casillas) o menos de ti como si hubiera luz brillante, y en la oscuridad como si hubiera luz tenue. En la oscuridad solo distingues tonos de gris.\n♻ Escamas de Plata. Tienes resistencia al daño de Frío.\n♻ Grito Protector. Como acción adicional, lanzas un grito metálico: tú y tus aliados a 10 pies (2 casillas) o menos que puedan oírte ganáis puntos de golpe temporales iguales a tu bonificador por competencia. Puedes usarlo tantas veces como tu bonificador por competencia y recuperas los usos al terminar un descanso largo.\n♻ Escudero Dracónico. Cuando un dracónido o un dragón metálico aliado a 5 pies (1 casilla) o menos de ti hace una tirada de ataque, puedes usar tu reacción para darle ventaja. Una vez lo uses, no puedes volver a hacerlo hasta terminar un descanso corto o largo.\n♻ Legado Kobold. El vínculo de los kobolds con los dragones se manifiesta de forma distinta en cada uno. Elige un legado en «Dote racial»: Astucia (Talento artesano), Desafiante (Tenacidad) o Hechicería Dracónica."
+  },
+  "Kobold Metálico (Bronce)": {
+    "velocidad": 30,
+    "destreza": 2,
+    "choice": {
+      "count": 1,
+      "bonus": 1,
+      "allowedChoices": [
+        "sabiduria",
+        "carisma"
+      ]
+    },
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común, Dracónico",
+    "yaHabla": [
+      "Común",
+      "Dracónico"
+    ],
+    "doteOpciones": [
+      "Legado Kobold: Astucia",
+      "Legado Kobold: Desafiante",
+      "Legado Kobold: Hechicería Dracónica"
+    ],
+    "descripcion": "Kobolds de escamas de bronce que sirven a los dragones metálicos y a sus dracónidos. [Agarias]",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres un humanoide Pequeño.\n♻ Visión en la Oscuridad. Puedes ver con luz tenue a 60 pies (12 casillas) o menos de ti como si hubiera luz brillante, y en la oscuridad como si hubiera luz tenue. En la oscuridad solo distingues tonos de gris.\n♻ Escamas de Bronce. Tienes resistencia al daño de Relámpago.\n♻ Grito Protector. Como acción adicional, lanzas un grito metálico: tú y tus aliados a 10 pies (2 casillas) o menos que puedan oírte ganáis puntos de golpe temporales iguales a tu bonificador por competencia. Puedes usarlo tantas veces como tu bonificador por competencia y recuperas los usos al terminar un descanso largo.\n♻ Escudero Dracónico. Cuando un dracónido o un dragón metálico aliado a 5 pies (1 casilla) o menos de ti hace una tirada de ataque, puedes usar tu reacción para darle ventaja. Una vez lo uses, no puedes volver a hacerlo hasta terminar un descanso corto o largo.\n♻ Legado Kobold. El vínculo de los kobolds con los dragones se manifiesta de forma distinta en cada uno. Elige un legado en «Dote racial»: Astucia (Talento artesano), Desafiante (Tenacidad) o Hechicería Dracónica."
+  },
+  "Kobold Metálico (Latón)": {
+    "velocidad": 30,
+    "destreza": 2,
+    "choice": {
+      "count": 1,
+      "bonus": 1,
+      "allowedChoices": [
+        "sabiduria",
+        "carisma"
+      ]
+    },
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común, Dracónico",
+    "yaHabla": [
+      "Común",
+      "Dracónico"
+    ],
+    "doteOpciones": [
+      "Legado Kobold: Astucia",
+      "Legado Kobold: Desafiante",
+      "Legado Kobold: Hechicería Dracónica"
+    ],
+    "descripcion": "Kobolds de escamas de latón que sirven a los dragones metálicos y a sus dracónidos. [Agarias]",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres un humanoide Pequeño.\n♻ Visión en la Oscuridad. Puedes ver con luz tenue a 60 pies (12 casillas) o menos de ti como si hubiera luz brillante, y en la oscuridad como si hubiera luz tenue. En la oscuridad solo distingues tonos de gris.\n♻ Escamas de Latón. Tienes resistencia al daño de Fuego.\n♻ Grito Protector. Como acción adicional, lanzas un grito metálico: tú y tus aliados a 10 pies (2 casillas) o menos que puedan oírte ganáis puntos de golpe temporales iguales a tu bonificador por competencia. Puedes usarlo tantas veces como tu bonificador por competencia y recuperas los usos al terminar un descanso largo.\n♻ Escudero Dracónico. Cuando un dracónido o un dragón metálico aliado a 5 pies (1 casilla) o menos de ti hace una tirada de ataque, puedes usar tu reacción para darle ventaja. Una vez lo uses, no puedes volver a hacerlo hasta terminar un descanso corto o largo.\n♻ Legado Kobold. El vínculo de los kobolds con los dragones se manifiesta de forma distinta en cada uno. Elige un legado en «Dote racial»: Astucia (Talento artesano), Desafiante (Tenacidad) o Hechicería Dracónica."
+  },
+  "Kobold Metálico (Cobre)": {
+    "velocidad": 30,
+    "destreza": 2,
+    "choice": {
+      "count": 1,
+      "bonus": 1,
+      "allowedChoices": [
+        "sabiduria",
+        "carisma"
+      ]
+    },
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común, Dracónico",
+    "yaHabla": [
+      "Común",
+      "Dracónico"
+    ],
+    "doteOpciones": [
+      "Legado Kobold: Astucia",
+      "Legado Kobold: Desafiante",
+      "Legado Kobold: Hechicería Dracónica"
+    ],
+    "descripcion": "Kobolds de escamas de cobre que sirven a los dragones metálicos y a sus dracónidos. [Agarias]",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres un humanoide Pequeño.\n♻ Visión en la Oscuridad. Puedes ver con luz tenue a 60 pies (12 casillas) o menos de ti como si hubiera luz brillante, y en la oscuridad como si hubiera luz tenue. En la oscuridad solo distingues tonos de gris.\n♻ Escamas de Cobre. Tienes resistencia al daño de Ácido.\n♻ Grito Protector. Como acción adicional, lanzas un grito metálico: tú y tus aliados a 10 pies (2 casillas) o menos que puedan oírte ganáis puntos de golpe temporales iguales a tu bonificador por competencia. Puedes usarlo tantas veces como tu bonificador por competencia y recuperas los usos al terminar un descanso largo.\n♻ Escudero Dracónico. Cuando un dracónido o un dragón metálico aliado a 5 pies (1 casilla) o menos de ti hace una tirada de ataque, puedes usar tu reacción para darle ventaja. Una vez lo uses, no puedes volver a hacerlo hasta terminar un descanso corto o largo.\n♻ Legado Kobold. El vínculo de los kobolds con los dragones se manifiesta de forma distinta en cada uno. Elige un legado en «Dote racial»: Astucia (Talento artesano), Desafiante (Tenacidad) o Hechicería Dracónica."
   }
 }

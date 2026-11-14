@@ -5,7 +5,7 @@ import { ABILITY_KEYS, ABILITY_LABEL, MAX_LEVEL } from '../../domain/constants.j
 import { raceChoiceGroups, formatModifier, featAbilityOptions, subclassInfo } from '../../domain/rules.js';
 import { getRace, getClass, getFeat, raceHasToughness, data, raceName, featName } from '../../data/index.js';
 import {
-  setRace, setRaceAbilityChoice, setRaceLanguages, raceAllowsFeat, setRaceFeat, applyLevelDown, canLevelUp,
+  setRace, setRaceAbilityChoice, setRaceLanguages, raceAllowsFeat, raceFeatOptions, setRaceFeat, applyLevelDown, canLevelUp,
 } from '../../domain/progression.js';
 import { sectionCard, actionButton } from './common.js';
 import { openRacePicker } from '../race-picker.js';
@@ -169,7 +169,8 @@ export const progressionActions = {
     if (key) ed.replace(setRace(ed.character, key), { message: `Raza: ${key}` });
   },
   async 'pick-race-feat'(ed) {
-    const choice = await openFeatPicker(ed.character, { title: 'Dote racial', excludeRaceFeat: true, allow: ed.permissions });
+    const only = raceFeatOptions(ed.character);
+    const choice = await openFeatPicker(ed.character, { title: only ? 'Legado / dote de tu raza' : 'Dote racial', excludeRaceFeat: true, allow: ed.permissions, only });
     if (!choice) return;
     const res = setRaceFeat(ed.character, choice);
     if (res.errors.length) return toast(res.errors.join(' '), { type: 'error' });

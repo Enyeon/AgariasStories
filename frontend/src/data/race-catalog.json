@@ -184,6 +184,25 @@
     ]
   },
   {
+    "source": "Monstruos del Multiverso",
+    "races": [
+      "Kobold (Monstruos del Multiverso)"
+    ]
+  },
+  {
+    "source": "El Mundo de Calderis",
+    "races": [
+      "Kobold (Calderis)",
+      "Kobold de Cobalto (Calderis)"
+    ]
+  },
+  {
+    "source": "Compendio de Aster",
+    "races": [
+      "Kobold (Aster)"
+    ]
+  },
+  {
     "source": "Razas de Agarias Pt. I: Seres místicos",
     "races": [
       "Albertina",
@@ -204,7 +223,18 @@
       "Jötunn del Viento (Vindjötunn)",
       "Jötunn Bélico (Blóðjötunn)",
       "Sram",
-      "Tetraman"
+      "Tetraman",
+      "Dracónido Metálico (Oro)",
+      "Dracónido Metálico (Plata)",
+      "Dracónido Metálico (Bronce)",
+      "Dracónido Metálico (Latón)",
+      "Dracónido Metálico (Cobre)",
+      "Dracónido Metálico (Cobalto)",
+      "Kobold Metálico (Oro)",
+      "Kobold Metálico (Plata)",
+      "Kobold Metálico (Bronce)",
+      "Kobold Metálico (Latón)",
+      "Kobold Metálico (Cobre)"
     ]
   },
   {

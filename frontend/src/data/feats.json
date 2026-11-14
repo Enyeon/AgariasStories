@@ -622,5 +622,17 @@
   },
   "Músico": {
     "habilidad": "Eres un intérprete capaz de levantar el ánimo de cualquiera.\nObtienes los siguientes beneficios:\n♻ Competencia con tres instrumentos musicales de tu elección.\n♻ Canción de ánimo: al terminar un descanso corto o largo, puedes tocar una canción con un instrumento con el que tengas competencia y dar Inspiración heroica a tantos aliados que te oigan como tu bonificador por competencia."
+  },
+  "Legado Kobold: Astucia": {
+    "soloRaza": true,
+    "habilidad": "Legado de kobold (también llamado «Talento artesano»). Tu ingenio para las trampas y los oficios es legendario.\n♻ Ganas competencia en una habilidad a tu elección entre Conocimiento Arcano, Investigación, Medicina, Juego de Manos y Supervivencia (márcala en Habilidades)."
+  },
+  "Legado Kobold: Desafiante": {
+    "soloRaza": true,
+    "habilidad": "Legado de kobold (también llamado «Tenacidad»). Tu pequeño tamaño esconde una voluntad que no se quiebra.\n♻ Tienes ventaja en las tiradas de salvación para evitar o terminar la condición de Asustado."
+  },
+  "Legado Kobold: Hechicería Dracónica": {
+    "soloRaza": true,
+    "habilidad": "Legado de kobold. Una chispa de magia dracónica arde en tu sangre.\n♻ Conoces un truco de la lista de conjuros de Hechicero. Inteligencia, Sabiduría o Carisma es tu aptitud mágica para él (elígela al ganar este legado)."
   }
 }

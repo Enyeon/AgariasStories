@@ -20,19 +20,22 @@ const normalize = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(
 
 // ── Selector de dotes ────────────────────────────────────────────────────
 
-function featList(character, { excludeRaceFeat = false, allow = null } = {}) {
+function featList(character, { excludeRaceFeat = false, allow = null, only = null } = {}) {
   const scores = abilityScores(character);
   const { isCaster } = spellcasting(character, scores, proficiencyBonus(Math.max(1, totalLevel(character))));
   const probe = excludeRaceFeat ? { ...character, race: { ...character.race, feat: null } } : character;
-  return listFeats().filter(([, def]) => !allow || (def.homebrew ? allow.homebrew.dote : allow.official.dote)).map(([name, def]) => {
+  return listFeats()
+    // `only`: la raza limita la elección; las dotes «sólo de raza» no salen en otros casos.
+    .filter(([name, def]) => (only ? only.includes(name) : !def.soloRaza))
+    .filter(([name, def]) => only || !allow || (def.homebrew ? allow.homebrew.dote : allow.official.dote)).map(([name, def]) => {
     const pre = featPrerequisites(probe, def, scores, { isCaster });
     return { name, label: def.nombre ?? name, homebrew: Boolean(def.homebrew), def, ok: pre.ok, reasons: pre.reasons, options: featAbilityOptions(def) };
   }).sort((a, b) => Number(b.ok) - Number(a.ok) || a.label.localeCompare(b.label, 'es'));
 }
 
 /** Panel de elección de dote embebible. Llama a onChange({ name, ability }). */
-function mountFeatChooser(root, character, { initial, onChange, excludeRaceFeat, allow }) {
-  const feats = featList(character, { excludeRaceFeat, allow });
+function mountFeatChooser(root, character, { initial, onChange, excludeRaceFeat, allow, only = null }) {
+  const feats = featList(character, { excludeRaceFeat, allow, only });
   let query = '';
   let showAll = false;
   let selected = initial?.name ?? null;
@@ -99,7 +102,7 @@ function mountFeatChooser(root, character, { initial, onChange, excludeRaceFeat,
   render();
 }
 
-export function openFeatPicker(character, { title = 'Elige una dote', excludeRaceFeat = false, allow = null } = {}) {
+export function openFeatPicker(character, { title = 'Elige una dote', excludeRaceFeat = false, allow = null, only = null } = {}) {
   return openDialog({
     title,
     size: 'lg',
@@ -107,7 +110,7 @@ export function openFeatPicker(character, { title = 'Elige una dote', excludeRac
       let choice = character.race.feat ? { ...character.race.feat } : null;
       setHtml(body, html`<div data-chooser></div><p class="field__error" data-error role="alert"></p>
         <div class="dialog__footer"><button class="btn btn--ghost" data-dialog-close>Cancelar</button><button class="btn btn--primary" data-ok>Confirmar dote</button></div>`);
-      mountFeatChooser(body.querySelector('[data-chooser]'), character, { initial: choice, excludeRaceFeat, allow, onChange: (c) => { choice = c; } });
+      mountFeatChooser(body.querySelector('[data-chooser]'), character, { initial: choice, excludeRaceFeat, allow, only, onChange: (c) => { choice = c; } });
       body.querySelector('[data-ok]').addEventListener('click', () => {
         if (!choice?.name) {
           body.querySelector('[data-error]').textContent = 'Selecciona una dote.';

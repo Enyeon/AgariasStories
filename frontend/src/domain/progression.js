@@ -60,7 +60,14 @@ export function setRaceLanguages(c, languages, maxPicks) {
 }
 
 export function raceAllowsFeat(c) {
-  return Boolean(getRace(c.race.key)?.puedeElegirDote);
+  const race = getRace(c.race.key);
+  return Boolean(race?.puedeElegirDote || race?.doteOpciones?.length);
+}
+
+/** Dotes entre las que la raza deja elegir (p. ej. los legados kobold), o null si vale cualquiera. */
+export function raceFeatOptions(c) {
+  const opts = getRace(c.race.key)?.doteOpciones;
+  return Array.isArray(opts) && opts.length ? opts : null;
 }
 
 // ── Subida de nivel ──────────────────────────────────────────────────────
@@ -113,7 +120,7 @@ function canTakeFeatTwice(def) {
 }
 
 /** Errores de una mejora (ASI o dote) aplicada sobre `c`. */
-export function validateImprovement(c, improvement) {
+export function validateImprovement(c, improvement, { racial = false } = {}) {
   const errors = [];
   const scores = abilityScores(c);
   if (!improvement) return ['Elige una mejora de atributos o una dote.'];
@@ -135,6 +142,8 @@ export function validateImprovement(c, improvement) {
   if (improvement.type === 'feat') {
     const def = getFeat(improvement.name);
     if (!def) return ['Elige una dote válida.'];
+    // Las dotes «sólo de raza» (legados) no se eligen al subir de nivel.
+    if (def.soloRaza && !racial) return ['Esa dote sólo la da tu raza.'];
     const prof = proficiencyBonus(Math.max(1, totalLevel(c)));
     const { isCaster } = spellcasting(c, scores, prof);
     const pre = featPrerequisites(c, def, scores, { isCaster });
@@ -356,9 +365,11 @@ export function setRaceFeat(c, feat) {
     next.race.feat = null;
     return { character: next, errors: [] };
   }
+  const only = raceFeatOptions(c);
+  if (only && !only.includes(feat.name)) return { character: c, errors: [`Tu raza sólo deja elegir: ${only.join(', ')}.`] };
   const base = clone(c);
   base.race.feat = null;
-  const errors = validateImprovement(base, { type: 'feat', ...feat });
+  const errors = validateImprovement(base, { type: 'feat', ...feat }, { racial: true });
   if (errors.length) return { character: c, errors };
   base.race.feat = { name: feat.name, ability: feat.ability ?? null };
   return { character: base, errors: [] };
