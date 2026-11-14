@@ -42,6 +42,13 @@ export function createShopContext({
     keepers = keepers
         .map((k) => compileKeeper(k, { professions: professionMap, phases: phasesList }))
         .map((k) => (k.archetypes?.length ? { ...k, baseTraits: k.traits, traits: effectiveTraits({ archetypes: archetypeMap }, k) } : k));
+    const regions = (world?.regions ?? [{ id: 'region', name: 'Región', icon: '🗺️', economy: {}, locations: [DEFAULT_LOCATION] }]).map(compileRegion);
+    keepers = placeOnFloors(keepers, regions);
+    const regionMap = new Map(regions.map((r) => [r.id, r]));
+    const locationMap = new Map();
+    for (const region of regions) {
+        for (const loc of region.locations ?? []) locationMap.set(loc.id, { ...loc, regionId: region.id });
+    }
     const factionMapEarly = new Map(factions.map((f) => [f.id, f]));
     const keeperById = new Map(keepers.map((k) => [k.id, k]));
     shops = shops.map((sh) => compileShop(sh, keeperById.get(sh.keeperId), { professions: professionMap, factions: factionMapEarly }));
@@ -53,12 +60,6 @@ export function createShopContext({
     const rumorMap = new Map(rumors.map((r) => [r.id, r]));
     const shopByKeeper = new Map(shops.map((s) => [s.keeperId, s]));
 
-    const regions = (world?.regions ?? [{ id: 'region', name: 'Región', icon: '🗺️', economy: {}, locations: [DEFAULT_LOCATION] }]).map(compileRegion);
-    const regionMap = new Map(regions.map((r) => [r.id, r]));
-    const locationMap = new Map();
-    for (const region of regions) {
-        for (const loc of region.locations ?? []) locationMap.set(loc.id, { ...loc, regionId: region.id });
-    }
     const phases = phasesList;
     const startLocation = locationMap.has(world?.start) ? world.start : [...locationMap.keys()][0];
 
@@ -118,3 +119,32 @@ export function createShopContext({
         },
     });
 }
+
+/**
+ * Progresión por pisos: un comerciante con piso propio vive EN ese piso. Si su
+ * lugar no es de ese piso, se le lleva al lugar del piso (la primera región con
+ * ese `floor`) o, si el DM no creó ninguna, a un lugar «Piso N» automático.
+ * Así los jugadores viajan entre pisos como entre regiones. Muta `regions`.
+ */
+function placeOnFloors(keepers, regions) {
+    const floorOfLocation = new Map();
+    for (const r of regions) for (const l of r.locations ?? []) floorOfLocation.set(l.id, r.floor ?? null);
+    const hubOf = (floor) => {
+        let region = regions.find((r) => r.floor === floor && r.locations?.length);
+        if (!region) {
+            region = compileRegion({
+                id: `piso-${floor}`, name: `Piso ${floor}`, icon: '🏰', floor, type: 'Piso',
+                description: `Los negocios del piso ${floor}.`, economy: {},
+                locations: [{ id: `piso-${floor}`, name: `Piso ${floor}`, icon: '🏰', description: `Mercado del piso ${floor}.` }],
+            });
+            regions.push(region);
+        }
+        return region.locations[0].id;
+    };
+    return keepers.map((k) => {
+        if (!k.floor || k.presence?.route?.length) return k;
+        if (floorOfLocation.get(k.presence?.location) === k.floor) return k;
+        return { ...k, presence: { ...(k.presence ?? {}), location: hubOf(k.floor) } };
+    });
+}
+

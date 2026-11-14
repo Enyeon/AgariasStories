@@ -56,7 +56,9 @@ describe('Progresión por pisos', () => {
     const forja = availability(w2, ctx, keeper('Ulda'));
     expect(forja).toMatchObject({ here: true, open: false });
     expect(forja.reason).toMatch(/La forja apagada/);
-    expect(merchantsAt(w2, ctx, 'plaza-mayor', null).some((m) => m.keeper.name === 'Ulda')).toBe(true); // se ve, no atiende
+    // Con piso propio vive en el lugar automático «Piso 2»: se ve, pero no atiende.
+    expect(keeper('Ulda').presence.location).toBe('hb-p2-mercado-del-piso-2');
+    expect(merchantsAt(w2, ctx, 'hb-p2-mercado-del-piso-2', null).some((m) => m.keeper.name === 'Ulda')).toBe(true);
     const done = floors.setRequirementDone(w2, keeper('Ulda').id, true).world;
     expect(floors.businessStatus(done, ctx, keeper('Ulda')).state).toBe('abierto');
   });
@@ -87,5 +89,17 @@ describe('Progresión por pisos', () => {
     expect(floors.definedFloors(ctx)).toEqual([1, 2]);
     const w = floors.setFloor(floors.setFloor(world, ctx, 2).world, ctx, 4).world;
     expect(floors.progressOf(w).log.slice(0, 2).map((l) => l.to)).toEqual([4, 2]);
+  });
+
+  it('cada piso es un lugar: se viaja a los alcanzados y no a los superiores', () => {
+    const { ctx, keeper, world } = lord100();
+    expect(keeper('Brann').presence.location).toBe('piso-1');
+    expect(keeper('Mira').presence.location).toBe('hb-p2-mercado-del-piso-2'); // el DM creó la región del piso 2
+    expect(ctx.regions.get('piso-1')).toMatchObject({ floor: 1, name: 'Piso 1' });
+    expect(canTravel(world, ctx, null, 'piso-1')).toEqual({ ok: true });
+    expect(canTravel(world, ctx, null, 'hb-p2-mercado-del-piso-2').ok).toBe(false);
+    const w2 = floors.setFloor(world, ctx, 2).world;
+    expect(canTravel(w2, ctx, null, 'hb-p2-mercado-del-piso-2')).toEqual({ ok: true });
+    expect(merchantsAt(w2, ctx, 'piso-1', null).map((m) => m.keeper.name)).toContain('Brann');
   });
 });

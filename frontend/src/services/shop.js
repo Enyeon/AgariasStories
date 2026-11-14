@@ -40,7 +40,7 @@ import * as negotiation from '../domain/shop/negotiation.js';
 import { getRelation, haggleKey } from '../domain/shop/state.js';
 import * as talk from '../domain/shop/talk.js';
 import { evaluateDisposition, welcomeKey } from '../domain/shop/disposition.js';
-import { playerLocation, visibleMap, merchantsAt, travel as travelTo, availability, keeperLocation, phaseOf, weekdayName, discover } from '../domain/shop/presence.js';
+import { playerLocation, visibleMap, merchantsAt, travel as travelTo, availability, keeperLocation, phaseOf, weekdayName, discover, isLocationVisible } from '../domain/shop/presence.js';
 import { displayKeeper } from '../domain/shop/personality.js';
 import { MEMORY_TYPES, DM_MEMORY_TYPES } from '../domain/shop/memory.js';
 import { createRng } from '../domain/shop/rng.js';
@@ -429,6 +429,23 @@ export function createShopService({ characters, homebrew, market = createMarketR
       };
     },
     definedFloors: () => floors.definedFloors(state.ctx),
+    /**
+     * Pisos a los que se puede viajar: los alcanzados que tienen un lugar
+     * (región con ese piso o el lugar «Piso N» automático de sus comerciantes).
+     */
+    floorStops() {
+      const p = floors.progressOf(state.world);
+      if (!p.enabled) return [];
+      const hereRegion = state.ctx.location(here())?.regionId;
+      const stops = [];
+      for (const region of state.ctx.regions.values()) {
+        if (!region.floor || region.floor > p.current) continue;
+        const loc = (region.locations ?? []).find((l) => isLocationVisible(state.world, state.ctx, state.characterId, l.id));
+        if (!loc || stops.some((s) => s.floor === region.floor)) continue;
+        stops.push({ floor: region.floor, locationId: loc.id, name: region.name, here: region.id === hereRegion });
+      }
+      return stops.sort((a, b) => a.floor - b.floor);
+    },
     /** DM: «los jugadores llegaron al piso N». Se reponen las novedades del piso. */
     setFloor(floor) {
       return dmMarket((w) => {

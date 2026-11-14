@@ -190,6 +190,26 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
         );
     }
 
+    // ── Mercado por pisos: saltar entre los pisos alcanzados ──
+    function floorStrip() {
+        const stops = service.floorStops();
+        const p = service.progress;
+        return h('nav', { class: 'floor-strip', 'aria-label': 'Pisos' },
+            h('span', { class: 'floor-strip-label' }, h('b', {}, '🏰 Mercado por pisos'), h('small', { class: 'muted' }, ` · alcanzado: piso ${p.current}`)),
+            stops.length
+                ? stops.map((s) => h('button', {
+                    class: ['btn', 'btn-sm', s.here ? 'btn-primary' : 'btn-ghost'],
+                    'aria-current': s.here ? 'true' : null,
+                    disabled: s.here,
+                    title: s.name,
+                    onclick: async () => {
+                        const res = await service.travel(s.locationId);
+                        toast(res.error ?? `Subes al ${s.name.toLowerCase().startsWith('piso') ? s.name : `piso ${s.floor} (${s.name})`}.`, res.error ? 'error' : 'info');
+                    },
+                }, `Piso ${s.floor}`))
+                : h('small', { class: 'muted' }, 'Todavía no hay negocios con piso. El DM los asigna en la ficha de cada comerciante.'));
+    }
+
     // ── Letreros de tiendas ──
     function renderSigns() {
         const loc = service.location;
@@ -200,6 +220,7 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
             h(
                 'div',
                 { class: 'location-bar' },
+                service.progress.enabled ? floorStrip() : null,
                 h('div', { class: 'location-now' }, h('span', { class: 'location-icon', 'aria-hidden': 'true' }, loc?.icon ?? '📍'), h('div', {}, h('small', {}, region ? `${region.icon} ${region.name}` : 'Estás en'), h('b', {}, loc?.name ?? '—'))),
                 loc?.description ? h('p', { class: 'location-desc muted small' }, loc.description) : null,
                 h(
@@ -208,7 +229,7 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
                     h('button', { class: 'btn btn-sm', onclick: () => openMap(root, service, { toast, onTravel: (l) => toast(`Llegas a ${l.name}.`, 'info') }) }, '🗺️ Viajar'),
                     h('button', { class: 'btn btn-sm btn-ghost', onclick: () => openKnown(root, service, { onGo: goTo }) }, '👥 Conocidos'),
                     h('button', { class: 'btn btn-sm btn-ghost', onclick: () => openJournal(root, service, { toast }) }, '📔 Rumores'),
-                    service.progress.enabled ? h('button', { class: 'btn btn-sm btn-ghost', onclick: () => openBusinesses(root, service), title: 'Qué negocios hay en este piso y cuáles piden algo más' }, `🏰 Piso ${service.progress.current}`) : null,
+                    service.progress.enabled ? h('button', { class: 'btn btn-sm btn-ghost', onclick: () => openBusinesses(root, service), title: 'Qué negocios hay en cada piso y cuáles piden algo más' }, '🏪 Negocios') : null,
                     state().characterId ? h('button', { class: 'btn btn-sm btn-ghost', onclick: () => openEstate(root, service, { toast }), title: 'Terrenos, tu negocio, empleados e informes de exploración' }, `🏠 Propiedades${service.myStaff().length ? ` · 👷 ${service.myStaff().length}` : ''}`) : null,
                     service.contracts().length ? h('button', { class: 'btn btn-sm btn-ghost', onclick: () => openKnown(root, service, { onGo: goTo, contracts: true }) }, `📜 Empleados (${service.contracts().length})`) : null,
                 ),

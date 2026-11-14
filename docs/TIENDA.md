@@ -112,7 +112,8 @@ Para mundos que se abren piso a piso. Se activa en «🌍 Mundo → 🏰 Pisos»
 - **Excepciones del DM**: forzar abierto (lore, recompensa) o forzar cerrado (el negocio cerró en el mundo).
 - **Temporales**: «Negocio especial» + «Cierra después del piso N».
 - **Novedades por piso**: productos que un comerciante suma al surtido al llegar a un piso.
-- Los jugadores ven «🏰 Piso N» en la Tienda con los negocios disponibles.
+- **Viajar entre pisos**: con la progresión activa, la Tienda muestra «🏰 Mercado por pisos» con un botón por cada piso alcanzado. Cada piso es un lugar: la región del DM con ese piso o, si no hay, un lugar «Piso N» automático donde se ubican los comerciantes con ese piso (`placeOnFloors` en `context.js`).
+- «🏪 Negocios» muestra a los jugadores qué hay disponible y qué pide algo más.
 
 ## Carpeta del DM (tiendas propias por campaña)
 
