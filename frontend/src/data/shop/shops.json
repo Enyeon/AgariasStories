@@ -113,6 +113,11 @@
             "metal"
           ]
         }
+      ],
+      "qualities": [
+        "tosca",
+        "fina",
+        "obra"
       ]
     },
     {
@@ -247,6 +252,9 @@
             "municion"
           ]
         }
+      ],
+      "qualities": [
+        "tosca"
       ]
     },
     {
@@ -508,6 +516,9 @@
           ],
           "category": "herramientas"
         }
+      ],
+      "qualities": [
+        "fina"
       ]
     },
     {
@@ -628,6 +639,9 @@
           "category": "tecnologia",
           "sub": "invento"
         }
+      ],
+      "qualities": [
+        "tosca"
       ]
     },
     {
@@ -703,6 +717,10 @@
         {
           "category": "herramientas"
         }
+      ],
+      "qualities": [
+        "fina",
+        "obra"
       ]
     },
     {
@@ -774,6 +792,9 @@
         {
           "category": "consumibles"
         }
+      ],
+      "qualities": [
+        "tosca"
       ]
     },
     {
@@ -1112,6 +1133,9 @@
             "metal"
           ]
         }
+      ],
+      "qualities": [
+        "tosca"
       ]
     },
     {

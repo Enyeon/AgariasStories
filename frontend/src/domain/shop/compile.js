@@ -109,6 +109,8 @@ export function compileShop(shop, keeper, { professions, factions }) {
         out.specialties = shop.specialties?.length ? shop.specialties : prof.specialties ?? [];
     }
     out.assortment = [...(out.assortment ?? [])];
+    // Calidades que ofrece: las de la tienda o, si no dice nada, las de su profesión.
+    if (!shop.qualities?.length && prof?.qualities?.length) out.qualities = prof.qualities;
     if (shop.addItems?.length) out.assortment.push({ ids: shop.addItems, target: shop.addTarget ?? 2 });
     // Novedades por piso: reglas con `floor` (sólo cuentan al llegar a ese piso).
     if (shop.floorItems?.length) out.assortment.push(...shop.floorItems);

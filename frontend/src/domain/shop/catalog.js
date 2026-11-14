@@ -18,6 +18,8 @@
  * }
  */
 
+import { withQualities } from './quality.js';
+
 export const RARITIES = Object.freeze([
     { id: 'common', label: 'Común', color: '#b9b2a3' },
     { id: 'uncommon', label: 'Poco común', color: '#6fbf73' },
@@ -217,6 +219,8 @@ export function buildCatalog(sources) {
             if (item) items.set(item.id, item);
         }
     }
+    // Variantes de calidad (Tosca, Fina, Obra maestra) de armas, armaduras y herramientas.
+    for (const v of withQualities([...items.values()]).filter((x) => x.quality)) if (!items.has(v.id)) items.set(v.id, v);
     const list = [...items.values()];
     return {
         items,

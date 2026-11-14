@@ -3,6 +3,7 @@
 // opciones son funciones para incluir el Homebrew del paquete que se edita.
 
 import { CATEGORIES, RARITIES } from '../../domain/shop/catalog.js';
+import { QUALITY_OPTIONS } from '../../domain/shop/quality.js';
 import { PHASE_OPTIONS, ARCHETYPE_OPTIONS, RACE_FAMILY_OPTIONS, TOPIC_OPTIONS, VOICE_OPTIONS, RUMOR_TOPIC_OPTIONS, ATTITUDE_KINDS } from '../../data/shop/options.js';
 import {
   TIER_OPTIONS, SECRET_HOW, CHECK_SKILLS, FAVOR_KINDS, RUMOR_TRUTH, RUMOR_VALUE, ATTITUDE_EFFECTS, CATALOG_MODES, DIALOGUE_KEYS, WEEKDAY_OPTIONS,
@@ -72,6 +73,7 @@ export const WORLD_FORMS = {
     { key: 'weekdays', label: 'Días que abre (vacío = todos)', kind: 'chips', options: WEEKDAY_OPTIONS },
     { key: 'events', label: 'Sólo aparece durante estos eventos', kind: 'chips', options: eventOptions },
     { key: 'secret', label: 'Comerciante secreto: sólo lo ve quien lo descubre (por un secreto de otro comerciante o el DM)', kind: 'checkbox' },
+    { key: 'qualities', label: 'Calidades que ofrece además de la estándar (en armas, armaduras y herramientas). Vacío = las de su profesión', kind: 'chips', options: QUALITY_OPTIONS },
     { section: 'Progresión por pisos' },
     { kind: 'note', text: 'Sólo cuenta si activas «🏰 Pisos» en el panel del Mundo. Sin piso, usa el de su región; sin ninguno, está siempre.' },
     { key: 'floor', label: 'Piso en el que aparece', kind: 'number', min: 1, max: 999 },

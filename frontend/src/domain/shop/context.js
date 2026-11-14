@@ -147,4 +147,3 @@ function placeOnFloors(keepers, regions) {
         return { ...k, presence: { ...(k.presence ?? {}), location: hubOf(k.floor) } };
     });
 }
-

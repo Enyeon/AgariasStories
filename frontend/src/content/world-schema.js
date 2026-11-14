@@ -127,6 +127,7 @@ export function normalizeMerchant(src, errors) {
     requirement: str(src.requirement, 200),
     special: bool(src.special),
     untilFloor: src.untilFloor === '' || src.untilFloor == null ? null : int(src.untilFloor, 1, 999, 1),
+    qualities: pick(src.qualities, ['tosca', 'fina', 'obra']),
     floorItems: rows(src.floorItems, 40, (r) => (idRef(r.item) ? { floor: int(r.floor, 1, 999, 1), item: idRef(r.item), qty: int(r.qty, 1, 99, 2) } : null)),
     faction: idRef(src.faction),
     archetypes: pick(src.archetypes, Object.keys(ARCHETYPE_OPTIONS)).slice(0, 4),

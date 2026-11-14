@@ -24,6 +24,7 @@ import { simulateEstate } from './estate.js';
 import { simulateStaff } from './staff.js';
 import { decayPopularity } from './popularity.js';
 import { currentFloor } from './floors.js';
+import { variantTarget, offersQuality } from './quality.js';
 
 const DEFAULT_TARGET = { common: 5, uncommon: 2, rare: 1, veryRare: 1, epic: 1, legendary: 1, unique: 1 };
 const DAILY_TURNOVER = { common: 0.12, uncommon: 0.07, rare: 0.04, veryRare: 0.03, epic: 0.02, legendary: 0.012, unique: 0.008 };
@@ -46,7 +47,20 @@ export function computeAssortment(shop, ctx, { floor = Infinity } = {}) {
         if (rule.floor && rule.floor > floor) continue; // novedad de un piso al que aún no llegaron
         for (const item of ctx.catalog.list) {
             if (!item.forSale || exclude.has(item.id) || !matchesRule(item, rule)) continue;
+            // Las variantes de calidad no entran por categoría: sólo por id o por las calidades de la tienda (abajo).
+            if (item.quality && !rule.ids) continue;
             result[item.id] = { target: targetFor(item, rule), unlimited: Boolean(rule.unlimited), requires: rule.requires ?? null, lockLabel: rule.label ?? null };
+        }
+    }
+    // Calidades que ofrece la tienda: variantes de lo que ya vende, con menos unidades cuanto mejores.
+    for (const q of shop.qualities ?? []) {
+        for (const [id, spec] of Object.entries({ ...result })) {
+            const base = ctx.item(id);
+            if (!base || base.quality || spec.unlimited) continue;
+            const variant = ctx.item(`${id}~${q}`);
+            // No todo existe en todas las calidades: cada tienda tiene su selección fija.
+            const target = variant && offersQuality(shop.id, id, q) ? variantTarget(base, q, spec.target) : 0;
+            if (target > 0 && !exclude.has(variant.id)) result[variant.id] ??= { target, unlimited: false, requires: spec.requires, lockLabel: spec.lockLabel };
         }
     }
     return result;
@@ -274,7 +288,7 @@ function rotate(world, ctx, shop, state, rng, report) {
     }
     let used = Object.values(state.stock).filter((e) => e.rotating).length;
     while (used < slots && rng.chance(chance)) {
-        const pool = ctx.catalog.list.filter((item) => item.forSale && !state.stock[item.id] && !(shop.exclude ?? []).includes(item.id) && rules.some((r) => matchesRule(item, r)));
+        const pool = ctx.catalog.list.filter((item) => item.forSale && !item.quality && !state.stock[item.id] && !(shop.exclude ?? []).includes(item.id) && rules.some((r) => matchesRule(item, r)));
         const item = rng.weighted(pool, (i) => ROTATION_WEIGHT[i.rarity] ?? 1);
         if (!item) break;
         state.stock[item.id] = { qty: 1, target: 1, rotating: true, incoming: null, since: world.day, expires: world.day + rng.int(stayDays[0], stayDays[1]) };

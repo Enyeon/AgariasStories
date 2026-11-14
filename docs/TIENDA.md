@@ -101,6 +101,14 @@ liquida al visitar a su empleado. Si la deuda crece, renuncia (y lo recuerda). E
 trasladarle (si acepta mudarse) y pedirle productos extra. Extensiones previstas: `employer.type`
 (facción u organización), lugar = propiedad del jugador, gastos y catálogos más finos.
 
+## Calidad (además de la rareza)
+
+`domain/shop/quality.js`. Armas (salvo munición), armaduras y herramientas existen en cuatro calidades: 🪵 Tosca (×0,6), Estándar (×1), ✨ Fina (×1,75) y 🏅 Obra maestra (×4). La **rareza** fija el precio base y lo difícil que es encontrarlo; la **calidad** lo multiplica y da un efecto pequeño no mágico (se ve en la ficha del objeto y queda en las notas del inventario).
+
+- Cada calidad es una variante del catálogo (`<objeto>~fina`): stock, precio, venta e inventario funcionan igual.
+- Una tienda sólo las ofrece si su ficha lo dice (`qualities`; en el formulario del comerciante, «Calidades que ofrece»), o si lo dice su profesión (herrero: tosca y fina; armero: fina y obra maestra). Cada tienda tiene una selección fija de qué objetos tiene en cada calidad, con menos unidades cuanto mejor; la obra maestra no aparece sola en objetos muy raros o más.
+- Las «Novedades por piso» pueden añadir variantes concretas (p. ej. una espada de obra maestra al llegar al piso 30).
+
 ## Progresión por pisos (Lord 100)
 
 Para mundos que se abren piso a piso. Se activa en «🌍 Mundo → 🏰 Pisos» (sólo el DM) y se guarda en `world.progress` (`domain/shop/floors.js`); la migración `20261117` impide que un jugador lo cambie.

@@ -6,6 +6,7 @@
  * las fórmulas. La negociación vive en negotiation-dialog.js.
  */
 
+import { getQuality, hasQuality } from '../../domain/shop/quality.js';
 import { CATEGORIES, getCategory, getRarity, getSub, itemIcon, searchKey } from '../../domain/shop/catalog.js';
 import { coinsInCp, formatCp } from '../../domain/money.js';
 import { activeEvents, eventIntensity } from '../../domain/shop/pricing.js';
@@ -458,7 +459,7 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
                                 'span',
                                 { class: 'item-body' },
                                 h('span', { class: 'item-name' }, item.name),
-                                h('span', { class: 'item-meta' }, h('span', { class: 'rarity-dot' }), rarity.label, ' · ', getSub(item.category, item.sub)?.label ?? ''),
+                                h('span', { class: 'item-meta' }, h('span', { class: 'rarity-dot' }), rarity.label, item.quality ? h('span', { class: ['quality-tag', `q-${item.quality}`] }, ` ${getQuality(item.quality).icon} ${getQuality(item.quality).label}`) : null, ' · ', getSub(item.category, item.sub)?.label ?? ''),
                                 h('span', { class: ['stock', `stock-${stock.tone}`] }, stock.text),
                             ),
                             h(
@@ -607,7 +608,7 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
                 'div',
                 { class: 'detail-head', style: { '--rarity': rarity.color } },
                 h('span', { class: 'detail-icon', 'aria-hidden': 'true' }, itemIcon(item)),
-                h('div', {}, h('h2', {}, item.name), h('p', { class: 'rarity-tag' }, h('span', { class: 'rarity-dot' }), rarity.label, ' · ', getCategory(item.category)?.label, ' · ', getSub(item.category, item.sub)?.label)),
+                h('div', {}, h('h2', {}, item.name), h('p', { class: 'rarity-tag' }, h('span', { class: 'rarity-dot' }), rarity.label, item.quality || hasQuality(item) ? ` · Calidad ${[getQuality(item.quality).icon, getQuality(item.quality).label].filter(Boolean).join(' ')}` : '', ' · ', getCategory(item.category)?.label, ' · ', getSub(item.category, item.sub)?.label)),
             ),
             item.desc ? h('p', { class: 'detail-desc' }, item.desc) : null,
             Object.keys(item.props).length || item.weight !== null

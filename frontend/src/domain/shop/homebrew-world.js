@@ -199,6 +199,7 @@ function merchantFrom(ref, item, { officialKeeper, officialShop, templateShop = 
         priceMod: (item.priceMod ?? 0) / 100,
         profession: item.profession ?? undefined,
         floorItems: (item.floorItems ?? []).map((r) => ({ ids: [r.item], target: r.qty ?? 2, floor: r.floor })),
+        qualities: item.qualities?.length ? item.qualities : mode === 'original' ? catalogShop?.qualities : undefined,
         homebrew: true,
     };
     return { keeper, shop, rumors };
@@ -226,6 +227,7 @@ export function merchantToEditor(keeper, shop) {
         requirement: keeper.requirement ?? '',
         special: Boolean(keeper.special),
         untilFloor: keeper.untilFloor ?? null,
+        qualities: shop?.qualities ?? [],
         floorItems: (shop?.floorItems ?? []).map((r) => ({ floor: r.floor, item: r.ids?.[0], qty: r.target ?? 2 })).filter((r) => r.item),
         faction: keeper.faction ?? null,
         archetypes: keeper.archetypes ?? [],

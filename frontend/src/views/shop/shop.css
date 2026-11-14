@@ -1008,3 +1008,9 @@
 .floor-business p { margin: 4px 0 0; }
 .floor-strip { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; padding: 6px 10px; border-radius: 10px; background: #4a2b1040; border: 1px dashed var(--brass); flex: 1 1 100%; }
 .floor-strip-label { margin-right: 6px; }
+
+/* Calidad */
+.quality-tag { font-weight: 600; }
+.quality-tag.q-tosca { color: #a08c6c; }
+.quality-tag.q-fina { color: #8fd3ff; }
+.quality-tag.q-obra { color: #f2c14e; }
