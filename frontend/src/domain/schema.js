@@ -55,6 +55,12 @@ export function createBackgroundState() {
     /** Opción de equipo elegida ('A', 'B'...) y si ya se añadió al inventario. */
     equipmentChoice: null,
     equipmentApplied: null,
+    /** Dote elegida cuando el trasfondo ofrece varias (featOptions). */
+    featPick: null,
+    /** Habilidades elegidas, una lista por cada skillChoices[i]. */
+    skillPicks: [],
+    /** Rasgo alternativo (clave de data/background-features.json) que sustituye al del trasfondo. */
+    featureAlt: null,
   };
 }
 
@@ -66,6 +72,10 @@ export function createBackgroundDefinition(overrides = {}) {
     abilityOptions: [],
     feat: null,
     skills: [],
+    /** Habilidades a elegir: [{ count, options }] (p. ej. «una entre Arcano, Historia o Religión»). */
+    skillChoices: [],
+    /** Dotes entre las que se elige cuando `feat` es null (trasfondos de libros anteriores a 2024). */
+    featOptions: [],
     tools: [],
     languages: 0,
     equipment: [],

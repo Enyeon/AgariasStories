@@ -10,6 +10,7 @@ import { normalizeBackgroundDefinition } from '../../domain/validation.js';
 import {
   setBackground, updateCustomBackground, customizeOfficial, setBackgroundAbilities,
   setBackgroundFeatAbility, setBackgroundEquipmentChoice, applyBackgroundEquipment, parseEquipmentText,
+  setBackgroundFeatPick, setBackgroundSkillPicks, setBackgroundFeatureAlt,
 } from '../../domain/background.js';
 import { data, getFeat } from '../../data/index.js';
 import { sectionCard } from './common.js';
@@ -19,6 +20,7 @@ const SOURCE_LABEL = (def) => (def.official ? def.source ?? 'Oficial' : 'Homebre
 
 export function sourceBadges(def) {
   return html`<span class="badge ${def.official ? 'badge--accent' : 'badge--gold'}">${SOURCE_LABEL(def)}</span>
+    ${def.legacy ? html`<span class="badge" title="Libro anterior a 2024: se usa con la regla de compatibilidad del Manual del Jugador 2024">Anterior a 2024</span>` : ''}
     ${def.verify ? html`<span class="badge badge--warning" title="Datos pendientes de verificar (ver docs/DATOS.md)">Verificar</span>` : ''}
     ${def.pending ? html`<span class="badge badge--warning">Sin reglas aún</span>` : ''}`;
 }
@@ -30,15 +32,23 @@ function equipmentSummary(text) {
 }
 
 /** Lista de lo que otorga un trasfondo (se usa en la tarjeta y en el selector). */
+const featLabel = (name, note) => name + (note ? ` (${note})` : '') + (getFeat(name) ? '' : ' (no está en los datos)');
+const skillChoiceText = (ch) => `${ch.count === 1 ? 'una' : ch.count} a elegir entre ${ch.options.join(', ')}`;
+
 export function grantsList(def) {
+  const base = def.unresolved ?? def;
+  const abilities = base.abilityOptions.length === 6 ? 'Tres cualesquiera (+2/+1 o +1/+1/+1)' : base.abilityOptions.map((k) => ABILITY_LABEL[k]).join(', ');
+  const feat = base.feat ? featLabel(base.feat, base.featNote)
+    : def.feat ? `${featLabel(def.feat)} (elegida)`
+    : base.featOptions?.length ? `A elegir: ${base.featOptions.length > 3 ? 'cualquier dote de origen' : base.featOptions.join(' o ')}` : '';
   const rows = [
-    ['Puntuaciones', def.abilityOptions.map((k) => ABILITY_LABEL[k]).join(', ')],
-    ['Dote', def.feat ? def.feat + (def.featNote ? ` (${def.featNote})` : '') + (getFeat(def.feat) ? '' : ' (no está en los datos)') : ''],
-    ['Habilidades', def.skills.join(', ')],
+    ['Puntuaciones', abilities],
+    ['Dote', feat],
+    ['Habilidades', [base.skills.join(', '), ...(base.skillChoices ?? []).map(skillChoiceText)].filter(Boolean).join(' · ')],
     ['Herramientas', def.tools.join(', ')],
     ['Idiomas', def.languages ? `${def.languages} a elegir` : ''],
     ['Equipo', def.equipment.map((e) => `(${e.label}) ${e.text}`).join(' · ')],
-    ['Rasgo', def.feature?.name ?? ''],
+    ['Rasgo', def.feature?.name ? def.feature.name + (def.feature.replaces ? ` (sustituye a «${def.feature.replaces}»)` : '') : ''],
   ].filter(([, v]) => v);
   if (!rows.length) return html`<p class="muted">Este trasfondo no otorga beneficios mecánicos.</p>`;
   return html`<dl class="grants">${rows.map(([k, v]) => html`<div><dt>${k}</dt><dd>${v}</dd></div>`)}</dl>`;
@@ -63,6 +73,53 @@ function abilityBlock(ctx, def) {
         ${def.abilityOptions.map((k) => html`<option value="${k}" ${bg.abilityChoices[i] === k ? raw('selected') : ''}>${ABILITY_LABEL[k]}</option>`)}
       </select></label>`)}</div>` : ''}
     <p class="field__hint">En las reglas 2024 este aumento sustituye al de la raza. Si tu mesa usa bonificaciones raciales, déjalo en «Sin aumento» salvo que tu DM diga otra cosa.</p>
+  </fieldset>`;
+}
+
+function featPickBlock(ctx, def) {
+  const options = def.unresolved.featOptions;
+  if (def.unresolved.feat || !options.length) return '';
+  const pick = ctx.character.background.featPick;
+  return html`<fieldset class="choice-group">
+    <legend>Dote del trasfondo ${pick ? html`<span class="badge badge--success">Listo</span>` : html`<span class="badge badge--warning">Elige dote</span>`}</legend>
+    <select class="select" data-bg="feat-pick" aria-label="Dote del trasfondo" ${ctx.readOnly ? raw('disabled') : ''}>
+      <option value="">— Elige una dote —</option>
+      ${options.map((f) => html`<option value="${f}" ${pick === f ? raw('selected') : ''}>${f}${getFeat(f) ? '' : ' (no está en los datos)'}</option>`)}
+    </select>
+    ${def.unresolved.legacy ? html`<p class="field__hint">Trasfondo de un libro anterior a 2024: según el Manual del Jugador 2024, eliges una dote de origen y aumentas tres puntuaciones cualesquiera.</p>` : ''}
+  </fieldset>`;
+}
+
+function skillPickBlock(ctx, def) {
+  const choices = def.unresolved.skillChoices;
+  if (!choices.length) return '';
+  const done = choices.every((ch, i) => (def.skillPicks[i]?.length ?? 0) >= ch.count);
+  return html`<fieldset class="choice-group">
+    <legend>Habilidades a elegir ${done ? html`<span class="badge badge--success">Listo</span>` : html`<span class="badge badge--warning">Elige habilidades</span>`}</legend>
+    ${choices.map((ch, i) => {
+      const picked = def.skillPicks[i] ?? [];
+      const full = picked.length >= ch.count;
+      return html`<div class="stack stack--sm"><p class="field__hint">Elige ${ch.count === 1 ? 'una' : ch.count}:</p><div class="chips">${ch.options.map((sk) => {
+        const fixed = def.baseSkills.includes(sk) || def.skillPicks.some((g, j) => j !== i && g.includes(sk));
+        const on = picked.includes(sk);
+        return html`<label class="chip"><input type="checkbox" data-bg="skill-pick" data-index="${i}" value="${sk}" ${on ? raw('checked') : ''} ${ctx.readOnly || fixed || (full && !on) ? raw('disabled') : ''}>${sk}</label>`;
+      })}</div></div>`;
+    })}
+  </fieldset>`;
+}
+
+function featureAltBlock(ctx, def) {
+  const alts = Object.entries(data.backgroundFeatures).filter(([k]) => !k.startsWith('$'));
+  if (!alts.length || (ctx.readOnly && !def.feature?.alt)) return '';
+  const current = ctx.character.background.featureAlt;
+  const original = def.unresolved.feature?.name;
+  return html`<fieldset class="choice-group">
+    <legend>Rasgo alternativo <span class="muted">(opcional, con permiso del DM)</span></legend>
+    <select class="select" data-bg="feature-alt" aria-label="Rasgo alternativo del trasfondo" ${ctx.readOnly ? raw('disabled') : ''}>
+      <option value="">${original ? `— Rasgo original: ${original} —` : '— Sin rasgo alternativo —'}</option>
+      ${[...new Set(alts.map(([, f]) => f.source))].map((src) => html`<optgroup label="${src}">${alts.filter(([, f]) => f.source === src).map(([k, f]) => html`<option value="${k}" ${current === k ? raw('selected') : ''}>${f.name}${f.verify ? ' (verificar)' : ''}</option>`)}</optgroup>`)}
+    </select>
+    <p class="field__hint">Algunos libros permiten cambiar el rasgo de cualquier trasfondo por uno de estos.</p>
   </fieldset>`;
 }
 
@@ -113,9 +170,12 @@ export function renderBackgroundCard(ctx) {
     body: html`<div class="stack">
       ${def.description ? html`<div class="rich">${prose(def.description)}</div>` : ''}
       ${grantsList(def)}
-      ${def.feature?.text ? html`<div class="subclass-card"><p class="eyebrow">Rasgo del trasfondo</p><h4 class="subclass-card__title">${def.feature.name || 'Rasgo'}</h4><div class="rich">${prose(def.feature.text)}</div></div>` : ''}
+      ${def.feature?.text ? html`<div class="subclass-card"><p class="eyebrow">${def.feature.alt ? 'Rasgo alternativo' : 'Rasgo del trasfondo'}</p><h4 class="subclass-card__title">${def.feature.name || 'Rasgo'}</h4><div class="rich">${prose(def.feature.text)}</div></div>` : ''}
       ${abilityBlock(ctx, def)}
+      ${skillPickBlock(ctx, def)}
+      ${featPickBlock(ctx, def)}
       ${featBlock(ctx, def)}
+      ${featureAltBlock(ctx, def)}
       ${equipmentBlock(ctx, def)}
     </div>`,
   });
@@ -150,10 +210,10 @@ export function openBackgroundPicker(currentKey, homebrew = [], allow = {}) {
       const all = [...official, ...campaign, ...own];
       const list = () => {
         const q = norm(query);
-        const gs = groups.map((g) => ({ ...g, items: g.items.filter((i) => !q || norm(`${i.def.name} ${i.def.skills.join(' ')} ${i.def.feat ?? ''} ${i.def.featNote ?? ''}`).includes(q)) })).filter((g) => g.items.length);
+        const gs = groups.map((g) => ({ ...g, items: g.items.filter((i) => !q || norm(`${i.def.name} ${i.def.source ?? ''} ${i.def.skills.join(' ')} ${(i.def.skillChoices ?? []).flatMap((ch) => ch.options).join(' ')} ${i.def.feat ?? ''} ${i.def.featNote ?? ''}`).includes(q)) })).filter((g) => g.items.length);
         return gs.length ? gs.map((g) => html`<h4 class="picker__group">${g.title}</h4>${g.items.map((i) => html`<button type="button" class="race-option ${selected?.id === i.id ? 'is-selected' : ''}" data-bg-id="${i.id}" aria-pressed="${selected?.id === i.id}">
           <span class="race-option__name">${i.def.name}</span>
-          <span class="race-option__bonus">${[i.def.skills.join(', '), i.def.feat && (i.def.featNote ? `${i.def.feat} (${i.def.featNote})` : i.def.feat)].filter(Boolean).join(' · ') || 'Sin reglas definidas'}</span>
+          <span class="race-option__bonus">${[[i.def.skills.join(', '), ...(i.def.skillChoices ?? []).map((ch) => `+${ch.count} a elegir`)].filter(Boolean).join(', '), i.def.feat ? (i.def.featNote ? `${i.def.feat} (${i.def.featNote})` : i.def.feat) : i.def.featOptions?.length ? 'Dote a elegir' : ''].filter(Boolean).join(' · ') || 'Sin reglas definidas'}</span>
         </button>`)}`) : html`<p class="muted">Sin resultados.</p>`;
       };
       const detail = () => (selected ? html`<h3>${selected.def.name}</h3><p class="row">${sourceBadges(selected.def)}</p>
@@ -260,6 +320,9 @@ export function openBackgroundEditor(initial, { title = 'Trasfondo propio' } = {
           languages: fd.get('languages'),
           equipment: ['A', 'B', 'C'].map((label) => ({ label, text: fd.get(`eq-${label}`) })),
           feature: { name: fd.get('featureName'), text: fd.get('featureText') },
+          // Elecciones que el editor no muestra: se conservan tal cual.
+          skillChoices: def.skillChoices,
+          featOptions: fd.get('feat') ? [] : def.featOptions,
         }));
       });
     },
@@ -320,5 +383,12 @@ export function onBackgroundChange(ed, el) {
   }
   if (kind === 'feat-ability') return ed.replace(setBackgroundFeatAbility(c, el.value));
   if (kind === 'equipment') return ed.replace(setBackgroundEquipmentChoice(c, el.value));
+  if (kind === 'feat-pick') return ed.replace(setBackgroundFeatPick(c, el.value));
+  if (kind === 'feature-alt') return ed.replace(setBackgroundFeatureAlt(c, el.value));
+  if (kind === 'skill-pick') {
+    const i = Number(el.dataset.index);
+    const picked = [...ed.root.querySelectorAll(`[data-bg="skill-pick"][data-index="${i}"]:checked`)].map((x) => x.value);
+    return ed.replace(setBackgroundSkillPicks(c, i, picked));
+  }
   return undefined;
 }

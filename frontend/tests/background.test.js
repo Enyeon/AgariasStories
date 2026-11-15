@@ -5,6 +5,7 @@ import { abilityScores, computeSheet, allFeats, languageInfo } from '../src/doma
 import {
   setBackground, setBackgroundAbilities, parseEquipmentText, applyBackgroundEquipment,
   updateCustomBackground, customizeOfficial, setBackgroundFeatAbility,
+  setBackgroundSkillPicks, setBackgroundFeatPick, setBackgroundFeatureAlt,
 } from '../src/domain/background.js';
 import { applyLevelUp, setRace } from '../src/domain/progression.js';
 import { data } from '../src/data/index.js';
@@ -45,8 +46,57 @@ describe('trasfondos oficiales', () => {
     const skills = new Set(computeSheet(createCharacter()).skills.map((s) => s.name));
     for (const [key, bg] of Object.entries(data.backgrounds)) {
       for (const s of bg.skills) expect(skills.has(s), `${key}: ${s}`).toBe(true);
-      if (bg.feat) expect(data.feats[bg.feat], `${key}: ${bg.feat}`).toBeTruthy();
+      for (const ch of bg.skillChoices ?? []) for (const s of ch.options) expect(skills.has(s), `${key}: ${s}`).toBe(true);
+      // Las dotes del Manual 2024 y las de origen de los trasfondos antiguos deben existir.
+      // Las de otros libros (Faerûn, Eberron…) aún no tienen texto: la ficha avisa «no está en los datos».
+      if (bg.feat && bg.source === 'Reglas 2024') expect(data.feats[bg.feat], `${key}: ${bg.feat}`).toBeTruthy();
+      if (bg.legacy && !bg.feat) for (const f of bg.featOptions) expect(data.feats[f], `${key}: ${f}`).toBeTruthy();
+      expect(bg.abilityOptions.length, key).toBeGreaterThanOrEqual(bg.legacy ? 6 : 0);
     }
+  });
+
+  it('trasfondo anterior a 2024: tres atributos cualesquiera, dote de origen y habilidad a elegir', () => {
+    let c = setBackground(base(), { source: 'official', key: 'erudito_enclaustrado' });
+    let sheet = computeSheet(c);
+    expect(sheet.pendingBackground).toBe(true);
+    expect(sheet.background.skills).toEqual(['Historia']);
+    c = setBackgroundSkillPicks(c, 0, ['Religión', 'Naturaleza']);
+    expect(c.background.skillPicks).toEqual([['Religión']]);
+    c = setBackgroundSkillPicks(c, 0, ['Historia']);
+    expect(c.background.skillPicks).toEqual([[]]);
+    c = setBackgroundSkillPicks(c, 0, ['Naturaleza']);
+    c = setBackgroundFeatPick(c, 'Alerta');
+    expect(setBackgroundFeatPick(c, 'Centinela')).toBe(c);
+    sheet = computeSheet(c);
+    expect(sheet.pendingBackground).toBe(false);
+    expect(sheet.skills.find((s) => s.name === 'Naturaleza').proficient).toBe(true);
+    expect(allFeats(c).some((f) => f.name === 'Alerta' && f.source === 'trasfondo')).toBe(true);
+    ({ character: c } = setBackgroundAbilities(c, '1-1-1', ['fuerza', 'destreza', 'carisma']));
+    expect(c.background.abilityChoices).toEqual(['fuerza', 'destreza', 'carisma']);
+    // Sobrevive a guardar y cargar.
+    const { character: again } = normalizeCharacter(JSON.parse(JSON.stringify(c)));
+    expect(again.background.featPick).toBe('Alerta');
+    expect(computeSheet(again).background.skills).toContain('Naturaleza');
+  });
+
+  it('rasgo alternativo sustituye al del trasfondo', () => {
+    let c = setBackground(base(), { source: 'official', key: 'forastero' });
+    expect(computeSheet(c).background.feature.name).toBe('Trotamundos');
+    c = setBackgroundFeatureAlt(c, 'explorador_profundo');
+    const f = computeSheet(c).background.feature;
+    expect(f.name).toBe('Explorador profundo');
+    expect(f.replaces).toBe('Trotamundos');
+    expect(setBackgroundFeatureAlt(c, 'no-existe').background.featureAlt).toBeNull();
+  });
+
+  it('personalizar un trasfondo con elecciones conserva las opciones, no las mezcla', () => {
+    let c = setBackground(base(), { source: 'official', key: 'erudito_enclaustrado' });
+    c = setBackgroundSkillPicks(c, 0, ['Religión']);
+    const copy = customizeOfficial(computeSheet(c).background);
+    expect(copy.skills).toEqual(['Historia']);
+    expect(copy.skillChoices[0].options).toContain('Religión');
+    c = updateCustomBackground(c, copy);
+    expect(computeSheet(c).background.skills).toEqual(['Historia', 'Religión']);
   });
 });
 

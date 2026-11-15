@@ -6,7 +6,7 @@ import { cubeRow, sameCube } from './class-table.js';
 import {
   ABILITY_KEYS, SKILLS, SPEEDS, MAX_LEVEL, BASE_ABILITY_CAP, EPIC_ABILITY_CAP, XP_BY_LEVEL,
 } from './constants.js';
-import { getClass, getRace, getFeat, getEpicBoon, raceHasToughness, getRaceTags, getOfficialBackground, data } from '../data/index.js';
+import { getClass, getRace, getFeat, getEpicBoon, raceHasToughness, getRaceTags, getOfficialBackground, getBackgroundFeature, data } from '../data/index.js';
 import { createBackgroundDefinition } from './schema.js';
 import { castingConfig, computeSpellSlots } from './spellcasting.js';
 import {
@@ -89,12 +89,43 @@ export function pendingRaceChoices(c) {
 /** Definición del trasfondo del personaje (oficial o homebrew), o null. */
 export function backgroundDefinition(c) {
   const bg = c.background;
+  let def = null;
   if (bg?.source === 'official') {
-    const def = getOfficialBackground(bg.key);
-    return def ? createBackgroundDefinition({ ...def, key: bg.key, official: true }) : null;
+    const raw = getOfficialBackground(bg.key);
+    def = raw ? createBackgroundDefinition({ ...raw, key: bg.key, official: true }) : null;
+  } else if (bg?.source === 'custom' && bg.custom) {
+    def = createBackgroundDefinition({ ...bg.custom, official: false });
   }
-  if (bg?.source === 'custom' && bg.custom) return createBackgroundDefinition({ ...bg.custom, official: false });
-  return null;
+  return def ? resolveBackgroundChoices(def, bg) : null;
+}
+
+/**
+ * Habilidades elegidas válidas, una lista por cada skillChoices[i]. No repite
+ * las habilidades fijas del trasfondo ni las elegidas en otra lista.
+ */
+export function backgroundSkillPicks(def, picks = []) {
+  const taken = new Set(def.skills);
+  return (def.skillChoices ?? []).map((ch, i) => {
+    const valid = (picks[i] ?? []).filter((s) => ch.options.includes(s) && !taken.has(s)).slice(0, ch.count);
+    valid.forEach((s) => taken.add(s));
+    return valid;
+  });
+}
+
+/**
+ * Aplica las elecciones del jugador a la definición: habilidades elegidas,
+ * dote elegida (featOptions) y rasgo alternativo. Conserva la definición
+ * original en `unresolved` (para personalizarla o mostrar las opciones).
+ */
+function resolveBackgroundChoices(def, bg) {
+  const out = { ...def, unresolved: def, baseSkills: def.skills };
+  const picks = backgroundSkillPicks(def, bg.skillPicks);
+  out.skillPicks = picks;
+  out.skills = [...def.skills, ...picks.flat()];
+  if (!def.feat && def.featOptions.length) out.feat = def.featOptions.includes(bg.featPick) ? bg.featPick : null;
+  const alt = getBackgroundFeature(bg.featureAlt);
+  if (alt) out.feature = { name: alt.name, text: alt.text, alt: bg.featureAlt, replaces: def.feature?.name ?? null };
+  return out;
 }
 
 /** Aumento de atributos del trasfondo (opcional, reglas 2024). */
@@ -117,6 +148,8 @@ export function pendingBackgroundChoices(c) {
   const needed = bg.abilityMode === '2-1' ? 2 : bg.abilityMode === '1-1-1' ? 3 : 0;
   if (needed && bg.abilityChoices.filter((k) => def.abilityOptions.includes(k)).length < needed) return true;
   if (def.feat && featAbilityOptions(getFeat(def.feat)).length && !bg.featAbility) return true;
+  if (!def.feat && def.featOptions.length) return true;
+  if (def.skillChoices.some((ch, i) => (def.skillPicks[i]?.length ?? 0) < ch.count)) return true;
   return false;
 }
 

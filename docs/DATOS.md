@@ -64,8 +64,40 @@ Añade una entrada a `backgrounds.json` con una clave única:
 ```
 
 `source` agrupa en el selector. Opcionales: `verify: true` (muestra «Verificar»)
-y `pending: true` (muestra «Sin reglas aún»), `featNote` (variante de la dote). El test `background.test.js`
-comprueba que las habilidades y dotes de cada trasfondo existan.
+y `pending: true` (muestra «Sin reglas aún»), `featNote` (variante de la dote),
+`skillChoices: [{ "count": 1, "options": [...] }]` (habilidades a elegir),
+`featOptions: [...]` (con `feat: null`: el jugador elige la dote) y `legacy: true`
+(libro anterior a 2024). El test `background.test.js` comprueba que las
+habilidades existan y que las dotes del Manual 2024 y las de origen estén en
+`feats.json`.
+
+### Trasfondos de otros libros (AgSt 1.16)
+
+Sólo material oficial de Wizards of the Coast (nada de homebrew ni Unearthed Arcana).
+Los textos son resúmenes con palabras propias, no copias del libro.
+
+- **Formato 2024** (atributos, dote, dos habilidades, una herramienta, equipo A o
+  50 po): *Héroes de Faerûn* (18), *Eberron: Forja del Artífice* (19), *El libro
+  de los apetitos de Astarion* (3), *Ravenloft: Los horrores internos* (4) y
+  *Arcanos desatados* (10). Muchas de sus dotes de origen (Iniciado del Culto del
+  Dragón, Marca de Creación, Dones oscuros…) **aún no están en `feats.json`**: la
+  ficha muestra «no está en los datos» y el jugador la anota en Rasgos. Sólo los 10
+  de Faerûn con equipo conocido tienen la opción A; los demás dan 50 po.
+- **Anteriores a 2024** (`legacy: true`): PHB 2014 (Héroe del pueblo, Forastero,
+  Pilluelo y variantes), Costa de la Espada, Tumba de la Aniquilación, Saltmarsh,
+  Acquisitions Inc., Theros, Wildemount, Descenso a Avernus, Rávnica, Luz de las
+  Brujas, Spelljammer, Strixhaven, Dragonlance, Gigantes y Planescape. Siguen la
+  regla de compatibilidad del Manual 2024: tres atributos cualesquiera, una dote de
+  origen a elegir (salvo los que ya daban una dote concreta) y 50 po de equipo.
+  Conservan sus habilidades, herramientas, idiomas y rasgo. Rávnica y dos de
+  Strixhaven están marcados «Verificar».
+- Se omitieron las versiones 2014 que tienen versión 2024 (Acólito, Sabio,
+  Arqueólogo, Agente de una casa, Atormentado, Investigador…).
+- **Rasgos alternativos** (`background-features.json`): Culto del Infiltrador
+  Dragón, Erudito del Dragón, Explorador profundo, Experiencia en la
+  Infraoscuridad y los cinco generales de Van Richten. Sustituyen al rasgo de
+  cualquier trasfondo (selector «Rasgo alternativo» en la ficha). Los marcados
+  `verify` deben cotejarse con el libro: basta con reemplazar `text`.
 
 ## Shadow Knight (v2.2)
 

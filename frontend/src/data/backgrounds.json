@@ -495,5 +495,3884 @@
     "tools": [],
     "languages": 0,
     "equipment": []
+  },
+  "freebooter_chondathano": {
+    "name": "Filibustero chondathano",
+    "source": "Héroes de Faerûn",
+    "description": "Navegaste y saqueaste por las costas del Mar Interior bajo banderas de conveniencia; sabes trepar, anudar y aligerar bolsas ajenas.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "sabiduria"
+    ],
+    "feat": "Habilidoso",
+    "skills": [
+      "Atletismo",
+      "Juego de Manos"
+    ],
+    "tools": [
+      "Herramientas de tejedor"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "Daga, herramientas de tejedor, cuerda, mochila, cojinetes de bolas, cesta, saco de dormir, cubo, raciones, silbato de señales, ropa de viaje y 38 po"
+      },
+      {
+        "label": "B",
+        "text": "50 po"
+      }
+    ]
+  },
+  "morador_magia_muerta": {
+    "name": "Morador de la magia muerta",
+    "source": "Héroes de Faerûn",
+    "description": "Creciste en una zona donde la magia falla o se retuerce, y aprendiste a sobrevivir y a curar sin depender de ella.",
+    "abilityOptions": [
+      "fuerza",
+      "constitucion",
+      "sabiduria"
+    ],
+    "feat": "Curador",
+    "skills": [
+      "Medicina",
+      "Supervivencia"
+    ],
+    "tools": [
+      "Herramientas de peletero"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "Gran clava, herramientas de peletero, saco de dormir, manta, kit de sanador, pértiga, raciones, tienda, yesquero, ropa de viaje, odre y 32 po"
+      },
+      {
+        "label": "B",
+        "text": "50 po"
+      }
+    ]
+  },
+  "cultista_dragon": {
+    "name": "Cultista del Dragón",
+    "source": "Héroes de Faerûn",
+    "description": "Serviste al Culto del Dragón, que venera a los dragones (vivos o no muertos) y espera su dominio sobre el mundo.",
+    "abilityOptions": [
+      "destreza",
+      "constitucion",
+      "inteligencia"
+    ],
+    "feat": "Iniciado del Culto del Dragón",
+    "skills": [
+      "Engaño",
+      "Sigilo"
+    ],
+    "tools": [
+      "Utensilios de calígrafo"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "Utensilios de calígrafo, daga, botella de cristal, lámpara, grilletes, aceite, 2 bolsas, túnica, cuerda y 30 po"
+      },
+      {
+        "label": "B",
+        "text": "50 po"
+      }
+    ]
+  },
+  "cuidador_enclave_esmeralda": {
+    "name": "Cuidador del Enclave Esmeralda",
+    "source": "Héroes de Faerûn",
+    "description": "Protegiste las tierras salvajes junto al Enclave Esmeralda, que vela por el equilibrio entre la civilización y la naturaleza.",
+    "abilityOptions": [
+      "constitucion",
+      "inteligencia",
+      "sabiduria"
+    ],
+    "feat": "Novicio del Enclave Esmeralda",
+    "skills": [
+      "Naturaleza",
+      "Supervivencia"
+    ],
+    "tools": [
+      "Kit de herboristería"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "Arco corto, 20 flechas, kit de herboristería, saco de dormir, manta, bolsa, tienda, ropa de viaje y 13 po"
+      },
+      {
+        "label": "B",
+        "text": "50 po"
+      }
+    ]
+  },
+  "mercenario_puno_llameante": {
+    "name": "Mercenario del Puño Llameante",
+    "source": "Héroes de Faerûn",
+    "description": "Serviste en el Puño Llameante, la compañía mercenaria que mantiene el orden (a su manera) en Puerta de Baldur.",
+    "abilityOptions": [
+      "fuerza",
+      "constitucion",
+      "carisma"
+    ],
+    "feat": "Duro",
+    "skills": [
+      "Intimidación",
+      "Percepción"
+    ],
+    "tools": [
+      "Herramientas de herrero"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "Maza, herramientas de herrero, ropa fina, grilletes, ariete portátil y 4 po"
+      },
+      {
+        "label": "B",
+        "text": "50 po"
+      }
+    ],
+    "featNote": "Robusto"
+  },
+  "tocado_por_genio": {
+    "name": "Tocado por un genio",
+    "source": "Héroes de Faerûn",
+    "description": "Un genio dejó su huella en ti (un pacto, un deseo o un encuentro en Calimshan) y algo de su magia sigue contigo.",
+    "abilityOptions": [
+      "destreza",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": "Iniciado Mágico",
+    "skills": [
+      "Percepción",
+      "Persuasión"
+    ],
+    "tools": [
+      "Herramientas de soplador de vidrio"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "Martillo ligero, herramientas de soplador de vidrio, ropa fina, lámpara, aceite, odre y 2 po"
+      },
+      {
+        "label": "B",
+        "text": "50 po"
+      }
+    ],
+    "featNote": "Mago"
+  },
+  "arpista": {
+    "name": "Arpista",
+    "source": "Héroes de Faerûn",
+    "description": "Formas parte de los Arpistas, la red secreta que combate la tiranía y el abuso de poder en Faerûn.",
+    "abilityOptions": [
+      "destreza",
+      "inteligencia",
+      "carisma"
+    ],
+    "feat": "Agente Arpista",
+    "skills": [
+      "Interpretación",
+      "Juego de Manos"
+    ],
+    "tools": [
+      "Kit de disfraz"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "Kit de disfraz, saco de dormir, disfraz, garfio, cuerda, ropa de viaje y 14 po"
+      },
+      {
+        "label": "B",
+        "text": "50 po"
+      }
+    ]
+  },
+  "pescador_hielo": {
+    "name": "Pescador del hielo",
+    "source": "Héroes de Faerûn",
+    "description": "Pescaste sobre los lagos helados del Valle del Viento Helado, donde un descuido se paga con la vida.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion"
+    ],
+    "feat": "Alerta",
+    "skills": [
+      "Trato con Animales",
+      "Atletismo"
+    ],
+    "tools": [
+      "Herramientas de tallista"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "Herramientas de tallista, cesta, polipasto, cubo, cadena, trampa de caza, red, pértiga, raciones, cuerda, ropa de viaje y 32 po"
+      },
+      {
+        "label": "B",
+        "text": "50 po"
+      }
+    ]
+  },
+  "caballero_guantelete": {
+    "name": "Caballero del Guantelete",
+    "source": "Héroes de Faerûn",
+    "description": "Te uniste a la Orden del Guantelete, devotos guerreros que combaten el mal allí donde se manifiesta.",
+    "abilityOptions": [
+      "fuerza",
+      "inteligencia",
+      "sabiduria"
+    ],
+    "feat": "Aprendiz del Guantelete",
+    "skills": [
+      "Atletismo",
+      "Medicina"
+    ],
+    "tools": [
+      "Herramientas de herrero"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "Lanza, herramientas de herrero, linterna sorda, símbolo sagrado, grilletes, aceite, yesquero, ropa de viaje y 9 po"
+      },
+      {
+        "label": "B",
+        "text": "50 po"
+      }
+    ]
+  },
+  "vasallo_alianza_senores": {
+    "name": "Vasallo de la Alianza de los Señores",
+    "source": "Héroes de Faerûn",
+    "description": "Sirves a la Alianza de los Señores, la coalición de ciudades y gobernantes que defiende la civilización frente a sus amenazas.",
+    "abilityOptions": [
+      "fuerza",
+      "inteligencia",
+      "carisma"
+    ],
+    "feat": "Agente de la Alianza de los Señores",
+    "skills": [
+      "Perspicacia",
+      "Persuasión"
+    ],
+    "tools": [
+      "Utensilios de calígrafo"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "2 jabalinas, utensilios de calígrafo, ropa fina, tinta, 5 plumas, pergamino y 13 po"
+      },
+      {
+        "label": "B",
+        "text": "50 po"
+      }
+    ]
+  },
+  "peregrino_pozo_lunar": {
+    "name": "Peregrino del pozo lunar",
+    "source": "Héroes de Faerûn",
+    "description": "Peregrinaste entre los pozos lunares sagrados de las Moonshaes, donde se honra a la Madre Tierra.",
+    "abilityOptions": [
+      "constitucion",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": "Iniciado Mágico",
+    "skills": [
+      "Naturaleza",
+      "Interpretación"
+    ],
+    "tools": [
+      "Útiles de pintor"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "featNote": "Druida"
+  },
+  "saqueador_tumbas_mulhorandi": {
+    "name": "Saqueador de tumbas mulhorandi",
+    "source": "Héroes de Faerûn",
+    "description": "Exploraste las tumbas de los antiguos reyes-dioses de Mulhorand, sorteando trampas y maldiciones.",
+    "abilityOptions": [
+      "destreza",
+      "constitucion",
+      "inteligencia"
+    ],
+    "feat": "Afortunado",
+    "skills": [
+      "Investigación",
+      "Religión"
+    ],
+    "tools": [
+      "Herramientas de albañil"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "guardian_mythal": {
+    "name": "Guardián del mythal",
+    "source": "Héroes de Faerûn",
+    "description": "Cuidaste de un mythal, uno de los grandes tejidos de magia élfica que protegen antiguas ciudades.",
+    "abilityOptions": [
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": "Artesano",
+    "skills": [
+      "Conocimiento Arcano",
+      "Historia"
+    ],
+    "tools": [
+      "Herramientas de joyero"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "escudero_dragon_purpura": {
+    "name": "Escudero del Dragón Púrpura",
+    "source": "Héroes de Faerûn",
+    "description": "Serviste como escudero de los Caballeros del Dragón Púrpura, la orden de caballería de Cormyr.",
+    "abilityOptions": [
+      "fuerza",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": "Torre del Dragón Púrpura",
+    "skills": [
+      "Trato con Animales",
+      "Perspicacia"
+    ],
+    "tools": [
+      "Herramientas de navegante"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "errante_rashemi": {
+    "name": "Errante rashemi",
+    "source": "Héroes de Faerûn",
+    "description": "Saliste de Rashemen en tu dajemma, el viaje iniciático por el que los rashemi conocen el mundo.",
+    "abilityOptions": [
+      "fuerza",
+      "constitucion",
+      "carisma"
+    ],
+    "feat": "Duro",
+    "skills": [
+      "Intimidación",
+      "Percepción"
+    ],
+    "tools": [
+      "Herramientas de cartógrafo"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "featNote": "Robusto"
+  },
+  "exiliado_maestros_sombra": {
+    "name": "Exiliado de los Maestros de la Sombra",
+    "source": "Héroes de Faerûn",
+    "description": "Te formaste entre los Maestros de la Sombra de Telflamm y huiste de ellos; tus antiguos compañeros no lo han olvidado.",
+    "abilityOptions": [
+      "destreza",
+      "inteligencia",
+      "carisma"
+    ],
+    "feat": "Atacante salvaje",
+    "skills": [
+      "Acrobacias",
+      "Sigilo"
+    ],
+    "tools": [
+      "Herramientas de ladrón"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "iniciado_fuego_conjuro": {
+    "name": "Iniciado del fuego de conjuro",
+    "source": "Héroes de Faerûn",
+    "description": "Naciste con el raro don del fuego de conjuro, capaz de absorber magia y devolverla como llamas.",
+    "abilityOptions": [
+      "constitucion",
+      "inteligencia",
+      "carisma"
+    ],
+    "feat": "Chispa del fuego de conjuro",
+    "skills": [
+      "Conocimiento Arcano",
+      "Percepción"
+    ],
+    "tools": [
+      "Juego (a elegir)"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "mercenario_zhentarim": {
+    "name": "Mercenario zhentarim",
+    "source": "Héroes de Faerûn",
+    "description": "Trabajaste para la Red Negra: mercenarios, contrabandistas y comerciantes sin escrúpulos.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "carisma"
+    ],
+    "feat": "Rufián zhentarim",
+    "skills": [
+      "Intimidación",
+      "Percepción"
+    ],
+    "tools": [
+      "Kit de falsificación"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "heredero_aberrante": {
+    "name": "Heredero aberrante",
+    "source": "Eberron: Forja del Artífice",
+    "description": "Una marca dracónica aberrante apareció en tu piel, fuera de los linajes de las casas; la gente la teme.",
+    "abilityOptions": [
+      "fuerza",
+      "constitucion",
+      "carisma"
+    ],
+    "feat": "Marca dracónica aberrante",
+    "skills": [
+      "Historia",
+      "Persuasión"
+    ],
+    "tools": [
+      "Kit de disfraz"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "arqueologo_eberron": {
+    "name": "Arqueólogo",
+    "source": "Eberron: Forja del Artífice",
+    "description": "Buscas los secretos de civilizaciones perdidas en ruinas de Xen'drik, Khyber o Cyre.",
+    "abilityOptions": [
+      "destreza",
+      "inteligencia",
+      "sabiduria"
+    ],
+    "feat": "Habilidoso",
+    "skills": [
+      "Historia",
+      "Supervivencia"
+    ],
+    "tools": [
+      "Herramientas de cartógrafo"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "agente_casa": {
+    "name": "Agente de una casa",
+    "source": "Eberron: Forja del Artífice",
+    "description": "Trabajas para una casa dracónica sin portar su marca: espía, negociador o guardaespaldas.",
+    "abilityOptions": [
+      "fuerza",
+      "inteligencia",
+      "carisma"
+    ],
+    "feat": "Afortunado",
+    "skills": [
+      "Investigación",
+      "Persuasión"
+    ],
+    "tools": [
+      "Herramientas de artesano (a elegir)"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "heredero_cannith": {
+    "name": "Heredero de la Casa Cannith",
+    "source": "Eberron: Forja del Artífice",
+    "description": "Llevas la Marca de Creación de la Casa Cannith, artífices y forjadores de Khorvaire.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "inteligencia"
+    ],
+    "feat": "Marca de Creación",
+    "skills": [
+      "Investigación",
+      "Juego de Manos"
+    ],
+    "tools": [
+      "Herramientas de artesano (a elegir)"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "heredero_deneith": {
+    "name": "Heredero de la Casa Deneith",
+    "source": "Eberron: Forja del Artífice",
+    "description": "Llevas la Marca del Centinela de la Casa Deneith, guardaespaldas y mercenarios.",
+    "abilityOptions": [
+      "fuerza",
+      "constitucion",
+      "sabiduria"
+    ],
+    "feat": "Marca del Centinela",
+    "skills": [
+      "Perspicacia",
+      "Percepción"
+    ],
+    "tools": [
+      "Juego (a elegir)"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "heredero_ghallanda": {
+    "name": "Heredero de la Casa Ghallanda",
+    "source": "Eberron: Forja del Artífice",
+    "description": "Llevas la Marca de Hospitalidad de la Casa Ghallanda, posaderos y anfitriones.",
+    "abilityOptions": [
+      "destreza",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": "Marca de Hospitalidad",
+    "skills": [
+      "Perspicacia",
+      "Persuasión"
+    ],
+    "tools": [
+      "Utensilios de cocinero"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "heredero_jorasco": {
+    "name": "Heredero de la Casa Jorasco",
+    "source": "Eberron: Forja del Artífice",
+    "description": "Llevas la Marca de Curación de la Casa Jorasco, sanadores de pago.",
+    "abilityOptions": [
+      "destreza",
+      "constitucion",
+      "sabiduria"
+    ],
+    "feat": "Marca de Curación",
+    "skills": [
+      "Medicina",
+      "Sigilo"
+    ],
+    "tools": [
+      "Kit de herboristería"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "heredero_kundarak": {
+    "name": "Heredero de la Casa Kundarak",
+    "source": "Eberron: Forja del Artífice",
+    "description": "Llevas la Marca de Custodia de la Casa Kundarak, banqueros y guardianes de cámaras.",
+    "abilityOptions": [
+      "fuerza",
+      "constitucion",
+      "inteligencia"
+    ],
+    "feat": "Marca de Custodia",
+    "skills": [
+      "Conocimiento Arcano",
+      "Investigación"
+    ],
+    "tools": [
+      "Herramientas de ladrón"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "heredero_lyrandar": {
+    "name": "Heredero de la Casa Lyrandar",
+    "source": "Eberron: Forja del Artífice",
+    "description": "Llevas la Marca de Tormenta de la Casa Lyrandar, navegantes de barcos y aeronaves elementales.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "carisma"
+    ],
+    "feat": "Marca de Tormenta",
+    "skills": [
+      "Acrobacias",
+      "Naturaleza"
+    ],
+    "tools": [
+      "Herramientas de navegante"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "heredero_medani": {
+    "name": "Heredero de la Casa Medani",
+    "source": "Eberron: Forja del Artífice",
+    "description": "Llevas la Marca de Detección de la Casa Medani, investigadores y detectores de amenazas.",
+    "abilityOptions": [
+      "destreza",
+      "inteligencia",
+      "sabiduria"
+    ],
+    "feat": "Marca de Detección",
+    "skills": [
+      "Perspicacia",
+      "Investigación"
+    ],
+    "tools": [
+      "Kit de disfraz"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "heredero_orien": {
+    "name": "Heredero de la Casa Orien",
+    "source": "Eberron: Forja del Artífice",
+    "description": "Llevas la Marca de Paso de la Casa Orien, mensajeros y transportistas.",
+    "abilityOptions": [
+      "destreza",
+      "constitucion",
+      "inteligencia"
+    ],
+    "feat": "Marca de Paso",
+    "skills": [
+      "Acrobacias",
+      "Atletismo"
+    ],
+    "tools": [
+      "Herramientas de cartógrafo"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "heredero_phiarlan": {
+    "name": "Heredero de la Casa Phiarlan",
+    "source": "Eberron: Forja del Artífice",
+    "description": "Llevas la Marca de Sombra de la Casa Phiarlan, artistas que también venden secretos.",
+    "abilityOptions": [
+      "destreza",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": "Marca de Sombra",
+    "skills": [
+      "Engaño",
+      "Sigilo"
+    ],
+    "tools": [
+      "Kit de disfraz"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "heredero_sivis": {
+    "name": "Heredero de la Casa Sivis",
+    "source": "Eberron: Forja del Artífice",
+    "description": "Llevas la Marca de Escritura de la Casa Sivis, escribas, traductores y mensajeros.",
+    "abilityOptions": [
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": "Marca de Escritura",
+    "skills": [
+      "Historia",
+      "Percepción"
+    ],
+    "tools": [
+      "Utensilios de calígrafo"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "heredero_tharashk": {
+    "name": "Heredero de la Casa Tharashk",
+    "source": "Eberron: Forja del Artífice",
+    "description": "Llevas la Marca de Búsqueda de la Casa Tharashk, rastreadores y prospectores.",
+    "abilityOptions": [
+      "constitucion",
+      "inteligencia",
+      "sabiduria"
+    ],
+    "feat": "Marca de Búsqueda",
+    "skills": [
+      "Percepción",
+      "Supervivencia"
+    ],
+    "tools": [
+      "Juego (a elegir)"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "heredero_thuranni": {
+    "name": "Heredero de la Casa Thuranni",
+    "source": "Eberron: Forja del Artífice",
+    "description": "Llevas la Marca de Sombra de la Casa Thuranni, artistas y asesinos escindidos de Phiarlan.",
+    "abilityOptions": [
+      "destreza",
+      "inteligencia",
+      "carisma"
+    ],
+    "feat": "Marca de Sombra",
+    "skills": [
+      "Interpretación",
+      "Sigilo"
+    ],
+    "tools": [
+      "Instrumento musical (a elegir)"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "heredero_vadalis": {
+    "name": "Heredero de la Casa Vadalis",
+    "source": "Eberron: Forja del Artífice",
+    "description": "Llevas la Marca de Doma de la Casa Vadalis, criadores de monturas y bestias mágicas.",
+    "abilityOptions": [
+      "constitucion",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": "Marca de Doma",
+    "skills": [
+      "Trato con Animales",
+      "Naturaleza"
+    ],
+    "tools": [
+      "Kit de herboristería"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "inquisitivo": {
+    "name": "Inquisitivo",
+    "source": "Eberron: Forja del Artífice",
+    "description": "Eres un investigador de Sharn o de otra ciudad: sigues pistas donde la guardia no llega.",
+    "abilityOptions": [
+      "constitucion",
+      "inteligencia",
+      "carisma"
+    ],
+    "feat": "Alerta",
+    "skills": [
+      "Perspicacia",
+      "Investigación"
+    ],
+    "tools": [
+      "Herramientas de ladrón"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "juerguista": {
+    "name": "Juerguista",
+    "source": "El libro de los apetitos de Astarion",
+    "description": "Viviste para las fiestas, el vino y la buena compañía, y sabes moverte en cualquier celebración.",
+    "abilityOptions": [
+      "destreza",
+      "inteligencia",
+      "carisma"
+    ],
+    "feat": "Juerguista incansable",
+    "skills": [
+      "Engaño",
+      "Persuasión"
+    ],
+    "tools": [
+      "Juego (a elegir)"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "devoto_vampiro": {
+    "name": "Devoto de un vampiro",
+    "source": "El libro de los apetitos de Astarion",
+    "description": "Serviste a un vampiro, por voluntad, encanto o necesidad, y su sombra aún te acompaña.",
+    "abilityOptions": [
+      "fuerza",
+      "constitucion",
+      "carisma"
+    ],
+    "feat": "Juguete del vampiro",
+    "skills": [
+      "Persuasión",
+      "Sigilo"
+    ],
+    "tools": [
+      "Utensilios de cocinero"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "superviviente_vampiro": {
+    "name": "Superviviente de un vampiro",
+    "source": "El libro de los apetitos de Astarion",
+    "description": "Sobreviviste a un vampiro y aprendiste lo necesario para que no vuelva a pasar.",
+    "abilityOptions": [
+      "destreza",
+      "constitucion",
+      "sabiduria"
+    ],
+    "feat": "Cazador de vampiros",
+    "skills": [
+      "Perspicacia",
+      "Religión"
+    ],
+    "tools": [
+      "Herramientas de tallista"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "atormentado": {
+    "name": "Atormentado",
+    "source": "Ravenloft: Los horrores internos",
+    "description": "Un suceso terrible de tu pasado te persigue, y te cuesta confiar en los demás.",
+    "abilityOptions": [
+      "constitucion",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Conocimiento Arcano",
+      "Supervivencia"
+    ],
+    "tools": [
+      "Juego (a elegir)"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "featOptions": [
+      "Superviviente",
+      "Don oscuro (a elegir)"
+    ]
+  },
+  "investigador_ravenloft": {
+    "name": "Investigador",
+    "source": "Ravenloft: Los horrores internos",
+    "description": "Buscas la verdad sin descanso, aunque te lleve a lo sobrenatural.",
+    "abilityOptions": [
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Perspicacia",
+      "Investigación"
+    ],
+    "tools": [
+      "Kit de disfraz"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "featOptions": [
+      "Vista aguda",
+      "Don oscuro (a elegir)"
+    ]
+  },
+  "vagabundo_niebla": {
+    "name": "Vagabundo de la niebla",
+    "source": "Ravenloft: Los horrores internos",
+    "description": "Conocías tu hogar, hasta que las Brumas se alzaron y te arrastraron a un Dominio del Terror. Buscas el camino de vuelta.",
+    "abilityOptions": [
+      "destreza",
+      "constitucion",
+      "sabiduria"
+    ],
+    "feat": "Don oscuro (a elegir)",
+    "skills": [
+      "Supervivencia",
+      "Sigilo"
+    ],
+    "tools": [
+      "Herramientas de artesano (a elegir)"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "featNote": "recomendado: Caminante de la niebla"
+  },
+  "medium_espiritual": {
+    "name": "Médium espiritual",
+    "source": "Ravenloft: Los horrores internos",
+    "description": "Sirves de canal a los espíritus de los muertos: te dan visiones, pero a un precio.",
+    "abilityOptions": [
+      "constitucion",
+      "inteligencia",
+      "sabiduria"
+    ],
+    "feat": "Don oscuro (a elegir)",
+    "skills": [
+      "Perspicacia",
+      "Religión"
+    ],
+    "tools": [
+      "Juego (a elegir)"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "featNote": "recomendado: Susurros reunidos"
+  },
+  "agente_novena_pluma": {
+    "name": "Agente de la Novena Pluma",
+    "source": "Arcanos desatados",
+    "description": "Trabajas para la Novena Pluma, una facción que roba y custodia secretos mágicos.",
+    "abilityOptions": [
+      "destreza",
+      "inteligencia",
+      "carisma"
+    ],
+    "feat": "Infiltrado arcano",
+    "skills": [
+      "Conocimiento Arcano",
+      "Juego de Manos"
+    ],
+    "tools": [
+      "Herramientas de ladrón"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "espia_conclave_enjoyado": {
+    "name": "Espía del Cónclave Enjoyado",
+    "source": "Arcanos desatados",
+    "description": "Espías para el Cónclave Enjoyado, una facción de magos que comercia con influencia.",
+    "abilityOptions": [
+      "destreza",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": "Elocuencia arcana",
+    "skills": [
+      "Engaño",
+      "Percepción"
+    ],
+    "tools": [
+      "Kit de disfraz"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "experimento_alba_cosmica": {
+    "name": "Experimento del Alba Cósmica",
+    "source": "Arcanos desatados",
+    "description": "La facción del Alba Cósmica experimentó contigo, y tu cuerpo ya no es del todo el que era.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion"
+    ],
+    "feat": "Anatomía transmutada",
+    "skills": [
+      "Atletismo",
+      "Supervivencia"
+    ],
+    "tools": [
+      "Herramientas de artesano (a elegir)"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "recluta_pacto_tumba": {
+    "name": "Recluta del Pacto de la Tumba",
+    "source": "Arcanos desatados",
+    "description": "Te uniste al Pacto de la Tumba, que vigila la frontera entre la vida y la muerte.",
+    "abilityOptions": [
+      "fuerza",
+      "inteligencia",
+      "sabiduria"
+    ],
+    "feat": "Enterrador arcano",
+    "skills": [
+      "Historia",
+      "Medicina"
+    ],
+    "tools": [
+      "Kit de herboristería"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "cazatormentas_crisol": {
+    "name": "Cazatormentas del Crisol",
+    "source": "Arcanos desatados",
+    "description": "Persigues tormentas mágicas junto al Crisol para estudiar (y embotellar) su energía.",
+    "abilityOptions": [
+      "fuerza",
+      "constitucion",
+      "inteligencia"
+    ],
+    "feat": "Sobrecarga arcana",
+    "skills": [
+      "Atletismo",
+      "Naturaleza"
+    ],
+    "tools": [
+      "Herramientas de soplador de vidrio"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "adiestrador_familiares": {
+    "name": "Adiestrador de familiares",
+    "source": "Arcanos desatados",
+    "description": "Cuidaste y adiestraste familiares para magos de toda clase.",
+    "abilityOptions": [
+      "constitucion",
+      "inteligencia",
+      "sabiduria"
+    ],
+    "feat": "Amigo familiar",
+    "skills": [
+      "Trato con Animales",
+      "Conocimiento Arcano"
+    ],
+    "tools": [
+      "Juego (a elegir)"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "iniciado_tejedores_horizonte": {
+    "name": "Iniciado de los Tejedores del Horizonte",
+    "source": "Arcanos desatados",
+    "description": "Los Tejedores del Horizonte te enseñaron a abrir y cruzar portales.",
+    "abilityOptions": [
+      "destreza",
+      "constitucion",
+      "sabiduria"
+    ],
+    "feat": "Saltador de portales",
+    "skills": [
+      "Acrobacias",
+      "Supervivencia"
+    ],
+    "tools": [
+      "Herramientas de tejedor"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "artista_circo_fantasmico": {
+    "name": "Artista del Circo Fantásmico",
+    "source": "Arcanos desatados",
+    "description": "Actuaste en el Circo Fantásmico, donde la ilusión es parte del espectáculo.",
+    "abilityOptions": [
+      "destreza",
+      "constitucion",
+      "carisma"
+    ],
+    "feat": "Artista arcano",
+    "skills": [
+      "Engaño",
+      "Interpretación"
+    ],
+    "tools": [
+      "Kit de disfraz"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "aprendiz_vidente": {
+    "name": "Aprendiz de vidente",
+    "source": "Arcanos desatados",
+    "description": "Aprendiste a leer presagios y atisbos del futuro junto a un vidente.",
+    "abilityOptions": [
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": "Presagios arcanos",
+    "skills": [
+      "Historia",
+      "Perspicacia"
+    ],
+    "tools": [
+      "Herramientas de navegante"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "pupilo_manos_protectoras": {
+    "name": "Pupilo de las Manos Protectoras",
+    "source": "Arcanos desatados",
+    "description": "Las Manos Protectoras te acogieron; ahora proteges a otros con su magia.",
+    "abilityOptions": [
+      "constitucion",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": "Salvaguarda arcana",
+    "skills": [
+      "Perspicacia",
+      "Medicina"
+    ],
+    "tools": [
+      "Utensilios de cocinero"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ]
+  },
+  "heroe_pueblo": {
+    "name": "Héroe del pueblo",
+    "source": "Manual del Jugador 2014",
+    "legacy": true,
+    "description": "Vienes de un origen humilde, pero tu gente te ve como su campeón tras un acto de valor.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Trato con Animales",
+      "Supervivencia"
+    ],
+    "tools": [
+      "Herramientas de artesano (a elegir)",
+      "Vehículos (terrestres)"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Hospitalidad rústica",
+      "text": "La gente llana te considera uno de los suyos: te esconde, te da cobijo y descanso, salvo que con ello ponga su vida en peligro."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "forastero": {
+    "name": "Forastero",
+    "source": "Manual del Jugador 2014",
+    "legacy": true,
+    "description": "Creciste lejos de la civilización, en bosques, estepas o montañas.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Atletismo",
+      "Supervivencia"
+    ],
+    "tools": [
+      "Instrumento musical (a elegir)"
+    ],
+    "languages": 1,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Trotamundos",
+      "text": "Tienes una memoria excelente para mapas y geografía: recuerdas la disposición del terreno y los asentamientos. En la naturaleza encuentras comida y agua para ti y hasta cinco personas más cada día, si la zona lo permite."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "pilluelo": {
+    "name": "Pilluelo",
+    "source": "Manual del Jugador 2014",
+    "legacy": true,
+    "description": "Creciste solo en las calles, huérfano y pobre (en la edición española de 2014 se llamaba «Huérfano»).",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Juego de Manos",
+      "Sigilo"
+    ],
+    "tools": [
+      "Kit de disfraz",
+      "Herramientas de ladrón"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Secretos de la ciudad",
+      "text": "Conoces los pasadizos, callejones y tejados de las ciudades: fuera de combate, tú y tus compañeros viajáis por una ciudad al doble de la velocidad normal."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "gladiador": {
+    "name": "Gladiador",
+    "source": "Manual del Jugador 2014",
+    "legacy": true,
+    "description": "Variante del artista: luchas en la arena para entretener al público.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Acrobacias",
+      "Interpretación"
+    ],
+    "tools": [
+      "Kit de disfraz",
+      "Instrumento musical (a elegir)"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "A petición del público",
+      "text": "Siempre encuentras sitio para actuar (en arenas, posadas o circos) y recibes alojamiento y comida modestos a cambio; la gente te reconoce."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "caballero": {
+    "name": "Caballero",
+    "source": "Manual del Jugador 2014",
+    "legacy": true,
+    "description": "Variante del noble: perteneces a una orden de caballería y tienes vasallos a tu servicio.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Historia",
+      "Persuasión"
+    ],
+    "tools": [
+      "Juego (a elegir)"
+    ],
+    "languages": 1,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Séquito",
+      "text": "Te acompañan tres criados leales (un escudero y dos sirvientes) que se ocupan de tareas cotidianas; no luchan por ti."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "pirata": {
+    "name": "Pirata",
+    "source": "Manual del Jugador 2014",
+    "legacy": true,
+    "description": "Variante del marinero: navegaste como pirata y tu nombre aún asusta en los puertos.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Atletismo",
+      "Percepción"
+    ],
+    "tools": [
+      "Herramientas de navegante",
+      "Vehículos (acuáticos)"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Mala reputación",
+      "text": "Tu fama de pirata te precede: en lugares civilizados puedes cometer delitos menores sin que nadie se atreva a denunciarte."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "espia": {
+    "name": "Espía",
+    "source": "Manual del Jugador 2014",
+    "legacy": true,
+    "description": "Variante del criminal: trabajaste recabando secretos para quien pagara.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Engaño",
+      "Sigilo"
+    ],
+    "tools": [
+      "Juego (a elegir)",
+      "Herramientas de ladrón"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Contacto criminal",
+      "text": "Tienes un contacto fiable que te sirve de enlace con una red de espías o criminales y sabe cómo hacerte llegar mensajes."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "guardia_ciudad": {
+    "name": "Guardia de la ciudad",
+    "source": "Guía del Aventurero de la Costa de la Espada",
+    "legacy": true,
+    "description": "Serviste en la guardia de una ciudad, patrullando calles y deteniendo malhechores.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Atletismo",
+      "Perspicacia"
+    ],
+    "tools": [],
+    "languages": 2,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Ojo del vigilante",
+      "text": "Distingues a simple vista a guardias y autoridades, y en cualquier ciudad encuentras enseguida el puesto de guardia o los lugares donde se reúnen los criminales."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "artesano_clan": {
+    "name": "Artesano de clan",
+    "source": "Guía del Aventurero de la Costa de la Espada",
+    "legacy": true,
+    "description": "Aprendiste un oficio a las órdenes de maestros artesanos enanos.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Historia",
+      "Perspicacia"
+    ],
+    "tools": [
+      "Herramientas de artesano (a elegir)"
+    ],
+    "languages": 1,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Respeto del pueblo robusto",
+      "text": "Los enanos te tratan con respeto: en sus asentamientos te dan alojamiento y comida gratis, y te ayudan a encontrar a otros enanos."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "erudito_enclaustrado": {
+    "name": "Erudito enclaustrado",
+    "source": "Guía del Aventurero de la Costa de la Espada",
+    "legacy": true,
+    "description": "Te formaste en un monasterio o academia dedicado al saber.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Historia"
+    ],
+    "tools": [],
+    "languages": 2,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Acceso a bibliotecas",
+      "text": "Tienes acceso libre a la biblioteca de tu institución y facilidades en otras; sabes a quién preguntar para encontrar un dato."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ],
+    "skillChoices": [
+      {
+        "count": 1,
+        "options": [
+          "Conocimiento Arcano",
+          "Naturaleza",
+          "Religión"
+        ]
+      }
+    ]
+  },
+  "cortesano": {
+    "name": "Cortesano",
+    "source": "Guía del Aventurero de la Costa de la Espada",
+    "legacy": true,
+    "description": "Pasaste años en una corte, entre intrigas, protocolo y favores.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Perspicacia",
+      "Persuasión"
+    ],
+    "tools": [],
+    "languages": 2,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Funcionario de la corte",
+      "text": "Conoces el funcionamiento de las cortes y burocracias: sabes a quién acudir para conseguir audiencias o documentos."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "agente_faccion": {
+    "name": "Agente de facción",
+    "source": "Guía del Aventurero de la Costa de la Espada",
+    "legacy": true,
+    "description": "Sirves a una facción de los Reinos (Arpistas, Enclave Esmeralda, Zhentarim...).",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Perspicacia"
+    ],
+    "tools": [],
+    "languages": 2,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Refugio seguro",
+      "text": "Tu facción tiene casas francas y aliados en muchas ciudades: te dan alojamiento, información y ayuda discreta."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ],
+    "skillChoices": [
+      {
+        "count": 1,
+        "options": [
+          "Conocimiento Arcano",
+          "Historia",
+          "Investigación",
+          "Naturaleza",
+          "Religión",
+          "Medicina",
+          "Percepción",
+          "Perspicacia",
+          "Supervivencia",
+          "Trato con Animales",
+          "Engaño",
+          "Interpretación",
+          "Intimidación",
+          "Persuasión"
+        ]
+      }
+    ]
+  },
+  "viajero_lejano": {
+    "name": "Viajero lejano",
+    "source": "Guía del Aventurero de la Costa de la Espada",
+    "legacy": true,
+    "description": "Vienes de una tierra muy lejana y todo aquí te resulta nuevo.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Perspicacia",
+      "Percepción"
+    ],
+    "tools": [
+      "Juego o instrumento musical (a elegir)"
+    ],
+    "languages": 1,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Todas las miradas sobre ti",
+      "text": "Tu aspecto y costumbres extranjeras atraen la curiosidad: la gente quiere conocerte, y algún noble podría invitarte a su casa."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "heredero_scag": {
+    "name": "Heredero",
+    "source": "Guía del Aventurero de la Costa de la Espada",
+    "legacy": true,
+    "description": "Recibiste una herencia que cambió tu vida.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Supervivencia"
+    ],
+    "tools": [
+      "Juego o instrumento musical (a elegir)"
+    ],
+    "languages": 1,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Herencia",
+      "text": "Heredaste algo valioso (un documento, un objeto, un título o un secreto) que alguien más codicia. Defínelo con tu DM."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ],
+    "skillChoices": [
+      {
+        "count": 1,
+        "options": [
+          "Conocimiento Arcano",
+          "Historia",
+          "Religión"
+        ]
+      }
+    ]
+  },
+  "caballero_orden": {
+    "name": "Caballero de la orden",
+    "source": "Guía del Aventurero de la Costa de la Espada",
+    "legacy": true,
+    "description": "Perteneces a una orden de caballería con su propio código.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Persuasión"
+    ],
+    "tools": [
+      "Juego o instrumento musical (a elegir)"
+    ],
+    "languages": 1,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Respeto caballeresco",
+      "text": "Los miembros de tu orden y quienes la admiran te dan cobijo y ayuda; en ciudades con presencia de tu orden encuentras aliados."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ],
+    "skillChoices": [
+      {
+        "count": 1,
+        "options": [
+          "Conocimiento Arcano",
+          "Historia",
+          "Naturaleza",
+          "Religión"
+        ]
+      }
+    ]
+  },
+  "veterano_mercenario": {
+    "name": "Veterano mercenario",
+    "source": "Guía del Aventurero de la Costa de la Espada",
+    "legacy": true,
+    "description": "Luchaste por dinero en compañías mercenarias.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Atletismo",
+      "Persuasión"
+    ],
+    "tools": [
+      "Juego (a elegir)",
+      "Vehículos (terrestres)"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Vida de mercenario",
+      "text": "Conoces las compañías mercenarias de la región: dónde contratan, quién manda y cómo encontrar trabajo como mercenario."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "cazarrecompensas_urbano": {
+    "name": "Cazarrecompensas urbano",
+    "source": "Guía del Aventurero de la Costa de la Espada",
+    "legacy": true,
+    "description": "Persigues a fugitivos y criminales por las ciudades a cambio de recompensas.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [],
+    "tools": [
+      "Dos a elegir: juego, instrumento musical o herramientas de ladrón"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Oído atento",
+      "text": "Tienes contactos en los bajos fondos y entre la gente bien que te avisan de rumores sobre tus objetivos."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ],
+    "skillChoices": [
+      {
+        "count": 2,
+        "options": [
+          "Engaño",
+          "Perspicacia",
+          "Persuasión",
+          "Sigilo"
+        ]
+      }
+    ]
+  },
+  "miembro_tribu_uthgardt": {
+    "name": "Miembro de una tribu uthgardt",
+    "source": "Guía del Aventurero de la Costa de la Espada",
+    "legacy": true,
+    "description": "Perteneces a una tribu bárbara uthgardt del Norte.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Atletismo",
+      "Supervivencia"
+    ],
+    "tools": [
+      "Instrumento musical o herramientas de artesano (a elegir)"
+    ],
+    "languages": 1,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Herencia uthgardt",
+      "text": "Conoces las tierras del Norte: encuentras el doble de comida y agua al buscar y te reciben las tribus uthgardt y sus aliados."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "noble_aguasprofundas": {
+    "name": "Noble de Aguasprofundas",
+    "source": "Guía del Aventurero de la Costa de la Espada",
+    "legacy": true,
+    "description": "Eres de una familia noble de Aguasprofundas.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Historia",
+      "Persuasión"
+    ],
+    "tools": [
+      "Juego o instrumento musical (a elegir)"
+    ],
+    "languages": 1,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Vida acomodada",
+      "text": "Tu familia te mantiene: en Aguasprofundas vives con un estilo de vida cómodo sin coste, y tu apellido abre puertas."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "antropologo": {
+    "name": "Antropólogo",
+    "source": "La Tumba de la Aniquilación",
+    "legacy": true,
+    "description": "Estudias las culturas y costumbres de otros pueblos.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Perspicacia",
+      "Religión"
+    ],
+    "tools": [],
+    "languages": 2,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Lingüista experto",
+      "text": "Tras unos días con una comunidad que habla un idioma que no conoces, logras comunicarte con ella de forma básica."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "pescador": {
+    "name": "Pescador",
+    "source": "Fantasmas de Saltmarsh",
+    "legacy": true,
+    "description": "Vivías de lo que el agua te daba.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Historia",
+      "Supervivencia"
+    ],
+    "tools": [],
+    "languages": 1,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Cosechar el agua",
+      "text": "Con equipo de pesca y una masa de agua, alimentas cada día a varias personas; y conoces las historias y supersticiones del mar."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "infante_marina": {
+    "name": "Infante de marina",
+    "source": "Fantasmas de Saltmarsh",
+    "legacy": true,
+    "description": "Combatiste como soldado embarcado, desde los barcos hasta la playa.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Atletismo",
+      "Supervivencia"
+    ],
+    "tools": [
+      "Vehículos (acuáticos)",
+      "Vehículos (terrestres)"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Firme",
+      "text": "Te mueves por terreno difícil en barcos, costas y pantanos sin problemas y sabes desembarcar y abordar con rapidez."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "carpintero_naval": {
+    "name": "Carpintero naval",
+    "source": "Fantasmas de Saltmarsh",
+    "legacy": true,
+    "description": "Construiste y reparaste barcos en un astillero.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Historia",
+      "Percepción"
+    ],
+    "tools": [
+      "Herramientas de carpintero",
+      "Vehículos (acuáticos)"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Yo lo arreglo",
+      "text": "Durante un descanso puedes reparar daños de un barco o estructura de madera con tus herramientas."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "contrabandista": {
+    "name": "Contrabandista",
+    "source": "Fantasmas de Saltmarsh",
+    "legacy": true,
+    "description": "Moviste mercancía prohibida esquivando a las autoridades.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Atletismo",
+      "Engaño"
+    ],
+    "tools": [
+      "Vehículos (acuáticos)"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Bajo cuerda",
+      "text": "Conoces una red de contrabandistas: puedes obtener información, pasar mercancía o esconderte con su ayuda."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "vastago_aventurero": {
+    "name": "Vástago de aventurero famoso",
+    "source": "Acquisitions Incorporated",
+    "legacy": true,
+    "description": "Eres hijo o hija de un aventurero célebre.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Percepción",
+      "Interpretación"
+    ],
+    "tools": [
+      "Kit de disfraz",
+      "Instrumento musical (a elegir)"
+    ],
+    "languages": 1,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Apellido conocido",
+      "text": "Tu familia es famosa: usar su nombre te abre puertas y consigue favores menores."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "mercader_fracasado": {
+    "name": "Mercader fracasado",
+    "source": "Acquisitions Incorporated",
+    "legacy": true,
+    "description": "Tu negocio fracasó, pero aprendiste de comercio.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Investigación",
+      "Persuasión"
+    ],
+    "tools": [
+      "Herramientas de artesano (a elegir)"
+    ],
+    "languages": 1,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Cadena de suministro",
+      "text": "Conservas contactos de proveedores: consigues equipo corriente a mejor precio o más rápido."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "apostador": {
+    "name": "Apostador",
+    "source": "Acquisitions Incorporated",
+    "legacy": true,
+    "description": "Vivías de las apuestas.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Engaño",
+      "Perspicacia"
+    ],
+    "tools": [
+      "Juego (a elegir)"
+    ],
+    "languages": 1,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "No me digas las probabilidades",
+      "text": "Calculas apuestas y riesgos con soltura y sabes dónde se juega en cualquier ciudad."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "demandante": {
+    "name": "Demandante",
+    "source": "Acquisitions Incorporated",
+    "legacy": true,
+    "description": "Ganaste (o perdiste) un pleito que te marcó.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Medicina",
+      "Persuasión"
+    ],
+    "tools": [],
+    "languages": 1,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Jerga legal",
+      "text": "Conoces las leyes y trámites: sabes presentar demandas, reclamaciones y encontrar resquicios legales."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "becario_rival": {
+    "name": "Becario rival",
+    "source": "Acquisitions Incorporated",
+    "legacy": true,
+    "description": "Trabajabas de becario en una organización competidora.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Historia",
+      "Investigación"
+    ],
+    "tools": [
+      "Herramientas de artesano (a elegir)"
+    ],
+    "languages": 1,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Informante",
+      "text": "Tienes a alguien dentro de una organización rival que te pasa información."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "atleta": {
+    "name": "Atleta",
+    "source": "Mitos de Theros",
+    "legacy": true,
+    "description": "Competiste en juegos y pruebas atléticas.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Acrobacias",
+      "Atletismo"
+    ],
+    "tools": [
+      "Vehículos (terrestres)"
+    ],
+    "languages": 1,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Ecos de la victoria",
+      "text": "Tus triunfos te dan fama: en una ciudad encuentras admiradores dispuestos a ayudarte y a darte alojamiento."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "sonriente": {
+    "name": "Sonriente",
+    "source": "Guía de exploración de Wildemount",
+    "legacy": true,
+    "description": "Perteneces a los Sonrientes, rebeldes que combaten a los Volstrucker con arte y engaño.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Engaño",
+      "Interpretación"
+    ],
+    "tools": [
+      "Kit de disfraz",
+      "Instrumento musical (a elegir)"
+    ],
+    "languages": 1,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Balada del bufón sonriente",
+      "text": "Conoces la canción secreta de los Sonrientes: al interpretarla, otros miembros te reconocen y te ayudan."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "agente_volstrucker": {
+    "name": "Agente volstrucker",
+    "source": "Guía de exploración de Wildemount",
+    "legacy": true,
+    "description": "Fuiste un agente de los Volstrucker, el cuerpo de asesinos al servicio de la Asamblea Cerberus.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Engaño",
+      "Sigilo"
+    ],
+    "tools": [
+      "Kit de envenenador"
+    ],
+    "languages": 1,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Red de las sombras",
+      "text": "Puedes enviar mensajes secretos a otros agentes de la Cerberus Assembly a través de su red."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "sin_rostro": {
+    "name": "Sin rostro",
+    "source": "Baldur's Gate: Descenso a Avernus",
+    "legacy": true,
+    "description": "Ocultas tu verdadero rostro tras otra identidad para actuar con libertad.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Engaño",
+      "Intimidación"
+    ],
+    "tools": [
+      "Kit de disfraz"
+    ],
+    "languages": 1,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Doble personalidad",
+      "text": "Tienes una identidad pública (tu disfraz) y otra privada; la gente no las relaciona salvo que alguien te descubra."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "funcionario_azorius": {
+    "name": "Funcionario azorius",
+    "source": "Guía del gremialista de Rávnica",
+    "legacy": true,
+    "description": "Perteneces a uno de los diez gremios de Rávnica.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Perspicacia",
+      "Intimidación"
+    ],
+    "tools": [],
+    "languages": 2,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Contactos del gremio",
+      "text": "Tu gremio te respalda: puedes pedir ayuda, información o alojamiento a otros miembros, y añades conjuros del gremio a tu lista si lanzas conjuros (consulta el libro)."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ],
+    "verify": true
+  },
+  "legionario_boros": {
+    "name": "Legionario boros",
+    "source": "Guía del gremialista de Rávnica",
+    "legacy": true,
+    "description": "Perteneces a uno de los diez gremios de Rávnica.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Atletismo",
+      "Intimidación"
+    ],
+    "tools": [],
+    "languages": 1,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Contactos del gremio",
+      "text": "Tu gremio te respalda: puedes pedir ayuda, información o alojamiento a otros miembros, y añades conjuros del gremio a tu lista si lanzas conjuros (consulta el libro)."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ],
+    "verify": true
+  },
+  "agente_dimir": {
+    "name": "Agente dimir",
+    "source": "Guía del gremialista de Rávnica",
+    "legacy": true,
+    "description": "Perteneces a uno de los diez gremios de Rávnica.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Engaño",
+      "Sigilo"
+    ],
+    "tools": [
+      "Kit de disfraz"
+    ],
+    "languages": 1,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Contactos del gremio",
+      "text": "Tu gremio te respalda: puedes pedir ayuda, información o alojamiento a otros miembros, y añades conjuros del gremio a tu lista si lanzas conjuros (consulta el libro)."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ],
+    "verify": true
+  },
+  "agente_golgari": {
+    "name": "Agente golgari",
+    "source": "Guía del gremialista de Rávnica",
+    "legacy": true,
+    "description": "Perteneces a uno de los diez gremios de Rávnica.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Naturaleza",
+      "Supervivencia"
+    ],
+    "tools": [
+      "Kit de envenenador"
+    ],
+    "languages": 2,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Contactos del gremio",
+      "text": "Tu gremio te respalda: puedes pedir ayuda, información o alojamiento a otros miembros, y añades conjuros del gremio a tu lista si lanzas conjuros (consulta el libro)."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ],
+    "verify": true
+  },
+  "anarquista_gruul": {
+    "name": "Anarquista gruul",
+    "source": "Guía del gremialista de Rávnica",
+    "legacy": true,
+    "description": "Perteneces a uno de los diez gremios de Rávnica.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Trato con Animales",
+      "Atletismo"
+    ],
+    "tools": [
+      "Kit de herboristería"
+    ],
+    "languages": 1,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Contactos del gremio",
+      "text": "Tu gremio te respalda: puedes pedir ayuda, información o alojamiento a otros miembros, y añades conjuros del gremio a tu lista si lanzas conjuros (consulta el libro)."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ],
+    "verify": true
+  },
+  "ingeniero_izzet": {
+    "name": "Ingeniero izzet",
+    "source": "Guía del gremialista de Rávnica",
+    "legacy": true,
+    "description": "Perteneces a uno de los diez gremios de Rávnica.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Conocimiento Arcano",
+      "Investigación"
+    ],
+    "tools": [
+      "Herramientas de artesano (a elegir)"
+    ],
+    "languages": 2,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Contactos del gremio",
+      "text": "Tu gremio te respalda: puedes pedir ayuda, información o alojamiento a otros miembros, y añades conjuros del gremio a tu lista si lanzas conjuros (consulta el libro)."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ],
+    "verify": true
+  },
+  "representante_orzhov": {
+    "name": "Representante orzhov",
+    "source": "Guía del gremialista de Rávnica",
+    "legacy": true,
+    "description": "Perteneces a uno de los diez gremios de Rávnica.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Intimidación",
+      "Religión"
+    ],
+    "tools": [],
+    "languages": 2,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Contactos del gremio",
+      "text": "Tu gremio te respalda: puedes pedir ayuda, información o alojamiento a otros miembros, y añades conjuros del gremio a tu lista si lanzas conjuros (consulta el libro)."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ],
+    "verify": true
+  },
+  "cultista_rakdos": {
+    "name": "Cultista rakdos",
+    "source": "Guía del gremialista de Rávnica",
+    "legacy": true,
+    "description": "Perteneces a uno de los diez gremios de Rávnica.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Acrobacias",
+      "Interpretación"
+    ],
+    "tools": [
+      "Instrumento musical (a elegir)"
+    ],
+    "languages": 2,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Contactos del gremio",
+      "text": "Tu gremio te respalda: puedes pedir ayuda, información o alojamiento a otros miembros, y añades conjuros del gremio a tu lista si lanzas conjuros (consulta el libro)."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ],
+    "verify": true
+  },
+  "iniciado_selesnya": {
+    "name": "Iniciado selesnya",
+    "source": "Guía del gremialista de Rávnica",
+    "legacy": true,
+    "description": "Perteneces a uno de los diez gremios de Rávnica.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Naturaleza",
+      "Persuasión"
+    ],
+    "tools": [
+      "Instrumento musical (a elegir)"
+    ],
+    "languages": 2,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Contactos del gremio",
+      "text": "Tu gremio te respalda: puedes pedir ayuda, información o alojamiento a otros miembros, y añades conjuros del gremio a tu lista si lanzas conjuros (consulta el libro)."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ],
+    "verify": true
+  },
+  "cientifico_simic": {
+    "name": "Científico simic",
+    "source": "Guía del gremialista de Rávnica",
+    "legacy": true,
+    "description": "Perteneces a uno de los diez gremios de Rávnica.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Conocimiento Arcano",
+      "Medicina"
+    ],
+    "tools": [],
+    "languages": 2,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Contactos del gremio",
+      "text": "Tu gremio te respalda: puedes pedir ayuda, información o alojamiento a otros miembros, y añades conjuros del gremio a tu lista si lanzas conjuros (consulta el libro)."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ],
+    "verify": true
+  },
+  "extraviado_feerico": {
+    "name": "Extraviado feérico",
+    "source": "Más allá de la Luz de las Brujas",
+    "legacy": true,
+    "description": "Te perdiste en el Feywild de niño y regresaste cambiado.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Engaño",
+      "Supervivencia"
+    ],
+    "tools": [
+      "Instrumento musical (a elegir)"
+    ],
+    "languages": 1,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Conexión con el Feywild",
+      "text": "Las criaturas feéricas te ven como uno de los suyos: tienden a ser amistosas contigo y a ayudarte. Idioma: élfico, gnomo, goblin o silvano."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "mano_luz_brujas": {
+    "name": "Mano de la Luz de las Brujas",
+    "source": "Más allá de la Luz de las Brujas",
+    "legacy": true,
+    "description": "Trabajaste entre bastidores en el Carnaval de la Luz de las Brujas.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": null,
+    "skills": [
+      "Interpretación",
+      "Juego de Manos"
+    ],
+    "tools": [
+      "Kit de disfraz o instrumento musical (a elegir)"
+    ],
+    "languages": 1,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Parte del Carnaval",
+      "text": "El Carnaval de la Luz de las Brujas es tu hogar: allí siempre tienes comida y cobijo, y un compañero del carnaval que te aconseja."
+    },
+    "featOptions": [
+      "Alerta",
+      "Artesano",
+      "Curador",
+      "Afortunado",
+      "Iniciado Mágico",
+      "Músico",
+      "Atacante salvaje",
+      "Habilidoso",
+      "Peleador de taberna",
+      "Duro"
+    ]
+  },
+  "vagabundo_astral": {
+    "name": "Vagabundo astral",
+    "source": "Spelljammer: Aventuras en el espacio",
+    "legacy": true,
+    "description": "Has vagado por el Mar Astral más tiempo del que recuerdas.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": "Iniciado Mágico",
+    "skills": [
+      "Perspicacia",
+      "Religión"
+    ],
+    "tools": [],
+    "languages": 2,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Contacto divino",
+      "text": "Tuviste contacto con un dios en el Mar Astral. Además pareces más joven de lo que eres (tienes 20d6 años más)."
+    },
+    "featNote": "Clérigo"
+  },
+  "espaciano_salvaje": {
+    "name": "Espaciano salvaje",
+    "source": "Spelljammer: Aventuras en el espacio",
+    "legacy": true,
+    "description": "Navegar entre las estrellas siempre fue tu vida.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": "Duro",
+    "skills": [
+      "Atletismo",
+      "Supervivencia"
+    ],
+    "tools": [
+      "Herramientas de navegante",
+      "Vehículos (espaciales)"
+    ],
+    "languages": 0,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Adaptación al espacio salvaje",
+      "text": "No tienes desventaja en ataques cuerpo a cuerpo mientras flotas en gravedad cero. Sobreviviste a un encuentro cercano con un monstruo del espacio."
+    },
+    "featNote": "Robusto"
+  },
+  "estudiante_lorehold": {
+    "name": "Estudiante de Lorehold",
+    "source": "Strixhaven: Un currículo del caos",
+    "legacy": true,
+    "description": "Estudias en el colegio Lorehold de la universidad mágica de Strixhaven.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": "Iniciado de Strixhaven",
+    "skills": [
+      "Historia",
+      "Religión"
+    ],
+    "tools": [],
+    "languages": 2,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Iniciado de Lorehold",
+      "text": "Obtienes la dote Iniciado de Strixhaven y eliges Lorehold en ella."
+    },
+    "featNote": "Lorehold",
+    "verify": true
+  },
+  "estudiante_prismari": {
+    "name": "Estudiante de Prismari",
+    "source": "Strixhaven: Un currículo del caos",
+    "legacy": true,
+    "description": "Estudias en el colegio Prismari de la universidad mágica de Strixhaven.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": "Iniciado de Strixhaven",
+    "skills": [
+      "Acrobacias",
+      "Interpretación"
+    ],
+    "tools": [
+      "Instrumento musical o herramientas de artesano (a elegir)"
+    ],
+    "languages": 1,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Iniciado de Prismari",
+      "text": "Obtienes la dote Iniciado de Strixhaven y eliges Prismari en ella."
+    },
+    "featNote": "Prismari"
+  },
+  "estudiante_quandrix": {
+    "name": "Estudiante de Quandrix",
+    "source": "Strixhaven: Un currículo del caos",
+    "legacy": true,
+    "description": "Estudias en el colegio Quandrix de la universidad mágica de Strixhaven.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": "Iniciado de Strixhaven",
+    "skills": [
+      "Conocimiento Arcano",
+      "Naturaleza"
+    ],
+    "tools": [
+      "Herramientas de artesano (a elegir)"
+    ],
+    "languages": 1,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Iniciado de Quandrix",
+      "text": "Obtienes la dote Iniciado de Strixhaven y eliges Quandrix en ella."
+    },
+    "featNote": "Quandrix"
+  },
+  "estudiante_silverquill": {
+    "name": "Estudiante de Silverquill",
+    "source": "Strixhaven: Un currículo del caos",
+    "legacy": true,
+    "description": "Estudias en el colegio Silverquill de la universidad mágica de Strixhaven.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": "Iniciado de Strixhaven",
+    "skills": [
+      "Intimidación",
+      "Persuasión"
+    ],
+    "tools": [],
+    "languages": 2,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Iniciado de Silverquill",
+      "text": "Obtienes la dote Iniciado de Strixhaven y eliges Silverquill en ella."
+    },
+    "featNote": "Silverquill",
+    "verify": true
+  },
+  "estudiante_witherbloom": {
+    "name": "Estudiante de Witherbloom",
+    "source": "Strixhaven: Un currículo del caos",
+    "legacy": true,
+    "description": "Estudias en el colegio Witherbloom de la universidad mágica de Strixhaven.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": "Iniciado de Strixhaven",
+    "skills": [
+      "Naturaleza",
+      "Supervivencia"
+    ],
+    "tools": [
+      "Kit de herboristería"
+    ],
+    "languages": 1,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Iniciado de Witherbloom",
+      "text": "Obtienes la dote Iniciado de Strixhaven y eliges Witherbloom en ella."
+    },
+    "featNote": "Witherbloom"
+  },
+  "caballero_solamnia": {
+    "name": "Caballero de Solamnia",
+    "source": "Dragonlance: La sombra de la Reina de los Dragones",
+    "legacy": true,
+    "description": "Te formaste en la Orden de los Caballeros de Solamnia.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": "Escudero de Solamnia",
+    "skills": [
+      "Atletismo",
+      "Supervivencia"
+    ],
+    "tools": [],
+    "languages": 2,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Escudero de Solamnia",
+      "text": "Obtienes la dote Escudero de Solamnia. Solo en campañas de Dragonlance."
+    }
+  },
+  "mago_alta_hechiceria": {
+    "name": "Mago de la Alta Hechicería",
+    "source": "Dragonlance: La sombra de la Reina de los Dragones",
+    "legacy": true,
+    "description": "Te uniste a los Magos de la Alta Hechicería, que vigilan el uso de la magia en Krynn.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": "Iniciado de la Alta Hechicería",
+    "skills": [
+      "Conocimiento Arcano",
+      "Historia"
+    ],
+    "tools": [],
+    "languages": 2,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Iniciado de la Alta Hechicería",
+      "text": "Obtienes la dote Iniciado de la Alta Hechicería. Solo en campañas de Dragonlance."
+    }
+  },
+  "exposito_gigante": {
+    "name": "Expósito de los gigantes",
+    "source": "La gloria de los gigantes",
+    "legacy": true,
+    "description": "Te criaron gigantes, y aprendiste a vivir en un mundo hecho a su medida.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": "Golpe de los Gigantes",
+    "skills": [
+      "Intimidación",
+      "Supervivencia"
+    ],
+    "tools": [],
+    "languages": 2,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Golpe de los gigantes",
+      "text": "Obtienes la dote Golpe de los Gigantes. Sabes gigante y otro idioma."
+    }
+  },
+  "tallador_runas": {
+    "name": "Tallador de runas",
+    "source": "La gloria de los gigantes",
+    "legacy": true,
+    "description": "Dedicaste tu vida a la magia de las runas de los gigantes.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": "Moldeador de Runas",
+    "skills": [
+      "Historia",
+      "Percepción"
+    ],
+    "tools": [
+      "Herramientas de artesano (a elegir)"
+    ],
+    "languages": 1,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Moldeador de runas",
+      "text": "Obtienes la dote Moldeador de Runas. Sabes gigante."
+    }
+  },
+  "guardian_puerta": {
+    "name": "Guardián de la puerta",
+    "source": "Planescape: Aventuras en el multiverso",
+    "legacy": true,
+    "description": "Viviste junto a un portal a otro plano, en un pueblo-puerta de las Tierras Exteriores.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": "Vástago de los Planos Exteriores",
+    "skills": [
+      "Persuasión",
+      "Supervivencia"
+    ],
+    "tools": [],
+    "languages": 2,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Infusión planar",
+      "text": "Obtienes la dote Vástago de los Planos Exteriores. Además sabes dónde conseguir alojamiento y comida modestos gratis en la comunidad donde creciste."
+    }
+  },
+  "filosofo_planar": {
+    "name": "Filósofo planar",
+    "source": "Planescape: Aventuras en el multiverso",
+    "legacy": true,
+    "description": "Buscas una verdad sobre el multiverso y te uniste a una facción de Sigil.",
+    "abilityOptions": [
+      "fuerza",
+      "destreza",
+      "constitucion",
+      "inteligencia",
+      "sabiduria",
+      "carisma"
+    ],
+    "feat": "Vástago de los Planos Exteriores",
+    "skills": [
+      "Conocimiento Arcano"
+    ],
+    "tools": [],
+    "languages": 2,
+    "equipment": [
+      {
+        "label": "A",
+        "text": "50 po"
+      }
+    ],
+    "feature": {
+      "name": "Facción de Sigil",
+      "text": "Obtienes la dote Vástago de los Planos Exteriores. Los miembros de tu facción te dan alojamiento y comida modestos."
+    },
+    "skillChoices": [
+      {
+        "count": 1,
+        "options": [
+          "Atletismo",
+          "Acrobacias",
+          "Juego de Manos",
+          "Sigilo",
+          "Historia",
+          "Investigación",
+          "Naturaleza",
+          "Religión",
+          "Trato con Animales",
+          "Perspicacia",
+          "Medicina",
+          "Percepción",
+          "Supervivencia",
+          "Engaño",
+          "Intimidación",
+          "Interpretación",
+          "Persuasión"
+        ]
+      }
+    ]
   }
 }

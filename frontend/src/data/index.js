@@ -12,6 +12,7 @@ import languages from './languages.json';
 import bloodCreatures from './blood-creatures.json';
 import rulesReference from './rules-reference.json';
 import backgrounds from './backgrounds.json';
+import backgroundFeatures from './background-features.json';
 import { engineOf, listEntries } from '../content/registry.js';
 import { validateClassData } from '../content/class-data.js';
 
@@ -49,6 +50,7 @@ export const data = Object.freeze({
   bloodCreatures,
   rulesReference,
   backgrounds,
+  backgroundFeatures,
   classes,
 });
 
@@ -100,6 +102,11 @@ export function listHomebrewRaces() {
 /** Trasfondo oficial o de Agarias por clave (los homebrew viven en el personaje). */
 export function getOfficialBackground(key) {
   return key && Object.hasOwn(backgrounds, key) ? backgrounds[key] : null;
+}
+
+/** Rasgo de trasfondo alternativo (sustituye al rasgo del trasfondo). */
+export function getBackgroundFeature(key) {
+  return key && !key.startsWith('$') && Object.hasOwn(backgroundFeatures, key) ? backgroundFeatures[key] : null;
 }
 
 export function getEpicBoon(name) {

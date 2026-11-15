@@ -1,0 +1,56 @@
+{
+  "$comment": "Rasgos de trasfondo alternativos (reglas 2014). Con permiso del DM sustituyen al rasgo del trasfondo elegido. Textos resumidos con palabras propias; «verify» = pendiente de cotejar con el libro (ver docs/DATOS.md).",
+  "culto_infiltrador_dragon": {
+    "name": "Culto del Infiltrador Dragón",
+    "source": "El tesoro de la Reina Dragón",
+    "text": "Llevas tiempo infiltrado en el Culto del Dragón y conoces su organización, sus ritos y sus costumbres. Tienes una segunda identidad como iniciado del culto, lo bastante sólida para pasar por un simple subordinado o sirviente entre sus filas."
+  },
+  "erudito_dragon": {
+    "name": "Erudito del Dragón",
+    "source": "El tesoro de la Reina Dragón",
+    "text": "Has estudiado a los dragones y su saber durante años. Reconoces sin esfuerzo los lugares construidos o usados por dragones y distingues a simple vista los huevos y las escamas de dragón.",
+    "verify": true
+  },
+  "explorador_profundo": {
+    "name": "Explorador profundo",
+    "source": "Fuera del Abismo",
+    "text": "Tienes un don para moverte por las profundidades del mundo: recuerdas los giros de pasadizos y túneles, así que bajo tierra siempre puedes desandar tus pasos. Además, en la Infraoscuridad encuentras comida y agua suficientes para ti y hasta cinco personas más, siempre que la zona las ofrezca.",
+    "verify": true
+  },
+  "experiencia_infraoscuridad": {
+    "name": "Experiencia en la Infraoscuridad",
+    "source": "Fuera del Abismo",
+    "text": "No eres un visitante ocasional de la Infraoscuridad: pasaste mucho tiempo allí aprendiendo cómo funciona. Conoces sus pueblos, asentamientos y rutas principales, y sabes a quién acudir en ellos para conseguir información o ayuda.",
+    "verify": true
+  },
+  "heredero_vr": {
+    "name": "Heredero",
+    "source": "Guía de Van Richten para Ravenloft",
+    "text": "Cargas con el legado de un antepasado o mentor: un objeto, un saber, una deuda o una maldición que ahora es tuya. Decide con tu DM qué heredaste y quién más lo busca.",
+    "verify": true
+  },
+  "vagabundo_niebla_vr": {
+    "name": "Vagabundo de la niebla",
+    "source": "Guía de Van Richten para Ravenloft",
+    "text": "Las Brumas te susurran y te guían entre sus remolinos. Sabes al instante si un objeto que tocas es un talismán de la Bruma y, si ya estuviste en el dominio del que procede, reconoces de dónde viene.",
+    "verify": true
+  },
+  "medium_espiritual_vr": {
+    "name": "Médium espiritual",
+    "source": "Guía de Van Richten para Ravenloft",
+    "text": "Tras una experiencia decisiva, crees estar en sintonía con los espíritus y les sirves de canal. Eliges o diseñas un instrumento de adivinación (cartas, tablero espiritista, huesos…) y tienes competencia con él: sumas tu bonificador de competencia a las pruebas de característica que hagas usándolo.",
+    "verify": true
+  },
+  "viajero_vr": {
+    "name": "Viajero",
+    "source": "Guía de Van Richten para Ravenloft",
+    "text": "Has recorrido muchas tierras y dominios, y estás acostumbrado a llegar como extranjero. Sabes buscar alojamiento, enterarte de las costumbres locales y encontrar a quien pueda orientarte en un lugar desconocido.",
+    "verify": true
+  },
+  "sobreviviente_trauma_vr": {
+    "name": "Sobreviviente de trauma",
+    "source": "Guía de Van Richten para Ravenloft",
+    "text": "Sobreviviste a algo terrible y saliste adelante. Quienes pasaron por algo parecido lo notan y confían en ti, y tú sabes acompañar a otros para que también lo superen.",
+    "verify": true
+  }
+}

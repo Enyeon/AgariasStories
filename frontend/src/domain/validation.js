@@ -153,6 +153,13 @@ export function normalizeBackgroundDefinition(raw) {
   def.abilityOptions = uniqueStrings(src.abilityOptions, ABILITY_KEYS);
   def.feat = text(src.feat).trim() || null;
   def.skills = uniqueStrings(src.skills, SKILL_NAMES);
+  def.skillChoices = list(src.skillChoices, (ch) => {
+    if (!isObject(ch)) return null;
+    const options = uniqueStrings(ch.options, SKILL_NAMES);
+    if (!options.length) return null;
+    return { count: int(ch.count, { min: 1, max: Math.min(4, options.length), fallback: 1 }), options };
+  }, 4);
+  def.featOptions = list(src.featOptions, (f) => text(f).trim() || null, 40);
   def.tools = list(src.tools, (t) => text(t).trim() || null, 20);
   def.languages = int(src.languages, { min: 0, max: 10, fallback: 0 });
   def.equipment = list(src.equipment, (e) => {
@@ -265,6 +272,9 @@ export function normalizeCharacter(raw) {
     d.background.featAbility = abilityOrNull(bg.featAbility);
     d.background.equipmentChoice = text(bg.equipmentChoice, 20) || null;
     d.background.equipmentApplied = text(bg.equipmentApplied, 20) || null;
+    d.background.featPick = text(bg.featPick).trim() || null;
+    d.background.skillPicks = list(bg.skillPicks, (g) => uniqueStrings(g, SKILL_NAMES).slice(0, 4), 4);
+    d.background.featureAlt = text(bg.featureAlt, 60).trim() || null;
   }
 
   // Atributos base

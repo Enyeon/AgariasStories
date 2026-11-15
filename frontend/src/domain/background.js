@@ -3,7 +3,8 @@
 import { ABILITY_LABEL } from './constants.js';
 import { createBackgroundState, createItem } from './schema.js';
 import { normalizeBackgroundDefinition } from './validation.js';
-import { abilityScores, backgroundDefinition } from './rules.js';
+import { abilityScores, backgroundDefinition, backgroundSkillPicks } from './rules.js';
+import { getBackgroundFeature } from '../data/index.js';
 
 const clone = (c) => structuredClone(c);
 const capitalize = (s) => (s ? s[0].toLocaleUpperCase('es') + s.slice(1) : s);
@@ -44,6 +45,9 @@ export function updateCustomBackground(c, def) {
     featAbility: custom.feat === backgroundDefinition(c)?.feat ? prev.featAbility : null,
     equipmentChoice: custom.equipment.some((e) => e.label === prev.equipmentChoice) ? prev.equipmentChoice : null,
     equipmentApplied: prev.equipmentApplied,
+    featPick: custom.featOptions.includes(prev.featPick) ? prev.featPick : null,
+    skillPicks: backgroundSkillPicks(custom, prev.skillPicks),
+    featureAlt: prev.featureAlt,
   };
   if (!custom.abilityOptions.length) Object.assign(next.background, { abilityMode: 'none', abilityChoices: [] });
   return next;
@@ -51,7 +55,7 @@ export function updateCustomBackground(c, def) {
 
 /** Copia editable de un trasfondo oficial para personalizarlo. */
 export function customizeOfficial(def) {
-  const copy = normalizeBackgroundDefinition(def);
+  const copy = normalizeBackgroundDefinition(def.unresolved ?? def);
   copy.name = `${def.name} (personalizado)`;
   return copy;
 }
@@ -82,6 +86,34 @@ export function setBackgroundAbilities(c, mode, choices) {
 export function setBackgroundFeatAbility(c, ability) {
   const next = clone(c);
   next.background.featAbility = ability || null;
+  return next;
+}
+
+/** Dote elegida entre las que ofrece el trasfondo (featOptions). */
+export function setBackgroundFeatPick(c, name) {
+  const def = backgroundDefinition(c);
+  if (!def || !def.unresolved.featOptions.includes(name)) return c;
+  const next = clone(c);
+  if (next.background.featPick !== name) next.background.featAbility = null;
+  next.background.featPick = name;
+  return next;
+}
+
+/** Habilidades elegidas de la lista `index` de skillChoices. */
+export function setBackgroundSkillPicks(c, index, skills) {
+  const def = backgroundDefinition(c);
+  const choice = def?.unresolved.skillChoices[index];
+  if (!choice) return c;
+  const next = clone(c);
+  const picks = def.skillChoices.map((_, i) => (i === index ? [...skills] : [...(next.background.skillPicks[i] ?? [])]));
+  next.background.skillPicks = backgroundSkillPicks(def.unresolved, picks);
+  return next;
+}
+
+/** Rasgo alternativo que sustituye al del trasfondo (null = el original). */
+export function setBackgroundFeatureAlt(c, key) {
+  const next = clone(c);
+  next.background.featureAlt = getBackgroundFeature(key) ? key : null;
   return next;
 }
 
