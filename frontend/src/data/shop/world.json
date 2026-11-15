@@ -37,7 +37,7 @@
       "name": "Montes de Hierro",
       "icon": "⛰️",
       "description": "Minas, fortalezas enanas y hornos que no se apagan. Sobra el metal y falta todo lo demás.",
-      "type": "Minera", "danger": 3, "factions": ["clan-yunque"], "races": ["enano", "gnomo", "orco"], "resources": ["tecnologia/material"], "scarce": ["#tela"],
+      "type": "Minera", "danger": 3, "factions": ["clan-yunque"], "races": ["enano", "gnomo", "orco"], "resources": ["materias/metal", "materias/mineral"], "scarce": ["#tela"],
       "economy": {
         "kind": "Minera",
         "modifiers": [

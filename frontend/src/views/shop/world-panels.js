@@ -22,7 +22,47 @@ function dialogShell(root, title, ...content) {
 /** Mapa: regiones → ubicaciones. Viajar mueve al personaje (sólo ahí puede comerciar). */
 export function openMap(root, service, { toast, onTravel }) {
     const body = h('div', { class: 'map' });
-    const dialog = dialogShell(root, '🗺️ Mapa de la región', body);
+    const towerMode = service.mapFloors();
+    const dialog = dialogShell(root, towerMode ? '🏰 Viajar por la Torre' : '🗺️ Mapa de la región', body);
+    const go = async (loc) => {
+        const res = await service.travel(loc.id);
+        if (res.error) return toast(res.error, 'error');
+        dialog.close();
+        onTravel?.(loc);
+    };
+
+    // Viajar → Piso → Zona → negocios del lugar.
+    let floorSel = towerMode?.hereFloor ?? towerMode?.floors.at(-1)?.floor ?? null;
+    const renderTower = () => {
+        const t = service.mapFloors();
+        const groups = new Map();
+        for (const f of t.floors) groups.set(f.group, [...(groups.get(f.group) ?? []), f]);
+        const select = h('select', { class: 'sort-select floor-select', 'aria-label': 'Piso' },
+            [...groups.entries()].map(([g, list]) => h('optgroup', { label: g || 'Pisos' }, list.map((f) => h('option', { value: String(f.floor), selected: f.floor === floorSel }, `Piso ${f.floor}${f.floor === t.hereFloor ? ' · 📍 estás aquí' : ''}`)))),
+            t.other ? h('option', { value: 'otros', selected: floorSel === null }, 'Otros lugares (sin piso)') : null);
+        select.addEventListener('change', () => { floorSel = select.value === 'otros' ? null : Number(select.value); renderTower(); });
+        const regions = service.map({ floor: floorSel });
+        const zones = regions.flatMap((r) => r.locations.map((l) => ({ ...l, region: r })));
+        replace(body,
+            h('div', { class: 'tower-head' },
+                h('label', { class: 'small' }, '1. Piso ', select),
+                h('small', { class: 'muted' }, `Alcanzado: piso ${t.current}. Los pisos superiores aún no existen para vosotros.`)),
+            !service.freeTravel && !service.canControlTime ? h('p', { class: 'muted small' }, 'En esta campaña el DM decide los viajes entre pisos: puedes moverte libremente dentro del tuyo.') : null,
+            regions[0] ? h('p', { class: 'muted small' }, `${regions[0].group ? `${regions[0].group} · ` : ''}2. Elige una zona:`) : null,
+            zones.length
+                ? h('div', { class: 'zone-grid' }, zones.map((z) => h('article', { class: ['zone-card', z.here && 'is-here'] },
+                    h('header', {}, h('span', { class: 'map-icon', 'aria-hidden': 'true' }, z.icon), h('div', {}, h('h3', {}, z.name), h('p', { class: 'muted small' }, z.description))),
+                    z.shops.length
+                        ? h('ul', { class: 'zone-shops' }, z.shops.map((s) => h('li', { class: s.open ? '' : 'is-locked', title: s.reason ?? '' }, `${s.open ? s.icon : '🔒'} ${s.name}`, s.open ? null : h('small', { class: 'muted' }, ` — ${s.reason ?? 'cerrado ahora'}`))))
+                        : h('p', { class: 'small muted' }, 'Aquí no comercia nadie.'),
+                    h('button', { class: ['btn', 'btn-sm', z.here ? 'btn-ghost' : 'btn-primary'], disabled: z.here, onclick: () => go(z) }, z.here ? '📍 Estás aquí' : '3. Ir a esta zona'))))
+                : h('p', { class: 'muted' }, 'No hay zonas visibles en este piso.'));
+    };
+    if (towerMode) {
+        renderTower();
+        return;
+    }
+
     const render = () => {
         const here = service.here;
         const hereRegion = service.location?.regionId;

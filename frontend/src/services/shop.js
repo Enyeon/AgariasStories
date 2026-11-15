@@ -23,6 +23,7 @@ import racesData from '../data/shop/races.json';
 import rumorsData from '../data/shop/rumors.json';
 import professionsData from '../data/shop/professions.json';
 import estateData from '../data/shop/estate.json';
+import { lord100Content, LORD100 } from '../content/lord100.js';
 import { buildCatalog } from '../domain/shop/catalog.js';
 import { catalogSources } from '../domain/shop/sources.js';
 import { assembleWorld, merchantToEditor, regionToEditor, factionToEditor, eventToEditor, worldId } from '../domain/shop/homebrew-world.js';
@@ -92,14 +93,26 @@ export function characterProfile(character) {
  *   colaría en el mercado compartido de todos.
  * - Mercado local: el Homebrew local de este dispositivo.
  */
-export function buildShopContext({ campaignId = null } = {}) {
+export function buildShopContext({ campaignId = null, world: worldKind = null } = {}) {
   const visible = campaignId ? (e) => e.packId === campaignId : (e) => getPack(e.packId)?.kind === 'local';
   const entries = (type) => listEntries(type).filter(visible);
-  const world = assembleWorld(
-    { world: worldData, factions: factionsData.factions, events: eventsData.events, keepers: keepersData.keepers, shops: shopsData.shops, rumors: rumorsData.rumors },
-    { mercader: entries('mercader'), region: entries('region'), faccion: entries('faccion'), evento: entries('evento') },
-  );
-  return createShopContext({
+  const details = campaignId ? getPack(campaignId)?.details ?? {} : {};
+  // Mundo de la Tienda: el de la ficha de la campaña (o el elegido en local). Lord 100 se genera
+  // con los mismos tipos que el Homebrew del DM, así que su contenido propio se suma encima.
+  const kind = worldKind ?? details.world ?? 'agarias';
+  const tower = kind === LORD100 ? lord100Content() : null;
+  const official = tower
+    ? { world: { ...worldData, regions: [], start: tower.start }, factions: [], events: [], keepers: [], shops: [], rumors: [] }
+    : { world: worldData, factions: factionsData.factions, events: eventsData.events, keepers: keepersData.keepers, shops: shopsData.shops, rumors: rumorsData.rumors };
+  const world = assembleWorld(official, {
+    mercader: [...(tower?.mercader ?? []), ...entries('mercader')],
+    region: [...(tower?.region ?? []), ...entries('region')],
+    faccion: entries('faccion'),
+    evento: entries('evento'),
+  });
+  const exists = (loc) => world.world.regions.some((r) => (r.locations ?? []).some((l) => l.id === loc));
+  const start = details.startLocation && exists(details.startLocation) ? details.startLocation : world.world.start;
+  const ctx = createShopContext({
     catalog: buildCatalog(catalogSources({ homebrew: entries('objeto') })),
     shops: world.shops,
     keepers: world.keepers,
@@ -107,14 +120,16 @@ export function buildShopContext({ campaignId = null } = {}) {
     topics: topicsData.topics,
     dialogue: dialogueData,
     // El DM puede elegir en la ficha de la campaña dónde empiezan los personajes.
-    world: { ...world.world, start: (campaignId && getPack(campaignId)?.details?.startLocation) || world.world.start },
+    world: { ...world.world, start },
     factions: world.factions,
     archetypes: personalitiesData.archetypes,
     raceFamilies: racesData.families,
     rumors: world.rumors,
     professions: professionsData.professions,
     estate: estateData,
+    worldKind: kind,
   });
+  return ctx;
 }
 
 /**
@@ -189,8 +204,8 @@ export function createShopService({ characters, homebrew, market = createMarketR
   async function select(id) {
     state.dmCampaign = null;
     await loadCharacter(id);
-    const scope = marketScope(state.character, homebrew?.memberships?.() ?? [], remoteEnabled);
-    state.ctx = buildShopContext({ campaignId: scope.kind === 'campaign' ? scope.id : null });
+    const scope = marketScope(state.character, homebrew?.memberships?.() ?? [], remoteEnabled, state.prefs.localWorld);
+    state.ctx = contextFor(scope);
     await loadMarket(scope);
     if (id) setPref('characterId', id);
   }
@@ -212,8 +227,8 @@ export function createShopService({ characters, homebrew, market = createMarketR
     const m = api.dmCampaigns().find((x) => x.id === id);
     if (!m) return select(null);
     await loadCharacter(null);
-    const scope = marketScope({ campaign: { id } }, [m], remoteEnabled);
-    state.ctx = buildShopContext({ campaignId: scope.kind === 'campaign' ? scope.id : null });
+    const scope = marketScope({ campaign: { id } }, [m], remoteEnabled, state.prefs.localWorld);
+    state.ctx = contextFor(scope);
     await loadMarket(scope);
     state.dmCampaign = scope.kind === 'campaign' ? id : null;
     setPref('dmCampaign', state.dmCampaign);
@@ -231,10 +246,13 @@ export function createShopService({ characters, homebrew, market = createMarketR
   async function reloadIfCurrent(packId) {
     const current = state.scope.kind === 'campaign' ? state.scope.id : homebrew?.localPack?.()?.id;
     if (packId !== current) return;
-    state.ctx = buildShopContext({ campaignId: state.scope.kind === 'campaign' ? state.scope.id : null });
+    state.ctx = contextFor(state.scope);
     await loadMarket(state.scope);
     emit({ type: 'market' });
   }
+
+  /** Contexto del mundo de un ámbito: el de la campaña o el elegido en este dispositivo. */
+  const contextFor = (scope) => buildShopContext(scope.kind === 'campaign' ? { campaignId: scope.id } : { world: scope.world ?? 'agarias' });
 
   function setPref(key, value) {
     state.prefs = { ...state.prefs, [key]: value };
@@ -411,6 +429,21 @@ export function createShopService({ characters, homebrew, market = createMarketR
       });
     },
 
+    /** Mundo de la Tienda abierto ('agarias' | 'lord100'). */
+    get worldKind() {
+      return state.ctx?.worldKind ?? 'agarias';
+    },
+    /** Mundo del mercado de este dispositivo (sin campaña). Cada mundo guarda su propio mercado. */
+    setLocalWorld(kind) {
+      return serial(async () => {
+        setPref('localWorld', kind === 'lord100' ? 'lord100' : 'agarias');
+        if (state.scope.kind !== 'local') return { ok: true };
+        await select(state.characterId);
+        emit({ type: 'market' });
+        return { ok: true };
+      });
+    },
+
     // ── Progresión por pisos (Lord 100) ──
     get progress() {
       return floors.progressOf(state.world);
@@ -486,7 +519,7 @@ export function createShopService({ characters, homebrew, market = createMarketR
       return packs.map((p) => {
         const current = p.kind === 'campaign' ? state.scope.kind === 'campaign' && state.scope.id === p.id : state.scope.kind === 'local';
         // Para nombrar los lugares (también los Homebrew de esa campaña).
-        const ctx = current ? state.ctx : buildShopContext({ campaignId: p.kind === 'campaign' ? p.id : null });
+        const ctx = current ? state.ctx : buildShopContext(p.kind === 'campaign' ? { campaignId: p.id } : { world: state.prefs.localWorld ?? 'agarias' });
         const info = (e) => ({
           ref: e.ref,
           contentId: e.ref.split(':').at(-1),
@@ -687,7 +720,25 @@ export function createShopService({ characters, homebrew, market = createMarketR
       return { day: state.world.day, phase, phaseIndex: state.world.phase ?? 0, weekday: weekdayName(state.world.day, state.ctx), phases: state.ctx.phases };
     },
     get freeTravel() { return state.world.settings?.freeTravel !== false; },
-    map: () => visibleMap(state.world, state.ctx, state.characterId),
+    map: (opts = {}) => visibleMap(state.world, state.ctx, state.characterId, opts),
+    /**
+     * Viajar por pisos: pisos alcanzados con alguna zona visible, agrupados por
+     * gran región, y el piso donde está el personaje. null si no hay pisos.
+     */
+    mapFloors() {
+      const p = floors.progressOf(state.world);
+      if (!p.enabled) return null;
+      const byFloor = new Map();
+      let other = false;
+      for (const region of state.ctx.regions.values()) {
+        const visible = (region.locations ?? []).some((l) => isLocationVisible(state.world, state.ctx, state.characterId, l.id));
+        if (!visible) continue;
+        if (!region.floor) { other = true; continue; }
+        if (region.floor <= p.current && !byFloor.has(region.floor)) byFloor.set(region.floor, { floor: region.floor, group: region.group || '', name: region.name, type: region.type || '' });
+      }
+      const hereFloor = state.ctx.regions.get(state.ctx.location(here())?.regionId)?.floor ?? null;
+      return { floors: [...byFloor.values()].sort((a, b) => a.floor - b.floor), other, hereFloor, current: p.current };
+    },
     /** Comerciantes en tu ubicación (con su trato contigo y si atienden ahora). */
     merchantsHere() {
       return merchantsAt(state.world, state.ctx, here(), state.characterId).map(({ keeper, shop, status }) => {
@@ -702,7 +753,7 @@ export function createShopService({ characters, homebrew, market = createMarketR
       return Object.keys(rels).map((id) => state.ctx.keepers.get(id)).filter(Boolean).map((keeper) => {
         const loc = keeperLocation(state.world, state.ctx, keeper);
         const disposition = evaluateDisposition(state.world, state.ctx, { keeper, ...who() });
-        return { keeper: displayKeeper(keeper, rels[keeper.id]), location: loc ? state.ctx.location(loc) : null, status: availability(state.world, state.ctx, keeper), tier: disposition.tier };
+        return { keeper: displayKeeper(keeper, rels[keeper.id]), location: loc ? state.ctx.location(loc) : null, status: availability(state.world, state.ctx, keeper, { charId: state.characterId }), tier: disposition.tier };
       });
     },
     merchant: (keeperId) => talk.merchantSummary(state.world, state.ctx, { keeperId, ...who() }),
@@ -728,7 +779,7 @@ export function createShopService({ characters, homebrew, market = createMarketR
     welcomeLine(shopId) {
       const keeper = state.ctx.keeperOf(shopId);
       if (!keeper) return '';
-      const status = availability(state.world, state.ctx, keeper);
+      const status = availability(state.world, state.ctx, keeper, { charId: state.characterId });
       const key = !status.open ? 'closed_now' : welcomeKey(evaluateDisposition(state.world, state.ctx, { keeper, ...who() }));
       const voices = state.ctx.dialogue.voices ?? {};
       const options = keeper.lines?.[key] ?? voices[keeper.voice]?.[key] ?? voices.default?.[key] ?? [''];

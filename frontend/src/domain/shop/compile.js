@@ -31,19 +31,24 @@ export function compileRegion(region) {
     const modifiers = [...(eco.modifiers ?? [])];
     const restock = [...(eco.restock ?? [])];
     const demand = [...(eco.demand ?? [])];
+    // Economía estricta (Lord 100): abundancia y escasez pesan más, y lo «común» es el precio normal.
+    const strict = Boolean(region.strict);
     for (const { key, rule } of rules(region.resources)) {
-        modifiers.push({ rule, pct: -0.1, label: `Recurso de la región: ${productLabel(key)}` });
-        restock.push({ rule, leadMult: 0.7 });
+        modifiers.push({ rule, pct: strict ? -0.3 : -0.1, label: strict ? `Abunda aquí: ${productLabel(key)}` : `Recurso de la región: ${productLabel(key)}` });
+        restock.push({ rule, leadMult: 0.7, ...(strict ? { qtyMult: 1.6 } : {}) });
     }
     for (const { key, rule } of rules(region.common)) {
+        if (strict) continue; // en la economía estricta «normal» no toca el precio
         modifiers.push({ rule, pct: -0.05, label: `Abunda en la región: ${productLabel(key)}` });
         restock.push({ rule, qtyMult: 1.3 });
     }
     for (const { key, rule } of rules(region.scarce)) {
-        modifiers.push({ rule, pct: 0.2, label: `Escasea en la región: ${productLabel(key)}` });
-        restock.push({ rule, leadMult: 1.6, qtyMult: 0.5 });
-        demand.push({ rule, mult: 1.3 });
+        modifiers.push({ rule, pct: strict ? 0.4 : 0.2, label: strict ? `Escasea aquí (llega de otros pisos): ${productLabel(key)}` : `Escasea en la región: ${productLabel(key)}` });
+        restock.push({ rule, leadMult: 1.6, qtyMult: strict ? 0.35 : 0.5 });
+        demand.push({ rule, mult: strict ? 1.5 : 1.3 });
     }
+    // Lo que existe en una región estricta: abundante + normal + escaso. El resto, no se encuentra.
+    const materials = strict ? { rules: [...rules(region.resources), ...rules(region.common), ...rules(region.scarce)].map((r) => r.rule) } : null;
     const danger = Math.max(0, Math.min(5, Number(region.danger) || 0));
     if (danger >= 3) {
         const pct = 0.03 * danger;
@@ -51,7 +56,7 @@ export function compileRegion(region) {
             modifiers.push({ rule, pct, label: `Región peligrosa (${danger}/5): lo que protege vale más` });
         }
     }
-    return { ...region, danger, economy: { ...eco, kind: eco.kind ?? region.type ?? '', modifiers, restock, demand } };
+    return { ...region, danger, materials, economy: { ...eco, kind: eco.kind ?? region.type ?? '', modifiers, restock, demand } };
 }
 
 /** «08:00-20:00» → franjas que se solapan con ese horario. */

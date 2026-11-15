@@ -32,6 +32,9 @@ export const LIMITS = Object.freeze({
 
 const BASE_SELL_RATE = 0.5; // D&D: los comerciantes pagan la mitad
 const OFF_SPECIALTY_SELL_RATE = 0.35;
+// La materia prima se revende con menos margen: así comprar donde abunda y vender donde escasea
+// deja algo de ganancia (limitada por el stock, la caja del comerciante y la demanda).
+const RAW_SELL_RATE = 0.65;
 
 function clamp(v, min, max) {
     return Math.max(min, Math.min(max, v));
@@ -325,8 +328,8 @@ export function quoteSell(world, ctx, { shopId, itemId, charId = null, profile =
     const factors = [
         {
             key: 'tasa',
-            label: specialty ? 'Paga la mitad de lo que él cobraría, como cualquier comerciante' : 'No es lo suyo: paga poco porque tendrá que revenderlo',
-            pct: (specialty ? BASE_SELL_RATE : OFF_SPECIALTY_SELL_RATE) - 1,
+            label: !specialty ? 'No es lo suyo: paga poco porque tendrá que revenderlo' : item.category === 'materias' ? 'Materia prima: paga algo más de la mitad, la revende con poco margen' : 'Paga la mitad de lo que él cobraría, como cualquier comerciante',
+            pct: (specialty ? (item.category === 'materias' ? RAW_SELL_RATE : BASE_SELL_RATE) : OFF_SPECIALTY_SELL_RATE) - 1,
             icon: '⚖️',
         },
     ];

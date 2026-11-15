@@ -36,21 +36,23 @@ function write(key, value) {
  * Ámbito del mercado de un personaje.
  * @returns {{ kind: 'local' } | { kind: 'campaign', id: string, name: string, key: string }}
  */
-export function marketScope(character, memberships = [], enabled = hasSupabase()) {
+export function marketScope(character, memberships = [], enabled = hasSupabase(), localWorld = 'agarias') {
   const id = character?.campaign?.id;
   const m = id ? memberships.find((x) => x.id === id) : null;
   if (m && enabled) return { kind: 'campaign', id: m.id, name: m.name, key: m.key };
-  return { kind: 'local' };
+  // Sin campaña, el mundo lo elige el usuario (cada mundo guarda su propio mercado).
+  return localWorld && localWorld !== 'agarias' ? { kind: 'local', world: localWorld } : { kind: 'local' };
 }
 
-export const sameScope = (a, b) => a?.kind === b?.kind && (a.kind === 'local' || a.id === b.id);
+export const sameScope = (a, b) => a?.kind === b?.kind && (a.kind === 'local' ? (a.world ?? 'agarias') === (b.world ?? 'agarias') : a.id === b.id);
+const localKey = (scope) => (scope.world && scope.world !== 'agarias' ? `${K_LOCAL}:${scope.world}` : K_LOCAL);
 
 export function createMarketRepository({ api = shopMarketApi } = {}) {
   return {
     /** → { world|null, revision, role: 'dm'|'jugador', offline? } */
     async load(scope) {
       if (scope.kind === 'local') {
-        const saved = read(K_LOCAL);
+        const saved = read(localKey(scope));
         return { world: saved ? migrateWorld(saved) : null, revision: 0, role: 'dm' };
       }
       try {
@@ -71,7 +73,7 @@ export function createMarketRepository({ api = shopMarketApi } = {}) {
     /** Guarda y devuelve la nueva revisión. En campaña puede lanzar ApiError('conflict'). */
     async save(scope, world, revision) {
       if (scope.kind === 'local') {
-        if (!write(K_LOCAL, world)) {
+        if (!write(localKey(scope), world)) {
           const e = new Error('No queda espacio en el navegador para guardar el mercado.');
           e.userMessage = e.message;
           throw e;

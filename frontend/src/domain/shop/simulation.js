@@ -23,7 +23,10 @@ import { accrueContracts, contractAssortment } from './hiring.js';
 import { simulateEstate } from './estate.js';
 import { simulateStaff } from './staff.js';
 import { decayPopularity } from './popularity.js';
-import { currentFloor } from './floors.js';
+import { currentFloor, businessStatus, keeperFloor } from './floors.js';
+
+/** Pisos por debajo del actual que conservan el gráfico de precios. */
+const HISTORY_FLOORS = 9;
 import { variantTarget, offersQuality } from './quality.js';
 
 const DEFAULT_TARGET = { common: 5, uncommon: 2, rare: 1, veryRare: 1, epic: 1, legendary: 1, unique: 1 };
@@ -40,16 +43,23 @@ function targetFor(item, rule) {
 }
 
 /** Surtido fijo de una tienda: { itemId: { target, unlimited } }. */
-export function computeAssortment(shop, ctx, { floor = Infinity } = {}) {
+export function computeAssortment(shop, ctx, { floor = Infinity, region = null } = {}) {
     const result = {};
     const exclude = new Set(shop.exclude ?? []);
+    // Economía estricta (Lord 100): la materia prima sólo está si la zona la produce o llega (abunda/normal/escasa).
+    const local = region?.materials?.rules ?? null;
     for (const rule of shop.assortment ?? []) {
         if (rule.floor && rule.floor > floor) continue; // novedad de un piso al que aún no llegaron
         for (const item of ctx.catalog.list) {
             if (!item.forSale || exclude.has(item.id) || !matchesRule(item, rule)) continue;
             // Las variantes de calidad no entran por categoría: sólo por id o por las calidades de la tienda (abajo).
             if (item.quality && !rule.ids) continue;
-            result[item.id] = { target: targetFor(item, rule), unlimited: Boolean(rule.unlimited), requires: rule.requires ?? null, lockLabel: rule.label ?? null };
+            // Lo exclusivo (jefes, eventos, comerciantes especiales) sólo entra por id.
+            if (!rule.ids && item.tags?.includes('exclusivo')) continue;
+            if (local && !rule.ids && item.category === 'materias' && !local.some((r) => matchesRule(item, r))) continue;
+            const target = targetFor(item, rule);
+            if (!(target > 0)) continue;
+            result[item.id] = { target, unlimited: Boolean(rule.unlimited), requires: rule.requires ?? null, lockLabel: rule.label ?? null };
         }
     }
     // Calidades que ofrece la tienda: variantes de lo que ya vende, con menos unidades cuanto mejores.
@@ -79,15 +89,19 @@ export function shopClosure(world, ctx, shopId) {
  */
 export function reconcileWorld(world, ctx) {
     const next = cloneWorld(world);
+    if (ctx.worldKind === 'lord100') next.mode = 'torre'; // progresión por pisos activa por defecto
     for (const shop of ctx.shopList) {
+        // Los negocios de pisos a los que aún no se llegó no existen todavía (el mercado no crece de golpe).
+        const keeper = ctx.keepers.get(shop.keeperId);
+        if (keeper && !next.shops[shop.id] && businessStatus(next, ctx, keeper).state === 'bloqueado') continue;
         const state = (next.shops[shop.id] ??= { stock: {}, history: {}, cash: shop.cash ?? 0 });
         // Un contrato puede pedir productos extra (el resto del catálogo es el de siempre).
         const extra = contractAssortment(next, shop.keeperId);
-        const assortment = computeAssortment(extra.length ? { ...shop, assortment: [...(shop.assortment ?? []), ...extra] } : shop, ctx, { floor: currentFloor(next) });
+        const assortment = computeAssortment(extra.length ? { ...shop, assortment: [...(shop.assortment ?? []), ...extra] } : shop, ctx, { floor: currentFloor(next), region: ctx.regions.get(shopRegion(next, ctx, shop.id)) });
         for (const [itemId, spec] of Object.entries(assortment)) {
             const entry = state.stock[itemId];
             if (!entry) {
-                state.stock[itemId] = { qty: spec.target, target: spec.target, incoming: null, since: next.day };
+                state.stock[itemId] = { qty: spec.target, target: spec.target, since: next.day };
                 if (spec.unlimited) state.stock[itemId].unlimited = true;
             } else if (!entry.rotating) {
                 entry.target = spec.target;
@@ -146,7 +160,7 @@ function addEventStock(world, ctx, def, report) {
             if (!state) continue;
             for (const itemId of entry.ids ?? []) {
                 if (!ctx.item(itemId) || state.stock[itemId]) continue;
-                state.stock[itemId] = { qty: entry.qty ?? 1, target: entry.qty ?? 1, incoming: null, since: world.day, eventStock: def.id };
+                state.stock[itemId] = { qty: entry.qty ?? 1, target: entry.qty ?? 1, since: world.day, eventStock: def.id };
                 report?.push({ type: 'new-item', shopId, itemId });
             }
         }
@@ -235,7 +249,7 @@ function simulateShopDay(world, ctx, shop, report) {
         if (entry.incoming && entry.incoming.day <= world.day) {
             entry.qty += entry.incoming.qty;
             report.push({ type: 'arrival', shopId: shop.id, itemId, qty: entry.incoming.qty });
-            entry.incoming = null;
+            delete entry.incoming; // sin pedido en camino (no se guarda «null»: el mercado ocupa menos)
         }
         if (entry.unlimited) continue;
 
@@ -291,15 +305,24 @@ function rotate(world, ctx, shop, state, rng, report) {
         const pool = ctx.catalog.list.filter((item) => item.forSale && !item.quality && !state.stock[item.id] && !(shop.exclude ?? []).includes(item.id) && rules.some((r) => matchesRule(item, r)));
         const item = rng.weighted(pool, (i) => ROTATION_WEIGHT[i.rarity] ?? 1);
         if (!item) break;
-        state.stock[item.id] = { qty: 1, target: 1, rotating: true, incoming: null, since: world.day, expires: world.day + rng.int(stayDays[0], stayDays[1]) };
+        state.stock[item.id] = { qty: 1, target: 1, rotating: true, since: world.day, expires: world.day + rng.int(stayDays[0], stayDays[1]) };
         report.push({ type: 'new-item', shopId: shop.id, itemId: item.id });
         used += 1;
     }
 }
 
 function recordHistory(world, ctx) {
+    // En la Torre sólo se guarda la evolución de precios de los pisos cercanos al actual:
+    // los de abajo siguen abiertos, pero su gráfico no hace falta y el mercado no crece sin fin.
+    const floor = currentFloor(world);
     for (const shop of ctx.shopList) {
         const state = world.shops[shop.id];
+        if (!state) continue;
+        const shopFloor = Number.isFinite(floor) ? keeperFloor(ctx, ctx.keepers.get(shop.keeperId)) : null;
+        if (shopFloor && shopFloor < floor - HISTORY_FLOORS) {
+            state.history = {};
+            continue;
+        }
         for (const itemId of Object.keys(state.stock)) {
             const price = marketPrice(world, ctx, shop.id, itemId);
             const history = (state.history[itemId] ??= []);
@@ -391,7 +414,7 @@ export function createWorld(ctx, { seed = Date.now().toString(36), warmupDays = 
     let world = emptyWorld(seed);
     world.day = 1 - warmupDays;
     world = reconcileWorld(world, ctx);
-    for (const shop of ctx.shopList) world.shops[shop.id].cash = shop.cash ?? 0;
+    for (const shop of ctx.shopList) if (world.shops[shop.id]) world.shops[shop.id].cash = shop.cash ?? 0;
     world = advanceDays(world, ctx, warmupDays).world;
     if (!world.events.some((e) => e.end >= world.day) && ctx.events.size) {
         // Un primer evento para que el mercado tenga vida desde el comienzo.

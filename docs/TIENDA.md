@@ -101,6 +101,22 @@ liquida al visitar a su empleado. Si la deuda crece, renuncia (y lo recuerda). E
 trasladarle (si acepta mudarse) y pedirle productos extra. Extensiones previstas: `employer.type`
 (facción u organización), lugar = propiedad del jugador, gastos y catálogos más finos.
 
+## Lord 100 (la Torre)
+
+Mundo de la Tienda alternativo. Lo elige el DM en la ficha de la campaña («Mundo de la Tienda») o, sin campaña, cada dispositivo en ⚙ Opciones (cada mundo guarda su propio mercado).
+
+**No es un sistema aparte**: `content/lord100.js` genera, a partir de `data/shop/lord100.json`, las mismas regiones y comerciantes que crea el DM en Homebrew, y todo lo demás (pisos, viajar, economía, inventarios, campañas) funciona igual.
+
+- **Datos compactos** (`lord100.json`, PROPUESTA editable): 20 tramos con sus pisos (1–5 Tierra Salvaje … 96–99 El Trono del Olvido), cada uno con sus zonas en orden, criaturas, razas y negocios especiales; y un catálogo de ~100 biomas (zona) con recursos abundantes/normales/escasos, criaturas y negocios típicos.
+- **Piso N** = región `hb-l100-pN` (gran región = tramo). **Zona** = lugar. En cada tramo, el 1.er piso tiene 1 zona y cada piso añade la siguiente (hasta 5).
+- **Economía estricta** (`region.strict`): la materia prima sólo existe si el piso la produce o le llega (abunda −30 % y más stock · normal · escasea +40 %, poco stock y más demanda). Lo que no figura, no se encuentra. Las criaturas del tramo traen sus materiales (con poco stock).
+- **Negocios**: la zona nueva trae sus dos negocios típicos; las anteriores, uno (rotando); un comerciante general por piso; posada al principio y al final del tramo. Los **especiales** piden un requisito (jefe, misión…) y guardan lo **exclusivo** (legendario): nunca aparece en tiendas normales.
+- **Viajar**: Piso → Zona (con sus negocios, los bloqueados con 🔒 y el motivo) → ir.
+- **Materias primas** (`materias`): metales, menas y minerales, gemas, madera, plantas, partes animales, partes de monstruo y materiales mágicos. Profesiones: Tienda de minerales, Comerciante de materiales (ampliado), Herbolario, Curtidor, Mercader de monstruos.
+- **Comercio entre pisos**: la materia prima se revende al 65 % (no al 50 %), así que comprar donde abunda y vender donde escasea deja algo; lo limitan el stock, la caja del comerciante y la demanda.
+- **Tamaño**: los negocios de pisos no alcanzados no se guardan; sólo los pisos cercanos al actual guardan el gráfico de precios. La Torre entera ronda 1 MB (límite del servidor: 1,5 MB).
+- **Condiciones de un negocio** (se suman): campaña (sólo existe en su mundo/paquete) + piso + zona + requisito + reputación mínima (`minReputation`: con su facción o la fama del personaje en la región).
+
 ## Calidad (además de la rareza)
 
 `domain/shop/quality.js`. Armas (salvo munición), armaduras y herramientas existen en cuatro calidades: 🪵 Tosca (×0,6), Estándar (×1), ✨ Fina (×1,75) y 🏅 Obra maestra (×4). La **rareza** fija el precio base y lo difícil que es encontrarlo; la **calidad** lo multiplica y da un efecto pequeño no mágico (se ve en la ficha del objeto y queda en las notas del inventario).

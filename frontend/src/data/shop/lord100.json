@@ -1,0 +1,3633 @@
+{
+ "$comment": "Lord 100 — la Torre. Datos compactos: content/lord100.js genera pisos, zonas, economía y negocios. PROPUESTA editable: biomas, criaturas y recursos se pueden corregir aquí.",
+ "biomes": {
+  "pradera": {
+   "name": "Pradera",
+   "icon": "🌾",
+   "description": "Hierba alta, caminos y granjas dispersas.",
+   "abundant": [
+    "#hierbas",
+    "#fibra",
+    "consumibles/comida"
+   ],
+   "common": [
+    "#piel",
+    "#carne",
+    "#cuerno",
+    "#pluma"
+   ],
+   "scarce": [
+    "#hierro",
+    "#carbon"
+   ],
+   "creatures": [
+    "Jabalíes",
+    "Lobos",
+    "Halcones"
+   ],
+   "businesses": [
+    "general",
+    "establero",
+    "carnicero"
+   ]
+  },
+  "bosque": {
+   "name": "Bosque",
+   "icon": "🌲",
+   "description": "Árboles altos, caza y leñadores.",
+   "abundant": [
+    "#madera",
+    "#hierbas",
+    "#resina"
+   ],
+   "common": [
+    "#piel",
+    "#carne",
+    "#colmillo",
+    "#lobo",
+    "consumibles/comida"
+   ],
+   "scarce": [
+    "#hierro",
+    "#carbon"
+   ],
+   "creatures": [
+    "Lobos",
+    "Osos",
+    "Arañas"
+   ],
+   "businesses": [
+    "materiales",
+    "herbolario",
+    "curtidor"
+   ]
+  },
+  "rio": {
+   "name": "Río",
+   "icon": "🏞️",
+   "description": "Agua dulce, pesca y molinos.",
+   "abundant": [
+    "#fibra",
+    "consumibles/comida",
+    "#algas"
+   ],
+   "common": [
+    "#madera",
+    "#piel"
+   ],
+   "scarce": [
+    "#hierro",
+    "#plata"
+   ],
+   "creatures": [
+    "Nutrias",
+    "Cocodrilos"
+   ],
+   "businesses": [
+    "general",
+    "panadero",
+    "materiales"
+   ]
+  },
+  "colinas": {
+   "name": "Colinas",
+   "icon": "⛰️",
+   "description": "Lomas rocosas con canteras pequeñas.",
+   "abundant": [
+    "#piedra",
+    "#cobre"
+   ],
+   "common": [
+    "#hierro",
+    "#carbon",
+    "#estano",
+    "#piel",
+    "#cuerno"
+   ],
+   "scarce": [
+    "#madera",
+    "#plata"
+   ],
+   "creatures": [
+    "Cabras",
+    "Goblins",
+    "Lobos"
+   ],
+   "businesses": [
+    "minerales",
+    "herrero",
+    "general"
+   ]
+  },
+  "bosque-denso": {
+   "name": "Bosque Denso",
+   "icon": "🌳",
+   "description": "Bosque cerrado donde casi no entra la luz.",
+   "abundant": [
+    "#madera",
+    "#hierbas",
+    "#resina",
+    "#hongos"
+   ],
+   "common": [
+    "#lobo",
+    "#colmillo",
+    "#oso",
+    "#arana",
+    "#seda"
+   ],
+   "scarce": [
+    "#hierro",
+    "#carbon",
+    "#sal"
+   ],
+   "creatures": [
+    "Osos",
+    "Huargos",
+    "Arañas gigantes"
+   ],
+   "businesses": [
+    "herbolario",
+    "curtidor",
+    "alquimista"
+   ]
+  },
+  "bosque-oscuro": {
+   "name": "Bosque Oscuro",
+   "icon": "🌑",
+   "description": "Bosque de sombras con monstruos al acecho.",
+   "abundant": [
+    "#madera",
+    "#hongos",
+    "#arana"
+   ],
+   "common": [
+    "#lobo",
+    "#bestia-monstruosa",
+    "#veneno",
+    "#seda"
+   ],
+   "scarce": [
+    "#hierro",
+    "#sal"
+   ],
+   "creatures": [
+    "Huargos",
+    "Arañas gigantes",
+    "Ogros"
+   ],
+   "businesses": [
+    "curtidor",
+    "monstruos",
+    "herbolario"
+   ]
+  },
+  "pantano": {
+   "name": "Pantano",
+   "icon": "🐸",
+   "description": "Aguas estancadas, juncos y niebla.",
+   "abundant": [
+    "#hongos",
+    "#veneno",
+    "#reptil",
+    "#escama"
+   ],
+   "common": [
+    "#hierbas",
+    "#fibra",
+    "#arana"
+   ],
+   "scarce": [
+    "#hierro",
+    "#piedra",
+    "#madera"
+   ],
+   "creatures": [
+    "Cocodrilos",
+    "Hombres lagarto",
+    "Sanguijuelas"
+   ],
+   "businesses": [
+    "herbolario",
+    "alquimista",
+    "curtidor"
+   ]
+  },
+  "cuevas": {
+   "name": "Cuevas",
+   "icon": "🕳️",
+   "description": "Galerías húmedas cerca de la superficie.",
+   "abundant": [
+    "#piedra",
+    "#hongos",
+    "#subterraneo"
+   ],
+   "common": [
+    "#hierro",
+    "#cobre",
+    "#carbon",
+    "#insecto",
+    "#hueso"
+   ],
+   "scarce": [
+    "#madera",
+    "consumibles/comida"
+   ],
+   "creatures": [
+    "Murciélagos",
+    "Goblins",
+    "Arañas"
+   ],
+   "businesses": [
+    "minerales",
+    "general",
+    "herbolario"
+   ]
+  },
+  "campamento-goblin": {
+   "name": "Campamento Goblin",
+   "icon": "⛺",
+   "description": "Chabolas, botín y mucho ruido.",
+   "abundant": [
+    "#hueso",
+    "#piel",
+    "#cuerno"
+   ],
+   "common": [
+    "#hierro",
+    "#cobre",
+    "#carne",
+    "#colmillo"
+   ],
+   "scarce": [
+    "#plata",
+    "#oro",
+    "#gema"
+   ],
+   "creatures": [
+    "Goblins",
+    "Hobgoblins",
+    "Huargos"
+   ],
+   "businesses": [
+    "perista",
+    "armero",
+    "curtidor"
+   ]
+  },
+  "ruinas": {
+   "name": "Ruinas",
+   "icon": "🏚️",
+   "description": "Restos de una ciudad antigua.",
+   "abundant": [
+    "#piedra"
+   ],
+   "common": [
+    "#cobre",
+    "#plata",
+    "#arcano",
+    "#pergamino",
+    "#constructo"
+   ],
+   "scarce": [
+    "#madera",
+    "consumibles/comida"
+   ],
+   "creatures": [
+    "Bandidos",
+    "Gólems rotos",
+    "Espectros"
+   ],
+   "businesses": [
+    "librero",
+    "perista",
+    "magico"
+   ]
+  },
+  "catacumbas": {
+   "name": "Catacumbas",
+   "icon": "⚰️",
+   "description": "Túneles de nichos y huesos.",
+   "abundant": [
+    "#hueso",
+    "#no-muerto"
+   ],
+   "common": [
+    "#piedra",
+    "#hongos",
+    "#ectoplasma"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera"
+   ],
+   "creatures": [
+    "Esqueletos",
+    "Zombis",
+    "Necrófagos"
+   ],
+   "businesses": [
+    "alquimista",
+    "monstruos",
+    "general"
+   ]
+  },
+  "cementerio": {
+   "name": "Cementerio",
+   "icon": "🪦",
+   "description": "Lápidas, mausoleos y niebla.",
+   "abundant": [
+    "#hueso",
+    "#no-muerto",
+    "#piedra"
+   ],
+   "common": [
+    "#flor-sombra",
+    "#veneno"
+   ],
+   "scarce": [
+    "#hierro",
+    "consumibles/comida"
+   ],
+   "creatures": [
+    "Zombis",
+    "Fantasmas",
+    "Cuervos"
+   ],
+   "businesses": [
+    "herbolario",
+    "monstruos",
+    "general"
+   ]
+  },
+  "capilla": {
+   "name": "Capilla",
+   "icon": "⛪",
+   "description": "Una capilla profanada y su sacristía.",
+   "abundant": [
+    "#piedra",
+    "#pergamino"
+   ],
+   "common": [
+    "#arcano",
+    "#plata",
+    "#no-muerto"
+   ],
+   "scarce": [
+    "#madera",
+    "#hierro"
+   ],
+   "creatures": [
+    "Espectros",
+    "Cultistas"
+   ],
+   "businesses": [
+    "librero",
+    "magico",
+    "alquimista"
+   ]
+  },
+  "cementerio-inundado": {
+   "name": "Cementerio Inundado",
+   "icon": "🌊",
+   "description": "Tumbas bajo agua negra. Anomalía de la Torre.",
+   "abundant": [
+    "#no-muerto",
+    "#mar",
+    "#algas"
+   ],
+   "common": [
+    "#hueso",
+    "#perla",
+    "#coral"
+   ],
+   "scarce": [
+    "#piedra",
+    "#madera"
+   ],
+   "creatures": [
+    "Ahogados",
+    "Sirenas muertas"
+   ],
+   "businesses": [
+    "monstruos",
+    "herbolario"
+   ]
+  },
+  "cripta": {
+   "name": "Cripta",
+   "icon": "🗝️",
+   "description": "Bóvedas selladas de nobles muertos.",
+   "abundant": [
+    "#hueso",
+    "#no-muerto",
+    "#piedra"
+   ],
+   "common": [
+    "#oro",
+    "#plata",
+    "#gema",
+    "#arcano"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera"
+   ],
+   "creatures": [
+    "Momias",
+    "Caballeros muertos",
+    "Espectros"
+   ],
+   "businesses": [
+    "perista",
+    "joyero",
+    "monstruos"
+   ]
+  },
+  "cuevas-profundas": {
+   "name": "Cuevas Profundas",
+   "icon": "🕳️",
+   "description": "Galerías hondas sin luz del sol.",
+   "abundant": [
+    "#piedra",
+    "#subterraneo",
+    "#hongos"
+   ],
+   "common": [
+    "#hierro",
+    "#cobre",
+    "#plata",
+    "#insecto",
+    "#luz"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Ganchos",
+    "Gusanos gigantes",
+    "Enanos grises"
+   ],
+   "businesses": [
+    "minerales",
+    "general",
+    "alquimista"
+   ]
+  },
+  "minas": {
+   "name": "Minas",
+   "icon": "⛏️",
+   "description": "Vetas, vagonetas y capataces.",
+   "abundant": [
+    "#hierro",
+    "#cobre",
+    "#carbon",
+    "#estano",
+    "#piedra"
+   ],
+   "common": [
+    "#plata",
+    "#oro",
+    "#salitre",
+    "#cristal"
+   ],
+   "scarce": [
+    "#madera",
+    "consumibles/comida",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Mineros",
+    "Gusanos de roca",
+    "Kobolds"
+   ],
+   "businesses": [
+    "minerales",
+    "herrero",
+    "general"
+   ]
+  },
+  "lago-subterraneo": {
+   "name": "Lago Subterráneo",
+   "icon": "💧",
+   "description": "Un lago negro bajo la roca.",
+   "abundant": [
+    "#subterraneo",
+    "#algas",
+    "#hongos"
+   ],
+   "common": [
+    "#perla",
+    "#luz",
+    "#reptil"
+   ],
+   "scarce": [
+    "#madera",
+    "#hierro"
+   ],
+   "creatures": [
+    "Peces ciegos",
+    "Kuo-ciénagos"
+   ],
+   "businesses": [
+    "herbolario",
+    "general"
+   ]
+  },
+  "cavernas-cristal": {
+   "name": "Cavernas de Cristal",
+   "icon": "💎",
+   "description": "Paredes de cristal que brillan solas.",
+   "abundant": [
+    "#cristal",
+    "#luz"
+   ],
+   "common": [
+    "#arcano-mineral",
+    "#plata",
+    "#resina"
+   ],
+   "scarce": [
+    "#madera",
+    "consumibles/comida",
+    "#carbon"
+   ],
+   "creatures": [
+    "Elementales de tierra",
+    "Arañas de cristal"
+   ],
+   "businesses": [
+    "minerales",
+    "joyero",
+    "magico"
+   ]
+  },
+  "bosque-hongos": {
+   "name": "Bosque de Hongos",
+   "icon": "🍄",
+   "description": "Setas gigantes y esporas.",
+   "abundant": [
+    "#hongos",
+    "#subterraneo",
+    "#luz"
+   ],
+   "common": [
+    "#veneno",
+    "#insecto",
+    "#fibra"
+   ],
+   "scarce": [
+    "#madera",
+    "#hierro"
+   ],
+   "creatures": [
+    "Míconidos",
+    "Escarabajos gigantes"
+   ],
+   "businesses": [
+    "herbolario",
+    "alquimista",
+    "general"
+   ]
+  },
+  "cienaga-negra": {
+   "name": "Ciénaga Negra",
+   "icon": "🖤",
+   "description": "Barro oscuro y aguas corruptas.",
+   "abundant": [
+    "#veneno",
+    "#hongos",
+    "#reptil"
+   ],
+   "common": [
+    "#no-muerto",
+    "#infernal",
+    "#hueso"
+   ],
+   "scarce": [
+    "#piedra",
+    "#hierro",
+    "consumibles/comida"
+   ],
+   "creatures": [
+    "Diablillos",
+    "Hags",
+    "Cocodrilos corruptos"
+   ],
+   "businesses": [
+    "alquimista",
+    "herbolario",
+    "monstruos"
+   ]
+  },
+  "templo-profano": {
+   "name": "Templo Profano",
+   "icon": "🛕",
+   "description": "Un templo dedicado a algo oscuro.",
+   "abundant": [
+    "#piedra",
+    "#pergamino",
+    "#infernal"
+   ],
+   "common": [
+    "#arcano",
+    "#oro",
+    "#sangre"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera"
+   ],
+   "creatures": [
+    "Cultistas",
+    "Demonios menores"
+   ],
+   "businesses": [
+    "magico",
+    "librero",
+    "perista"
+   ]
+  },
+  "campos-hueso": {
+   "name": "Campos de Hueso",
+   "icon": "🦴",
+   "description": "Llanuras cubiertas de huesos.",
+   "abundant": [
+    "#hueso"
+   ],
+   "common": [
+    "#no-muerto",
+    "#cuerno",
+    "#colmillo"
+   ],
+   "scarce": [
+    "#madera",
+    "consumibles/comida",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Esqueletos",
+    "Carroñeros"
+   ],
+   "businesses": [
+    "curtidor",
+    "monstruos"
+   ]
+  },
+  "pozos-azufre": {
+   "name": "Pozos de Azufre",
+   "icon": "🟡",
+   "description": "Grietas que escupen gases amarillos.",
+   "abundant": [
+    "#azufre",
+    "#volcanico",
+    "#salitre"
+   ],
+   "common": [
+    "#infernal",
+    "#obsidiana"
+   ],
+   "scarce": [
+    "#madera",
+    "#hierbas",
+    "consumibles/comida"
+   ],
+   "creatures": [
+    "Mefits",
+    "Diablillos"
+   ],
+   "businesses": [
+    "minerales",
+    "alquimista"
+   ]
+  },
+  "altar-sangriento": {
+   "name": "Altar Sangriento",
+   "icon": "🩸",
+   "description": "Un altar donde se derramó demasiada sangre.",
+   "abundant": [
+    "#infernal"
+   ],
+   "common": [
+    "#sangre",
+    "#arcano",
+    "#hueso"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera"
+   ],
+   "creatures": [
+    "Demonios",
+    "Cultistas"
+   ],
+   "businesses": [
+    "magico",
+    "monstruos"
+   ]
+  },
+  "volcan": {
+   "name": "Volcán",
+   "icon": "🌋",
+   "description": "Laderas de roca negra y humo.",
+   "abundant": [
+    "#volcanico",
+    "#azufre",
+    "#obsidiana",
+    "#piedra"
+   ],
+   "common": [
+    "#hierro",
+    "#carbon",
+    "#elemental"
+   ],
+   "scarce": [
+    "#madera",
+    "#hierbas",
+    "consumibles/comida"
+   ],
+   "creatures": [
+    "Salamandras",
+    "Elementales de fuego"
+   ],
+   "businesses": [
+    "minerales",
+    "herrero",
+    "alquimista"
+   ]
+  },
+  "campos-lava": {
+   "name": "Campos de Lava",
+   "icon": "🔥",
+   "description": "Ríos de roca fundida.",
+   "abundant": [
+    "#volcanico",
+    "#obsidiana",
+    "#elemental"
+   ],
+   "common": [
+    "#azufre",
+    "#rubi"
+   ],
+   "scarce": [
+    "#madera",
+    "consumibles/comida",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Elementales de fuego",
+    "Mefits de magma"
+   ],
+   "businesses": [
+    "minerales",
+    "monstruos"
+   ]
+  },
+  "fraguas": {
+   "name": "Fraguas",
+   "icon": "⚒️",
+   "description": "Talleres elementales que nunca se apagan.",
+   "abundant": [
+    "#hierro",
+    "#acero",
+    "#carbon",
+    "#cobre",
+    "#estano"
+   ],
+   "common": [
+    "#plata",
+    "#mitral",
+    "#elemental",
+    "#constructo"
+   ],
+   "scarce": [
+    "#madera",
+    "#hierbas",
+    "consumibles/comida"
+   ],
+   "creatures": [
+    "Azer",
+    "Gólems de forja"
+   ],
+   "businesses": [
+    "herrero",
+    "armero",
+    "minerales"
+   ]
+  },
+  "glaciar": {
+   "name": "Glaciar",
+   "icon": "🧊",
+   "description": "Hielo eterno en medio del fuego. Anomalía de la Torre.",
+   "abundant": [
+    "#hielo",
+    "#frio"
+   ],
+   "common": [
+    "#piel",
+    "#cristal",
+    "#elemental"
+   ],
+   "scarce": [
+    "#madera",
+    "#hierbas",
+    "consumibles/comida"
+   ],
+   "creatures": [
+    "Elementales de hielo",
+    "Lobos de escarcha"
+   ],
+   "businesses": [
+    "curtidor",
+    "minerales"
+   ]
+  },
+  "cumbre-tormenta": {
+   "name": "Cumbre de Tormenta",
+   "icon": "⛈️",
+   "description": "Picos donde los rayos caen sin parar.",
+   "abundant": [
+    "#tormenta",
+    "#elemental"
+   ],
+   "common": [
+    "#piedra",
+    "#pluma",
+    "#cristal"
+   ],
+   "scarce": [
+    "#madera",
+    "consumibles/comida"
+   ],
+   "creatures": [
+    "Elementales de aire",
+    "Grifos"
+   ],
+   "businesses": [
+    "magico",
+    "monstruos"
+   ]
+  },
+  "montanas": {
+   "name": "Montañas",
+   "icon": "🏔️",
+   "description": "Picos enormes y pasos estrechos.",
+   "abundant": [
+    "#piedra",
+    "#hierro",
+    "#plata"
+   ],
+   "common": [
+    "#gigante",
+    "#piel",
+    "#cuerno",
+    "#frio"
+   ],
+   "scarce": [
+    "#madera",
+    "consumibles/comida",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Gigantes de las colinas",
+    "Grifos",
+    "Cabras gigantes"
+   ],
+   "businesses": [
+    "minerales",
+    "herrero",
+    "general"
+   ]
+  },
+  "canon": {
+   "name": "Cañón",
+   "icon": "🏜️",
+   "description": "Paredes rojas y viento seco.",
+   "abundant": [
+    "#piedra",
+    "#cobre",
+    "#sal"
+   ],
+   "common": [
+    "#gigante",
+    "#reptil",
+    "#pluma"
+   ],
+   "scarce": [
+    "#madera",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Gigantes de piedra",
+    "Rocs"
+   ],
+   "businesses": [
+    "minerales",
+    "curtidor"
+   ]
+  },
+  "fortaleza-piedra": {
+   "name": "Fortaleza de Piedra",
+   "icon": "🏰",
+   "description": "Una fortaleza construida por gigantes.",
+   "abundant": [
+    "#piedra",
+    "#gigante"
+   ],
+   "common": [
+    "#hierro",
+    "#acero",
+    "#oro"
+   ],
+   "scarce": [
+    "#hierbas",
+    "consumibles/comida"
+   ],
+   "creatures": [
+    "Gigantes",
+    "Ogros"
+   ],
+   "businesses": [
+    "armero",
+    "herrero",
+    "perista"
+   ]
+  },
+  "taiga": {
+   "name": "Taiga",
+   "icon": "🌲",
+   "description": "Pinos, nieve y caza mayor.",
+   "abundant": [
+    "#madera",
+    "#frio",
+    "#piel"
+   ],
+   "common": [
+    "#lobo",
+    "#oso",
+    "#carne"
+   ],
+   "scarce": [
+    "#hierro",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Lobos",
+    "Osos",
+    "Alces gigantes"
+   ],
+   "businesses": [
+    "curtidor",
+    "materiales",
+    "general"
+   ]
+  },
+  "tundra": {
+   "name": "Tundra",
+   "icon": "❄️",
+   "description": "Llanura helada y viento cortante.",
+   "abundant": [
+    "#frio",
+    "#piel",
+    "#hielo"
+   ],
+   "common": [
+    "#hueso",
+    "#carne",
+    "#gigante"
+   ],
+   "scarce": [
+    "#madera",
+    "#hierbas",
+    "consumibles/comida"
+   ],
+   "creatures": [
+    "Gigantes de escarcha",
+    "Yetis"
+   ],
+   "businesses": [
+    "curtidor",
+    "general"
+   ]
+  },
+  "bosque-antiguo": {
+   "name": "Bosque Antiguo",
+   "icon": "🌳",
+   "description": "Árboles de mil años que hablan.",
+   "abundant": [
+    "#madera",
+    "#madera-antigua",
+    "#hierbas"
+   ],
+   "common": [
+    "#feerico",
+    "#resina",
+    "#mandragora"
+   ],
+   "scarce": [
+    "#hierro",
+    "#carbon"
+   ],
+   "creatures": [
+    "Dríades",
+    "Treants",
+    "Duendes"
+   ],
+   "businesses": [
+    "herbolario",
+    "materiales",
+    "magico"
+   ]
+  },
+  "prado-feerico": {
+   "name": "Prado Feérico",
+   "icon": "🌸",
+   "description": "Flores que brillan y caminos que cambian.",
+   "abundant": [
+    "#feerico",
+    "#hierbas"
+   ],
+   "common": [
+    "#flor-feerica",
+    "#arcano"
+   ],
+   "scarce": [
+    "#hierro",
+    "#carbon",
+    "#infernal"
+   ],
+   "creatures": [
+    "Hadas",
+    "Sátiros"
+   ],
+   "businesses": [
+    "herbolario",
+    "magico",
+    "sastre"
+   ]
+  },
+  "lago-encantado": {
+   "name": "Lago Encantado",
+   "icon": "🪷",
+   "description": "Aguas quietas que reflejan otro mundo.",
+   "abundant": [
+    "#feerico",
+    "#algas"
+   ],
+   "common": [
+    "#perla",
+    "#arcano"
+   ],
+   "scarce": [
+    "#hierro",
+    "#carbon"
+   ],
+   "creatures": [
+    "Ninfas",
+    "Kelpies"
+   ],
+   "businesses": [
+    "magico",
+    "joyero"
+   ]
+  },
+  "jardin-salvaje": {
+   "name": "Jardín Salvaje",
+   "icon": "🌿",
+   "description": "Un jardín que crece demasiado rápido.",
+   "abundant": [
+    "#hierbas",
+    "#feerico",
+    "#veneno"
+   ],
+   "common": [
+    "#mandragora",
+    "#resina"
+   ],
+   "scarce": [
+    "#hierro",
+    "#piedra"
+   ],
+   "creatures": [
+    "Plantas carnívoras",
+    "Duendes"
+   ],
+   "businesses": [
+    "herbolario",
+    "alquimista"
+   ]
+  },
+  "corte-feerica": {
+   "name": "Corte Feérica",
+   "icon": "👑",
+   "description": "El palacio de una corte de hadas.",
+   "abundant": [
+    "#feerico",
+    "#arcano"
+   ],
+   "common": [
+    "#oro",
+    "#gema",
+    "#seda"
+   ],
+   "scarce": [
+    "#hierro",
+    "#carbon"
+   ],
+   "creatures": [
+    "Nobles feéricos",
+    "Caballeros sidhe"
+   ],
+   "businesses": [
+    "sastre",
+    "joyero",
+    "magico"
+   ]
+  },
+  "ciudad-abandonada": {
+   "name": "Ciudad Abandonada",
+   "icon": "🏙️",
+   "description": "Calles vacías y casas saqueadas.",
+   "abundant": [
+    "#piedra",
+    "#pergamino"
+   ],
+   "common": [
+    "#cobre",
+    "#plata",
+    "#constructo",
+    "#no-muerto"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera"
+   ],
+   "creatures": [
+    "Saqueadores",
+    "Espectros",
+    "Gólems"
+   ],
+   "businesses": [
+    "perista",
+    "librero",
+    "general"
+   ]
+  },
+  "necropolis": {
+   "name": "Necrópolis",
+   "icon": "🏛️",
+   "description": "Una ciudad entera de tumbas.",
+   "abundant": [
+    "#no-muerto",
+    "#hueso",
+    "#piedra"
+   ],
+   "common": [
+    "#oro",
+    "#gema",
+    "#arcano"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera"
+   ],
+   "creatures": [
+    "Momias",
+    "Liches menores"
+   ],
+   "businesses": [
+    "joyero",
+    "monstruos",
+    "librero"
+   ]
+  },
+  "desierto": {
+   "name": "Desierto",
+   "icon": "🏜️",
+   "description": "Dunas y sol que quema. Anomalía de la Torre.",
+   "abundant": [
+    "#sal",
+    "#desierto"
+   ],
+   "common": [
+    "#reptil",
+    "#escama",
+    "#oro"
+   ],
+   "scarce": [
+    "#madera",
+    "consumibles/comida",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Escorpiones gigantes",
+    "Momias"
+   ],
+   "businesses": [
+    "general",
+    "curtidor",
+    "joyero"
+   ]
+  },
+  "oasis": {
+   "name": "Oasis",
+   "icon": "🌴",
+   "description": "Agua y palmeras en medio de la arena.",
+   "abundant": [
+    "#desierto",
+    "consumibles/comida"
+   ],
+   "common": [
+    "#fibra",
+    "#hierbas"
+   ],
+   "scarce": [
+    "#hierro",
+    "#madera"
+   ],
+   "creatures": [
+    "Camellos",
+    "Genios"
+   ],
+   "businesses": [
+    "general",
+    "tabernero",
+    "establero"
+   ]
+  },
+  "piramide": {
+   "name": "Pirámide",
+   "icon": "🔺",
+   "description": "La tumba de un rey de arena.",
+   "abundant": [
+    "#oro",
+    "#piedra",
+    "#no-muerto"
+   ],
+   "common": [
+    "#gema",
+    "#arcano",
+    "#pergamino"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera"
+   ],
+   "creatures": [
+    "Momias reales",
+    "Escarabajos"
+   ],
+   "businesses": [
+    "joyero",
+    "perista",
+    "magico"
+   ]
+  },
+  "grieta": {
+   "name": "Grieta",
+   "icon": "🕳️",
+   "description": "Una grieta que baja sin fondo.",
+   "abundant": [
+    "#piedra",
+    "#abismal"
+   ],
+   "common": [
+    "#aberrante",
+    "#hueso"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera"
+   ],
+   "creatures": [
+    "Devoradores",
+    "Gusanos abisales"
+   ],
+   "businesses": [
+    "minerales",
+    "monstruos"
+   ]
+  },
+  "mar-oscuro": {
+   "name": "Mar Oscuro",
+   "icon": "🌊",
+   "description": "Un mar bajo la Torre. Anomalía de la Torre.",
+   "abundant": [
+    "#mar",
+    "#algas"
+   ],
+   "common": [
+    "#perla",
+    "#coral",
+    "#escama",
+    "#abismal"
+   ],
+   "scarce": [
+    "#madera",
+    "#hierro"
+   ],
+   "creatures": [
+    "Tiburones",
+    "Kraken jóvenes"
+   ],
+   "businesses": [
+    "general",
+    "curtidor",
+    "joyero"
+   ]
+  },
+  "arrecife": {
+   "name": "Arrecife",
+   "icon": "🐚",
+   "description": "Coral vivo y pecios hundidos.",
+   "abundant": [
+    "#coral",
+    "#mar",
+    "#perla"
+   ],
+   "common": [
+    "#escama",
+    "#algas"
+   ],
+   "scarce": [
+    "#madera",
+    "#hierro"
+   ],
+   "creatures": [
+    "Sirenas",
+    "Cangrejos gigantes"
+   ],
+   "businesses": [
+    "joyero",
+    "herbolario"
+   ]
+  },
+  "fosa": {
+   "name": "Fosa",
+   "icon": "🌀",
+   "description": "Lo más hondo del abismo.",
+   "abundant": [
+    "#abismal",
+    "#aberrante"
+   ],
+   "common": [
+    "#mar",
+    "#hueso"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Devoradores",
+    "Aberraciones"
+   ],
+   "businesses": [
+    "monstruos",
+    "magico"
+   ]
+  },
+  "tuneles-aberrantes": {
+   "name": "Túneles Aberrantes",
+   "icon": "🧠",
+   "description": "Pasillos que parecen respirar.",
+   "abundant": [
+    "#aberrante"
+   ],
+   "common": [
+    "#subterraneo",
+    "#arcano"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Aberraciones",
+    "Desolladores"
+   ],
+   "businesses": [
+    "monstruos",
+    "alquimista"
+   ]
+  },
+  "colmena": {
+   "name": "Colmena",
+   "icon": "🐝",
+   "description": "Celdas de una colmena enorme.",
+   "abundant": [
+    "#insecto",
+    "#resina"
+   ],
+   "common": [
+    "#veneno",
+    "#aberrante"
+   ],
+   "scarce": [
+    "#madera",
+    "#hierro"
+   ],
+   "creatures": [
+    "Insectos gigantes",
+    "Reina de la colmena"
+   ],
+   "businesses": [
+    "curtidor",
+    "alquimista"
+   ]
+  },
+  "laboratorio": {
+   "name": "Laboratorio",
+   "icon": "⚗️",
+   "description": "Un laboratorio en ruinas lleno de frascos.",
+   "abundant": [
+    "#arcano",
+    "#constructo"
+   ],
+   "common": [
+    "#aberrante",
+    "#veneno",
+    "#pergamino"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera"
+   ],
+   "creatures": [
+    "Quimeras",
+    "Gólems de carne"
+   ],
+   "businesses": [
+    "alquimista",
+    "tecnologico",
+    "magico"
+   ]
+  },
+  "cavernas-vivas": {
+   "name": "Cavernas Vivas",
+   "icon": "🫀",
+   "description": "Paredes de carne que se mueven.",
+   "abundant": [
+    "#aberrante",
+    "#hueso"
+   ],
+   "common": [
+    "#veneno",
+    "#arcano"
+   ],
+   "scarce": [
+    "#piedra",
+    "#madera"
+   ],
+   "creatures": [
+    "Aberraciones",
+    "Babosas gigantes"
+   ],
+   "businesses": [
+    "monstruos",
+    "herbolario"
+   ]
+  },
+  "camara-mental": {
+   "name": "Cámara Mental",
+   "icon": "🔮",
+   "description": "El centro de una mente enorme.",
+   "abundant": [
+    "#aberrante",
+    "#arcano"
+   ],
+   "common": [
+    "#cristal",
+    "#arcano-mineral"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera",
+    "#hierro"
+   ],
+   "creatures": [
+    "Amo mental",
+    "Esclavos"
+   ],
+   "businesses": [
+    "magico",
+    "monstruos"
+   ]
+  },
+  "cumbres": {
+   "name": "Cumbres",
+   "icon": "🏔️",
+   "description": "Picos donde anidan los dragones.",
+   "abundant": [
+    "#piedra",
+    "#draconico"
+   ],
+   "common": [
+    "#plata",
+    "#oro",
+    "#escama"
+   ],
+   "scarce": [
+    "#madera",
+    "consumibles/comida",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Dracos",
+    "Dragones jóvenes",
+    "Kobolds"
+   ],
+   "businesses": [
+    "minerales",
+    "monstruos",
+    "general"
+   ]
+  },
+  "volcan-dormido": {
+   "name": "Volcán Dormido",
+   "icon": "🌋",
+   "description": "Un volcán caliente donde duermen dragones rojos.",
+   "abundant": [
+    "#volcanico",
+    "#draconico",
+    "#obsidiana"
+   ],
+   "common": [
+    "#rubi",
+    "#azufre",
+    "#oro"
+   ],
+   "scarce": [
+    "#madera",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Dragones rojos jóvenes",
+    "Salamandras"
+   ],
+   "businesses": [
+    "minerales",
+    "joyero",
+    "monstruos"
+   ]
+  },
+  "costa": {
+   "name": "Costa",
+   "icon": "🏖️",
+   "description": "Playas, acantilados y pescadores.",
+   "abundant": [
+    "#mar",
+    "#algas",
+    "#sal"
+   ],
+   "common": [
+    "#perla",
+    "#coral",
+    "#escama",
+    "#draconico"
+   ],
+   "scarce": [
+    "#hierro",
+    "#carbon"
+   ],
+   "creatures": [
+    "Dracos marinos",
+    "Cangrejos gigantes"
+   ],
+   "businesses": [
+    "general",
+    "curtidor",
+    "tabernero"
+   ]
+  },
+  "islas": {
+   "name": "Islas",
+   "icon": "🏝️",
+   "description": "Islas volcánicas rodeadas de mar.",
+   "abundant": [
+    "#mar",
+    "#selva",
+    "#madera-dura"
+   ],
+   "common": [
+    "#draconico",
+    "#pluma",
+    "#perla"
+   ],
+   "scarce": [
+    "#hierro",
+    "#plata"
+   ],
+   "creatures": [
+    "Dragones de bronce",
+    "Aves gigantes"
+   ],
+   "businesses": [
+    "general",
+    "materiales",
+    "joyero"
+   ]
+  },
+  "nido": {
+   "name": "Nido",
+   "icon": "🥚",
+   "description": "El nido de una dragona madre.",
+   "abundant": [
+    "#draconico"
+   ],
+   "common": [
+    "#oro",
+    "#gema",
+    "#escama"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Dragona madre",
+    "Crías de dragón"
+   ],
+   "businesses": [
+    "monstruos",
+    "joyero"
+   ]
+  },
+  "murallas": {
+   "name": "Murallas",
+   "icon": "🧱",
+   "description": "Muros de hierro de la Ciudadela.",
+   "abundant": [
+    "#hierro",
+    "#acero",
+    "#constructo"
+   ],
+   "common": [
+    "#piedra",
+    "#carbon"
+   ],
+   "scarce": [
+    "#madera",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Gólems de hierro",
+    "Soldados"
+   ],
+   "businesses": [
+    "armero",
+    "herrero",
+    "general"
+   ]
+  },
+  "forja-golem": {
+   "name": "Forja Gólem",
+   "icon": "🤖",
+   "description": "Talleres que fabrican gólems.",
+   "abundant": [
+    "#constructo",
+    "#hierro",
+    "#acero"
+   ],
+   "common": [
+    "#mitral",
+    "#elemental",
+    "#carbon"
+   ],
+   "scarce": [
+    "#madera",
+    "#hierbas",
+    "consumibles/comida"
+   ],
+   "creatures": [
+    "Gólems",
+    "Ingenieros"
+   ],
+   "businesses": [
+    "tecnologico",
+    "herrero",
+    "minerales"
+   ]
+  },
+  "cuarteles": {
+   "name": "Cuarteles",
+   "icon": "🛡️",
+   "description": "Barracones de un ejército de hierro.",
+   "abundant": [
+    "#acero",
+    "#hierro"
+   ],
+   "common": [
+    "#piel",
+    "#carne",
+    "consumibles/comida"
+   ],
+   "scarce": [
+    "#hierbas",
+    "#arcano"
+   ],
+   "creatures": [
+    "Soldados de hierro",
+    "Capitanes"
+   ],
+   "businesses": [
+    "armero",
+    "general",
+    "herrero"
+   ]
+  },
+  "puerto": {
+   "name": "Puerto",
+   "icon": "⚓",
+   "description": "Muelles con barcos de toda la Torre.",
+   "abundant": [
+    "#mar",
+    "consumibles/comida",
+    "consumibles/ingrediente"
+   ],
+   "common": [
+    "#madera",
+    "#fibra",
+    "#sal",
+    "#perla"
+   ],
+   "scarce": [
+    "#gema"
+   ],
+   "creatures": [
+    "Marineros",
+    "Contrabandistas"
+   ],
+   "businesses": [
+    "general",
+    "tabernero",
+    "perista"
+   ]
+  },
+  "mercado-hierro": {
+   "name": "Mercado de Hierro",
+   "icon": "🏬",
+   "description": "El gran mercado de la Ciudadela.",
+   "abundant": [
+    "#hierro",
+    "#acero",
+    "consumibles/comida"
+   ],
+   "common": [
+    "#cobre",
+    "#plata",
+    "#oro",
+    "#gema"
+   ],
+   "scarce": [
+    "#feerico"
+   ],
+   "creatures": [
+    "Comerciantes",
+    "Guardias"
+   ],
+   "businesses": [
+    "general",
+    "joyero",
+    "perista"
+   ]
+  },
+  "acantilados": {
+   "name": "Acantilados",
+   "icon": "🪨",
+   "description": "Rocas sobre el mar y viento constante.",
+   "abundant": [
+    "#piedra",
+    "#pluma",
+    "#mar"
+   ],
+   "common": [
+    "#tormenta",
+    "#sal"
+   ],
+   "scarce": [
+    "#madera",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Grifos",
+    "Harpías"
+   ],
+   "businesses": [
+    "curtidor",
+    "general"
+   ]
+  },
+  "oceano": {
+   "name": "Océano",
+   "icon": "🌊",
+   "description": "Mar abierto y tormentas. Anomalía de la Torre.",
+   "abundant": [
+    "#mar",
+    "#algas"
+   ],
+   "common": [
+    "#perla",
+    "#coral",
+    "#escama",
+    "#tormenta"
+   ],
+   "scarce": [
+    "#madera",
+    "#hierro",
+    "#piedra"
+   ],
+   "creatures": [
+    "Serpientes marinas",
+    "Leviatanes jóvenes"
+   ],
+   "businesses": [
+    "general",
+    "curtidor"
+   ]
+  },
+  "islas-flotantes": {
+   "name": "Islas Flotantes",
+   "icon": "☁️",
+   "description": "Rocas que flotan entre nubes.",
+   "abundant": [
+    "#tormenta",
+    "#piedra"
+   ],
+   "common": [
+    "#pluma",
+    "#cristal",
+    "#elemental"
+   ],
+   "scarce": [
+    "#madera",
+    "consumibles/comida"
+   ],
+   "creatures": [
+    "Elementales de aire",
+    "Grifos"
+   ],
+   "businesses": [
+    "magico",
+    "minerales"
+   ]
+  },
+  "faro": {
+   "name": "Faro",
+   "icon": "🗼",
+   "description": "Un faro que guía barcos entre rayos.",
+   "abundant": [
+    "#tormenta",
+    "consumibles/comida"
+   ],
+   "common": [
+    "#mar",
+    "#luz"
+   ],
+   "scarce": [
+    "#madera",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Guardianes del faro",
+    "Elementales de aire"
+   ],
+   "businesses": [
+    "general",
+    "tecnologico"
+   ]
+  },
+  "ojo-tormenta": {
+   "name": "Ojo de la Tormenta",
+   "icon": "🌀",
+   "description": "El centro de la tormenta eterna.",
+   "abundant": [
+    "#tormenta",
+    "#elemental"
+   ],
+   "common": [
+    "#arcano",
+    "#cristal"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Señor de la tormenta"
+   ],
+   "businesses": [
+    "magico",
+    "monstruos"
+   ]
+  },
+  "llanuras-ceniza": {
+   "name": "Llanuras de Ceniza",
+   "icon": "🌫️",
+   "description": "Ceniza hasta donde llega la vista.",
+   "abundant": [
+    "#volcanico",
+    "#infernal",
+    "#azufre"
+   ],
+   "common": [
+    "#hueso",
+    "#obsidiana"
+   ],
+   "scarce": [
+    "#madera",
+    "#hierbas",
+    "consumibles/comida"
+   ],
+   "creatures": [
+    "Demonios",
+    "Perros infernales"
+   ],
+   "businesses": [
+    "minerales",
+    "monstruos"
+   ]
+  },
+  "rio-fuego": {
+   "name": "Río de Fuego",
+   "icon": "🔥",
+   "description": "Un río de fuego que no se apaga.",
+   "abundant": [
+    "#infernal",
+    "#volcanico"
+   ],
+   "common": [
+    "#brasa",
+    "#elemental"
+   ],
+   "scarce": [
+    "#madera",
+    "consumibles/comida"
+   ],
+   "creatures": [
+    "Elementales de fuego",
+    "Diablos"
+   ],
+   "businesses": [
+    "alquimista",
+    "monstruos"
+   ]
+  },
+  "ciudad-infernal": {
+   "name": "Ciudad Infernal",
+   "icon": "🏯",
+   "description": "Una ciudad de diablos con sus propias leyes.",
+   "abundant": [
+    "#infernal",
+    "#oro",
+    "#hierro"
+   ],
+   "common": [
+    "#arcano",
+    "#gema",
+    "#pergamino"
+   ],
+   "scarce": [
+    "#feerico",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Diablos",
+    "Almas condenadas"
+   ],
+   "businesses": [
+    "perista",
+    "magico",
+    "joyero"
+   ]
+  },
+  "mina-infernal": {
+   "name": "Mina Infernal",
+   "icon": "⛏️",
+   "description": "Minas trabajadas por almas condenadas.",
+   "abundant": [
+    "#infernal",
+    "#hierro",
+    "#obsidiana"
+   ],
+   "common": [
+    "#adamantita",
+    "#azufre",
+    "#carbon"
+   ],
+   "scarce": [
+    "#madera",
+    "consumibles/comida"
+   ],
+   "creatures": [
+    "Almas condenadas",
+    "Capataces infernales"
+   ],
+   "businesses": [
+    "minerales",
+    "herrero"
+   ]
+  },
+  "trono": {
+   "name": "Trono",
+   "icon": "🔥",
+   "description": "La sala del trono infernal.",
+   "abundant": [
+    "#infernal"
+   ],
+   "common": [
+    "#oro",
+    "#gema",
+    "#arcano"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera"
+   ],
+   "creatures": [
+    "Archidiablo"
+   ],
+   "businesses": [
+    "monstruos",
+    "perista"
+   ]
+  },
+  "pozo-abisal": {
+   "name": "Pozo Abisal",
+   "icon": "🕳️",
+   "description": "Un pozo del que suben gritos.",
+   "abundant": [
+    "#abismal"
+   ],
+   "common": [
+    "#hueso",
+    "#aberrante",
+    "#infernal"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Demonios",
+    "Devoradores"
+   ],
+   "businesses": [
+    "monstruos",
+    "alquimista"
+   ]
+  },
+  "selva-corrupta": {
+   "name": "Selva Corrupta",
+   "icon": "🌴",
+   "description": "Una selva podrida. Anomalía de la Torre.",
+   "abundant": [
+    "#selva",
+    "#veneno",
+    "#madera-dura"
+   ],
+   "common": [
+    "#abismal",
+    "#insecto",
+    "#reptil"
+   ],
+   "scarce": [
+    "#hierro",
+    "#piedra"
+   ],
+   "creatures": [
+    "Plantas demoníacas",
+    "Serpientes"
+   ],
+   "businesses": [
+    "herbolario",
+    "curtidor",
+    "alquimista"
+   ]
+  },
+  "mar-sangre": {
+   "name": "Mar de Sangre",
+   "icon": "🩸",
+   "description": "Un mar rojo y espeso.",
+   "abundant": [
+    "#abismal",
+    "#mar"
+   ],
+   "common": [
+    "#sangre",
+    "#hueso"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera"
+   ],
+   "creatures": [
+    "Leviatanes demoníacos"
+   ],
+   "businesses": [
+    "monstruos",
+    "general"
+   ]
+  },
+  "ruinas-devoradas": {
+   "name": "Ruinas Devoradas",
+   "icon": "🏚️",
+   "description": "Lo que queda de lo que se comió el abismo.",
+   "abundant": [
+    "#piedra",
+    "#abismal"
+   ],
+   "common": [
+    "#oro",
+    "#arcano",
+    "#pergamino"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera"
+   ],
+   "creatures": [
+    "Devoradores",
+    "Espectros"
+   ],
+   "businesses": [
+    "perista",
+    "librero"
+   ]
+  },
+  "corazon": {
+   "name": "Corazón",
+   "icon": "❤️‍🔥",
+   "description": "El corazón palpitante del abismo.",
+   "abundant": [
+    "#abismal"
+   ],
+   "common": [
+    "#aberrante",
+    "#arcano"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Señor demoníaco"
+   ],
+   "businesses": [
+    "monstruos",
+    "magico"
+   ]
+  },
+  "mar-astral": {
+   "name": "Mar Astral",
+   "icon": "🌌",
+   "description": "Un mar de estrellas y plata.",
+   "abundant": [
+    "#astral"
+   ],
+   "common": [
+    "#arcano",
+    "#cristal",
+    "#plata"
+   ],
+   "scarce": [
+    "#madera",
+    "consumibles/comida",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Githyanki",
+    "Ballenas astrales"
+   ],
+   "businesses": [
+    "magico",
+    "general"
+   ]
+  },
+  "islas-celestes": {
+   "name": "Islas Celestes",
+   "icon": "☁️",
+   "description": "Islas de luz entre las estrellas.",
+   "abundant": [
+    "#astral",
+    "#luz"
+   ],
+   "common": [
+    "#pluma",
+    "#cristal",
+    "#oro"
+   ],
+   "scarce": [
+    "#hierro",
+    "#carbon"
+   ],
+   "creatures": [
+    "Celestiales",
+    "Pegasos"
+   ],
+   "businesses": [
+    "magico",
+    "joyero",
+    "establero"
+   ]
+  },
+  "observatorio": {
+   "name": "Observatorio",
+   "icon": "🔭",
+   "description": "Un observatorio de magos astrales.",
+   "abundant": [
+    "#astral",
+    "#arcano",
+    "#pergamino"
+   ],
+   "common": [
+    "#cristal",
+    "#constructo"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera"
+   ],
+   "creatures": [
+    "Magos",
+    "Autómatas"
+   ],
+   "businesses": [
+    "librero",
+    "magico",
+    "tecnologico"
+   ]
+  },
+  "puerto-astral": {
+   "name": "Puerto Astral",
+   "icon": "⚓",
+   "description": "Muelles de barcos que navegan el vacío.",
+   "abundant": [
+    "#astral",
+    "consumibles/comida",
+    "consumibles/ingrediente"
+   ],
+   "common": [
+    "#plata",
+    "#oro",
+    "#gema"
+   ],
+   "scarce": [
+    "#hierbas",
+    "#madera"
+   ],
+   "creatures": [
+    "Marineros astrales",
+    "Mercaderes"
+   ],
+   "businesses": [
+    "general",
+    "tabernero",
+    "perista"
+   ]
+  },
+  "nebulosa": {
+   "name": "Nebulosa",
+   "icon": "✨",
+   "description": "Nubes de polvo de estrellas.",
+   "abundant": [
+    "#astral",
+    "#arcano"
+   ],
+   "common": [
+    "#cristal"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera",
+    "#hierbas",
+    "#hierro"
+   ],
+   "creatures": [
+    "Entidades astrales"
+   ],
+   "businesses": [
+    "magico",
+    "monstruos"
+   ]
+  },
+  "picos-ancestrales": {
+   "name": "Picos Ancestrales",
+   "icon": "🏔️",
+   "description": "Montañas de dragones milenarios.",
+   "abundant": [
+    "#draconico",
+    "#piedra",
+    "#oro"
+   ],
+   "common": [
+    "#platino",
+    "#gema",
+    "#escama"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Dragones adultos",
+    "Dracos"
+   ],
+   "businesses": [
+    "minerales",
+    "monstruos",
+    "joyero"
+   ]
+  },
+  "glaciar-eterno": {
+   "name": "Glaciar Eterno",
+   "icon": "🧊",
+   "description": "Hielo antiguo donde duerme un dragón blanco.",
+   "abundant": [
+    "#hielo",
+    "#frio",
+    "#draconico"
+   ],
+   "common": [
+    "#cristal",
+    "#piel"
+   ],
+   "scarce": [
+    "#madera",
+    "consumibles/comida",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Dragones blancos",
+    "Gigantes de escarcha"
+   ],
+   "businesses": [
+    "curtidor",
+    "minerales"
+   ]
+  },
+  "desierto-cristal": {
+   "name": "Desierto de Cristal",
+   "icon": "🔷",
+   "description": "Arena convertida en cristal por aliento de dragón.",
+   "abundant": [
+    "#cristal",
+    "#desierto"
+   ],
+   "common": [
+    "#draconico",
+    "#arcano-mineral",
+    "#tormenta"
+   ],
+   "scarce": [
+    "#madera",
+    "consumibles/comida",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Dragones azules",
+    "Elementales"
+   ],
+   "businesses": [
+    "joyero",
+    "minerales"
+   ]
+  },
+  "bosque-petrificado": {
+   "name": "Bosque Petrificado",
+   "icon": "🗿",
+   "description": "Árboles convertidos en piedra.",
+   "abundant": [
+    "#piedra",
+    "#madera-antigua"
+   ],
+   "common": [
+    "#draconico",
+    "#cristal"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Basiliscos",
+    "Dragones verdes"
+   ],
+   "businesses": [
+    "materiales",
+    "herbolario",
+    "monstruos"
+   ]
+  },
+  "santuario": {
+   "name": "Santuario Dracónico",
+   "icon": "🐉",
+   "description": "El templo de los dragones ancestrales.",
+   "abundant": [
+    "#draconico",
+    "#arcano"
+   ],
+   "common": [
+    "#oro",
+    "#platino",
+    "#gema"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera"
+   ],
+   "creatures": [
+    "Dragones ancestrales",
+    "Sacerdotes dracónicos"
+   ],
+   "businesses": [
+    "magico",
+    "monstruos",
+    "joyero"
+   ]
+  },
+  "llanura-vacia": {
+   "name": "Llanura Vacía",
+   "icon": "⬛",
+   "description": "Nada hasta el horizonte.",
+   "abundant": [
+    "#vacio"
+   ],
+   "common": [
+    "#arcano",
+    "#cristal"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera",
+    "#hierbas",
+    "#hierro"
+   ],
+   "creatures": [
+    "Ecos del vacío"
+   ],
+   "businesses": [
+    "general",
+    "magico"
+   ]
+  },
+  "fragmentos": {
+   "name": "Fragmentos",
+   "icon": "🧩",
+   "description": "Trozos de mundos que flotan en la nada.",
+   "abundant": [
+    "#vacio",
+    "#piedra"
+   ],
+   "common": [
+    "#astral",
+    "#arcano-mineral",
+    "#gema"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera"
+   ],
+   "creatures": [
+    "Errantes del vacío"
+   ],
+   "businesses": [
+    "minerales",
+    "perista"
+   ]
+  },
+  "tormenta-vacio": {
+   "name": "Tormenta del Vacío",
+   "icon": "🌪️",
+   "description": "Una tormenta que borra lo que toca.",
+   "abundant": [
+    "#vacio",
+    "#tormenta"
+   ],
+   "common": [
+    "#elemental",
+    "#arcano"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Devoradores del vacío"
+   ],
+   "businesses": [
+    "magico",
+    "monstruos"
+   ]
+  },
+  "ruinas-primigenias": {
+   "name": "Ruinas Primigenias",
+   "icon": "🏛️",
+   "description": "Restos de lo que había antes de la Torre.",
+   "abundant": [
+    "#vacio",
+    "#piedra",
+    "#pergamino"
+   ],
+   "common": [
+    "#adamantita",
+    "#arcano",
+    "#oro"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera"
+   ],
+   "creatures": [
+    "Guardianes primigenios"
+   ],
+   "businesses": [
+    "librero",
+    "perista",
+    "minerales"
+   ]
+  },
+  "umbral": {
+   "name": "Umbral",
+   "icon": "🚪",
+   "description": "La puerta hacia lo que no tiene nombre.",
+   "abundant": [
+    "#vacio"
+   ],
+   "common": [
+    "#arcano",
+    "#aberrante"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Guardián del Umbral"
+   ],
+   "businesses": [
+    "monstruos",
+    "magico"
+   ]
+  },
+  "salon-olvido": {
+   "name": "Salón del Olvido",
+   "icon": "🕯️",
+   "description": "Un salón donde se pierden los recuerdos.",
+   "abundant": [
+    "#olvido",
+    "#arcano"
+   ],
+   "common": [
+    "#pergamino",
+    "#no-muerto"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera",
+    "#hierbas"
+   ],
+   "creatures": [
+    "Espíritus sin nombre"
+   ],
+   "businesses": [
+    "librero",
+    "magico"
+   ]
+  },
+  "jardin-marchito": {
+   "name": "Jardín Marchito",
+   "icon": "🥀",
+   "description": "Flores muertas que aún huelen.",
+   "abundant": [
+    "#olvido",
+    "#veneno"
+   ],
+   "common": [
+    "#flor-sombra",
+    "#loto-negro",
+    "#hierbas"
+   ],
+   "scarce": [
+    "#hierro",
+    "#piedra"
+   ],
+   "creatures": [
+    "Jardineros muertos"
+   ],
+   "businesses": [
+    "herbolario",
+    "alquimista"
+   ]
+  },
+  "biblioteca": {
+   "name": "Biblioteca Perdida",
+   "icon": "📚",
+   "description": "Libros que nadie recuerda haber escrito.",
+   "abundant": [
+    "#pergamino",
+    "#arcano",
+    "#olvido"
+   ],
+   "common": [
+    "#cristal",
+    "#constructo"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera"
+   ],
+   "creatures": [
+    "Bibliotecarios espectrales",
+    "Autómatas"
+   ],
+   "businesses": [
+    "librero",
+    "magico"
+   ]
+  },
+  "trono-olvido": {
+   "name": "Trono del Olvido",
+   "icon": "♛",
+   "description": "El final de la Torre.",
+   "abundant": [
+    "#olvido",
+    "#vacio"
+   ],
+   "common": [
+    "#arcano",
+    "#oro",
+    "#gema"
+   ],
+   "scarce": [
+    "consumibles/comida",
+    "#madera"
+   ],
+   "creatures": [
+    "El Olvidado"
+   ],
+   "businesses": [
+    "monstruos",
+    "magico"
+   ]
+  }
+ },
+ "realms": [
+  {
+   "name": "Tierra Salvaje",
+   "from": 1,
+   "to": 5,
+   "danger": 1,
+   "monsters": [
+    "lobo",
+    "bestia-monstruosa"
+   ],
+   "races": [
+    "humano",
+    "mediano",
+    "enano",
+    "elfo"
+   ],
+   "zones": [
+    {
+     "name": "Pradera",
+     "biome": "pradera"
+    },
+    {
+     "name": "Bosque",
+     "biome": "bosque"
+    },
+    {
+     "name": "Río",
+     "biome": "rio"
+    },
+    {
+     "name": "Colinas",
+     "biome": "colinas"
+    },
+    {
+     "name": "Bosque Denso",
+     "biome": "bosque-denso"
+    }
+   ],
+   "specials": [
+    {
+     "offset": 4,
+     "profession": "monstruos",
+     "name": "Cazadores de la Torre",
+     "requirement": "Derrotar al guardián del piso 5",
+     "items": []
+    }
+   ]
+  },
+  {
+   "name": "Tierra de Monstruos",
+   "from": 6,
+   "to": 10,
+   "danger": 2,
+   "monsters": [
+    "bestia-monstruosa",
+    "arana",
+    "lobo"
+   ],
+   "races": [
+    "humano",
+    "orco",
+    "goblinoide",
+    "enano"
+   ],
+   "zones": [
+    {
+     "name": "Bosque Oscuro",
+     "biome": "bosque-oscuro"
+    },
+    {
+     "name": "Pantano",
+     "biome": "pantano"
+    },
+    {
+     "name": "Cuevas",
+     "biome": "cuevas"
+    },
+    {
+     "name": "Campamento Goblin",
+     "biome": "campamento-goblin"
+    },
+    {
+     "name": "Ruinas",
+     "biome": "ruinas"
+    }
+   ],
+   "specials": [
+    {
+     "offset": 3,
+     "profession": "perista",
+     "name": "Mercado de botín",
+     "requirement": "Ganarse la confianza de los goblins",
+     "items": []
+    },
+    {
+     "offset": 4,
+     "profession": "monstruos",
+     "name": "Taller de trofeos",
+     "requirement": "Derrotar al guardián del piso 10",
+     "items": []
+    }
+   ]
+  },
+  {
+   "name": "Las Criptas Silenciosas",
+   "from": 11,
+   "to": 15,
+   "danger": 2,
+   "monsters": [
+    "no-muerto"
+   ],
+   "races": [
+    "humano",
+    "tiefling",
+    "enano"
+   ],
+   "zones": [
+    {
+     "name": "Catacumbas",
+     "biome": "catacumbas"
+    },
+    {
+     "name": "Cementerio",
+     "biome": "cementerio"
+    },
+    {
+     "name": "Capilla",
+     "biome": "capilla"
+    },
+    {
+     "name": "Cementerio Inundado",
+     "biome": "cementerio-inundado"
+    },
+    {
+     "name": "Cripta Real",
+     "biome": "cripta"
+    }
+   ],
+   "specials": [
+    {
+     "offset": 4,
+     "profession": "monstruos",
+     "name": "Reliquias de la Cripta Real",
+     "requirement": "Derrotar al guardián del piso 15",
+     "items": []
+    }
+   ]
+  },
+  {
+   "name": "El Sustrato",
+   "from": 16,
+   "to": 20,
+   "danger": 3,
+   "monsters": [
+    "insecto",
+    "subterraneo",
+    "aberrante"
+   ],
+   "races": [
+    "enano",
+    "gnomo",
+    "drow"
+   ],
+   "zones": [
+    {
+     "name": "Cuevas Profundas",
+     "biome": "cuevas-profundas"
+    },
+    {
+     "name": "Minas",
+     "biome": "minas"
+    },
+    {
+     "name": "Lago Subterráneo",
+     "biome": "lago-subterraneo"
+    },
+    {
+     "name": "Cavernas de Cristal",
+     "biome": "cavernas-cristal"
+    },
+    {
+     "name": "Bosque de Hongos",
+     "biome": "bosque-hongos"
+    }
+   ],
+   "specials": [
+    {
+     "offset": 1,
+     "profession": "minerales",
+     "name": "Gremio de mineros",
+     "requirement": "Ayudar a reabrir una veta en las Minas",
+     "items": []
+    },
+    {
+     "offset": 4,
+     "profession": "monstruos",
+     "name": "Trofeos del Sustrato",
+     "requirement": "Derrotar al guardián del piso 20",
+     "items": []
+    }
+   ]
+  },
+  {
+   "name": "El Foso Profano",
+   "from": 21,
+   "to": 25,
+   "danger": 3,
+   "monsters": [
+    "infernal",
+    "no-muerto"
+   ],
+   "races": [
+    "tiefling",
+    "humano",
+    "orco"
+   ],
+   "zones": [
+    {
+     "name": "Ciénaga Negra",
+     "biome": "cienaga-negra"
+    },
+    {
+     "name": "Templo Profano",
+     "biome": "templo-profano"
+    },
+    {
+     "name": "Campos de Hueso",
+     "biome": "campos-hueso"
+    },
+    {
+     "name": "Pozos de Azufre",
+     "biome": "pozos-azufre"
+    },
+    {
+     "name": "Altar Sangriento",
+     "biome": "altar-sangriento"
+    }
+   ],
+   "specials": [
+    {
+     "offset": 2,
+     "profession": "perista",
+     "name": "Mercado negro del Foso",
+     "requirement": "Pagar un favor a los cultistas",
+     "items": []
+    }
+   ]
+  },
+  {
+   "name": "Las Fraguas Elementales",
+   "from": 26,
+   "to": 30,
+   "danger": 3,
+   "monsters": [
+    "elemental",
+    "constructo"
+   ],
+   "races": [
+    "enano",
+    "gnomo",
+    "genasi"
+   ],
+   "zones": [
+    {
+     "name": "Fraguas",
+     "biome": "fraguas"
+    },
+    {
+     "name": "Volcán",
+     "biome": "volcan"
+    },
+    {
+     "name": "Campos de Lava",
+     "biome": "campos-lava"
+    },
+    {
+     "name": "Glaciar",
+     "biome": "glaciar"
+    },
+    {
+     "name": "Cumbre de Tormenta",
+     "biome": "cumbre-tormenta"
+    }
+   ],
+   "specials": [
+    {
+     "offset": 2,
+     "profession": "armero",
+     "name": "Forja Maestra",
+     "requirement": "Forjar una pieza digna en las Fraguas",
+     "items": []
+    },
+    {
+     "offset": 4,
+     "profession": "monstruos",
+     "name": "Núcleos elementales",
+     "requirement": "Derrotar al guardián del piso 30",
+     "items": []
+    }
+   ]
+  },
+  {
+   "name": "Los Peldaños de los Gigantes",
+   "from": 31,
+   "to": 35,
+   "danger": 4,
+   "monsters": [
+    "gigante"
+   ],
+   "races": [
+    "gigante",
+    "enano",
+    "humano"
+   ],
+   "zones": [
+    {
+     "name": "Montañas",
+     "biome": "montanas"
+    },
+    {
+     "name": "Cañón",
+     "biome": "canon"
+    },
+    {
+     "name": "Fortaleza de Piedra",
+     "biome": "fortaleza-piedra"
+    },
+    {
+     "name": "Taiga",
+     "biome": "taiga"
+    },
+    {
+     "name": "Tundra",
+     "biome": "tundra"
+    }
+   ],
+   "specials": [
+    {
+     "offset": 4,
+     "profession": "monstruos",
+     "name": "Botín de gigantes",
+     "requirement": "Derrotar al guardián del piso 35",
+     "items": []
+    }
+   ]
+  },
+  {
+   "name": "El Velo Feérico",
+   "from": 36,
+   "to": 40,
+   "danger": 3,
+   "monsters": [
+    "feerico"
+   ],
+   "races": [
+    "elfo",
+    "gnomo",
+    "mediano"
+   ],
+   "zones": [
+    {
+     "name": "Bosque Antiguo",
+     "biome": "bosque-antiguo"
+    },
+    {
+     "name": "Prado Feérico",
+     "biome": "prado-feerico"
+    },
+    {
+     "name": "Lago Encantado",
+     "biome": "lago-encantado"
+    },
+    {
+     "name": "Jardín Salvaje",
+     "biome": "jardin-salvaje"
+    },
+    {
+     "name": "Corte Feérica",
+     "biome": "corte-feerica"
+    }
+   ],
+   "specials": [
+    {
+     "offset": 4,
+     "profession": "magico",
+     "name": "Tesoros de la Corte",
+     "requirement": "Ser invitados por la Corte Feérica",
+     "items": []
+    }
+   ]
+  },
+  {
+   "name": "La Cripta de los Reyes",
+   "from": 41,
+   "to": 45,
+   "danger": 4,
+   "monsters": [
+    "no-muerto",
+    "constructo"
+   ],
+   "races": [
+    "humano",
+    "tiefling",
+    "enano"
+   ],
+   "zones": [
+    {
+     "name": "Ciudad Abandonada",
+     "biome": "ciudad-abandonada"
+    },
+    {
+     "name": "Necrópolis",
+     "biome": "necropolis"
+    },
+    {
+     "name": "Desierto",
+     "biome": "desierto"
+    },
+    {
+     "name": "Oasis",
+     "biome": "oasis"
+    },
+    {
+     "name": "Pirámide",
+     "biome": "piramide"
+    }
+   ],
+   "specials": [
+    {
+     "offset": 4,
+     "profession": "monstruos",
+     "name": "Ajuar real",
+     "requirement": "Derrotar al guardián del piso 45",
+     "items": []
+    }
+   ]
+  },
+  {
+   "name": "El Abismo Devorador",
+   "from": 46,
+   "to": 50,
+   "danger": 4,
+   "monsters": [
+    "abismal",
+    "aberrante"
+   ],
+   "races": [
+    "marino",
+    "humano",
+    "drow"
+   ],
+   "zones": [
+    {
+     "name": "Grieta",
+     "biome": "grieta"
+    },
+    {
+     "name": "Mar Oscuro",
+     "biome": "mar-oscuro"
+    },
+    {
+     "name": "Arrecife",
+     "biome": "arrecife"
+    },
+    {
+     "name": "Fosa",
+     "biome": "fosa"
+    },
+    {
+     "name": "Cuevas Profundas",
+     "biome": "cuevas-profundas"
+    }
+   ],
+   "specials": [
+    {
+     "offset": 4,
+     "profession": "monstruos",
+     "name": "Restos del abismo",
+     "requirement": "Derrotar al guardián del piso 50",
+     "items": []
+    }
+   ]
+  },
+  {
+   "name": "Las Cámaras Aberrantes",
+   "from": 51,
+   "to": 55,
+   "danger": 5,
+   "monsters": [
+    "aberrante",
+    "insecto"
+   ],
+   "races": [
+    "gnomo",
+    "humano",
+    "drow"
+   ],
+   "zones": [
+    {
+     "name": "Túneles Aberrantes",
+     "biome": "tuneles-aberrantes"
+    },
+    {
+     "name": "Colmena",
+     "biome": "colmena"
+    },
+    {
+     "name": "Laboratorio",
+     "biome": "laboratorio"
+    },
+    {
+     "name": "Cavernas Vivas",
+     "biome": "cavernas-vivas"
+    },
+    {
+     "name": "Cámara Mental",
+     "biome": "camara-mental"
+    }
+   ],
+   "specials": [
+    {
+     "offset": 4,
+     "profession": "monstruos",
+     "name": "Disecciones",
+     "requirement": "Derrotar al guardián del piso 55",
+     "items": []
+    }
+   ]
+  },
+  {
+   "name": "El Nido de Dragones",
+   "from": 56,
+   "to": 60,
+   "danger": 5,
+   "monsters": [
+    "draconico"
+   ],
+   "races": [
+    "draconido",
+    "bestial",
+    "humano"
+   ],
+   "zones": [
+    {
+     "name": "Cumbres",
+     "biome": "cumbres"
+    },
+    {
+     "name": "Volcán Dormido",
+     "biome": "volcan-dormido"
+    },
+    {
+     "name": "Costa",
+     "biome": "costa"
+    },
+    {
+     "name": "Islas",
+     "biome": "islas"
+    },
+    {
+     "name": "Nido",
+     "biome": "nido"
+    }
+   ],
+   "specials": [
+    {
+     "offset": 1,
+     "profession": "monstruos",
+     "name": "Escamas del Nido",
+     "requirement": "Ganarse el respeto de los kobolds del Nido",
+     "items": []
+    },
+    {
+     "offset": 4,
+     "profession": "monstruos",
+     "name": "Tesoro de la dragona",
+     "requirement": "Derrotar a la dragona del piso 60",
+     "items": []
+    }
+   ]
+  },
+  {
+   "name": "La Ciudadela de Hierro",
+   "from": 61,
+   "to": 65,
+   "danger": 4,
+   "monsters": [
+    "constructo"
+   ],
+   "races": [
+    "enano",
+    "gnomo",
+    "humano",
+    "forjado"
+   ],
+   "zones": [
+    {
+     "name": "Murallas",
+     "biome": "murallas"
+    },
+    {
+     "name": "Forja Gólem",
+     "biome": "forja-golem"
+    },
+    {
+     "name": "Cuarteles",
+     "biome": "cuarteles"
+    },
+    {
+     "name": "Puerto",
+     "biome": "puerto"
+    },
+    {
+     "name": "Mercado de Hierro",
+     "biome": "mercado-hierro"
+    }
+   ],
+   "specials": [
+    {
+     "offset": 4,
+     "profession": "perista",
+     "name": "Contrabando de la Ciudadela",
+     "requirement": "Conseguir un salvoconducto de la Ciudadela",
+     "items": []
+    }
+   ]
+  },
+  {
+   "name": "El Salón de las Tormentas",
+   "from": 66,
+   "to": 70,
+   "danger": 5,
+   "monsters": [
+    "tormenta",
+    "elemental"
+   ],
+   "races": [
+    "genasi",
+    "gigante",
+    "humano"
+   ],
+   "zones": [
+    {
+     "name": "Acantilados",
+     "biome": "acantilados"
+    },
+    {
+     "name": "Océano",
+     "biome": "oceano"
+    },
+    {
+     "name": "Islas Flotantes",
+     "biome": "islas-flotantes"
+    },
+    {
+     "name": "Faro",
+     "biome": "faro"
+    },
+    {
+     "name": "Ojo de la Tormenta",
+     "biome": "ojo-tormenta"
+    }
+   ],
+   "specials": [
+    {
+     "offset": 4,
+     "profession": "monstruos",
+     "name": "Plumas de tormenta",
+     "requirement": "Derrotar al guardián del piso 70",
+     "items": []
+    }
+   ]
+  },
+  {
+   "name": "El Trono Infernal",
+   "from": 71,
+   "to": 75,
+   "danger": 5,
+   "monsters": [
+    "infernal"
+   ],
+   "races": [
+    "tiefling",
+    "humano"
+   ],
+   "zones": [
+    {
+     "name": "Llanuras de Ceniza",
+     "biome": "llanuras-ceniza"
+    },
+    {
+     "name": "Río de Fuego",
+     "biome": "rio-fuego"
+    },
+    {
+     "name": "Ciudad Infernal",
+     "biome": "ciudad-infernal"
+    },
+    {
+     "name": "Mina Infernal",
+     "biome": "mina-infernal"
+    },
+    {
+     "name": "Trono",
+     "biome": "trono"
+    }
+   ],
+   "specials": [
+    {
+     "offset": 2,
+     "profession": "perista",
+     "name": "Mercado de almas",
+     "requirement": "Firmar un contrato con la Ciudad Infernal",
+     "items": []
+    }
+   ]
+  },
+  {
+   "name": "El Corazón del Abismo",
+   "from": 76,
+   "to": 80,
+   "danger": 5,
+   "monsters": [
+    "abismal",
+    "infernal"
+   ],
+   "races": [
+    "tiefling",
+    "drow",
+    "humano"
+   ],
+   "zones": [
+    {
+     "name": "Pozo Abisal",
+     "biome": "pozo-abisal"
+    },
+    {
+     "name": "Selva Corrupta",
+     "biome": "selva-corrupta"
+    },
+    {
+     "name": "Mar de Sangre",
+     "biome": "mar-sangre"
+    },
+    {
+     "name": "Ruinas Devoradas",
+     "biome": "ruinas-devoradas"
+    },
+    {
+     "name": "Corazón",
+     "biome": "corazon"
+    }
+   ],
+   "specials": [
+    {
+     "offset": 4,
+     "profession": "monstruos",
+     "name": "Esencias del abismo",
+     "requirement": "Derrotar al guardián del piso 80",
+     "items": []
+    }
+   ]
+  },
+  {
+   "name": "El Firmamento Astral",
+   "from": 81,
+   "to": 85,
+   "danger": 4,
+   "monsters": [
+    "astral"
+   ],
+   "races": [
+    "gith",
+    "elfo",
+    "humano",
+    "aasimar"
+   ],
+   "zones": [
+    {
+     "name": "Mar Astral",
+     "biome": "mar-astral"
+    },
+    {
+     "name": "Islas Celestes",
+     "biome": "islas-celestes"
+    },
+    {
+     "name": "Observatorio",
+     "biome": "observatorio"
+    },
+    {
+     "name": "Puerto Astral",
+     "biome": "puerto-astral"
+    },
+    {
+     "name": "Nebulosa",
+     "biome": "nebulosa"
+    }
+   ],
+   "specials": [
+    {
+     "offset": 3,
+     "profession": "magico",
+     "name": "Cartógrafos astrales",
+     "requirement": "Trazar una ruta por el Mar Astral",
+     "items": []
+    }
+   ]
+  },
+  {
+   "name": "El Reino de los Dragones Ancestrales",
+   "from": 86,
+   "to": 90,
+   "danger": 5,
+   "monsters": [
+    "draconico",
+    "ancestral"
+   ],
+   "races": [
+    "draconido",
+    "bestial",
+    "humano"
+   ],
+   "zones": [
+    {
+     "name": "Picos Ancestrales",
+     "biome": "picos-ancestrales"
+    },
+    {
+     "name": "Glaciar Eterno",
+     "biome": "glaciar-eterno"
+    },
+    {
+     "name": "Desierto de Cristal",
+     "biome": "desierto-cristal"
+    },
+    {
+     "name": "Bosque Petrificado",
+     "biome": "bosque-petrificado"
+    },
+    {
+     "name": "Santuario Dracónico",
+     "biome": "santuario"
+    }
+   ],
+   "specials": [
+    {
+     "offset": 4,
+     "profession": "monstruos",
+     "name": "Ofrendas del Santuario",
+     "requirement": "Derrotar a un dragón ancestral",
+     "items": [
+      "escama-dragon-ancestral"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "El Vacío Primigenio",
+   "from": 91,
+   "to": 95,
+   "danger": 5,
+   "monsters": [
+    "vacio",
+    "aberrante"
+   ],
+   "races": [
+    "humano",
+    "gith"
+   ],
+   "zones": [
+    {
+     "name": "Llanura Vacía",
+     "biome": "llanura-vacia"
+    },
+    {
+     "name": "Fragmentos",
+     "biome": "fragmentos"
+    },
+    {
+     "name": "Tormenta del Vacío",
+     "biome": "tormenta-vacio"
+    },
+    {
+     "name": "Ruinas Primigenias",
+     "biome": "ruinas-primigenias"
+    },
+    {
+     "name": "Umbral",
+     "biome": "umbral"
+    }
+   ],
+   "specials": [
+    {
+     "offset": 4,
+     "profession": "monstruos",
+     "name": "Lo que queda del Vacío",
+     "requirement": "Derrotar al Guardián del Umbral",
+     "items": [
+      "corazon-vacio"
+     ]
+    }
+   ]
+  },
+  {
+   "name": "El Trono del Olvido",
+   "from": 96,
+   "to": 99,
+   "danger": 5,
+   "monsters": [
+    "olvido",
+    "vacio"
+   ],
+   "races": [
+    "humano"
+   ],
+   "zones": [
+    {
+     "name": "Salón del Olvido",
+     "biome": "salon-olvido"
+    },
+    {
+     "name": "Jardín Marchito",
+     "biome": "jardin-marchito"
+    },
+    {
+     "name": "Biblioteca Perdida",
+     "biome": "biblioteca"
+    },
+    {
+     "name": "Trono del Olvido",
+     "biome": "trono-olvido"
+    }
+   ],
+   "specials": [
+    {
+     "offset": 3,
+     "profession": "magico",
+     "name": "El último mercader",
+     "requirement": "Llegar al Trono del Olvido",
+     "items": [
+      "lagrima-olvido"
+     ]
+    }
+   ]
+  }
+ ]
+}

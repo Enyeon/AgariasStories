@@ -78,6 +78,7 @@ export const WORLD_FORMS = {
     { kind: 'note', text: 'Sólo cuenta si activas «🏰 Pisos» en el panel del Mundo. Sin piso, usa el de su región; sin ninguno, está siempre.' },
     { key: 'floor', label: 'Piso en el que aparece', kind: 'number', min: 1, max: 999 },
     { key: 'requirement', label: 'Requisito extra para abrir (misión, reputación, evento…). El DM lo marca como cumplido', kind: 'text', placeholder: 'Completar la misión «La forja apagada»' },
+    { key: 'minReputation', label: 'Reputación mínima para atender (con su facción o, si no tiene, la fama del personaje en la región, 0-100). Vacío = ninguna', kind: 'number', min: -100, max: 100 },
     { key: 'special', label: 'Negocio especial o temporal', kind: 'checkbox' },
     { key: 'untilFloor', label: 'Cierra después de este piso (vacío = nunca)', kind: 'number', min: 1, max: 999 },
     { key: 'floorItems', label: 'Novedades por piso: productos que suma al llegar a ese piso', kind: 'rows', add: 'Añadir novedad', fields: [
@@ -182,6 +183,8 @@ export const WORLD_FORMS = {
     { key: 'type', label: 'Tipo de región', kind: 'text', placeholder: 'Minera, agrícola, frontera en guerra, puerto…' },
     { key: 'danger', label: 'Nivel de peligro (0-5)', kind: 'number', min: 0, max: 5 },
     { key: 'floor', label: 'Piso (progresión por pisos: sus lugares y comerciantes aparecen al llegar)', kind: 'number', min: 1, max: 999 },
+    { key: 'group', label: 'Gran región a la que pertenece (agrupa pisos en el mapa, p. ej. «Tierra Salvaje»)', kind: 'text' },
+    { key: 'strict', label: 'Economía estricta: la materia prima sólo existe si la región la produce (abunda, normal o escasa)', kind: 'checkbox' },
     { key: 'factions', label: 'Facciones presentes', kind: 'chips', options: factionOptions },
     { key: 'races', label: 'Razas predominantes (los de fuera se notan)', kind: 'chips', options: RACE_FAMILY_OPTIONS },
     { section: 'Economía' },

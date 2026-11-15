@@ -1014,3 +1014,15 @@
 .quality-tag.q-tosca { color: #a08c6c; }
 .quality-tag.q-fina { color: #8fd3ff; }
 .quality-tag.q-obra { color: #f2c14e; }
+
+/* Viajar por la Torre: Piso → Zona → negocios */
+.tower-head { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 8px; }
+.floor-select { min-width: 220px; }
+.zone-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+.zone-card { display: grid; gap: 8px; padding: 10px 12px; border-radius: 12px; background: var(--panel); border: 1px solid var(--line); align-content: start; }
+.zone-card.is-here { border-color: var(--brass); }
+.zone-card header { display: flex; gap: 8px; align-items: flex-start; }
+.zone-card h3 { margin: 0; font-size: 1em; }
+.zone-card header p { margin: 2px 0 0; }
+.zone-shops { list-style: none; margin: 0; padding: 0; display: grid; gap: 3px; font-size: 0.9em; }
+.zone-shops .is-locked { opacity: 0.75; }

@@ -11,6 +11,8 @@ export const CAMPAIGN_STYLES = Object.freeze({
 });
 export const CAMPAIGN_TONES = Object.freeze({ heroico: 'Heroico', epico: 'Épico', oscuro: 'Oscuro', realista: 'Realista', desenfadado: 'Desenfadado' });
 export const CAMPAIGN_MODALITIES = Object.freeze({ presencial: 'Presencial', online: 'En línea', mixta: 'Mixta' });
+/** Mundo de la Tienda de la campaña: qué mapa, negocios y economía usa. */
+export const CAMPAIGN_WORLDS = Object.freeze({ agarias: '🗺️ Agarias (mundo base)', lord100: '🏰 Lord 100 (la Torre, por pisos)' });
 export const CAMPAIGN_STATUS = Object.freeze({ preparacion: '📝 En preparación', reclutando: '📣 Buscando jugadores', curso: '▶️ En curso', pausada: '⏸️ En pausa', terminada: '🏁 Terminada' });
 
 const str = (v, max) => (typeof v === 'string' || typeof v === 'number' ? String(v).replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '').trim().slice(0, max) : ''); // eslint-disable-line no-control-regex
@@ -35,6 +37,7 @@ export function normalizeCampaignDetails(src) {
   const out = {
     synopsis: str(s.synopsis, 3000),
     setting: str(s.setting, 120),
+    world: s.world === 'agarias' ? null : oneOf(s.world, CAMPAIGN_WORLDS),
     system: oneOf(s.system, CAMPAIGN_SYSTEMS),
     kind: oneOf(s.kind, CAMPAIGN_KINDS),
     status: oneOf(s.status, CAMPAIGN_STATUS),

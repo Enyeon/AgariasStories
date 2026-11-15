@@ -44,7 +44,7 @@ function ledgerEntry(world, { charId, charName, shopId, item, side, qty, breakdo
  * Comprobaciones comunes. `here` (ubicación del jugador) activa la regla de
  * presencia: sólo se comercia con quien está en el mismo sitio y atiende.
  */
-function check(world, ctx, { shopId, qty, character, here }) {
+function check(world, ctx, { shopId, qty, character, here, charId }) {
   const amount = Math.trunc(Number(qty));
   if (!Number.isInteger(amount) || amount < 1) return { error: 'Cantidad inválida.' };
   if (!character) return { error: 'Elige un personaje.' };
@@ -52,7 +52,7 @@ function check(world, ctx, { shopId, qty, character, here }) {
   if (closure) return { error: `${closure.name}: la tienda está cerrada hoy.` };
   if (here !== undefined && here !== null) {
     const keeper = ctx.keeperOf(shopId);
-    const status = availability(world, ctx, keeper);
+    const status = availability(world, ctx, keeper, { charId });
     if (status.location !== here) return { error: `${keeper?.short ?? 'El comerciante'} no está aquí.`, reason: 'absent' };
     if (!status.open) return { error: status.reason ?? 'Ahora no atiende.', reason: 'closed' };
   }
@@ -60,7 +60,7 @@ function check(world, ctx, { shopId, qty, character, here }) {
 }
 
 export function buy(world, ctx, { charId = null, charName, shopId, itemId, qty = 1, character, profile = null, here = undefined }) {
-  const ok = check(world, ctx, { shopId, qty, character, here });
+  const ok = check(world, ctx, { shopId, qty, character, here, charId });
   if (ok.error) return ok;
   const quote = quoteBuy(world, ctx, { shopId, itemId, charId, profile });
   if (!quote) return { error: 'Este objeto no se vende aquí.' };
@@ -91,7 +91,7 @@ export function buy(world, ctx, { charId = null, charName, shopId, itemId, qty =
 }
 
 export function sell(world, ctx, { charId = null, charName, shopId, itemId, qty = 1, character, profile = null, here = undefined }) {
-  const ok = check(world, ctx, { shopId, qty, character, here });
+  const ok = check(world, ctx, { shopId, qty, character, here, charId });
   if (ok.error) return ok;
   const item = ctx.item(itemId);
   if (!item) return { error: 'La tienda no conoce ese objeto.' };
@@ -115,7 +115,7 @@ export function sell(world, ctx, { charId = null, charName, shopId, itemId, qty 
   if (entry) {
     if (!entry.unlimited) entry.qty += ok.amount;
   } else {
-    shop.stock[itemId] = { qty: ok.amount, target: 0, consigned: true, incoming: null, since: w.day };
+    shop.stock[itemId] = { qty: ok.amount, target: 0, consigned: true, since: w.day };
   }
   shop.cash -= breakdown.total;
   if (breakdown.dealQty) w.deals[haggleKey(charId, shopId, itemId, 'sell')].qty -= breakdown.dealQty;

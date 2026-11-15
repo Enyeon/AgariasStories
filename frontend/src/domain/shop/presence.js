@@ -102,11 +102,11 @@ function joinLabels(list) {
  *  here: está en esa ubicación hoy (aunque cierre a esta hora)
  *  open: se puede hablar y comerciar ahora mismo
  */
-export function availability(world, ctx, keeper, { day = world.day, phase = world.phase ?? 0 } = {}) {
+export function availability(world, ctx, keeper, { day = world.day, phase = world.phase ?? 0, charId = undefined } = {}) {
     if (!keeper) return { here: false, open: false, location: null, reason: 'No hay nadie.' };
     const location = keeperLocation(world, ctx, keeper, day);
     // Progresión por pisos: los pisos superiores no existen todavía; un requisito pendiente cierra.
-    const floor = businessStatus(world, ctx, keeper);
+    const floor = businessStatus(world, ctx, keeper, charId);
     if (floor.state === 'bloqueado') return { here: false, open: false, location: null, floor, reason: floor.reason };
     if (!floor.open) return { here: true, open: false, location, floor, reason: `${floor.icon} ${floor.reason}` };
     const sched = keeper.schedule ?? {};
@@ -166,13 +166,23 @@ export function discover(world, charId, { location = null, keeper = null }) {
 }
 
 /** Mapa visible para el personaje: regiones → ubicaciones (con cuántos comerciantes hay). */
-export function visibleMap(world, ctx, charId) {
+export function visibleMap(world, ctx, charId, { floor = undefined } = {}) {
     const here = playerLocation(world, ctx, charId);
     const out = [];
     for (const region of ctx.regions.values()) {
+        // `floor`: sólo las zonas de ese piso (null = lugares sin piso). Sin él, todo.
+        if (floor !== undefined && (region.floor ?? null) !== floor) continue;
         const locations = (region.locations ?? [])
             .filter((loc) => isLocationVisible(world, ctx, charId, loc.id))
-            .map((loc) => ({ ...loc, regionId: region.id, here: loc.id === here, merchants: merchantsAt(world, ctx, loc.id, charId).filter((m) => m.status.here).length }));
+            .map((loc) => {
+                const merchants = merchantsAt(world, ctx, loc.id, charId);
+                return {
+                    ...loc, regionId: region.id, here: loc.id === here,
+                    merchants: merchants.filter((m) => m.status.open).length,
+                    // Negocios del lugar: los que atienden y los que existen pero piden algo (se ven, no se entra).
+                    shops: merchants.map((m) => ({ id: m.shop?.id, name: m.shop?.name ?? m.keeper.name, icon: m.shop?.icon ?? '🏪', open: m.status.open, reason: m.status.open ? null : m.status.reason })),
+                };
+            });
         if (locations.length) out.push({ ...region, locations });
     }
     return out;
@@ -185,7 +195,7 @@ export function merchantsAt(world, ctx, locationId, charId) {
         if (keeperLocation(world, ctx, keeper) !== locationId) continue;
         // Comerciantes secretos: sólo para quien los descubrió (por un secreto o un rumor).
         if (keeper.secret && !discoveredOf(world, charId).keepers.includes(keeper.id)) continue;
-        const status = availability(world, ctx, keeper);
+        const status = availability(world, ctx, keeper, { charId });
         if (!status.here) continue;
         out.push({ keeper, shop: ctx.shopOf(keeper.id), status });
     }

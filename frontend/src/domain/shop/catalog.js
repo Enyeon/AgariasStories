@@ -106,6 +106,19 @@ export const CATEGORIES = Object.freeze([
         ],
     },
     {
+        id: 'materias', label: 'Materias primas', icon: '⛏️',
+        subs: [
+            { id: 'metal', label: 'Metales y lingotes', icon: '🧱' },
+            { id: 'mineral', label: 'Menas y minerales', icon: '🪨' },
+            { id: 'gema', label: 'Gemas en bruto', icon: '💎' },
+            { id: 'madera', label: 'Madera', icon: '🪵' },
+            { id: 'vegetal', label: 'Plantas, hongos y fibras', icon: '🌿' },
+            { id: 'animal', label: 'Pieles, huesos y carne', icon: '🦴' },
+            { id: 'monstruo', label: 'Partes de monstruo', icon: '🐉' },
+            { id: 'arcano', label: 'Materiales mágicos', icon: '🔮' },
+        ],
+    },
+    {
         id: 'tecnologia', label: 'Tecnología', icon: '⚙️',
         subs: [
             { id: 'material', label: 'Materiales de taller', icon: '🔩' },

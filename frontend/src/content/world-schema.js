@@ -125,6 +125,8 @@ export function normalizeMerchant(src, errors) {
     // Progresión por pisos (p. ej. Lord 100): desde qué piso existe, requisito extra, negocio especial.
     floor: src.floor === '' || src.floor == null ? null : int(src.floor, 1, 999, 1),
     requirement: str(src.requirement, 200),
+    // Reputación mínima: con su facción o, si no tiene, la fama del personaje en la región (0-100).
+    minReputation: src.minReputation === '' || src.minReputation == null ? null : int(src.minReputation, -100, 100, 0),
     special: bool(src.special),
     untilFloor: src.untilFloor === '' || src.untilFloor == null ? null : int(src.untilFloor, 1, 999, 1),
     qualities: pick(src.qualities, ['tosca', 'fina', 'obra']),
@@ -216,11 +218,14 @@ export function normalizeRegion(src) {
     type: str(src.type, 60),
     danger: int(src.danger, 0, 5, 0),
     floor: src.floor === '' || src.floor == null ? null : int(src.floor, 1, 999, 1),
+    group: str(src.group, 80),
+    // Economía estricta: la materia prima sólo existe si la región la produce o le llega.
+    strict: bool(src.strict),
     factions: ids(src.factions, 20),
     races: pick(src.races, Object.keys(RACE_FAMILY_OPTIONS)),
-    resources: products(src.resources),
-    common: products(src.common),
-    scarce: products(src.scarce),
+    resources: products(src.resources, 40),
+    common: products(src.common, 40),
+    scarce: products(src.scarce, 40),
     economy: modifierRows(src.economy),
     demand: modifierRows(src.demand, { field: 'mult', min: -90, max: 400 }),
     locations: rows(src.locations, 20, (l) => (str(l.name, 80) ? { name: str(l.name, 80), icon: str(l.icon, 8) || '📍', description: str(l.description, 300), hidden: bool(l.hidden) } : null)),

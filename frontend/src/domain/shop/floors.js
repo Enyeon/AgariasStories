@@ -32,7 +32,8 @@ export const STATES = Object.freeze({
 const EMPTY = Object.freeze({ enabled: false, current: 1, done: {}, overrides: {}, log: [] });
 
 export function progressOf(world) {
-    return { ...EMPTY, ...(world?.progress ?? {}) };
+    // En la Torre la progresión por pisos está activa desde el principio (el DM puede apagarla).
+    return { ...EMPTY, enabled: world?.mode === 'torre', ...(world?.progress ?? {}) };
 }
 
 /** Piso vigente para el mundo (Infinity si la progresión está apagada: todo existe). */
@@ -63,8 +64,24 @@ export function locationUnlocked(world, ctx, locationId) {
     return !f || f <= currentFloor(world);
 }
 
-/** Estado de un negocio según el piso, su requisito y lo que haya decidido el DM. */
-export function businessStatus(world, ctx, keeper) {
+/**
+ * Reputación del personaje para un comerciante: con su facción si tiene una;
+ * si no, la fama del personaje en la región del comerciante (Tienda: popularidad).
+ */
+export function reputationFor(world, ctx, keeper, charId) {
+    const key = charId ?? '_';
+    if (keeper?.faction) return { value: world.standing?.[key]?.[keeper.faction] ?? 0, of: ctx.factions.get(keeper.faction)?.name ?? 'su facción' };
+    const loc = keeper?.presence?.location;
+    const region = loc ? ctx.location(loc)?.regionId : null;
+    return { value: Math.round(world.popularity?.renown?.[key]?.[region] ?? 0), of: 'la región (fama)' };
+}
+
+/**
+ * Estado de un negocio según el piso, su requisito, la reputación del
+ * personaje y lo que haya decidido el DM. Todas las condiciones se suman:
+ * piso + campaña (el negocio sólo existe en su mundo) + misión + reputación.
+ */
+export function businessStatus(world, ctx, keeper, charId = undefined) {
     const p = progressOf(world);
     const floor = keeperFloor(ctx, keeper);
     const requirement = keeper?.requirement ? { text: keeper.requirement, done: Boolean(p.done?.[keeper.id]) } : null;
@@ -73,10 +90,20 @@ export function businessStatus(world, ctx, keeper) {
     const override = p.overrides?.[keeper?.id];
     if (override === 'closed') return { ...out('cerrado', 'Cerrado por el DM.'), forced: 'closed' };
     if (override === 'open') return { ...out(keeper?.special ? 'especial' : 'abierto'), forced: 'open' };
-    if (!p.enabled) return out(keeper?.special ? 'especial' : 'abierto');
+    if (!p.enabled) {
+        if (keeper?.minReputation != null && charId !== undefined) {
+            const rep = reputationFor(world, ctx, keeper, charId);
+            if (rep.value < keeper.minReputation) return out('condicionado', `Requisito: reputación ${keeper.minReputation} con ${rep.of} (tienes ${rep.value}).`);
+        }
+        return out(keeper?.special ? 'especial' : 'abierto');
+    }
     if (floor && floor > p.current) return out('bloqueado', `Aparece en el piso ${floor}.`);
     if (base.untilFloor && p.current > base.untilFloor) return out('cerrado', `Sólo estaba hasta el piso ${base.untilFloor}.`);
     if (requirement && !requirement.done) return out('condicionado', `Requisito: ${requirement.text}`);
+    if (keeper?.minReputation != null && charId !== undefined) {
+        const rep = reputationFor(world, ctx, keeper, charId);
+        if (rep.value < keeper.minReputation) return out('condicionado', `Requisito: reputación ${keeper.minReputation} con ${rep.of} (tienes ${rep.value}).`);
+    }
     return out(keeper?.special ? 'especial' : 'abierto');
 }
 

@@ -47,7 +47,7 @@ function prepare(world, ctx, { charId, keeperId, profile, here }) {
     const keeper = ctx.keepers.get(keeperId);
     if (!keeper) return { error: 'Ese comerciante no existe.' };
     if (here !== undefined && here !== null) {
-        const status = availability(world, ctx, keeper);
+        const status = availability(world, ctx, keeper, { charId });
         if (status.location !== here) return { error: `${who(keeper)} no está aquí.` };
         if (!status.open) return { error: status.reason ?? 'Ahora no atiende.' };
     }
@@ -190,7 +190,7 @@ export function merchantSummary(world, ctx, { keeperId, charId, profile }) {
     return {
         keeper: displayKeeper(keeper, rel),
         shop,
-        status: availability(world, ctx, keeper),
+        status: availability(world, ctx, keeper, { charId }),
         location: ctx.location(keeperLocation(world, ctx, keeper)),
         disposition,
         reasons: disposition.reasons.map((r) => (r.hidden ? { ...r, label: r.value > 0 ? 'Algo en ti le agrada' : 'Algo en ti le incomoda', masked: true } : r)),

@@ -33,6 +33,7 @@ export function createShopContext({
     rumors = [],
     professions = [],
     estate = null,
+    worldKind = 'agarias',
 }) {
     const professionMap = new Map(professions.map((p) => [p.id, p]));
     const phasesList = world?.phases?.length ? world.phases : DEFAULT_PHASES;
@@ -86,6 +87,7 @@ export function createShopContext({
         archetypes: archetypeMap,
         rumors: rumorMap,
         professions: professionMap,
+        worldKind,
         estate: estate ? {
             plots: new Map((estate.plots ?? []).map((p) => [p.id, p])),
             buildings: new Map((estate.buildings ?? []).map((b) => [b.id, b])),

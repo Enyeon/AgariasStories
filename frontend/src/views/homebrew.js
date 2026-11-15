@@ -12,7 +12,7 @@ import { CONTENT_TYPES, CONTENT_TYPE_KEYS, CONTENT_STATUS } from '../content/sch
 import { HOMEBREW_MODES, OFFICIAL_TYPES, normalizeRules } from '../content/rules.js';
 import { setWorldEditingPack, locationOptions } from '../content/world-options.js';
 import {
-  CAMPAIGN_SYSTEMS, CAMPAIGN_KINDS, CAMPAIGN_STYLES, CAMPAIGN_TONES, CAMPAIGN_MODALITIES, CAMPAIGN_STATUS, normalizeCampaignDetails, campaignSummary,
+  CAMPAIGN_SYSTEMS, CAMPAIGN_KINDS, CAMPAIGN_STYLES, CAMPAIGN_TONES, CAMPAIGN_MODALITIES, CAMPAIGN_STATUS, CAMPAIGN_WORLDS, normalizeCampaignDetails, campaignSummary,
 } from '../domain/campaign.js';
 import { inviteUrl, parseInvite } from '../services/homebrew.js';
 import { downloadJson, readJsonFile } from '../services/file-transfer.js';
@@ -80,6 +80,7 @@ function campaignCard(pack) {
     ${empty ? '' : html`<ul class="summary-list">
       ${row('Dungeon Master', d.dmName)}
       ${row('Ambientación', d.setting)}
+      ${row('Mundo de la Tienda', d.world ? CAMPAIGN_WORLDS[d.world] : '')}
       ${row('Sistema', CAMPAIGN_SYSTEMS[d.system])}
       ${row('Estilo de juego', (d.styles ?? []).map((x) => CAMPAIGN_STYLES[x]).join(', '))}
       ${row('Tono', CAMPAIGN_TONES[d.tone])}
@@ -290,6 +291,7 @@ export function mountHomebrew(container, ctx, packId = null) {
             <div class="field"><label class="field__label" for="cd-status">Estado</label><select id="cd-status" class="select" name="status">${opt(CAMPAIGN_STATUS, d.status)}</select></div>
             <div class="field"><label class="field__label" for="cd-system">Sistema</label><select id="cd-system" class="select" name="system">${opt(CAMPAIGN_SYSTEMS, d.system)}</select></div>
             <div class="field"><label class="field__label" for="cd-setting">Ambientación / mundo</label><input id="cd-setting" class="input" name="setting" maxlength="120" value="${d.setting ?? ''}" placeholder="Agarias, Reinos Olvidados…"></div>
+            <div class="field"><label class="field__label" for="cd-world">Mundo de la Tienda</label><select id="cd-world" class="select" name="world">${opt(CAMPAIGN_WORLDS, d.world ?? 'agarias')}</select></div>
             <div class="field"><label class="field__label" for="cd-tone">Tono</label><select id="cd-tone" class="select" name="tone">${opt(CAMPAIGN_TONES, d.tone)}</select></div>
             <div class="field"><label class="field__label" for="cd-start">Lugar de inicio (en la Tienda los personajes empiezan aquí)</label><select id="cd-start" class="select" name="startLocation">${opt(locationOptions(), d.startLocation, '— El de siempre —')}</select></div>
           </div>
@@ -319,7 +321,7 @@ export function mountHomebrew(container, ctx, packId = null) {
             name,
             details: {
               dmName: fd.get('dmName'), synopsis: fd.get('synopsis'), kind: fd.get('kind'), status: fd.get('status'), system: fd.get('system'),
-              setting: fd.get('setting'), tone: fd.get('tone'), startLocation: fd.get('startLocation') || null, styles: fd.getAll('styles'),
+              setting: fd.get('setting'), world: fd.get('world'), tone: fd.get('tone'), startLocation: fd.get('startLocation') || null, styles: fd.getAll('styles'),
               players: { min: fd.get('playersMin'), max: fd.get('playersMax') }, levels: { start: fd.get('levelStart'), max: fd.get('levelMax') },
               modality: fd.get('modality'), platform: fd.get('platform'), schedule: fd.get('schedule'),
               safety: { lines: String(fd.get('lines') ?? '').split('\n'), veils: String(fd.get('veils') ?? '').split('\n') },

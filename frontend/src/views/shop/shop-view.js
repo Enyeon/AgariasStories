@@ -577,7 +577,7 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
         const money = funds();
         const status = service.shopStatus(ui.shopId);
         const haggle = service.haggleState(ui.shopId, item.id, 'buy', ui.qty);
-        const history = world.shops[ui.shopId].history?.[item.id] ?? [];
+        const history = world.shops[ui.shopId]?.history?.[item.id] ?? [];
         const trade = tradeState();
         const others = ctx.shopList
             .filter((s) => s.id !== ui.shopId)
@@ -855,6 +855,14 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
                 h('label', { class: 'radio' }, h('input', { type: 'radio', name: 'roll', checked: s.prefs.rollMode !== 'manual', onchange: () => service.setPref('rollMode', 'auto') }), 'Automáticas (la tienda tira el d20)'),
                 h('label', { class: 'radio' }, h('input', { type: 'radio', name: 'roll', checked: s.prefs.rollMode === 'manual', onchange: () => service.setPref('rollMode', 'manual') }), 'Las tiro yo (dados físicos)'),
             ),
+            h('fieldset', {}, h('legend', {}, 'Mundo de la Tienda'),
+                s.scope.kind === 'campaign'
+                    ? h('p', { class: 'muted small' }, `Lo elige el DM en la ficha de la campaña (Homebrew → Campañas). Ahora: ${service.worldKind === 'lord100' ? '🏰 Lord 100' : '🗺️ Agarias'}.`)
+                    : [
+                        h('label', { class: 'radio' }, h('input', { type: 'radio', name: 'world', checked: service.worldKind !== 'lord100', onchange: async () => { await service.setLocalWorld('agarias'); dialog.close(); } }), '🗺️ Agarias (mundo base)'),
+                        h('label', { class: 'radio' }, h('input', { type: 'radio', name: 'world', checked: service.worldKind === 'lord100', onchange: async () => { await service.setLocalWorld('lord100'); dialog.close(); } }), '🏰 Lord 100 (la Torre, por pisos)'),
+                        h('p', { class: 'muted small' }, 'Sin campaña, cada mundo guarda su propio mercado en este dispositivo.'),
+                    ]),
             service.canControlTime
                 ? h('fieldset', {}, h('legend', {}, 'Mercado'), h('p', { class: 'muted small' }, s.scope.kind === 'campaign' ? 'Reinicia el mercado de TODA la campaña: existencias, eventos, relaciones e historial. No toca las fichas ni sus monedas.' : 'Reinicia existencias, eventos, relaciones e historial de este dispositivo. No toca las fichas ni sus monedas.'), resetBtn)
                 : null,

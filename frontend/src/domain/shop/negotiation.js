@@ -156,7 +156,7 @@ export function canNegotiate(world, ctx, { charId, shopId, itemId, side, qty, pr
     const closure = shopClosure(world, ctx, shopId);
     if (closure) return { ok: false, reason: 'closed', message: `${closure.name}: la tienda está cerrada.` };
     if (here !== undefined && here !== null) {
-        const status = availability(world, ctx, keeper);
+        const status = availability(world, ctx, keeper, { charId });
         if (status.location !== here) return { ok: false, reason: 'absent', message: `${keeper.short ?? keeper.name} no está aquí.` };
         if (!status.open) return { ok: false, reason: 'closed', message: status.reason };
     }
