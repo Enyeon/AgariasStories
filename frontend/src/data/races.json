@@ -2805,5 +2805,45 @@
     ],
     "descripcion": "Kobolds de escamas de cobre que sirven a los dragones metálicos y a sus dracónidos. [Agarias]",
     "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres un humanoide Pequeño.\n♻ Visión en la Oscuridad. Puedes ver con luz tenue a 60 pies (12 casillas) o menos de ti como si hubiera luz brillante, y en la oscuridad como si hubiera luz tenue. En la oscuridad solo distingues tonos de gris.\n♻ Escamas de Cobre. Tienes resistencia al daño de Ácido.\n♻ Grito Protector. Como acción adicional, lanzas un grito metálico: tú y tus aliados a 10 pies (2 casillas) o menos que puedan oírte ganáis puntos de golpe temporales iguales a tu bonificador por competencia. Puedes usarlo tantas veces como tu bonificador por competencia y recuperas los usos al terminar un descanso largo.\n♻ Escudero Dracónico. Cuando un dracónido o un dragón metálico aliado a 5 pies (1 casilla) o menos de ti hace una tirada de ataque, puedes usar tu reacción para darle ventaja. Una vez lo uses, no puedes volver a hacerlo hasta terminar un descanso corto o largo.\n♻ Legado Kobold. El vínculo de los kobolds con los dragones se manifiesta de forma distinta en cada uno. Elige un legado en «Dote racial»: Astucia (Talento artesano), Desafiante (Tenacidad) o Hechicería Dracónica."
+  },
+  "Dhampir": {
+    "velocidad": 35,
+    "choices": [
+      {
+        "count": 1,
+        "bonus": 2
+      },
+      {
+        "count": 1,
+        "bonus": 1
+      }
+    ],
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común y un idioma más que acuerdes con tu DM",
+    "languageElection": 1,
+    "yaHabla": [
+      "Común"
+    ],
+    "descripcion": "Entre el mundo de los vivos y el de los muertos, los dhampir conservan la vida pero sufren un hambre feroz. Su lazo con los no muertos les da velocidad, visión en la oscuridad y un mordisco que roba vida. Muchos se hacen aventureros y cazadores de monstruos.",
+    "info": "Rasgos de Raza:\n♻ Linaje. Puedes elegirlo al crear el personaje o sustituir con él tu raza. Mejora de características: +2 a una y +1 a otra (la regla también permite +1 a tres distintas; si la usas, ajústalo con tu DM). Si sustituyes una raza, conservas sus idiomas y no ganas nuevos.\n♻ Tipo. Eres humanoide.\n♻ Tamaño. Mediano o Pequeño: lo eliges al obtener este linaje.\n♻ Legado Ancestral. Si sustituyes una raza, puedes conservar sus competencias en habilidades y sus velocidades de trepar, volar o nadar. Si no conservas nada (o creas el personaje con este linaje), ganas competencia en dos habilidades a tu elección (márcalas en Habilidades).\n♻ Visión en la Oscuridad. Puedes ver con luz tenue a 60 pies (12 casillas) o menos de ti como si hubiera luz brillante, y en la oscuridad como si hubiera luz tenue. En la oscuridad solo distingues tonos de gris.\n♻ Naturaleza Inmortal. No necesitas respirar.\n♻ Trepar como una Araña. Tienes una velocidad trepando igual a tu velocidad caminando. Además, a partir del nivel 3 puedes moverte por superficies verticales y boca abajo por los techos, dejando las manos libres.\n♻ Mordisco Vampírico. Tu mordisco con colmillos es un arma natural que cuenta como arma cuerpo a cuerpo sencilla con la que eres competente. Usas tu modificador de Constitución, en vez del de Fuerza, para las tiradas de ataque y de daño. Inflige 1d4 de daño perforante. Mientras te falte la mitad o más de tus puntos de golpe, tienes ventaja en las tiradas de ataque con este mordisco.\nCuando impactas con él a una criatura que no sea un Constructo ni un No muerto, puedes potenciarte de una de estas formas:\n— Recuperas tantos puntos de golpe como el daño perforante del mordisco.\n— Ganas un bonificador a tu siguiente prueba de característica o tirada de ataque igual a ese daño.\nPuedes potenciarte así tantas veces como tu bonificador por competencia y recuperas todos los usos al terminar un descanso largo.\n\nHambres de dhampir (d6): 1 sangre · 2 carne o carne cruda · 3 líquido cefalorraquídeo · 4 energía psíquica · 5 sueños · 6 energía vital.\nOrígenes (d8): 1 reencarnación de un antepasado tirano vampírico · 2 pacto con una deidad, infernal, feérico o espíritu depredador · 3 sobreviviste al ataque de un vampiro · 4 un parásito vive en ti · 5 una tragedia interrumpió tu transformación en inmortal · 6 forma menguada de un ser de otro mundo · 7 uno de tus padres era vampiro · 8 un experimento radical te cambió."
+  },
+  "Dhampir (Arcanos Desenterrados)": {
+    "velocidad": 35,
+    "choices": [
+      {
+        "count": 1,
+        "bonus": 2
+      },
+      {
+        "count": 1,
+        "bonus": 1
+      }
+    ],
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común y un idioma más que acuerdes con tu DM",
+    "languageElection": 1,
+    "yaHabla": [
+      "Común"
+    ],
+    "descripcion": "Entre el mundo de los vivos y el de los muertos, los dhampir conservan la vida pero sufren un hambre feroz. Su lazo con los no muertos les da velocidad, visión en la oscuridad y un mordisco que roba vida. Muchos se hacen aventureros y cazadores de monstruos. Versión de prueba (Arcanos Desenterrados 76: Linajes góticos).",
+    "info": "Rasgos de Raza:\n♻ Linaje. Mejora de características: +2 a una y +1 a otra.\n♻ Tipo. Eres humanoide y no muerto.\n♻ Tamaño. Mediano o Pequeño: lo eliges al obtener este linaje.\n♻ Visión en la Oscuridad. Puedes ver con luz tenue a 60 pies (12 casillas) o menos de ti como si hubiera luz brillante, y en la oscuridad como si hubiera luz tenue. En la oscuridad solo distingues tonos de gris.\n♻ Trepar como una Araña. Tienes una velocidad trepando igual a tu velocidad caminando. Además, a partir del nivel 3 puedes moverte por superficies verticales y boca abajo por los techos, dejando las manos libres.\n♻ Mordisco Vampírico. Tu mordisco con colmillos es un arma natural que cuenta como arma cuerpo a cuerpo sencilla con la que eres competente. Sumas tu modificador de Constitución a las tiradas de ataque y de daño. Inflige 1d4 de daño perforante. Mientras te falte la mitad o más de tus puntos de golpe, tienes ventaja en las tiradas de ataque con este mordisco.\nCuando impactas con él a una criatura que no sea un Constructo ni un No muerto, puedes potenciarte de una de estas formas:\n— Recuperas tantos puntos de golpe como el daño perforante del mordisco.\n— Ganas un bonificador a tu siguiente prueba de característica o tirada de ataque igual a ese daño.\nPuedes potenciarte así tantas veces como tu bonificador por competencia y recuperas todos los usos al terminar un descanso largo.\n\nHambres de dhampir (d8): 1 sangre · 2 carne o carne cruda · 3 líquido cefalorraquídeo · 4 humores esotéricos · 5 energía psíquica · 6 un color de la apariencia de alguien · 7 sueños · 8 energía vital.\nOrígenes (d8): 1 reencarnación de un antepasado tirano vampírico · 2 pacto con una deidad, infernal, feérico o espíritu depredador · 3 sobreviviste al ataque de un vampiro · 4 un parásito vive en ti · 5 amaste a un inmortal y una tragedia interrumpió tu transformación · 6 forma menguada de un ser de otro mundo · 7 no conoces tu origen, pero te criaron vampiros u otros monstruos · 8 un experimento radical te cambió."
   }
 }

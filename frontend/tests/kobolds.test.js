@@ -11,6 +11,7 @@ const NEW = [
   'Kobold (Monstruos del Multiverso)', 'Kobold de Cobalto (Calderis)', 'Kobold (Calderis)', 'Kobold (Aster)',
   ...['Oro', 'Plata', 'Bronce', 'Latón', 'Cobre', 'Cobalto'].map((m) => `Dracónido Metálico (${m})`),
   ...['Oro', 'Plata', 'Bronce', 'Latón', 'Cobre'].map((m) => `Kobold Metálico (${m})`),
+  'Dhampir', 'Dhampir (Arcanos Desenterrados)',
 ];
 
 describe('Kobolds y metálicos', () => {
@@ -20,7 +21,7 @@ describe('Kobolds y metálicos', () => {
     expect(race.info).toMatch(/^Rasgos de Raza:/);
     expect(data.raceCatalog.some((g) => g.races.includes(key))).toBe(true);
     expect(getRaceTags(key).length).toBeGreaterThan(0);
-    expect(raceFamilies(key, shopRaces.families)).toContain(key.startsWith('Kobold') ? 'bestial' : 'draconido');
+    if (!key.startsWith('Dhampir')) expect(raceFamilies(key, shopRaces.families)).toContain(key.startsWith('Kobold') ? 'bestial' : 'draconido');
   });
 
   it('los legados kobold sólo se eligen como dote de la raza', () => {
