@@ -7,7 +7,7 @@
  * En Lord 100 el precio sube con el piso (+1 % por piso), como el hospedaje.
  */
 
-import { cloneWorld } from './state.js';
+import { cloneWorld, addShopCash } from './state.js';
 import { availability } from './presence.js';
 import { pay, coinsInCp, formatCp, niceRound } from '../money.js';
 
@@ -36,6 +36,7 @@ export function hireShopService(world, ctx, { shopId, serviceId, units = 1, char
     const paid = pay(character.equipment.coins, total);
     if (!paid.ok) return { error: `Cuesta ${formatCp(total)} y tienes ${formatCp(coinsInCp(character.equipment.coins))}.` };
     const w = cloneWorld(world);
+    addShopCash(w, shopId, total);
     w.serviceLog = [...(w.serviceLog ?? []), { day: w.day, shopId, serviceId, label: svc.label, units: n, unit: svc.unit, total, charId, charName }].slice(-SERVICE_LOG_LIMIT);
     const next = structuredClone(character);
     next.equipment.coins = paid.coins;

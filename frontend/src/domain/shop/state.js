@@ -17,6 +17,21 @@ export function cloneWorld(world) {
     return structuredClone(world);
 }
 
+/**
+ * Mueve dinero de la CAJA de una tienda (muta `world`, que ya es una copia).
+ * Positivo: entra (el jugador le paga). Negativo: sale, como mucho lo que hay.
+ * Si la tienda aún no existe en el mundo (piso no alcanzado), no hace nada.
+ * Devuelve lo que se movió de verdad.
+ */
+export function addShopCash(world, shopId, amount) {
+    const shop = shopId ? world.shops?.[shopId] : null;
+    const n = Math.trunc(Number(amount) || 0);
+    if (!shop || !n) return 0;
+    const moved = n < 0 ? -Math.min(shop.cash ?? 0, -n) : n;
+    shop.cash = (shop.cash ?? 0) + moved;
+    return moved;
+}
+
 export function emptyWorld(seed) {
     return {
         format: WORLD_FORMAT,

@@ -3,6 +3,7 @@
 
 import { html, setHtml } from '../ui/dom.js';
 import { listClasses, data } from '../data/index.js';
+import { supportLinks } from '../config/support.js';
 
 // Mensajes originales (form--flecha.js), como bytes UTF-8 en binario.
 const MESSAGES = [
@@ -34,6 +35,7 @@ function binaryRain(el) {
 }
 
 export function mountAbout(container) {
+  const links = supportLinks();
   const page = document.createElement('section');
   page.className = 'page';
   container.append(page);
@@ -48,7 +50,10 @@ export function mountAbout(container) {
         <li><strong>Compartir</strong> sube una copia al servidor y genera un enlace de sólo lectura. Sólo el navegador que lo creó puede actualizarlo o eliminarlo.</li>
       </ul>
       <h2>Créditos</h2>
-      <p>Creado por Enyeon para la campaña Stories of Agarias. D&amp;D y Dungeons &amp; Dragons son marcas de Wizards of the Coast; este es un proyecto de fans sin ánimo de lucro.</p>
+      <p>Creado por Enyeon para la campaña Stories of Agarias. D&amp;D y Dungeons &amp; Dragons son marcas de Wizards of the Coast; este es un proyecto de fans gratuito, no oficial ni avalado por Wizards of the Coast.</p>
+      ${links.length ? html`<h2 id="apoyar">Apoyar el proyecto</h2>
+      <p>Stories of Agarias es y seguirá siendo gratis. Si te resulta útil y quieres invitarme a un café para que siga mejorándola, puedes hacerlo aquí. Las donaciones son voluntarias y no desbloquean contenido.</p>
+      <p class="row">${links.map((l) => html`<a class="btn btn--primary" href="${l.url}" target="_blank" rel="noopener noreferrer">${l.icon} ${l.label}</a>`)}</p>` : ''}
       <div class="binary-rain-box">
         <div class="binary-rain" data-rain aria-hidden="true"></div>
         <button type="button" class="btn btn--ghost btn--sm" data-toggle-rain aria-pressed="false">Activar modo matrix</button>

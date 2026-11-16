@@ -90,7 +90,7 @@ describe('Tablón de misiones', () => {
     w = pub.world;
     const id = pub.quest.id;
     expect(guild.acceptQuest(w, ctx, { shopId: g1().shopId, questId: id, charId: 'a', charName: 'Aria' }).error).toMatch(/propia/);
-    expect(guild.publishQuest(w, ctx, { shopId: g1().shopId, charId: 'a', charName: 'Aria', character: poster, form: { title: 'Barata', rank: 'C', reward: 10 } }).error).toMatch(/no publica/);
+    expect(guild.publishQuest(w, ctx, { shopId: g1().shopId, charId: 'a', charName: 'Aria', character: poster, form: { title: 'Barata', rank: 'C', reward: 10 } }).error).toMatch(/mínimo/);
     w = guild.acceptQuest(w, ctx, { shopId: g1().shopId, questId: id, charId: 'b', charName: 'Bo' }).world;
     w = guild.acceptQuest(w, ctx, { shopId: g1().shopId, questId: id, charId: 'c', charName: 'Cy' }).world;
     expect(guild.acceptQuest(w, ctx, { shopId: g1().shopId, questId: id, charId: 'd', charName: 'Di' }).error).toMatch(/más aventureros/);

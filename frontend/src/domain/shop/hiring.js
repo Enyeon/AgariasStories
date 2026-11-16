@@ -16,7 +16,7 @@
  * del jugador), `products` (catálogo extra), `upkeep` (gastos del local).
  */
 
-import { cloneWorld, ensureRelation } from './state.js';
+import { cloneWorld, ensureRelation, addShopCash } from './state.js';
 import { evaluateDisposition, tierAtLeast } from './disposition.js';
 import { availability, keeperLocation, isLocationVisible } from './presence.js';
 import { remember } from './memory.js';
@@ -85,6 +85,8 @@ export function hire(world, ctx, { charId, keeperId, profile, character, locatio
         log: [],
         lastSettled: w.day,
     };
+    // La prima la cobra el comerciante: entra en su caja.
+    addShopCash(w, ctx.shopOf(keeper.id)?.id, terms.fee);
     ensureRelation(w, charId, keeper.id);
     remember(w, ctx, charId, keeper, 'hired');
     return { world: w, character: next, result: { lines: [{ who: 'keeper', text: `Trato hecho. Desde hoy trabajo para ti${location && location !== home ? ` en ${ctx.location(location)?.name}` : ''}.`, tone: 'good' }] } };
@@ -135,15 +137,22 @@ export function settle(world, ctx, { charId, keeperId, character }) {
     if (!character) return { error: 'Elige un personaje.' };
     if (!c.balance) return { error: 'Las cuentas ya están al día.' };
     const next = structuredClone(character);
-    if (c.balance > 0) next.equipment.coins = receiveCoins(next.equipment.coins, c.balance);
-    else {
-        const paid = pay(next.equipment.coins, -c.balance);
-        if (!paid.ok) return { error: `Le debes ${formatCp(-c.balance)} y no te alcanza.` };
-        next.equipment.coins = paid.coins;
-    }
     const w = cloneWorld(world);
-    const amount = c.balance;
-    w.contracts[keeperId].balance = 0;
+    const shopId = ctx.shopOf(keeperId)?.id;
+    // Los beneficios salen de la caja de su tienda (si hoy no hay tanto, cobras lo que haya
+    // y el resto queda pendiente); lo que le debes entra en ella.
+    let amount = c.balance;
+    if (amount > 0) {
+        amount = -addShopCash(w, shopId, -amount) || (w.shops?.[shopId] ? 0 : amount);
+        if (!amount) return { error: 'Hoy no tiene dinero en caja para pagarte. Vuelve otro día.' };
+        next.equipment.coins = receiveCoins(next.equipment.coins, amount);
+    } else {
+        const paid = pay(next.equipment.coins, -amount);
+        if (!paid.ok) return { error: `Le debes ${formatCp(-amount)} y no te alcanza.` };
+        next.equipment.coins = paid.coins;
+        addShopCash(w, shopId, -amount);
+    }
+    w.contracts[keeperId].balance = c.balance - amount;
     w.contracts[keeperId].lastSettled = w.day;
     return { world: w, character: next, result: { amount, text: amount > 0 ? `Cobras ${formatCp(amount)} de beneficios.` : `Pagas ${formatCp(-amount)} de salarios y gastos.` } };
 }

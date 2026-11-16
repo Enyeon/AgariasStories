@@ -18,7 +18,7 @@
  * Funciones puras: reciben un mundo (y un personaje) y devuelven otros nuevos.
  */
 
-import { cloneWorld } from './state.js';
+import { cloneWorld, addShopCash } from './state.js';
 import { availability } from './presence.js';
 import { pay, receiveCoins, coinsInCp, formatCp, niceRound } from '../money.js';
 import { grantItem } from './inventory.js';
@@ -132,6 +132,7 @@ export function rentRoom(world, ctx, { shopId, roomId, days, charId, charName, c
     } else {
         w.lodging[charId] = { shopId, keeperId: ctx.keeperOf(shopId)?.id ?? null, room: roomId, label: q.room.label, price: q.perDay, start: w.day, until: q.until, paid: q.total, refund: inn.refund, furniture: [], charName: charName ?? null };
     }
+    addShopCash(w, shopId, q.total); // lo cobra la posada
     const next = structuredClone(character);
     next.equipment.coins = paid.coins;
     const until = w.lodging[charId].until;
@@ -147,7 +148,10 @@ export function leaveRoom(world, ctx, { charId, character }) {
     if (!stay) return { error: 'No tienes ninguna habitación alquilada.' };
     if (!character) return { error: 'Elige un personaje.' };
     const unused = Math.max(0, stay.until - world.day); // hoy cuenta como usado
-    const refund = Math.floor(unused * stay.price * (stay.refund ?? 0));
+    const w = cloneWorld(world);
+    // El reembolso sale de la caja de la posada.
+    const owed = Math.floor(unused * stay.price * (stay.refund ?? 0));
+    const refund = w.shops?.[stay.shopId] ? -addShopCash(w, stay.shopId, -owed) : owed;
     let next = structuredClone(character);
     if (refund) next.equipment.coins = receiveCoins(next.equipment.coins, refund);
     const back = [];
@@ -157,7 +161,6 @@ export function leaveRoom(world, ctx, { charId, character }) {
         next = grantItem(next, item, 1);
         back.push(item.name);
     }
-    const w = cloneWorld(world);
     delete w.lodging[charId];
     const parts = [`Dejaste la habitación de ${shopName(ctx, stay.shopId)}.`];
     if (unused) parts.push(refund ? `Te devuelven ${formatCp(refund)} por ${unused} día(s) sin usar.` : `Los ${unused} día(s) sin usar no se devuelven (${stay.refund ? 'regla de la casa' : 'posada humilde'}).`);

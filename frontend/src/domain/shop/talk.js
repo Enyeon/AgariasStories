@@ -13,7 +13,7 @@
  */
 
 import { createRng } from './rng.js';
-import { cloneWorld, ensureRelation, getRelation, changeReputation, usedToday, markUsed } from './state.js';
+import { cloneWorld, ensureRelation, getRelation, changeReputation, usedToday, markUsed, addShopCash } from './state.js';
 import { evaluateDisposition, tierAtLeast, meetsAll } from './disposition.js';
 import { perceivedProfile, tellableTopics } from './profile.js';
 import { remember } from './memory.js';
@@ -340,6 +340,7 @@ export function askRumor(world, ctx, opts) {
         const paid = payFrom(opts.character, price);
         if (paid.error) return paid;
         character = paid.character;
+        addShopCash(p.w, ctx.shopOf(p.keeper.id)?.id, price);
         markUsed(p.rel, 'rumor-paid', world.day);
         p.say('rumor_price', { price: formatCp(price) });
     } else {
@@ -427,6 +428,7 @@ export function drink(world, ctx, opts) {
         const paid = payFrom(opts.character, DRINK_COST);
         if (paid.error) return paid;
         character = paid.character;
+        addShopCash(p.w, ctx.shopOf(p.keeper.id)?.id, DRINK_COST);
     }
     p.say(invited && opts.payFirst ? 'drink_paid_first' : 'drink_accept', {}, 'good');
     changeReputation(p.w, opts.charId, p.keeper.id, (likes ? 4 : 2) + (invited ? 1 : 0), { dailyCap: 10 });
@@ -569,6 +571,7 @@ function rewardFavor(p, ctx, opts, f, character) {
     if (r.coins && next) {
         next = structuredClone(next);
         next.equipment.coins = receiveCoins(next.equipment.coins, r.coins);
+        addShopCash(p.w, ctx.shopOf(p.keeper.id)?.id, -r.coins); // lo paga de su caja
         p.note(`Recibes ${formatCp(r.coins)}.`, 'good');
     }
     if (r.discount) {

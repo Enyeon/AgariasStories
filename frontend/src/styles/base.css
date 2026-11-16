@@ -93,3 +93,5 @@ hr { border: 0; border-top: 1px solid var(--border); margin: var(--space-5) 0; }
 .prose p, .prose li { color: var(--text-muted); }
 .muted { color: var(--text-muted); }
 .faint { color: var(--text-faint); }
+.app-nav__support { color: var(--gold, #e3b341); }
+.app-nav__support:hover { color: var(--text); }

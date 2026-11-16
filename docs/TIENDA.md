@@ -210,6 +210,22 @@ en el inventario y se colocan (🏠 Propiedades → 🪑 Muebles) en:
 - una propiedad con 🏠 Vivienda (6, 10 o 16 huecos según el tamaño); al venderla,
   vuelven al inventario.
 
+## Caja de las tiendas (AgSt 1.21)
+
+Todo lo que paga un jugador entra en la caja de quien cobra, y todo lo que recibe
+sale de ella (`addShopCash` en `domain/shop/state.js`):
+
+- compras y ventas, rumores pagados, rondas, primas de contratación;
+- hospedaje (y su reembolso si te vas antes), servicios, comisiones del cambista;
+- comisiones y tasas del Gremio y los servicios contratados allí;
+- liquidar a un comerciante contratado: los beneficios salen de su caja (si hoy no
+  tiene tanto, cobras lo que haya y el resto queda pendiente) y lo que le debes
+  entra en ella.
+
+Las recompensas de misiones PJ quedan en depósito en el Gremio; el banco guarda su
+saldo aparte. `tests/money-audit.test.js` comprueba en los dos sistemas monetarios
+que en cada operación no se pierde ni se crea dinero.
+
 ## Formato compacto del mercado (AgSt 1.20)
 
 Con la Torre entera abierta el mercado se acercaba al límite del servidor (1,5 MB).
@@ -236,7 +252,7 @@ texto está en `data/shop/guild.json`, que se puede editar sin tocar código.
 
 - **Tablón** (`domain/shop/guild.js`): las misiones del Gremio se generan por piso
   y semana y no ocupan espacio hasta que alguien las acepta. Las misiones PJ las
-  publica un jugador: paga la recompensa en depósito más la comisión. Aceptar una
+  publica un jugador: paga la recompensa en depósito más la comisión (mínimo: el 10 % de la recompensa habitual del rango; el formulario la propone y avisa antes de publicar). Aceptar una
   misión exige una licencia de su rango (las F no la piden). Una misión PJ la
   cierra quien la publicó (o el DM); las del Gremio, sólo el DM. Cada
   aventurero cobra su parte en el Gremio (la ficha de otro jugador no está en tu

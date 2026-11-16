@@ -26,7 +26,7 @@
  * Funciones puras: reciben un mundo y devuelven uno nuevo.
  */
 
-import { cloneWorld } from './state.js';
+import { cloneWorld, addShopCash } from './state.js';
 import { createRng } from './rng.js';
 import { availability } from './presence.js';
 import { rollCheck, describeRoll } from './negotiation.js';
@@ -239,7 +239,7 @@ export function board(world, ctx, guild, { charId = null, isDm = false } = {}) {
 
 /** Recompensa mínima que el Gremio acepta publicar para un rango. */
 export function minReward(ctx, rankId) {
-    return Math.max(10, Math.round((rankOf(ctx, rankId)?.reward ?? 0) * 0.25));
+    return Math.max(10, Math.round((rankOf(ctx, rankId)?.reward ?? 0) * 0.1));
 }
 
 /** Publicar una misión PJ: la recompensa queda en depósito y el Gremio cobra su comisión. */
@@ -257,7 +257,7 @@ export function publishQuest(world, ctx, { shopId, charId, charName, character, 
     if (!rank) return { error: 'Elige el rango de la misión.' };
     const reward = clampInt(form.reward, 0, 100_000_000, 0);
     const min = minReward(ctx, rank.id);
-    if (reward < min) return { error: `El Gremio no publica misiones de ${rank.label} por menos de ${formatCp(min)}.` };
+    if (reward < min) return { error: `La recompensa (${formatCp(reward)}) es menor que el mínimo del Gremio para ${rank.label}: ${formatCp(min)}. Súbela o elige un rango más bajo. (No tiene que ver con tu dinero.)` };
     const commission = Math.ceil(reward * guild.prestige.commission);
     const paid = pay(character.equipment.coins, reward + commission);
     if (!paid.ok) return { error: `Necesitas ${formatCp(reward + commission)} (recompensa + comisión del ${Math.round(guild.prestige.commission * 100)} %). Tienes ${formatCp(coinsInCp(character.equipment.coins))}.` };
@@ -287,6 +287,7 @@ export function publishQuest(world, ctx, { shopId, charId, charName, character, 
     if (g.quests.some((q) => q.id === quest.id)) quest.id += `-${g.quests.length}`;
     g.quests.push(quest);
     prune(w);
+    addShopCash(w, shopId, commission); // la comisión es del Gremio; la recompensa queda en depósito
     const next = structuredClone(character);
     next.equipment.coins = paid.coins;
     return { world: w, character: next, quest, message: `Misión publicada. Depositaste ${formatCp(reward)} y el Gremio cobró ${formatCp(commission)} de comisión.` };
@@ -511,6 +512,7 @@ export function takeEvaluation(world, ctx, { shopId, charId, charName, character
         l.floor = guild.floor;
         l.history = [...(l.history ?? []), { rank: rankId, day: w.day, floor: guild.floor, by: 'examen' }].slice(-20);
     }
+    addShopCash(w, shopId, exam.fee);
     const next = structuredClone(character);
     next.equipment.coins = paid.coins;
     const rank = rankOf(ctx, rankId);
@@ -597,6 +599,7 @@ export function hireService(world, ctx, { shopId, offerId, units = 1, charId, ch
     const days = offer.unit === 'día' ? n : 1;
     g.hires.push({ id: `${offer.id}-${charId}-${w.day}-${g.hires.length}`, charId, charName, floor: guild.floor, offerId, label: offer.label, npc: offer.npc, units: n, unit: offer.unit, total, start: w.day, until: w.day + days - 1 });
     prune(w);
+    addShopCash(w, shopId, total); // el Gremio cobra y paga al profesional
     const next = structuredClone(character);
     next.equipment.coins = paid.coins;
     return { world: w, character: next, message: `${offer.npc} (${offer.label}) trabajará para ti: ${n} ${offer.unit}${n === 1 ? '' : 's'} por ${formatCp(total)}.` };

@@ -205,20 +205,43 @@ export function renderGuild(container, { service, shopId, ui, toast, rerender, r
         const area = (key, props = {}) => bind(h('textarea', { rows: '3', ...props }, draft[key]), key);
         const select = (key, options) => {
             const el = h('select', {}, options.map(([v, l]) => h('option', { value: v, selected: draft[key] === v }, l)));
-            el.addEventListener('change', () => { draft[key] = el.value; update(); });
+            el.addEventListener('change', () => {
+                draft[key] = el.value;
+                // Al cambiar de rango, la recompensa se ajusta a la habitual si estaba vacía o por debajo del mínimo.
+                if (key === 'rank' && toCp(draft.reward) < service.guild.minReward(draft.rank)) {
+                    draft.reward = String(cpToPo(ranks.find((r) => r.id === draft.rank)?.reward ?? 0));
+                    rewardInput.value = draft.reward;
+                }
+                update();
+            });
             return el;
         };
-        const summary = h('p', { class: 'small' });
+        const toCp = (v) => Math.round(Number(v || 0) * PO());
+        const cpToPo = (cp) => Math.round((cp / PO()) * 100) / 100;
+        if (draft.reward === '') draft.reward = String(cpToPo(ranks.find((r) => r.id === draft.rank)?.reward ?? 0));
+        const summary = h('div', { class: 'small', 'aria-live': 'polite' });
         const commission = view.prestige.commission;
+        const funds = view.funds;
+        let publishBtn = null;
         function update() {
-            const reward = Math.round(Number(draft.reward || 0) * PO());
+            const reward = toCp(draft.reward);
+            const rank = ranks.find((r) => r.id === draft.rank);
             const min = service.guild.minReward(draft.rank);
             const fee = Math.ceil(reward * commission);
-            replace(summary, `Se te cobra ahora: ${formatCp(reward + fee)} (recompensa en depósito ${formatCp(reward)} + comisión ${formatCp(fee)}). Mínimo para ${rankLabel(draft.rank)}: ${formatCp(min)}.`);
+            const problems = [];
+            if (reward < min) problems.push(`La recompensa es menor que el mínimo para ${rankLabel(draft.rank)} (${formatCp(min)}). Súbela o elige un rango más bajo.`);
+            if (reward + fee > funds) problems.push(`Te faltan ${formatCp(reward + fee - funds)}: tienes ${formatCp(funds)}.`);
+            replace(summary,
+                h('p', {}, `Se te cobra ahora: `, h('b', {}, formatCp(reward + fee)), ` (recompensa en depósito ${formatCp(reward)} + comisión del ${Math.round(commission * 100)} %: ${formatCp(fee)}).`),
+                h('p', { class: 'muted' }, `${rankLabel(draft.rank)}: mínimo ${formatCp(min)} · lo habitual, unas ${formatCp(rank?.reward ?? 0)}.`),
+                problems.map((t) => h('p', { class: 'warn' }, `⚠ ${t}`)));
+            if (publishBtn) publishBtn.disabled = !view.hasCharacter || problems.length > 0;
         }
+        const rewardInput = input('reward', { type: 'number', min: '0', step: '0.01' });
+        publishBtn = h('button', { class: 'btn btn-primary', onclick: () => submit() }, 'Publicar en el tablón');
         update();
         const submit = async () => {
-            const res = await run(service.guild.publish(shopId, { ...draft, reward: Math.round(Number(draft.reward || 0) * PO()) }));
+            const res = await run(service.guild.publish(shopId, { ...draft, reward: toCp(draft.reward) }));
             if (res) { ui.guildDraft = null; ui.guildTab = 'tablon'; rerender(); }
         };
         return h('section', { class: 'guild-section guild-publish' },
@@ -230,13 +253,13 @@ export function renderGuild(container, { service, shopId, ui, toast, rerender, r
                 field('Plazas', input('maxTakers', { type: 'number', min: '1', max: '6' })),
                 field('Plazo (días, opcional)', input('deadlineDays', { type: 'number', min: '0', max: '90' }))),
             h('div', { class: 'field-row' },
-                field('Recompensa (po)', input('reward', { type: 'number', min: '0', step: '0.01' })),
+                field('Recompensa (po)', rewardInput),
                 field('Además (objetos, favores…)', input('rewardItems', { maxlength: '300', placeholder: 'Opcional: los entregas tú en persona' }))),
             field('Descripción', area('description', { maxlength: '1500', placeholder: 'Qué hay que hacer, dónde y por qué.' })),
             field('Requisitos', area('requirements', { maxlength: '400', rows: '2', placeholder: 'Ej.: alguien con Supervivencia; al menos dos aventureros.' })),
             field('Condiciones especiales', area('conditions', { maxlength: '400', rows: '2', placeholder: 'Ej.: sin matar a la criatura; entregar antes del anochecer.' })),
             summary,
-            h('div', { class: 'talk-controls' }, h('button', { class: 'btn btn-primary', disabled: !view.hasCharacter, onclick: submit }, 'Publicar en el tablón')));
+            h('div', { class: 'talk-controls' }, publishBtn));
     }
 
     // ── DM ──

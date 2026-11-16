@@ -58,7 +58,7 @@ import { buildProfile } from '../domain/shop/profile.js';
 import { listEntries, getPack } from '../content/registry.js';
 import { createMarketRepository, marketScope, sameScope } from './shop-market.js';
 import { ApiError, hasSupabase } from './api.js';
-import { setDisplayCurrency, currencyOf, convertCoins, formatBag, CURRENCIES } from '../domain/money.js';
+import { setDisplayCurrency, currencyOf, convertCoins, formatBag, coinsInCp, CURRENCIES } from '../domain/money.js';
 
 const PREFS_KEY = 'agarias-dnd:shop-prefs';
 const SKILL_KEYS = { persuasion: 'Persuasión', deception: 'Engaño', intimidation: 'Intimidación', insight: 'Perspicacia', investigation: 'Investigación', performance: 'Interpretación', sleight: 'Juego de Manos' };
@@ -820,6 +820,7 @@ export function createShopService({ characters, homebrew, market = createMarketR
           isDm,
           level,
           hasCharacter: Boolean(state.character),
+          funds: state.character ? coinsInCp(state.character.equipment.coins) : 0,
           license,
           board: guild.board(state.world, state.ctx, g, { charId: state.characterId, isDm }),
           offers: guild.serviceOffers(state.world, state.ctx, g),

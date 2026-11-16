@@ -18,6 +18,7 @@ import { mountHomebrew, mountJoin } from './views/homebrew.js';
 // La Tienda se carga sólo al entrar (catálogo y simulación no pesan en el resto).
 const mountShop = async (...args) => (await import('./views/shop/index.js')).mountShop(...args);
 import { homebrew } from './services/homebrew.js';
+import { supportLinks } from './config/support.js';
 
 const services = { characters: createCharacterService(), homebrew };
 // El Homebrew guardado en el dispositivo se instala antes de abrir cualquier
@@ -55,6 +56,16 @@ const ctx = { services, navigate: (path, opts) => router.navigate(path, opts) };
 window.addEventListener('unhandledrejection', (e) => {
   reportError(e.reason);
 });
+
+// Botón «Apoyar» (Ko-fi u otra plataforma), sólo si está configurado (src/config/support.js).
+const [support] = supportLinks();
+const supportLink = document.querySelector('[data-support]');
+if (support && supportLink) {
+  supportLink.href = support.url;
+  supportLink.textContent = `${support.icon} Apoyar`;
+  supportLink.title = `Apoya Stories of Agarias en ${support.label} (voluntario: la página es gratis)`;
+  supportLink.hidden = false;
+}
 
 requestPersistentStorage();
 router.start();

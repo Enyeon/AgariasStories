@@ -9,7 +9,7 @@
  * Todo en pc enteros: nunca se pierde ni se crea dinero salvo la comisión.
  */
 
-import { cloneWorld } from './state.js';
+import { cloneWorld, addShopCash } from './state.js';
 import { availability } from './presence.js';
 import { coinValues, currencyOf, normalizeCoins, formatCp, receiveCoins, pay, coinsInCp, COIN_SHORT } from '../money.js';
 
@@ -60,7 +60,9 @@ export function exchangeCoins(world, ctx, { shopId, character, from, to, count, 
     c[from] -= q.count;
     c[to] = (Number(c[to]) || 0) + q.got;
     next.equipment.coins = q.rest ? receiveCoins(c, q.rest) : c;
-    return { world, character: next, message: `Cambias ${q.count} ${COIN_SHORT[from]} por ${q.got} ${COIN_SHORT[to]}${q.rest ? ` y ${formatCp(q.rest)} de cambio` : ''} (comisión: ${formatCp(q.fee)}).` };
+    const w = cloneWorld(world);
+    addShopCash(w, shopId, q.fee); // la comisión es para el cambista
+    return { world: w, character: next, message: `Cambias ${q.count} ${COIN_SHORT[from]} por ${q.got} ${COIN_SHORT[to]}${q.rest ? ` y ${formatCp(q.rest)} de cambio` : ''} (comisión: ${formatCp(q.fee)}).` };
 }
 
 /** Saldo en el banco de la campaña. */
