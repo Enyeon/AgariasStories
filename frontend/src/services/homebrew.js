@@ -57,10 +57,18 @@ function installLocal(pack) {
 
 // ── Campañas ────────────────────────────────────────────────────────────
 
-/** Membresía: { id, name, role: 'dm'|'jugador', key, joinedAt } */
+/**
+ * Membresía: { id, name, role: 'dm'|'jugador'|'observador', key, joinedAt,
+ *   memberId?, status?: 'activo'|'pendiente'|'expulsado', personalKey?, legacy? }
+ *
+ * `key` es la clave con la que se entra HOY (null mientras el DM no apruebe).
+ * `personalKey` es la clave personal mientras la solicitud está pendiente;
+ * al aprobarse pasa a `key`. `legacy`: campaña antigua en la que el código de
+ * invitación da acceso mientras tanto.
+ */
 function loadMemberships() {
   const list = read(K_CAMPAIGNS, []);
-  return Array.isArray(list) ? list.filter((m) => m?.id && m?.key) : [];
+  return Array.isArray(list) ? list.filter((m) => m?.id && (m?.key || m?.personalKey)) : [];
 }
 
 function toPack(remote, membership) {
@@ -180,12 +188,17 @@ export function createHomebrewService({ api = defaultApi } = {}) {
     },
 
     // Campañas
-    memberships: () => [...memberships],
+    /** Campañas a las que se puede entrar ya (con clave aprobada). */
+    memberships: () => memberships.filter((m) => m.key && m.status !== 'expulsado'),
+    /** Todas, también las solicitudes pendientes o rechazadas. */
+    allMemberships: () => [...memberships],
     membership,
+    /** Clave para operar con MIS PJ (la personal, aunque siga pendiente). */
+    ownerKey: (id) => { const m = membership(id); return m?.personalKey ?? m?.key ?? null; },
 
     async create(name) {
       const res = await api.create(name);
-      const m = { id: res.id, name: res.name, role: 'dm', key: res.dmKey, inviteCode: res.inviteCode, joinedAt: new Date().toISOString() };
+      const m = { id: res.id, name: res.name, role: 'dm', key: res.dmKey, inviteCode: res.inviteCode, status: 'activo', joinedAt: new Date().toISOString() };
       memberships = [...memberships.filter((x) => x.id !== m.id), m];
       saveMemberships();
       await this.refresh(m.id);
@@ -202,6 +215,76 @@ export function createHomebrewService({ api = defaultApi } = {}) {
       return m;
     },
 
+    /**
+     * Pide entrar con el código de invitación: el servidor da una clave personal
+     * (sólo se guarda en este dispositivo) y el DM aprueba. En campañas antiguas
+     * con el código abierto se puede jugar mientras tanto con el código.
+     */
+    async requestJoin(id, code, name, role = 'jugador') {
+      const res = await api.join(id, code, name, role);
+      const prev = membership(id);
+      const m = {
+        id, name: res.name, role: res.role, memberId: res.memberId, status: 'pendiente', personalKey: res.key,
+        key: prev?.role === 'dm' ? prev.key : null, joinedAt: new Date().toISOString(), myName: name,
+      };
+      if (!m.key) {
+        try {
+          const remote = await api.get(id, code);
+          Object.assign(m, { key: code, legacy: true });
+          installCampaign(remote, m);
+        } catch { /* campaña nueva: hay que esperar al DM */ }
+      }
+      memberships = [...memberships.filter((x) => x.id !== id), m];
+      saveMemberships();
+      return m;
+    },
+
+    /** ¿Qué es esta clave? (DM, clave personal, o código de invitación). */
+    inspectKey: (id, key) => api.me(id, key),
+
+    /** Guarda en este dispositivo una clave personal (p. ej. traída de otro dispositivo). */
+    async adoptPersonalKey(id, key, me) {
+      const active = me.status === 'activo';
+      const m = {
+        id, name: me.campaignName ?? id, role: me.role, memberId: me.memberId, status: me.status,
+        key: active ? key : null, personalKey: active ? undefined : key, joinedAt: new Date().toISOString(), myName: me.name,
+      };
+      memberships = [...memberships.filter((x) => x.id !== id), m];
+      saveMemberships();
+      if (active) await this.refresh(id).catch(() => null);
+      return m;
+    },
+
+    /** Jugador de una campaña antigua (entró sólo con el código): pide su clave personal. */
+    async upgradeLegacy(id, name) {
+      const m = membership(id);
+      if (!m || m.memberId || m.role === 'dm') return m;
+      const res = await api.join(id, m.key, name, 'jugador');
+      const next = { ...m, memberId: res.memberId, personalKey: res.key, status: 'pendiente', legacy: true, myName: name };
+      memberships = memberships.map((x) => (x.id === id ? next : x));
+      saveMemberships();
+      return next;
+    },
+
+    /** Mira si el DM ya aprobó (o rechazó) la solicitud. Devuelve la membresía actualizada. */
+    async checkStatus(id) {
+      const m = membership(id);
+      if (!m?.personalKey) return m;
+      let next;
+      try {
+        const me = await api.me(id, m.personalKey);
+        next = me.status === 'activo'
+          ? { ...m, key: m.personalKey, personalKey: undefined, status: 'activo', role: me.role, legacy: false, name: me.campaignName ?? m.name }
+          : { ...m, status: me.status, role: me.role };
+      } catch (err) {
+        if (err?.code !== 'forbidden' && err?.code !== 'not_found') throw err;
+        next = { ...m, status: 'expulsado' };
+      }
+      memberships = memberships.map((x) => (x.id === id ? next : x));
+      saveMemberships();
+      return next;
+    },
+
     leave(id) {
       memberships = memberships.filter((m) => m.id !== id);
       saveMemberships();
@@ -210,9 +293,21 @@ export function createHomebrewService({ api = defaultApi } = {}) {
     },
 
     async refresh(id) {
-      const m = membership(id);
-      if (!m) return null;
-      const remote = await api.get(id, m.key);
+      let m = membership(id);
+      if (m?.personalKey) m = await this.checkStatus(id);
+      if (!m?.key) return null;
+      let remote;
+      try {
+        remote = await api.get(id, m.key);
+      } catch (err) {
+        // Clave personal revocada (expulsado): se conserva la copia guardada.
+        if (err?.code === 'forbidden' && m.memberId && m.role !== 'dm') {
+          memberships = memberships.map((x) => (x.id === id ? { ...x, status: 'expulsado' } : x));
+          saveMemberships();
+          return null;
+        }
+        throw err;
+      }
       if (remote.name !== m.name || remote.role !== m.role) {
         memberships = memberships.map((x) => (x.id === id ? { ...x, name: remote.name, role: remote.role } : x));
         saveMemberships();

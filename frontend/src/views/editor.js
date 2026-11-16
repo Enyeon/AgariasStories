@@ -19,6 +19,8 @@ export async function mountEditor(container, { services, navigate }, id) {
 
   let opened;
   try {
+    // PJ de campaña: primero se trae lo último de la campaña (lo que cambió el DM).
+    if (id.startsWith('cp_')) await services.characters.refreshCopy?.(id).catch((err) => console.warn('[editor] Sin conexión con la campaña', err));
     opened = await services.characters.open(id);
   } catch (err) {
     setHtml(page, html`<div class="empty-state"><h1>No se pudo abrir el personaje</h1><p>${err.userMessage ?? 'Los datos guardados están dañados o no son compatibles.'}</p><a class="btn btn--primary" href="/" data-link>Volver a mis personajes</a></div>`);
@@ -50,9 +52,12 @@ export async function mountEditor(container, { services, navigate }, id) {
       <div class="sheet-header__actions">
         <button type="button" class="btn btn--ghost" data-editor="save" title="Guardar ahora (Ctrl+S)">💾 Guardar</button>
         <button type="button" class="btn btn--ghost" data-editor="export" title="Descargar como archivo .json">⤓ Exportar</button>
-        <button type="button" class="btn btn--primary" data-editor="share">🔗 Compartir</button>
+        ${opened.record.pc
+          ? html`<a class="btn btn--primary" href="/campanas/${opened.record.pc.campaignId}" data-link title="Esta ficha es la copia del PJ en la campaña">🏰 ${opened.record.pc.campaignName || 'Campaña'}</a>`
+          : html`<button type="button" class="btn btn--primary" data-editor="share">🔗 Compartir</button>`}
       </div>
     </header>
+    ${opened.record.pc ? html`<p class="callout callout--accent campaign-copy-note">Copia de campaña: lo que cambies aquí lo ve el DM y queda en el registro de la campaña. Tu personaje original no cambia.${opened.record.pc.status === 'pendiente' ? ' (Pendiente de aprobación del DM.)' : ''}${opened.record.pc.state === 'muerto' ? ' 💀 Este PJ está muerto.' : ''}</p>` : ''}
     <div data-sheet></div>`);
 
   const statusEl = page.querySelector('[data-save-status]');
@@ -60,13 +65,16 @@ export async function mountEditor(container, { services, navigate }, id) {
   const shareBtn = page.querySelector('[data-editor="share"]');
 
   function cloudState() {
+    if (record.pc) return 'campaign';
     if (!record.cloud) return 'none';
     return record.cloud.fingerprint === fingerprint(sheetView.character) ? 'synced' : 'outdated';
   }
 
   function renderStatus() {
     const text = {
-      saved: `✓ Guardado en este dispositivo · ${formatDate(record.updatedAt)}`,
+      saved: record.pc
+        ? (record.pc.dirty ? `✓ Guardado en este dispositivo · ⏳ pendiente de subir a la campaña` : `✓ Guardado en la campaña · ${formatDate(record.updatedAt)}`)
+        : `✓ Guardado en este dispositivo · ${formatDate(record.updatedAt)}`,
       pending: 'Cambios sin guardar…',
       saving: 'Guardando personaje…',
       error: '⚠ No se pudo guardar el personaje.',
@@ -74,6 +82,7 @@ export async function mountEditor(container, { services, navigate }, id) {
     statusEl.className = `sheet-header__status is-${status}`;
     setHtml(statusEl, html`${text}${status === 'error' ? html` <button type="button" class="link-btn" data-editor="save">Reintentar</button>` : ''}`);
     const cs = cloudState();
+    if (!shareBtn) return;
     shareBtn.textContent = cs === 'none' ? '🔗 Compartir' : cs === 'outdated' ? '🔗 Publicar cambios' : '🔗 Compartido';
     shareBtn.classList.toggle('btn--gold', cs === 'outdated');
     shareBtn.classList.toggle('btn--primary', cs !== 'outdated');
@@ -111,8 +120,23 @@ export async function mountEditor(container, { services, navigate }, id) {
         // Nunca pisar lo que otra pestaña guardó entretanto: primero se combina.
         await pullExternal();
         const saving = structuredClone(sheetView.character);
-        record = await services.characters.save(record, saving);
+        try {
+          record = await services.characters.save(record, saving);
+        } catch (err) {
+          // PJ de campaña sin acceso: quedó guardado aquí, pero no en la campaña.
+          if (err.record) { record = err.record; base = saving; }
+          throw err;
+        }
         base = saving;
+        if (record.remoteMerged) {
+          // El DM cambió la ficha a la vez: se muestra la versión combinada.
+          const fresh = await services.characters.open(record.id);
+          if (fresh) {
+            base = structuredClone(fresh.character);
+            sheetView.load(fresh.character);
+            toast('Se combinaron tus cambios con los que hizo el DM en la campaña.', { type: 'info' });
+          }
+        }
         status = 'saved';
         lastError = null;
         return true;
@@ -313,7 +337,10 @@ export async function mountEditor(container, { services, navigate }, id) {
   let syncing = null;
   function syncExternal() {
     if (syncing || savingPromise || status !== 'saved') return syncing;
-    syncing = pullExternal().catch((err) => console.warn('[editor] No se pudo traer la otra versión', err)).finally(() => { syncing = null; });
+    const pull = record.pc
+      ? services.characters.refreshCopy(record.id).catch(() => null).then(() => pullExternal())
+      : pullExternal();
+    syncing = pull.catch((err) => console.warn('[editor] No se pudo traer la otra versión', err)).finally(() => { syncing = null; });
     return syncing;
   }
   const offExternal = services.characters.onExternalChange?.((msg) => {

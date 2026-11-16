@@ -41,7 +41,8 @@ export async function mountLibrary(container, { services, navigate }) {
           <span class="char-card__level" title="Nivel">${s.level ? html`<small>Nv</small>${s.level}` : '—'}</span>
         </a>
         <div class="char-card__footer">
-          ${r.cloud ? html`<span class="badge badge--accent" title="Tiene un enlace para compartir">🔗 Compartido</span>` : html`<span class="badge">Sólo en este dispositivo</span>`}
+          ${r.pc ? html`<a class="badge badge--gold" href="/campanas/${r.pc.campaignId}" data-link title="Copia del PJ en esta campaña (el original no cambia)">🏰 ${r.pc.campaignName || 'Campaña'}${r.pc.state === 'muerto' ? ' · 💀' : r.pc.status === 'pendiente' ? ' · pendiente' : ''}</a>`
+            : r.cloud ? html`<span class="badge badge--accent" title="Tiene un enlace para compartir">🔗 Compartido</span>` : html`<span class="badge">Sólo en este dispositivo</span>`}
           <div class="row">
             <button class="icon-btn" data-act="duplicate" data-id="${r.id}" aria-label="Duplicar ${s.name || 'personaje'}" title="Duplicar">⧉</button>
             <button class="icon-btn" data-act="export" data-id="${r.id}" aria-label="Exportar ${s.name || 'personaje'}" title="Exportar .json">⤓</button>
@@ -122,7 +123,9 @@ export async function mountLibrary(container, { services, navigate }) {
         const name = r?.summary?.name || 'este personaje';
         const ok = await confirmDialog({
           title: 'Eliminar personaje',
-          message: r?.cloud
+          message: r?.pc
+            ? `Se quitará de este dispositivo la copia de «${name}» en la campaña ${r.pc.campaignName || ''}. En la campaña sigue existiendo: podrás volver a abrirla desde «Campañas».`
+            : r?.cloud
             ? `Se eliminará «${name}» de este dispositivo y su enlace compartido dejará de funcionar. Esta acción no se puede deshacer.`
             : `Se eliminará «${name}» de este dispositivo. Esta acción no se puede deshacer. Si quieres conservarlo, expórtalo antes.`,
           confirmLabel: 'Eliminar',

@@ -61,6 +61,14 @@ def doc(campaign=None, content=None):
     return {"format": "agarias-dnd-character", "schemaVersion": 3, "character": character}
 
 
+def legacy_campaign(name: str) -> dict:
+    """Campaña con el acceso «antiguo»: el código de invitación basta para jugar
+    (así quedan las campañas creadas antes de 20261118)."""
+    camp = call("campaign_create", name)
+    assert call("campaign_set_access", camp["id"], camp["dmKey"], "true") == {"openInvite": True}
+    return camp
+
+
 def test_anon_cannot_touch_tables():
     res = psql("-c", "set role anon; select * from agarias.campaigns;")
     assert res.returncode != 0
@@ -90,7 +98,7 @@ def test_share_rejects_bad_documents():
 
 
 def test_campaign_permissions_and_content():
-    camp = call("campaign_create", "Las Torres Grises")
+    camp = legacy_campaign("Las Torres Grises")
     cid, dm, inv = camp["id"], camp["dmKey"], camp["inviteCode"]
     assert call("campaign_get", cid, "nada") == {"error": "forbidden"}
     assert call("campaign_get", cid, inv)["role"] == "jugador"
@@ -130,7 +138,7 @@ def test_campaign_permissions_and_content():
 
 
 def test_share_blocks_unauthorized_campaign_content():
-    camp = call("campaign_create", "Mesa 2")
+    camp = legacy_campaign("Mesa 2")
     cid, dm = camp["id"], camp["dmKey"]
     draft = call("content_upsert", cid, dm, "clase", {"name": "Secreta"}, None, None)
     ref = f"hb:{cid}:clase:{draft['contentId']}"
@@ -144,7 +152,7 @@ def test_share_blocks_unauthorized_campaign_content():
 
 def test_extension_unlock_codes_checked_on_share():
     import hashlib
-    camp = call("campaign_create", "Mesa 3")
+    camp = legacy_campaign("Mesa 3")
     cid, dm = camp["id"], camp["dmKey"]
     code = "ABCD-EFGH-2345"
     ext = call("content_upsert", cid, dm, "extension", {"name": "Juramento Oculto", "classKey": "guerrero", "access": "desbloqueo",
@@ -164,7 +172,7 @@ def market(day=1, seed="s", note="x"):
 
 
 def test_shop_market_per_campaign():
-    camp = call("campaign_create", "Mercado")
+    camp = legacy_campaign("Mercado")
     cid, dm, inv = camp["id"], camp["dmKey"], camp["inviteCode"]
     assert call("shop_market_get", cid, "nada") == {"error": "forbidden"}
     empty = call("shop_market_get", cid, inv)
@@ -193,7 +201,7 @@ def test_shop_market_per_campaign():
 
 
 def test_merchant_content_type():
-    camp = call("campaign_create", "Mercaderes")
+    camp = legacy_campaign("Mercaderes")
     cid, dm = camp["id"], camp["dmKey"]
     created = call("content_upsert", cid, dm, "mercader", {"name": "Odette", "location": "plaza-mayor", "sells": ["equipo"]}, None, "publicado")
     assert created["status"] == "publicado"
@@ -203,7 +211,7 @@ def test_merchant_content_type():
 
 
 def test_world_content_is_dm_only():
-    camp = call("campaign_create", "Thaabdur")
+    camp = legacy_campaign("Thaabdur")
     cid, dm, inv = camp["id"], camp["dmKey"], camp["inviteCode"]
     # Aunque las reglas permitan propuestas para todo, el mundo de la Tienda es sólo del DM.
     rules = {"homebrew": {t: "propuestas" for t in ["mercader", "region", "faccion", "evento", "dote"]}}
@@ -215,7 +223,7 @@ def test_world_content_is_dm_only():
 
 
 def test_campaign_details():
-    camp = call("campaign_create", "Thaabdur")
+    camp = legacy_campaign("Thaabdur")
     cid, dm, inv = camp["id"], camp["dmKey"], camp["inviteCode"]
     assert call("campaign_get", cid, dm)["details"] == {}
     details = {"synopsis": "Minas y conspiraciones.", "kind": "campana", "players": {"min": 3, "max": 5}}
@@ -226,7 +234,7 @@ def test_campaign_details():
 
 
 def test_exploration_reports_are_dm_only():
-    camp = call("campaign_create", "Informes")
+    camp = legacy_campaign("Informes")
     cid, dm, inv = camp["id"], camp["dmKey"], camp["inviteCode"]
     assert call("shop_market_save", cid, inv, market(), 0)["revision"] == 1
     # Un mercado viejo sin «reports» y uno con la lista vacía valen lo mismo.
@@ -242,7 +250,7 @@ def test_exploration_reports_are_dm_only():
 
 
 def test_floor_progress_is_dm_only():
-    camp = call("campaign_create", "Lord 100")
+    camp = legacy_campaign("Lord 100")
     cid, dm, inv = camp["id"], camp["dmKey"], camp["inviteCode"]
     assert call("shop_market_save", cid, inv, market(), 0)["revision"] == 1
     floor2 = {**market(), "progress": {"enabled": True, "current": 2, "done": {}, "overrides": {}, "log": []}}
@@ -254,5 +262,122 @@ def test_floor_progress_is_dm_only():
     cheat = {**floor2, "progress": {**floor2["progress"], "done": {"forja": True}}}
     assert call("shop_market_save", cid, inv, cheat, 3) == {"error": "forbidden"}
     # Ni crear un mercado ya con piso.
-    other = call("campaign_create", "Otra")
+    other = legacy_campaign("Otra")
     assert call("shop_market_save", other["id"], other["inviteCode"], floor2, 0) == {"error": "forbidden"}
+
+
+# ── Campañas con jugadores (20261118) ───────────────────────────────────────
+
+def pc_doc(name="Vex"):
+    return {"format": "agarias-dnd-character", "schemaVersion": 3, "character": {"identity": {"name": name}}}
+
+
+def test_join_requires_dm_approval():
+    camp = call("campaign_create", "Mesa nueva")
+    cid, dm, inv = camp["id"], camp["dmKey"], camp["inviteCode"]
+    # En una campaña nueva el código de invitación ya no da acceso por sí solo.
+    assert call("campaign_get", cid, inv) == {"error": "forbidden"}
+    assert call("campaign_join", cid, "malo", "Ana", "jugador") == {"error": "forbidden"}
+    ana = call("campaign_join", cid, inv, "Ana", "jugador")
+    assert ana["status"] == "pendiente" and len(ana["key"]) >= 30
+    me = call("campaign_me", cid, ana["key"])
+    assert me["status"] == "pendiente" and me["role"] == "jugador"
+    # Pendiente: no ve la campaña, pero ya puede proponer su PJ.
+    assert call("campaign_get", cid, ana["key"]) == {"error": "forbidden"}
+    assert call("campaign_roster", cid, ana["key"]) == {"error": "forbidden"}
+    pc = call("pc_link", cid, ana["key"], pc_doc(), {"name": "Vex", "level": 3})
+    assert pc["status"] == "pendiente"
+
+    roster = call("campaign_roster", cid, dm)
+    assert [m["status"] for m in roster["members"]] == ["pendiente"]
+    assert roster["characters"][0]["summary"]["name"] == "Vex"
+    # Sólo el DM aprueba.
+    assert call("member_update", cid, ana["key"], ana["memberId"], "activo", None) == {"error": "forbidden"}
+    assert call("member_update", cid, dm, ana["memberId"], "activo", None)["status"] == "activo"
+    assert call("pc_review", cid, dm, pc["pcId"], "activo")["status"] == "activo"
+    assert call("campaign_get", cid, ana["key"])["role"] == "jugador"
+    # La copia apunta a la campaña (Homebrew y mercado de esa campaña).
+    got = call("pc_get", cid, ana["key"], pc["pcId"])
+    assert got["mine"] and got["document"]["character"]["campaign"]["id"] == cid
+
+
+def test_pc_save_revision_events_and_privacy():
+    camp = call("campaign_create", "Mesa registro")
+    cid, dm, inv = camp["id"], camp["dmKey"], camp["inviteCode"]
+    ana = call("campaign_join", cid, inv, "Ana", "jugador")
+    bob = call("campaign_join", cid, inv, "Bob", "jugador")
+    obs = call("campaign_join", cid, inv, "Ojo", "observador")
+    for m in (ana, bob, obs):
+        call("member_update", cid, dm, m["memberId"], "activo", None)
+    pc = call("pc_link", cid, ana["key"], pc_doc(), {"name": "Vex", "level": 3})
+    call("pc_review", cid, dm, pc["pcId"], "activo")
+    # Los observadores no tienen PJ ni tocan el mercado.
+    assert call("pc_link", cid, obs["key"], pc_doc("X"), None) == {"error": "forbidden"}
+    assert call("shop_market_save", cid, obs["key"], {"format": "agarias-shop-world", "day": 1, "shops": {}}, 0) == {"error": "forbidden"}
+
+    # Guardar: dueño sí, otro jugador no; revisión obligatoria.
+    events = [{"kind": "compra", "text": "Compra una cuerda", "visibility": "privado"},
+              {"kind": "nivel", "text": "Sube a nivel 4", "visibility": "publico"}]
+    assert call("pc_save", cid, bob["key"], pc["pcId"], pc_doc(), None, 2, [], None, None) == {"error": "forbidden"}
+    assert call("pc_save", cid, ana["key"], pc["pcId"], pc_doc(), None, 7, events, None, None) == {"error": "conflict"}
+    saved = call("pc_save", cid, ana["key"], pc["pcId"], pc_doc(), {"name": "Vex", "level": 4}, 1, events, None, None)
+    assert saved["revision"] == 2
+    # El jugador no decide si su PJ muere; el DM sí, y queda registrado.
+    assert call("pc_save", cid, ana["key"], pc["pcId"], None, None, 2, [], "muerto", None) == {"error": "forbidden"}
+    dead = call("pc_save", cid, dm, pc["pcId"], None, None, 2, [], "muerto", None)
+    assert dead["state"] == "muerto" and dead["revision"] == 3
+
+    def kinds(key):
+        return [e["kind"] for e in call("events_list", cid, key, None, None, 50)["events"]]
+    assert "compra" in kinds(ana["key"]) and "compra" not in kinds(bob["key"])  # privado
+    assert "nivel" in kinds(bob["key"]) and "muerte" in kinds(obs["key"])       # público
+    assert "compra" in kinds(dm)
+
+    # Nota sólo para el DM escrita por el jugador: la ve él y el DM, nadie más.
+    call("event_add", cid, ana["key"], "nota", "Secreto para el DM", None, pc["pcId"], "dm", None)
+    assert "nota" in kinds(ana["key"]) and "nota" in kinds(dm) and "nota" not in kinds(bob["key"])
+    assert call("event_add", cid, bob["key"], "nota", "Hack", None, pc["pcId"], "publico", None) == {"error": "forbidden"}
+
+    # Privacidad de la ficha para los demás.
+    assert call("pc_get", cid, bob["key"], pc["pcId"])["document"] is None
+    call("pc_save", cid, ana["key"], pc["pcId"], None, None, 3, [], None, "publico")
+    assert call("pc_get", cid, bob["key"], pc["pcId"])["document"]["character"]["identity"]["name"] == "Vex"
+    call("pc_save", cid, ana["key"], pc["pcId"], None, None, 4, [], None, "privado")
+    assert call("pc_get", cid, bob["key"], pc["pcId"])["summary"] == {"name": "Vex"}
+
+
+def test_expel_and_sessions():
+    camp = call("campaign_create", "Mesa sesiones")
+    cid, dm, inv = camp["id"], camp["dmKey"], camp["inviteCode"]
+    ana = call("campaign_join", cid, inv, "Ana", "jugador")
+    call("member_update", cid, dm, ana["memberId"], "activo", None)
+    pc = call("pc_link", cid, ana["key"], pc_doc(), {"name": "Vex"})
+    call("pc_review", cid, dm, pc["pcId"], "activo")
+
+    assert call("session_start", cid, dm, "La cripta")["session"] == 1
+    call("event_add", cid, dm, "nota", "Encuentran la llave", None, None, "publico", None)
+    ev = call("events_list", cid, dm, None, None, 10)["events"]
+    assert ev[0]["sessionId"] == 1 and ev[0]["kind"] == "nota"
+    assert call("session_end", cid, dm)["ended"] == 1
+
+    # Expulsar desvincula su PJ sin borrar nada; la clave deja de valer.
+    assert call("member_update", cid, dm, ana["memberId"], "expulsado", None)["status"] == "expulsado"
+    assert call("campaign_me", cid, ana["key"]) == {"error": "forbidden"}
+    assert call("campaign_roster", cid, dm)["characters"][0]["status"] == "desvinculado"
+    # No se puede eliminar a un miembro activo; a uno expulsado sí (sus PJ quedan).
+    bob = call("campaign_join", cid, inv, "Bob", "jugador")
+    call("member_update", cid, dm, bob["memberId"], "activo", None)
+    assert call("member_update", cid, dm, bob["memberId"], "eliminar", None) == {"error": "invalid"}
+    assert call("member_update", cid, dm, ana["memberId"], "eliminar", None)["deleted"] is True
+    assert len(call("campaign_roster", cid, dm)["characters"]) == 1
+
+
+def test_legacy_invite_keeps_working_and_can_be_closed():
+    camp = legacy_campaign("Mesa antigua")
+    cid, dm, inv = camp["id"], camp["dmKey"], camp["inviteCode"]
+    me = call("campaign_me", cid, inv)
+    assert me["legacy"] is True and me["role"] == "jugador"
+    # Con la clave de invitación compartida no se puede ser dueño de un PJ.
+    assert call("pc_link", cid, inv, pc_doc(), None) == {"error": "forbidden"}
+    call("campaign_set_access", cid, dm, "false")
+    assert call("campaign_get", cid, inv) == {"error": "forbidden"}

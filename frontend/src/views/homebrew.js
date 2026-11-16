@@ -1,9 +1,11 @@
-// Página «Homebrew»: contenido propio del usuario y campañas.
+// Página «Homebrew»: contenido propio (reutilizable) y el de cada campaña.
 //
-//   /homebrew             resumen: mi Homebrew + mis campañas
+//   /homebrew             resumen: mi Homebrew + el Homebrew de mis campañas
 //   /homebrew/<paquete>   contenido de un paquete (local o campaña) y, si eres
-//                         DM, las reglas y la invitación de la campaña
-//   /unirse#<id>.<código> unirse a una campaña con un enlace de invitación
+//                         DM, las reglas de contenido de la campaña
+//
+// Crear campañas, invitar, aprobar jugadores y jugar está en «Campañas»
+// (views/campaigns.js).
 
 import { html, raw, setHtml } from '../ui/dom.js';
 import { toast, confirmDialog, openDialog, reportError, userMessageFor } from '../ui/feedback.js';
@@ -14,7 +16,6 @@ import { setWorldEditingPack, locationOptions } from '../content/world-options.j
 import {
   CAMPAIGN_SYSTEMS, CAMPAIGN_KINDS, CAMPAIGN_STYLES, CAMPAIGN_TONES, CAMPAIGN_MODALITIES, CAMPAIGN_STATUS, CAMPAIGN_WORLDS, normalizeCampaignDetails, campaignSummary,
 } from '../domain/campaign.js';
-import { inviteUrl, parseInvite } from '../services/homebrew.js';
 import { downloadJson, readJsonFile } from '../services/file-transfer.js';
 import { openContentEditor } from './components/content-editor.js';
 import { generateUnlockCode, hashUnlockCode } from '../domain/extensions.js';
@@ -22,8 +23,8 @@ import { getClass } from '../data/index.js';
 
 const STATUS_BADGE = { borrador: '', propuesto: 'badge--accent', publicado: 'badge--success', oculto: 'badge--warning', retirado: 'badge--danger', instantanea: '' };
 
-function roleLabel(role) {
-  return role === 'dm' ? 'DM' : 'Jugador';
+export function roleLabel(role) {
+  return role === 'dm' ? 'DM' : role === 'observador' ? 'Observador' : 'Jugador';
 }
 
 // ── Resumen ──────────────────────────────────────────────────────────────
@@ -35,7 +36,7 @@ function overview(svc) {
   const online = svc.available();
   return html`
     <header class="page-header">
-      <div><h1>Homebrew y campañas</h1><p>Crea tus propias clases, razas, hechizos, dotes, criaturas… y compártelas con tu mesa.</p></div>
+      <div><h1>Homebrew</h1><p>Crea tus propias clases, razas, hechizos, dotes, criaturas… y compártelas con tu mesa.</p></div>
     </header>
     <div class="grid-2">
       <section class="card">
@@ -47,16 +48,16 @@ function overview(svc) {
         </div>
       </section>
       <section class="card">
-        <header class="card__header"><div><h2 class="card__title">Campañas</h2><p class="card__subtitle">El DM decide qué contenido se permite y publica su Homebrew; los jugadores lo usan en sus fichas.</p></div></header>
+        <header class="card__header"><div><h2 class="card__title">Homebrew de tus campañas</h2><p class="card__subtitle">El DM decide qué contenido se permite y publica su Homebrew; los jugadores lo usan en sus fichas.</p></div></header>
         ${online ? '' : html`<p class="callout callout--warning">Las campañas necesitan el servidor en línea (Supabase), que aún no está configurado en esta instalación. Mientras tanto, usa «Mi Homebrew» y comparte el archivo exportado.</p>`}
         ${ms.length ? html`<ul class="campaign-list">${ms.map((m) => html`<li>
             <a href="/homebrew/${m.id}" data-link><strong>${m.name}</strong></a>
+            <a class="btn btn--ghost btn--sm" href="/campanas/${m.id}" data-link title="Jugadores, PJ y registro">🏰 Jugar</a>
             <span class="badge ${m.role === 'dm' ? 'badge--gold' : ''}">${roleLabel(m.role)}</span>
             ${campaignSummary(getPack(m.id)?.details) ? html`<span class="muted campaign-list__summary">${campaignSummary(getPack(m.id)?.details)}</span>` : ''}
           </li>`)}</ul>` : html`<p class="muted">Todavía no participas en ninguna campaña.</p>`}
         <div class="row">
-          <button type="button" class="btn btn--primary" data-act="create-campaign" ${online ? '' : raw('disabled')}>Crear campaña (soy DM)</button>
-          <button type="button" class="btn btn--ghost" data-act="join" ${online ? '' : raw('disabled')}>Unirme con un enlace</button>
+          <a class="btn btn--primary" href="/campanas" data-link>🏰 Ir a Campañas</a>
         </div>
       </section>
     </div>`;
@@ -65,7 +66,7 @@ function overview(svc) {
 // ── Detalle de un paquete ────────────────────────────────────────────────
 
 /** Ficha de la campaña: la ven todos los miembros; sólo el DM la edita. */
-function campaignCard(pack) {
+export function campaignCard(pack) {
   const d = pack.details ?? {};
   const dm = pack.role === 'dm';
   const empty = !Object.keys(d).length;
@@ -122,21 +123,6 @@ function rulesCard(pack) {
   </details>`;
 }
 
-function inviteCard(m) {
-  return html`<details class="disclosure" data-key="invite">
-    <summary>Invitar jugadores</summary>
-    <div class="disclosure__body stack">
-      <p>Comparte este enlace con tus jugadores. Quien lo tenga podrá ver el contenido publicado y vincular sus personajes.</p>
-      ${m.inviteCode ? html`<div class="row"><input class="input" readonly value="${inviteUrl(m.id, m.inviteCode)}" data-copy-src="invite" aria-label="Enlace de invitación"><button type="button" class="btn btn--ghost" data-act="copy" data-src="invite">Copiar</button></div>`
-        : html`<p class="muted">Este dispositivo no guarda el enlace actual. Genera uno nuevo.</p>`}
-      <div class="row"><button type="button" class="btn btn--ghost btn--sm" data-act="rotate-invite">Generar enlace nuevo (el anterior deja de funcionar)</button></div>
-      <hr>
-      <p><strong>Tu clave de DM</strong> te identifica como DM. Para usarla en otro dispositivo, abre allí este enlace. No lo compartas con nadie.</p>
-      <div class="row"><input class="input" type="password" readonly value="${inviteUrl(m.id, m.key)}" data-copy-src="dm" aria-label="Enlace de DM"><button type="button" class="btn btn--ghost" data-act="copy" data-src="dm">Copiar enlace de DM</button></div>
-    </div>
-  </details>`;
-}
-
 function itemActions(svc, pack, e) {
   const isLocal = pack.kind === 'local';
   const dm = pack.role === 'dm';
@@ -153,7 +139,6 @@ function itemActions(svc, pack, e) {
 
 function detail(svc, pack, state) {
   const isLocal = pack.kind === 'local';
-  const m = isLocal ? null : svc.membership(pack.id);
   const dm = pack.role === 'dm';
   const rules = normalizeRules(pack.rules);
   const creatable = isLocal || dm ? CONTENT_TYPE_KEYS : CONTENT_TYPE_KEYS.filter((t) => rules.homebrew[t] === 'propuestas');
@@ -162,7 +147,7 @@ function detail(svc, pack, state) {
   return html`
     <header class="page-header">
       <div>
-        <p class="eyebrow"><a href="/homebrew" data-link>← Homebrew y campañas</a></p>
+        <p class="eyebrow"><a href="/homebrew" data-link>← Homebrew</a>${isLocal ? '' : html` · <a href="/campanas/${pack.id}" data-link>🏰 Ir a la campaña</a>`}</p>
         <h1>${pack.name}</h1>
         <p>${isLocal ? 'Tu Homebrew en este dispositivo. Todo lo que crees aquí está disponible al instante en tus personajes.'
           : dm ? 'Eres el DM: decides las reglas y qué contenido ven los jugadores.' : 'Eres jugador: ves el contenido que el DM ha publicado.'}</p>
@@ -174,7 +159,7 @@ function detail(svc, pack, state) {
       </div>
     </header>
     ${isLocal ? '' : campaignCard(pack)}
-    ${dm ? html`<div class="stack">${inviteCard(m)}${rulesCard(pack)}</div>` : ''}
+    ${dm ? html`<div class="stack">${rulesCard(pack)}</div>` : ''}
     ${!isLocal && !dm ? html`<details class="disclosure"><summary>Reglas de la campaña</summary><div class="disclosure__body">
       <ul class="summary-list">${CONTENT_TYPE_KEYS.map((t) => html`<li><span>${CONTENT_TYPES[t].plural}</span><strong>${OFFICIAL_TYPES.includes(t) ? (rules.official[t] ? 'Oficial permitido · ' : 'Oficial NO permitido · ') : ''}Homebrew: ${HOMEBREW_MODES[rules.homebrew[t]]}</strong></li>`)}
       <li><span>Bendiciones épicas</span><strong>${rules.epicBoons ? 'Permitidas' : 'No'}</strong></li></ul>
@@ -207,6 +192,79 @@ function detail(svc, pack, state) {
         : html`<p class="muted">${all.length ? 'Nada con este filtro.' : 'Todavía no hay contenido.'}</p>`}
     </section>
     ${isLocal ? '' : html`<div class="row"><button type="button" class="btn btn--ghost btn--danger-text" data-act="leave">Salir de la campaña en este dispositivo</button></div>`}`;
+}
+
+/** Formulario de la ficha de la campaña (sólo el DM). Devuelve true si se guardó. */
+export async function editCampaignDetails(svc, pack) {
+  const d = pack.details ?? {};
+  setWorldEditingPack(pack.id);
+  const opt = (map, value, empty = '— Sin especificar —') => html`<option value="">${empty}</option>${Object.entries(map).map(([k, l]) => html`<option value="${k}" ${value === k ? raw('selected') : ''}>${l}</option>`)}`;
+  const num = (name, value, min, max) => html`<input class="input input--num" type="number" name="${name}" min="${min}" max="${max}" value="${value ?? ''}">`;
+  const result = await openDialog({
+    title: `Ficha de «${pack.name}»`,
+    size: 'lg',
+    render(body, close) {
+      setHtml(body, html`<form class="stack campaign-form" data-f novalidate>
+        <div class="grid-2">
+          <div class="field"><label class="field__label" for="cd-name">Nombre de la campaña</label><input id="cd-name" class="input" name="name" maxlength="120" required value="${pack.name}"></div>
+          <div class="field"><label class="field__label" for="cd-dm">Dungeon Master</label><input id="cd-dm" class="input" name="dmName" maxlength="60" value="${d.dmName ?? ''}" placeholder="Tu nombre o apodo"></div>
+        </div>
+        <div class="field"><label class="field__label" for="cd-syn">Sinopsis</label><textarea id="cd-syn" class="textarea" name="synopsis" rows="4" maxlength="3000" placeholder="De qué va la campaña, sin destripar nada.">${d.synopsis ?? ''}</textarea></div>
+        <div class="grid-2">
+          <div class="field"><label class="field__label" for="cd-kind">Tipo de campaña</label><select id="cd-kind" class="select" name="kind">${opt(CAMPAIGN_KINDS, d.kind)}</select></div>
+          <div class="field"><label class="field__label" for="cd-status">Estado</label><select id="cd-status" class="select" name="status">${opt(CAMPAIGN_STATUS, d.status)}</select></div>
+          <div class="field"><label class="field__label" for="cd-system">Sistema</label><select id="cd-system" class="select" name="system">${opt(CAMPAIGN_SYSTEMS, d.system)}</select></div>
+          <div class="field"><label class="field__label" for="cd-setting">Ambientación / mundo</label><input id="cd-setting" class="input" name="setting" maxlength="120" value="${d.setting ?? ''}" placeholder="Agarias, Reinos Olvidados…"></div>
+          <div class="field"><label class="field__label" for="cd-world">Mundo de la Tienda</label><select id="cd-world" class="select" name="world">${opt(CAMPAIGN_WORLDS, d.world ?? 'agarias')}</select></div>
+          <div class="field"><label class="field__label" for="cd-tone">Tono</label><select id="cd-tone" class="select" name="tone">${opt(CAMPAIGN_TONES, d.tone)}</select></div>
+          <div class="field"><label class="field__label" for="cd-start">Lugar de inicio (en la Tienda los personajes empiezan aquí)</label><select id="cd-start" class="select" name="startLocation">${opt(locationOptions(), d.startLocation, '— El de siempre —')}</select></div>
+        </div>
+        <fieldset class="choice-group"><legend>Estilo de juego (tipo de rol)</legend><div class="chips">${Object.entries(CAMPAIGN_STYLES).map(([k, l]) => html`<label class="chip"><input type="checkbox" name="styles" value="${k}" ${(d.styles ?? []).includes(k) ? raw('checked') : ''}>${l}</label>`)}</div></fieldset>
+        <div class="grid-2">
+          <div class="field"><span class="field__label">Jugadores (mínimo – máximo)</span><div class="row">${num('playersMin', d.players?.min, 1, 12)}<span>–</span>${num('playersMax', d.players?.max, 1, 12)}</div></div>
+          <div class="field"><span class="field__label">Nivel (inicial – máximo previsto)</span><div class="row">${num('levelStart', d.levels?.start, 1, 20)}<span>–</span>${num('levelMax', d.levels?.max, 1, 20)}</div></div>
+          <div class="field"><label class="field__label" for="cd-mod">Modalidad</label><select id="cd-mod" class="select" name="modality">${opt(CAMPAIGN_MODALITIES, d.modality)}</select></div>
+          <div class="field"><label class="field__label" for="cd-plat">Dónde se juega</label><input id="cd-plat" class="input" name="platform" maxlength="80" value="${d.platform ?? ''}" placeholder="Discord, Foundry, en casa de…"></div>
+        </div>
+        <div class="field"><label class="field__label" for="cd-sch">Sesiones (día, hora, frecuencia)</label><input id="cd-sch" class="input" name="schedule" maxlength="120" value="${d.schedule ?? ''}" placeholder="Viernes 21:00, cada dos semanas"></div>
+        <div class="grid-2">
+          <div class="field"><label class="field__label" for="cd-lines">Líneas: temas que no aparecen nunca (uno por línea)</label><textarea id="cd-lines" class="textarea" name="lines" rows="3">${(d.safety?.lines ?? []).join('\n')}</textarea></div>
+          <div class="field"><label class="field__label" for="cd-veils">Velos: ocurren fuera de escena (uno por línea)</label><textarea id="cd-veils" class="textarea" name="veils" rows="3">${(d.safety?.veils ?? []).join('\n')}</textarea></div>
+        </div>
+        <div class="field"><label class="field__label" for="cd-rules">Reglas de la casa</label><textarea id="cd-rules" class="textarea" name="houseRules" rows="4" maxlength="4000">${d.houseRules ?? ''}</textarea></div>
+        <p class="field__hint">Todo es opcional y lo ven todos los jugadores de la campaña.</p>
+        <div class="dialog__footer"><button type="button" class="btn btn--ghost" data-dialog-close>Cancelar</button><button class="btn btn--primary">Guardar ficha</button></div>
+      </form>`);
+      const form = body.querySelector('[data-f]');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const fd = new FormData(form);
+        const name = String(fd.get('name') ?? '').trim();
+        if (!name) { form.querySelector('#cd-name').focus(); return; }
+        close({
+          name,
+          details: {
+            dmName: fd.get('dmName'), synopsis: fd.get('synopsis'), kind: fd.get('kind'), status: fd.get('status'), system: fd.get('system'),
+            setting: fd.get('setting'), world: fd.get('world'), tone: fd.get('tone'), startLocation: fd.get('startLocation') || null, styles: fd.getAll('styles'),
+            players: { min: fd.get('playersMin'), max: fd.get('playersMax') }, levels: { start: fd.get('levelStart'), max: fd.get('levelMax') },
+            modality: fd.get('modality'), platform: fd.get('platform'), schedule: fd.get('schedule'),
+            safety: { lines: String(fd.get('lines') ?? '').split('\n'), veils: String(fd.get('veils') ?? '').split('\n') },
+            houseRules: fd.get('houseRules'),
+          },
+        });
+      });
+    },
+  });
+  if (!result) return false;
+  try {
+    if (result.name !== pack.name) await svc.updateCampaign(pack.id, { name: result.name });
+    await svc.updateDetails(pack.id, normalizeCampaignDetails(result.details));
+    toast('Ficha de la campaña guardada.', { type: 'success' });
+    return true;
+  } catch (err) {
+    reportError(err, 'No se pudo guardar la ficha.');
+    return false;
+  }
 }
 
 // ── Montaje ──────────────────────────────────────────────────────────────
@@ -248,114 +306,7 @@ export function mountHomebrew(container, ctx, packId = null) {
     }
   }
 
-  async function createCampaign() {
-    const name = await openDialog({
-      title: 'Nueva campaña',
-      size: 'sm',
-      render(body, close) {
-        setHtml(body, html`<form class="stack" data-f>
-          <div class="field"><label class="field__label" for="cmp-name">Nombre de la campaña</label><input id="cmp-name" class="input" maxlength="120" required autofocus></div>
-          <p class="field__hint">Serás el DM. Recibirás un enlace de invitación para tus jugadores.</p>
-          <div class="dialog__footer"><button type="button" class="btn btn--ghost" data-dialog-close>Cancelar</button><button class="btn btn--primary">Crear</button></div>
-        </form>`);
-        body.querySelector('[data-f]').addEventListener('submit', (e) => { e.preventDefault(); const v = body.querySelector('#cmp-name').value.trim(); if (v) close(v); });
-      },
-    });
-    if (!name) return;
-    const m = await run(() => svc.create(name), 'Campaña creada.');
-    if (!m) return;
-    ctx.navigate(`/homebrew/${m.id}`);
-    // Justo después de crearla, se ofrece rellenar la ficha.
-    const pack = getPack(m.id);
-    if (pack) await editDetails(pack);
-  }
-
-  /** Formulario de la ficha de la campaña (sólo el DM). */
-  async function editDetails(pack) {
-    const d = pack.details ?? {};
-    setWorldEditingPack(pack.id);
-    const opt = (map, value, empty = '— Sin especificar —') => html`<option value="">${empty}</option>${Object.entries(map).map(([k, l]) => html`<option value="${k}" ${value === k ? raw('selected') : ''}>${l}</option>`)}`;
-    const num = (name, value, min, max) => html`<input class="input input--num" type="number" name="${name}" min="${min}" max="${max}" value="${value ?? ''}">`;
-    const result = await openDialog({
-      title: `Ficha de «${pack.name}»`,
-      size: 'lg',
-      render(body, close) {
-        setHtml(body, html`<form class="stack campaign-form" data-f novalidate>
-          <div class="grid-2">
-            <div class="field"><label class="field__label" for="cd-name">Nombre de la campaña</label><input id="cd-name" class="input" name="name" maxlength="120" required value="${pack.name}"></div>
-            <div class="field"><label class="field__label" for="cd-dm">Dungeon Master</label><input id="cd-dm" class="input" name="dmName" maxlength="60" value="${d.dmName ?? ''}" placeholder="Tu nombre o apodo"></div>
-          </div>
-          <div class="field"><label class="field__label" for="cd-syn">Sinopsis</label><textarea id="cd-syn" class="textarea" name="synopsis" rows="4" maxlength="3000" placeholder="De qué va la campaña, sin destripar nada.">${d.synopsis ?? ''}</textarea></div>
-          <div class="grid-2">
-            <div class="field"><label class="field__label" for="cd-kind">Tipo de campaña</label><select id="cd-kind" class="select" name="kind">${opt(CAMPAIGN_KINDS, d.kind)}</select></div>
-            <div class="field"><label class="field__label" for="cd-status">Estado</label><select id="cd-status" class="select" name="status">${opt(CAMPAIGN_STATUS, d.status)}</select></div>
-            <div class="field"><label class="field__label" for="cd-system">Sistema</label><select id="cd-system" class="select" name="system">${opt(CAMPAIGN_SYSTEMS, d.system)}</select></div>
-            <div class="field"><label class="field__label" for="cd-setting">Ambientación / mundo</label><input id="cd-setting" class="input" name="setting" maxlength="120" value="${d.setting ?? ''}" placeholder="Agarias, Reinos Olvidados…"></div>
-            <div class="field"><label class="field__label" for="cd-world">Mundo de la Tienda</label><select id="cd-world" class="select" name="world">${opt(CAMPAIGN_WORLDS, d.world ?? 'agarias')}</select></div>
-            <div class="field"><label class="field__label" for="cd-tone">Tono</label><select id="cd-tone" class="select" name="tone">${opt(CAMPAIGN_TONES, d.tone)}</select></div>
-            <div class="field"><label class="field__label" for="cd-start">Lugar de inicio (en la Tienda los personajes empiezan aquí)</label><select id="cd-start" class="select" name="startLocation">${opt(locationOptions(), d.startLocation, '— El de siempre —')}</select></div>
-          </div>
-          <fieldset class="choice-group"><legend>Estilo de juego (tipo de rol)</legend><div class="chips">${Object.entries(CAMPAIGN_STYLES).map(([k, l]) => html`<label class="chip"><input type="checkbox" name="styles" value="${k}" ${(d.styles ?? []).includes(k) ? raw('checked') : ''}>${l}</label>`)}</div></fieldset>
-          <div class="grid-2">
-            <div class="field"><span class="field__label">Jugadores (mínimo – máximo)</span><div class="row">${num('playersMin', d.players?.min, 1, 12)}<span>–</span>${num('playersMax', d.players?.max, 1, 12)}</div></div>
-            <div class="field"><span class="field__label">Nivel (inicial – máximo previsto)</span><div class="row">${num('levelStart', d.levels?.start, 1, 20)}<span>–</span>${num('levelMax', d.levels?.max, 1, 20)}</div></div>
-            <div class="field"><label class="field__label" for="cd-mod">Modalidad</label><select id="cd-mod" class="select" name="modality">${opt(CAMPAIGN_MODALITIES, d.modality)}</select></div>
-            <div class="field"><label class="field__label" for="cd-plat">Dónde se juega</label><input id="cd-plat" class="input" name="platform" maxlength="80" value="${d.platform ?? ''}" placeholder="Discord, Foundry, en casa de…"></div>
-          </div>
-          <div class="field"><label class="field__label" for="cd-sch">Sesiones (día, hora, frecuencia)</label><input id="cd-sch" class="input" name="schedule" maxlength="120" value="${d.schedule ?? ''}" placeholder="Viernes 21:00, cada dos semanas"></div>
-          <div class="grid-2">
-            <div class="field"><label class="field__label" for="cd-lines">Líneas: temas que no aparecen nunca (uno por línea)</label><textarea id="cd-lines" class="textarea" name="lines" rows="3">${(d.safety?.lines ?? []).join('\n')}</textarea></div>
-            <div class="field"><label class="field__label" for="cd-veils">Velos: ocurren fuera de escena (uno por línea)</label><textarea id="cd-veils" class="textarea" name="veils" rows="3">${(d.safety?.veils ?? []).join('\n')}</textarea></div>
-          </div>
-          <div class="field"><label class="field__label" for="cd-rules">Reglas de la casa</label><textarea id="cd-rules" class="textarea" name="houseRules" rows="4" maxlength="4000">${d.houseRules ?? ''}</textarea></div>
-          <p class="field__hint">Todo es opcional y lo ven todos los jugadores de la campaña.</p>
-          <div class="dialog__footer"><button type="button" class="btn btn--ghost" data-dialog-close>Cancelar</button><button class="btn btn--primary">Guardar ficha</button></div>
-        </form>`);
-        const form = body.querySelector('[data-f]');
-        form.addEventListener('submit', (e) => {
-          e.preventDefault();
-          const fd = new FormData(form);
-          const name = String(fd.get('name') ?? '').trim();
-          if (!name) { form.querySelector('#cd-name').focus(); return; }
-          close({
-            name,
-            details: {
-              dmName: fd.get('dmName'), synopsis: fd.get('synopsis'), kind: fd.get('kind'), status: fd.get('status'), system: fd.get('system'),
-              setting: fd.get('setting'), world: fd.get('world'), tone: fd.get('tone'), startLocation: fd.get('startLocation') || null, styles: fd.getAll('styles'),
-              players: { min: fd.get('playersMin'), max: fd.get('playersMax') }, levels: { start: fd.get('levelStart'), max: fd.get('levelMax') },
-              modality: fd.get('modality'), platform: fd.get('platform'), schedule: fd.get('schedule'),
-              safety: { lines: String(fd.get('lines') ?? '').split('\n'), veils: String(fd.get('veils') ?? '').split('\n') },
-              houseRules: fd.get('houseRules'),
-            },
-          });
-        });
-      },
-    });
-    if (!result) return;
-    await run(async () => {
-      if (result.name !== pack.name) await svc.updateCampaign(pack.id, { name: result.name });
-      return svc.updateDetails(pack.id, normalizeCampaignDetails(result.details));
-    }, 'Ficha de la campaña guardada.');
-  }
-
-  async function joinWithLink() {
-    const link = await openDialog({
-      title: 'Unirme a una campaña',
-      size: 'sm',
-      render(body, close) {
-        setHtml(body, html`<form class="stack" data-f>
-          <div class="field"><label class="field__label" for="join-link">Enlace de invitación</label><input id="join-link" class="input" required autofocus placeholder="https://…/unirse#…"></div>
-          <div class="dialog__footer"><button type="button" class="btn btn--ghost" data-dialog-close>Cancelar</button><button class="btn btn--primary">Unirme</button></div>
-        </form>`);
-        body.querySelector('[data-f]').addEventListener('submit', (e) => { e.preventDefault(); close(body.querySelector('#join-link').value.trim()); });
-      },
-    });
-    if (!link) return;
-    const inv = parseInvite(link.includes('#') ? link.slice(link.indexOf('#')) : link);
-    if (!inv) { toast('Ese enlace no parece una invitación válida.', { type: 'error' }); return; }
-    const m = await run(() => svc.join(inv.id, inv.code), (x) => `Te uniste a «${x.name}» como ${roleLabel(x.role)}.`);
-    if (m) ctx.navigate(`/homebrew/${m.id}`);
-  }
+  const editDetails = (pack) => editCampaignDetails(svc, pack).finally(render);
 
   function showCode(item, code) {
     return openDialog({
@@ -451,8 +402,6 @@ export function mountHomebrew(container, ctx, packId = null) {
     const pack = currentPack();
     const entry = btn.dataset.ref ? listEntries(null, { selectable: false, packId: pack?.id }).find((x) => x.ref === btn.dataset.ref) : null;
     switch (act) {
-      case 'create-campaign': return createCampaign();
-      case 'join': return joinWithLink();
       case 'import': {
         try {
           const raw = await readJsonFile();
@@ -489,13 +438,8 @@ export function mountHomebrew(container, ctx, packId = null) {
         try { await navigator.clipboard.writeText(input.value); toast('Copiado.', { type: 'success' }); } catch { input.type = 'text'; input.select(); }
         return undefined;
       }
-      case 'rotate-invite': {
-        const ok = await confirmDialog({ title: 'Nuevo enlace de invitación', message: 'El enlace anterior dejará de funcionar para quien aún no se haya unido, y los jugadores que lo usan tendrán que unirse de nuevo con el nuevo.', confirmLabel: 'Generar' });
-        if (ok) await run(() => svc.rotateInvite(pack.id), 'Nuevo enlace generado.');
-        return undefined;
-      }
       case 'leave': {
-        const ok = await confirmDialog({ title: 'Salir de la campaña', message: pack.role === 'dm' ? 'Se borrará tu clave de DM de este dispositivo. Si no la tienes guardada en otro sitio, no podrás volver a administrar la campaña.' : 'Podrás volver a unirte con el enlace de invitación.', confirmLabel: 'Salir', danger: true });
+        const ok = await confirmDialog({ title: 'Salir de la campaña', message: pack.role === 'dm' ? 'Se borrará tu clave de DM de este dispositivo. Si no la tienes guardada en otro sitio, no podrás volver a administrar la campaña.' : 'Se borrará tu clave personal de este dispositivo. Para volver necesitarás un enlace nuevo del DM (o tu enlace personal, si lo guardaste).', confirmLabel: 'Salir', danger: true });
         if (ok) { svc.leave(pack.id); ctx.navigate('/homebrew'); }
         return undefined;
       }
@@ -527,31 +471,3 @@ export function mountHomebrew(container, ctx, packId = null) {
   render();
   return { unmount: off };
 }
-
-export async function mountJoin(container, ctx) {
-  const svc = ctx.services.homebrew;
-  const page = document.createElement('section');
-  page.className = 'page';
-  container.append(page);
-  const inv = parseInvite(window.location.hash);
-  if (!inv) {
-    setHtml(page, html`<div class="empty-state"><h1>Enlace no válido</h1><p>Pide a tu DM que te vuelva a enviar el enlace de invitación.</p><a class="btn btn--primary" href="/homebrew" data-link>Ir a Homebrew</a></div>`);
-    return null;
-  }
-  // El código no debe quedarse en la barra de direcciones ni en el historial.
-  history.replaceState({}, '', '/unirse');
-  if (!svc.available()) {
-    setHtml(page, html`<div class="empty-state"><h1>Campañas no disponibles</h1><p>Esta instalación no tiene el servidor de campañas configurado.</p></div>`);
-    return null;
-  }
-  setHtml(page, html`<div class="empty-state"><h1>Uniéndote a la campaña…</h1></div>`);
-  try {
-    const m = await svc.join(inv.id, inv.code);
-    toast(`Te uniste a «${m.name}» como ${roleLabel(m.role)}.`, { type: 'success' });
-    ctx.navigate(`/homebrew/${m.id}`, { replace: true });
-  } catch (err) {
-    setHtml(page, html`<div class="empty-state"><h1>No se pudo unir</h1><p>${userMessageFor(err, 'El enlace no es válido o ha caducado.')}</p><a class="btn btn--primary" href="/homebrew" data-link>Ir a Homebrew</a></div>`);
-  }
-  return null;
-}
-

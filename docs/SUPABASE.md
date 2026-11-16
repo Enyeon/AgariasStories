@@ -12,15 +12,16 @@ página y Supabase guarda los datos.
    tus jugadores (p. ej. `sa-east-1`, São Paulo).
 2. *SQL Editor* → pega el contenido de cada archivo de `supabase/migrations/`, en
    orden (`20261108000000_agarias.sql`, `20261112000000_tienda.sql`,
-   `20261113000000_comerciantes.sql`, `20261114000000_mundo_dm.sql` y
-   `20261115000000_campanas.sql`)
+   `20261113000000_comerciantes.sql`, `20261114000000_mundo_dm.sql`,
+   `20261115000000_campanas.sql`, `20261116000000_negocios.sql`,
+   `20261117000000_pisos.sql` y `20261118000000_campanas_jugadores.sql`)
    → *Run*. Se pueden ejecutar varias veces sin problema.
 3. *Project Settings → API*: copia la **URL** del proyecto y la clave
    **anon / publishable**. Nunca uses la clave `service_role` en la web.
 4. En Netlify → *Site configuration → Environment variables* añade:
    - `VITE_SUPABASE_URL` = la URL (`https://xxxx.supabase.co`)
    - `VITE_SUPABASE_ANON_KEY` = la clave anon/publishable
-5. *Deploys → Trigger deploy*. Comprueba en la web: «Homebrew → Crear campaña».
+5. *Deploys → Trigger deploy*. Comprueba en la web: «Campañas → Crear campaña».
 
 Para desarrollo local, pon las mismas variables en `frontend/.env`.
 
@@ -31,11 +32,20 @@ Para desarrollo local, pon las mismas variables en `frontend/.env`.
 | Ver un personaje compartido | Cualquiera con el enlace | ID aleatorio de 96 bits |
 | Editar/borrar un personaje compartido | Quien lo compartió | Token de edición (hash SHA-256) + revisión |
 | Publicar un personaje de una campaña | Su dueño | Todo su Homebrew de esa campaña debe estar publicado, oculto o retirado |
-| Ver la campaña y su contenido | DM y jugadores | Clave de DM o código de invitación (hash); los jugadores no ven borradores |
+| Ver la campaña y su contenido | DM, jugadores y observadores aprobados | Clave de DM o clave personal (hash); los jugadores no ven borradores. En campañas anteriores a 20261118 también el código de invitación (`open_invite`) |
+| Pedir entrar | Quien tenga el enlace de invitación | Código de invitación; queda **pendiente** hasta que el DM apruebe (máx. 20 pendientes, 60 miembros) |
+| Aprobar, expulsar, cambiar rol, abrir/cerrar la invitación | Sólo el DM | Clave de DM |
+| Vincular la copia de un PJ | El jugador (aunque esté pendiente) o el DM | Clave personal; el PJ del jugador queda pendiente hasta que el DM lo apruebe (máx. 3 por jugador) |
+| Guardar la copia del PJ | Su dueño o el DM | Clave + revisión; los acontecimientos del registro se guardan en la misma transacción |
+| Marcar muerto / revivir / retirar | Sólo el DM | Se anota siempre en el registro (público) |
+| Ver la ficha de otro PJ | Según su privacidad | `publico`: ficha completa · `resumen`: nivel, clase y estado · `privado`: sólo el nombre |
+| Leer el registro | Miembros aprobados | `publico` todos · `privado` el jugador del PJ y el DM · `dm` sólo el DM (y el jugador que lo escribió) |
+| Sesiones | Sólo el DM | Lo que se anota durante una sesión queda asociado a ella |
 | Cambiar reglas, estados, borrar, rotar invitación | Sólo el DM | Clave de DM |
 | Crear o editar Homebrew | DM; jugadores sólo si la regla del tipo es «propuestas» | Rol + regla; los jugadores sólo crean propuestas y sólo editan las suyas |
 | Ver y usar el mercado de la Tienda de una campaña | DM y jugadores | Clave de DM o código de invitación + revisión (dos compras a la vez no se pisan) |
 | Pasar días o reiniciar el mercado de la campaña | Sólo el DM | El servidor rechaza cambios de `day`/`seed` que no vengan del DM |
+| Comprar/vender en la Tienda de la campaña | DM y jugadores (no observadores) | `shop_market_save` rechaza a los observadores |
 
 La Tienda no guarda monedas ni inventarios en Supabase: siguen dentro del
 documento del personaje. Si el personaje está compartido, cada compra publica

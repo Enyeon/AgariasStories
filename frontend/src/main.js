@@ -3,6 +3,7 @@ import './styles/base.css';
 import './styles/components.css';
 import './styles/sheet.css';
 import './styles/alignment.css';
+import './styles/mobile.css';
 
 import { createRouter } from './ui/router.js';
 import { reportError } from './ui/feedback.js';
@@ -14,13 +15,22 @@ import { mountShared } from './views/shared.js';
 import { mountReference } from './views/reference.js';
 import { mountAbout } from './views/about.js';
 import { mountNotFound } from './views/not-found.js';
-import { mountHomebrew, mountJoin } from './views/homebrew.js';
+import { mountHomebrew } from './views/homebrew.js';
+import { mountCampaigns, mountJoin } from './views/campaigns.js';
+import { createCampaignPlay } from './services/campaign-play.js';
 // La Tienda se carga sólo al entrar (catálogo y simulación no pesan en el resto).
 const mountShop = async (...args) => (await import('./views/shop/index.js')).mountShop(...args);
 import { homebrew } from './services/homebrew.js';
 import { supportLinks } from './config/support.js';
 
-const services = { characters: createCharacterService(), homebrew };
+// Las copias de los PJ en las campañas se guardan como personajes (id cp_…) y
+// se sincronizan con la campaña al guardar (ver services/campaign-play.js).
+let play = null;
+const characters = createCharacterService({
+  pcRemote: { get: (...a) => play.pcRemote.get(...a), save: (...a) => play.pcRemote.save(...a) },
+});
+play = createCampaignPlay({ homebrew, characters });
+const services = { characters, homebrew, play };
 // El Homebrew guardado en el dispositivo se instala antes de abrir cualquier
 // ficha; las campañas se actualizan después en segundo plano.
 homebrew.init();
@@ -37,7 +47,9 @@ const router = createRouter({
     { name: 'reference', pattern: /^\/referencia$/, view: (el) => mountReference(el, ctx) },
     { name: 'homebrew', pattern: /^\/homebrew$/, view: (el) => mountHomebrew(el, ctx) },
     { name: 'homebrew', pattern: /^\/homebrew\/([a-z0-9-]{1,40})$/, view: (el, [id]) => mountHomebrew(el, ctx, id) },
-    { name: 'homebrew', pattern: /^\/unirse$/, view: (el) => mountJoin(el, ctx) },
+    { name: 'campaigns', pattern: /^\/campanas$/, view: (el) => mountCampaigns(el, ctx) },
+    { name: 'campaigns', pattern: /^\/campanas\/([a-z0-9]{4,40})$/, view: (el, [id]) => mountCampaigns(el, ctx, id) },
+    { name: 'campaigns', pattern: /^\/unirse$/, view: (el) => mountJoin(el, ctx) },
     { name: 'about', pattern: /^\/acerca$/, view: (el) => mountAbout(el, ctx) },
   ],
   notFound: (el) => mountNotFound(el, ctx),
@@ -62,7 +74,7 @@ const [support] = supportLinks();
 const supportLink = document.querySelector('[data-support]');
 if (support && supportLink) {
   supportLink.href = support.url;
-  supportLink.textContent = `${support.icon} Apoyar`;
+  supportLink.querySelector('.app-nav__icon').textContent = support.icon;
   supportLink.title = `Apoya Stories of Agarias en ${support.label} (voluntario: la página es gratis)`;
   supportLink.hidden = false;
 }

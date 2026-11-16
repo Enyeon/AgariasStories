@@ -58,7 +58,7 @@ import { buildProfile } from '../domain/shop/profile.js';
 import { listEntries, getPack } from '../content/registry.js';
 import { createMarketRepository, marketScope, sameScope } from './shop-market.js';
 import { ApiError, hasSupabase } from './api.js';
-import { setDisplayCurrency, currencyOf, convertCoins, formatBag, coinsInCp, CURRENCIES } from '../domain/money.js';
+import { setDisplayCurrency, currencyOf, convertCoins, formatBag, coinsInCp, formatCp, CURRENCIES } from '../domain/money.js';
 
 const PREFS_KEY = 'agarias-dnd:shop-prefs';
 const SKILL_KEYS = { persuasion: 'Persuasión', deception: 'Engaño', intimidation: 'Intimidación', insight: 'Perspicacia', investigation: 'Investigación', performance: 'Interpretación', sleight: 'Juego de Manos' };
@@ -232,11 +232,13 @@ export function createShopService({ characters, homebrew, market = createMarketR
     return serial(async () => {
       if (!state.characterId) return;
       const before = state.record?.updatedAt ?? null;
+      // PJ de campaña: trae lo que cambió el DM (oro, objetos, PG…).
+      if (state.record?.pc) await characters.refreshCopy?.(state.characterId).catch(() => null);
       await loadCharacter(state.characterId);
       if ((state.record?.updatedAt ?? null) === before) return;
       if (state.record) {
         const i = state.characters.findIndex((c) => c.id === state.characterId);
-        if (i >= 0) state.characters[i] = { ...state.characters[i], name: state.record.summary?.name || 'Personaje sin nombre', subtitle: state.record.summary?.classes };
+        if (i >= 0) state.characters[i] = charOption(state.record);
       }
       const scope = marketScope(state.character, homebrew?.memberships?.() ?? [], remoteEnabled, state.prefs.localWorld);
       if (state.character && !sameScope(scope, state.scope)) {
@@ -333,10 +335,31 @@ export function createShopService({ characters, homebrew, market = createMarketR
     return { error: 'El mercado cambió mientras operabas. Inténtalo de nuevo.' };
   }
 
+  /**
+   * Lo que se anota en el registro de la campaña (sólo PJ de campaña): la
+   * operación con el negocio y el importe. El resto (dinero, objetos) se deduce.
+   */
+  function campaignEvent(result) {
+    if (!state.record?.pc) return [];
+    const shop = result.ledger?.shopId ?? null;
+    const shopName = shop ? (state.ctx?.shops?.get?.(shop)?.name ?? null) : null;
+    const where = shopName ? ` en ${shopName}` : '';
+    const day = Number.isFinite(state.world?.day) ? state.world.day : null;
+    if (result.ledger) {
+      const l = result.ledger;
+      const what = `${l.qty > 1 ? `${l.qty} × ` : ''}${l.name}`;
+      return [{ kind: l.side === 'buy' ? 'compra' : 'venta', text: `${l.side === 'buy' ? 'Compra' : 'Vende'} ${what}${where} por ${formatCp(l.total)}.`, visibility: 'privado', day, data: { item: l.itemId, qty: l.qty, total: l.total, shop } }];
+    }
+    const text = result.message ?? result.result?.text ?? null;
+    return text ? [{ kind: 'tienda', text: String(text).slice(0, 480), visibility: 'privado', day }] : [];
+  }
+
   /** Guarda la ficha y, si está compartida, actualiza la copia en línea. */
-  async function commitCharacter(nextCharacter) {
-    state.record = await characters.save(state.record, nextCharacter);
+  async function commitCharacter(nextCharacter, events = []) {
+    state.record = await characters.save(state.record, nextCharacter, { events });
     state.character = nextCharacter;
+    // PJ de campaña: si el DM lo cambió a la vez, se guardó la versión combinada.
+    if (state.record.remoteMerged) state.character = (await characters.open(state.record.id))?.character ?? nextCharacter;
     let cloud = 'none';
     if (state.record.cloud) {
       try {
@@ -350,6 +373,13 @@ export function createShopService({ characters, homebrew, market = createMarketR
     return cloud;
   }
 
+  /** Opción del selector de personaje (las copias de campaña llevan su campaña). */
+  const charOption = (r) => ({
+    id: r.id,
+    name: `${r.summary?.name || 'Personaje sin nombre'}${r.pc ? ` · 🏰 ${r.pc.campaignName || 'Campaña'}` : ''}`,
+    subtitle: r.summary?.classes,
+  });
+
   const here = () => (state.world && state.ctx ? playerLocation(state.world, state.ctx, state.characterId) : null);
   const who = () => ({ charId: state.characterId, profile: state.profile });
 
@@ -362,6 +392,12 @@ export function createShopService({ characters, homebrew, market = createMarketR
     // Datos frescos de la ficha (pudo cambiar en otra pestaña).
     await loadCharacter(state.record.id);
     syncCurrency();
+    const pc = state.record?.pc;
+    if (pc) {
+      if (state.scope.kind !== 'campaign' || state.scope.id !== pc.campaignId) return { error: 'Este PJ es de una campaña: sólo opera en el mercado de su campaña (cuando el DM apruebe tu entrada).' };
+      if (pc.status === 'desvinculado') return { error: 'Este PJ ya no está vinculado a la campaña.' };
+      if (pc.state === 'muerto') return { error: 'Este PJ está muerto: no puede comprar ni vender.' };
+    }
     // Nunca se cobra con monedas de otro sistema: primero hay que convertirlas
     // (el jugador ve antes cómo quedan sus fondos).
     const need = coinConversion();
@@ -372,7 +408,7 @@ export function createShopService({ characters, homebrew, market = createMarketR
     if (result.error || !result.character) return result;
     const { skills, ...clean } = result.character;
     try {
-      result.cloud = await commitCharacter(clean);
+      result.cloud = await commitCharacter(clean, campaignEvent(result));
     } catch (err) {
       // La ficha no se pudo guardar: se deshace el cambio del mercado.
       console.error('[tienda] Error al guardar la ficha', err);
@@ -436,7 +472,7 @@ export function createShopService({ characters, homebrew, market = createMarketR
     /** Carga la lista de personajes y abre el indicado (o el último usado). */
     async init(characterId = null) {
       state.records = await characters.list();
-      state.characters = state.records.map((r) => ({ id: r.id, name: r.summary?.name || 'Personaje sin nombre', subtitle: r.summary?.classes }));
+      state.characters = state.records.map(charOption);
       const preferred = [characterId, state.prefs.characterId].find((id) => id && state.records.some((r) => r.id === id)) ?? state.records[0]?.id ?? null;
       const dmPref = !characterId && state.prefs.dmCampaign && api.dmCampaigns().some((m) => m.id === state.prefs.dmCampaign) ? state.prefs.dmCampaign : null;
       if (dmPref) await enterAsDm(dmPref);

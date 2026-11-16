@@ -151,6 +151,22 @@ export function createCampaignApi(rpc = createRpc()) {
     upsertContent: (id, key, { type, data, contentId = null, status = null }) => rpc('content_upsert', { campaign_id: id, key, type, data, content_id: contentId, status }),
     setStatus: (id, dmKey, contentId, status) => rpc('content_set_status', { campaign_id: id, dm_key: dmKey, content_id: contentId, status }),
     remove: (id, dmKey, contentId) => rpc('content_delete', { campaign_id: id, dm_key: dmKey, content_id: contentId }),
+    // Jugadores, PJ y registro (supabase/migrations/20261118000000_campanas_jugadores.sql).
+    join: (id, code, name, role = 'jugador') => rpc('campaign_join', { campaign_id: id, invite_code: code, name, role }),
+    me: (id, key) => rpc('campaign_me', { campaign_id: id, key }),
+    roster: (id, key) => rpc('campaign_roster', { campaign_id: id, key }),
+    memberUpdate: (id, dmKey, memberId, { status = null, role = null } = {}) => rpc('member_update', { campaign_id: id, dm_key: dmKey, member_id: memberId, status, role }),
+    setAccess: (id, dmKey, openInvite) => rpc('campaign_set_access', { campaign_id: id, dm_key: dmKey, open_invite: openInvite }),
+    pcLink: (id, key, document, summary) => rpc('pc_link', { campaign_id: id, key, document, summary }),
+    pcReview: (id, dmKey, pcId, status) => rpc('pc_review', { campaign_id: id, dm_key: dmKey, pc_id: pcId, status }),
+    pcGet: (id, key, pcId) => rpc('pc_get', { campaign_id: id, key, pc_id: pcId }),
+    pcSave: (id, key, pcId, { document = null, summary = null, revision, events = [], state = null, privacy = null }) =>
+      rpc('pc_save', { campaign_id: id, key, pc_id: pcId, document, summary, expected_revision: revision, events, state, privacy }),
+    eventAdd: (id, key, { kind, text, data = null, pcId = null, visibility = 'publico', day = null }) =>
+      rpc('event_add', { campaign_id: id, key, kind, message: text, data, pc_id: pcId, visibility, day }),
+    events: (id, key, { before = null, pcId = null, limit = 50 } = {}) => rpc('events_list', { campaign_id: id, key, before_id: before, pc_id: pcId, lim: limit }),
+    sessionStart: (id, dmKey, title = '') => rpc('session_start', { campaign_id: id, dm_key: dmKey, title }),
+    sessionEnd: (id, dmKey) => rpc('session_end', { campaign_id: id, dm_key: dmKey }),
   };
 }
 

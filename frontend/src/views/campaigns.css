@@ -1,0 +1,124 @@
+/* ── Campañas (móvil primero) ───────────────────────────────────────── */
+
+.camp-page { --camp-gap: var(--space-3); }
+.camp-h2 { font-size: var(--fs-lg); margin: var(--space-5) 0 var(--space-3); }
+.camp-section-head { margin: var(--space-2) 0 var(--space-3); }
+.camp-section-head .camp-h2 { margin: 0; }
+.camp-body > * + * { margin-top: var(--camp-gap); }
+.camp-legend { font-size: var(--fs-xs); margin: 0 0 var(--space-3); }
+.text-warning { color: var(--warning); }
+
+/* Lista de campañas */
+.camp-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--camp-gap); grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); }
+.camp-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+.camp-card__main { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-4); color: var(--text); text-decoration: none; min-height: 72px; }
+.camp-card__main:hover { color: var(--text); background: var(--surface-2); border-radius: var(--radius); }
+.camp-card__icon { font-size: 1.6rem; flex: none; }
+.camp-card__info { display: grid; gap: var(--space-1); min-width: 0; flex: 1; }
+.camp-card__name { font-size: var(--fs-md); overflow-wrap: anywhere; }
+.camp-card__meta { font-size: var(--fs-sm); }
+.camp-card__go { font-size: 1.5rem; color: var(--text-faint); }
+
+/* Pestañas: deslizables en móvil, pegadas bajo la cabecera */
+.camp-tabs {
+  position: sticky; top: var(--header-h); z-index: 15;
+  display: flex; gap: var(--space-1); overflow-x: auto; scrollbar-width: none;
+  margin: 0 calc(-1 * var(--space-4)) var(--space-4); padding: var(--space-2) var(--space-4);
+  background: var(--bg); border-bottom: 1px solid var(--border);
+}
+.camp-tabs::-webkit-scrollbar { display: none; }
+.camp-tab {
+  flex: none; display: inline-flex; align-items: center; gap: var(--space-1);
+  min-height: 40px; padding: 0 var(--space-3); border-radius: 999px;
+  border: 1px solid var(--border); background: var(--surface); color: var(--text-muted);
+  font: inherit; font-size: var(--fs-sm); font-weight: 600; cursor: pointer; white-space: nowrap;
+}
+.camp-tab.is-on { background: var(--accent-soft); border-color: var(--accent); color: var(--text); }
+.camp-dot { display: inline-grid; place-items: center; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 999px; background: var(--warning); color: #111; font-size: var(--fs-xs); font-weight: 700; }
+
+.camp-alert { display: block; width: 100%; text-align: left; cursor: pointer; font: inherit; color: inherit; }
+.camp-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-2); }
+.camp-stat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-3); display: grid; justify-items: center; font-size: var(--fs-xs); color: var(--text-muted); }
+.camp-stat__n { font-size: var(--fs-xl); font-weight: 700; color: var(--text); font-family: var(--font-display); }
+
+.camp-shortcuts { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--space-2); }
+.camp-shortcut {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-1);
+  min-height: 76px; padding: var(--space-3); text-align: center; border-radius: var(--radius);
+  border: 1px solid var(--border); background: var(--surface-2); color: var(--text); text-decoration: none;
+  font: inherit; font-size: var(--fs-sm); font-weight: 600; cursor: pointer;
+}
+.camp-shortcut span { font-size: 1.4rem; }
+.camp-shortcut:hover { border-color: var(--accent); color: var(--text); }
+
+/* Tarjetas de PJ y de miembros (no tablas) */
+.camp-pcs, .member-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--camp-gap); grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+.pc-card, .member-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: var(--space-4); display: grid; gap: var(--space-2); }
+.pc-card.is-dead { border-color: var(--danger); background: linear-gradient(var(--danger-soft), var(--surface)); }
+.pc-card__head, .member-card__head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); flex-wrap: wrap; }
+.pc-card__name { font-size: var(--fs-md); overflow-wrap: anywhere; }
+.pc-card__meta, .pc-card__owner, .member-card__pcs { margin: 0; font-size: var(--fs-sm); }
+.pc-card__actions .btn, .member-card__actions .btn { min-height: 40px; }
+.pc-hp { display: flex; align-items: center; gap: var(--space-2); }
+.pc-hp__bar { flex: 1; height: 8px; border-radius: 999px; background: var(--surface-3); overflow: hidden; }
+.pc-hp__bar span { display: block; height: 100%; background: var(--success); }
+.pc-hp__bar span.is-low { background: var(--danger); }
+.pc-hp small { color: var(--text-muted); white-space: nowrap; }
+.member-card__head { justify-content: flex-start; }
+.member-card__avatar { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); font-weight: 700; flex: none; }
+.member-card__info { display: grid; gap: var(--space-1); min-width: 0; }
+
+.invite-card .input { font-size: var(--fs-sm); }
+.camp-toggle { align-items: flex-start; }
+.camp-toggle input { margin-top: 3px; flex: none; }
+
+/* Registro */
+.event-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
+.event { display: flex; gap: var(--space-3); padding: var(--space-3); border-radius: var(--radius-sm); background: var(--surface); border: 1px solid var(--border); }
+.event--death { border-color: var(--danger); }
+.event__icon { font-size: 1.25rem; line-height: 1.2; flex: none; }
+.event__body { min-width: 0; }
+.event__text { margin: 0; overflow-wrap: anywhere; }
+.event__meta { margin: var(--space-1) 0 0; font-size: var(--fs-xs); }
+.field--inline { display: flex; align-items: center; gap: var(--space-2); margin: 0; }
+.field--inline .field__label { margin: 0; }
+
+/* Herramientas del DM: botones grandes, cómodos con el pulgar */
+.tool-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2); }
+.tool-btn {
+  display: flex; align-items: center; gap: var(--space-2); min-height: 56px; padding: var(--space-3);
+  border-radius: var(--radius); border: 1px solid var(--border); background: var(--surface-2); color: var(--text);
+  font: inherit; font-size: var(--fs-sm); font-weight: 600; text-align: left; cursor: pointer;
+}
+.tool-btn span { font-size: 1.3rem; }
+.tool-btn:hover:not(:disabled) { border-color: var(--accent); }
+.tool-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.tool-btn--danger:hover:not(:disabled) { border-color: var(--danger); }
+@media (min-width: 720px) { .tool-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+/* Formularios */
+.camp-form .input, .camp-form .select, .camp-form .textarea { min-height: 44px; font-size: max(16px, var(--fs-md)); } /* 16px: iOS no hace zoom */
+.camp-choices { display: grid; gap: var(--space-2); max-height: 50vh; overflow-y: auto; }
+.camp-choice { display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; }
+.camp-choice:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+.camp-choice input { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--accent-strong); flex: none; }
+.camp-choice span { display: grid; gap: 2px; }
+.camp-choice small { color: var(--text-muted); }
+.camp-choice--sm { padding: var(--space-2) var(--space-3); }
+.coin-inputs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-2); }
+.coin-inputs .field { margin: 0; }
+.grid-2--tight { grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr)); }
+.camp-sheet { min-height: 60vh; }
+.camp-join .card { max-width: 560px; }
+
+@media (max-width: 720px) {
+  .camp-header .page-header__actions { width: 100%; }
+  .camp-page .page-header { margin-bottom: var(--space-3); }
+  .camp-tabs { top: var(--header-h); }
+  .camp-stats { gap: var(--space-1); }
+  .coin-inputs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pc-card__actions, .member-card__actions { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); }
+  .pc-card__actions .select, .member-card__actions .select { width: 100%; min-height: 40px; }
+}
+
+.campaign-copy-note { margin: 0 0 var(--space-3); }
