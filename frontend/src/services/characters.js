@@ -32,7 +32,32 @@ export function summarize(character) {
   };
 }
 
-export function createCharacterService({ store = createLocalStore(), api = defaultApi } = {}) {
+/**
+ * Aviso entre pestañas: cuando una pestaña guarda un personaje (p. ej. la Tienda
+ * cobra una compra, o la ficha suma monedas que regaló el DM), las demás pestañas
+ * abiertas con ese personaje lo recargan. Sin BroadcastChannel no hace nada: la
+ * Tienda y la ficha también comprueban al volver a la pestaña.
+ */
+export function createChangeChannel(name = 'agarias:characters') {
+  const channel = typeof BroadcastChannel === 'function' ? new BroadcastChannel(name) : null;
+  const listeners = new Set();
+  channel?.addEventListener('message', (e) => {
+    const msg = e.data;
+    if (msg && typeof msg.id === 'string') for (const fn of listeners) fn(msg);
+  });
+  return {
+    notify(record, kind = 'saved') {
+      try { channel?.postMessage({ id: record.id, updatedAt: record.updatedAt ?? null, kind }); } catch { /* pestaña cerrándose */ }
+    },
+    /** fn({ id, updatedAt, kind }) para cambios hechos en OTRAS pestañas. */
+    subscribe(fn) {
+      listeners.add(fn);
+      return () => listeners.delete(fn);
+    },
+  };
+}
+
+export function createCharacterService({ store = createLocalStore(), api = defaultApi, changes = createChangeChannel() } = {}) {
   const now = () => new Date().toISOString();
 
   function buildRecord(character, base = {}) {
@@ -58,6 +83,7 @@ export function createCharacterService({ store = createLocalStore(), api = defau
   async function save(record, character) {
     const next = buildRecord(character, record);
     await store.put(next);
+    changes.notify(next);
     return next;
   }
 
@@ -65,6 +91,12 @@ export function createCharacterService({ store = createLocalStore(), api = defau
     list: () => store.list(),
     open,
     save,
+    /** Suscripción a cambios de personajes hechos en otras pestañas. */
+    onExternalChange: (fn) => changes.subscribe(fn),
+    /** Fecha del último guardado en este dispositivo (null si ya no existe). */
+    async storedUpdatedAt(id) {
+      return (await store.get(id))?.updatedAt ?? null;
+    },
 
     async create(character = createCharacter()) {
       const record = buildRecord(character);
@@ -98,6 +130,7 @@ export function createCharacterService({ store = createLocalStore(), api = defau
         }
       }
       await store.delete(id);
+      changes.notify({ id, updatedAt: null }, 'removed');
     },
 
     /**
@@ -130,6 +163,7 @@ export function createCharacterService({ store = createLocalStore(), api = defau
       }
       const next = { ...buildRecord(character, record), cloud: { ...cloud, fingerprint: fp } };
       await store.put(next);
+      changes.notify(next);
       return next;
     },
 

@@ -38,5 +38,7 @@ export async function mountShop(container, { services }, characterId = null) {
   const view = mountShopView(page, service, {
     onCharacterChange: (id) => history.replaceState({}, '', `/tienda/${encodeURIComponent(id)}`),
   });
-  return { unmount: () => view.destroy() };
+  // Monedas u objetos cambiados en la ficha (otra pestaña) se ven sin recargar.
+  const stopWatching = service.watchCharacter();
+  return { unmount: () => { stopWatching(); view.destroy(); } };
 }

@@ -7,6 +7,7 @@ import { downloadCharacter } from '../services/file-transfer.js';
 import { shareUrl, ApiError } from '../services/api.js';
 import { findIncompleteFields } from '../domain/validation.js';
 import { fingerprint } from '../services/characters.js';
+import { mergeCharacters } from '../domain/merge.js';
 
 const AUTOSAVE_MS = 700;
 
@@ -30,6 +31,9 @@ export async function mountEditor(container, { services, navigate }, id) {
   }
 
   let record = opened.record;
+  // Última versión guardada que conoce esta pestaña: base para combinar cambios
+  // hechos a la vez en otra (la Tienda cobrando mientras sumas monedas aquí).
+  let base = structuredClone(opened.character);
   let status = 'saved';
   let lastError = null;
   let savingPromise = null;
@@ -75,6 +79,27 @@ export async function mountEditor(container, { services, navigate }, id) {
     shareBtn.classList.toggle('btn--primary', cs !== 'outdated');
   }
 
+  /**
+   * Si otra pestaña guardó este personaje (compra en la Tienda, monedas, etc.),
+   * trae esa versión: tal cual si aquí no hay cambios, o combinada con los de
+   * aquí si los hay (sin perder ninguno de los dos). Devuelve true si cambió algo.
+   */
+  async function pullExternal() {
+    const stored = await services.characters.storedUpdatedAt(record.id).catch(() => null);
+    if (!stored || stored === record.updatedAt) return false;
+    const fresh = await services.characters.open(record.id).catch(() => null);
+    if (!fresh) return false;
+    const mine = sheetView.character;
+    const dirty = status !== 'saved';
+    const next = dirty ? mergeCharacters(base, mine, fresh.character) : fresh.character;
+    record = fresh.record;
+    base = structuredClone(fresh.character);
+    sheetView.load(next);
+    nameEl.textContent = next.identity.name.trim() || 'Personaje sin nombre';
+    toast(dirty ? 'Se combinaron tus cambios con los hechos en otra pestaña (p. ej. la Tienda).' : 'Ficha actualizada con los cambios hechos en otra pestaña (p. ej. la Tienda).', { type: 'info' });
+    return true;
+  }
+
   async function save() {
     autosave.cancel();
     if (savingPromise) await savingPromise;
@@ -83,7 +108,11 @@ export async function mountEditor(container, { services, navigate }, id) {
     renderStatus();
     savingPromise = (async () => {
       try {
-        record = await services.characters.save(record, sheetView.character);
+        // Nunca pisar lo que otra pestaña guardó entretanto: primero se combina.
+        await pullExternal();
+        const saving = structuredClone(sheetView.character);
+        record = await services.characters.save(record, saving);
+        base = saving;
         status = 'saved';
         lastError = null;
         return true;
@@ -146,7 +175,11 @@ export async function mountEditor(container, { services, navigate }, id) {
 
   // ── Compartir ──────────────────────────────────────────────────────────
   async function publish({ force = false } = {}) {
-    record = await services.characters.publish(record, sheetView.character, { force });
+    if (savingPromise) await savingPromise;
+    await pullExternal();
+    const publishing = structuredClone(sheetView.character);
+    record = await services.characters.publish(record, publishing, { force });
+    base = publishing;
     status = 'saved';
     renderStatus();
   }
@@ -271,7 +304,23 @@ export async function mountEditor(container, { services, navigate }, id) {
   const onBeforeUnload = (e) => {
     if (status !== 'saved') { save(); e.preventDefault(); e.returnValue = ''; }
   };
-  const onHide = () => { if (document.visibilityState === 'hidden' && status === 'pending') save(); };
+  const onHide = () => {
+    if (document.visibilityState === 'hidden' && status === 'pending') save();
+    if (document.visibilityState === 'visible') syncExternal();
+  };
+  // Otra pestaña guardó este personaje: se trae enseguida (si aquí hay cambios
+  // pendientes, se combinan al guardar).
+  let syncing = null;
+  function syncExternal() {
+    if (syncing || savingPromise || status !== 'saved') return syncing;
+    syncing = pullExternal().catch((err) => console.warn('[editor] No se pudo traer la otra versión', err)).finally(() => { syncing = null; });
+    return syncing;
+  }
+  const offExternal = services.characters.onExternalChange?.((msg) => {
+    if (msg.id !== record.id) return;
+    if (status === 'saved') syncExternal();
+    else autosave(); // al guardar se combina con la otra versión
+  }) ?? (() => {});
   window.addEventListener('keydown', onKey);
   window.addEventListener('beforeunload', onBeforeUnload);
   document.addEventListener('visibilitychange', onHide);
@@ -287,6 +336,7 @@ export async function mountEditor(container, { services, navigate }, id) {
     },
     unmount() {
       autosave.cancel();
+      offExternal();
       window.removeEventListener('keydown', onKey);
       window.removeEventListener('beforeunload', onBeforeUnload);
       document.removeEventListener('visibilitychange', onHide);

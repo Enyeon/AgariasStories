@@ -23,6 +23,20 @@ su copia en línea → la ficha muestra el objeto en Equipo (o en Taller › Mat
 Si la ficha no se puede guardar, se deshace el cambio del mercado. Si otro jugador compró a la vez
 (`conflict`), se recarga el mercado y se repite la operación con datos frescos.
 
+## Ficha y Tienda abiertas a la vez (AgSt 1.17)
+
+Las monedas, el inventario y los materiales viven sólo en la ficha. Cuando una
+pestaña guarda un personaje, avisa a las demás (`BroadcastChannel`
+`agarias:characters`, en `services/characters.js`):
+
+- La **Tienda** relee la ficha y actualiza la bolsa al instante (también al volver
+  a su pestaña). Así se ven las monedas que el jugador suma por un regalo del DM.
+- La **ficha** se recarga si no tiene cambios sin guardar. Si los tiene, al guardar
+  combina las dos versiones (`domain/merge.js`): las monedas suman las dos
+  diferencias (regalo + compra), las listas suman altas y bajas de ambos lados y,
+  si el mismo dato cambió en los dos, gana la pestaña que guarda. Nunca pisa una
+  compra hecha en la otra pestaña.
+
 ## Código
 
 - `domain/money.js`: monedas de la ficha (pagar con cambio, cobrar, formato).

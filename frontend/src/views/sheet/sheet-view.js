@@ -145,6 +145,14 @@ export function createSheetView(root, { character, readOnly = false, initialTab 
     if (message) toast(message, { type: 'success' });
   };
 
+  /** Carga otra versión del personaje SIN marcarlo como cambiado (vino de otra pestaña). */
+  ed.load = (next) => {
+    if (!next) return;
+    ed.character = next;
+    ed.sheet = computeSheet(next);
+    ed.rerender({ keepScroll: true });
+  };
+
   ed.setTab = (id, { focus = false } = {}) => {
     ed.tab = id;
     ed.rerender({ keepScroll: false });

@@ -200,6 +200,31 @@ export function createShopService({ characters, homebrew, market = createMarketR
     state.profile = characterProfile(state.character);
   }
 
+  /**
+   * Relee la ficha si cambió fuera de la Tienda (otra pestaña: monedas que regaló
+   * el DM, objetos añadidos a mano…). Sólo repinta si de verdad cambió.
+   */
+  function syncCharacter() {
+    return serial(async () => {
+      if (!state.characterId) return;
+      const before = state.record?.updatedAt ?? null;
+      await loadCharacter(state.characterId);
+      if ((state.record?.updatedAt ?? null) === before) return;
+      if (state.record) {
+        const i = state.characters.findIndex((c) => c.id === state.characterId);
+        if (i >= 0) state.characters[i] = { ...state.characters[i], name: state.record.summary?.name || 'Personaje sin nombre', subtitle: state.record.summary?.classes };
+      }
+      const scope = marketScope(state.character, homebrew?.memberships?.() ?? [], remoteEnabled, state.prefs.localWorld);
+      if (state.character && !sameScope(scope, state.scope)) {
+        state.ctx = contextFor(scope);
+        await loadMarket(scope);
+        emit({ type: 'market' });
+      } else {
+        emit({ type: 'character' });
+      }
+    });
+  }
+
   /** Abre personaje + mercado de su ámbito + catálogo visible para él. */
   async function select(id) {
     state.dmCampaign = null;
@@ -349,6 +374,25 @@ export function createShopService({ characters, homebrew, market = createMarketR
       listeners.add(fn);
       return () => listeners.delete(fn);
     },
+
+    /**
+     * Mantiene la ficha al día mientras la Tienda está abierta: avisos de otras
+     * pestañas y comprobación al volver a esta. Devuelve la función para parar.
+     */
+    watchCharacter() {
+      const offChanges = characters.onExternalChange?.((msg) => { if (msg.id === state.characterId) syncCharacter(); }) ?? (() => {});
+      const onVisible = () => { if (document.visibilityState === 'visible') syncCharacter(); };
+      document.addEventListener('visibilitychange', onVisible);
+      window.addEventListener('focus', onVisible);
+      return () => {
+        offChanges();
+        document.removeEventListener('visibilitychange', onVisible);
+        window.removeEventListener('focus', onVisible);
+      };
+    },
+
+    /** Relee la ficha del personaje elegido (p. ej. tras sumar monedas en otra pestaña). */
+    syncCharacter,
 
     /** Carga la lista de personajes y abre el indicado (o el último usado). */
     async init(characterId = null) {
