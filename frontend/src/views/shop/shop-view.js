@@ -612,7 +612,8 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
         const money = funds();
         const status = service.shopStatus(ui.shopId);
         const haggle = service.haggleState(ui.shopId, item.id, 'buy', ui.qty);
-        const history = world.shops[ui.shopId]?.history?.[item.id] ?? [];
+        const raw = world.shops[ui.shopId]?.history?.[item.id];
+        const history = Array.isArray(raw) ? raw : [];
         const trade = tradeState();
         const others = ctx.shopList
             .filter((s) => s.id !== ui.shopId)

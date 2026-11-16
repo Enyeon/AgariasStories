@@ -41,8 +41,9 @@ function packHistory(list) {
 }
 
 function unpackHistory(h) {
-    if (h && !Array.isArray(h) && Number.isFinite(h.d) && Array.isArray(h.p)) return h.p.map((p, i) => [h.d + i, p]);
-    return h;
+    if (Array.isArray(h)) return h;
+    if (h && Number.isFinite(h.d) && Array.isArray(h.p)) return h.p.map((p, i) => [h.d + i, p]);
+    return []; // dato roto: se empieza de cero (sólo es el gráfico de precios)
 }
 
 const mapValues = (obj, fn) => Object.fromEntries(Object.entries(obj ?? {}).map(([k, v]) => [k, fn(v)]));
@@ -54,9 +55,13 @@ export function packWorld(world) {
     return { ...world, shops, packed: 1 };
 }
 
-/** Deshace packWorld (y deja igual un mundo sin empaquetar). */
+/**
+ * Deshace packWorld (y deja igual un mundo sin empaquetar). Despliega SIEMPRE,
+ * aunque falte la marca `packed`: así un mundo guardado a medias o por otra
+ * versión de la página nunca deja listas compactas sueltas.
+ */
 export function unpackWorld(world) {
-    if (!world?.shops || !world.packed) return world;
+    if (!world?.shops || typeof world.shops !== 'object') return world;
     const { packed, ...rest } = world;
     const shops = mapValues(world.shops, (s) => ({ ...s, stock: mapValues(s.stock, unpackStockEntry), history: mapValues(s.history, unpackHistory) }));
     return { ...rest, shops };

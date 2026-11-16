@@ -325,7 +325,9 @@ function recordHistory(world, ctx) {
         }
         for (const itemId of Object.keys(state.stock)) {
             const price = marketPrice(world, ctx, shop.id, itemId);
-            const history = (state.history[itemId] ??= []);
+            // Siempre una lista (un dato compacto o roto no debe romper el día).
+            if (!Array.isArray(state.history[itemId])) state.history[itemId] = [];
+            const history = state.history[itemId];
             if (history.length && history[history.length - 1][0] === world.day) history.pop();
             history.push([world.day, price]);
             if (history.length > HISTORY_DAYS) history.splice(0, history.length - HISTORY_DAYS);

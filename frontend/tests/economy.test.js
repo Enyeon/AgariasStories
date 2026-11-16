@@ -268,3 +268,22 @@ describe('Cambista y servicios', () => {
     expect(services.serviceLogOf(r.world, 'a')).toHaveLength(1);
   });
 });
+
+describe('Mercado compacto sin la marca «packed» (datos de otra versión)', () => {
+  it('se despliega igual y pasar días no rompe', () => {
+    const ctx = buildShopContext({ world: 'agarias' });
+    let w = createWorld(ctx, { seed: 'roto', warmupDays: 0 });
+    w = advanceDays(w, ctx, 3).world;
+    const packed = packWorld(w);
+    delete packed.packed;
+    const shopId = Object.keys(packed.shops)[0];
+    const anyItem = Object.keys(packed.shops[shopId].history)[0];
+    packed.shops[shopId].history[anyItem] = { roto: true }; // dato ilegible
+    const loaded = migrateWorld(JSON.parse(JSON.stringify(packed)));
+    for (const s of Object.values(loaded.shops)) {
+      for (const h of Object.values(s.history)) expect(Array.isArray(h)).toBe(true);
+      for (const e of Object.values(s.stock)) expect(Array.isArray(e)).toBe(false);
+    }
+    expect(() => advanceDays(loaded, ctx, 2)).not.toThrow();
+  });
+});

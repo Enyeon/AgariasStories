@@ -162,7 +162,8 @@ function visible(factors) {
 
 /** Último precio registrado ANTES de `day` (para la inercia y la tendencia). */
 function previousRecorded(world, shopId, itemId, day) {
-    const history = world.shops?.[shopId]?.history?.[itemId] ?? [];
+    const raw = world.shops?.[shopId]?.history?.[itemId];
+    const history = Array.isArray(raw) ? raw : [];
     for (let i = history.length - 1; i >= 0; i -= 1) if (history[i][0] < day) return history[i][1];
     return null;
 }
