@@ -1026,3 +1026,55 @@
 .zone-card header p { margin: 2px 0 0; }
 .zone-shops { list-style: none; margin: 0; padding: 0; display: grid; gap: 3px; font-size: 0.9em; }
 .zone-shops .is-locked { opacity: 0.75; }
+
+/* ── Gremio de aventureros (Lord 100) ── */
+.guild { display: grid; gap: 12px; }
+.guild-head { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: start; padding: 12px 14px; border-radius: 12px; background: var(--panel); border: 1px solid var(--line); }
+.guild-head h3 { margin: 0; }
+.guild-head p { margin: 4px 0 0; }
+.guild-emblem { font-size: 34px; line-height: 1; }
+.guild-norms summary { cursor: pointer; font-size: 0.85em; color: var(--ink-muted); margin-top: 6px; }
+.guild-norms ul { margin: 6px 0 0; padding-left: 18px; font-size: 0.85em; }
+.guild-license-badge { display: grid; justify-items: center; gap: 2px; padding: 6px 10px; border-radius: 10px; border: 1px solid var(--brass); min-width: 92px; text-align: center; }
+.guild-license-badge b { font-size: 1.15em; }
+.guild-license-badge small { color: var(--ink-muted); font-size: 0.75em; }
+.guild-section { display: grid; gap: 10px; }
+.guild-board, .guild-services { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.guild-quest { display: grid; grid-template-columns: 52px 1fr auto; gap: 12px; padding: 10px 12px; border-radius: 10px; background: var(--panel); border: 1px solid var(--line); }
+.guild-quest-rank { display: grid; place-items: center; height: 52px; border-radius: 10px; font-weight: 800; font-size: 1.1em; border: 2px solid var(--line); background: #00000030; }
+.guild-quest.rank-a .guild-quest-rank, .guild-quest.rank-b .guild-quest-rank { border-color: #c98a2b; }
+.guild-quest.rank-s .guild-quest-rank, .guild-quest.rank-ss .guild-quest-rank { border-color: #c0392b; color: #ffb3a7; }
+.guild-quest.rank-sss .guild-quest-rank { border-color: #8e44ad; color: #e2b8ff; box-shadow: 0 0 12px #8e44ad80; }
+.guild-quest-main p { margin: 0 0 4px; }
+.guild-quest-facts { display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; margin: 6px 0 0; }
+.guild-quest-facts dt { color: var(--ink-muted); }
+.guild-quest-facts dd { margin: 0; }
+.guild-quest-actions { display: flex; flex-direction: column; gap: 6px; align-items: stretch; }
+.guild-status { font-size: 0.75em; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--line); }
+.guild-status.ok { border-color: #3c8d5a; color: #9fe0b5; }
+.guild-status.info { border-color: #3a6ea5; color: #a9cdf5; }
+.guild-status.warn { border-color: #b8860b; color: #f0d48a; }
+.guild-status.bad { border-color: #a33; color: #ffb0a8; }
+.guild-status.muted { opacity: 0.7; }
+.guild .warn { color: #f0d48a; }
+.guild .ok { color: #9fe0b5; }
+.guild-license { padding: 10px 12px; border-radius: 10px; border: 1px dashed var(--brass); }
+.guild-license p { margin: 0 0 4px; }
+.guild-ranks { width: 100%; border-collapse: collapse; font-size: 0.9em; }
+.guild-ranks th, .guild-ranks td { text-align: left; padding: 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.guild-ranks tr.current td { background: #c9a2401a; }
+.guild-service { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center; padding: 8px 12px; border-radius: 10px; background: var(--panel); border: 1px solid var(--line); }
+.guild-service p { margin: 2px 0 0; }
+.guild-service-icon { font-size: 24px; }
+.guild-publish textarea, .guild-publish select { font: inherit; color: var(--ink); background: #00000040; border: 1px solid var(--line); border-radius: 8px; padding: 0.35em 0.5em; width: 100%; }
+.guild-exam fieldset { border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; margin: 0 0 10px; }
+.guild-option { display: block; padding: 3px 0; cursor: pointer; }
+.guild-exam-result ul { margin: 4px 0; padding-left: 18px; }
+@media (max-width: 640px) {
+  .guild-head { grid-template-columns: auto 1fr; }
+  .guild-license-badge { grid-column: 1 / -1; justify-self: start; }
+  .guild-quest { grid-template-columns: 44px 1fr; }
+  .guild-quest-actions { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; }
+  .guild-service { grid-template-columns: auto 1fr; }
+  .guild-service .talk-controls { grid-column: 1 / -1; }
+}

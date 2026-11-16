@@ -131,6 +131,47 @@ Mundo de la Tienda alternativo. Lo elige el DM en la ficha de la campaña («Mun
 - **Tamaño**: los negocios de pisos no alcanzados no se guardan; sólo los pisos cercanos al actual guardan el gráfico de precios. La Torre entera ronda 1 MB (límite del servidor: 1,5 MB).
 - **Condiciones de un negocio** (se suman): campaña (sólo existe en su mundo/paquete) + piso + zona + requisito + reputación mínima (`minReputation`: con su facción o la fama del personaje en la región).
 
+## Gremio de aventureros (Lord 100, AgSt 1.18)
+
+Cada piso de la Torre tiene un Gremio: un comerciante oficial más (profesión
+`gremio`, en la primera zona del piso), con su propia pestaña «🛡️ Gremio». Vende
+suministros básicos y compra partes de criaturas. Su tamaño depende del piso
+(`guildProfile` en `content/lord100.js`):
+
+| Prestigio | Dónde | Tablón | Servicios | Comisión |
+|---|---|---|---|---|
+| Gran Sede | pisos 1, 10, 20 … 90, 99 | 7 | 7 + 1 | 10 % |
+| Sede | inicio y fin de cada tramo | 5 | 5 + 1 | 8 % |
+| Puesto | el resto | 3 | 3 | 5 % |
+
+Los rangos habituales del tablón suben un escalón cada 11 pisos (F abajo, SSS en
+89–99). Las criaturas, materiales, zonas y razas salen del propio piso. Todo el
+texto está en `data/shop/guild.json`, que se puede editar sin tocar código.
+
+- **Tablón** (`domain/shop/guild.js`): las misiones del Gremio se generan por piso
+  y semana y no ocupan espacio hasta que alguien las acepta. Las misiones PJ las
+  publica un jugador: paga la recompensa en depósito más la comisión. Aceptar una
+  misión exige una licencia de su rango (las F no la piden). Una misión PJ la
+  cierra quien la publicó (o el DM); las del Gremio, sólo el DM. Cada
+  aventurero cobra su parte en el Gremio (la ficha de otro jugador no está en tu
+  dispositivo). Si la retiras sin aventureros o vence, recuperas el depósito; la
+  comisión no se devuelve.
+- **Licencias F → SSS**: examen con 2 preguntas, 2 pruebas de habilidad y una
+  situación (aprueba con 1/2 y 2/3), nivel mínimo y tasa. Si suspendes, debes
+  esperar 7 días para repetirlo. La primera licencia puede ser de cualquier rango
+  que permita tu nivel; después se asciende de uno en uno, con misiones
+  completadas. El DM puede conceder o retirar rangos.
+- **Reputación**: puntos por misión completada según el rango (−1 por
+  abandonar).
+- **Servicios**: profesionales del piso (mercenarios, guías, curanderos,
+  alquimistas, expertos en las criaturas, materiales o zonas del piso…) que
+  rotan cada semana. Se pagan por adelantado y lo que hacen lo narra el DM.
+- `world.guild` = `{ quests, licenses, hires }`, podado (150 misiones, 100
+  contratos). No hace falta migración: el servidor sólo limita el tamaño. Como el
+  resto de la Tienda, las licencias se controlan en el cliente: no hay cuentas.
+- El Gremio vive en su piso: no da acceso a otros pisos (eso lo decide la
+  progresión de la Torre).
+
 ## Calidad (además de la rareza)
 
 `domain/shop/quality.js`. Armas (salvo munición), armaduras y herramientas existen en cuatro calidades: 🪵 Tosca (×0,6), Estándar (×1), ✨ Fina (×1,75) y 🏅 Obra maestra (×4). La **rareza** fija el precio base y lo difícil que es encontrarlo; la **calidad** lo multiplica y da un efecto pequeño no mágico (se ve en la ficha del objeto y queda en las notas del inventario).

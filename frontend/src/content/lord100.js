@@ -12,6 +12,7 @@
  *                 + criaturas del tramo; «estricta»: lo que no produce, no está
  *   Negocios    → por zona, según el bioma (no todos en todos los pisos)
  *   Especiales  → con requisito (misión, jefe…) y materiales exclusivos
+ *   Gremio      → uno en cada piso (misiones, licencias y servicios; ver guildProfile)
  *
  * Regla de zonas: en cada tramo, el 1.er piso tiene 1 zona, el 2.º añade la
  * 2.ª… hasta 5. Así cada tramo crece y el siguiente empieza de nuevo.
@@ -156,6 +157,7 @@ export function lord100Content() {
         for (let f = realm.from; f <= realm.to; f++) {
             region.push(regionEntry(f));
             mercader.push(...floorMerchants(f));
+            mercader.push(guildMerchant(f));
         }
     }
     cache = { region, mercader, start: zoneLocationId(1, tower.realms[0].zones[0].name) };
@@ -163,3 +165,50 @@ export function lord100Content() {
 }
 
 export const lord100Realms = () => tower.realms;
+
+// ── Gremio de aventureros ─────────────────────────────────────────────────
+
+/** Pisos con Gran Sede del Gremio (inicio de la Torre y cada decena). */
+const GRAND_SEATS = new Set([1, 10, 20, 30, 40, 50, 60, 70, 80, 90, 99]);
+const materialLabel = (key) => (key.startsWith('#') ? key.slice(1).replace(/-/g, ' ') : null);
+
+/**
+ * Perfil del Gremio de un piso: todos los pisos tienen uno, pero su tamaño,
+ * rangos habituales, criaturas, materiales y normas dependen del piso.
+ *   prestigio 3 (Gran Sede): piso 1 y cada decena · 2 (Sede): inicio y fin de
+ *   cada tramo · 1 (Puesto): el resto.
+ *   rango habitual: sube un escalón cada 11 pisos (F en 1–11 … SSS en 89–99).
+ */
+export function guildProfile(floor) {
+    const realm = realmOf(floor);
+    if (!realm) return null;
+    const zones = zonesOf(floor);
+    const prestige = GRAND_SEATS.has(floor) ? 3 : floor === realm.from || floor === realm.to ? 2 : 1;
+    const base = Math.min(8, Math.floor((floor - 1) / 11));
+    const reach = prestige > 1 ? 1 : 0; // las sedes reciben encargos un escalón más difíciles
+    return {
+        floor,
+        realm: realm.name,
+        danger: realm.danger,
+        prestige,
+        rankMin: Math.max(0, base - 1),
+        rankMax: Math.min(8, base + 1 + reach),
+        zones: zones.map((z) => z.name),
+        creatures: uniq([...zones.flatMap((z) => z.creatures)]),
+        materials: uniq(zones.flatMap((z) => [...z.abundant, ...z.common]).map(materialLabel).filter(Boolean)),
+        races: realm.races,
+        location: zoneLocationId(floor, zones[0].name),
+    };
+}
+
+/** Comerciante «Gremio» del piso: el establecimiento oficial (está en la primera zona). */
+function guildMerchant(floor) {
+    const p = guildProfile(floor);
+    const zone = zonesOf(floor)[0];
+    const label = ['Puesto del Gremio', 'Sede del Gremio', 'Gran Sede del Gremio'][p.prestige - 1];
+    return merchant(floor, zone, 'gremio', 0, {
+        shopName: `${label} · Piso ${floor}`,
+        title: 'Encargado del Gremio',
+        description: `${label} de ${p.realm}: tablón de misiones, licencias de aventurero y contratación de servicios en el piso ${floor}.`,
+    });
+}

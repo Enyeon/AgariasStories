@@ -1,0 +1,117 @@
+{
+  "$comment": "Gremio de aventureros (Lord 100). Precios en pc. ranks: rango de licencia (minLevel = nivel mínimo para examinarse, dc = CD de las pruebas, promotion = misiones completadas de tu rango o superior para ascender a éste, reward = recompensa orientativa de una misión de este rango, fee = tasa del examen, points = reputación por misión). kinds: tipos de misión. board: plantillas del tablón ({criatura}, {zona}, {piso}, {material}, {persona}, {objeto}). services: oficios que buscan clientes (price por unidad; minFloor/danger limitan dónde aparecen). evaluation: preguntas (best = índice de la mejor respuesta) y situaciones (cada enfoque es una tirada).",
+  "ranks": [
+    { "id": "F", "label": "Rango F", "summary": "Misiones básicas y de bajo riesgo.", "minLevel": 1, "dc": 10, "promotion": 0, "reward": 1000, "fee": 100, "points": 1 },
+    { "id": "E", "label": "Rango E", "summary": "Misiones de dificultad baja.", "minLevel": 2, "dc": 11, "promotion": 2, "reward": 2500, "fee": 500, "points": 2 },
+    { "id": "D", "label": "Rango D", "summary": "Misiones de dificultad moderada.", "minLevel": 3, "dc": 12, "promotion": 3, "reward": 5000, "fee": 1000, "points": 3 },
+    { "id": "C", "label": "Rango C", "summary": "Dificultad media, con riesgos considerables.", "minLevel": 5, "dc": 13, "promotion": 3, "reward": 10000, "fee": 2500, "points": 5 },
+    { "id": "B", "label": "Rango B", "summary": "Dificultad media-alta: riesgos serios y consecuencias reales.", "minLevel": 7, "dc": 14, "promotion": 4, "reward": 25000, "fee": 5000, "points": 8 },
+    { "id": "A", "label": "Rango A", "summary": "Misiones de alta dificultad.", "minLevel": 9, "dc": 15, "promotion": 4, "reward": 50000, "fee": 10000, "points": 12 },
+    { "id": "S", "label": "Rango S", "summary": "Misiones extremadamente peligrosas.", "minLevel": 11, "dc": 16, "promotion": 5, "reward": 100000, "fee": 25000, "points": 20 },
+    { "id": "SS", "label": "Rango SS", "summary": "Misiones excepcionales para aventureros de gran capacidad.", "minLevel": 15, "dc": 18, "promotion": 5, "reward": 250000, "fee": 50000, "points": 35 },
+    { "id": "SSS", "label": "Rango SSS", "summary": "Máximo rango: amenazas extraordinarias, como dragones u otros poderes de nivel similar o superior.", "minLevel": 17, "dc": 20, "promotion": 6, "reward": 500000, "fee": 100000, "points": 60 }
+  ],
+  "prestige": [
+    { "id": 1, "label": "Puesto del Gremio", "icon": "🛡️", "commission": 0.05, "board": 3, "services": 3, "staff": "un único encargado y un tablón de corcho" },
+    { "id": 2, "label": "Sede del Gremio", "icon": "🏛️", "commission": 0.08, "board": 5, "services": 5, "staff": "recepción, archivo y una sala de evaluación" },
+    { "id": 3, "label": "Gran Sede del Gremio", "icon": "🏰", "commission": 0.1, "board": 7, "services": 7, "staff": "maestros examinadores, archivo de rangos y salas privadas para clientes" }
+  ],
+  "kinds": [
+    { "id": "explorar", "label": "Explorar", "icon": "🧭" },
+    { "id": "escoltar", "label": "Escoltar", "icon": "🛡️" },
+    { "id": "recolectar", "label": "Recolectar", "icon": "🌿" },
+    { "id": "investigar", "label": "Investigar", "icon": "🔎" },
+    { "id": "derrotar", "label": "Derrotar", "icon": "⚔️" },
+    { "id": "recuperar", "label": "Recuperar", "icon": "📦" },
+    { "id": "otro", "label": "Otro", "icon": "📜" }
+  ],
+  "board": [
+    { "kind": "explorar", "title": "Cartografiar {zona}", "text": "El archivo del Gremio no tiene un mapa fiable de {zona}. Recorredla y traed un mapa con pasos, refugios y peligros.", "requirements": "Herramientas de cartógrafo o alguien que sepa usarlas.", "conditions": "El mapa debe entregarse en el Gremio." },
+    { "kind": "explorar", "title": "Ruta segura hacia la escalera del piso {piso}", "text": "Los recién llegados se pierden. Señalad una ruta segura entre {zona} y el acceso al siguiente piso.", "requirements": "", "conditions": "Marcar el camino de forma visible." },
+    { "kind": "escoltar", "title": "Escolta para {persona}", "text": "{persona} necesita cruzar {zona} con su mercancía. Paga por llegar con vida y con la carga intacta.", "requirements": "Al menos dos aventureros.", "conditions": "Si la carga se pierde, la recompensa se reduce a la mitad." },
+    { "kind": "escoltar", "title": "Proteger la caravana de suministros", "text": "Una caravana del Gremio lleva provisiones por {zona}. Hay informes de {criatura} en la ruta.", "requirements": "", "conditions": "La caravana sale al amanecer." },
+    { "kind": "recolectar", "title": "Encargo de {material}", "text": "Un artesano del piso {piso} necesita {material}. El Gremio paga por cada lote entregado en buen estado.", "requirements": "", "conditions": "Material fresco: se rechaza lo dañado." },
+    { "kind": "recolectar", "title": "Muestras de {criatura}", "text": "Los alquimistas del Gremio piden muestras de {criatura} (sangre, escamas o glándulas) para estudiarlas.", "requirements": "", "conditions": "Entregar en recipientes sellados." },
+    { "kind": "investigar", "title": "Desapariciones en {zona}", "text": "Varios aventureros no volvieron de {zona}. Averiguad qué ocurrió y traed pruebas.", "requirements": "", "conditions": "No se exige rescate, sólo la verdad." },
+    { "kind": "investigar", "title": "Rastros extraños en el piso {piso}", "text": "Han aparecido marcas que nadie reconoce en {zona}. El Gremio quiere saber quién o qué las deja.", "requirements": "", "conditions": "Informe por escrito al encargado." },
+    { "kind": "derrotar", "title": "Plaga de {criatura}", "text": "Los {criatura} se han multiplicado en {zona} y atacan a los viajeros. Reducid su número.", "requirements": "", "conditions": "Traer pruebas de cada criatura abatida." },
+    { "kind": "derrotar", "title": "El alfa de {zona}", "text": "El ejemplar más grande y astuto de los {criatura} domina {zona}. Mientras viva, nadie trabaja allí tranquilo.", "requirements": "", "conditions": "Se paga un extra si se trae intacto para estudio." },
+    { "kind": "recuperar", "title": "{objeto} perdido en {zona}", "text": "Un aventurero caído llevaba {objeto}. Su familia paga por recuperarlo.", "requirements": "", "conditions": "Discreción: no se debe vender a terceros." },
+    { "kind": "recuperar", "title": "Suministros robados", "text": "Alguien saqueó un almacén del Gremio y escondió el botín en {zona}. Recuperadlo.", "requirements": "", "conditions": "Los ladrones pueden seguir allí." }
+  ],
+  "people": ["un mercader de telas", "una sanadora ambulante", "un cartógrafo anciano", "una familia de colonos", "un emisario del piso superior", "un erudito con prisa", "una herrera y su aprendiz", "un peregrino"],
+  "objects": ["un amuleto familiar", "un diario de expedición", "una espada con nombre", "un sello del Gremio", "un mapa sellado", "un anillo de compromiso", "una llave de bronce", "un relicario"],
+  "conditionsByRank": {
+    "F": "Riesgo bajo: el Gremio no se hace responsable de lesiones menores.",
+    "E": "Riesgo bajo o moderado.",
+    "D": "Riesgo moderado: se recomienda grupo.",
+    "C": "Riesgo considerable: se exige grupo y aviso al Gremio antes de partir.",
+    "B": "Riesgo serio: el Gremio pide un informe de regreso en el plazo fijado.",
+    "A": "Alta dificultad: sólo con licencia A o superior.",
+    "S": "Extremadamente peligrosa: el Gremio registra el testamento de cada participante.",
+    "SS": "Excepcional: consecuencias graves para el piso si fracasa.",
+    "SSS": "Amenaza extraordinaria (p. ej. un dragón). El Gremio puede movilizar apoyo adicional."
+  },
+  "norms": [
+    "Toda misión aceptada debe comunicarse en el mostrador antes de partir.",
+    "El Gremio retiene una comisión sobre las misiones publicadas por aventureros.",
+    "Las peleas dentro del Gremio se pagan con la licencia.",
+    "Las pruebas de cada criatura abatida se entregan al encargado.",
+    "Quien abandona una misión sin avisar pierde reputación.",
+    "Los materiales raros se ofrecen primero a los artesanos del piso.",
+    "Las misiones de escolta pagan sólo si el cliente llega con vida.",
+    "Se prohíbe aceptar misiones de un rango superior a la propia licencia."
+  ],
+  "services": [
+    { "id": "mercenario", "label": "Mercenario", "icon": "⚔️", "price": 200, "unit": "día", "text": "Lucha a tu lado y cubre la retaguardia." },
+    { "id": "escolta", "label": "Escolta", "icon": "🛡️", "price": 150, "unit": "día", "text": "Protege a una persona o una carga durante el viaje." },
+    { "id": "herrero", "label": "Herrero", "icon": "🔨", "price": 500, "unit": "encargo", "text": "Repara y afila armas y armaduras." },
+    { "id": "artesano", "label": "Artesano", "icon": "🧰", "price": 400, "unit": "encargo", "text": "Fabrica o arregla objetos a medida con tus materiales." },
+    { "id": "alquimista", "label": "Alquimista", "icon": "⚗️", "price": 600, "unit": "encargo", "text": "Prepara remedios, venenos o antídotos con lo que traigas." },
+    { "id": "guia", "label": "Guía", "icon": "🧭", "price": 120, "unit": "día", "text": "Conoce los caminos y refugios de {zona}." },
+    { "id": "explorador", "label": "Explorador", "icon": "👣", "price": 150, "unit": "día", "text": "Se adelanta, rastrea y avisa de peligros." },
+    { "id": "investigador", "label": "Investigador", "icon": "🔎", "price": 300, "unit": "encargo", "text": "Sigue pistas, interroga testigos y busca archivos." },
+    { "id": "mago", "label": "Mago especializado", "icon": "🔮", "price": 1500, "unit": "encargo", "text": "Identifica objetos, lanza conjuros de utilidad o estudia fenómenos arcanos.", "minFloor": 3 },
+    { "id": "curandero", "label": "Curandero", "icon": "🩹", "price": 250, "unit": "encargo", "text": "Atiende heridas, enfermedades y venenos." },
+    { "id": "transportista", "label": "Transportista", "icon": "🐴", "price": 100, "unit": "día", "text": "Carros y animales de carga para materiales o botín." },
+    { "id": "cazador", "label": "Cazador", "icon": "🏹", "price": 180, "unit": "día", "text": "Rastrea presas y despieza lo cazado sin estropear el material." },
+    { "id": "experto-criatura", "label": "Experto en {criatura}", "icon": "📖", "price": 800, "unit": "encargo", "text": "Conoce las costumbres, puntos débiles y partes valiosas de {criatura}.", "danger": 2 },
+    { "id": "experto-material", "label": "Experto en {material}", "icon": "💎", "price": 700, "unit": "encargo", "text": "Sabe dónde encontrar {material}, cómo extraerlo y cuánto vale.", "danger": 2 },
+    { "id": "experto-zona", "label": "Experto en {zona}", "icon": "🗺️", "price": 600, "unit": "encargo", "text": "Lleva años recorriendo {zona} y conoce sus secretos." }
+  ],
+  "evaluation": {
+    "skills": {
+      "F": ["Atletismo", "Percepción", "Supervivencia"],
+      "E": ["Atletismo", "Percepción", "Supervivencia", "Medicina"],
+      "D": ["Percepción", "Supervivencia", "Investigación", "Sigilo"],
+      "C": ["Investigación", "Perspicacia", "Sigilo", "Atletismo"],
+      "B": ["Investigación", "Perspicacia", "Conocimiento Arcano", "Supervivencia"],
+      "A": ["Conocimiento Arcano", "Perspicacia", "Atletismo", "Percepción"],
+      "S": ["Conocimiento Arcano", "Historia", "Perspicacia", "Supervivencia"],
+      "SS": ["Conocimiento Arcano", "Historia", "Religión", "Perspicacia"],
+      "SSS": ["Conocimiento Arcano", "Historia", "Religión", "Naturaleza"]
+    },
+    "questions": [
+      { "tier": 0, "text": "Un cliente te ofrece el doble si aceptas una misión de un rango superior a tu licencia. ¿Qué haces?", "options": ["Aceptar: el dinero manda", "Rechazarla y recomendar a alguien con el rango adecuado", "Aceptarla sin decir nada al Gremio"], "best": 1 },
+      { "tier": 0, "text": "Antes de salir hacia una zona desconocida, ¿qué es lo primero?", "options": ["Avisar en el mostrador e informarse de la zona", "Salir cuanto antes para adelantarse a otros", "Comprar el arma más cara"], "best": 0 },
+      { "tier": 0, "text": "Durante una escolta, el cliente quiere tomar un atajo por territorio peligroso. ¿Cómo respondes?", "options": ["Obedecer: el cliente paga", "Explicarle el riesgo y proponer la ruta segura", "Abandonar la misión"], "best": 1 },
+      { "tier": 0, "text": "Encuentras a otro aventurero herido a mitad de tu misión. ¿Qué haces?", "options": ["Ignorarlo: no es tu misión", "Ayudarlo en lo posible y avisar al Gremio", "Quitarle su equipo"], "best": 1 },
+      { "tier": 1, "text": "Tu grupo descubre que la misión es una trampa del propio cliente. ¿Qué debes hacer?", "options": ["Completarla igualmente", "Retirarse con pruebas e informar al Gremio", "Vengarse del cliente por tu cuenta"], "best": 1 },
+      { "tier": 1, "text": "Una criatura huye herida hacia su guarida. ¿Cuál es la decisión más prudente?", "options": ["Perseguirla sin preparación", "Evaluar la guarida, reponerse y planear la entrada", "Volver y cobrar como si estuviera muerta"], "best": 1 },
+      { "tier": 1, "text": "Recolectas un material raro que otro gremio local reclama como suyo. ¿Cómo procedes?", "options": ["Venderlo en secreto", "Consultar las normas del piso y negociar", "Destruirlo para evitar problemas"], "best": 1 },
+      { "tier": 1, "text": "Dos miembros de tu grupo discuten sobre cómo repartir la recompensa en plena misión. ¿Qué propones?", "options": ["Acordar el reparto antes de partir la próxima vez y aplazarlo ahora", "Que se lo quede quien más luchó", "Separaros en ese momento"], "best": 0 },
+      { "tier": 2, "text": "Un ser de poder excepcional ofrece un pacto para cumplir la misión sin riesgo. ¿Qué es lo correcto para un aventurero del Gremio?", "options": ["Aceptar sin preguntar", "Informarse de su naturaleza y del precio real antes de decidir", "Atacarlo de inmediato"], "best": 1 },
+      { "tier": 2, "text": "Una misión de rango S amenaza a todo un piso si fracasa. ¿Qué priorizas?", "options": ["La recompensa", "Contener la amenaza aunque no se cobre", "La fama personal"], "best": 1 },
+      { "tier": 2, "text": "Frente a un dragón antiguo, ¿qué suele decidir el resultado?", "options": ["Atacar primero", "Conocer su guarida, sus aliados y su temperamento antes de actuar", "Llevar más mercenarios"], "best": 1 },
+      { "tier": 2, "text": "Descubres que el jefe de un piso protege algo que mantiene estable la Torre. ¿Qué haces?", "options": ["Derrotarlo igualmente", "Investigar y consultar al Gremio antes de actuar", "Ocultarlo a todos"], "best": 1 }
+    ],
+    "situations": [
+      { "tier": 0, "text": "Un puente colgante se balancea sobre un barranco y el examinador te pide cruzar con un fardo.", "options": [{ "label": "Cruzar con equilibrio y fuerza", "skill": "Atletismo" }, { "label": "Buscar el tramo más firme antes de pisar", "skill": "Percepción", "dc": -1 }, { "label": "Buscar otra ruta por el barranco", "skill": "Supervivencia", "dc": 1 }] },
+      { "tier": 0, "text": "Un perro guardián del Gremio, nervioso, bloquea la puerta de la prueba.", "options": [{ "label": "Calmarlo", "skill": "Trato con Animales" }, { "label": "Pasar sin que te note", "skill": "Sigilo", "dc": 1 }, { "label": "Apartarlo con firmeza", "skill": "Atletismo", "dc": 1 }] },
+      { "tier": 1, "text": "Un testigo miente sobre lo que vio en la zona de caza.", "options": [{ "label": "Detectar la mentira", "skill": "Perspicacia" }, { "label": "Revisar las huellas del lugar", "skill": "Investigación" }, { "label": "Presionarlo", "skill": "Intimidación", "dc": 1 }] },
+      { "tier": 1, "text": "Un herido sangra y el examinador cronometra tu reacción.", "options": [{ "label": "Atenderlo", "skill": "Medicina" }, { "label": "Organizar al grupo para trasladarlo", "skill": "Persuasión", "dc": 1 }, { "label": "Improvisar una camilla", "skill": "Supervivencia", "dc": 1 }] },
+      { "tier": 2, "text": "Un círculo de runas desconocidas se activa en la sala de pruebas.", "options": [{ "label": "Descifrar las runas", "skill": "Conocimiento Arcano" }, { "label": "Recordar dónde se usaron antes", "skill": "Historia", "dc": 1 }, { "label": "Salir del círculo a tiempo", "skill": "Acrobacias", "dc": 2 }] },
+      { "tier": 2, "text": "Una criatura de otro plano habla a través de un espejo y exige un nombre.", "options": [{ "label": "Identificar qué es", "skill": "Religión" }, { "label": "Negociar sin dar tu nombre", "skill": "Engaño" }, { "label": "Leer sus intenciones", "skill": "Perspicacia", "dc": 1 }] }
+    ]
+  }
+}

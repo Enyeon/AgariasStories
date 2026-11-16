@@ -15,6 +15,7 @@ import { h, replace, coins, pct, sparkline, debounce } from './dom.js';
 import { toast as appToast } from '../../ui/feedback.js';
 import { openNegotiation } from './negotiation-dialog.js';
 import { renderTalk } from './talk-panel.js';
+import { renderGuild } from './guild-panel.js';
 import { openMap, openJournal, openKnown, openDmTools } from './world-panels.js';
 import { openEstate, openReportsInbox } from './estate-panels.js';
 import { openBusinesses } from './floors-panel.js';
@@ -337,7 +338,9 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
     function renderTabs() {
         const tab = (id, label) => h('button', { role: 'tab', class: ['tab', ui.tab === id && 'active'], 'aria-selected': String(ui.tab === id), onclick: () => setTab(id) }, label);
         const offers = merchant()?.offers.length ?? 0;
-        replace(tabs, tab('buy', '🛒 Comprar'), tab('sell', '💰 Vender'), tab('talk', offers ? `💬 Conversar (${offers})` : '💬 Conversar'), tab('ledger', '📒 Registro'));
+        const isGuild = Boolean(service.guild.of(ui.shopId));
+        if (!isGuild && ui.tab === 'guild') ui.tab = 'buy';
+        replace(tabs, isGuild ? tab('guild', '🛡️ Gremio') : null, tab('buy', '🛒 Comprar'), tab('sell', '💰 Vender'), tab('talk', offers ? `💬 Conversar (${offers})` : '💬 Conversar'), tab('ledger', '📒 Registro'));
     }
 
     function stockedItems() {
@@ -386,6 +389,7 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
         if (!shop() && ui.tab !== 'ledger') return replace(content, h('div', { class: 'empty' }, h('span', { 'aria-hidden': 'true' }, '🧭'), h('p', {}, 'No hay ningún puesto abierto en este lugar. Abre el mapa para ir a otro sitio.')));
         if (ui.tab === 'buy') return renderGrid();
         if (ui.tab === 'sell') return renderSell();
+        if (ui.tab === 'guild') return renderGuild(content, { service, shopId: ui.shopId, ui, toast, root, rerender: () => { renderHeader(); renderContent(); } });
         if (ui.tab === 'talk') return keeper() ? renderTalk(content, { service, keeperId: keeper().id, ui, toast, rerender: () => { renderKeeper(); renderTabs(); renderContent(); } }) : replace(content);
         return renderLedger();
     }
@@ -682,6 +686,8 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
         ui.sub = null;
         ui.selectedItemId = null;
         ui.detailOpen = false;
+        // Al entrar en un Gremio se abre su tablón.
+        if (service.guild.of(id)) ui.tab = 'guild';
         renderAll();
     }
     function setTab(tab) {

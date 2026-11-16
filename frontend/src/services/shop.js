@@ -23,11 +23,13 @@ import racesData from '../data/shop/races.json';
 import rumorsData from '../data/shop/rumors.json';
 import professionsData from '../data/shop/professions.json';
 import estateData from '../data/shop/estate.json';
-import { lord100Content, LORD100 } from '../content/lord100.js';
+import guildData from '../data/shop/guild.json';
+import { lord100Content, guildProfile, LORD100 } from '../content/lord100.js';
 import { buildCatalog } from '../domain/shop/catalog.js';
 import { catalogSources } from '../domain/shop/sources.js';
 import { assembleWorld, merchantToEditor, regionToEditor, factionToEditor, eventToEditor, worldId } from '../domain/shop/homebrew-world.js';
 import * as hiring from '../domain/shop/hiring.js';
+import * as guild from '../domain/shop/guild.js';
 import * as estate from '../domain/shop/estate.js';
 import * as floors from '../domain/shop/floors.js';
 import * as staff from '../domain/shop/staff.js';
@@ -70,6 +72,15 @@ export function negotiationSkills(character) {
     return Object.fromEntries(Object.entries(SKILL_KEYS).map(([k, name]) => [k, skills.find((s) => s.name === name)?.bonus ?? 0]));
   } catch {
     return Object.fromEntries(Object.keys(SKILL_KEYS).map((k) => [k, 0]));
+  }
+}
+
+/** Bonificadores de TODAS las habilidades, por nombre (para los exámenes del Gremio). */
+export function guildSkills(character) {
+  try {
+    return Object.fromEntries(computeSheet(character).skills.map((s) => [s.name, s.bonus]));
+  } catch {
+    return {};
   }
 }
 
@@ -128,6 +139,7 @@ export function buildShopContext({ campaignId = null, world: worldKind = null } 
     professions: professionsData.professions,
     estate: estateData,
     worldKind: kind,
+    guild: tower ? { data: guildData, profile: guildProfile } : null,
   });
   return ctx;
 }
@@ -632,6 +644,108 @@ export function createShopService({ characters, homebrew, market = createMarketR
         events: [...ctx.events.values()],
         problems: ctx.problems,
       };
+    },
+
+    // ── Gremio de aventureros (Lord 100) ──
+    guild: {
+      /** ¿Esta tienda es un Gremio? Devuelve su perfil, o null. */
+      of: (shopId) => (state.ctx ? guild.guildOfShop(state.ctx, shopId) : null),
+      ranks: () => guild.ranks(state.ctx),
+      kinds: () => guild.guildData(state.ctx)?.kinds ?? [],
+      minReward: (rankId) => guild.minReward(state.ctx, rankId),
+      /** Todo lo que muestra el panel del Gremio para el personaje actual. */
+      view(shopId) {
+        const g = guild.guildOfShop(state.ctx, shopId);
+        if (!g) return null;
+        const isDm = api.canControlTime;
+        const level = state.character?.levels?.length ?? 0;
+        const license = guild.licenseOf(state.world, state.characterId);
+        return {
+          ...g,
+          isDm,
+          level,
+          hasCharacter: Boolean(state.character),
+          license,
+          board: guild.board(state.world, state.ctx, g, { charId: state.characterId, isDm }),
+          offers: guild.serviceOffers(state.world, state.ctx, g),
+          hires: state.characterId ? guild.hiresOf(state.world, state.characterId).filter((h) => h.floor === g.floor) : [],
+          exams: guild.ranks(state.ctx).map((r) => ({ ...r, ...guild.evaluationEligibility(state.world, state.ctx, { charId: state.characterId, rankId: r.id, level }) })),
+          holders: isDm ? guild.licenseHolders(state.world) : [],
+        };
+      },
+      evaluation: (rankId) => guild.evaluationFor(state.world, state.ctx, { charId: state.characterId, rankId }),
+      takeEvaluation(shopId, rankId, { answers, approach, rolls }) {
+        return serial(async () => {
+          const res = await withCharacter((world, character) => guild.takeEvaluation(world, state.ctx, {
+            shopId, rankId, answers, approach, rolls, character, charId: state.characterId, charName: charName(),
+            skills: guildSkills(state.character), level: state.character?.levels?.length ?? 0, here: here(),
+          }));
+          if (!res.error) emit({ type: 'guild' });
+          return res;
+        });
+      },
+      publish(shopId, form) {
+        return serial(async () => {
+          const res = await withCharacter((world, character) => guild.publishQuest(world, state.ctx, { shopId, form, character, charId: state.characterId, charName: charName(), here: here() }));
+          if (!res.error) emit({ type: 'guild' });
+          return res;
+        });
+      },
+      accept(shopId, questId) {
+        return serial(async () => {
+          if (!state.characterId) return { error: 'Elige un personaje.' };
+          const res = await mutateMarket((world) => guild.acceptQuest(world, state.ctx, { shopId, questId, charId: state.characterId, charName: charName(), here: here() }));
+          if (!res.error) emit({ type: 'guild' });
+          return res;
+        });
+      },
+      abandon(questId) {
+        return serial(async () => {
+          const res = await mutateMarket((world) => guild.abandonQuest(world, state.ctx, { questId, charId: state.characterId }));
+          if (!res.error) emit({ type: 'guild' });
+          return res;
+        });
+      },
+      resolve(questId, outcome) {
+        return serial(async () => {
+          const res = await mutateMarket((world) => guild.resolveQuest(world, state.ctx, { questId, outcome, charId: state.characterId, isDm: api.canControlTime }));
+          if (!res.error) emit({ type: 'guild' });
+          return res;
+        });
+      },
+      cancel(questId) {
+        return serial(async () => {
+          // Con personaje, el depósito vuelve a su bolsa en el acto; sin él (el DM), queda para cobrar.
+          const res = state.record
+            ? await withCharacter((world, character) => guild.cancelQuest(world, state.ctx, { questId, charId: state.characterId, character, isDm: api.canControlTime }))
+            : await mutateMarket((world) => guild.cancelQuest(world, state.ctx, { questId, charId: null, isDm: api.canControlTime }));
+          if (!res.error) emit({ type: 'guild' });
+          return res;
+        });
+      },
+      claim(questId) {
+        return serial(async () => {
+          const res = await withCharacter((world, character) => guild.claimQuest(world, state.ctx, { questId, character, charId: state.characterId, charName: charName() }));
+          if (!res.error) emit({ type: 'guild' });
+          return res;
+        });
+      },
+      hire(shopId, offerId, units) {
+        return serial(async () => {
+          const res = await withCharacter((world, character) => guild.hireService(world, state.ctx, { shopId, offerId, units, character, charId: state.characterId, charName: charName(), here: here() }));
+          if (!res.error) emit({ type: 'guild' });
+          return res;
+        });
+      },
+      /** Sólo el DM: conceder, cambiar o retirar el rango de un aventurero. */
+      setRank(charId, rankId, charName = null, floor = null) {
+        return serial(async () => {
+          if (!api.canControlTime) return { error: 'Sólo el DM concede o retira licencias.' };
+          const res = await mutateMarket((world) => guild.setLicenseRank(world, state.ctx, { charId, rankId, charName, floor }));
+          if (!res.error) emit({ type: 'guild' });
+          return res;
+        });
+      },
     },
 
     // ── Contratación ──

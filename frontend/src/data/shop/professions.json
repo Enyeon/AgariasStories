@@ -64,6 +64,9 @@
     { "id": "perista", "label": "Perista", "icon": "🕯️", "description": "Compra lo robado y vende lo que no debería existir.", "specialties": ["equipo", "pistas"],
       "assortment": [{ "tags": ["turbio"], "target": 2 }],
       "rotating": { "slots": 1, "chance": 0.35, "stayDays": [3, 7], "rules": [{ "category": "pistas" }, { "category": "magicos", "rarities": ["uncommon", "rare"] }] },
-      "buys": [{ "category": "equipo" }, { "category": "magicos" }, { "tags": ["turbio"] }, { "tags": ["joya"] }], "flags": ["sellsInformation"], "knows": ["personas", "facciones", "lugares"] }
+      "buys": [{ "category": "equipo" }, { "category": "magicos" }, { "tags": ["turbio"] }, { "tags": ["joya"] }], "flags": ["sellsInformation"], "knows": ["personas", "facciones", "lugares"] },
+    { "id": "gremio", "label": "Gremio de aventureros", "icon": "🛡️", "description": "Tablón de misiones, licencias de aventurero y contratación de servicios. También compra pruebas y partes de criaturas.", "specialties": ["equipo", "materias"], "qualities": [],
+      "assortment": [{ "ids": ["raciones", "odre", "cuerda-canamo", "antorcha", "kit-sanador", "pergamino", "tinta", "mapa-region", "saco-dormir", "silbato"], "target": 3 }, { "ids": ["pocion-curacion-menor"], "target": 2 }],
+      "buys": [{ "category": "materias", "sub": ["monstruo", "animal"] }], "knows": ["viajes", "batallas", "animales", "chismes"] }
   ]
 }
