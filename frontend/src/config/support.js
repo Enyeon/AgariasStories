@@ -1,7 +1,8 @@
 // Enlaces para apoyar el proyecto (Ko-fi, Cafecito, Patreon, PayPal…).
 //
-// Se configuran con variables de entorno (frontend/.env en local y en el panel
-// de tu hosting al publicar), así no hace falta tocar código:
+// El Ko-fi del autor viene puesto (DEFAULTS). Los demás (o otro Ko-fi) se
+// configuran con variables de entorno (frontend/.env en local y en el panel de
+// tu hosting al publicar):
 //
 //   VITE_KOFI_URL=https://ko-fi.com/tu-usuario
 //   VITE_CAFECITO_URL=https://cafecito.app/tu-usuario
@@ -14,7 +15,13 @@
 // Importante (Política de Contenido de Fans de Wizards of the Coast): la página
 // sigue siendo gratuita. Las donaciones son voluntarias y NO desbloquean nada.
 
-const env = import.meta.env ?? {};
+// Enlaces del autor que vienen puestos (una variable de entorno con valor los reemplaza).
+const DEFAULTS = Object.freeze({
+  VITE_KOFI_URL: 'https://ko-fi.com/Y8Y51PN6IF',
+});
+
+const fromEnv = import.meta.env ?? {};
+const env = { ...DEFAULTS, ...Object.fromEntries(Object.entries(fromEnv).filter(([, v]) => typeof v === 'string' && v.trim())) };
 
 const PLATFORMS = [
   { id: 'kofi', label: 'Ko-fi', icon: '☕', key: 'VITE_KOFI_URL', hosts: ['ko-fi.com', 'www.ko-fi.com'] },

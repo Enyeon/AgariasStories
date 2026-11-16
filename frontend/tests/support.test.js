@@ -9,6 +9,9 @@ describe('Enlaces para apoyar el proyecto', () => {
     expect(safeSupportUrl('https://ko-fi.com.evil.io/x', ['ko-fi.com'])).toBeNull();
     expect(safeSupportUrl('https://user:pw@ko-fi.com/x', ['ko-fi.com'])).toBeNull();
   });
+  it('el Ko-fi del autor viene puesto', () => {
+    expect(supportLinks()[0]).toMatchObject({ id: 'kofi', url: 'https://ko-fi.com/Y8Y51PN6IF' });
+  });
   it('sin configurar no hay nada; Ko-fi va primero', () => {
     expect(supportLinks({})).toEqual([]);
     const l = supportLinks({ VITE_CAFECITO_URL: 'https://cafecito.app/enyeon', VITE_KOFI_URL: 'https://ko-fi.com/enyeon' });
