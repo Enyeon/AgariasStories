@@ -9,6 +9,7 @@
 //   - Personaje sin campaña → mercado local de este dispositivo.
 
 import { migrateWorld } from '../domain/shop/state.js';
+import { packWorld } from '../domain/shop/pack.js';
 import { shopMarketApi, hasSupabase } from './api.js';
 
 const LS = 'agarias-dnd:';
@@ -58,7 +59,7 @@ export function createMarketRepository({ api = shopMarketApi } = {}) {
       try {
         const res = await api.get(scope.id, scope.key);
         const world = res.world ? migrateWorld(res.world) : null;
-        if (world) write(K_CACHE(scope.id), { world, revision: res.revision, role: res.role });
+        if (world) write(K_CACHE(scope.id), { world: packWorld(world), revision: res.revision, role: res.role });
         return { world, revision: res.revision ?? 0, role: res.role ?? 'jugador' };
       } catch (err) {
         // Supabase sin la migración de la Tienda: se usa el mercado local y se avisa.
@@ -72,16 +73,18 @@ export function createMarketRepository({ api = shopMarketApi } = {}) {
 
     /** Guarda y devuelve la nueva revisión. En campaña puede lanzar ApiError('conflict'). */
     async save(scope, world, revision) {
+      // Se guarda en formato compacto (migrateWorld lo despliega al cargar).
+      const packed = packWorld(world);
       if (scope.kind === 'local') {
-        if (!write(localKey(scope), world)) {
+        if (!write(localKey(scope), packed)) {
           const e = new Error('No queda espacio en el navegador para guardar el mercado.');
           e.userMessage = e.message;
           throw e;
         }
         return revision + 1;
       }
-      const res = await api.save(scope.id, scope.key, world, revision);
-      write(K_CACHE(scope.id), { world, revision: res.revision });
+      const res = await api.save(scope.id, scope.key, packed, revision);
+      write(K_CACHE(scope.id), { world: packed, revision: res.revision });
       return res.revision;
     },
   };

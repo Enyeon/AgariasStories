@@ -36,6 +36,8 @@ export function createShopContext({
     worldKind = 'agarias',
     /** Gremio de aventureros: { data (guild.json), profile(floor) } o null si el mundo no tiene. */
     guild = null,
+    /** Hospedaje (data/shop/lodging.json) o null. */
+    lodging = null,
 }) {
     const professionMap = new Map(professions.map((p) => [p.id, p]));
     const phasesList = world?.phases?.length ? world.phases : DEFAULT_PHASES;
@@ -91,6 +93,7 @@ export function createShopContext({
         professions: professionMap,
         worldKind,
         guild: guild ? { data: guild.data, profile: guild.profile } : null,
+        lodging,
         estate: estate ? {
             plots: new Map((estate.plots ?? []).map((p) => [p.id, p])),
             buildings: new Map((estate.buildings ?? []).map((b) => [b.id, b])),

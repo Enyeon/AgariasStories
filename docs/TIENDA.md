@@ -131,6 +131,92 @@ Mundo de la Tienda alternativo. Lo elige el DM en la ficha de la campaña («Mun
 - **Tamaño**: los negocios de pisos no alcanzados no se guardan; sólo los pisos cercanos al actual guardan el gráfico de precios. La Torre entera ronda 1 MB (límite del servidor: 1,5 MB).
 - **Condiciones de un negocio** (se suman): campaña (sólo existe en su mundo/paquete) + piso + zona + requisito + reputación mínima (`minReputation`: con su facción o la fama del personaje en la región).
 
+## Sistema monetario (AgSt 1.20)
+
+Hay dos sistemas (`domain/money.js`):
+
+| | 10 pc | pp → po | po → ppt |
+|---|---|---|---|
+| Monedas de D&D (el de siempre) | 1 pp | 10 pp = 1 po | 10 po = 1 ppt |
+| Monedas de Lord 100 | 1 pp | 100 pp = 1 po | 100 po = 1 ppt |
+
+- **Los importes se guardan en piezas de cobre**, que valen lo mismo en los dos
+  sistemas. Por eso ningún precio «ignora» el sistema: es un valor y se muestra con
+  las monedas activas (una espada de 1500 pc es «15 po» en D&D y «1 po 50 pp» en
+  Lord 100). El poder adquisitivo es el mismo: el oro y el platino de Lord 100 valen
+  más.
+- **Sistema de la campaña:** ⚙ Opciones → «Sistema monetario». Puede ser
+  *automático* (por defecto: Monedas de Lord 100 si está activa «Usar progresión por
+  pisos en esta campaña», y de D&D si no lo está), D&D o Lord 100. Se guarda en
+  `world.progress.currency`, que sólo cambia el DM (el servidor ya lo protege: no hace
+  falta migración). El sistema activo se ve en la cabecera de la Tienda (🪙).
+- **Las monedas de cada ficha llevan su sistema** (`equipment.coins.system`; las
+  antiguas son de D&D). Si no coincide con el de la campaña, la Tienda NO cobra:
+  enseña cómo quedan los fondos («2 ppt 120 po → 14 po») y el jugador confirma.
+  La conversión (`convertCoins`) conserva el valor exacto: no se pierde ni se
+  duplica dinero. En la ficha (Equipo → Monedas) también se puede pasar de un
+  sistema a otro, con la misma vista previa.
+- Los campos donde se escriben importes «en po» (negocio propio, salarios,
+  recompensas del Gremio) usan el po del sistema activo.
+
+## Establecimientos (AgSt 1.20)
+
+En la Tienda, los letreros se agrupan en **Esenciales** (posada, comercio general,
+Gremio), **Comercios** y **Especiales**.
+
+- **Lord 100:** en TODOS los pisos hay posada, comercio general y Gremio. Cada
+  zona nueva aporta además un negocio variable propio de su tipo (`extras` en
+  `lord100.json`: un puerto puede traer cambista, exóticos o mueblería; una capilla,
+  templo; un bosque, flechero o carpintero…). Cada tramo tiene una tienda de
+  **Productos regionales**. Los negocios que ya existían no cambian. Desde el piso 40
+  los artesanos ofrecen calidad fina y desde el 75 obra maestra.
+- **Profesiones nuevas:** lutier (instrumentos y juegos), templo, cambista,
+  flechero, carpintero y carretero, escriba de conjuros, muebles y decoración,
+  mercado agrícola, objetos exóticos, casa de lujo y productos regionales.
+- **Agarias:** se suman a la Plaza y la Puerta Este una alquimista, un lutier, el
+  templo, un cambista, una flechera, un carpintero, un escriba y una mueblería.
+- **Pestañas propias:** 🛏️ Hospedaje (tabernas y posadas fijas), 🤝 Servicios
+  (templo, escriba, carpintero, lutier, flechero: se pagan por adelantado y los narra
+  el DM), 💱 Cambio y banco (cambiar monedas con un 2 % de comisión y guardar dinero
+  en el banco de la campaña; sin intereses ni préstamos).
+
+## Hospedaje (AgSt 1.20)
+
+`data/shop/lodging.json` + `domain/shop/lodging.js`. Seis habitaciones (Básica,
+Económica, Estándar, Cómoda, Premium y Lujo). La básica cuesta 1 pp al día en las
+dos monedas. Cada posada tiene su categoría:
+
+| Categoría | Habitaciones | Precio | Si te vas antes |
+|---|---|---|---|
+| Posada humilde | Básica → Estándar | ×0,8 | No se devuelve |
+| Posada | Básica → Premium | ×1 | La mitad de los días sin usar |
+| Hotel de lujo | Estándar → Lujo | ×1,5 | Los días sin usar |
+
+En Lord 100 el precio sube un 1 % por piso, los pisos 1–9 no tienen hoteles de lujo
+y las zonas ricas (puertos, ciudades, cortes) suben de categoría. Antes de pagar se
+enseñan las comodidades, los días y el total. La estancia (`world.lodging[charId]`)
+se descuenta sola con el calendario del mundo. Quien puede pasar el tiempo (el DM,
+o el jugador sin campaña) puede marcar «Pasar estos días ahora». Al terminar el
+plazo hay que renovar (si alcanza el dinero) o dejar la habitación.
+
+## Muebles y decoración (AgSt 1.20)
+
+Categoría `hogar`: muebles **funcionales** (camas, mesas, escritorios, armarios,
+banco de trabajo… tienen un uso) y **decorativos** (alfombras, cuadros,
+candelabros…). Se compran en carpinterías, mueblerías y otros negocios, se guardan
+en el inventario y se colocan (🏠 Propiedades → 🪑 Muebles) en:
+
+- la habitación alquilada (huecos según la habitación); al dejarla, vuelven solos;
+- una propiedad con 🏠 Vivienda (6, 10 o 16 huecos según el tamaño); al venderla,
+  vuelven al inventario.
+
+## Formato compacto del mercado (AgSt 1.20)
+
+Con la Torre entera abierta el mercado se acercaba al límite del servidor (1,5 MB).
+Al guardar, `domain/shop/pack.js` compacta las existencias y el historial de precios
+(la mitad de tamaño). `migrateWorld` lo despliega al cargar y acepta también el
+formato anterior, así que no hace falta migración.
+
 ## Gremio de aventureros (Lord 100, AgSt 1.18)
 
 Cada piso de la Torre tiene un Gremio: un comerciante oficial más (profesión

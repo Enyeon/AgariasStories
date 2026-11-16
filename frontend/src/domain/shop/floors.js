@@ -2,8 +2,11 @@
  * Progresión por pisos (p. ej. Lord 100): el mundo económico se abre a medida
  * que los jugadores suben.
  *
- * `world.progress = { enabled, current, done: {keeperId: true}, overrides: {keeperId: 'open'|'closed'}, log }`
+ * `world.progress = { enabled, current, done: {keeperId: true}, overrides: {keeperId: 'open'|'closed'}, log, currency }`
  * (sólo el DM lo cambia; el servidor lo hace cumplir).
+ *
+ * `currency`: 'auto' (por defecto: Monedas de Lord 100 con la progresión por
+ * pisos activa y de D&D sin ella), 'dnd' o 'lord100'. Ver domain/money.js.
  *
  * Cada comerciante pertenece a un piso: el suyo (`keeper.floor`) o el de la
  * región donde está (`region.floor`). Sin piso, existe siempre. Llegar a un
@@ -132,6 +135,24 @@ function mutate(world, fn) {
     next.progress = { ...progressOf(world), done: { ...(world.progress?.done ?? {}) }, overrides: { ...(world.progress?.overrides ?? {}) }, log: [...(world.progress?.log ?? [])] };
     fn(next.progress, next);
     return next;
+}
+
+export const CURRENCY_MODES = Object.freeze(['auto', 'dnd', 'lord100']);
+
+/** Ajuste del sistema monetario de la campaña ('auto', 'dnd' o 'lord100'). */
+export const currencySetting = (world) => (CURRENCY_MODES.includes(world?.progress?.currency) ? world.progress.currency : 'auto');
+
+/** Sistema monetario activo del mundo: 'dnd' o 'lord100'. */
+export function worldCurrency(world) {
+    const mode = currencySetting(world);
+    if (mode !== 'auto') return mode;
+    return progressOf(world).enabled ? 'lord100' : 'dnd';
+}
+
+/** El DM elige el sistema monetario (o «automático»). */
+export function setCurrencyMode(world, mode) {
+    if (!CURRENCY_MODES.includes(mode)) return { error: 'Sistema monetario desconocido.' };
+    return { world: mutate(world, (p) => { p.currency = mode; }) };
 }
 
 export function setProgressEnabled(world, enabled) {

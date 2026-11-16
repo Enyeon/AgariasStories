@@ -1147,6 +1147,78 @@
       "description": "Una barra pegajosa, barriles apilados y una pizarra con los platos del día.",
       "cash": 40000,
       "profession": "tabernero"
+    },
+    {
+      "id": "alambique",
+      "name": "El Alambique Verde",
+      "kind": "Alquimia y boticaria",
+      "icon": "⚗️",
+      "keeperId": "sabela",
+      "description": "Frascos de colores, raíces colgando del techo y un caldero que nunca se apaga.",
+      "cash": 40000
+    },
+    {
+      "id": "cuerdafina",
+      "name": "Cuerdas y Dados",
+      "kind": "Lutier y casa de juegos",
+      "icon": "🎻",
+      "keeperId": "orlo",
+      "description": "Laúdes colgados, flautas en vitrinas y una mesa al fondo donde siempre hay partida.",
+      "cash": 25000
+    },
+    {
+      "id": "templo-aurora",
+      "name": "Templo de la Aurora",
+      "kind": "Templo",
+      "icon": "🛐",
+      "keeperId": "madre-ines",
+      "description": "Vidrieras doradas, incienso y una fila de heridos en la puerta lateral.",
+      "cash": 50000
+    },
+    {
+      "id": "balanzafiel",
+      "name": "Casa Balanzafiel",
+      "kind": "Cambista y banco",
+      "icon": "💱",
+      "keeperId": "tobias",
+      "description": "Mostrador de mármol, balanzas de precisión y una cámara acorazada tras la pared.",
+      "cash": 200000
+    },
+    {
+      "id": "pluma-verde",
+      "name": "La Pluma Verde",
+      "kind": "Flechero y arquero",
+      "icon": "🏹",
+      "keeperId": "aelin",
+      "description": "Dianas de paja en el patio y haces de flechas secándose al sol.",
+      "cash": 30000
+    },
+    {
+      "id": "viruta",
+      "name": "Taller Viruta",
+      "kind": "Carpintería y carros",
+      "icon": "🪚",
+      "keeperId": "berto",
+      "description": "Tablones apilados, ruedas a medio hacer y el olor del barniz fresco.",
+      "cash": 35000
+    },
+    {
+      "id": "tintaoscura",
+      "name": "Scriptorium Tintaoscura",
+      "kind": "Escriba de conjuros",
+      "icon": "📜",
+      "keeperId": "ismael",
+      "description": "Atriles, frascos de tinta brillante y pergaminos secándose en cuerdas.",
+      "cash": 45000
+    },
+    {
+      "id": "tapiz",
+      "name": "Casa Tapiz",
+      "kind": "Muebles y decoración",
+      "icon": "🛋️",
+      "keeperId": "lucia",
+      "description": "Camas de muestra, alfombras enrolladas y lámparas encendidas a pleno día.",
+      "cash": 30000
     }
   ]
 }

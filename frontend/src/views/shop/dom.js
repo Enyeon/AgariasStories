@@ -4,7 +4,7 @@
  * nombres de objetos Homebrew o personajes no pueden inyectar HTML.
  */
 
-import { formatCp, coinsInCp, normalizeCoins, COIN_SHORT, COIN_VALUE } from '../../domain/money.js';
+import { formatCp, coinsInCp, normalizeCoins, COIN_SHORT, coinValues, currencyOf } from '../../domain/money.js';
 
 export function h(tag, props = {}, ...children) {
     const el = document.createElement(tag);
@@ -59,13 +59,16 @@ export function coins(amount, { size = '' } = {}) {
  */
 export function purse(bag) {
     const c = normalizeCoins(bag);
-    const order = Object.keys(c).sort((a, b) => COIN_VALUE[b] - COIN_VALUE[a]);
+    const system = currencyOf(bag);
+    const values = coinValues(system);
+    const order = Object.keys(c).sort((a, b) => values[b] - values[a]);
     const held = order.filter((k) => c[k] > 0);
-    const total = coinsInCp(c);
+    const total = coinsInCp(c, system);
     const pieces = (held.length ? held : ['gp']).map((k) => h('span', { class: `coin coin-${k}`, title: `${c[k]} ${COIN_SHORT[k]}` }, h('b', {}, c[k].toLocaleString('es-AR')), h('i', { 'aria-hidden': 'true' }, COIN_SHORT[k])));
-    const showTotal = held.length > 1 || c.pp > 0;
-    return h('span', { class: 'coins purse-coins', title: `Total: ${formatCp(total)}`, 'aria-label': `Monedas: ${held.map((k) => `${c[k]} ${COIN_SHORT[k]}`).join(', ') || '0 po'}. Total: ${formatCp(total)}` },
-        pieces, showTotal ? h('small', { class: 'purse-total' }, `= ${formatCp(total)}`) : null);
+    // El total sólo se muestra si dice algo nuevo (p. ej. «1 ppt 5 po = 15 po»).
+    const showTotal = (held.length > 1 || c.pp > 0) && formatCp(total, { system }) !== held.map((k) => `${c[k].toLocaleString('es-AR')} ${COIN_SHORT[k]}`).join(' ');
+    return h('span', { class: 'coins purse-coins', title: `Total: ${formatCp(total, { system })}`, 'aria-label': `Monedas: ${held.map((k) => `${c[k]} ${COIN_SHORT[k]}`).join(', ') || '0 po'}. Total: ${formatCp(total, { system })}` },
+        pieces, showTotal ? h('small', { class: 'purse-total' }, `= ${formatCp(total, { system })}`) : null);
 }
 
 export function pct(value) {

@@ -107,6 +107,7 @@ function merchant(floor, zone, profId, n, extra = {}) {
         special: Boolean(extra.special),
         shopName: shopLabel,
         shopIcon: prof.icon,
+        qualities: qualitiesFor(floor, profId),
         traits: { greed: t('g'), patience: t('p'), pride: t('o'), warmth: t('w'), shrewdness: t('s') },
         floorItems: (extra.items ?? []).map((id) => ({ floor, item: id, qty: 1 })),
     });
@@ -114,11 +115,29 @@ function merchant(floor, zone, profId, n, extra = {}) {
     return { ref: `hb:${PACK}:mercader:l100-${floor}-${zone.id}-${profId}-${n}`, item };
 }
 
+/** Oficios que fabrican: en pisos avanzados ofrecen mejor calidad. */
+const CRAFTED = new Set(['herrero', 'armero', 'flechero', 'lutier', 'carpintero', 'sastre', 'curtidor', 'joyero', 'mueblero']);
+
 /**
- * Negocios de un piso. La zona nueva trae sus dos negocios típicos; las que
- * ya existían en el tramo tienen uno (rotando, para que cada piso sea distinto);
- * siempre hay un comerciante general y, al principio y al final del tramo, una
- * posada. Los especiales del tramo piden un requisito.
+ * Calidades que ofrece un comerciante según su piso: los pisos más avanzados
+ * tienen artesanos mejores (fina desde el 40, obra maestra desde el 75).
+ */
+function qualitiesFor(floor, profId) {
+    const base = PROF.get(profId)?.qualities ?? [];
+    if (!CRAFTED.has(profId)) return base;
+    const q = new Set(base);
+    if (floor >= 40) q.add('fina');
+    if (floor >= 75) q.add('obra');
+    if (floor >= 40) q.delete('tosca');
+    return [...q];
+}
+
+/**
+ * Negocios de un piso. La zona nueva trae sus dos negocios típicos y uno
+ * variable de su tipo (extras); las que ya existían en el tramo tienen uno
+ * (rotando, para que cada piso sea distinto). ESENCIALES en todos los pisos:
+ * comercio general, posada y Gremio. Cada tramo tiene una tienda de productos
+ * regionales. Los especiales del tramo piden un requisito.
  */
 function floorMerchants(floor) {
     const realm = realmOf(floor);
@@ -130,6 +149,7 @@ function floorMerchants(floor) {
         // Un solo comerciante general por piso; el resto, uno por zona y oficio.
         if (used.has(k) || (profId === 'general' && used.has('general'))) return;
         used.add(k);
+        used.add(`prof:${profId}`);
         if (profId === 'general') used.add('general');
         const m = merchant(floor, zone, profId, 0, extra);
         if (m) out.push(m);
@@ -137,8 +157,14 @@ function floorMerchants(floor) {
     const newest = zones.at(-1);
     for (const p of newest.businesses.slice(0, 2)) add(newest, p);
     zones.slice(0, -1).forEach((z, i) => add(z, z.businesses[(floor + i) % z.businesses.length]));
+    // Esenciales en TODOS los pisos: comercio general, posada (y el Gremio, aparte).
     add(zones[0], 'general');
-    if (floor === realm.from || floor === realm.to) add(zones[0], 'tabernero', { shopName: `Posada · ${zones[0].name}` });
+    if (floor === realm.from || floor === realm.to || !used.has('prof:tabernero')) add(zones[0], 'tabernero', { shopName: `Posada · ${zones[0].name}` });
+    // Variables: la zona nueva aporta un negocio propio de su tipo (puerto → cambista,
+    // capilla → templo…), rotando entre sus opciones. Nunca uno sin sentido para la zona.
+    if (newest.extras?.length) add(newest, newest.extras[floor % newest.extras.length]);
+    // Productos regionales: uno por tramo, en su segundo piso.
+    if (floor === Math.min(realm.to, realm.from + 1)) add(zones[0], 'regional', { shopName: `Productos de ${realm.name}` });
     for (const s of realm.specials ?? []) {
         if (realm.from + s.offset !== floor) continue;
         const zone = zones.at(-1);

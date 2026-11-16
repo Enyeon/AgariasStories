@@ -24,12 +24,17 @@ import rumorsData from '../data/shop/rumors.json';
 import professionsData from '../data/shop/professions.json';
 import estateData from '../data/shop/estate.json';
 import guildData from '../data/shop/guild.json';
+import lodgingData from '../data/shop/lodging.json';
 import { lord100Content, guildProfile, LORD100 } from '../content/lord100.js';
 import { buildCatalog } from '../domain/shop/catalog.js';
 import { catalogSources } from '../domain/shop/sources.js';
 import { assembleWorld, merchantToEditor, regionToEditor, factionToEditor, eventToEditor, worldId } from '../domain/shop/homebrew-world.js';
 import * as hiring from '../domain/shop/hiring.js';
 import * as guild from '../domain/shop/guild.js';
+import * as lodging from '../domain/shop/lodging.js';
+import * as furniture from '../domain/shop/furniture.js';
+import * as services from '../domain/shop/services.js';
+import * as bank from '../domain/shop/bank.js';
 import * as estate from '../domain/shop/estate.js';
 import * as floors from '../domain/shop/floors.js';
 import * as staff from '../domain/shop/staff.js';
@@ -53,6 +58,7 @@ import { buildProfile } from '../domain/shop/profile.js';
 import { listEntries, getPack } from '../content/registry.js';
 import { createMarketRepository, marketScope, sameScope } from './shop-market.js';
 import { ApiError, hasSupabase } from './api.js';
+import { setDisplayCurrency, currencyOf, convertCoins, formatBag, CURRENCIES } from '../domain/money.js';
 
 const PREFS_KEY = 'agarias-dnd:shop-prefs';
 const SKILL_KEYS = { persuasion: 'Persuasión', deception: 'Engaño', intimidation: 'Intimidación', insight: 'Perspicacia', investigation: 'Investigación', performance: 'Interpretación', sleight: 'Juego de Manos' };
@@ -140,6 +146,7 @@ export function buildShopContext({ campaignId = null, world: worldKind = null } 
     estate: estateData,
     worldKind: kind,
     guild: tower ? { data: guildData, profile: guildProfile } : null,
+    lodging: lodgingData,
   });
   return ctx;
 }
@@ -170,7 +177,12 @@ export function createShopService({ characters, homebrew, market = createMarketR
     prefs: readPrefs(),
   };
 
-  const emit = (change = {}) => { for (const fn of listeners) fn(state, change); };
+  // Los importes se muestran con las monedas del sistema de la campaña.
+  const syncCurrency = () => setDisplayCurrency(state.world ? floors.worldCurrency(state.world) : 'dnd');
+  const emit = (change = {}) => {
+    syncCurrency();
+    for (const fn of listeners) fn(state, change);
+  };
   const serial = (task) => {
     const run = queue.then(task, task);
     queue = run.catch(() => {});
@@ -349,6 +361,11 @@ export function createShopService({ characters, homebrew, market = createMarketR
     if (!state.record) return { error: 'Elige un personaje.' };
     // Datos frescos de la ficha (pudo cambiar en otra pestaña).
     await loadCharacter(state.record.id);
+    syncCurrency();
+    // Nunca se cobra con monedas de otro sistema: primero hay que convertirlas
+    // (el jugador ve antes cómo quedan sus fondos).
+    const need = coinConversion();
+    if (need) return { error: `Esta campaña usa ${need.toLabel} y tus monedas están en ${need.fromLabel}. Conviértelas primero (aviso sobre la tienda).`, needsConversion: true };
     const before = state.world;
     const beforeRevision = state.revision;
     const result = await mutateMarket((world) => fn(world, shopCharacter()));
@@ -364,6 +381,16 @@ export function createShopService({ characters, homebrew, market = createMarketR
     }
     state.profile = characterProfile(state.character);
     return result;
+  }
+
+  /** Conversión pendiente de la bolsa del personaje al sistema de la campaña (o null). */
+  function coinConversion() {
+    if (!state.character || !state.world) return null;
+    const to = floors.worldCurrency(state.world);
+    const bag = state.character.equipment.coins;
+    if (currencyOf(bag) === to) return null;
+    const res = convertCoins(bag, to);
+    return { ...res, from: currencyOf(bag), to, fromLabel: CURRENCIES[currencyOf(bag)].label, toLabel: CURRENCIES[to].label };
   }
 
   function transact(kind, shopId, itemId, qty) {
@@ -644,6 +671,134 @@ export function createShopService({ characters, homebrew, market = createMarketR
         events: [...ctx.events.values()],
         problems: ctx.problems,
       };
+    },
+
+    // ── Sistema monetario ──
+    /** Sistema activo de la campaña: { id, label, mode ('auto'|'dnd'|'lord100'), values }. */
+    get currency() {
+      const id = state.world ? floors.worldCurrency(state.world) : 'dnd';
+      return { ...CURRENCIES[id], mode: state.world ? floors.currencySetting(state.world) : 'auto' };
+    },
+    /** Cómo quedarían las monedas del personaje en el sistema de la campaña (o null si ya coinciden). */
+    coinConversion,
+    /** Vista previa para otro sistema (p. ej. antes de que el DM lo cambie). */
+    previewConversion(to) {
+      return state.character ? convertCoins(state.character.equipment.coins, to) : null;
+    },
+    /** El jugador confirma la conversión de SUS monedas (no cambia el valor total). */
+    convertCoins() {
+      return serial(async () => {
+        if (!state.record) return { error: 'Elige un personaje.' };
+        await loadCharacter(state.record.id);
+        const need = coinConversion();
+        if (!need) return { message: 'Tus monedas ya están en el sistema de la campaña.' };
+        const next = structuredClone(state.character);
+        next.equipment.coins = need.coins;
+        try {
+          await commitCharacter(next);
+        } catch (err) {
+          return { error: err?.userMessage ?? 'No se pudo guardar la ficha.' };
+        }
+        emit({ type: 'character' });
+        return { message: `Monedas convertidas a ${need.toLabel}: ${formatBag(need.coins)} (mismo valor).` };
+      });
+    },
+    /** Sólo el DM: sistema monetario de la campaña ('auto', 'dnd' o 'lord100'). */
+    setCurrencyMode(mode) {
+      return dmMarket((world) => floors.setCurrencyMode(world, mode));
+    },
+
+    // ── Hospedaje (tabernas y posadas) ──
+    lodging: {
+      /** Categoría y habitaciones de una posada (o null si no alquila). */
+      inn: (shopId) => (state.ctx ? lodging.innOf(state.world, state.ctx, shopId) : null),
+      quote: (shopId, roomId, days) => lodging.quoteStay(state.world, state.ctx, { shopId, roomId, days }),
+      /** Estancia del personaje (con los días que le quedan). */
+      stay: () => (state.world ? lodging.stayOf(state.world, state.characterId) : null),
+      all: () => (api.canControlTime && state.world ? lodging.allStays(state.world) : []),
+      /**
+       * Alquilar o renovar. Con { advance: true } y si puedes pasar el tiempo
+       * (DM o mercado de este dispositivo), los días de la estancia pasan solos.
+       */
+      async rent(shopId, roomId, days, { advance = false } = {}) {
+        const res = await serial(async () => {
+          const r = await withCharacter((world, character) => lodging.rentRoom(world, state.ctx, { shopId, roomId, days, character, charId: state.characterId, charName: charName(), here: here() }));
+          if (!r.error) emit({ type: 'lodging' });
+          return r;
+        });
+        if (res.error || !advance || !api.canControlTime) return res;
+        // Se pasan los días contratados: al amanecer del siguiente, la estancia termina (renovar o irse).
+        const passed = await api.advanceDays(Math.max(1, res.days));
+        return { ...res, advanced: passed.error ? 0 : res.days, message: passed.error ? res.message : `${res.message} Pasan ${res.days} día(s): es el día ${state.world.day}.` };
+      },
+      leave() {
+        return serial(async () => {
+          const r = await withCharacter((world, character) => lodging.leaveRoom(world, state.ctx, { character, charId: state.characterId }));
+          if (!r.error) emit({ type: 'lodging' });
+          return r;
+        });
+      },
+    },
+
+    // ── Muebles y decoración ──
+    furniture: {
+      spaces: () => (state.world ? furniture.spacesOf(state.world, state.ctx, state.characterId) : []),
+      list: () => (state.world ? furniture.furnitureOf(state.world, state.ctx, state.characterId, state.character) : []),
+      place(itemId, spaceId) {
+        return serial(async () => {
+          const r = await withCharacter((world, character) => furniture.placeFurniture(world, state.ctx, { itemId, spaceId, character, charId: state.characterId }));
+          if (!r.error) emit({ type: 'furniture' });
+          return r;
+        });
+      },
+      remove(itemId, spaceId) {
+        return serial(async () => {
+          const r = await withCharacter((world, character) => furniture.removeFurniture(world, state.ctx, { itemId, spaceId, character, charId: state.characterId }));
+          if (!r.error) emit({ type: 'furniture' });
+          return r;
+        });
+      },
+    },
+
+    // ── Servicios de los comerciantes (templo, escriba, carpintero…) ──
+    shopServices: {
+      of: (shopId) => (state.ctx ? services.servicesOf(state.ctx, shopId) : []),
+      log: () => (state.world ? services.serviceLogOf(state.world, state.characterId) : []),
+      hire(shopId, serviceId, units) {
+        return serial(async () => {
+          const r = await withCharacter((world, character) => services.hireShopService(world, state.ctx, { shopId, serviceId, units, character, charId: state.characterId, charName: charName(), here: here() }));
+          if (!r.error) emit({ type: 'services' });
+          return r;
+        });
+      },
+    },
+
+    // ── Cambista y banco ──
+    bank: {
+      isExchange: (shopId) => (state.ctx ? bank.isExchange(state.ctx, shopId) : false),
+      balance: () => (state.world ? bank.bankOf(state.world, state.characterId) : { balance: 0, log: [] }),
+      quote: (opts) => (state.character ? bank.quoteExchange(state.character.equipment.coins, opts) : { error: 'Elige un personaje.' }),
+      exchange(shopId, opts) {
+        return serial(async () => {
+          const r = await withCharacter((world, character) => bank.exchangeCoins(world, state.ctx, { shopId, ...opts, character, here: here() }));
+          if (!r.error) emit({ type: 'bank' });
+          return r;
+        });
+      },
+      deposit(shopId, amount) {
+        return serial(async () => {
+          const r = await withCharacter((world, character) => bank.deposit(world, state.ctx, { shopId, amount, character, charId: state.characterId, charName: charName(), here: here() }));
+          if (!r.error) emit({ type: 'bank' });
+          return r;
+        });
+      },
+      withdraw(shopId, amount) {
+        return serial(async () => {
+          const r = await withCharacter((world, character) => bank.withdraw(world, state.ctx, { shopId, amount, character, charId: state.characterId, here: here() }));
+          if (!r.error) emit({ type: 'bank' });
+          return r;
+        });
+      },
     },
 
     // ── Gremio de aventureros (Lord 100) ──

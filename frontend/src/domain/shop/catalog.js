@@ -88,6 +88,14 @@ export const CATEGORIES = Object.freeze([
             { id: 'armadura', label: 'Armaduras', icon: '🛡️' },
             { id: 'anillo', label: 'Anillos', icon: '💍' },
             { id: 'maravilloso', label: 'Maravillosos', icon: '🔮' },
+            { id: 'pergamino', label: 'Pergaminos de conjuro', icon: '📜' },
+        ],
+    },
+    {
+        id: 'hogar', label: 'Muebles y decoración', icon: '🪑',
+        subs: [
+            { id: 'mueble', label: 'Muebles', icon: '🛏️' },
+            { id: 'decoracion', label: 'Decoración', icon: '🖼️' },
         ],
     },
     {
@@ -146,6 +154,7 @@ const CATEGORY_ALIASES = {
     artefacto: 'magicos', artefactos: 'magicos', magico: 'magicos', magicos: 'magicos',
     montura: 'monturas', monturas: 'monturas', vehiculo: 'monturas', 'equipaje-montura': 'monturas',
     mascota: 'criaturas', criaturas: 'criaturas',
+    mueble: 'hogar', muebles: 'hogar', decoracion: 'hogar', hogar: 'hogar',
     pista: 'pistas', pistas: 'pistas',
     tecnologia: 'tecnologia',
 };
@@ -211,6 +220,10 @@ export function normalizeItem(raw, { origin = 'data' } = {}) {
         origin: raw.origin ?? origin,
         // Dónde acaba en la ficha al comprarlo: inventario (por defecto) o
         // materiales del Taller ({ kind: 'workshop-material', id }).
+        // Muebles: funcional (cama, mesa…: tiene un uso) o decorativo; size = huecos que ocupa.
+        furniture: raw.furniture && ['funcional', 'decorativo'].includes(raw.furniture.kind)
+            ? { kind: raw.furniture.kind, size: Math.min(4, Math.max(1, Math.trunc(Number(raw.furniture.size)) || 1)), effect: String(raw.furniture.effect ?? '').trim().slice(0, 200) }
+            : null,
         grant: raw.grant?.kind === 'workshop-material' && typeof raw.grant.id === 'string' ? { kind: 'workshop-material', id: raw.grant.id } : { kind: 'inventory' },
     };
     if (raw.icon) item.icon = String(raw.icon);

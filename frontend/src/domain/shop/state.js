@@ -6,6 +6,8 @@
  * reciben un mundo y devuelven uno nuevo (structuredClone): la UI nunca muta.
  */
 
+import { unpackWorld } from './pack.js';
+
 export const WORLD_FORMAT = 'agarias-shop-world';
 export const WORLD_VERSION = 2;
 export const LEDGER_LIMIT = 300;
@@ -151,7 +153,8 @@ export function pushLedger(world, entry) {
  */
 export function migrateWorld(raw) {
     if (!raw || typeof raw !== 'object' || raw.format !== WORLD_FORMAT) return null;
-    const world = structuredClone(raw);
+    // Guardado en formato compacto (domain/shop/pack.js): se despliega primero.
+    const world = unpackWorld(structuredClone(raw));
     if (!Number.isInteger(world.version) || world.version > WORLD_VERSION) return null;
     // v1 → v2: mundo vivo (franjas del día, posiciones, descubrimientos,
     // reputación con facciones y diario de rumores). Nada de lo anterior cambia.

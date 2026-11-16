@@ -15,7 +15,7 @@ import { cubeAt } from './class-table.js';
 import catalog from '../data/taller.json';
 import { getClass } from '../data/index.js';
 import { knownChoices, choiceListDef } from './class-choices.js';
-import { coinsInCp, payCoins } from './money.js';
+import { coinsInCp, payCoins, formatCp, currencyOf } from './money.js';
 
 export const TIERS = Object.freeze(['Trivial', 'Simple', 'Avanzado', 'Intrincado']);
 export const TIER_ENERGY = Object.freeze({ Trivial: 1, Simple: 2, Avanzado: 4, Intrincado: 6 });
@@ -236,7 +236,7 @@ export function planBuild(c, recipeId, moduleIds = [], { name = '', toolNames = 
   if (gadgeteer) { gold /= 2; hours /= 2; }
   if (gloves) hours /= 2;
   gold = Math.ceil(gold);
-  if (coinsInCp(c.equipment?.coins) < gold * 100) errors.push(`Te falta oro: cuesta ${gold} po además de los materiales.`);
+  if (coinsInCp(c.equipment?.coins) < gold * 100) errors.push(`Te falta dinero: cuesta ${formatCp(gold * 100, { system: currencyOf(c.equipment?.coins) })} además de los materiales.`);
 
   const item = describeResult(recipe, modules, { name, weaponNames, scores, proficiency });
   return {

@@ -176,7 +176,7 @@ export function createCharacter() {
     equipment: {
       weapons: [createWeapon(), createWeapon(), createWeapon()],
       attacksNotes: '',
-      coins: { cp: 0, sp: 0, gp: 0, pp: 0 },
+      coins: { cp: 0, sp: 0, gp: 0, pp: 0, system: 'dnd' },
       items: [],
       treasure: '',
     },

@@ -1079,3 +1079,32 @@
   .guild-service .talk-controls { grid-column: 1 / -1; }
 }
 .purse-total { margin-left: 0.4em; color: var(--ink-muted); font-size: 0.8em; white-space: nowrap; }
+.currency-callout { display: grid; gap: 6px; margin-top: 10px; }
+.currency-callout p { margin: 0; }
+.currency-preview { font-size: 1.05em; }
+
+/* ── Letreros por categoría ── */
+.signs-group { grid-column: 1 / -1; margin: 6px 0 0; font-size: 0.8em; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-muted); }
+
+/* ── Hospedaje ── */
+.inn { display: grid; gap: 12px; }
+.inn-head { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: center; padding: 12px 14px; border-radius: 12px; background: var(--panel); border: 1px solid var(--line); }
+.inn-head h3 { margin: 0; }
+.inn-head p { margin: 4px 0 0; }
+.inn-stay p, .inn-confirm p { margin: 0 0 6px; }
+.inn-stay.warn { border-color: #b8860b; }
+.inn-rooms { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.inn-room { display: grid; grid-template-columns: auto auto 1fr auto; gap: 10px; align-items: center; padding: 10px 12px; border-radius: 10px; background: var(--panel); border: 1px solid var(--line); cursor: pointer; }
+.inn-room.active { border-color: var(--brass); box-shadow: 0 0 0 1px var(--brass) inset; }
+.inn-room input { accent-color: var(--brass); }
+.inn-room-icon { font-size: 26px; }
+.inn-room-body { display: grid; gap: 2px; }
+.inn-room-body small { display: block; }
+.inn-comforts { margin: 2px 0; padding-left: 18px; font-size: 0.82em; }
+.inn-room-price { display: grid; justify-items: end; gap: 2px; white-space: nowrap; }
+.inn-book { display: grid; gap: 8px; padding: 12px 14px; border-radius: 12px; border: 1px dashed var(--brass); }
+.inn-total { margin: 0; }
+@media (max-width: 640px) {
+  .inn-room { grid-template-columns: auto auto 1fr; }
+  .inn-room-price { grid-column: 3; justify-items: start; }
+}

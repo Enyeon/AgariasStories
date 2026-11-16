@@ -1,0 +1,17 @@
+{
+  "$comment": "Hospedaje en tabernas y posadas (profesiones con lodging: true). price = pc por día ANTES del nivel de la posada y del piso (1 pp = 10 pc, igual en los dos sistemas monetarios). slots = huecos para colocar muebles propios. tiers: categoría de la posada (qué habitaciones tiene, cuánto cobra y qué devuelve si te vas antes).",
+  "rooms": [
+    { "id": "basica", "label": "Básica", "icon": "🛏️", "price": 10, "slots": 0, "description": "Una cama en un pequeño cubículo, con o sin ventana.", "comforts": ["Cama en un cubículo", "Baño compartido"] },
+    { "id": "economica", "label": "Económica", "icon": "🛌", "price": 30, "slots": 1, "description": "Una habitación pequeña, con cama y sitio para tus cosas.", "comforts": ["Habitación pequeña para ti", "Baúl para tus pertenencias", "Baño compartido"] },
+    { "id": "estandar", "label": "Estándar", "icon": "🚪", "price": 50, "slots": 2, "description": "Habitación privada con cama cómoda, mesa y mobiliario básico.", "comforts": ["Habitación privada con llave", "Cama cómoda, mesa y silla", "Agua caliente por la mañana"] },
+    { "id": "comoda", "label": "Cómoda", "icon": "🪟", "price": 100, "slots": 3, "description": "Habitación espaciosa, mejores muebles y comodidades adicionales.", "comforts": ["Habitación amplia con ventana", "Buenos muebles y chimenea", "Desayuno incluido"] },
+    { "id": "premium", "label": "Premium", "icon": "🛁", "price": 300, "slots": 5, "description": "Habitación amplia, mobiliario de calidad y servicios adicionales.", "comforts": ["Dos estancias y baño propio", "Mobiliario de calidad", "Comidas y lavandería incluidas"] },
+    { "id": "lujo", "label": "Lujo", "icon": "👑", "price": 800, "slots": 8, "description": "Alojamiento exclusivo, instalaciones superiores y atención especial.", "comforts": ["Suite privada con salón", "Servicio personal y cuadra para tu montura", "Banquete y baño de vapor", "Discreción absoluta"] }
+  ],
+  "tiers": [
+    { "id": 1, "label": "Posada humilde", "icon": "🏚️", "mult": 0.8, "rooms": ["basica", "economica", "estandar"], "refund": 0, "rule": "Lo pagado no se devuelve." },
+    { "id": 2, "label": "Posada", "icon": "🏠", "mult": 1, "rooms": ["basica", "economica", "estandar", "comoda", "premium"], "refund": 0.5, "rule": "Si te vas antes, te devuelven la mitad de los días que no uses." },
+    { "id": 3, "label": "Hotel de lujo", "icon": "🏨", "mult": 1.5, "rooms": ["estandar", "comoda", "premium", "lujo"], "refund": 1, "rule": "Si te vas antes, te devuelven los días que no uses." }
+  ],
+  "maxDays": 60
+}

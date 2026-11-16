@@ -5,6 +5,7 @@ import { createBackgroundState, createItem } from './schema.js';
 import { normalizeBackgroundDefinition } from './validation.js';
 import { abilityScores, backgroundDefinition, backgroundSkillPicks } from './rules.js';
 import { getBackgroundFeature } from '../data/index.js';
+import { currencyOf, receiveCoins, coinsInCp } from './money.js';
 
 const clone = (c) => structuredClone(c);
 const capitalize = (s) => (s ? s[0].toLocaleUpperCase('es') + s.slice(1) : s);
@@ -176,7 +177,9 @@ export function applyBackgroundEquipment(c, label) {
   const { items, coins } = parseEquipmentText(option.text);
   const next = clone(c);
   next.equipment.items.push(...items);
-  for (const [k, v] of Object.entries(coins)) next.equipment.coins[k] += v;
+  // Los importes del libro están en monedas de D&D: con otro sistema se suma su valor.
+  if (currencyOf(next.equipment.coins) === 'dnd') for (const [k, v] of Object.entries(coins)) next.equipment.coins[k] += v;
+  else next.equipment.coins = receiveCoins(next.equipment.coins, coinsInCp(coins, 'dnd'));
   next.background.equipmentChoice = label;
   next.background.equipmentApplied = label;
   return { character: next, errors: [], added: { items, coins } };

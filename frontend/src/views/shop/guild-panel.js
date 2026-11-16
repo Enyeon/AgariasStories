@@ -8,9 +8,10 @@
  */
 
 import { h, replace, coins } from './dom.js';
-import { formatCp } from '../../domain/money.js';
+import { formatCp, coinValues, displayCurrency } from '../../domain/money.js';
 
-const PO = 100;
+// Los importes se escriben en piezas de oro del sistema monetario activo (100 pc en D&D, 1000 en Lord 100).
+const PO = () => coinValues(displayCurrency()).gp;
 const STATUS = {
     abierta: ['Abierta', 'ok'],
     aceptada: ['En curso', 'info'],
@@ -210,14 +211,14 @@ export function renderGuild(container, { service, shopId, ui, toast, rerender, r
         const summary = h('p', { class: 'small' });
         const commission = view.prestige.commission;
         function update() {
-            const reward = Math.round(Number(draft.reward || 0) * PO);
+            const reward = Math.round(Number(draft.reward || 0) * PO());
             const min = service.guild.minReward(draft.rank);
             const fee = Math.ceil(reward * commission);
             replace(summary, `Se te cobra ahora: ${formatCp(reward + fee)} (recompensa en depósito ${formatCp(reward)} + comisión ${formatCp(fee)}). Mínimo para ${rankLabel(draft.rank)}: ${formatCp(min)}.`);
         }
         update();
         const submit = async () => {
-            const res = await run(service.guild.publish(shopId, { ...draft, reward: Math.round(Number(draft.reward || 0) * PO) }));
+            const res = await run(service.guild.publish(shopId, { ...draft, reward: Math.round(Number(draft.reward || 0) * PO()) }));
             if (res) { ui.guildDraft = null; ui.guildTab = 'tablon'; rerender(); }
         };
         return h('section', { class: 'guild-section guild-publish' },

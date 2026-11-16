@@ -39,13 +39,19 @@ export function renderFloorsAdmin(service, { toast, rerender }) {
         return parts.join(' ');
     };
 
+    // Con el sistema monetario en automático, activar la progresión cambia a Monedas de Lord 100.
+    const currencyNote = (enabled, text) => (service.currency.mode === 'auto'
+        ? `${text} Sistema monetario: ${enabled ? 'Monedas de Lord 100' : 'Monedas de D&D'} (cada jugador convierte sus monedas al entrar, viendo antes el resultado).`
+        : text);
+
     const intro = h('p', { class: 'muted small admin-intro' },
         'Cada piso abre sus negocios: los de pisos superiores no existen todavía para los jugadores, y los anteriores siguen abiertos. ',
         'Asigna el piso en la ficha de cada comerciante (campo «Piso») o en su región. Un negocio puede pedir además un requisito (misión, reputación…) que marcas aquí cuando se cumpla.');
 
     const toggle = h('label', { class: 'check' },
-        h('input', { type: 'checkbox', checked: p.enabled, onchange: (e) => run(service.setProgressEnabled(e.target.checked), e.target.checked ? 'Progresión por pisos activada.' : 'Progresión por pisos desactivada: todo está disponible.') }),
-        ' Usar progresión por pisos en esta campaña');
+        h('input', { type: 'checkbox', checked: p.enabled, onchange: (e) => run(service.setProgressEnabled(e.target.checked), currencyNote(e.target.checked, e.target.checked ? 'Progresión por pisos activada.' : 'Progresión por pisos desactivada: todo está disponible.')) }),
+        ' Usar progresión por pisos en esta campaña',
+        h('small', { class: 'muted' }, ` · 🪙 ${service.currency.label}${service.currency.mode === 'auto' ? ' (automático)' : ''}`));
     if (!p.enabled) return h('div', { class: 'floors-admin' }, intro, toggle);
 
     const floorInput = h('input', { type: 'number', class: 'qty-input', min: '1', max: '999', value: String(p.current), 'aria-label': 'Piso' });

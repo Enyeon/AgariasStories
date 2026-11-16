@@ -4,6 +4,8 @@ import { html } from '../../ui/dom.js';
 import { COINS } from '../../domain/constants.js';
 import { createItem, createWeapon } from '../../domain/schema.js';
 import { sectionCard, actionButton, bindAttrs, textArea, numberField, textField } from './common.js';
+import { CURRENCIES, coinValues, convertCoins, currencyOf, formatBag, formatCp } from '../../domain/money.js';
+import { confirmDialog } from '../../ui/feedback.js';
 
 function weaponsTable(ctx) {
   const weapons = ctx.character.equipment.weapons;
@@ -32,11 +34,22 @@ function armorAndCoins(ctx) {
         ${numberField(ctx, { label: 'Clase de armadura (CA)', path: 'combat.armorClass', min: 0, max: 99 })}
       </div>`,
     })}
-    ${sectionCard({
-      title: 'Monedas',
-      body: html`<div class="coins">${COINS.map((coin) => numberField(ctx, { label: coin.label, path: `equipment.coins.${coin.key}`, min: 0, max: 99999999, hint: coin.title }))}</div>`,
-    })}
+    ${coinsCard(ctx)}
   </div>`;
+}
+
+/** Monedas con su sistema (D&D o Lord 100) y el total; se pueden pasar al otro sistema sin perder valor. */
+function coinsCard(ctx) {
+  const bag = ctx.character.equipment.coins;
+  const system = currencyOf(bag);
+  const other = system === 'dnd' ? 'lord100' : 'dnd';
+  const v = coinValues(system);
+  return sectionCard({
+    title: 'Monedas',
+    subtitle: `${CURRENCIES[system].label} · 10 pc = 1 pp · ${v.gp / v.sp} pp = 1 po · ${v.pp / v.gp} po = 1 ppt`,
+    actions: actionButton(ctx, { action: 'convert-coins', label: `Pasar a ${CURRENCIES[other].label}`, variant: 'btn--ghost btn--sm' }),
+    body: html`<div class="coins">${COINS.map((coin) => numberField(ctx, { label: coin.label, path: `equipment.coins.${coin.key}`, min: 0, max: 99999999, hint: coin.title }))}</div>`,
+  });
 }
 
 function itemsList(ctx) {
@@ -71,4 +84,16 @@ export const equipmentActions = {
   'remove-weapon': (ed, el) => ed.update((c) => { c.equipment.weapons.splice(Number(el.dataset.index), 1); }, { structural: true }),
   'add-item': (ed) => ed.update((c) => { c.equipment.items.push(createItem()); }, { structural: true, focusLast: '[data-bind$=".name"][data-bind^="equipment.items"]' }),
   'remove-item': (ed, el) => ed.update((c) => { c.equipment.items.splice(Number(el.dataset.index), 1); }, { structural: true }),
+  // Cambia el sistema de las monedas mostrando antes cómo quedan (mismo valor total).
+  'convert-coins': async (ed) => {
+    const bag = ed.character.equipment.coins;
+    const to = currencyOf(bag) === 'dnd' ? 'lord100' : 'dnd';
+    const res = convertCoins(bag, to);
+    const ok = await confirmDialog({
+      title: `Pasar a ${CURRENCIES[to].label}`,
+      message: `Tus monedas quedarían así: ${formatBag(bag)} → ${formatBag(res.coins)}. El valor total es el mismo (${formatCp(res.total, { system: to })}). Normalmente lo hace la Tienda al entrar en una campaña con otro sistema.`,
+      confirmLabel: 'Convertir',
+    });
+    if (ok) ed.update((c) => { c.equipment.coins = convertCoins(c.equipment.coins, to).coins; }, { structural: true });
+  },
 };

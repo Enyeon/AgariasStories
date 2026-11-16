@@ -14,6 +14,8 @@
 //   - si el mismo dato cambió en los dos lados, gana el de esta pestaña («mine»).
 // Es pura: no modifica sus argumentos.
 
+import { convertCoins, currencyOf } from './money.js';
+
 const isObj = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
 const same = (a, b) => a === b || JSON.stringify(a) === JSON.stringify(b);
 const clone = (v) => (v === undefined ? v : structuredClone(v));
@@ -86,8 +88,22 @@ function mergeValue(base, mine, theirs, path = '') {
   return clone(mine);
 }
 
+/**
+ * Si la otra pestaña cambió el sistema monetario (p. ej. la Tienda convirtió
+ * las monedas a las de Lord 100), las bolsas de aquí se pasan a ese sistema
+ * antes de combinar, para que las diferencias se sumen con el mismo valor.
+ */
+function sameCurrency(base, mine, theirs) {
+  const to = currencyOf(theirs?.equipment?.coins);
+  const fix = (c) => (c?.equipment?.coins && currencyOf(c.equipment.coins) !== to
+    ? { ...c, equipment: { ...c.equipment, coins: convertCoins(c.equipment.coins, to).coins } }
+    : c);
+  return [fix(base), fix(mine)];
+}
+
 /** @returns {object} el personaje combinado */
 export function mergeCharacters(base, mine, theirs) {
   if (!base) return clone(mine);
-  return mergeValue(base, mine, theirs, '');
+  const [b, m] = sameCurrency(base, mine, theirs);
+  return mergeValue(b, m, theirs, '');
 }

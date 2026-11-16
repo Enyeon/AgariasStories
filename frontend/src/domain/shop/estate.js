@@ -131,6 +131,11 @@ export function sellPlot(world, ctx, { charId, plotId, character, here }) {
         const item = ctx.item(itemId);
         if (item && s.qty > 0) next = grantItem(next, item, s.qty);
     }
+    // Y también los muebles que tenías colocados (domain/shop/furniture.js).
+    for (const itemId of own.prop.furniture ?? []) {
+        const item = ctx.item(itemId);
+        if (item) next = grantItem(next, item, 1);
+    }
     const w = cloneWorld(world);
     const props = ensureEstate(w);
     // Lo construido se queda en el terreno (el próximo comprador lo paga en el precio).

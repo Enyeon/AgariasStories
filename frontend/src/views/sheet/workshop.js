@@ -11,7 +11,7 @@ import {
   adjustMaterial, scavenge, allRecipes, allModules, modulesFor, planBuild, build, dismantle,
   saveDesign, removeDesign,
 } from '../../domain/workshop.js';
-import { coinsInCp } from '../../domain/money.js';
+import { coinsInCp, currencyOf, formatCp } from '../../domain/money.js';
 import { sectionCard } from './common.js';
 import { fillChoices } from './features.js';
 
@@ -22,7 +22,7 @@ const sheetInfo = (sheet) => ({
   scores: sheet.scores, proficiency: sheet.proficiency,
 });
 const ui = (ctx) => (ctx.ui.workshop ??= { cat: '' });
-const fmtGold = (cp) => `${Math.floor(cp / 100)} po${cp % 100 ? ` ${cp % 100} pc` : ''}`;
+
 
 function pendingCallout(ctx) {
   if (ctx.readOnly) return '';
@@ -90,7 +90,7 @@ function materialsCard(ctx) {
   const ro = ctx.readOnly;
   return sectionCard({
     title: 'Materiales',
-    subtitle: `Tienes ${fmtGold(coinsInCp(ctx.character.equipment.coins))}. Los materiales se compran en la Tienda (puesto «El Engranaje Risueño»); los que te dé el DM, súmalos con +.`,
+    subtitle: `Tienes ${formatCp(coinsInCp(ctx.character.equipment.coins), { system: currencyOf(ctx.character.equipment.coins) })}. Los materiales se compran en la Tienda (puesto «El Engranaje Risueño»); los que te dé el DM, súmalos con +.`,
     actions: ro ? '' : html`<span class="row">${ctx.recordId ? html`<a class="btn btn--primary btn--sm" href="/tienda/${ctx.recordId}" data-link>🛒 Comprar en la Tienda</a>` : ''}${w?.level >= 9 ? html`<button type="button" class="btn btn--gold btn--sm" data-action="workshop-scavenge" title="Héroe del desguace: 1d4 + tu nivel en chatarra">🎲 Desguace (1 hora)</button>` : ''}</span>`,
     body: html`<div class="table-wrap"><table class="table">
       <thead><tr><th scope="col">Material</th><th class="num" scope="col">Valor</th><th class="num" scope="col">Tienes</th>${ro ? '' : html`<th scope="col"><span class="visually-hidden">Acciones</span></th>`}</tr></thead>
@@ -217,7 +217,7 @@ async function openBuild(ed, recipeId) {
           <ul class="summary-list">
             <li><span>Resultado</span><strong>${plan.item?.notes.split('\n').slice(1).join(' · ') || recipe.nombre}</strong></li>
             <li><span>Materiales</span><strong>${Object.keys(plan.materials ?? {}).length ? partMaterials(ed, plan.materials) : '—'}</strong></li>
-            <li><span>Oro</span><strong>${plan.gold ?? 0} po</strong></li>
+            <li><span>Coste</span><strong>${formatCp((plan.gold ?? 0) * 100, { system: currencyOf(ed.character.equipment.coins) })}</strong></li>
             <li><span>Tiempo</span><strong>${plan.hours ?? 0} horas</strong></li>
             ${plan.discounts?.length ? html`<li><span>Descuentos</span><strong>${plan.discounts.join(' · ')}</strong></li>` : ''}
           </ul>

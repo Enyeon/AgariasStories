@@ -8,7 +8,7 @@
 
 import { getQuality, hasQuality } from '../../domain/shop/quality.js';
 import { CATEGORIES, getCategory, getRarity, getSub, itemIcon, searchKey } from '../../domain/shop/catalog.js';
-import { coinsInCp, formatCp } from '../../domain/money.js';
+import { coinsInCp, formatCp, formatBag, currencyOf, CURRENCIES } from '../../domain/money.js';
 import { activeEvents, eventIntensity } from '../../domain/shop/pricing.js';
 import { priceBreakdown } from '../../domain/shop/transactions.js';
 import { h, replace, coins, purse, pct, sparkline, debounce } from './dom.js';
@@ -16,6 +16,7 @@ import { toast as appToast } from '../../ui/feedback.js';
 import { openNegotiation } from './negotiation-dialog.js';
 import { renderTalk } from './talk-panel.js';
 import { renderGuild } from './guild-panel.js';
+import { renderLodging, renderServices, renderExchange } from './inn-panels.js';
 import { openMap, openJournal, openKnown, openDmTools } from './world-panels.js';
 import { openEstate, openReportsInbox } from './estate-panels.js';
 import { openBusinesses } from './floors-panel.js';
@@ -164,6 +165,7 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
                             : h('span', { class: 'scope-badge', title: 'Este personaje no pertenece a una campaña: el mercado se guarda en este dispositivo.' }, '💾 Mercado de este dispositivo'),
                         s.scope.kind === 'campaign' ? h('button', { class: 'link', onclick: () => service.refresh(), title: 'Ver lo que compraron los demás' }, '↻ Actualizar') : null,
                         s.notice ? h('span', { class: 'scope-badge warn', title: s.notice }, '⚠ ', s.notice) : null,
+                        h('span', { class: 'scope-badge', title: currencyTitle() }, `🪙 ${service.currency.label}`),
                     ),
                 ),
             ),
@@ -185,11 +187,31 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
                 'div',
                 { class: 'market-char' },
                 h('label', { class: 'char-picker' }, h('span', { class: 'sr-only' }, 'Personaje'), characterSelect),
-                character ? h('div', { class: 'purse', title: 'Monedas del personaje (las de su ficha)' }, h('span', { class: 'purse-icon', 'aria-hidden': 'true' }, '👛'), purse(character.equipment.coins)) : null,
+                character ? h('div', { class: 'purse', title: `Monedas del personaje (las de su ficha) · ${CURRENCIES[currencyOf(character.equipment.coins)].label}` }, h('span', { class: 'purse-icon', 'aria-hidden': 'true' }, '👛'), purse(character.equipment.coins)) : null,
                 character ? h('a', { class: 'btn btn-ghost', href: `/editar/${encodeURIComponent(s.characterId)}`, 'data-link': true, title: 'Abrir la ficha: inventario, monedas y Taller' }, '📜 Ficha') : null,
                 h('button', { class: 'btn btn-icon', title: 'Opciones', 'aria-label': 'Opciones de la tienda', onclick: openSettings }, '⚙'),
             ),
+            conversionBanner(),
         );
+    }
+
+    function currencyTitle() {
+        const v = service.currency.values;
+        return `${service.currency.label}: 10 pc = 1 pp · ${v.gp / v.sp} pp = 1 po · ${v.pp / v.gp} po = 1 ppt.${service.currency.mode === 'auto' ? ' Automático según la progresión por pisos.' : ''}`;
+    }
+
+    /** Las monedas de la ficha están en otro sistema: se enseña cómo quedan y se confirma. */
+    function conversionBanner() {
+        const need = service.coinConversion();
+        if (!need) return null;
+        return h('div', { class: 'callout currency-callout', role: 'status' },
+            h('p', {}, h('b', {}, `🪙 Esta campaña usa ${need.toLabel}.`), ` Tus monedas están en ${need.fromLabel}. Para comprar o vender, conviértelas: el valor total no cambia.`),
+            h('p', { class: 'currency-preview' }, h('span', {}, formatBag({ ...need.before, system: need.from })), h('span', { 'aria-hidden': 'true' }, ' → '), h('b', {}, formatBag(need.coins)),
+                h('small', { class: 'muted' }, ` (total: ${formatCp(need.total, { system: need.to })})`)),
+            h('button', { class: 'btn btn-primary btn-sm', onclick: async () => {
+                const res = await service.convertCoins();
+                toast(res.error ?? res.message, res.error ? 'error' : 'success');
+            } }, 'Convertir mis monedas'));
     }
 
     // ── Mercado por pisos: saltar entre los pisos alcanzados ──
@@ -232,12 +254,15 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
                     h('button', { class: 'btn btn-sm btn-ghost', onclick: () => openKnown(root, service, { onGo: goTo }) }, '👥 Conocidos'),
                     h('button', { class: 'btn btn-sm btn-ghost', onclick: () => openJournal(root, service, { toast }) }, '📔 Rumores'),
                     service.progress.enabled ? h('button', { class: 'btn btn-sm btn-ghost', onclick: () => openBusinesses(root, service), title: 'Qué negocios hay en cada piso y cuáles piden algo más' }, '🏪 Negocios') : null,
-                    state().characterId ? h('button', { class: 'btn btn-sm btn-ghost', onclick: () => openEstate(root, service, { toast }), title: 'Terrenos, tu negocio, empleados e informes de exploración' }, `🏠 Propiedades${service.myStaff().length ? ` · 👷 ${service.myStaff().length}` : ''}`) : null,
+                    state().characterId ? h('button', { class: 'btn btn-sm btn-ghost', onclick: () => openEstate(root, service, { toast }), title: 'Terrenos, tu negocio, muebles, empleados e informes de exploración' }, `🏠 Propiedades${service.myStaff().length ? ` · 👷 ${service.myStaff().length}` : ''}`) : null,
+                    stayChip(),
                     service.contracts().length ? h('button', { class: 'btn btn-sm btn-ghost', onclick: () => openKnown(root, service, { onGo: goTo, contracts: true }) }, `📜 Empleados (${service.contracts().length})`) : null,
                 ),
             ),
             here.length
-                ? here.map(({ keeper: k, shop: sh, status, tier }) => h(
+                ? groupSigns(here).map(([label, list]) => [
+                    here.length > 3 ? h('p', { class: 'signs-group' }, label) : null,
+                    list.map(({ keeper: k, shop: sh, status, tier }) => h(
                     'button',
                     {
                         class: ['shop-sign', sh.id === ui.shopId && 'active', !status.open && 'closed'],
@@ -247,7 +272,7 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
                     },
                     h('span', { class: 'sign-icon', 'aria-hidden': 'true' }, sh.icon),
                     h('span', { class: 'sign-text' }, h('b', {}, sh.name), h('small', {}, status.open ? `${k.portrait} ${k.short ?? k.name} · ${tier.icon} ${tier.label}` : status.reason)),
-                ))
+                    ))])
                 : h('p', { class: 'signs-empty muted' }, 'Aquí no hay nadie comerciando hoy. Prueba en otro lugar del mapa… o vuelve en otra franja del día.'),
         );
     }
@@ -338,9 +363,11 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
     function renderTabs() {
         const tab = (id, label) => h('button', { role: 'tab', class: ['tab', ui.tab === id && 'active'], 'aria-selected': String(ui.tab === id), onclick: () => setTab(id) }, label);
         const offers = merchant()?.offers.length ?? 0;
-        const isGuild = Boolean(service.guild.of(ui.shopId));
-        if (!isGuild && ui.tab === 'guild') ui.tab = 'buy';
-        replace(tabs, isGuild ? tab('guild', '🛡️ Gremio') : null, tab('buy', '🛒 Comprar'), tab('sell', '💰 Vender'), tab('talk', offers ? `💬 Conversar (${offers})` : '💬 Conversar'), tab('ledger', '📒 Registro'));
+        const extra = extraTabs(ui.shopId);
+        if (['guild', 'lodging', 'services', 'exchange'].includes(ui.tab) && !extra.some(([id]) => id === ui.tab)) ui.tab = 'buy';
+        replace(tabs, extra.filter(([id]) => id === 'guild').map(([id, label]) => tab(id, label)), tab('buy', '🛒 Comprar'), tab('sell', '💰 Vender'),
+            extra.filter(([id]) => id !== 'guild').map(([id, label]) => tab(id, label)),
+            tab('talk', offers ? `💬 Conversar (${offers})` : '💬 Conversar'), tab('ledger', '📒 Registro'));
     }
 
     function stockedItems() {
@@ -389,6 +416,10 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
         if (!shop() && ui.tab !== 'ledger') return replace(content, h('div', { class: 'empty' }, h('span', { 'aria-hidden': 'true' }, '🧭'), h('p', {}, 'No hay ningún puesto abierto en este lugar. Abre el mapa para ir a otro sitio.')));
         if (ui.tab === 'buy') return renderGrid();
         if (ui.tab === 'sell') return renderSell();
+        const panelOpts = { service, shopId: ui.shopId, ui, toast, root, rerender: () => { renderHeader(); renderContent(); } };
+        if (ui.tab === 'lodging') return renderLodging(content, panelOpts);
+        if (ui.tab === 'services') return renderServices(content, panelOpts);
+        if (ui.tab === 'exchange') return renderExchange(content, panelOpts);
         if (ui.tab === 'guild') return renderGuild(content, { service, shopId: ui.shopId, ui, toast, root, rerender: () => { renderHeader(); renderContent(); } });
         if (ui.tab === 'talk') return keeper() ? renderTalk(content, { service, keeperId: keeper().id, ui, toast, rerender: () => { renderKeeper(); renderTabs(); renderContent(); } }) : replace(content);
         return renderLedger();
@@ -869,6 +900,7 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
                         h('label', { class: 'radio' }, h('input', { type: 'radio', name: 'world', checked: service.worldKind === 'lord100', onchange: async () => { await service.setLocalWorld('lord100'); dialog.close(); } }), '🏰 Lord 100 (la Torre, por pisos)'),
                         h('p', { class: 'muted small' }, 'Sin campaña, cada mundo guarda su propio mercado en este dispositivo.'),
                     ]),
+            currencyFieldset(),
             service.canControlTime
                 ? h('fieldset', {}, h('legend', {}, 'Mercado'), h('p', { class: 'muted small' }, s.scope.kind === 'campaign' ? 'Reinicia el mercado de TODA la campaña: existencias, eventos, relaciones e historial. No toca las fichas ni sus monedas.' : 'Reinicia existencias, eventos, relaciones e historial de este dispositivo. No toca las fichas ni sus monedas.'), resetBtn)
                 : null,
@@ -876,6 +908,73 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
         dialog.addEventListener('close', () => dialog.remove());
         root.querySelector('.shop-root').append(dialog);
         dialog.showModal();
+    }
+
+    /** «Sistema monetario» en ⚙: el activo, cómo se calcula y (el DM) cambiarlo con vista previa. */
+    function currencyFieldset() {
+        const cur = service.currency;
+        const auto = service.progress.enabled ? 'Monedas de Lord 100' : 'Monedas de D&D';
+        const preview = h('div', { class: 'small', 'aria-live': 'polite' });
+        const show = (mode) => {
+            const to = mode === 'auto' ? (service.progress.enabled ? 'lord100' : 'dnd') : mode;
+            const p = service.previewConversion(to);
+            replace(preview, p && p.changed
+                ? h('p', {}, `Tus fondos quedarían: ${formatBag({ ...p.before, system: currencyOf(state().character.equipment.coins) })} → `, h('b', {}, formatBag(p.coins)), ` (mismo valor: ${formatCp(p.total, { system: to })}).`)
+                : null);
+        };
+        const radio = (mode, label) => h('label', { class: 'radio' }, h('input', {
+            type: 'radio', name: 'currency', checked: cur.mode === mode, disabled: !service.canControlTime,
+            onchange: async () => {
+                show(mode);
+                const res = await service.setCurrencyMode(mode);
+                toast(res.error ?? `Sistema monetario: ${mode === 'auto' ? `automático (${auto})` : CURRENCIES[mode].label}. Cada jugador convertirá sus monedas al entrar, viendo antes cómo quedan.`, res.error ? 'error' : 'info');
+            },
+        }), label);
+        const v = cur.values;
+        return h('fieldset', {}, h('legend', {}, 'Sistema monetario'),
+            h('p', { class: 'small' }, 'Activo: ', h('b', {}, cur.label), ` · 10 pc = 1 pp · ${v.gp / v.sp} pp = 1 po · ${v.pp / v.gp} po = 1 ppt`),
+            radio('auto', `Automático: con progresión por pisos, Monedas de Lord 100; sin ella, de D&D (ahora: ${auto})`),
+            radio('dnd', 'Monedas de D&D (10 pc = 1 pp · 10 pp = 1 po · 10 po = 1 ppt)'),
+            radio('lord100', 'Monedas de Lord 100 (10 pc = 1 pp · 100 pp = 1 po · 100 po = 1 ppt)'),
+            h('p', { class: 'muted small' }, service.canControlTime
+                ? 'Los precios no cambian de valor, sólo de monedas. Las fichas no se tocan solas: cada jugador ve cómo quedan sus fondos y confirma la conversión.'
+                : 'Lo elige el DM. Si cambia, verás cómo quedan tus fondos antes de convertirlos.'),
+            preview);
+    }
+
+    /** Habitación alquilada: días que quedan (o «terminó»); lleva a la posada si estás allí. */
+    function stayChip() {
+        const st = service.lodging.stay();
+        if (!st) return null;
+        const inn = service.ctx.shop(st.shopId);
+        const hereShop = shopsHere().some((m) => m.shop.id === st.shopId);
+        return h('button', {
+            class: ['btn', 'btn-sm', st.expired ? 'btn-alert' : 'btn-ghost'],
+            title: `${inn?.name ?? 'Posada'} · pagada hasta el día ${st.until}`,
+            onclick: () => { if (hereShop) { ui.tab = 'lodging'; selectShop(st.shopId, { force: true }); ui.tab = 'lodging'; renderAll(); } else toast(`Tu habitación está en ${inn?.name ?? 'otra posada'}: viaja hasta allí para renovarla o dejarla.`, 'info'); },
+        }, st.expired ? '🛏️ Estancia terminada' : `🛏️ ${st.daysLeft} día(s) de habitación`);
+    }
+
+    /** Letreros por categoría: esenciales (posada, comercio general, Gremio), comercios y especiales. */
+    function groupSigns(list) {
+        const ESSENTIAL = new Set(['tabernero', 'general', 'gremio']);
+        const groups = [['🏛️ Esenciales', []], ['🏪 Comercios', []], ['⭐ Especiales', []]];
+        for (const m of list) {
+            const i = m.keeper?.special ? 2 : ESSENTIAL.has(m.keeper?.profession) ? 0 : 1;
+            groups[i][1].push(m);
+        }
+        return groups.filter(([, l]) => l.length);
+    }
+
+    /** Pestañas propias de una tienda: Gremio, Hospedaje, Servicios, Cambio. */
+    function extraTabs(shopId) {
+        if (!shopId) return [];
+        return [
+            service.guild.of(shopId) ? ['guild', '🛡️ Gremio'] : null,
+            service.lodging.inn(shopId) ? ['lodging', '🛏️ Hospedaje'] : null,
+            service.shopServices.of(shopId).length ? ['services', '🤝 Servicios'] : null,
+            service.bank.isExchange(shopId) ? ['exchange', '💱 Cambio y banco'] : null,
+        ].filter(Boolean);
     }
 
     /** Si la tienda elegida no está en tu ubicación, se elige una que sí. */

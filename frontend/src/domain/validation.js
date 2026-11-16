@@ -356,8 +356,11 @@ export function normalizeCharacter(raw) {
   d.equipment.attacksNotes = text(eq.attacksNotes, LIMITS.longText);
   const coins = isObject(eq.coins) ? eq.coins : {};
   for (const key of Object.keys(d.equipment.coins)) {
+    if (key === 'system') continue;
     d.equipment.coins[key] = int(coins[key], { min: 0, max: 99_999_999, fallback: 0 });
   }
+  // Sistema monetario de estas monedas (ver domain/money.js). Sin él: D&D.
+  d.equipment.coins.system = coins.system === 'lord100' ? 'lord100' : 'dnd';
   d.equipment.items = list(eq.items, (it) => (isObject(it)
     ? createItem({
       name: text(it.name), quantity: int(it.quantity, { min: 0, max: 99_999, fallback: 1 }), notes: text(it.notes, LIMITS.mediumText),

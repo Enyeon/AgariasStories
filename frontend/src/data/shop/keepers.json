@@ -2068,6 +2068,444 @@
         "wage": 60,
         "mobile": true
       }
+    },
+    {
+      "id": "sabela",
+      "name": "Sabela Raízdulce",
+      "short": "Sabela",
+      "title": "Alquimista del valle",
+      "portrait": "⚗️",
+      "accent": "#7bc47f",
+      "voice": "erudito",
+      "bio": "Huele a azufre y a menta. Mide cada gota con una paciencia infinita y odia que le metan prisa con las pociones.",
+      "traits": {
+        "greed": 0.5,
+        "patience": 0.8,
+        "pride": 0.5,
+        "warmth": 0.6,
+        "shrewdness": 0.7
+      },
+      "likes": [
+        "magia",
+        "animales",
+        "clima"
+      ],
+      "dislikes": [
+        "apuestas"
+      ],
+      "race": "mediano",
+      "kinds": [
+        "oficial"
+      ],
+      "archetypes": [
+        "honrado",
+        "amable"
+      ],
+      "presence": {
+        "location": "plaza-mayor"
+      },
+      "schedule": {
+        "phases": [
+          "manana",
+          "tarde"
+        ]
+      },
+      "knows": {
+        "topics": [
+          "lugares",
+          "peligros"
+        ],
+        "regions": [
+          "valle"
+        ]
+      },
+      "profession": "alquimista",
+      "topicLines": {
+        "magia": "La magia es química con buenos modales. Una poción bien hecha no necesita palabras raras, sólo buenas hierbas y tiempo."
+      }
+    },
+    {
+      "id": "orlo",
+      "name": "Orlo Cuerdafina",
+      "short": "Orlo",
+      "title": "Lutier",
+      "portrait": "🎻",
+      "accent": "#c98a4b",
+      "voice": "campechana",
+      "bio": "Repara cualquier instrumento y presume de que su laúd tocó en la boda de un conde. Nadie le cree, pero todos le escuchan.",
+      "traits": {
+        "greed": 0.4,
+        "patience": 0.7,
+        "pride": 0.6,
+        "warmth": 0.8,
+        "shrewdness": 0.4
+      },
+      "likes": [
+        "historia",
+        "chismes",
+        "familia"
+      ],
+      "dislikes": [
+        "batallas"
+      ],
+      "race": "humano",
+      "kinds": [
+        "oficial"
+      ],
+      "archetypes": [
+        "cuentacuentos",
+        "amable"
+      ],
+      "presence": {
+        "location": "plaza-mayor"
+      },
+      "schedule": {
+        "phases": [
+          "manana",
+          "tarde"
+        ]
+      },
+      "knows": {
+        "topics": [
+          "personas",
+          "eventos"
+        ],
+        "regions": [
+          "valle"
+        ]
+      },
+      "profession": "lutier",
+      "topicLines": {
+        "historia": "Cada canción vieja es un libro que nadie escribió. Si te la sabes, conoces medio valle."
+      }
+    },
+    {
+      "id": "madre-ines",
+      "name": "Madre Inés de la Aurora",
+      "short": "Madre Inés",
+      "title": "Suma sacerdotisa",
+      "portrait": "🛐",
+      "accent": "#f2d16b",
+      "voice": "firme",
+      "bio": "Dirige el templo con mano firme y corazón blando. Cura a quien lo necesita, aunque los donativos mantienen el tejado en pie.",
+      "traits": {
+        "greed": 0.3,
+        "patience": 0.8,
+        "pride": 0.5,
+        "warmth": 0.8,
+        "shrewdness": 0.5
+      },
+      "likes": [
+        "dioses",
+        "familia"
+      ],
+      "dislikes": [
+        "secretos"
+      ],
+      "race": "humano",
+      "kinds": [
+        "oficial"
+      ],
+      "archetypes": [
+        "honrado",
+        "generoso"
+      ],
+      "presence": {
+        "location": "plaza-mayor"
+      },
+      "schedule": {
+        "phases": [
+          "manana",
+          "tarde",
+          "noche"
+        ]
+      },
+      "knows": {
+        "topics": [
+          "personas",
+          "peligros"
+        ],
+        "regions": [
+          "valle",
+          "marca"
+        ]
+      },
+      "profession": "templo",
+      "topicLines": {
+        "dioses": "Los dioses no regalan milagros, hijo. Los prestan. Y siempre vuelven a cobrar."
+      }
+    },
+    {
+      "id": "tobias",
+      "name": "Tobías Balanzafiel",
+      "short": "Tobías",
+      "title": "Cambista y banquero",
+      "portrait": "💱",
+      "accent": "#8fb3d9",
+      "voice": "firme",
+      "bio": "Pesa cada moneda dos veces. Guarda el dinero de medio valle y no olvida jamás una deuda.",
+      "traits": {
+        "greed": 0.75,
+        "patience": 0.6,
+        "pride": 0.6,
+        "warmth": 0.3,
+        "shrewdness": 0.9
+      },
+      "likes": [
+        "negocios",
+        "historia"
+      ],
+      "dislikes": [
+        "apuestas"
+      ],
+      "race": "gnomo",
+      "kinds": [
+        "oficial"
+      ],
+      "archetypes": [
+        "codicioso",
+        "honrado"
+      ],
+      "presence": {
+        "location": "plaza-mayor"
+      },
+      "schedule": {
+        "phases": [
+          "manana",
+          "tarde"
+        ]
+      },
+      "knows": {
+        "topics": [
+          "facciones",
+          "personas"
+        ],
+        "regions": [
+          "valle",
+          "costa"
+        ]
+      },
+      "profession": "cambista",
+      "topicLines": {
+        "negocios": "El oro no duerme, viajero. Si lo guardas en mi cámara, al menos duerme seguro."
+      }
+    },
+    {
+      "id": "aelin",
+      "name": "Aelin Plumaverde",
+      "short": "Aelin",
+      "title": "Flechera",
+      "portrait": "🏹",
+      "accent": "#5fa36b",
+      "voice": "default",
+      "bio": "Elfa de pocas palabras que talla cada flecha a mano. Pide que pruebes el arco antes de comprarlo.",
+      "traits": {
+        "greed": 0.45,
+        "patience": 0.6,
+        "pride": 0.7,
+        "warmth": 0.5,
+        "shrewdness": 0.6
+      },
+      "likes": [
+        "animales",
+        "clima",
+        "batallas"
+      ],
+      "dislikes": [
+        "forja"
+      ],
+      "race": "elfo",
+      "kinds": [
+        "oficial"
+      ],
+      "archetypes": [
+        "orgulloso",
+        "honrado"
+      ],
+      "presence": {
+        "location": "puerta-este"
+      },
+      "schedule": {
+        "phases": [
+          "manana",
+          "tarde"
+        ]
+      },
+      "knows": {
+        "topics": [
+          "rutas",
+          "peligros"
+        ],
+        "regions": [
+          "valle",
+          "marca"
+        ]
+      },
+      "profession": "flechero",
+      "topicLines": {
+        "animales": "Un buen cazador conoce a su presa mejor que su presa a sí misma."
+      }
+    },
+    {
+      "id": "berto",
+      "name": "Berto Viruta",
+      "short": "Berto",
+      "title": "Carpintero y carretero",
+      "portrait": "🪚",
+      "accent": "#b07b4f",
+      "voice": "gruñon",
+      "bio": "Siempre tiene serrín en la barba. Hace carros que duran tres generaciones y muebles que pesan como un buey.",
+      "traits": {
+        "greed": 0.5,
+        "patience": 0.5,
+        "pride": 0.6,
+        "warmth": 0.5,
+        "shrewdness": 0.5
+      },
+      "likes": [
+        "forja",
+        "familia",
+        "cocina"
+      ],
+      "dislikes": [
+        "magia"
+      ],
+      "race": "enano",
+      "kinds": [
+        "oficial"
+      ],
+      "archetypes": [
+        "honrado",
+        "orgulloso"
+      ],
+      "presence": {
+        "location": "puerta-este"
+      },
+      "schedule": {
+        "phases": [
+          "manana",
+          "tarde"
+        ]
+      },
+      "knows": {
+        "topics": [
+          "rutas",
+          "lugares"
+        ],
+        "regions": [
+          "valle",
+          "montes"
+        ]
+      },
+      "profession": "carpintero",
+      "topicLines": {
+        "forja": "La madera también se forja, ¿sabes? Con paciencia en vez de fuego."
+      }
+    },
+    {
+      "id": "ismael",
+      "name": "Ismael Tintaoscura",
+      "short": "Ismael",
+      "title": "Escriba de conjuros",
+      "portrait": "📜",
+      "accent": "#9a7fd1",
+      "voice": "erudito",
+      "bio": "Copia conjuros con una caligrafía perfecta. Cobra por nivel y no admite borrones, ni siquiera de clientes.",
+      "traits": {
+        "greed": 0.55,
+        "patience": 0.9,
+        "pride": 0.7,
+        "warmth": 0.4,
+        "shrewdness": 0.7
+      },
+      "likes": [
+        "magia",
+        "historia",
+        "estrellas"
+      ],
+      "dislikes": [
+        "apuestas"
+      ],
+      "race": "tiefling",
+      "kinds": [
+        "oficial"
+      ],
+      "archetypes": [
+        "orgulloso",
+        "honrado"
+      ],
+      "presence": {
+        "location": "plaza-mayor"
+      },
+      "schedule": {
+        "phases": [
+          "manana",
+          "tarde"
+        ]
+      },
+      "knows": {
+        "topics": [
+          "lugares",
+          "facciones"
+        ],
+        "regions": [
+          "valle"
+        ]
+      },
+      "profession": "escriba",
+      "topicLines": {
+        "magia": "Un conjuro mal copiado es una puerta abierta a algo que no quieres conocer. Por eso cobro lo que cobro."
+      }
+    },
+    {
+      "id": "lucia",
+      "name": "Lucía Tapiz",
+      "short": "Lucía",
+      "title": "Mueblera y decoradora",
+      "portrait": "🛋️",
+      "accent": "#d68fb0",
+      "voice": "campechana",
+      "bio": "Convierte cualquier cuchitril en un hogar. Sabe qué alfombra va con qué humor y no se calla su opinión.",
+      "traits": {
+        "greed": 0.5,
+        "patience": 0.6,
+        "pride": 0.4,
+        "warmth": 0.8,
+        "shrewdness": 0.5
+      },
+      "likes": [
+        "familia",
+        "chismes",
+        "cocina"
+      ],
+      "dislikes": [],
+      "race": "mediano",
+      "kinds": [
+        "oficial"
+      ],
+      "archetypes": [
+        "chismoso",
+        "amable"
+      ],
+      "presence": {
+        "location": "plaza-mayor"
+      },
+      "schedule": {
+        "phases": [
+          "manana",
+          "tarde"
+        ]
+      },
+      "knows": {
+        "topics": [
+          "personas",
+          "eventos"
+        ],
+        "regions": [
+          "valle"
+        ]
+      },
+      "profession": "mueblero"
     }
   ]
 }

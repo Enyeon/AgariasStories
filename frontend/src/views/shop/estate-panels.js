@@ -9,11 +9,13 @@
  */
 
 import { h, replace } from './dom.js';
-import { formatCp } from '../../domain/money.js';
+import { formatCp, coinValues, displayCurrency } from '../../domain/money.js';
 import { popularityLabel, entrepreneurStage } from '../../domain/shop/popularity.js';
 import { PERIODS } from '../../domain/shop/staff.js';
+import { furnitureSection } from './inn-panels.js';
 
-const PO = 100; // los precios se escriben en piezas de oro
+// Los importes se escriben en piezas de oro del sistema monetario activo (100 pc en D&D, 1000 en Lord 100).
+const PO = () => coinValues(displayCurrency()).gp;
 
 function dialogShell(root, title, ...content) {
     const dialog = h(
@@ -30,7 +32,7 @@ function dialogShell(root, title, ...content) {
 
 const num = (attrs = {}) => h('input', { type: 'number', class: 'qty-input', ...attrs });
 const select = (label, options, value) => h('select', { class: 'sort-select', 'aria-label': label }, options.map(([v, text]) => h('option', { value: v, selected: String(v) === String(value ?? '') }, text)));
-const poToCp = (v) => Math.round(Number(v) * PO);
+const poToCp = (v) => Math.round(Number(v) * PO());
 
 /** Botón que pide una segunda pulsación antes de algo difícil de deshacer. */
 function confirmButton(label, confirmLabel, onConfirm, cls = 'btn btn-sm btn-ghost') {
@@ -100,7 +102,7 @@ export function openEstate(root, service, { toast }) {
         const sellers = p.staff.filter((s) => s.role === 'vendedor');
         const stockRows = Object.entries(biz.stock).map(([itemId, s]) => {
             const item = ctx().item(itemId);
-            const price = num({ min: '0.01', step: '0.01', value: String(s.price / PO), 'aria-label': `Precio de ${item?.name} (po)` });
+            const price = num({ min: '0.01', step: '0.01', value: String(s.price / PO()), 'aria-label': `Precio de ${item?.name} (po)` });
             price.addEventListener('change', () => run('price', { plotId: id, itemId, price: poToCp(price.value) }, 'Precio actualizado.'));
             const pop = service.popularity(itemId);
             return h('tr', {},
@@ -165,7 +167,7 @@ export function openEstate(root, service, { toast }) {
                 const role = roles.get(e.role);
                 const assign = select('Destino', [['', 'Sin destino'], ...props.map((p) => [p.plot.id, p.plot.name])], e.assignment);
                 assign.addEventListener('change', () => run('assign', { staffId: e.id, plotId: assign.value || null }, 'Destino cambiado.'));
-                const wage = num({ min: '0.01', step: '0.01', value: String(e.wage / PO), 'aria-label': 'Salario diario (po)' });
+                const wage = num({ min: '0.01', step: '0.01', value: String(e.wage / PO()), 'aria-label': 'Salario diario (po)' });
                 const period = select('Pago', Object.entries(PERIODS), e.period);
                 const share = num({ min: '0', max: '50', step: '1', value: String(Math.round(e.share * 100)), 'aria-label': '% de las ventas' });
                 const days = num({ min: '0', step: '1', placeholder: 'Indef.', value: e.until ? String(Math.max(0, e.until - service.clock.day)) : '', 'aria-label': 'Días de contrato (vacío = indefinido)' });
@@ -237,7 +239,7 @@ export function openEstate(root, service, { toast }) {
 
     const render = () => {
         if (!service.state.characterId) return replace(body, h('p', { class: 'muted' }, 'Elige un personaje.'));
-        replace(body, stageCard(), plotsSection(), propertiesSection(), staffSection(), boardSection(), reportsSection());
+        replace(body, stageCard(), plotsSection(), propertiesSection(), furnitureSection(service, { toast, onChange: render }), staffSection(), boardSection(), reportsSection());
     };
     render();
 }
