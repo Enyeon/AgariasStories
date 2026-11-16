@@ -1078,3 +1078,4 @@
   .guild-service { grid-template-columns: auto 1fr; }
   .guild-service .talk-controls { grid-column: 1 / -1; }
 }
+.purse-total { margin-left: 0.4em; color: var(--ink-muted); font-size: 0.8em; white-space: nowrap; }

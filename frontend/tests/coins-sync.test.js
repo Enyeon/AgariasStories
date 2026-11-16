@@ -120,3 +120,21 @@ describe('la Tienda ve las monedas añadidas en la ficha', () => {
     expect(typeof ch.subscribe(() => {})).toBe('function');
   });
 });
+
+describe('platino', () => {
+  it('cuenta en la bolsa y sirve para pagar (con cambio)', async () => {
+    const { pay } = await import('../src/domain/money.js');
+    expect(coinsInCp({ pp: 1, gp: 5 })).toBe(1500);
+    const r = pay({ cp: 0, sp: 0, gp: 5, pp: 1 }, 1200);
+    expect(r.ok).toBe(true);
+    expect(coinsInCp(r.coins)).toBe(300);
+    expect(r.coins.pp).toBe(0);
+  });
+
+  it('la bolsa de la Tienda muestra el platino tal cual y el total', async () => {
+    const { purse } = await import('../src/views/shop/dom.js');
+    const el = purse({ cp: 0, sp: 0, gp: 5, pp: 1 });
+    expect(el.textContent.replace(/\s+/g, ' ')).toContain('1ppt');
+    expect(el.textContent).toContain('= 15 po');
+  });
+});

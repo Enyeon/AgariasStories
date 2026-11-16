@@ -11,7 +11,7 @@ import { CATEGORIES, getCategory, getRarity, getSub, itemIcon, searchKey } from 
 import { coinsInCp, formatCp } from '../../domain/money.js';
 import { activeEvents, eventIntensity } from '../../domain/shop/pricing.js';
 import { priceBreakdown } from '../../domain/shop/transactions.js';
-import { h, replace, coins, pct, sparkline, debounce } from './dom.js';
+import { h, replace, coins, purse, pct, sparkline, debounce } from './dom.js';
 import { toast as appToast } from '../../ui/feedback.js';
 import { openNegotiation } from './negotiation-dialog.js';
 import { renderTalk } from './talk-panel.js';
@@ -185,7 +185,7 @@ export function mountShopView(root, service, { onCharacterChange } = {}) {
                 'div',
                 { class: 'market-char' },
                 h('label', { class: 'char-picker' }, h('span', { class: 'sr-only' }, 'Personaje'), characterSelect),
-                character ? h('div', { class: 'purse', title: 'Monedas del personaje (las de su ficha)' }, h('span', { class: 'purse-icon', 'aria-hidden': 'true' }, '👛'), coins(coinsInCp(character.equipment.coins))) : null,
+                character ? h('div', { class: 'purse', title: 'Monedas del personaje (las de su ficha)' }, h('span', { class: 'purse-icon', 'aria-hidden': 'true' }, '👛'), purse(character.equipment.coins)) : null,
                 character ? h('a', { class: 'btn btn-ghost', href: `/editar/${encodeURIComponent(s.characterId)}`, 'data-link': true, title: 'Abrir la ficha: inventario, monedas y Taller' }, '📜 Ficha') : null,
                 h('button', { class: 'btn btn-icon', title: 'Opciones', 'aria-label': 'Opciones de la tienda', onclick: openSettings }, '⚙'),
             ),

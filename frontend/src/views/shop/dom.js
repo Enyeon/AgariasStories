@@ -4,7 +4,7 @@
  * nombres de objetos Homebrew o personajes no pueden inyectar HTML.
  */
 
-import { formatCp } from '../../domain/money.js';
+import { formatCp, coinsInCp, normalizeCoins, COIN_SHORT, COIN_VALUE } from '../../domain/money.js';
 
 export function h(tag, props = {}, ...children) {
     const el = document.createElement(tag);
@@ -51,6 +51,21 @@ export function coins(amount, { size = '' } = {}) {
         { class: ['coins', size && `coins-${size}`], title: formatCp(amount), 'aria-label': formatCp(amount) },
         parts.map((p) => h('span', { class: `coin coin-${p.code}` }, h('b', {}, p.amount.toLocaleString('es-AR')), h('i', { 'aria-hidden': 'true' }, p.short))),
     );
+}
+
+/**
+ * Bolsa del personaje TAL COMO ESTÁ en su ficha (platino, oro, plata, cobre) y,
+ * si hay más de un tipo de moneda o platino, su total en oro: «1 ppt 5 po = 15 po».
+ */
+export function purse(bag) {
+    const c = normalizeCoins(bag);
+    const order = Object.keys(c).sort((a, b) => COIN_VALUE[b] - COIN_VALUE[a]);
+    const held = order.filter((k) => c[k] > 0);
+    const total = coinsInCp(c);
+    const pieces = (held.length ? held : ['gp']).map((k) => h('span', { class: `coin coin-${k}`, title: `${c[k]} ${COIN_SHORT[k]}` }, h('b', {}, c[k].toLocaleString('es-AR')), h('i', { 'aria-hidden': 'true' }, COIN_SHORT[k])));
+    const showTotal = held.length > 1 || c.pp > 0;
+    return h('span', { class: 'coins purse-coins', title: `Total: ${formatCp(total)}`, 'aria-label': `Monedas: ${held.map((k) => `${c[k]} ${COIN_SHORT[k]}`).join(', ') || '0 po'}. Total: ${formatCp(total)}` },
+        pieces, showTotal ? h('small', { class: 'purse-total' }, `= ${formatCp(total)}`) : null);
 }
 
 export function pct(value) {
