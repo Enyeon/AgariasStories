@@ -67,10 +67,49 @@ El DM empieza y termina sesiones; lo que se anota mientras tanto queda asociado 
 la sesión (`campaign_sessions`, `campaign_events.session_id`). Base para
 capítulos (fase 3).
 
+## Fase 2 (AgSt 1.25): Homebrew reutilizable
+
+«Mi Homebrew» pasa a ser **📚 Mi biblioteca**: el contenido reutilizable del DM,
+guardado en su dispositivo. No necesita migración de Supabase.
+
+- **Usar en campañas sin duplicar.** Desde la biblioteca (📤 *Usar en
+  campaña*) o desde la campaña (📚 *Añadir desde mi biblioteca*). La campaña
+  guarda su copia con un vínculo `data.linkedFrom = { id, version }`. Hace
+  falta una copia porque los jugadores no pueden leer la biblioteca del
+  dispositivo del DM. Volver a usar el mismo elemento actualiza esa copia en
+  vez de crear otra.
+- **Versión fijada.** Cada campaña sigue con la versión que eligió. Guardar
+  en la biblioteca sin cambios no sube la versión.
+- **Avisos de versión nueva:**
+  - en la biblioteca, junto a cada elemento (`Mesa B v1 → v2`) y arriba con
+    «Revisar y actualizar»;
+  - en el Homebrew de la campaña;
+  - en el resumen de la campaña (DM).
+
+  Antes de actualizar se muestra qué cambia (descripción, rasgos…). Los
+  personajes que ya lo usan ven el aviso de versión nueva en su ficha, como
+  antes.
+- **Editar una copia vinculada.** Se puede editar en la biblioteca
+  (recomendado: esta campaña se actualiza al momento y las demás reciben el
+  aviso) o sólo en la campaña (la copia se desvincula).
+- **Desvincular.** La campaña conserva su copia, pero ya no recibe avisos.
+- **📚 A mi biblioteca.** Guarda en la biblioteca un elemento creado en una
+  campaña, para reutilizarlo en otras. Si eres el DM, la campaña queda
+  vinculada a él. Los jugadores también pueden copiar contenido a su
+  biblioteca, salvo las extensiones secretas.
+- **Códigos de desbloqueo.** El de una extensión «con código» se copia junto
+  con ella entre la biblioteca y la campaña.
+- **Exportar e importar.** El archivo de la biblioteca (formato v2) lleva el
+  id y la versión de cada elemento:
+  - al importarlo en otro dispositivo se reconocen los vínculos con las
+    campañas;
+  - importarlo otra vez no duplica nada: sólo actualiza lo que tenga una
+    versión más nueva;
+  - los archivos antiguos se siguen importando.
+- **Móvil.** Las reglas de la campaña se ven como tarjetas en vez de tabla.
+
 ## Fases siguientes
 
-- **Fase 2:** Homebrew como biblioteca reutilizable; las campañas eligen
-  elementos con versión fijada y avisos de actualización, sin duplicarlos.
 - **Fase 3:** Mundo (lugares, PNJ, facciones, misiones, notas, información
   descubierta), sesiones y capítulos con su vista, inventario avanzado
   (equipar, transferir, usar).
@@ -94,3 +133,10 @@ Probado en Chrome a 1280×900 y a 375–390 px (móvil, táctil):
 - [x] Diálogos a pantalla completa en móvil; formularios con campos de 44 px y
       16 px de texto (sin zoom en iOS); tarjetas en vez de tablas.
 - [x] Campañas antiguas: el código de invitación sigue funcionando.
+- [x] Biblioteca: usar un elemento en dos campañas, editarlo, aviso
+      `v1 → v2` en la biblioteca, en el Homebrew de la campaña y en su
+      resumen; actualizar una campaña, luego «Actualizar todas».
+- [x] Campaña: «A mi biblioteca», «Añadir desde mi biblioteca» (lo que ya
+      está al día aparece desactivado) y editar una copia vinculada desde la
+      biblioteca.
+- [x] Biblioteca y Homebrew de la campaña a 375 px sin desbordamiento horizontal.

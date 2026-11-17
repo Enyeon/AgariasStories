@@ -11,7 +11,8 @@
 import './campaigns.css';
 import { html, raw, setHtml, formatDate } from '../ui/dom.js';
 import { toast, confirmDialog, openDialog, reportError, userMessageFor } from '../ui/feedback.js';
-import { getPack } from '../content/registry.js';
+import { getPack, listEntries } from '../content/registry.js';
+import { linkState } from '../content/library.js';
 import { inviteUrl, parseInvite } from '../services/homebrew.js';
 import { campaignError } from '../services/campaign-play.js';
 import { parseDocument } from '../domain/validation.js';
@@ -339,6 +340,7 @@ function mountCampaign(container, ctx, id) {
     return html`
       ${isDm() && (pendingMembers.length || pendingPcs.length) ? html`<button type="button" class="callout callout--warning camp-alert" data-tab="jugadores">
         <strong>${pendingMembers.length + pendingPcs.length} solicitud${pendingMembers.length + pendingPcs.length === 1 ? '' : 'es'} esperando tu aprobación</strong> · Revisar ›</button>` : ''}
+      ${isDm() ? libraryNotice() : ''}
       <div class="camp-stats">
         <div class="camp-stat"><span class="camp-stat__n">${active.filter((x) => x.role === 'jugador').length}</span><span>Jugadores</span></div>
         <div class="camp-stat"><span class="camp-stat__n">${pcs().filter((p) => p.status === 'activo').length}</span><span>PJ</span></div>
@@ -360,6 +362,17 @@ function mountCampaign(container, ctx, id) {
         </div>
       </section>
       ${myAccessCard()}`;
+  }
+
+  /** DM: elementos de su biblioteca con versión nueva que esta campaña aún no usa. */
+  function libraryNotice() {
+    const lib = svc.localPack().items;
+    const entries = listEntries(null, { selectable: false, packId: id });
+    const linked = entries.filter((e) => linkState(e, lib));
+    const outdated = linked.filter((e) => linkState(e, lib).state === 'nueva-version').length;
+    if (!outdated) return '';
+    return html`<a class="callout callout--accent camp-alert" href="/homebrew/${id}" data-link>
+      <strong>📚 ${outdated} ${outdated === 1 ? 'elemento de tu biblioteca tiene' : 'elementos de tu biblioteca tienen'} una versión nueva</strong> · La campaña sigue con la suya hasta que la actualices. Revisar ›</a>`;
   }
 
   /** Enlace personal para usar el mismo acceso en otro dispositivo. */

@@ -290,6 +290,21 @@ const NORMALIZERS = {
  * Valida y normaliza un elemento de contenido.
  * @returns {{ item: object|null, errors: string[] }}
  */
+/**
+ * Vínculo con la biblioteca del DM (Homebrew reutilizable): de qué elemento
+ * de la biblioteca sale este elemento de campaña y qué versión tiene fijada.
+ * { id, version, pack?, name? } o null.
+ */
+export function normalizeLink(raw) {
+  if (!isObject(raw)) return null;
+  const id = str(raw.id, 40);
+  if (!/^[A-Za-z0-9_-]{4,40}$/.test(id)) return null;
+  const link = { id, version: int(raw.version, 1, 1_000_000, 1) };
+  const pack = str(raw.pack, 60);
+  if (pack) link.pack = pack;
+  return link;
+}
+
 export function validateContent(type, raw) {
   const errors = [];
   if (!Object.hasOwn(NORMALIZERS, type)) return { item: null, errors: ['Tipo de contenido desconocido.'] };
@@ -305,6 +320,8 @@ export function validateContent(type, raw) {
     source: str(raw.source, 120),
     ...NORMALIZERS[type](raw, errors),
   };
+  const link = normalizeLink(raw.linkedFrom);
+  if (link) item.linkedFrom = link;
   return { item: errors.length ? null : item, errors };
 }
 

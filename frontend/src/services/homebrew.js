@@ -10,6 +10,7 @@
 import { installPack, uninstallPack, listEntries } from '../content/registry.js';
 import { makeRef, parseRef, randomId, validateContent, CONTENT_TYPE_KEYS } from '../content/schema.js';
 import { normalizeRules } from '../content/rules.js';
+import { linkedData, withoutLink, findLinked, libraryUsage, itemIdOf } from '../content/library.js';
 import { normalizeCampaignDetails } from '../domain/campaign.js';
 import { campaignApi as defaultApi, hasSupabase } from './api.js';
 
@@ -19,6 +20,7 @@ const K_CAMPAIGNS = `${LS}campaigns`;
 const K_CACHE = (id) => `${LS}campaign-cache:${id}`;
 const K_CODES = (id) => `${LS}unlock-codes:${id}`;
 export const PACK_FORMAT = 'agarias-homebrew-pack';
+const ITEM_ID = /^[A-Za-z0-9_-]{4,40}$/;
 
 function read(key, fallback) {
   try {
@@ -131,13 +133,16 @@ export function createHomebrewService({ api = defaultApi } = {}) {
 
     // Local
     localPack: () => local,
-    saveLocalItem({ type, data, contentId }) {
-      const { item, errors } = validateContent(type, data);
+    saveLocalItem({ type, data, contentId, version = null }) {
+      // En la biblioteca no hay vínculos: el vínculo lo llevan las copias de campaña.
+      const { item, errors } = validateContent(type, withoutLink(data));
       if (!item) return { errors };
       const id = contentId ?? randomId(10);
       const ref = makeRef(local.id, type, id);
       const prev = local.items.find((i) => i.ref === ref);
-      const entry = { ref, type, version: (prev?.version ?? 0) + 1, status: 'publicado', data: item };
+      // Sin cambios de contenido no sube la versión (no avisa a las campañas por nada).
+      if (prev && version == null && JSON.stringify(prev.data) === JSON.stringify(item) && prev.status !== 'retirado') return { errors: [], ref, unchanged: true };
+      const entry = { ref, type, version: version ?? (prev?.version ?? 0) + 1, status: 'publicado', data: item };
       local = { ...local, items: [...local.items.filter((i) => i.ref !== ref), entry] };
       write(K_LOCAL, local);
       installLocal(local);
@@ -162,10 +167,14 @@ export function createHomebrewService({ api = defaultApi } = {}) {
       const name = isLocal ? local.name : membership(packId)?.name ?? 'Campaña';
       return {
         format: PACK_FORMAT,
-        version: 1,
         name,
         exportedAt: new Date().toISOString(),
-        items: items.filter((i) => i.status !== 'retirado').map((i) => ({ type: i.type, data: i.data ?? i.item })),
+        // version 2: cada elemento lleva su id y su versión, para que al importar la
+        // biblioteca en otro dispositivo se conserven los vínculos con las campañas.
+        version: 2,
+        items: items.filter((i) => i.status !== 'retirado').map((i) => (isLocal
+          ? { id: itemIdOf(i.ref), version: i.version, type: i.type, data: i.data }
+          : { type: i.type, data: withoutLink(i.data ?? i.item) })),
       };
     },
 
@@ -177,14 +186,23 @@ export function createHomebrewService({ api = defaultApi } = {}) {
         throw e;
       }
       let added = 0;
+      let updated = 0;
+      let unchanged = 0;
       const rejected = [];
       for (const it of raw.items.slice(0, 500)) {
         if (!CONTENT_TYPE_KEYS.includes(it?.type)) { rejected.push('Tipo desconocido'); continue; }
-        const res = this.saveLocalItem({ type: it.type, data: it.data });
+        // Con id (biblioteca exportada desde la 1.25): el mismo elemento no se duplica;
+        // sólo se actualiza si el archivo trae una versión más nueva.
+        const id = typeof it.id === 'string' && ITEM_ID.test(it.id) ? it.id : null;
+        const prev = id ? local.items.find((x) => x.type === it.type && itemIdOf(x.ref) === id) : null;
+        const incoming = Math.max(1, Math.trunc(Number(it.version) || 1));
+        if (prev && prev.version >= incoming) { unchanged++; continue; }
+        const res = this.saveLocalItem({ type: it.type, data: it.data, contentId: id ?? undefined, version: id ? incoming : undefined });
         if (res.errors.length) rejected.push(`${it.data?.name ?? '?'}: ${res.errors.join(' ')}`);
+        else if (prev) updated++;
         else added++;
       }
-      return { added, rejected };
+      return { added, updated, unchanged, rejected };
     },
 
     // Campañas
@@ -344,13 +362,95 @@ export function createHomebrewService({ api = defaultApi } = {}) {
       return res.inviteCode;
     },
 
-    async saveCampaignItem(id, { type, data, contentId = null, status = null }) {
+    async saveCampaignItem(id, { type, data, contentId = null, status = null }, { refresh = true } = {}) {
       const { item, errors } = validateContent(type, data);
       if (!item) return { errors };
       const m = membership(id);
       const res = await api.upsertContent(id, m.key, { type, data: item, contentId, status });
-      await this.refresh(id);
-      return { errors: [], ref: makeRef(id, type, res.contentId), status: res.status };
+      if (refresh) await this.refresh(id);
+      return { errors: [], ref: makeRef(id, type, res.contentId), status: res.status, version: res.version };
+    },
+
+    // ── Biblioteca reutilizable ─────────────────────────────────────────
+    // La biblioteca es «Mi Homebrew». Las campañas guardan una copia vinculada
+    // (data.linkedFrom) con la versión fijada. Ver content/library.js.
+
+    /** Campañas en las que eres DM, con su contenido (para vincular). */
+    dmCampaigns() {
+      return memberships.filter((m) => m.role === 'dm' && m.key)
+        .map((m) => ({ id: m.id, name: m.name, entries: listEntries(null, { selectable: false, packId: m.id }).filter((e) => e.origin !== 'snapshot') }));
+    },
+
+    /** Map<ref de la biblioteca, usos en campañas> (ver libraryUsage). */
+    libraryUsage() {
+      return libraryUsage(local.items, this.dmCampaigns());
+    },
+
+    /**
+     * Usa elementos de la biblioteca en una campaña. Si la campaña ya tiene la
+     * copia vinculada de un elemento, la actualiza a la última versión (no
+     * duplica). Las copias nuevas entran con `status`; las existentes conservan el suyo.
+     * Devuelve { created, updated, failed: [{ name, error }] }.
+     */
+    async useInCampaign(campaignId, libraryRefs, { status = 'publicado' } = {}) {
+      const m = membership(campaignId);
+      if (m?.role !== 'dm') throw Object.assign(new Error('forbidden'), { code: 'forbidden', userMessage: 'Sólo el DM puede añadir contenido a la campaña.' });
+      const out = { created: 0, updated: 0, failed: [] };
+      for (const libRef of libraryRefs) {
+        const lib = local.items.find((i) => i.ref === libRef);
+        if (!lib || lib.status === 'retirado') continue;
+        const entries = listEntries(null, { selectable: false, packId: campaignId }).filter((e) => e.origin !== 'snapshot');
+        const existing = findLinked(entries, libRef);
+        try {
+          const res = await this.saveCampaignItem(campaignId, {
+            type: lib.type, data: linkedData(lib, local.id), contentId: existing ? itemIdOf(existing.ref) : null, status: existing ? null : status,
+          }, { refresh: false });
+          if (res.errors?.length) { out.failed.push({ name: lib.data.name, error: res.errors.join(' ') }); continue; }
+          // El código de una extensión «con código» lo conoce el DM: se copia a la campaña.
+          const code = this.unlockCode(local.id, libRef);
+          if (code) this.setUnlockCode(campaignId, res.ref, code);
+          if (existing) out.updated++; else out.created++;
+        } catch (err) {
+          out.failed.push({ name: lib.data.name, error: err?.userMessage ?? err?.message ?? 'Error' });
+        }
+      }
+      await this.refresh(campaignId);
+      return out;
+    },
+
+    /** Actualiza las copias de un elemento de la biblioteca en todas las campañas que lo usan. */
+    async updateEverywhere(libraryRef) {
+      const uses = (this.libraryUsage().get(libraryRef) ?? []).filter((u) => u.outdated);
+      const results = [];
+      for (const u of uses) results.push(await this.useInCampaign(u.campaignId, [libraryRef]).catch((err) => ({ failed: [{ error: err?.userMessage ?? 'Error' }] })));
+      return { campaigns: uses.length, failed: results.flatMap((r) => r.failed ?? []) };
+    },
+
+    /** Deja la copia de la campaña sin vínculo: ya no recibe avisos de versión nueva. */
+    async unlinkCampaignItem(campaignId, ref) {
+      const e = listEntries(null, { selectable: false, packId: campaignId }).find((x) => x.ref === ref);
+      if (!e?.item.linkedFrom) return null;
+      return this.saveCampaignItem(campaignId, { type: e.type, data: withoutLink(e.item), contentId: itemIdOf(ref) });
+    },
+
+    /**
+     * Guarda en la biblioteca un elemento de una campaña (para reutilizarlo en
+     * otras). Si eres el DM, la copia de la campaña queda vinculada a él.
+     * Devuelve la referencia en la biblioteca.
+     */
+    async saveToLibrary(packId, ref) {
+      const e = listEntries(null, { selectable: false, packId }).find((x) => x.ref === ref);
+      if (!e) return null;
+      const known = e.item.linkedFrom && local.items.find((i) => i.type === e.type && itemIdOf(i.ref) === e.item.linkedFrom.id);
+      const res = this.saveLocalItem({ type: e.type, data: withoutLink(e.item), contentId: known ? itemIdOf(known.ref) : undefined });
+      if (res.errors.length) return { errors: res.errors };
+      const code = this.unlockCode(packId, ref);
+      if (code) this.setUnlockCode(local.id, res.ref, code);
+      if (membership(packId)?.role === 'dm' && !(known && res.unchanged)) {
+        const lib = local.items.find((i) => i.ref === res.ref);
+        await this.saveCampaignItem(packId, { type: e.type, data: linkedData(lib, local.id), contentId: itemIdOf(ref) });
+      }
+      return { errors: [], ref: res.ref };
     },
 
     async setCampaignStatus(id, ref, status) {

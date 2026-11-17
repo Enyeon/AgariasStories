@@ -163,7 +163,7 @@
 .dialog__header { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); padding: var(--space-4) var(--space-5); border-bottom: 1px solid var(--border); }
 .dialog__title { margin: 0; font-size: var(--fs-xl); }
 .dialog__body { padding: var(--space-5); overflow-y: auto; }
-.dialog__message { color: var(--text-muted); }
+.dialog__message { color: var(--text-muted); white-space: pre-line; }
 .dialog__actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--space-2); margin-top: var(--space-5); }
 .dialog__actions--stack { flex-direction: column; align-items: stretch; }
 .dialog.is-nudged { animation: dialog-nudge 280ms ease-out; }
@@ -300,3 +300,27 @@
 .campaign-card__synopsis { white-space: pre-line; margin: 0 0 var(--space-3); }
 .pre-line { white-space: pre-line; }
 .campaign-form .row .input--num { width: 5rem; }
+
+/* ── Biblioteca de Homebrew (vínculos con campañas) ─────────────────── */
+.lib-uses, .lib-link { display: block; margin-top: var(--space-1); font-size: var(--fs-xs); color: var(--text-muted); }
+.lib-uses .badge { font-size: 0.68rem; }
+.lib-link--nueva-version, .lib-link--retirado-en-biblioteca { color: var(--warning); }
+.lib-pending { margin: var(--space-3) 0; }
+.lib-pick__list { display: grid; gap: var(--space-2); max-height: 55vh; overflow-y: auto; }
+.lib-pick__row { display: flex; gap: var(--space-3); align-items: flex-start; padding: var(--space-3); border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; min-height: 44px; }
+.lib-pick__row:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+.lib-pick__row.is-disabled { opacity: 0.6; cursor: default; }
+.lib-pick__row input { margin-top: 3px; width: 18px; height: 18px; flex: none; accent-color: var(--accent-strong); }
+.lib-pick__row span { display: grid; gap: 2px; min-width: 0; }
+.lib-pick__row small { color: var(--text-muted); }
+
+/* Reglas de la campaña: en móvil cada tipo es una tarjeta, no una fila de tabla. */
+@media (max-width: 720px) {
+  .rules-table thead { display: none; }
+  .rules-table, .rules-table tbody, .rules-table tr, .rules-table th, .rules-table td { display: block; width: 100%; }
+  .rules-table tr { border: 1px solid var(--border); border-radius: var(--radius-sm); padding: var(--space-3); margin-bottom: var(--space-2); }
+  .rules-table th, .rules-table td { border: 0; padding: var(--space-1) 0; }
+  .rules-table td[data-label]::before { content: attr(data-label); display: block; font-size: var(--fs-xs); color: var(--text-muted); }
+  .content-item .row--end { flex-wrap: wrap; }
+  .campaign-list li { flex-wrap: wrap; }
+}
