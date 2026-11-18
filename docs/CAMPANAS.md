@@ -108,11 +108,67 @@ guardado en su dispositivo. No necesita migración de Supabase.
   - los archivos antiguos se siguen importando.
 - **Móvil.** Las reglas de la campaña se ven como tarjetas en vez de tabla.
 
-## Fases siguientes
+## Fase 3 (AgSt 1.26): Mundo, sesiones e inventario avanzado
 
-- **Fase 3:** Mundo (lugares, PNJ, facciones, misiones, notas, información
-  descubierta), sesiones y capítulos con su vista, inventario avanzado
-  (equipar, transferir, usar).
+Migración `20261119000000_mundo_sesiones.sql` (aditiva, idempotente).
+
+### 🗺️ Mundo
+
+Pestaña *Mundo* de la campaña: misiones, lugares, PNJ, facciones, pistas y
+notas. Se busca sin acentos y se filtra por tipo.
+
+- **Qué se ha descubierto.** Las entradas del DM empiezan *ocultas*. El DM las
+  revela a toda la campaña o sólo a algunos jugadores (👁 *Revelar…*). Cada
+  descubrimiento queda en el registro (público, o privado para quien lo
+  descubre).
+- **Notas secretas del DM.** Cada entrada puede llevarlas; el servidor nunca
+  se las envía a los jugadores.
+- **Misiones.** Tienen estado (activa, en pausa, completada, fallida),
+  objetivos que el DM marca desde el detalle, recompensa y quién la encarga.
+  Completarla o fallarla se anota en el registro.
+- **Relaciones.** Un PNJ o un lugar puede estar en otro lugar; un PNJ puede
+  pertenecer a una facción. El detalle enlaza lo relacionado.
+- **Notas de los jugadores.** Privadas (sólo su autor; ni el DM las ve) o
+  compartidas con la campaña.
+- **No es el Mundo de la Tienda.** Las regiones, facciones y eventos
+  económicos del Homebrew siguen igual: esto es el mundo narrativo.
+
+### 🎬 Sesiones y capítulos
+
+Pestaña *Sesiones*. El DM crea capítulos y empieza o termina sesiones; una
+sesión nueva entra en el último capítulo, o en el que se elija. Cada sesión
+tiene:
+
+- un resumen para todos;
+- notas del DM, que sólo ve él;
+- «lo que pasó»: el registro filtrado por esa sesión, respetando la
+  privacidad de cada entrada.
+
+### 🎒 Inventario avanzado (en la ficha, para todos los personajes)
+
+- **Tarjetas en vez de tabla**, con filtros: todo, equipado, sintonizado y
+  consumibles.
+- **Equipar, sintonizar y consumible.**
+  - Sintonizar admite un máximo de 3 objetos a la vez.
+  - Los objetos consumibles muestran el botón *Usar*: resta una unidad y, en
+    un PJ de campaña, lo anota en el registro sin repetirlo como «Ya no
+    tiene…».
+- **Carga.** Peso por unidad; lo comprado en la Tienda ya lo trae. Las
+  monedas cuentan a razón de 50 por libra. La capacidad es FUE × 15, con
+  aviso de carga pesada o de sobrecarga.
+- **🤝 Dar** objetos o monedas a otro PJ de la campaña:
+  1. se sube lo pendiente;
+  2. el servidor cambia las dos fichas a la vez, comprobando la revisión;
+  3. queda en el registro de ambos.
+
+  Lo recibido llega sin equipar y se apila con un objeto igual.
+
+### Ficha en móvil
+
+- Las pestañas ocupan una sola fila deslizable; la activa se centra.
+- La cabecera es más compacta.
+- Las armas se ven con el nombre arriba y el bonificador, el daño y el botón
+  de quitar en una fila.
 
 ## Lista de comprobación (escritorio y móvil)
 
@@ -140,3 +196,12 @@ Probado en Chrome a 1280×900 y a 375–390 px (móvil, táctil):
       está al día aparece desactivado) y editar una copia vinculada desde la
       biblioteca.
 - [x] Biblioteca y Homebrew de la campaña a 375 px sin desbordamiento horizontal.
+- [x] Mundo: el DM crea una misión (pública), un lugar oculto y un PNJ
+      revelado sólo a un jugador. El jugador ve sólo lo suyo y nunca las notas
+      secretas. La nota privada del jugador no la ve el DM.
+- [x] Misión: marcar objetivos y completarla → «Misión completada» en el
+      registro.
+- [x] Sesiones: capítulo, empezar sesión; el jugador ve la sesión con todo lo
+      que pasó (dar objeto del DM, usar poción, dar a otro PJ).
+- [x] Inventario en móvil (390 px): consumible, usar, equipar, dar a otro PJ;
+      sin desbordamiento horizontal.

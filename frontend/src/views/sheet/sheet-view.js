@@ -28,6 +28,12 @@ function parseValue(el) {
     const max = Number(el.dataset.max ?? Infinity);
     return Math.min(max, Math.max(min, n));
   }
+  if (type === 'optnum') {
+    if (el.value.trim() === '') return null;
+    const n = Number(el.value.replace(',', '.'));
+    if (!Number.isFinite(n)) return undefined;
+    return Math.min(Number(el.dataset.max ?? Infinity), Math.max(Number(el.dataset.min ?? 0), Math.round(n * 100) / 100));
+  }
   return el.value;
 }
 
@@ -36,7 +42,11 @@ function parseValue(el) {
  * @param {{ character: object, readOnly?: boolean, initialTab?: string, onChange?: (c: object) => void,
  *   listHomebrewBackgrounds?: () => Promise<object[]> }} opts
  */
-export function createSheetView(root, { character, readOnly = false, initialTab = 'resumen', onChange, listHomebrewBackgrounds = async () => [], campaigns = () => [], recordId = null }) {
+/**
+ * `inventory` (opcional, sólo PJ de campaña): { giveItem(index), giveCoins() }
+ * para dar objetos y monedas a otro PJ de la campaña.
+ */
+export function createSheetView(root, { character, readOnly = false, initialTab = 'resumen', onChange, listHomebrewBackgrounds = async () => [], campaigns = () => [], recordId = null, inventory = null }) {
   const ed = {
     root,
     readOnly,
@@ -64,7 +74,12 @@ export function createSheetView(root, { character, readOnly = false, initialTab 
 
   Object.defineProperty(ed, 'permissions', { get: () => permissionsFor(ed.character) });
   // recordId: id local del personaje (para enlazar con la Tienda). null en la vista compartida.
-  const ctx = () => ({ character: ed.character, sheet: ed.sheet, readOnly, spells: ed.spells, ui: ed.ui, permissions: ed.permissions, campaigns: campaigns(), recordId });
+  // Acontecimientos para el registro de la campaña (p. ej. «Usa una poción»);
+  // el editor los recoge al guardar con takeEvents().
+  ed.events = [];
+  ed.inventory = inventory;
+  ed.takeEvents = () => ed.events.splice(0);
+  const ctx = () => ({ character: ed.character, sheet: ed.sheet, readOnly, spells: ed.spells, ui: ed.ui, permissions: ed.permissions, campaigns: campaigns(), recordId, canGive: Boolean(inventory) && !readOnly });
 
   function visibleTabs() {
     const c = ctx();
@@ -157,6 +172,9 @@ export function createSheetView(root, { character, readOnly = false, initialTab 
     ed.tab = id;
     ed.rerender({ keepScroll: false });
     root.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    // En móvil las pestañas se deslizan: la activa queda a la vista.
+    const active = tabsEl.querySelector(`[data-tab="${id}"]`);
+    if (active && tabsEl.scrollWidth > tabsEl.clientWidth) tabsEl.scrollLeft = active.offsetLeft - (tabsEl.clientWidth - active.offsetWidth) / 2;
     if (focus) tabsEl.querySelector(`[data-tab="${id}"]`)?.focus();
   };
 

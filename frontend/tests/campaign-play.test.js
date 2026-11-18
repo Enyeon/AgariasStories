@@ -346,3 +346,32 @@ describe('la Tienda con un PJ de campaña', () => {
     expect(server.events).toEqual([]);
   });
 });
+
+describe('dar a otro PJ de la campaña', () => {
+  it('sube lo pendiente, el servidor hace el intercambio y la copia local se actualiza', async () => {
+    const { server, characters, record } = await setup();
+    const calls = [];
+    const api = {
+      pcTransfer: async (camp, key, args) => {
+        calls.push(args);
+        const p = server.pcs.get(args.fromPc);
+        if (args.revision !== p.revision) throw new ApiError('conflict', 'x');
+        server.dmChange(args.fromPc, (c) => { c.equipment.items.splice(args.itemIndex, 1); });
+        return { fromRevision: p.revision, toRevision: 1, given: args.itemName };
+      },
+    };
+    const homebrew = { membership: () => ({ id: 'mesa', role: 'jugador', key: 'k' }), ownerKey: () => 'k' };
+    const play = createCampaignPlay({ api, homebrew, characters });
+    // Cambio local sin subir (sin conexión): se sube antes del intercambio.
+    const { record: rec, character } = await characters.open(record.id);
+    character.equipment.items.push({ name: 'Cuerda', quantity: 1, notes: '' });
+    server.failWith('network');
+    await characters.save(rec, character);
+    const res = await play.transfer(record.id, 'pc2', { itemIndex: 0, itemName: 'Cuerda', qty: 1 });
+    expect(res.given).toBe('Cuerda');
+    expect(calls[0]).toMatchObject({ fromPc: 'pc1', toPc: 'pc2', revision: 2 });
+    const after = await characters.open(record.id);
+    expect(after.character.equipment.items).toEqual([]);
+    expect(after.record.pc.revision).toBe(3);
+  });
+});

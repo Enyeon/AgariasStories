@@ -366,6 +366,11 @@ export function normalizeCharacter(raw) {
       name: text(it.name), quantity: int(it.quantity, { min: 0, max: 99_999, fallback: 1 }), notes: text(it.notes, LIMITS.mediumText),
       // (v3.2) Referencia opcional al catálogo de la Tienda: sólo se guarda si existe.
       ...(typeof it.ref === 'string' && /^[\w:.-]{1,120}$/.test(it.ref) ? { ref: it.ref } : {}),
+      // (1.26) Inventario avanzado: sólo se guardan si están puestos.
+      ...(it.equipped === true ? { equipped: true } : {}),
+      ...(it.attuned === true ? { attuned: true } : {}),
+      ...(it.consumable === true ? { consumable: true } : {}),
+      ...(Number.isFinite(Number(it.weight)) && Number(it.weight) > 0 ? { weight: Math.min(9999, Math.round(Number(it.weight) * 100) / 100) } : {}),
     })
     : null));
   d.equipment.treasure = text(eq.treasure, LIMITS.longText);

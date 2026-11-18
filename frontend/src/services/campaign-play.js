@@ -106,7 +106,34 @@ export function createCampaignPlay({ api = defaultApi, homebrew, characters }) {
     setOpenInvite: (id, open) => wrap(api.setAccess(id, dmKey(id), open)),
     reviewPc: (id, pcId, status) => wrap(api.pcReview(id, dmKey(id), pcId, status)),
     setPcState: (id, pcId, state) => pcMeta(id, pcId, dmKey(id), { state }),
-    startSession: (id, title) => wrap(api.sessionStart(id, dmKey(id), title)),
+    startSession: (id, title, chapterId = null) => wrap(api.sessionStart(id, dmKey(id), title, chapterId)),
+    sessions: (id) => wrap(api.sessionsList(id, keyOf(id))),
+    saveChapter: (id, chapter) => wrap(api.chapterUpsert(id, dmKey(id), chapter)),
+    updateSession: (id, sessionId, fields) => wrap(api.sessionUpdate(id, dmKey(id), sessionId, fields)),
+
+    // Mundo
+    world: (id) => wrap(api.worldList(id, keyOf(id))),
+    saveWorld: (id, entry) => wrap(api.worldUpsert(id, keyOf(id), entry)),
+    deleteWorld: (id, entryId) => wrap(api.worldDelete(id, keyOf(id), entryId)),
+
+    /**
+     * Da un objeto (índice + nombre) y/o monedas ({cp,sp,gp,pp}) de la copia
+     * local de un PJ a otro PJ de la campaña. Antes se sube lo pendiente; luego
+     * el servidor cambia las dos fichas a la vez y aquí se trae la nueva versión.
+     */
+    async transfer(recordId, toPc, { itemIndex = null, itemName = null, qty = 1, coins = null } = {}) {
+      let opened = await characters.open(recordId);
+      let pc = opened?.record.pc;
+      if (!pc) throw campaignError(new ApiError('not_found', MESSAGES.not_found));
+      if (pc.dirty) {
+        await characters.save(opened.record, opened.character);
+        opened = await characters.open(recordId);
+        pc = opened.record.pc;
+      }
+      const res = await wrap(api.pcTransfer(pc.campaignId, ownerKey(pc.campaignId), { fromPc: pc.pcId, toPc, revision: pc.revision, itemIndex, itemName, qty, coins }));
+      await characters.refreshCopy(recordId);
+      return res;
+    },
     endSession: (id) => wrap(api.sessionEnd(id, dmKey(id))),
     dmApply,
 

@@ -61,7 +61,14 @@ export function grantItem(character, item, qty) {
   const pieces = qty * (item.bundle ?? 1);
   const existing = out.equipment.items.find((e) => e.ref === item.id);
   if (existing) existing.quantity = Math.min(MAX_QTY, (Number(existing.quantity) || 0) + pieces);
-  else out.equipment.items.push(createItem({ name: inventoryName(item), quantity: Math.min(MAX_QTY, pieces), notes: inventoryNotes(item), ref: item.id }));
+  else {
+    // Peso por unidad (para la carga) y si se gasta al usarlo (inventario avanzado).
+    const weight = Number.isFinite(item.weight) && item.weight > 0 ? Math.round((item.weight / (item.bundle ?? 1)) * 100) / 100 : null;
+    out.equipment.items.push(createItem({
+      name: inventoryName(item), quantity: Math.min(MAX_QTY, pieces), notes: inventoryNotes(item), ref: item.id,
+      ...(weight ? { weight } : {}), ...(item.category === 'consumibles' ? { consumable: true } : {}),
+    }));
+  }
   return out;
 }
 

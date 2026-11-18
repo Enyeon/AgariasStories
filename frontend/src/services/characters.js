@@ -100,14 +100,18 @@ export function createCharacterService({ store = createLocalStore(), api = defau
    * Devuelve { pc, character, merged, fatal }.
    */
   async function pushCopy(pc, character, explicit = []) {
-    const skip = explicit.length ? ['dinero', 'objeto'] : [];
+    // La Tienda anota la operación completa (importe y objeto): no se repite.
+    // «Usar» anota lo gastado: se descuenta de «Ya no tiene…».
+    const SHOP = new Set(['compra', 'venta', 'tienda']);
+    const skip = explicit.some((e) => SHOP.has(e.kind)) ? ['dinero', 'objeto'] : [];
+    const used = explicit.filter((e) => e.kind === 'uso' && e.data?.name).map((e) => [e.data.name, e.data.qty ?? 1]);
     let base = pc.base;
     let revision = pc.revision;
     let current = character;
     let merged = false;
     const pending = [...(pc.pendingEvents ?? []), ...explicit];
     for (let attempt = 0; attempt < 3; attempt++) {
-      const events = [...pending, ...diffEvents(base, current, { skip })].slice(0, 25);
+      const events = [...pending, ...diffEvents(base, current, { skip, used })].slice(0, 25);
       try {
         const res = await pcRemote.save(pc.campaignId, pc.pcId, {
           document: createDocument(current), summary: pcSummary(current), revision, events,

@@ -164,8 +164,21 @@ export function createCampaignApi(rpc = createRpc()) {
       rpc('pc_save', { campaign_id: id, key, pc_id: pcId, document, summary, expected_revision: revision, events, state, privacy }),
     eventAdd: (id, key, { kind, text, data = null, pcId = null, visibility = 'publico', day = null }) =>
       rpc('event_add', { campaign_id: id, key, kind, message: text, data, pc_id: pcId, visibility, day }),
-    events: (id, key, { before = null, pcId = null, limit = 50 } = {}) => rpc('events_list', { campaign_id: id, key, before_id: before, pc_id: pcId, lim: limit }),
-    sessionStart: (id, dmKey, title = '') => rpc('session_start', { campaign_id: id, dm_key: dmKey, title }),
+    events: (id, key, { before = null, pcId = null, limit = 50, session = null } = {}) => rpc('events_list', {
+      campaign_id: id, key, before_id: before, pc_id: pcId, lim: limit, ...(session != null ? { session } : {}),
+    }),
+    sessionStart: (id, dmKey, title = '', chapterId = null) => rpc('session_start', { campaign_id: id, dm_key: dmKey, title, ...(chapterId != null ? { chapter_id: chapterId } : {}) }),
+    // Mundo, capítulos e intercambio (20261119000000_mundo_sesiones.sql).
+    worldList: (id, key) => rpc('world_list', { campaign_id: id, key }),
+    worldUpsert: (id, key, { entryId = null, kind, title, data = {}, secret = {}, reveal = null, revealedTo = null }) =>
+      rpc('world_upsert', { campaign_id: id, key, entry_id: entryId, kind, title, data, secret, reveal, revealed_to: revealedTo }),
+    worldDelete: (id, key, entryId) => rpc('world_delete', { campaign_id: id, key, entry_id: entryId }),
+    sessionsList: (id, key) => rpc('sessions_list', { campaign_id: id, key }),
+    chapterUpsert: (id, dmKey, { chapterId = null, title, summary = '' }) => rpc('chapter_upsert', { campaign_id: id, dm_key: dmKey, chapter_id: chapterId, title, summary }),
+    sessionUpdate: (id, dmKey, sessionId, { title = '', summary = '', dmNotes = '', chapterId = null }) =>
+      rpc('session_update', { campaign_id: id, dm_key: dmKey, session_id: sessionId, title, summary, dm_notes: dmNotes, chapter_id: chapterId }),
+    pcTransfer: (id, key, { fromPc, toPc, revision, itemIndex = null, itemName = null, qty = 1, coins = null }) =>
+      rpc('pc_transfer', { campaign_id: id, key, from_pc: fromPc, to_pc: toPc, expected_revision: revision, item_index: itemIndex, item_name: itemName, qty, coins }),
     sessionEnd: (id, dmKey) => rpc('session_end', { campaign_id: id, dm_key: dmKey }),
   };
 }

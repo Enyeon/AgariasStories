@@ -33,7 +33,7 @@ export const PC_STATE = Object.freeze({
 
 export const EVENT_KINDS = Object.freeze({
   compra: '🛒', venta: '💰', dinero: '🪙', objeto: '🎒', nivel: '⬆', experiencia: '✨', vida: '❤',
-  muerte: '💀', revivir: '🌅', retiro: '🏳', mision: '📜', recompensa: '🏆', nota: '📝', sesion: '🎬',
+  uso: '🧪', descubrimiento: '🔎', capitulo: '📚', muerte: '💀', revivir: '🌅', retiro: '🏳', mision: '📜', recompensa: '🏆', nota: '📝', sesion: '🎬',
   pj: '🧝', miembro: '👤', tienda: '🏪', gremio: '⚔', posada: '🛏', acontecimiento: '📌',
 });
 
@@ -87,7 +87,7 @@ const money = (amount, coins) => formatCp(Math.abs(amount), { system: currencyOf
  * `skip`: tipos que ya anotó quien hizo el cambio (p. ej. la Tienda anota la
  * compra con el vendedor y el precio; no hace falta repetir «−5 po» y «+cuerda»).
  */
-export function diffEvents(before, after, { skip = [] } = {}) {
+export function diffEvents(before, after, { skip = [], used = [] } = {}) {
   if (!before || !after) return [];
   const out = [];
   const skipping = new Set(skip);
@@ -114,7 +114,12 @@ export function diffEvents(before, after, { skip = [] } = {}) {
     }
   }
   if (!skipping.has('objeto')) {
-    const { added, removed } = itemChanges(before, after);
+    const changes = itemChanges(before, after);
+    // Lo que se gastó con «Usar» ya tiene su propia entrada en el registro.
+    const spent = new Map();
+    for (const [name, qty] of used) spent.set(name, (spent.get(name) ?? 0) + qty);
+    const added = changes.added;
+    const removed = changes.removed.map(([n, q]) => [n, q - (spent.get(n) ?? 0)]).filter(([, q]) => q > 0);
     const parts = [];
     if (added.length) parts.push(`Consigue: ${added.map(([n, q]) => plural(q, n)).join(', ')}.`);
     if (removed.length) parts.push(`Ya no tiene: ${removed.map(([n, q]) => plural(q, n)).join(', ')}.`);

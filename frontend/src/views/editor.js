@@ -109,6 +109,52 @@ export async function mountEditor(container, { services, navigate }, id) {
     return true;
   }
 
+  /** Dar a otro PJ de la campaña: elige destino (y cantidad), sube lo pendiente y lo hace el servidor. */
+  async function give({ itemIndex = null, coins = false }) {
+    const pc = record.pc;
+    let roster;
+    try { roster = await services.play.roster(pc.campaignId); } catch (err) { reportError(err, 'No se pudo cargar la campaña.'); return; }
+    const targets = roster.characters.filter((p) => p.status === 'activo' && p.pcId !== pc.pcId);
+    if (!targets.length) { toast('No hay otros PJ activos en la campaña.', { type: 'info' }); return; }
+    const c = sheetView.character;
+    const item = itemIndex != null ? c.equipment.items[itemIndex] : null;
+    const COINS_UI = [['pp', 'PPT'], ['gp', 'PO'], ['sp', 'PP'], ['cp', 'PC']];
+    const picked = await openDialog({
+      title: item ? `Dar ${item.name}` : 'Dar monedas',
+      size: 'sm',
+      render(body, close) {
+        setHtml(body, html`<form class="stack camp-form" data-f>
+          <fieldset class="choice-group"><legend>¿A quién?</legend><div class="camp-choices">
+            ${targets.map((t, i) => html`<label class="camp-choice"><input type="radio" name="to" value="${t.pcId}" ${i === 0 ? raw('checked') : ''}><span><strong>${t.summary?.name ?? 'PJ'}</strong><small>${t.summary?.classes ?? ''}</small></span></label>`)}
+          </div></fieldset>
+          ${item ? html`<div class="field"><label class="field__label" for="g-qty">Cantidad (tienes ${item.quantity})</label><input id="g-qty" class="input" type="number" inputmode="numeric" name="qty" min="1" max="${item.quantity}" value="1" required></div>`
+            : html`<div class="coin-inputs">${COINS_UI.map(([k, label]) => html`<label class="field"><span class="field__label">${label} (tienes ${c.equipment.coins[k] ?? 0})</span><input class="input" type="number" inputmode="numeric" name="${k}" min="0" max="${c.equipment.coins[k] ?? 0}" value="0"></label>`)}</div>`}
+          <div class="dialog__footer"><button type="button" class="btn btn--ghost" data-dialog-close>Cancelar</button><button class="btn btn--primary">🤝 Dar</button></div>
+        </form>`);
+        const form = body.querySelector('[data-f]');
+        form.addEventListener('submit', (e) => { e.preventDefault(); if (form.reportValidity()) close(new FormData(form)); });
+      },
+    });
+    if (!picked) return;
+    const coinsOut = coins ? Object.fromEntries(COINS_UI.map(([k]) => [k, Math.max(0, Math.trunc(Number(picked.get(k)) || 0))]).filter(([, n]) => n > 0)) : null;
+    if (coins && !Object.keys(coinsOut).length) { toast('Indica cuántas monedas.', { type: 'info' }); return; }
+    // Primero se guarda lo pendiente: el servidor cambia la versión subida.
+    if (!(await save())) return;
+    try {
+      const res = await services.play.transfer(record.id, String(picked.get('to')), item
+        ? { itemIndex, itemName: item.name, qty: Math.trunc(Number(picked.get('qty')) || 1) }
+        : { coins: coinsOut });
+      const fresh = await services.characters.open(record.id);
+      record = fresh.record;
+      base = structuredClone(fresh.character);
+      sheetView.load(fresh.character);
+      const to = targets.find((t) => t.pcId === String(picked.get('to')))?.summary?.name ?? 'otro PJ';
+      toast(`Diste ${res.given} a ${to}.`, { type: 'success' });
+    } catch (err) {
+      reportError(err, 'No se pudo dar.');
+    }
+  }
+
   async function save() {
     autosave.cancel();
     if (savingPromise) await savingPromise;
@@ -121,7 +167,8 @@ export async function mountEditor(container, { services, navigate }, id) {
         await pullExternal();
         const saving = structuredClone(sheetView.character);
         try {
-          record = await services.characters.save(record, saving);
+          // «Usar» un objeto, etc.: van al registro de la campaña (si lo es).
+          record = await services.characters.save(record, saving, { events: sheetView.takeEvents() });
         } catch (err) {
           // PJ de campaña sin acceso: quedó guardado aquí, pero no en la campaña.
           if (err.record) { record = err.record; base = saving; }
@@ -174,6 +221,8 @@ export async function mountEditor(container, { services, navigate }, id) {
     },
     campaigns: () => services.homebrew?.memberships() ?? [],
     recordId: record.id,
+    // PJ de campaña: dar objetos y monedas a otro PJ de la misma campaña.
+    inventory: opened.record.pc && services.play ? { giveItem: (i) => give({ itemIndex: i }), giveCoins: () => give({ coins: true }) } : null,
     initialTab: opened.character.levels.length === 0 && !opened.character.race.key && opened.character.identity.name ? 'progresion' : 'resumen',
     onChange(character) {
       nameEl.textContent = character.identity.name.trim() || 'Personaje sin nombre';

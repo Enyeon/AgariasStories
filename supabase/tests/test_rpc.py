@@ -381,3 +381,108 @@ def test_legacy_invite_keeps_working_and_can_be_closed():
     assert call("pc_link", cid, inv, pc_doc(), None) == {"error": "forbidden"}
     call("campaign_set_access", cid, dm, "false")
     assert call("campaign_get", cid, inv) == {"error": "forbidden"}
+
+
+# ── Mundo, sesiones e intercambio (20261119) ────────────────────────────────
+
+def table_with_two_players(name="Mesa mundo"):
+    camp = call("campaign_create", name)
+    cid, dm, inv = camp["id"], camp["dmKey"], camp["inviteCode"]
+    ana = call("campaign_join", cid, inv, "Ana", "jugador")
+    bob = call("campaign_join", cid, inv, "Bob", "jugador")
+    for m in (ana, bob):
+        call("member_update", cid, dm, m["memberId"], "activo", None)
+    return cid, dm, ana, bob
+
+
+def titles(cid, key):
+    return sorted(e["title"] for e in call("world_list", cid, key)["entries"])
+
+
+def test_world_reveal_levels_and_secrets():
+    cid, dm, ana, bob = table_with_two_players()
+    tower = call("world_upsert", cid, dm, None, "lugar", "Torre Gris", {"summary": "Una torre."}, {"text": "El liche vive aquí"}, "oculto", None)
+    assert tower["reveal"] == "oculto" and tower["secret"]["text"]
+    assert titles(cid, ana["key"]) == []
+    # Sólo Ana lo descubre.
+    call("world_upsert", cid, dm, tower["entryId"], "lugar", "Torre Gris", {"summary": "Una torre."}, {"text": "El liche vive aquí"}, "algunos", "{" + ana["memberId"] + ",intruso}")
+    seen = call("world_list", cid, ana["key"])["entries"]
+    assert [e["title"] for e in seen] == ["Torre Gris"] and "secret" not in seen[0] and seen[0]["revealedTo"] is None
+    assert titles(cid, bob["key"]) == []
+    # Ahora todos; el registro lo anota.
+    call("world_upsert", cid, dm, tower["entryId"], "lugar", "Torre Gris", {"summary": "Una torre."}, {"text": "x"}, "todos", None)
+    assert titles(cid, bob["key"]) == ["Torre Gris"]
+    kinds = [e["kind"] for e in call("events_list", cid, bob["key"], None, None, 50)["events"]]
+    assert "descubrimiento" in kinds
+    # Los jugadores no editan entradas del DM ni crean lugares.
+    assert call("world_upsert", cid, ana["key"], tower["entryId"], "lugar", "Mía", {}, {}, None, None) == {"error": "forbidden"}
+    assert call("world_upsert", cid, ana["key"], None, "lugar", "Mía", {}, {}, None, None) == {"error": "forbidden"}
+
+
+def test_player_notes_private_even_from_dm():
+    cid, dm, ana, bob = table_with_two_players("Mesa notas")
+    priv = call("world_upsert", cid, ana["key"], None, "nota", "Sospecho del posadero", {"text": "…"}, {"x": 1}, "autor", None)
+    assert priv["reveal"] == "autor" and "secret" not in priv
+    assert titles(cid, ana["key"]) == ["Sospecho del posadero"]
+    assert titles(cid, dm) == [] and titles(cid, bob["key"]) == []
+    shared = call("world_upsert", cid, ana["key"], None, "nota", "Plan", {}, {}, "todos", None)
+    assert "Plan" in titles(cid, bob["key"]) and "Plan" in titles(cid, dm)
+    assert call("world_upsert", cid, ana["key"], None, "nota", "x", {}, {}, "algunos", None) == {"error": "invalid"}
+    assert call("world_delete", cid, bob["key"], shared["entryId"]) == {"error": "forbidden"}
+    assert call("world_delete", cid, ana["key"], shared["entryId"])["deleted"] is True
+
+
+def test_quest_completion_logged():
+    cid, dm, ana, _ = table_with_two_players("Mesa misiones")
+    q = call("world_upsert", cid, dm, None, "mision", "Rescatar a Lira", {"quest": {"status": "activa"}}, {}, "todos", None)
+    call("world_upsert", cid, dm, q["entryId"], "mision", "Rescatar a Lira", {"quest": {"status": "completada"}}, {}, None, None)
+    texts = [e["text"] for e in call("events_list", cid, ana["key"], None, None, 50)["events"]]
+    assert any(t.startswith("Misión completada") for t in texts)
+
+
+def test_chapters_and_sessions():
+    cid, dm, ana, _ = table_with_two_players("Mesa capítulos")
+    assert call("chapter_upsert", cid, ana["key"], None, "x", "") == {"error": "forbidden"}
+    ch = call("chapter_upsert", cid, dm, None, "La cripta", "Empieza todo")["chapterId"]
+    s = call("session_start", cid, dm, "Primera noche", None)
+    assert s == {"session": 1, "chapterId": ch}
+    call("event_add", cid, dm, "nota", "Cae la puerta", None, None, "publico", None)
+    call("session_update", cid, dm, 1, "Primera noche", "Resumen para todos", "Secreto", ch)
+    call("session_end", cid, dm)
+    call("session_start", cid, dm, "Segunda", None)
+    mine = call("sessions_list", cid, ana["key"])
+    assert [c["title"] for c in mine["chapters"]] == ["La cripta"]
+    first = mine["sessions"][0]
+    assert first["summary"] == "Resumen para todos" and first["dmNotes"] is None and first["events"] >= 2
+    assert call("sessions_list", cid, dm)["sessions"][0]["dmNotes"] == "Secreto"
+    only1 = call("events_list", cid, ana["key"], None, None, 50, 1)["events"]
+    assert only1 and all(e["sessionId"] == 1 for e in only1)
+
+
+def test_pc_transfer_items_and_coins():
+    cid, dm, ana, bob = table_with_two_players("Mesa intercambio")
+    def char(name, items, gp):
+        return {"format": "agarias-dnd-character", "schemaVersion": 3,
+                "character": {"identity": {"name": name}, "equipment": {"items": items, "coins": {"cp": 0, "sp": 0, "gp": gp, "pp": 0, "system": "dnd"}}}}
+    a = call("pc_link", cid, ana["key"], char("Vex", [{"name": "Poción", "quantity": 3, "notes": "", "equipped": True}, {"name": "Cuerda", "quantity": 1, "notes": ""}], 10), {"name": "Vex"})
+    b = call("pc_link", cid, bob["key"], char("Kael", [{"name": "poción", "quantity": 1, "notes": ""}], 0), {"name": "Kael"})
+    for p in (a, b):
+        call("pc_review", cid, dm, p["pcId"], "activo")
+    # Otro jugador no puede dar lo de Vex; revisión obligatoria; el nombre se comprueba.
+    assert call("pc_transfer", cid, bob["key"], a["pcId"], b["pcId"], 1, 0, "Poción", 1, None) == {"error": "forbidden"}
+    assert call("pc_transfer", cid, ana["key"], a["pcId"], b["pcId"], 9, 0, "Poción", 1, None) == {"error": "conflict"}
+    assert call("pc_transfer", cid, ana["key"], a["pcId"], b["pcId"], 1, 0, "Antorcha", 1, None) == {"error": "conflict"}
+    res = call("pc_transfer", cid, ana["key"], a["pcId"], b["pcId"], 1, 0, "Poción", 2, {"gp": 4})
+    assert res["fromRevision"] == 2 and res["given"] == "2× Poción, 4 po"
+    va = call("pc_get", cid, ana["key"], a["pcId"])["document"]["character"]["equipment"]
+    kb = call("pc_get", cid, bob["key"], b["pcId"])["document"]["character"]["equipment"]
+    assert va["items"][0]["quantity"] == 1 and va["coins"]["gp"] == 6
+    assert kb["items"] == [{"name": "poción", "quantity": 3, "notes": ""}] and kb["coins"]["gp"] == 4
+    # Dar la última unidad quita la línea; lo recibido llega sin equipar.
+    call("pc_transfer", cid, ana["key"], a["pcId"], b["pcId"], 2, 1, "Cuerda", 5, None)
+    va = call("pc_get", cid, ana["key"], a["pcId"])["document"]["character"]["equipment"]
+    assert [i["name"] for i in va["items"]] == ["Poción"]
+    # Sin saldo suficiente no se mueve nada.
+    assert call("pc_transfer", cid, ana["key"], a["pcId"], b["pcId"], 3, None, None, 1, {"gp": 99}) == {"error": "invalid"}
+    ev = [e["text"] for e in call("events_list", cid, bob["key"], None, None, 50)["events"]]
+    assert any("Kael recibe 2× Poción, 4 po de Vex" in t for t in ev)

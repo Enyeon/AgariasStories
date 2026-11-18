@@ -14,7 +14,8 @@ página y Supabase guarda los datos.
    orden (`20261108000000_agarias.sql`, `20261112000000_tienda.sql`,
    `20261113000000_comerciantes.sql`, `20261114000000_mundo_dm.sql`,
    `20261115000000_campanas.sql`, `20261116000000_negocios.sql`,
-   `20261117000000_pisos.sql` y `20261118000000_campanas_jugadores.sql`)
+   `20261117000000_pisos.sql`, `20261118000000_campanas_jugadores.sql` y
+   `20261119000000_mundo_sesiones.sql`)
    → *Run*. Se pueden ejecutar varias veces sin problema.
 3. *Project Settings → API*: copia la **URL** del proyecto y la clave
    **anon / publishable**. Nunca uses la clave `service_role` en la web.
@@ -40,7 +41,10 @@ Para desarrollo local, pon las mismas variables en `frontend/.env`.
 | Marcar muerto / revivir / retirar | Sólo el DM | Se anota siempre en el registro (público) |
 | Ver la ficha de otro PJ | Según su privacidad | `publico`: ficha completa · `resumen`: nivel, clase y estado · `privado`: sólo el nombre |
 | Leer el registro | Miembros aprobados | `publico` todos · `privado` el jugador del PJ y el DM · `dm` sólo el DM (y el jugador que lo escribió) |
-| Sesiones | Sólo el DM | Lo que se anota durante una sesión queda asociado a ella |
+| Sesiones y capítulos | El DM los crea y edita; todos ven resúmenes | Las notas del DM de cada sesión sólo las recibe el DM |
+| Mundo (lugares, PNJ, facciones, misiones, pistas) | El DM | `oculto` sólo DM · `todos` · `algunos` (miembros elegidos). Las notas secretas (`secret`) nunca salen del servidor para quien no es DM |
+| Notas de jugador | Su autor | `autor`: sólo él (ni el DM) · `todos`: la campaña |
+| Dar objetos o monedas a otro PJ | El dueño del PJ que da (o el DM) | Atómico en las dos fichas, con revisión; se anota en el registro de ambos |
 | Cambiar reglas, estados, borrar, rotar invitación | Sólo el DM | Clave de DM |
 | Crear o editar Homebrew | DM; jugadores sólo si la regla del tipo es «propuestas» | Rol + regla; los jugadores sólo crean propuestas y sólo editan las suyas |
 | Ver y usar el mercado de la Tienda de una campaña | DM y jugadores | Clave de DM o código de invitación + revisión (dos compras a la vez no se pisan) |

@@ -24,11 +24,15 @@ import {
 import { COIN_SHORT, coinValues, currencyOf, CURRENCIES } from '../domain/money.js';
 import { campaignCard, editCampaignDetails, roleLabel } from './homebrew.js';
 import { createSheetView } from './sheet/sheet-view.js';
+import { createWorldPanel } from './campaign-world.js';
+import { createSessionsPanel } from './campaign-sessions.js';
 
 const TABS = [
   { id: 'resumen', label: 'Resumen', icon: '🏰' },
   { id: 'jugadores', label: 'Jugadores', icon: '👥' },
   { id: 'pj', label: 'Personajes', icon: '🧝' },
+  { id: 'mundo', label: 'Mundo', icon: '🗺️' },
+  { id: 'sesiones', label: 'Sesiones', icon: '🎬' },
   { id: 'registro', label: 'Registro', icon: '📜' },
   { id: 'dm', label: 'Herramientas', icon: '🎲', dm: true },
 ];
@@ -520,10 +524,8 @@ function mountCampaign(container, ctx, id) {
     const session = state.roster?.session;
     const tool = (act, icon, label, extra = '') => html`<button type="button" class="tool-btn ${extra}" data-tool="${act}" ${sel ? '' : raw('disabled')}><span aria-hidden="true">${icon}</span>${label}</button>`;
     return html`
-      <section class="card stack">
-        <header class="card__header"><div><h2 class="card__title">🎬 Sesión</h2><p class="card__subtitle">${session ? `Sesión ${session} en curso: lo que pase se anota en ella.` : 'No hay sesión abierta.'}</p></div></header>
-        <div class="row">${session ? html`<button class="btn btn--ghost" data-act="session-end">Terminar sesión ${session}</button>` : html`<button class="btn btn--primary" data-act="session-start">Empezar sesión</button>`}</div>
-      </section>
+      <button type="button" class="callout callout--accent camp-alert" data-tab="sesiones">
+        <strong>🎬 ${session ? `Sesión ${session} en curso` : 'No hay sesión en curso'}</strong> · Sesiones y capítulos ›</button>
       <section class="card stack">
         <header class="card__header"><div><h2 class="card__title">🎲 Herramientas rápidas</h2><p class="card__subtitle">Se aplican a la copia del PJ en la campaña y quedan en el registro.</p></div></header>
         ${active.length ? html`<label class="field"><span class="field__label">Personaje</span>
@@ -554,10 +556,22 @@ function mountCampaign(container, ctx, id) {
     if (state.tab === 'dm' && !isDm()) state.tab = 'resumen';
     const body = state.loading && !state.roster ? html`<div class="loading" role="status"><span class="spinner"></span> Cargando la campaña…</div>`
       : state.error && !state.roster ? html`<div class="callout callout--warning"><p>${state.error.userMessage ?? 'No se pudo cargar la campaña.'}</p><div class="row"><button class="btn btn--ghost btn--sm" data-act="reload">Reintentar</button></div></div>${state.tab === 'resumen' ? resumenTab() : ''}`
-        : { resumen: resumenTab, jugadores: jugadoresTab, pj: pjTab, registro: registroTab, dm: dmTab }[state.tab]();
+        : { resumen: resumenTab, jugadores: jugadoresTab, pj: pjTab, registro: registroTab, dm: dmTab,
+          mundo: () => html`<div data-panel="mundo"></div>`, sesiones: () => html`<div data-panel="sesiones"></div>` }[state.tab]();
     setHtml(page, html`${header()}${tabs()}<div class="camp-body" role="tabpanel">${body}</div>`);
+    // Mundo y Sesiones son paneles con estado propio: se vuelven a montar en el nuevo contenedor.
+    const slot = page.querySelector('[data-panel]');
+    if (slot) (slot.dataset.panel === 'mundo' ? world : sessions).mount(slot);
     for (const d of page.querySelectorAll('details[data-key]')) if (openKeys.has(d.dataset.key)) d.open = true;
   }
+
+  const world = createWorldPanel({
+    id, play, isDm,
+    me: () => m()?.memberId ?? state.roster?.memberId ?? null,
+    members: () => (state.roster?.members ?? []).filter((x) => x.status === 'activo'),
+    canWrite: () => isDm() || Boolean(m()?.memberId),
+  });
+  const sessions = createSessionsPanel({ id, play, isDm, pcName, onChanged: () => load({ quiet: true }) });
 
   // ── Acciones ──────────────────────────────────────────────────────────
 
@@ -710,6 +724,8 @@ function mountCampaign(container, ctx, id) {
       history.replaceState(history.state, '', `/campanas/${id}${state.tab === 'resumen' ? '' : `?tab=${state.tab}`}`);
       render();
       page.querySelector('.camp-tab.is-on')?.scrollIntoView({ block: 'nearest', inline: 'center' });
+      // Registro y lista de PJ: al entrar se traen las novedades.
+      if (['registro', 'pj', 'jugadores', 'resumen'].includes(state.tab)) load({ quiet: true });
       return;
     }
     const toolBtn = e.target.closest('[data-tool]');
@@ -718,7 +734,11 @@ function mountCampaign(container, ctx, id) {
     if (!btn) return;
     const { pc, member } = btn.dataset;
     switch (btn.dataset.act) {
-      case 'reload': return load();
+      case 'reload': {
+        if (state.tab === 'mundo') world.reload();
+        if (state.tab === 'sesiones') sessions.reload();
+        return load();
+      }
       case 'edit-details': {
         const pack = getPack(id);
         if (pack && isDm() && (await editCampaignDetails(svc, pack))) render();
@@ -787,12 +807,6 @@ function mountCampaign(container, ctx, id) {
         } catch (err) { reportError(campaignError(err)); }
         return undefined;
       }
-      case 'session-start': {
-        const fd = await formDialog({ title: 'Empezar sesión', submit: 'Empezar', body: html`<div class="field"><label class="field__label" for="s-title">Título (opcional)</label><input id="s-title" class="input" name="title" maxlength="120" placeholder="La cripta olvidada"></div>` });
-        if (!fd) return undefined;
-        return act(() => play.startSession(id, String(fd.get('title') ?? '').trim()), (r) => `Empieza la sesión ${r.session}.`);
-      }
-      case 'session-end': return act(() => play.endSession(id), 'Sesión terminada.');
       default: return undefined;
     }
   });
@@ -815,7 +829,12 @@ function mountCampaign(container, ctx, id) {
   page.addEventListener('submit', (e) => e.preventDefault());
 
   // Al volver a la pestaña: novedades (aprobaciones, registro).
-  const onVisible = () => { if (document.visibilityState === 'visible' && !state.loading) load({ quiet: true }); };
+  const onVisible = () => {
+    if (document.visibilityState !== 'visible' || state.loading) return;
+    if (state.tab === 'mundo') world.reload();
+    if (state.tab === 'sesiones') sessions.reload();
+    load({ quiet: true });
+  };
   document.addEventListener('visibilitychange', onVisible);
 
   characters.list().then((all) => { localCopies = all.filter((r) => r.pc?.campaignId === id); if (!m()?.key) render(); }).catch(() => {});
