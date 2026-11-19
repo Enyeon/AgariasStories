@@ -70,7 +70,7 @@ export function mountReference(container) {
       <div class="reference-grid">${g.items.map((i) => html`<details class="disclosure reference-entry" ${state.query ? raw('open') : ''}>
         <summary>
           <span>${i.name}${i.en && !i.name.includes('(') ? html` <small class="muted">${i.en}</small>` : ''}</span>
-          ${i.origin === 'agarias' ? html`<span class="badge badge--gold">Agarias</span>` : ''}
+          ${i.origin === 'agarias' ? html`<span class="badge badge--gold" title="Regla propia de Agarias: recomendación opcional">Agarias · opcional</span>` : ''}
           ${i.origin === 'agarias' && (i.applies === null || i.ends === null || i.effect === null) && i.kind !== 'danio' ? html`<span class="badge badge--warning">Pendiente</span>` : ''}
         </summary>
         <div class="disclosure__body">${entryBody(i)}</div>
@@ -83,6 +83,8 @@ export function mountReference(container) {
       <div><h1>Referencia de reglas</h1><p>Acciones de combate, condiciones, tipos de daño y estados de Agarias.</p></div>
       <input class="input reference-search" type="search" placeholder="Buscar (p. ej. «agarrado»)…" aria-label="Buscar en la referencia" data-search>
     </header>
+    <p class="callout callout--accent reference-optional"><strong>Reglas de Agarias:</strong> son recomendaciones opcionales y nuevas, marcadas «Agarias · opcional».
+      No sustituyen ninguna regla de D&D: tu DM decide si las usa y con qué excepciones; las pueden usar tanto jugadores como DM.</p>
     <div class="reference-filters">
       <div class="chips" role="group" aria-label="Categoría">${FILTERS.map((f) => html`<button type="button" class="chip-toggle ${state.kind === f.id ? 'is-on' : ''}" aria-pressed="${state.kind === f.id}" data-kind="${f.id}">${f.label}</button>`)}</div>
       <div class="chips" role="group" aria-label="Origen">${ORIGINS.map((f) => html`<button type="button" class="chip-toggle ${state.origin === f.id ? 'is-on' : ''}" aria-pressed="${state.origin === f.id}" data-origin="${f.id}">${f.label}</button>`)}</div>

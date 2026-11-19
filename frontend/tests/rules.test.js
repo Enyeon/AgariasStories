@@ -219,13 +219,17 @@ describe('referencia de reglas', () => {
     for (const d of DAMAGE_TYPES) expect(items.some((i) => i.id === `danio-${d.key}`), d.key).toBe(true);
   });
 
-  it('los conceptos de Agarias no inventan cómo se aplican ni cómo terminan', async () => {
+  it('las reglas de Agarias son las definidas por el DM (AgSt 1.29)', async () => {
     const { data } = await import('../src/data/index.js');
-    const states = data.rulesReference.find((g) => g.kind === 'estado').items;
-    for (const s of states) {
-      expect(s.origin).toBe('agarias');
-      expect(s.applies).toBeNull();
-      expect(s.ends).toBeNull();
+    const items = data.rulesReference.flatMap((g) => g.items);
+    const agarias = items.filter((i) => i.origin === 'agarias');
+    // Se retiraron Contusionado y Desgarro; Vacío es también tipo de daño.
+    expect(agarias.map((i) => i.name).sort()).toEqual(['Corrupto', 'Dolor', 'Profano', 'Provocado', 'Sagrado', 'Vacío', 'Vacío'].sort());
+    for (const s of agarias.filter((i) => i.kind !== 'danio')) {
+      expect(s.effect?.length, s.name).toBeGreaterThan(0);
+      expect(s.applies, s.name).toBeTruthy();
+      expect(s.ends, s.name).toBeTruthy();
     }
+    expect(items.find((i) => i.id === 'estado-vacio').effect.join(' ')).toMatch(/No es un agujero negro/);
   });
 });

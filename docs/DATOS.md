@@ -198,11 +198,10 @@ para sustituir, en personajes guardados, sólo los que el usuario no había edit
 - **Subclases de Tiznado y Vinculador**: tenían las «Hebras» de la Anomalía; se
   retiraron y la clase muestra «subclases pendientes». (Las de la Anomalía se conservan.)
 - **Multiclase del Cazador y del Shadow Knight**: no está en sus textos originales.
-- **Estados de Agarias** (Corrupto, Desgarro, Dolor, Vacío): cómo se aplican y cómo
-  terminan. Desgarro y Vacío tienen parte de la mecánica en su texto original;
-  falta lo demás (ver la referencia de reglas en la app).
-- **Contusionado y Provocado**: se movieron a «condiciones de Agarias». Provocado
-  necesita cómo se aplica y cómo termina.
+- ~~Estados de Agarias, Contusionado y Provocado~~ → **resuelto en AgSt 1.29**: el DM
+  definió Provocado, Corrupto, Dolor y Vacío (qué hace, cuándo se aplica y cómo termina);
+  se retiraron Contusionado y Desgarro, y **Vacío** es también un tipo de daño de Agarias.
+  Todas son recomendaciones opcionales (`tools/rules_reference.py`).
 - **Rasgos de nivel de las subclases oficiales**: sólo nombre y resumen.
 - **Rasgos por nivel de varias clases oficiales**: los encabezados internos
   (`informacionNivel`) de varias clases siguen siendo los del Bárbaro. La app no

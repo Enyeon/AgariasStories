@@ -107,18 +107,21 @@ CONDITIONS = [
     },
 ]
 
+VACIO_DESPLAZAMIENTO = ("No es un agujero negro, sino un desplazamiento: el Vacío aparta el aire y toda la materia a su paso. "
+                        "Cuando ese Vacío se mueve, lo desplazado quiere volver a donde estaba; por eso lo que está cerca es atraído hacia el centro.")
+
+
+# Reglas de Agarias (AgSt 1.29): textos del DM, ordenados en qué hace / cuándo / cómo termina.
+# Son RECOMENDACIONES opcionales y nuevas: no sustituyen ninguna regla de D&D; el DM
+# decide si las usa y con qué excepciones. Contusionado y Desgarro se retiraron.
 AGARIAS_CONDITIONS = [
-    {"id": "cond-contusionado", "kind": "condicion", "origin": "agarias", "name": "Contusionado", "en": "Injured",
-     "summary": "Etiqueta narrativa: el personaje está magullado o herido.",
-     "effect": ["Sin efecto mecánico propio. Sirve para describir la escena."],
-     "applies": None, "ends": None, "related": [],
-     "original": "Estado narrativo, no mecánico. No es parte de las reglas base."},
     {"id": "cond-provocado", "kind": "condicion", "origin": "agarias", "name": "Provocado", "en": "Provoked",
      "summary": "Una criatura concentra su atención en quien la provoca.",
      "effect": ["Tiene desventaja en ataques, conjuros u otras acciones ofensivas que no tengan como objetivo a quien la provocó."],
-     "applies": None, "ends": None, "related": [],
-     "note": "Se parece al efecto de algunos rasgos oficiales (por ejemplo, el Desafío del campeón del Juramento de la Corona o la Marca inquebrantable del Caballero), pero no es una condición oficial de 5e.",
-     "original": "Una criatura bajo este efecto tiene desventaja en ataques, conjuros u otras acciones ofensivas que no tengan como objetivo al provocador."},
+     "applies": "Sólo si una criatura tiene la capacidad de provocar a otras para que la ataquen (un rasgo, conjuro o criatura que lo indique).",
+     "ends": "Después de uno o dos turnos (según el efecto que la provoca), o si la criatura provocada supera una tirada de salvación.",
+     "related": [],
+     "note": "Se parece al efecto de algunos rasgos oficiales (por ejemplo, la Marca inquebrantable del Caballero), pero no es una condición oficial de 5e."},
 ]
 
 
@@ -165,38 +168,36 @@ DAMAGE = [
     dmg("sagrado", "Sagrado", "Holy", "Poder divino benigno canalizado por dioses o por la fe.",
         "Energía celestial canalizada por dioses o fe, que impone orden, justicia y reprime la oscuridad.", origin="agarias",
         note="No existe como tipo de daño en D&D 5e; lo más cercano es Radiante. En Agarias es un tipo propio: resistir el daño Radiante no protege del Sagrado salvo que la criatura lo diga."),
+    dmg("vacio", "Vacío", "Void", "Energía sofocante del Vacío absoluto: desplaza el aire y la materia.",
+        "Una energía sofocante que drena el aliento y comprime parcialmente la materia a su alrededor, como un agujero negro sin llegar a serlo.", origin="agarias",
+        note="Tipo de daño propio de Agarias (dragones y dracónidos del Vacío, cierta magia). Puede provocar el estado Vacío. " + VACIO_DESPLAZAMIENTO),
 ]
 
 
-def estado(key, name, en, summary, original, effect=None, note=None):
-    return {"id": f"estado-{key}", "kind": "estado", "origin": "agarias", "name": name, "en": en, "summary": summary,
-            "effect": effect, "applies": None, "ends": None, "related": [], "original": original, **({"note": note} if note else {})}
-
-
 STATES = [
-    estado("corrupto", "Corrupto", "Corrupted",
-           "Una criatura u objeto alterado por una influencia ajena y persistente (entes prohibidos, el Vacío). Es un estado que dura, no un tipo de daño.",
-           "Una energía impura que deforma cuerpo y mente, vinculada a entes prohibidos o fuerzas del Vacío."),
-    estado("desgarro", "Desgarro", "Torn",
-           "Herida brutal que causa hemorragia, propia de garras, colmillos y armas dentadas.",
-           "Daño físico brutal que causa hemorragia y puede reducir -1 a -3 CA al impactar críticamente armaduras naturales o físicas. Efecto exclusivo de ataques con garras, colmillos o armas dentadas como espadas serradas.",
-           effect=["Según el texto original: un impacto crítico puede reducir la CA de una armadura natural o física entre 1 y 3. Falta definir si es -1d3 o lo decide el DM, y cuánto dura."],
-           note="Falta definir: cuánto daño hace la hemorragia, cuándo se tira y cómo se detiene (por ejemplo, con Medicina o curación)."),
-    estado("dolor", "Dolor", "Pain",
-           "Un estado físico extremo que debilita los reflejos y nubla la concentración.",
-           "Un estado físico extremo que debilita los reflejos y nubla la concentración, causado por daño severo o magia torturante.",
-           note="Falta definir el efecto mecánico (por ejemplo, desventaja en las salvaciones de Concentración) y cómo se aplica y termina."),
-    estado("vacio", "Vacío", "Void",
-           "Energía sofocante que drena el aliento y la fuerza vital.",
-           "Una energía sofocante que drena el aliento y la fuerza vital. Las criaturas afectadas por este daño sufren asfixia parcial y, además, los ataques con este efecto, tras fallar el ataque, aún pueden ser atraídas 5 pies hacia la fuente del efecto.",
-           effect=["Según el texto original: incluso si el ataque falla, el objetivo puede ser atraído 5 pies hacia la fuente."],
-           note="Falta definir: si es un tipo de daño o un estado, qué es «asfixia parcial» en reglas y si hay salvación para evitar la atracción."),
+    {"id": "estado-corrupto", "kind": "estado", "origin": "agarias", "name": "Corrupto", "en": "Corrupted",
+     "summary": "Distorsiona el cuerpo, la mente o un área, como un virus informático.",
+     "effect": ["Distorsiona el cuerpo, la mente o el área afectada, como si fuera un virus de computadora: puede causar mucho daño al área u objetivo y, a veces, efectos irreversibles (los decide el DM)."],
+     "applies": "Cuando una anomalía intenta corromper la realidad o una entidad.",
+     "ends": "Desaparece después de unos segundos (un turno).", "related": []},
+    {"id": "estado-dolor", "kind": "estado", "origin": "agarias", "name": "Dolor", "en": "Pain",
+     "summary": "Dolor corporal extremo: desgarro muscular y calambres incontrolables.",
+     "effect": ["Provoca en el cuerpo del objetivo un dolor extremo, con desgarro de músculos y calambres incontrolables (el DM decide su efecto en la escena)."],
+     "applies": "Lo causan criaturas muy específicas y la magia.",
+     "ends": "Con magia curativa, o después de unos segundos (uno o dos turnos).", "related": []},
+    {"id": "estado-vacio", "kind": "estado", "origin": "agarias", "name": "Vacío", "en": "Void",
+     "summary": "Energía sofocante que drena el aliento y comprime parcialmente la materia.",
+     "effect": ["Las criaturas afectadas sufren asfixia mientras dura.",
+                "Los ataques con este efecto, aunque fallen, pueden atraer al objetivo 5 pies hacia la fuente.",
+                VACIO_DESPLAZAMIENTO],
+     "applies": "Con el daño de Vacío: magia, el aliento de un dragón o dracónido del Vacío, o criaturas con características similares.",
+     "ends": "Dura unos segundos, hasta que el aire vuelve a llenar el área.", "related": ["Vacío (tipo de daño)"]},
 ]
 
 INTROS = {
     "condicion": "Las 15 condiciones oficiales de D&D 5e (Manual del Jugador, 2014) y las propias de Agarias, marcadas aparte. Una condición dura hasta que termina el efecto que la causó, salvo que se indique otra cosa.",
-    "danio": "Los 13 tipos de daño oficiales y los 2 tipos propios de Agarias. Un tipo de daño no tiene efecto por sí mismo: importa para las resistencias, inmunidades y vulnerabilidades.",
-    "estado": "Mecánicas propias de la campaña. Lo que el DM aún no ha definido aparece como «Pendiente»: la app no inventa cómo se aplican ni cómo terminan.",
+    "danio": "Los 13 tipos de daño oficiales y los 3 tipos propios de Agarias (Profano, Sagrado y Vacío). Un tipo de daño no tiene efecto por sí mismo: importa para las resistencias, inmunidades y vulnerabilidades.",
+    "estado": "Mecánicas propias de Agarias. Son recomendaciones: el DM decide si las usa y con qué excepciones.",
 }
 
 

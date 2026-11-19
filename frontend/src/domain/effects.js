@@ -26,6 +26,7 @@ export const DAMAGE_TYPES = Object.freeze([
   // Tipos propios de Agarias (decisión del DM, noviembre de 2026).
   { key: 'profano', label: 'Profano', official: false },
   { key: 'sagrado', label: 'Sagrado', official: false },
+  { key: 'vacio', label: 'Vacío', official: false },
 ]);
 export const DAMAGE_TYPE_KEYS = Object.freeze(DAMAGE_TYPES.map((d) => d.key));
 export const DAMAGE_LABEL = Object.freeze(Object.fromEntries(DAMAGE_TYPES.map((d) => [d.key, d.label])));
