@@ -205,3 +205,21 @@ Probado en Chrome a 1280×900 y a 375–390 px (móvil, táctil):
       que pasó (dar objeto del DM, usar poción, dar a otro PJ).
 - [x] Inventario en móvil (390 px): consumible, usar, equipar, dar a otro PJ;
       sin desbordamiento horizontal.
+
+## Registro: anclar y eliminar (AgSt 1.28)
+
+Migración `20261120000000_registro_anclas.sql`. Sólo el DM, desde el menú «⋯»
+de cada entrada:
+
+- **📌 Anclar.** Pregunta cómo anclarla:
+  - **Para todos**: máximo 15. La ven arriba del registro quienes ya podían
+    ver esa entrada; anclar no cambia su privacidad.
+  - **Personal**: máximo 100. Sólo la ve el DM.
+- **Dónde aparecen las ancladas:** arriba del Registro, bajo «📌 Anclados»
+  (plegable), y en el Resumen de la campaña (las 5 más recientes).
+- **🗑️ Eliminar.** Avisa antes y borra la entrada de forma definitiva.
+- **Editar:** las entradas no se editan.
+
+Si el servidor aún no tiene la migración, el registro funciona igual sin
+anclas, y al intentar anclar se avisa de qué migración falta.
+

@@ -486,3 +486,33 @@ def test_pc_transfer_items_and_coins():
     assert call("pc_transfer", cid, ana["key"], a["pcId"], b["pcId"], 3, None, None, 1, {"gp": 99}) == {"error": "invalid"}
     ev = [e["text"] for e in call("events_list", cid, bob["key"], None, None, 50)["events"]]
     assert any("Kael recibe 2× Poción, 4 po de Vex" in t for t in ev)
+
+
+# ── Registro: anclar y eliminar (20261120) ──────────────────────────────────
+
+def test_event_pin_and_delete():
+    cid, dm, ana, bob = table_with_two_players("Mesa anclas")
+    e1 = call("event_add", cid, dm, "nota", "Pista pública", None, None, "publico", None)["id"]
+    e2 = call("event_add", cid, dm, "nota", "Secreto", None, None, "dm", None)["id"]
+    # Sólo el DM.
+    assert call("event_pin", cid, ana["key"], e1, "todos", "true") == {"error": "forbidden"}
+    assert call("event_delete", cid, ana["key"], e1) == {"error": "forbidden"}
+    assert call("event_pin", cid, dm, e1, "todos", "true") == {"id": e1, "pinned": True, "pinnedByMe": False}
+    assert call("event_pin", cid, dm, e2, "personal", "true")["pinnedByMe"] is True
+    assert call("event_pin", cid, dm, e1, "nada", "true") == {"error": "invalid"}
+    # Jugadores: ven el anclado público; nunca el personal del DM ni lo que no podían ver.
+    pins = call("events_list", cid, ana["key"], None, None, 50, None, "true")["events"]
+    assert [e["id"] for e in pins] == [e1] and pins[0]["pinned"] and pins[0]["pinnedByMe"] is False
+    assert sorted(e["id"] for e in call("events_list", cid, dm, None, None, 50, None, "true")["events"]) == sorted([e1, e2])
+    # Límite de 15 «para todos».
+    for i in range(14):
+        eid = call("event_add", cid, dm, "nota", f"n{i}", None, None, "publico", None)["id"]
+        assert call("event_pin", cid, dm, eid, "todos", "true")["pinned"] is True
+    extra = call("event_add", cid, dm, "nota", "una más", None, None, "publico", None)["id"]
+    assert call("event_pin", cid, dm, extra, "todos", "true") == {"error": "payload_too_large"}
+    assert call("event_pin", cid, dm, e1, "todos", "false")["pinned"] is False
+    assert call("event_pin", cid, dm, extra, "todos", "true")["pinned"] is True
+    # Eliminar es definitivo (y se lleva sus anclas).
+    assert call("event_delete", cid, dm, e2)["deleted"] is True
+    assert call("event_delete", cid, dm, e2) == {"error": "not_found"}
+    assert all(e["id"] != e2 for e in call("events_list", cid, dm, None, None, 200, None, None)["events"])

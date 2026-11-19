@@ -10,7 +10,7 @@
 
 import './campaigns.css';
 import { html, raw, setHtml, formatDate } from '../ui/dom.js';
-import { toast, confirmDialog, openDialog, reportError, userMessageFor } from '../ui/feedback.js';
+import { toast, confirmDialog, choiceDialog, openDialog, reportError, userMessageFor } from '../ui/feedback.js';
 import { getPack, listEntries } from '../content/registry.js';
 import { linkState } from '../content/library.js';
 import { inviteUrl, parseInvite } from '../services/homebrew.js';
@@ -252,6 +252,7 @@ function mountCampaign(container, ctx, id) {
     tab: TABS.some((t) => t.id === wanted) ? wanted : 'resumen',
     roster: null,
     events: [],
+    pinned: [],
     moreEvents: false,
     eventsPc: '',
     error: null,
@@ -274,11 +275,13 @@ function mountCampaign(container, ctx, id) {
       if (mm?.personalKey) await svc.checkStatus(id).catch(() => null);
       if (!m()?.key) { state.loading = false; render(); return; }
       await svc.refresh(id).catch(() => null);
-      const [roster, events] = await Promise.all([
+      const [roster, events, pinned] = await Promise.all([
         play.roster(id),
         play.events(id, { pcId: state.eventsPc || null, limit: 30 }),
+        play.pinnedEvents(id),
       ]);
       state.roster = roster;
+      state.pinned = pinned;
       state.events = events.events;
       state.moreEvents = events.events.length === 30;
     } catch (err) {
@@ -365,6 +368,10 @@ function mountCampaign(container, ctx, id) {
           ${isDm() ? html`<button type="button" class="camp-shortcut" data-tab="dm"><span aria-hidden="true">🎲</span>Herramientas del DM</button>` : ''}
         </div>
       </section>
+      ${state.pinned.length ? html`<section class="card pins-card">
+        <header class="pins-card__head"><h2 class="pins-title">📌 Anclados</h2><button type="button" class="btn btn--ghost btn--sm" data-tab="registro">Ver todos ›</button></header>
+        <ol class="event-list event-list--compact">${state.pinned.slice(0, 5).map((e) => eventItem(e, { compact: true }))}</ol>
+      </section>` : ''}
       ${myAccessCard()}`;
   }
 
@@ -491,14 +498,16 @@ function mountCampaign(container, ctx, id) {
       ${visible.length ? html`<ul class="camp-pcs" role="list">${visible.map(pcCard)}</ul>` : html`<p class="muted">Todavía no hay personajes en la campaña.</p>`}`;
   }
 
-  function eventItem(e) {
+  function eventItem(e, { compact = false } = {}) {
     const vis = VISIBILITY[e.visibility] ?? VISIBILITY.publico;
-    return html`<li class="event ${e.kind === 'muerte' ? 'event--death' : ''}">
-      <span class="event__icon" aria-hidden="true">${EVENT_KINDS[e.kind] ?? '📌'}</span>
+    const pin = e.pinned ? 'Anclado para todos' : e.pinnedByMe ? 'Anclado sólo para ti' : '';
+    return html`<li class="event ${e.kind === 'muerte' ? 'event--death' : ''} ${pin ? 'is-pinned' : ''}">
+      <span class="event__icon" aria-hidden="true">${EVENT_KINDS[e.kind] ?? '📖'}</span>
+      ${isDm() && !compact ? html`<button type="button" class="event__menu" data-act="event-menu" data-event="${e.id}" aria-label="Opciones de la entrada" title="Anclar o eliminar">⋯</button>` : ''}
       <div class="event__body">
         <p class="event__text">${e.pcId && !e.text.startsWith(pcName(e.pcId)) ? html`<strong>${pcName(e.pcId)}</strong> · ` : ''}${e.text}</p>
         <p class="event__meta muted">${formatDate(e.createdAt)}${e.day != null ? ` · día ${e.day}` : ''}${e.sessionId ? ` · sesión ${e.sessionId}` : ''} · ${e.author === 'dm' ? 'DM' : e.author === 'sistema' ? 'automático' : memberName(e.memberId) || 'jugador'}
-          <span title="${vis.label}"> · ${vis.icon}</span></p>
+          <span title="${vis.label}"> · ${vis.icon}</span>${pin ? html`<span class="event__pin" title="${pin}"> · 📌${e.pinned ? '' : ' personal'}</span>` : ''}</p>
       </div>
     </li>`;
   }
@@ -513,6 +522,10 @@ function mountCampaign(container, ctx, id) {
         ${canWrite ? html`<button class="btn btn--primary btn--sm" data-act="add-event">＋ Anotar</button>` : ''}
       </div>
       <p class="muted camp-legend">${Object.values(VISIBILITY).map((v) => `${v.icon} ${v.label}`).join(' · ')}</p>
+      ${state.pinned.length ? html`<details class="pins" data-key="pins" open>
+        <summary class="pins-title">📌 Anclados <span class="muted">(${state.pinned.length})</span></summary>
+        <ol class="event-list">${state.pinned.map((e) => eventItem(e))}</ol>
+      </details>` : ''}
       ${state.events.length ? html`<ol class="event-list">${state.events.map(eventItem)}</ol>` : html`<p class="muted">Todavía no hay nada en el registro.</p>`}
       ${state.moreEvents ? html`<div class="row"><button class="btn btn--ghost btn--block" data-act="more-events">Ver anteriores</button></div>` : ''}`;
   }
@@ -572,6 +585,57 @@ function mountCampaign(container, ctx, id) {
     canWrite: () => isDm() || Boolean(m()?.memberId),
   });
   const sessions = createSessionsPanel({ id, play, isDm, pcName, onChanged: () => load({ quiet: true }) });
+
+  // ── Registro: anclar y eliminar (sólo el DM) ──────────────────────────
+
+  const PIN_LIMITS = { todos: 15, personal: 100 };
+
+  async function eventMenu(eventId) {
+    const e = [...state.pinned, ...state.events].find((x) => x.id === eventId);
+    if (!e) return;
+    const choice = await choiceDialog({
+      title: 'Entrada del registro',
+      message: e.text,
+      choices: [
+        e.pinned || e.pinnedByMe
+          ? { label: '📌 Quitar el ancla', value: 'unpin' }
+          : { label: '📌 Anclar', value: 'pin', variant: 'btn--primary' },
+        { label: '🗑️ Eliminar', value: 'delete', variant: 'btn--danger' },
+        { label: 'Cancelar', value: undefined },
+      ],
+    });
+    if (choice === 'pin') {
+      const scope = await choiceDialog({
+        title: '¿Cómo quieres anclarla?',
+        message: 'Para todos: la ven arriba del registro quienes ya podían ver esta entrada (máx. 15). Personal: sólo la ves tú (máx. 100).',
+        choices: [
+          { label: '👥 Para todos', value: 'todos', variant: 'btn--primary' },
+          { label: '🔒 Personal', value: 'personal' },
+          { label: 'Cancelar', value: undefined },
+        ],
+      });
+      if (!scope) return;
+      const used = state.pinned.filter((x) => (scope === 'todos' ? x.pinned : x.pinnedByMe)).length;
+      if (used >= PIN_LIMITS[scope]) {
+        toast(`Ya tienes ${PIN_LIMITS[scope]} anclados ${scope === 'todos' ? 'para todos' : 'personales'}. Quita alguno antes.`, { type: 'warning' });
+        return;
+      }
+      await act(() => play.pinEvent(id, eventId, scope, true), scope === 'todos' ? 'Anclada para todos.' : 'Anclada sólo para ti.');
+    } else if (choice === 'unpin') {
+      await act(async () => {
+        if (e.pinned) await play.pinEvent(id, eventId, 'todos', false);
+        if (e.pinnedByMe) await play.pinEvent(id, eventId, 'personal', false);
+      }, 'Ancla quitada.');
+    } else if (choice === 'delete') {
+      const ok = await confirmDialog({
+        title: 'Eliminar del registro',
+        message: `«${e.text}»\n\nSe borrará definitivamente para toda la campaña. No se puede deshacer.`,
+        confirmLabel: 'Eliminar para siempre',
+        danger: true,
+      });
+      if (ok) await act(() => play.deleteEvent(id, eventId), 'Entrada eliminada.');
+    }
+  }
 
   // ── Acciones ──────────────────────────────────────────────────────────
 
@@ -797,6 +861,7 @@ function mountCampaign(container, ctx, id) {
       case 'shop-mine': return openMine(pc, 'shop');
       case 'view-pc': return viewPc(pc);
       case 'add-event': return addEvent();
+      case 'event-menu': return eventMenu(Number(btn.dataset.event));
       case 'more-events': {
         const last = state.events[state.events.length - 1];
         try {

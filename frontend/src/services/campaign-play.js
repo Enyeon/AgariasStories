@@ -18,13 +18,25 @@ const MESSAGES = {
   payload_too_large: 'Se alcanzó el límite de la campaña (miembros, PJ o tamaño).',
   rate_limited: 'Hay demasiadas solicitudes pendientes en esta campaña. Pide al DM que las revise.',
   invalid: 'Los datos no son válidos.',
-  server_not_ready: 'El servidor todavía no tiene las campañas con jugadores: hay que aplicar la migración 20261118000000_campanas_jugadores.sql en Supabase.',
+  server_not_ready: 'El servidor todavía no tiene esta función.',
 };
+
+// Qué migración trae cada función nueva (para el aviso «falta aplicar…»).
+const MIGRATION_OF = [
+  [/^(event_pin|event_delete)$/, '20261120000000_registro_anclas.sql (anclar y eliminar en el registro)'],
+  [/^(world_|sessions_list$|chapter_upsert$|session_update$|pc_transfer$)/, '20261119000000_mundo_sesiones.sql (Mundo, sesiones e intercambio)'],
+];
+const DEFAULT_MIGRATION = '20261118000000_campanas_jugadores.sql';
 
 /** Error con un texto para la persona usuaria (las RPC devuelven códigos). */
 export function campaignError(err) {
-  if (err instanceof ApiError && MESSAGES[err.code]) return Object.assign(new ApiError(err.code, MESSAGES[err.code], err.status), { userMessage: MESSAGES[err.code] });
-  return err;
+  if (!(err instanceof ApiError) || !MESSAGES[err.code]) return err;
+  let msg = MESSAGES[err.code];
+  if (err.code === 'server_not_ready') {
+    const migration = MIGRATION_OF.find(([re]) => re.test(err.rpc ?? ''))?.[1] ?? DEFAULT_MIGRATION;
+    msg = `El servidor todavía no tiene esta función: hay que aplicar en Supabase la migración ${migration}.`;
+  }
+  return Object.assign(new ApiError(err.code, msg, err.status), { userMessage: msg, rpc: err.rpc });
 }
 const wrap = (p) => p.catch((err) => { throw campaignError(err); });
 
@@ -96,6 +108,10 @@ export function createCampaignPlay({ api = defaultApi, homebrew, characters }) {
     roster: (id) => wrap(api.roster(id, keyOf(id))),
     events: (id, opts) => wrap(api.events(id, keyOf(id), opts)),
     addEvent: (id, event) => wrap(api.eventAdd(id, keyOf(id), event)),
+    /** Anclas del registro; si el servidor aún no las tiene, lista vacía. */
+    pinnedEvents: (id) => api.events(id, keyOf(id), { pinnedOnly: true, limit: 200 }).then((r) => r.events).catch(() => []),
+    pinEvent: async (id, eventId, scope, pinned = true) => wrap(api.eventPin(id, dmKey(id), eventId, { scope, pinned })),
+    deleteEvent: async (id, eventId) => wrap(api.eventDelete(id, dmKey(id), eventId)),
     pcGet: (id, pcId) => wrap(api.pcGet(id, homebrew.ownerKey(id) ?? keyOf(id), pcId)),
 
     // DM

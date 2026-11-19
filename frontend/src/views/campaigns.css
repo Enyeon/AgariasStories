@@ -161,3 +161,23 @@
 .session-card__summary { margin: 0; white-space: pre-line; }
 .session-card__secret { margin: 0; font-size: var(--fs-sm); color: var(--gold); white-space: pre-line; }
 .session-timeline { margin: 0; padding-left: var(--space-5); display: grid; gap: var(--space-1); font-size: var(--fs-sm); }
+
+/* ── Registro: anclados y menú del DM ────────────────────────────────── */
+.event { position: relative; }
+.event.is-pinned { border-color: color-mix(in srgb, var(--gold) 55%, var(--border)); }
+.event__menu {
+  position: absolute; top: var(--space-1); right: var(--space-1);
+  min-width: 36px; min-height: 36px; border: 0; border-radius: var(--radius-sm);
+  background: none; color: var(--text-faint); font: inherit; font-size: 1.1rem; cursor: pointer;
+}
+.event__menu:hover, .event__menu:focus-visible { background: var(--surface-2); color: var(--text); }
+.event:has(.event__menu) .event__body { padding-right: 36px; }
+.event__pin { color: var(--gold); }
+.pins { margin-bottom: var(--space-4); }
+.pins > summary { list-style: none; cursor: pointer; }
+.pins > summary::-webkit-details-marker { display: none; }
+.pins-title { margin: 0 0 var(--space-2); font-size: var(--fs-sm); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-muted); }
+.pins .event-list { margin-bottom: var(--space-3); }
+.pins-card { padding: var(--space-3) var(--space-4); }
+.pins-card__head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); }
+.event-list--compact .event { padding: var(--space-2) var(--space-3); }

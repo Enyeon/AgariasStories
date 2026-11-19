@@ -124,7 +124,8 @@ export function createRpc({ url = SUPABASE_URL, key = SUPABASE_KEY, fetchImpl = 
           : res.status === 429 ? 'rate_limited'
             : res.status >= 500 ? 'server_error' : 'http_error';
       console.warn(`[rpc] ${fn} → ${res.status}`, payload);
-      throw new ApiError(code, DEFAULT_MESSAGES[code] ?? 'No se pudo completar la operación.', res.status);
+      // `rpc`: qué función falló (para decir qué migración falta).
+      throw Object.assign(new ApiError(code, DEFAULT_MESSAGES[code] ?? 'No se pudo completar la operación.', res.status), { rpc: fn });
     }
     return payload;
   };
@@ -164,9 +165,12 @@ export function createCampaignApi(rpc = createRpc()) {
       rpc('pc_save', { campaign_id: id, key, pc_id: pcId, document, summary, expected_revision: revision, events, state, privacy }),
     eventAdd: (id, key, { kind, text, data = null, pcId = null, visibility = 'publico', day = null }) =>
       rpc('event_add', { campaign_id: id, key, kind, message: text, data, pc_id: pcId, visibility, day }),
-    events: (id, key, { before = null, pcId = null, limit = 50, session = null } = {}) => rpc('events_list', {
-      campaign_id: id, key, before_id: before, pc_id: pcId, lim: limit, ...(session != null ? { session } : {}),
+    events: (id, key, { before = null, pcId = null, limit = 50, session = null, pinnedOnly = false } = {}) => rpc('events_list', {
+      campaign_id: id, key, before_id: before, pc_id: pcId, lim: limit, ...(session != null ? { session } : {}), ...(pinnedOnly ? { pinned_only: true } : {}),
     }),
+    // Registro: anclar y eliminar (20261120000000_registro_anclas.sql).
+    eventPin: (id, dmKey, eventId, { scope = 'todos', pinned = true } = {}) => rpc('event_pin', { campaign_id: id, dm_key: dmKey, event_id: eventId, scope, pinned }),
+    eventDelete: (id, dmKey, eventId) => rpc('event_delete', { campaign_id: id, dm_key: dmKey, event_id: eventId }),
     sessionStart: (id, dmKey, title = '', chapterId = null) => rpc('session_start', { campaign_id: id, dm_key: dmKey, title, ...(chapterId != null ? { chapter_id: chapterId } : {}) }),
     // Mundo, capítulos e intercambio (20261119000000_mundo_sesiones.sql).
     worldList: (id, key) => rpc('world_list', { campaign_id: id, key }),

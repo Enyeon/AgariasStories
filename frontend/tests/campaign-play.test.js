@@ -375,3 +375,38 @@ describe('dar a otro PJ de la campaña', () => {
     expect(after.record.pc.revision).toBe(3);
   });
 });
+
+describe('aviso de migración sin aplicar', () => {
+  it('dice qué migración falta según la función', async () => {
+    const { campaignError } = await import('../src/services/campaign-play.js');
+    const world = campaignError(Object.assign(new ApiError('server_not_ready', 'x', 404), { rpc: 'world_list' }));
+    expect(world.userMessage).toMatch(/20261119000000_mundo_sesiones/);
+    const join = campaignError(Object.assign(new ApiError('server_not_ready', 'x', 404), { rpc: 'campaign_join' }));
+    expect(join.userMessage).toMatch(/20261118000000_campanas_jugadores/);
+  });
+});
+
+describe('registro: anclar y eliminar', () => {
+  const homebrew = (role) => ({ membership: () => ({ id: 'mesa', role, key: 'k' }), ownerKey: () => 'k' });
+
+  it('si el servidor aún no tiene anclas, la lista de anclados queda vacía y el error dice qué migración falta', async () => {
+    const api = {
+      events: async () => { throw Object.assign(new ApiError('server_not_ready', 'x', 404), { rpc: 'events_list' }); },
+      eventPin: async () => { throw Object.assign(new ApiError('server_not_ready', 'x', 404), { rpc: 'event_pin' }); },
+    };
+    const play = createCampaignPlay({ api, homebrew: homebrew('dm'), characters: {} });
+    expect(await play.pinnedEvents('mesa')).toEqual([]);
+    await expect(play.pinEvent('mesa', 1, 'todos')).rejects.toMatchObject({ userMessage: expect.stringMatching(/20261120000000_registro_anclas/) });
+  });
+
+  it('sólo el DM ancla y elimina', async () => {
+    const calls = [];
+    const api = { eventPin: async (...a) => calls.push(a), eventDelete: async (...a) => calls.push(a) };
+    const player = createCampaignPlay({ api, homebrew: homebrew('jugador'), characters: {} });
+    await expect(player.pinEvent('mesa', 1, 'todos')).rejects.toMatchObject({ code: 'forbidden' });
+    await expect(player.deleteEvent('mesa', 1)).rejects.toMatchObject({ code: 'forbidden' });
+    const dm = createCampaignPlay({ api, homebrew: homebrew('dm'), characters: {} });
+    await dm.pinEvent('mesa', 7, 'personal', false);
+    expect(calls[0]).toEqual(['mesa', 'k', 7, { scope: 'personal', pinned: false }]);
+  });
+});

@@ -54,7 +54,7 @@ export function createSessionsPanel({ id, play, isDm, pcName, onChanged }) {
         ${isDm() ? html`<button type="button" class="btn btn--ghost btn--sm" data-s-edit="${s.sessionId}">✎ Resumen</button>` : ''}
       </div>
       ${open ? (events == null ? html`<p class="muted">Cargando…</p>` : events.length
-        ? html`<ol class="session-timeline">${events.map((e) => html`<li><span aria-hidden="true">${EVENT_KINDS[e.kind] ?? '📌'}</span> ${e.pcId && !e.text.startsWith(pcName(e.pcId)) ? html`<strong>${pcName(e.pcId)}</strong> · ` : ''}${e.text}</li>`)}</ol>`
+        ? html`<ol class="session-timeline">${events.map((e) => html`<li><span aria-hidden="true">${EVENT_KINDS[e.kind] ?? '📖'}</span> ${e.pcId && !e.text.startsWith(pcName(e.pcId)) ? html`<strong>${pcName(e.pcId)}</strong> · ` : ''}${e.text}</li>`)}</ol>`
         : html`<p class="muted">No hay nada anotado que puedas ver.</p>`) : ''}
     </li>`;
   }

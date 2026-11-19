@@ -34,7 +34,7 @@ export const PC_STATE = Object.freeze({
 export const EVENT_KINDS = Object.freeze({
   compra: '🛒', venta: '💰', dinero: '🪙', objeto: '🎒', nivel: '⬆', experiencia: '✨', vida: '❤',
   uso: '🧪', descubrimiento: '🔎', capitulo: '📚', muerte: '💀', revivir: '🌅', retiro: '🏳', mision: '📜', recompensa: '🏆', nota: '📝', sesion: '🎬',
-  pj: '🧝', miembro: '👤', tienda: '🏪', gremio: '⚔', posada: '🛏', acontecimiento: '📌',
+  pj: '🧝', miembro: '👤', tienda: '🏪', gremio: '⚔', posada: '🛏', acontecimiento: '📖',
 });
 
 const MAX_TEXT = 480;
