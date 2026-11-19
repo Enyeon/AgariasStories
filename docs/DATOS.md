@@ -128,6 +128,35 @@ anterior está en `docs/historial/shadow-anterior.json`.
 3. Ejecuta `python tools/homebrewery_class.py <clase> docs/fuentes/<clase>.md`.
    Sólo reescribe los rasgos; el resto del JSON se conserva.
 
+## Razas: campos nuevos e historia (AgSt 1.30)
+
+Una raza puede declarar (todo opcional, compatible con lo existente). El
+validador `content/race-data.js` y la prueba `tests/race-data.test.js`
+comprueban que encajen.
+
+| Campo | Para qué |
+|---|---|
+| `linaje` | Id de su historia en `data/race-lore.json`. **Todas las variantes y subrazas de un linaje comparten la misma historia** |
+| `tipo`, `tamano`, `origen` | Insignias en el selector y en Rasgos (por ejemplo «Humanoide · Mediano · 🌌 La Luna») |
+| `descripcion` | Una o dos frases; se ve en el selector y en «Leer más» (antes no se mostraba) |
+| `anatomiaDraconica` | `true` en las 15 razas «Dracónido…». El jugador elige alas y cola; con alas se muestra el **Vuelo dracónico** (regla oficial, nivel 5) |
+| `pisoMinimo` | Lord 100: piso desde el que aparece en la Tienda |
+
+**`data/race-lore.json`:**
+
+- Formato: `{ "<linaje>": { nombre, resumen, secciones: [{ titulo, texto }], relacionadas? } }`.
+- Dónde se lee: en el selector de raza («📜 Historia: …», plegable) y en la
+  pestaña Rasgos («Leer más» → «📜 Historia de esta raza»).
+- Si una raza no tiene historia, no aparece nada.
+
+**Añadir el lore de una raza existente:** se crea su entrada en
+`race-lore.json` y se pone `"linaje"` en sus variantes de `races.json`. No hay
+que tocar código.
+
+**Catálogo:** «Razas de Agarias Pt. V: Aliens» (nuevo) y «Pt. VI: Extra's»
+(antes Pt. V). Las claves de las razas no cambian, así que los personajes
+guardados siguen funcionando.
+
 ## ⚠️ Información que necesita verificación
 
 No se modificó nada de lo siguiente; se deja señalado para que lo revise quien

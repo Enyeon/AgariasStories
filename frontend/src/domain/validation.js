@@ -249,6 +249,10 @@ export function normalizeCharacter(raw) {
   }
   d.race.abilityChoices = list(race.abilityChoices, (g) => uniqueStrings(g, ABILITY_KEYS), 10);
   d.race.languages = uniqueStrings(race.languages).map((l) => text(l)).slice(0, 30);
+  // (1.30) Anatomía de los dracónidos: sólo se guarda si tiene alas o cola.
+  if (isObject(race.anatomy) && (race.anatomy.alas === true || race.anatomy.cola === true)) {
+    d.race.anatomy = { alas: race.anatomy.alas === true, cola: race.anatomy.cola === true };
+  }
   if (isObject(race.feat) && text(race.feat.name)) {
     d.race.feat = { name: text(race.feat.name), ability: abilityOrNull(race.feat.ability) };
   }

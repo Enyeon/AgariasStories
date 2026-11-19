@@ -221,8 +221,6 @@
       "Chico Slime / Ooze-kin (Adhesivo)",
       "Chico Slime / Ooze-kin (Corrosivo)",
       "Chico Slime / Ooze-kin (Vítreo)",
-      "Dracónido Erudito (Vacío)",
-      "Dracónido Superviviente (Vacío)",
       "Dazahk",
       "Enderman",
       "Faery (Pixie)",
@@ -316,7 +314,14 @@
     ]
   },
   {
-    "source": "Razas de Agarias Pt. V: Extra's",
+    "source": "Razas de Agarias Pt. V: Aliens",
+    "races": [
+      "Dracónido Erudito (Vacío)",
+      "Dracónido Superviviente (Vacío)"
+    ]
+  },
+  {
+    "source": "Razas de Agarias Pt. VI: Extra's",
     "races": [
       "Forjados de Guerra (Portalizadores)",
       "Heliofago (Luz)",

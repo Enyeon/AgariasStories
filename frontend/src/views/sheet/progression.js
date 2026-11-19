@@ -3,11 +3,11 @@
 import { html, raw, richText } from '../../ui/dom.js';
 import { ABILITY_KEYS, ABILITY_LABEL, MAX_LEVEL } from '../../domain/constants.js';
 import { raceChoiceGroups, formatModifier, featAbilityOptions, subclassInfo } from '../../domain/rules.js';
-import { getRace, getClass, getFeat, raceHasToughness, data, raceName, featName } from '../../data/index.js';
+import { getRace, getClass, getFeat, raceHasToughness, raceHasDraconicAnatomy, data, raceName, featName } from '../../data/index.js';
 import {
   setRace, setRaceAbilityChoice, setRaceLanguages, raceAllowsFeat, raceFeatOptions, setRaceFeat, applyLevelDown, canLevelUp,
 } from '../../domain/progression.js';
-import { sectionCard, actionButton } from './common.js';
+import { sectionCard, actionButton, bindAttrs } from './common.js';
 import { openRacePicker } from '../race-picker.js';
 import { renderBackgroundCard } from './background.js';
 import { pendingSpellChoices, pendingDeferredChoices } from '../../domain/class-choices.js';
@@ -86,6 +86,17 @@ function raceFeat(ctx) {
   </fieldset>`;
 }
 
+/** Alas y cola (dracónidos): elección sutil; las alas muestran el Vuelo dracónico en Rasgos. */
+function draconicAnatomy(ctx) {
+  const anat = ctx.character.race.anatomy ?? {};
+  const box = (part, label) => html`<label class="chip"><input type="checkbox" ${anat[part] ? raw('checked') : ''} ${bindAttrs(`race.anatomy.${part}`, 'bool', ctx.readOnly)}> ${label}</label>`;
+  return html`<fieldset class="choice-group race-anatomy">
+    <legend>Anatomía <small class="muted">(no todos los dracónidos tienen alas y cola)</small></legend>
+    <div class="chips">${box('alas', '🪽 Tiene alas')}${box('cola', '🦎 Tiene cola')}</div>
+    ${anat.alas ? html`<p class="field__hint">Con alas: el <strong>Vuelo dracónico</strong> aparece en «Rasgos» (a partir del nivel 5).</p>` : ''}
+  </fieldset>`;
+}
+
 function raceCard(ctx) {
   const race = getRace(ctx.character.race.key);
   const key = ctx.character.race.key;
@@ -96,6 +107,7 @@ function raceCard(ctx) {
     body: race ? html`<div class="stack">
       ${raceHasToughness(key) ? html`<p><span class="badge badge--gold">${data.raceBadges[key].icono} ${data.raceBadges[key].texto}</span></p>` : ''}
       ${raceChoices(ctx, race)}
+      ${raceHasDraconicAnatomy(key) ? draconicAnatomy(ctx) : ''}
       ${languages(ctx)}
       ${raceFeat(ctx)}
     </div>` : '',

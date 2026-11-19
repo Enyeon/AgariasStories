@@ -4,6 +4,7 @@
 
 import races from './races.json';
 import raceCatalog from './race-catalog.json';
+import raceLoreData from './race-lore.json';
 import raceTags from './race-tags.json';
 import raceBadges from './race-badges.json';
 import feats from './feats.json';
@@ -39,9 +40,12 @@ export function registerClassData(cls) {
 // fija en hability--stats.js; se conserva aquí junto a los badges.
 const TOUGH_RACES = Object.freeze(Object.keys(raceBadges));
 
+const { $comment: _loreDoc, ...raceLore } = raceLoreData;
+
 export const data = Object.freeze({
   races,
   raceCatalog,
+  raceLore,
   raceTags,
   raceBadges,
   feats,
@@ -111,6 +115,27 @@ export function getBackgroundFeature(key) {
 
 export function getEpicBoon(name) {
   return name && Object.hasOwn(epicBoons, name) ? epicBoons[name] : null;
+}
+
+/**
+ * Historia (lore) de una raza: la del LINAJE que declara en `linaje`, compartida
+ * por todas sus variantes y subrazas. null si la raza no tiene historia.
+ */
+export function getRaceLore(raceKey) {
+  const id = getRace(raceKey)?.linaje;
+  return id && Object.hasOwn(raceLore, id) ? { id, ...raceLore[id] } : null;
+}
+
+/** Ficha breve de una raza para mostrar como insignias (sólo lo que la raza declara). */
+export function raceProfile(raceKey) {
+  const r = getRace(raceKey);
+  if (!r) return null;
+  return { tipo: r.tipo ?? null, tamano: r.tamano ?? null, origen: r.origen ?? null, descripcion: r.descripcion ?? null };
+}
+
+/** ¿La raza permite elegir alas y cola (dracónidos)? */
+export function raceHasDraconicAnatomy(raceKey) {
+  return getRace(raceKey)?.anatomiaDraconica === true;
 }
 
 export function raceHasToughness(raceKey) {

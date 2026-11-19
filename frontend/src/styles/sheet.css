@@ -571,3 +571,15 @@
   .inv-item__qty .input { width: 4rem; }
   .inv-item__meta { grid-template-columns: 1fr; }
 }
+
+/* ── Razas: descripción, historia y anatomía (AgSt 1.30) ───────────── */
+.race-description { margin: 0; font-style: italic; color: var(--text-muted); }
+.race-lore > summary { font-weight: 600; }
+.race-lore__summary { font-style: italic; color: var(--text-muted); }
+.race-lore__section + .race-lore__section { margin-top: var(--space-3); }
+.race-lore__title { margin: 0 0 var(--space-1); font-size: var(--fs-md); color: var(--gold); }
+.race-lore__family { font-size: var(--fs-sm); }
+.race-more { margin: var(--space-2) 0 var(--space-3); }
+.trait-card.is-locked { opacity: 0.75; }
+.trait-card__source { margin: var(--space-1) 0 0; font-size: var(--fs-xs); }
+.race-anatomy legend small { font-weight: 400; }

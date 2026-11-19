@@ -107,6 +107,7 @@ export function createCharacter() {
       languages: [],
       /** Dote racial (p. ej. Humano Variante): { name, ability } */
       feat: null,
+      // anatomy (opcional, sólo dracónidos): { alas, cola }. Se omite si no tiene ninguna.
     },
     /**
      * Trasfondo. `source` = 'official' (datos de la app, por `key`) o 'custom'

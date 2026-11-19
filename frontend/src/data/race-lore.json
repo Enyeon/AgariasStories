@@ -1,0 +1,3 @@
+{
+  "$comment": "Historia de las razas (AgSt 1.30). Una entrada por LINAJE: todas las variantes y subrazas comparten la misma historia. Una raza la enlaza con el campo `linaje` en races.json. Formato: { nombre, resumen (una frase), secciones: [{ titulo, texto }], relacionadas?: [linaje…] }. El texto admite los mismos marcadores que los rasgos (♻, ❖, ::, —) y párrafos separados por líneas en blanco. Sólo existen las razas que tienen Lore: si una raza no tiene entrada, la app no muestra nada."
+}

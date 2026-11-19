@@ -4,7 +4,9 @@
 import { html, raw, richText, setHtml } from '../../ui/dom.js';
 import { classFeatures, subclassInfo } from '../../domain/rules.js';
 import { parseTraitSections, parseClassBasics, proseToHtml, plainText } from '../../domain/text-format.js';
-import { getFeat, getRace, getEpicBoon, getClass, data, raceName, featName, loadSpells } from '../../data/index.js';
+import { getFeat, getRace, getEpicBoon, getClass, data, raceName, featName, loadSpells, getRaceLore } from '../../data/index.js';
+import { anatomyTraits } from '../../domain/race-anatomy.js';
+import { openRaceLore, raceProfileBadges } from '../components/race-lore.js';
 import { ABILITY_LABEL, CLASS_ICONS, CLASS_SECTIONS } from '../../domain/constants.js';
 import { setClassSkills, setClassSaves, TRAIT_ORIGINS } from '../../domain/proficiencies.js';
 import { describeEffect } from '../../domain/effects.js';
@@ -71,6 +73,8 @@ function raceSection(ctx) {
   const sections = parseTraitSections(c.notes.raceTraits);
   const speed = ctx.sheet.speeds.filter((s) => s.value !== null);
   const restore = race && c.notes.raceTraits.trim() !== (race.info ?? '').trim();
+  const lore = getRaceLore(c.race.key);
+  const anatomy = anatomyTraits(c, ctx.sheet.level);
 
   let body;
   if (editing) {
@@ -99,7 +103,21 @@ function raceSection(ctx) {
       ${speed.map((s) => html`<span class="badge">${s.label} ${s.value} pies</span>`)}
       ${ctx.sheet.languages.fixed.length ? html`<span class="badge">Idiomas: ${[...ctx.sheet.languages.fixed, ...ctx.sheet.languages.chosen].join(', ')}</span>` : ''}
       ${ctx.sheet.hp.tough ? html`<span class="badge badge--gold">${data.raceBadges[c.race.key]?.texto ?? 'Dureza'}</span>` : ''}
+      ${raceProfileBadges(c.race.key)}
     </div>` : ''}
+    ${race && (race.descripcion || lore) ? html`<details class="disclosure race-more" data-key="race-more">
+      <summary>Leer más</summary>
+      <div class="disclosure__body stack stack--sm">
+        ${race.descripcion ? html`<p class="race-description">${race.descripcion}</p>` : ''}
+        ${lore?.resumen ? html`<p class="muted">${lore.resumen}</p>` : ''}
+        ${lore ? html`<div><button type="button" class="btn btn--ghost btn--sm" data-action="race-lore">📜 Historia de esta raza</button></div>` : ''}
+      </div>
+    </details>` : ''}
+    ${anatomy.length ? html`<div class="trait-grid">${anatomy.map((t) => html`<article class="trait-card ${t.available ? '' : 'is-locked'}" ${searchAttr(t.name, t.text)}>
+      <h4 class="trait-card__title">${t.name}${t.available ? '' : html` <span class="badge">Desde el nivel 5</span>`}</h4>
+      <div class="rich">${richText(t.text)}</div>
+      <p class="muted trait-card__source">${t.source}</p>
+    </article>`)}</div>` : ''}
     ${body}
   </section>`;
 }
@@ -709,6 +727,7 @@ export const featuresActions = {
       .slice(0, st.skillsRemaining);
     ed.replace(setClassSkills(ed.character, classKey, [...st.chosenSkills, ...extra]), { keepScroll: true, message: 'Habilidades asignadas a la clase.' });
   },
+  'race-lore': (ed) => openRaceLore(ed.character.race.key),
   'restore-race-traits': (ed) => ed.update((c) => { c.notes.raceTraits = getRace(c.race.key)?.info ?? ''; }, { structural: true }),
   'toggle-trait-edit': (ed, el) => {
     const key = el.dataset.target;

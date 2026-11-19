@@ -2,7 +2,8 @@
 
 import { html, setHtml, richText, raw } from '../ui/dom.js';
 import { openDialog } from '../ui/feedback.js';
-import { data, getRace, raceName, listHomebrewRaces } from '../data/index.js';
+import { data, getRace, raceName, listHomebrewRaces, getRaceLore } from '../data/index.js';
+import { raceProfileBadges, loreSections } from './components/race-lore.js';
 import { raceBonusText } from './sheet/progression.js';
 
 const normalize = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
@@ -47,10 +48,16 @@ export function openRacePicker(currentKey, allow = {}) {
       function detail() {
         const race = getRace(selected);
         if (!race) return html`<p class="muted">Selecciona una raza para ver sus rasgos.</p>`;
+        const lore = getRaceLore(selected);
         return html`<h3>${raceName(selected)}</h3>
-          <p><span class="badge badge--accent">${raceBonusText(race) || 'Sin bonificaciones'}</span> <span class="badge">Velocidad ${race.velocidad ?? 30} pies</span></p>
+          <p class="row"><span class="badge badge--accent">${raceBonusText(race) || 'Sin bonificaciones'}</span> <span class="badge">Velocidad ${race.velocidad ?? 30} pies</span>${raceProfileBadges(selected)}</p>
+          ${race.descripcion ? html`<p class="race-description">${race.descripcion}</p>` : ''}
           <p class="muted">${race.lenguage ?? ''}</p>
-          <div class="rich">${richText(race.info)}</div>`;
+          <div class="rich">${richText(race.info)}</div>
+          ${lore ? html`<details class="disclosure race-lore">
+            <summary>📜 Historia: ${lore.nombre}</summary>
+            <div class="disclosure__body">${loreSections(lore)}</div>
+          </details>` : ''}`;
       }
 
       function render() {
