@@ -122,10 +122,11 @@ function openCompanionEditor(initial, { blood, catalog }) {
         </div>
         <fieldset class="choice-group"><legend>Estadísticas</legend>
           <div class="segmented" role="radiogroup">
-            <label class="segmented__opt"><input type="radio" name="mode" value="catalogo" ${mode === 'catalogo' ? raw('checked') : ''} ${options.length ? '' : raw('disabled')}>De un catálogo</label>
+            <label class="segmented__opt"><input type="radio" name="mode" value="catalogo" ${mode === 'catalogo' ? raw('checked') : ''}>De un catálogo</label>
             <label class="segmented__opt"><input type="radio" name="mode" value="propio" ${mode === 'propio' ? raw('checked') : ''}>Bloque propio</label>
           </div>
-          ${mode === 'catalogo' ? html`<div class="field"><label class="field__label" for="cp-ref">Criatura</label>
+          ${mode === 'catalogo' && !options.length ? html`<p class="callout" data-empty-catalog>Todavía no hay criaturas en el catálogo. Se crean en <strong>Homebrew → Criaturas</strong> (en una campaña, las crea o aprueba el DM) y entonces aparecen aquí. Mientras tanto, puedes usar <strong>Bloque propio</strong>.</p>`
+            : mode === 'catalogo' ? html`<div class="field"><label class="field__label" for="cp-ref">Criatura</label>
               <select id="cp-ref" class="select" name="creatureRef">${groups.map((g) => html`<optgroup label="${g}">${options.filter((o) => o.group === g).map((o) => html`<option value="${o.ref}" ${comp.creatureRef === o.ref ? raw('selected') : ''}>${o.name}</option>`)}</optgroup>`)}</select>
               <span class="field__hint">El DM puede crear criaturas en Homebrew; aparecerán aquí.</span></div>`
             : html`<div class="form-grid">
@@ -172,6 +173,10 @@ function openCompanionEditor(initial, { blood, catalog }) {
           creatureRef: mode === 'catalogo' ? comp.creatureRef : null,
           custom: mode === 'propio' ? { ...x } : null,
         };
+        if (mode === 'catalogo' && !out.creatureRef) {
+          body.querySelector('[data-error]').textContent = 'Elige una criatura del catálogo o usa «Bloque propio».';
+          return;
+        }
         if (!out.name && mode === 'propio') {
           body.querySelector('[data-error]').textContent = 'Ponle un nombre a la criatura.';
           return;

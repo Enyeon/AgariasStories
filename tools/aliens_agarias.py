@@ -8,8 +8,8 @@ Añade (o actualiza, es idempotente) en frontend/src/data:
 
 Decisiones del autor (18-nov-2026), en resumen:
   * Son especies recién descubiertas y minoritarias; unas vienen de otros
-    planetas, otras de otros planos y otras ya estaban en el mundo. Algunas
-    viven en los pisos superiores de Lord 100 (50 en adelante).
+    planetas, otras de otros planos y otras ya estaban en el mundo. El lore
+    habla de Agarias, nunca de una campaña concreta (como Lord 100).
   * Neutrales salvo los Vhorr (≈ 80 % hostiles). La magia funciona igual.
   * Nombres propios para no usar propiedad intelectual ajena: Varkai
     («Predator»), Vhorr («Xenomorfos»), Sembradores («Ingenieros»). Los
@@ -17,7 +17,7 @@ Decisiones del autor (18-nov-2026), en resumen:
     son otra raza creadora (no se toca aquí).
   * Su tecnología es EQUIPO (Tienda), no un rasgo racial.
   * Umbrael, dios del Vacío absoluto, forma la trifecta con Bahamut y Tiamat
-    (hermanos). Ghragur Bael fue el primer Dracónido del Vacío (sin clan).
+    (hermanos). Grhagur Bael fue el primer Dracónido del Vacío (sin clan).
     Grhagur Enyeon Enerson (apellido, nombre, clan) fue profeta, inició la
     clase Shadow Knight y devoró a la Sombra Primordial.
 
@@ -62,7 +62,7 @@ VARKAI_BASE = [
     "Puedes usarla tantas veces como tu bonificador por competencia y recuperas los usos al terminar un descanso largo.",
     "♻ Código del cazador. Eres competente en Intimidación o en Sigilo (elige una al crear el personaje).",
     "♻ Tecnología de caza. Los Varkai no nacen con su tecnología: el camuflaje óptico, la lanza retráctil o el cañón de plasma son equipo "
-    "que se gana, se compra o se hereda (en la Tienda, sólo en los pisos 50 o superiores de Lord 100).",
+    "que se gana, se compra o se hereda.",
 ]
 VARKAI_CLANS = {
     "Varkai (Clan Colmillo)": ("Cazadores de cuerpo a cuerpo que sólo aceptan la presa que puede devolver el golpe.",
@@ -324,8 +324,8 @@ def lore_data():
                   "equipo no es menos Varkai, sólo uno que aún no ha demostrado nada."),
                 S("Clanes", "El Clan Colmillo busca el combate cuerpo a cuerpo; el Clan Sombra acecha durante días antes de dejarse ver; el Clan "
                   "Lejano abate a su presa desde donde ella no puede responder, y por eso los otros clanes lo miran con cierta desconfianza."),
-                S("En Agarias", "Los Varkai son recién llegados y muy pocos. La mayoría caza en los pisos superiores de Lord 100, del 50 en adelante, "
-                  "donde las bestias están a su altura. Son neutrales: con los mortales que respetan la caza se muestran corteses, incluso generosos; "
+                S("En Agarias", "Los Varkai son recién llegados y muy pocos. La mayoría caza en las regiones más salvajes y peligrosas "
+                  "de Agarias, donde las bestias están a su altura. Son neutrales: con los mortales que respetan la caza se muestran corteses, incluso generosos; "
                   "con quien caza por placer o por crueldad, implacables. Algunos aventureros de Agarias se han ganado un trofeo de un Varkai como "
                   "señal de respeto, y lo llevan con orgullo."),
             ],
@@ -347,7 +347,7 @@ def lore_data():
                   "despierta. De pronto el silencio dentro de su cabeza es suyo. Muchos enloquecen; otros aprenden a pensar por sí mismos, a hablar "
                   "con dificultad y a convivir con quienes antes habrían sido presa. Sólo los Despiertos pueden ser personajes.\n\nEl eco de la "
                   "colmena nunca desaparece del todo: los protege de los encantamientos, pero también les recuerda de dónde vienen."),
-                S("En Agarias", "Las colmenas son raras y casi siempre están en los pisos más altos de Lord 100 o en ruinas de los Sembradores. "
+                S("En Agarias", "Las colmenas son raras y casi siempre están en lugares remotos y profundos de Agarias o en ruinas de los Sembradores. "
                   "Los Varkai las consideran la presa suprema. Un Vhorr Despierto será recibido con miedo en casi cualquier lugar, y tendrá que "
                   "demostrar una y otra vez que ya no pertenece a la colmena."),
             ],
@@ -366,7 +366,7 @@ def lore_data():
                 S("La caída", "Nadie sabe con certeza qué acabó con su civilización. Algunos dicen que fueron los Vhorr; otros, que los Sembradores "
                   "se dividieron entre los que querían seguir creando y los que querían deshacer lo creado. Hoy quedan muy pocos: los del Alba, "
                   "eruditos que estudian lo que sus antepasados sembraron, y los de la Ceniza, guerreros que custodian las ruinas."),
-                S("En Agarias", "Los Sembradores que quedan son una minoría casi legendaria. Algunos viven en los pisos superiores de Lord 100; otros "
+                S("En Agarias", "Los Sembradores que quedan son una minoría casi legendaria. Algunos viven apartados en lugares que pocos alcanzan; otros "
                   "recorren el mundo buscando sus antiguos jardines. Miran a las razas que crearon con una mezcla de orgullo y culpa, y muchas de "
                   "ellas no saben si agradecerles la vida o pedirles cuentas."),
             ],
@@ -405,7 +405,7 @@ def lore_data():
                 S("Sociedad", "Los Abisales viven en las profundidades y sus colores son fríos y pausados; los Celestes, en las capas altas de la "
                   "atmósfera, y sus luces son vivas y rápidas. Ambos se consideran el mismo pueblo y se reúnen en grandes asambleas luminosas."),
                 S("En Agarias", "Recién descubiertos y muy escasos, los Medusoides llegaron a Agarias por caminos que todavía no explican. Son "
-                  "neutrales y curiosos; las ciudades costeras y los pisos acuáticos de Lord 100 son los únicos lugares donde se los ve con cierta frecuencia."),
+                  "neutrales y curiosos; las ciudades costeras y los mares de Agarias son los únicos lugares donde se los ve con cierta frecuencia."),
             ],
         },
         "micelianos": {
@@ -473,7 +473,7 @@ def lore_data():
                   "morado tan oscuro que se confunde con el cielo sin estrellas.\n\nMientras sus hermanos llenaban el mundo con sus hijos, Umbrael "
                   "miró a la Luna, a su lado oscuro, donde nada vivía. Su filosofía es la de sobrevivir en lo que otros consideran la nada: no "
                   "destruir el vacío ni temerlo, sino habitarlo."),
-                S("Origen", "Umbrael creó a los Dracónidos del Vacío en el lado oscuro de la Luna. El primero de todos fue Ghragur Bael, que no "
+                S("Origen", "Umbrael creó a los Dracónidos del Vacío en el lado oscuro de la Luna. El primero de todos fue Grhagur Bael, que no "
                   "pertenecía a ningún clan porque aún no existían las ramas que hoy dividen a su pueblo. Umbrael implantó en sus hijos una fisiología "
                   "capaz de vivir y sobrevivir en gravedades muy distintas, por eso la gravedad apenas les afecta y no pueden ser arrastrados con "
                   "facilidad.\n\nNo son dracónidos que vinieron del espacio: son otra rama evolutiva, nacida y diseñada para un mundo sin aire, y su "
@@ -485,7 +485,7 @@ def lore_data():
                   "luego el nombre y por último el clan. El más recordado es Grhagur Enyeon Enerson, profeta de Umbrael, que inició la senda de los "
                   "Shadow Knight y devoró a la Sombra Primordial.\n\nHoy hay Eruditos, que guardan el saber de su pueblo, y Supervivientes, curtidos "
                   "en los entornos más extremos. Los acompañan los Thri-kreen del Vacío, sus guardianes, y los Selenkos, sus sirvientes naturales. "
-                  "En Agarias son pocos y neutrales; algunos viven en los pisos superiores de Lord 100."),
+                  "En Agarias son pocos y neutrales."),
             ],
             "relacionadas": ["thri-kreen", "selenkos"],
         },
@@ -506,6 +506,21 @@ def lore_data():
     }
 
 
+FRAGMENTO_OLD = ("Realiza un ataque de hechizo a distancia; si impacta, el objetivo recibe 1d8 de daño de Vacío. Además, debe realizar "
+                 "una tirada de salvación de Sabiduría. Si falla, queda aturdido hasta el final de su siguiente turno.\n"
+                 "A niveles superiores, el daño aumenta a 2d8 en el nivel 5, 3d8 en el nivel 11 y 4d8 en el nivel 17.")
+FRAGMENTO_NEW = ("El objetivo debe superar una tirada de salvación de Sabiduría o quedar aturdido por el Vacío hasta el final de su "
+                 "siguiente turno: tiene desventaja en las tiradas de ataque y en las pruebas de característica (no es el estado "
+                 "Aturdido). Este truco no hace daño: el daño del Vacío es cosa de tu aliento.")
+ADAPTACION_OLD = ("♻ Adaptación Extrema. Eres inmune a los efectos nocivos derivados de la exposición al Vacío. Esto significa que puedes "
+                  "respirar y operar sin inconvenientes en entornos sin atmósfera (como el espacio exterior), bajo el agua o en atmósferas "
+                  "tóxicas y cargadas de magia caótica.")
+ADAPTACION_NEW = ("♻ Adaptación Extrema. Las condiciones extremas de la Luna te curtieron: puedes respirar y actuar con normalidad sin "
+                  "atmósfera (como en el espacio exterior), bajo el agua o en atmósferas tóxicas o cargadas de magia caótica. Es una "
+                  "adaptación al ambiente: no te protege del daño de Vacío (para eso tienes tu resistencia), ni de venenos, "
+                  "conjuros o ataques.")
+
+
 def update_void_draconids(races):
     """Dracónidos del Vacío ya existentes: añade el Anclaje gravitatorio y explica el arrastre del aliento."""
     for key in ("Dracónido Erudito (Vacío)", "Dracónido Superviviente (Vacío)"):
@@ -515,6 +530,7 @@ def update_void_draconids(races):
             txt = txt.replace("Este arrastre no provoca ataques de oportunidad.",
                               "Este arrastre no provoca ataques de oportunidad." + DESPLAZAMIENTO, 1)
             txt = txt.replace("\n♻ Resistencia al Daño.", "\n" + ANCLAJE + "\n♻ Resistencia al Daño.", 1)
+        txt = txt.replace(FRAGMENTO_OLD, FRAGMENTO_NEW).replace(ADAPTACION_OLD, ADAPTACION_NEW)
         r["info"] = txt
         r["efectos"] = [{"type": "resistencia", "value": "vacio"}]
         r["descripcion"] = ("Eruditos del Vacío: guardan el saber de los hijos de Umbrael." if "Erudito" in key

@@ -18,7 +18,7 @@
       },
       {
         "titulo": "En Agarias",
-        "texto": "Los Varkai son recién llegados y muy pocos. La mayoría caza en los pisos superiores de Lord 100, del 50 en adelante, donde las bestias están a su altura. Son neutrales: con los mortales que respetan la caza se muestran corteses, incluso generosos; con quien caza por placer o por crueldad, implacables. Algunos aventureros de Agarias se han ganado un trofeo de un Varkai como señal de respeto, y lo llevan con orgullo."
+        "texto": "Los Varkai son recién llegados y muy pocos. La mayoría caza en las regiones más salvajes y peligrosas de Agarias, donde las bestias están a su altura. Son neutrales: con los mortales que respetan la caza se muestran corteses, incluso generosos; con quien caza por placer o por crueldad, implacables. Algunos aventureros de Agarias se han ganado un trofeo de un Varkai como señal de respeto, y lo llevan con orgullo."
       }
     ],
     "relacionadas": [
@@ -43,7 +43,7 @@
       },
       {
         "titulo": "En Agarias",
-        "texto": "Las colmenas son raras y casi siempre están en los pisos más altos de Lord 100 o en ruinas de los Sembradores. Los Varkai las consideran la presa suprema. Un Vhorr Despierto será recibido con miedo en casi cualquier lugar, y tendrá que demostrar una y otra vez que ya no pertenece a la colmena."
+        "texto": "Las colmenas son raras y casi siempre están en lugares remotos y profundos de Agarias o en ruinas de los Sembradores. Los Varkai las consideran la presa suprema. Un Vhorr Despierto será recibido con miedo en casi cualquier lugar, y tendrá que demostrar una y otra vez que ya no pertenece a la colmena."
       }
     ],
     "relacionadas": [
@@ -69,7 +69,7 @@
       },
       {
         "titulo": "En Agarias",
-        "texto": "Los Sembradores que quedan son una minoría casi legendaria. Algunos viven en los pisos superiores de Lord 100; otros recorren el mundo buscando sus antiguos jardines. Miran a las razas que crearon con una mezcla de orgullo y culpa, y muchas de ellas no saben si agradecerles la vida o pedirles cuentas."
+        "texto": "Los Sembradores que quedan son una minoría casi legendaria. Algunos viven apartados en lugares que pocos alcanzan; otros recorren el mundo buscando sus antiguos jardines. Miran a las razas que crearon con una mezcla de orgullo y culpa, y muchas de ellas no saben si agradecerles la vida o pedirles cuentas."
       }
     ],
     "relacionadas": [
@@ -117,7 +117,7 @@
       },
       {
         "titulo": "En Agarias",
-        "texto": "Recién descubiertos y muy escasos, los Medusoides llegaron a Agarias por caminos que todavía no explican. Son neutrales y curiosos; las ciudades costeras y los pisos acuáticos de Lord 100 son los únicos lugares donde se los ve con cierta frecuencia."
+        "texto": "Recién descubiertos y muy escasos, los Medusoides llegaron a Agarias por caminos que todavía no explican. Son neutrales y curiosos; las ciudades costeras y los mares de Agarias son los únicos lugares donde se los ve con cierta frecuencia."
       }
     ]
   },
@@ -203,7 +203,7 @@
       },
       {
         "titulo": "Origen",
-        "texto": "Umbrael creó a los Dracónidos del Vacío en el lado oscuro de la Luna. El primero de todos fue Ghragur Bael, que no pertenecía a ningún clan porque aún no existían las ramas que hoy dividen a su pueblo. Umbrael implantó en sus hijos una fisiología capaz de vivir y sobrevivir en gravedades muy distintas, por eso la gravedad apenas les afecta y no pueden ser arrastrados con facilidad.\n\nNo son dracónidos que vinieron del espacio: son otra rama evolutiva, nacida y diseñada para un mundo sin aire, y su aspecto morado oscuro los hace casi imperceptibles en su entorno."
+        "texto": "Umbrael creó a los Dracónidos del Vacío en el lado oscuro de la Luna. El primero de todos fue Grhagur Bael, que no pertenecía a ningún clan porque aún no existían las ramas que hoy dividen a su pueblo. Umbrael implantó en sus hijos una fisiología capaz de vivir y sobrevivir en gravedades muy distintas, por eso la gravedad apenas les afecta y no pueden ser arrastrados con facilidad.\n\nNo son dracónidos que vinieron del espacio: son otra rama evolutiva, nacida y diseñada para un mundo sin aire, y su aspecto morado oscuro los hace casi imperceptibles en su entorno."
       },
       {
         "titulo": "El Vacío",
@@ -211,7 +211,7 @@
       },
       {
         "titulo": "Clanes, fe y el profeta",
-        "texto": "Con el tiempo surgieron los clanes y sus ramas. Sus nombres se escriben con el apellido primero, luego el nombre y por último el clan. El más recordado es Grhagur Enyeon Enerson, profeta de Umbrael, que inició la senda de los Shadow Knight y devoró a la Sombra Primordial.\n\nHoy hay Eruditos, que guardan el saber de su pueblo, y Supervivientes, curtidos en los entornos más extremos. Los acompañan los Thri-kreen del Vacío, sus guardianes, y los Selenkos, sus sirvientes naturales. En Agarias son pocos y neutrales; algunos viven en los pisos superiores de Lord 100."
+        "texto": "Con el tiempo surgieron los clanes y sus ramas. Sus nombres se escriben con el apellido primero, luego el nombre y por último el clan. El más recordado es Grhagur Enyeon Enerson, profeta de Umbrael, que inició la senda de los Shadow Knight y devoró a la Sombra Primordial.\n\nHoy hay Eruditos, que guardan el saber de su pueblo, y Supervivientes, curtidos en los entornos más extremos. Los acompañan los Thri-kreen del Vacío, sus guardianes, y los Selenkos, sus sirvientes naturales. En Agarias son pocos y neutrales."
       }
     ],
     "relacionadas": [

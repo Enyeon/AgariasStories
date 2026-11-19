@@ -7,7 +7,7 @@ import { validateRaceData } from '../src/content/race-data.js';
 import { getRaceLore, raceHasDraconicAnatomy, raceProfile } from '../src/data/index.js';
 import { createCharacter, createDocument } from '../src/domain/schema.js';
 import { parseDocument } from '../src/domain/validation.js';
-import { anatomyTraits } from '../src/domain/race-anatomy.js';
+import { anatomyTraits, DRACONIC_TAIL } from '../src/domain/race-anatomy.js';
 import { setRace } from '../src/domain/progression.js';
 
 describe('datos de razas', () => {
@@ -60,7 +60,7 @@ describe('alas y cola de los dracónidos', () => {
     c.race.key = 'Dracónido (Fuego)';
     c.race.anatomy = { alas: true, cola: true };
     const low = anatomyTraits(c, 3);
-    expect(low.map((t) => t.name)).toEqual(['Vuelo dracónico', 'Cola']);
+    expect(low.map((t) => t.name)).toEqual(['Vuelo dracónico', 'Cola dracónica']);
     expect(low[0].available).toBe(false);
     expect(anatomyTraits(c, 5)[0].available).toBe(true);
     c.race.key = 'Alto Elfo';
@@ -117,12 +117,33 @@ describe('Pt. V: Aliens (AgSt 1.31)', () => {
       expect(races[key].info).toMatch(/no es un agujero negro/);
       expect(raceHasDraconicAnatomy(key)).toBe(true);
     }
-    expect(lore['draconido-vacio'].secciones.map((s) => s.texto).join(' ')).toMatch(/Ghragur Bael[\s\S]*Grhagur Enyeon Enerson/);
+    expect(lore['draconido-vacio'].secciones.map((s) => s.texto).join(' ')).toMatch(/Grhagur Bael[\s\S]*Grhagur Enyeon Enerson/);
   });
 
   it('Crystali: resistencia radiante y vulnerabilidad al trueno', () => {
     expect(races.Crystali.efectos).toEqual([
       { type: 'resistencia', value: 'radiante' }, { type: 'vulnerabilidad', value: 'trueno' },
     ]);
+  });
+});
+
+describe('Ajustes de AgSt 1.33', () => {
+  it('el lore y los rasgos de las razas no mencionan Lord 100 (es una campaña, no el mundo)', () => {
+    expect(JSON.stringify(races)).not.toMatch(/Lord 100/);
+    expect(JSON.stringify(lore)).not.toMatch(/Lord 100/);
+  });
+
+  it('Fragmento del Vacío ya no hace daño y la Adaptación Extrema es sólo ambiental', () => {
+    const erudito = races['Dracónido Erudito (Vacío)'].info;
+    expect(erudito).toMatch(/aturdido por el Vacío[\s\S]*desventaja/);
+    expect(erudito).not.toMatch(/1d8 de daño de Vacío/);
+    const superviviente = races['Dracónido Superviviente (Vacío)'].info;
+    expect(superviviente).not.toMatch(/inmune/i);
+    expect(superviviente).toMatch(/no te protege del daño de Vacío/);
+  });
+
+  it('la cola dracónica agarra pero no empuña armas, y ataca por 1d4 contundente', () => {
+    expect(DRACONIC_TAIL.text).toMatch(/No puede empuñar armas/);
+    expect(DRACONIC_TAIL.text).toMatch(/1d4 \+ tu modificador de Fuerza de daño contundente/);
   });
 });

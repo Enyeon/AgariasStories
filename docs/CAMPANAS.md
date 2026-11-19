@@ -222,4 +222,3 @@ de cada entrada:
 
 Si el servidor aún no tiene la migración, el registro funciona igual sin
 anclas, y al intentar anclar se avisa de qué migración falta.
-

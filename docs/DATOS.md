@@ -139,7 +139,7 @@ comprueban que encajen.
 | `linaje` | Id de su historia en `data/race-lore.json`. **Todas las variantes y subrazas de un linaje comparten la misma historia** |
 | `tipo`, `tamano`, `origen` | Insignias en el selector y en Rasgos (por ejemplo «Humanoide · Mediano · 🌌 La Luna») |
 | `descripcion` | Una o dos frases; se ve en el selector y en «Leer más» (antes no se mostraba) |
-| `anatomiaDraconica` | `true` en las 15 razas «Dracónido…». El jugador elige alas y cola; con alas se muestra el **Vuelo dracónico** (regla oficial, nivel 5) |
+| `anatomiaDraconica` | `true` en las 15 razas «Dracónido…». El jugador elige alas y cola; con alas se muestra el **Vuelo dracónico** (regla oficial, nivel 5); con cola, la **Cola dracónica** (regla de Agarias: prensil sin empuñar armas, ataque sin armas de 1d4 contundente) |
 | `pisoMinimo` | Lord 100: piso desde el que aparece en la Tienda |
 
 **`data/race-lore.json`:**
