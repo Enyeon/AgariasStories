@@ -243,3 +243,14 @@ para sustituir, en personajes guardados, sólo los que el usuario no había edit
   si procede, cambia `dadoDeGolpe` en `artifice.json`.
 - **Profano y Sagrado**: tipos de daño propios de Agarias (decisión del DM). Una
   resistencia a Necrótico/Radiante NO cubre Profano/Sagrado salvo que se diga.
+
+### Razas de Agarias Pt. V: Aliens (AgSt 1.31)
+
+Las razas alienígenas se generan con `python3 tools/aliens_agarias.py` (idempotente): escribe las razas en
+`races.json`, ordena el grupo «Razas de Agarias Pt. V: Aliens» en `race-catalog.json` y añade la historia de
+cada linaje en `race-lore.json`. Las subrazas son entradas separadas que comparten `linaje` (y, por tanto,
+historia). Linajes: `varkai`, `vhorr`, `sembradores`, `thri-kreen` (oficial + Guardias del Vacío),
+`medusoides`, `micelianos`, `cthulhianos`, `crystali`, `draconido-vacio` y `selenkos`.
+
+Reglas de equilibrio que comprueban los tests: +3 de atributos en total, sin tamaño Grande, sin inmunidades
+nuevas y vuelo sólo sin armadura media ni pesada. La tecnología de los Varkai es equipo de la Tienda.

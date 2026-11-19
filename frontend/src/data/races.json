@@ -1567,13 +1567,19 @@
       "Dracónico",
       "Habla del Vacío"
     ],
-    "info": "Rasgos de Raza:\n♻ Ascendencia Dracónica. Tienes ascendencia dracónica de Dragones Morado y Plomo.\n♻ Puedes usar tu acción para exhalar energía destructiva impregnada del Vacío. Cuando usas esta habilidad, todas las criaturas en una línea de 5 pies de ancho por 30 pies (6 casillas) de largo (1x6 casillas) deben realizar una tirada de salvación de Destreza. La CD es igual a 8 + tu modificador de Constitución + tu bonificador de competencia. Una criatura recibe 2d6 de daño de Vacío si falla, o la mitad si la supera. Además, si una criatura se encuentra dentro del área del aliento, y a 30 pies (6 casillas) o menos de ti y el aliento, debe hacer una tirada de salvación de Fuerza. Si la falla, es arrastrada 5 pies hacia el aliento. Este arrastre no provoca ataques de oportunidad. Una vez que uses esta habilidad, no puedes volver a utilizarla hasta que completes un descanso largo. El daño aumenta a 3d6 en nivel 6, 4d6 en nivel 11, y 5d6 en nivel 16.\n♻ Resistencia al Daño. Tienes resistencia a los daños y efectos de Vacío.\n♻ Visión en la Oscuridad. Acostumbrados a la oscuridad del Vacío, puedes ver en luz tenue dentro de un radio de 60 pies (12 casillas) como si fuera luz brillante y en la oscuridad como si fuera luz tenue. No puedes discernir colores en la oscuridad, solo tonos de gris.\n♻ Magia del Vacío. La energía del Vacío recorre tus venas y se manifiesta en forma de hechizos innatos, por lo que puedes usar el truco \"Fragmento del Vacío\" y a nivel 11 puedes usar \"Singularidad del Vacío\". [Solo si el DM lo permite]\n\nHechizos:\n♻ Fragmento del Vacío\n*Truco*\n:: Escuela: Evocación\n:: Tiempo de lanzamiento: 1 acción\n:: Alcance: 60 pies (12 casillas)\n:: Componentes: V, S\n:: Duración: Instantánea\nConcentras la esencia oscura del Vacío en un fragmento de energía que disparas hacia un objetivo que puedas ver. Realiza un ataque de hechizo a distancia; si impacta, el objetivo recibe 1d8 de daño de Vacío. Además, debe realizar una tirada de salvación de Sabiduría. Si falla, queda aturdido hasta el final de su siguiente turno.\nA niveles superiores, el daño aumenta a 2d8 en el nivel 5, 3d8 en el nivel 11 y 4d8 en el nivel 17.\n\n♻ Singularidad del Vacío\n*Nivel 6*\n:: Escuela: Evocación\n:: Tiempo de lanzamiento: 1 acción\n:: Alcance: 60 pies (12 casillas)\n:: Componentes: V, S, M (un fragmento de obsidiana)\n:: Duración: Concentración, hasta 1 minuto\nInvocas una pequeña singularidad de energía púrpura en un punto que puedas ver. Se forma una esfera de 15 pies (3 casillas) de radio que distorsiona la realidad a su alrededor. Cada criatura que comience su turno dentro de esta área debe realizar una tirada de salvación de Destreza. Si falla, recibe 4d8 de daño por Vacío y es arrastrada 10 pies (2 casillas) hacia el centro de la singularidad. Si tiene éxito, recibe la mitad del daño y no es arrastrada.\nAdicionalmente, si una criatura es arrastrada hasta el centro, queda aturdida hasta el final de su siguiente turno. Mientras mantengas la concentración, puedes usar tu acción adicional en cada uno de tus turnos para mover la singularidad hasta 15 pies en cualquier dirección.",
-    "descripcion": "Linaje de Dragones.",
+    "info": "Rasgos de Raza:\n♻ Ascendencia Dracónica. Tienes ascendencia dracónica de Dragones Morado y Plomo.\n♻ Puedes usar tu acción para exhalar energía destructiva impregnada del Vacío. Cuando usas esta habilidad, todas las criaturas en una línea de 5 pies de ancho por 30 pies (6 casillas) de largo (1x6 casillas) deben realizar una tirada de salvación de Destreza. La CD es igual a 8 + tu modificador de Constitución + tu bonificador de competencia. Una criatura recibe 2d6 de daño de Vacío si falla, o la mitad si la supera. Además, si una criatura se encuentra dentro del área del aliento, y a 30 pies (6 casillas) o menos de ti y el aliento, debe hacer una tirada de salvación de Fuerza. Si la falla, es arrastrada 5 pies hacia el aliento. Este arrastre no provoca ataques de oportunidad. El arrastre no es un agujero negro: el Vacío desplaza el aire y la materia, y cuando se mueve, lo desplazado quiere volver a donde estaba; por eso es atraído hacia el centro. Una vez que uses esta habilidad, no puedes volver a utilizarla hasta que completes un descanso largo. El daño aumenta a 3d6 en nivel 6, 4d6 en nivel 11, y 5d6 en nivel 16.\n♻ Anclaje gravitatorio. Umbrael preparó a sus hijos para cualquier gravedad: tienes ventaja en las tiradas de salvación para no ser empujado, atraído o derribado, y la gravedad alta o baja no te afecta.\n♻ Resistencia al Daño. Tienes resistencia a los daños y efectos de Vacío.\n♻ Visión en la Oscuridad. Acostumbrados a la oscuridad del Vacío, puedes ver en luz tenue dentro de un radio de 60 pies (12 casillas) como si fuera luz brillante y en la oscuridad como si fuera luz tenue. No puedes discernir colores en la oscuridad, solo tonos de gris.\n♻ Magia del Vacío. La energía del Vacío recorre tus venas y se manifiesta en forma de hechizos innatos, por lo que puedes usar el truco \"Fragmento del Vacío\" y a nivel 11 puedes usar \"Singularidad del Vacío\". [Solo si el DM lo permite]\n\nHechizos:\n♻ Fragmento del Vacío\n*Truco*\n:: Escuela: Evocación\n:: Tiempo de lanzamiento: 1 acción\n:: Alcance: 60 pies (12 casillas)\n:: Componentes: V, S\n:: Duración: Instantánea\nConcentras la esencia oscura del Vacío en un fragmento de energía que disparas hacia un objetivo que puedas ver. Realiza un ataque de hechizo a distancia; si impacta, el objetivo recibe 1d8 de daño de Vacío. Además, debe realizar una tirada de salvación de Sabiduría. Si falla, queda aturdido hasta el final de su siguiente turno.\nA niveles superiores, el daño aumenta a 2d8 en el nivel 5, 3d8 en el nivel 11 y 4d8 en el nivel 17.\n\n♻ Singularidad del Vacío\n*Nivel 6*\n:: Escuela: Evocación\n:: Tiempo de lanzamiento: 1 acción\n:: Alcance: 60 pies (12 casillas)\n:: Componentes: V, S, M (un fragmento de obsidiana)\n:: Duración: Concentración, hasta 1 minuto\nInvocas una pequeña singularidad de energía púrpura en un punto que puedas ver. Se forma una esfera de 15 pies (3 casillas) de radio que distorsiona la realidad a su alrededor. Cada criatura que comience su turno dentro de esta área debe realizar una tirada de salvación de Destreza. Si falla, recibe 4d8 de daño por Vacío y es arrastrada 10 pies (2 casillas) hacia el centro de la singularidad. Si tiene éxito, recibe la mitad del daño y no es arrastrada.\nAdicionalmente, si una criatura es arrastrada hasta el centro, queda aturdida hasta el final de su siguiente turno. Mientras mantengas la concentración, puedes usar tu acción adicional en cada uno de tus turnos para mover la singularidad hasta 15 pies en cualquier dirección.",
+    "descripcion": "Eruditos del Vacío: guardan el saber de los hijos de Umbrael.",
     "anatomiaDraconica": true,
     "linaje": "draconido-vacio",
     "tipo": "Humanoide",
     "tamano": "Mediano",
-    "origen": "La Luna (lado oscuro)"
+    "origen": "La Luna (lado oscuro)",
+    "efectos": [
+      {
+        "type": "resistencia",
+        "value": "vacio"
+      }
+    ]
   },
   "Dracónido Superviviente (Vacío)": {
     "velocidad": 35,
@@ -1592,13 +1598,19 @@
       "Dracónico",
       "Habla del Vacío"
     ],
-    "info": "Rasgos de Raza:\n♻ Ascendencia Dracónica. Tienes ascendencia dracónica de Dragones Morado y Plomo.\n♻ Puedes usar tu acción para exhalar energía destructiva impregnada del Vacío. Cuando usas esta habilidad, todas las criaturas en una línea de 5 pies de ancho por 30 pies de largo (1x6 casillas) deben realizar una tirada de salvación de Destreza. La CD es igual a 8 + tu modificador de Constitución + tu bonificador de competencia. Una criatura recibe 2d6 de daño de Vacío si falla, o la mitad si la supera. Además, si una criatura se encuentra dentro del área del aliento, y a 30 pies (6 casillas) o menos de ti y el aliento, debe hacer una tirada de salvación de Fuerza. Si la falla, es arrastrada 5 pies hacia el aliento. Este arrastre no provoca ataques de oportunidad. Una vez que uses esta habilidad, no puedes volver a utilizarla hasta que completes un descanso largo. El daño aumenta a 3d6 en nivel 6, 4d6 en nivel 11, y 5d6 en nivel 16.\n♻ Resistencia al Daño. Tienes resistencia a los daños y efectos de Vacío.\n♻ Visión en la Oscuridad. Acostumbrados a la oscuridad del Vacío, puedes ver en luz tenue dentro de un radio de 60 pies (12 casillas) como si fuera luz brillante y en la oscuridad como si fuera luz tenue. No puedes discernir colores en la oscuridad, solo tonos de gris.\n♻ Adaptación Extrema. Eres inmune a los efectos nocivos derivados de la exposición al Vacío. Esto significa que puedes respirar y operar sin inconvenientes en entornos sin atmósfera (como el espacio exterior), bajo el agua o en atmósferas tóxicas y cargadas de magia caótica.\n♻ Resiliencia Ambiental. Mientras estés en un ambiente extremo (atmósfera tóxica, presión profunda, calor o frío extremos), recibes la mitad de daño de efectos ambientales (por ejemplo, daño por asfixia, congelamiento, o fuego ambiental).\n♻ Superviviente. Eres competente en la habilidad de Supervivencia. Si ya tienes competencia en Supervivencia, tu bonificador de competencia se duplica al usarla (como con la dote Competencia Experta).",
-    "descripcion": "Linaje de Dragones.",
+    "info": "Rasgos de Raza:\n♻ Ascendencia Dracónica. Tienes ascendencia dracónica de Dragones Morado y Plomo.\n♻ Puedes usar tu acción para exhalar energía destructiva impregnada del Vacío. Cuando usas esta habilidad, todas las criaturas en una línea de 5 pies de ancho por 30 pies de largo (1x6 casillas) deben realizar una tirada de salvación de Destreza. La CD es igual a 8 + tu modificador de Constitución + tu bonificador de competencia. Una criatura recibe 2d6 de daño de Vacío si falla, o la mitad si la supera. Además, si una criatura se encuentra dentro del área del aliento, y a 30 pies (6 casillas) o menos de ti y el aliento, debe hacer una tirada de salvación de Fuerza. Si la falla, es arrastrada 5 pies hacia el aliento. Este arrastre no provoca ataques de oportunidad. El arrastre no es un agujero negro: el Vacío desplaza el aire y la materia, y cuando se mueve, lo desplazado quiere volver a donde estaba; por eso es atraído hacia el centro. Una vez que uses esta habilidad, no puedes volver a utilizarla hasta que completes un descanso largo. El daño aumenta a 3d6 en nivel 6, 4d6 en nivel 11, y 5d6 en nivel 16.\n♻ Anclaje gravitatorio. Umbrael preparó a sus hijos para cualquier gravedad: tienes ventaja en las tiradas de salvación para no ser empujado, atraído o derribado, y la gravedad alta o baja no te afecta.\n♻ Resistencia al Daño. Tienes resistencia a los daños y efectos de Vacío.\n♻ Visión en la Oscuridad. Acostumbrados a la oscuridad del Vacío, puedes ver en luz tenue dentro de un radio de 60 pies (12 casillas) como si fuera luz brillante y en la oscuridad como si fuera luz tenue. No puedes discernir colores en la oscuridad, solo tonos de gris.\n♻ Adaptación Extrema. Eres inmune a los efectos nocivos derivados de la exposición al Vacío. Esto significa que puedes respirar y operar sin inconvenientes en entornos sin atmósfera (como el espacio exterior), bajo el agua o en atmósferas tóxicas y cargadas de magia caótica.\n♻ Resiliencia Ambiental. Mientras estés en un ambiente extremo (atmósfera tóxica, presión profunda, calor o frío extremos), recibes la mitad de daño de efectos ambientales (por ejemplo, daño por asfixia, congelamiento, o fuego ambiental).\n♻ Superviviente. Eres competente en la habilidad de Supervivencia. Si ya tienes competencia en Supervivencia, tu bonificador de competencia se duplica al usarla (como con la dote Competencia Experta).",
+    "descripcion": "Supervivientes del Vacío: curtidos en los entornos más extremos.",
     "anatomiaDraconica": true,
     "linaje": "draconido-vacio",
     "tipo": "Humanoide",
     "tamano": "Mediano",
-    "origen": "La Luna (lado oscuro)"
+    "origen": "La Luna (lado oscuro)",
+    "efectos": [
+      {
+        "type": "resistencia",
+        "value": "vacio"
+      }
+    ]
   },
   "Dazahk": {
     "velocidad": 20,
@@ -2868,5 +2880,448 @@
     ],
     "descripcion": "Entre el mundo de los vivos y el de los muertos, los dhampir conservan la vida pero sufren un hambre feroz. Su lazo con los no muertos les da velocidad, visión en la oscuridad y un mordisco que roba vida. Muchos se hacen aventureros y cazadores de monstruos. Versión de prueba (Arcanos Desenterrados 76: Linajes góticos).",
     "info": "Rasgos de Raza:\n♻ Linaje. Mejora de características: +2 a una y +1 a otra.\n♻ Tipo. Eres humanoide y no muerto.\n♻ Tamaño. Mediano o Pequeño: lo eliges al obtener este linaje.\n♻ Visión en la Oscuridad. Puedes ver con luz tenue a 60 pies (12 casillas) o menos de ti como si hubiera luz brillante, y en la oscuridad como si hubiera luz tenue. En la oscuridad solo distingues tonos de gris.\n♻ Trepar como una Araña. Tienes una velocidad trepando igual a tu velocidad caminando. Además, a partir del nivel 3 puedes moverte por superficies verticales y boca abajo por los techos, dejando las manos libres.\n♻ Mordisco Vampírico. Tu mordisco con colmillos es un arma natural que cuenta como arma cuerpo a cuerpo sencilla con la que eres competente. Sumas tu modificador de Constitución a las tiradas de ataque y de daño. Inflige 1d4 de daño perforante. Mientras te falte la mitad o más de tus puntos de golpe, tienes ventaja en las tiradas de ataque con este mordisco.\nCuando impactas con él a una criatura que no sea un Constructo ni un No muerto, puedes potenciarte de una de estas formas:\n— Recuperas tantos puntos de golpe como el daño perforante del mordisco.\n— Ganas un bonificador a tu siguiente prueba de característica o tirada de ataque igual a ese daño.\nPuedes potenciarte así tantas veces como tu bonificador por competencia y recuperas todos los usos al terminar un descanso largo.\n\nHambres de dhampir (d8): 1 sangre · 2 carne o carne cruda · 3 líquido cefalorraquídeo · 4 humores esotéricos · 5 energía psíquica · 6 un color de la apariencia de alguien · 7 sueños · 8 energía vital.\nOrígenes (d8): 1 reencarnación de un antepasado tirano vampírico · 2 pacto con una deidad, infernal, feérico o espíritu depredador · 3 sobreviviste al ataque de un vampiro · 4 un parásito vive en ti · 5 amaste a un inmortal y una tragedia interrumpió tu transformación · 6 forma menguada de un ser de otro mundo · 7 no conoces tu origen, pero te criaron vampiros u otros monstruos · 8 un experimento radical te cambió."
+  },
+  "Varkai (Clan Colmillo)": {
+    "velocidad": 30,
+    "choice": {
+      "count": 1,
+      "bonus": 2,
+      "allowedChoices": [
+        "fuerza",
+        "destreza"
+      ]
+    },
+    "sabiduria": 1,
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común y Varkai",
+    "yaHabla": [
+      "Común",
+      "Varkai"
+    ],
+    "efectos": [
+      {
+        "type": "competencia",
+        "kind": "habilidad",
+        "value": "Supervivencia"
+      }
+    ],
+    "descripcion": "Cazadores de cuerpo a cuerpo que sólo aceptan la presa que puede devolver el golpe.",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres un humanoide Mediano (entre 2 y 2,3 m de altura).\n♻ Visión en la Oscuridad. Puedes ver con luz tenue a 60 pies (12 casillas) o menos de ti como si hubiera luz brillante, y en la oscuridad como si hubiera luz tenue. En la oscuridad solo distingues tonos de gris.\n♻ Rastreador nato. Eres competente en Supervivencia y tienes ventaja en las pruebas de Sabiduría (Supervivencia) para seguir un rastro.\n♻ Marca de la presa. Como acción adicional, marcas a una criatura que puedas ver a 60 pies (12 casillas) o menos durante 1 minuto. Mientras dure, tienes ventaja en las pruebas de Sabiduría (Percepción) y (Supervivencia) para encontrarla, y una vez por turno, cuando la impactas con un ataque, le haces 1d4 de daño adicional del mismo tipo. La marca termina antes si marcas a otra criatura. Puedes usarla tantas veces como tu bonificador por competencia y recuperas los usos al terminar un descanso largo.\n♻ Código del cazador. Eres competente en Intimidación o en Sigilo (elige una al crear el personaje).\n♻ Tecnología de caza. Los Varkai no nacen con su tecnología: el camuflaje óptico, la lanza retráctil o el cañón de plasma son equipo que se gana, se compra o se hereda (en la Tienda, sólo en los pisos 50 o superiores de Lord 100).\n♻ Clan Colmillo. Eres competente con las armas marciales cuerpo a cuerpo de una mano.",
+    "linaje": "varkai",
+    "tipo": "Humanoide",
+    "tamano": "Mediano",
+    "origen": "Un planeta selvático de dos soles"
+  },
+  "Varkai (Clan Sombra)": {
+    "velocidad": 30,
+    "choice": {
+      "count": 1,
+      "bonus": 2,
+      "allowedChoices": [
+        "fuerza",
+        "destreza"
+      ]
+    },
+    "sabiduria": 1,
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común y Varkai",
+    "yaHabla": [
+      "Común",
+      "Varkai"
+    ],
+    "efectos": [
+      {
+        "type": "competencia",
+        "kind": "habilidad",
+        "value": "Supervivencia"
+      }
+    ],
+    "descripcion": "Acechadores pacientes: la presa sólo los ve cuando ya es tarde.",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres un humanoide Mediano (entre 2 y 2,3 m de altura).\n♻ Visión en la Oscuridad. Puedes ver con luz tenue a 60 pies (12 casillas) o menos de ti como si hubiera luz brillante, y en la oscuridad como si hubiera luz tenue. En la oscuridad solo distingues tonos de gris.\n♻ Rastreador nato. Eres competente en Supervivencia y tienes ventaja en las pruebas de Sabiduría (Supervivencia) para seguir un rastro.\n♻ Marca de la presa. Como acción adicional, marcas a una criatura que puedas ver a 60 pies (12 casillas) o menos durante 1 minuto. Mientras dure, tienes ventaja en las pruebas de Sabiduría (Percepción) y (Supervivencia) para encontrarla, y una vez por turno, cuando la impactas con un ataque, le haces 1d4 de daño adicional del mismo tipo. La marca termina antes si marcas a otra criatura. Puedes usarla tantas veces como tu bonificador por competencia y recuperas los usos al terminar un descanso largo.\n♻ Código del cazador. Eres competente en Intimidación o en Sigilo (elige una al crear el personaje).\n♻ Tecnología de caza. Los Varkai no nacen con su tecnología: el camuflaje óptico, la lanza retráctil o el cañón de plasma son equipo que se gana, se compra o se hereda (en la Tienda, sólo en los pisos 50 o superiores de Lord 100).\n♻ Clan Sombra. Mientras estés en luz tenue u oscuridad, puedes usar la acción de Esconderse como acción adicional. Puedes hacerlo tantas veces como tu bonificador por competencia y recuperas los usos al terminar un descanso largo.",
+    "linaje": "varkai",
+    "tipo": "Humanoide",
+    "tamano": "Mediano",
+    "origen": "Un planeta selvático de dos soles"
+  },
+  "Varkai (Clan Lejano)": {
+    "velocidad": 30,
+    "choice": {
+      "count": 1,
+      "bonus": 2,
+      "allowedChoices": [
+        "fuerza",
+        "destreza"
+      ]
+    },
+    "sabiduria": 1,
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común y Varkai",
+    "yaHabla": [
+      "Común",
+      "Varkai"
+    ],
+    "efectos": [
+      {
+        "type": "competencia",
+        "kind": "habilidad",
+        "value": "Supervivencia"
+      }
+    ],
+    "descripcion": "Tiradores que abaten a su presa desde donde ella no puede verlos.",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres un humanoide Mediano (entre 2 y 2,3 m de altura).\n♻ Visión en la Oscuridad. Puedes ver con luz tenue a 60 pies (12 casillas) o menos de ti como si hubiera luz brillante, y en la oscuridad como si hubiera luz tenue. En la oscuridad solo distingues tonos de gris.\n♻ Rastreador nato. Eres competente en Supervivencia y tienes ventaja en las pruebas de Sabiduría (Supervivencia) para seguir un rastro.\n♻ Marca de la presa. Como acción adicional, marcas a una criatura que puedas ver a 60 pies (12 casillas) o menos durante 1 minuto. Mientras dure, tienes ventaja en las pruebas de Sabiduría (Percepción) y (Supervivencia) para encontrarla, y una vez por turno, cuando la impactas con un ataque, le haces 1d4 de daño adicional del mismo tipo. La marca termina antes si marcas a otra criatura. Puedes usarla tantas veces como tu bonificador por competencia y recuperas los usos al terminar un descanso largo.\n♻ Código del cazador. Eres competente en Intimidación o en Sigilo (elige una al crear el personaje).\n♻ Tecnología de caza. Los Varkai no nacen con su tecnología: el camuflaje óptico, la lanza retráctil o el cañón de plasma son equipo que se gana, se compra o se hereda (en la Tienda, sólo en los pisos 50 o superiores de Lord 100).\n♻ Clan Lejano. Atacar a distancia larga con un arma a distancia no te impone desventaja.",
+    "linaje": "varkai",
+    "tipo": "Humanoide",
+    "tamano": "Mediano",
+    "origen": "Un planeta selvático de dos soles"
+  },
+  "Vhorr Despierto (Rastrero)": {
+    "velocidad": 35,
+    "climb": 30,
+    "destreza": 2,
+    "constitucion": 1,
+    "lenguage": "Idioma: Entiendes el Común y lo hablas con dificultad; también el lenguaje químico de la Colmena",
+    "yaHabla": [
+      "Común",
+      "Colmena"
+    ],
+    "descripcion": "Silencioso y paciente, se mueve por techos y conductos.",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres una monstruosidad Mediana.\n♻ Velocidad. Tienes una velocidad caminando de 35 pies y una velocidad trepando de 30 pies.\n♻ Exoesqueleto. Mientras no lleves armadura, tu CA es 13 + tu modificador de Destreza. Puedes usar escudo.\n♻ Visión en la Oscuridad. Puedes ver con luz tenue a 60 pies (12 casillas) o menos de ti como si hubiera luz brillante, y en la oscuridad como si hubiera luz tenue. En la oscuridad solo distingues tonos de gris.\n♻ Eco de la Colmena. Rompiste con la mente de la colmena, pero su eco aún te protege: tienes ventaja en las tiradas de salvación para no quedar hechizado.\n♻ Despierto. Sólo los Vhorr despiertos (uno de cada cinco, aproximadamente) pueden ser personajes. No todos tienen todas las capacidades de la especie: elige tu variante (Rastrero, Coleador o Ácido).\n♻ Sin descendencia compartida. No pueden tener hijos con otras especies.\n♻ Rastrero. Tienes ventaja en las pruebas de Destreza (Sigilo) mientras estés en luz tenue u oscuridad.",
+    "linaje": "vhorr",
+    "tipo": "Monstruosidad",
+    "tamano": "Mediano",
+    "origen": "Bioarma de los Sembradores"
+  },
+  "Vhorr Despierto (Coleador)": {
+    "velocidad": 35,
+    "climb": 30,
+    "destreza": 2,
+    "constitucion": 1,
+    "lenguage": "Idioma: Entiendes el Común y lo hablas con dificultad; también el lenguaje químico de la Colmena",
+    "yaHabla": [
+      "Común",
+      "Colmena"
+    ],
+    "descripcion": "Su cola segmentada termina en una punta afilada.",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres una monstruosidad Mediana.\n♻ Velocidad. Tienes una velocidad caminando de 35 pies y una velocidad trepando de 30 pies.\n♻ Exoesqueleto. Mientras no lleves armadura, tu CA es 13 + tu modificador de Destreza. Puedes usar escudo.\n♻ Visión en la Oscuridad. Puedes ver con luz tenue a 60 pies (12 casillas) o menos de ti como si hubiera luz brillante, y en la oscuridad como si hubiera luz tenue. En la oscuridad solo distingues tonos de gris.\n♻ Eco de la Colmena. Rompiste con la mente de la colmena, pero su eco aún te protege: tienes ventaja en las tiradas de salvación para no quedar hechizado.\n♻ Despierto. Sólo los Vhorr despiertos (uno de cada cinco, aproximadamente) pueden ser personajes. No todos tienen todas las capacidades de la especie: elige tu variante (Rastrero, Coleador o Ácido).\n♻ Sin descendencia compartida. No pueden tener hijos con otras especies.\n♻ Cola. Tu cola es un arma natural con la que puedes hacer ataques sin armas: alcance 10 pies (2 casillas) y, si impacta, 1d6 + tu modificador de Fuerza o Destreza de daño perforante (en lugar del daño normal de un ataque sin armas).",
+    "linaje": "vhorr",
+    "tipo": "Monstruosidad",
+    "tamano": "Mediano",
+    "origen": "Bioarma de los Sembradores"
+  },
+  "Vhorr Despierto (Ácido)": {
+    "velocidad": 35,
+    "climb": 30,
+    "destreza": 2,
+    "constitucion": 1,
+    "lenguage": "Idioma: Entiendes el Común y lo hablas con dificultad; también el lenguaje químico de la Colmena",
+    "yaHabla": [
+      "Común",
+      "Colmena"
+    ],
+    "descripcion": "Su sangre corroe el metal y la carne.",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres una monstruosidad Mediana.\n♻ Velocidad. Tienes una velocidad caminando de 35 pies y una velocidad trepando de 30 pies.\n♻ Exoesqueleto. Mientras no lleves armadura, tu CA es 13 + tu modificador de Destreza. Puedes usar escudo.\n♻ Visión en la Oscuridad. Puedes ver con luz tenue a 60 pies (12 casillas) o menos de ti como si hubiera luz brillante, y en la oscuridad como si hubiera luz tenue. En la oscuridad solo distingues tonos de gris.\n♻ Eco de la Colmena. Rompiste con la mente de la colmena, pero su eco aún te protege: tienes ventaja en las tiradas de salvación para no quedar hechizado.\n♻ Despierto. Sólo los Vhorr despiertos (uno de cada cinco, aproximadamente) pueden ser personajes. No todos tienen todas las capacidades de la especie: elige tu variante (Rastrero, Coleador o Ácido).\n♻ Sin descendencia compartida. No pueden tener hijos con otras especies.\n♻ Sangre ácida. Cuando una criatura a 5 pies (1 casilla) o menos te impacta con un ataque cuerpo a cuerpo, puedes usar tu reacción para salpicarla: recibe 1d6 de daño de ácido (2d6 en nivel 5, 3d6 en nivel 11 y 4d6 en nivel 17). Puedes hacerlo tantas veces como tu bonificador por competencia y recuperas los usos al terminar un descanso largo.",
+    "linaje": "vhorr",
+    "tipo": "Monstruosidad",
+    "tamano": "Mediano",
+    "origen": "Bioarma de los Sembradores"
+  },
+  "Sembrador del Alba": {
+    "velocidad": 30,
+    "fuerza": 2,
+    "inteligencia": 1,
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común y Primigenio",
+    "yaHabla": [
+      "Común",
+      "Primigenio"
+    ],
+    "descripcion": "Eruditos que todavía estudian lo que sus antepasados sembraron.",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres un humanoide Mediano, aunque muy alto (de 2,4 a 2,8 m).\n♻ Constitución Poderosa. Cuentas como una talla mayor para determinar tu capacidad de carga y el peso que puedes empujar, arrastrar o levantar.\n♻ Aguante de los Primeros. Cuando recibes daño, puedes usar tu reacción para reducirlo en 1d12 + tu modificador de Constitución. Puedes hacerlo tantas veces como tu bonificador por competencia y recuperas los usos al terminar un descanso largo.\n♻ Saber del Escultor. Eres competente con un tipo de herramientas de artesano de tu elección y en Medicina o en Arcanos (elige una).\n♻ Presencia antigua. Tienes ventaja en las pruebas de Inteligencia (Historia) sobre civilizaciones antiguas, ruinas y razas creadas por otras.\n♻ Del Alba. Conoces un truco de la lista de conjuros del Mago. La Inteligencia es tu aptitud mágica para él.",
+    "linaje": "sembradores",
+    "tipo": "Humanoide",
+    "tamano": "Mediano",
+    "origen": "Una civilización estelar extinta"
+  },
+  "Sembrador de la Ceniza": {
+    "velocidad": 30,
+    "fuerza": 2,
+    "inteligencia": 1,
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común y Primigenio",
+    "yaHabla": [
+      "Común",
+      "Primigenio"
+    ],
+    "descripcion": "Guerreros que guardan las ruinas de su civilización caída.",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres un humanoide Mediano, aunque muy alto (de 2,4 a 2,8 m).\n♻ Constitución Poderosa. Cuentas como una talla mayor para determinar tu capacidad de carga y el peso que puedes empujar, arrastrar o levantar.\n♻ Aguante de los Primeros. Cuando recibes daño, puedes usar tu reacción para reducirlo en 1d12 + tu modificador de Constitución. Puedes hacerlo tantas veces como tu bonificador por competencia y recuperas los usos al terminar un descanso largo.\n♻ Saber del Escultor. Eres competente con un tipo de herramientas de artesano de tu elección y en Medicina o en Arcanos (elige una).\n♻ Presencia antigua. Tienes ventaja en las pruebas de Inteligencia (Historia) sobre civilizaciones antiguas, ruinas y razas creadas por otras.\n♻ De la Ceniza. Eres competente con las armas marciales cuerpo a cuerpo.",
+    "linaje": "sembradores",
+    "tipo": "Humanoide",
+    "tamano": "Mediano",
+    "origen": "Una civilización estelar extinta"
+  },
+  "Thri-kreen": {
+    "velocidad": 30,
+    "choices": [
+      {
+        "count": 1,
+        "bonus": 2
+      },
+      {
+        "count": 1,
+        "bonus": 1
+      }
+    ],
+    "lenguage": "Idioma: Hablas Thri-kreen; entiendes el Común y otro idioma, pero los transmites por telepatía",
+    "languageElection": 1,
+    "yaHabla": [
+      "Común",
+      "Thri-kreen"
+    ],
+    "descripcion": "Insectoides de cuatro brazos y caparazón cambiante (regla oficial de Spelljammer).",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres una monstruosidad Mediana o Pequeña (lo eliges al crear el personaje).\n♻ Caparazón camaleónico. Mientras no lleves armadura, tu CA es 13 + tu modificador de Destreza. Como acción, puedes cambiar el color de tu caparazón para imitar el de tu entorno, lo que te da ventaja en las pruebas de Destreza (Sigilo) para esconderte en él.\n♻ Visión en la Oscuridad. Puedes ver con luz tenue a 60 pies (12 casillas) o menos de ti como si hubiera luz brillante, y en la oscuridad como si hubiera luz tenue. En la oscuridad solo distingues tonos de gris.\n♻ Brazos secundarios. Tienes dos brazos secundarios, algo más pequeños, bajo los principales. Pueden manipular un objeto, abrir o cerrar una puerta o un recipiente, coger o dejar un objeto Diminuto, o empuñar un arma con la propiedad ligera.\n♻ Sin sueño. No necesitas dormir y puedes permanecer consciente durante un descanso largo, aunque debes evitar la actividad intensa para obtener sus beneficios.\n♻ Telepatía thri-kreen. Sin ayuda de la magia no puedes hablar los idiomas que no son thri-kreen, así que transmites tus pensamientos: puedes comunicarte mentalmente con criaturas voluntarias a 120 pies (24 casillas) o menos. No necesitan compartir un idioma contigo, pero deben entender al menos uno. El vínculo se rompe si os alejáis más de esa distancia, si alguno queda incapacitado o si cualquiera lo corta (sin acción).",
+    "linaje": "thri-kreen",
+    "tipo": "Monstruosidad",
+    "tamano": "Pequeño o Mediano",
+    "origen": "El mar astral y otros mundos"
+  },
+  "Thri-kreen del Vacío (Guardia del Osario)": {
+    "velocidad": 30,
+    "choices": [
+      {
+        "count": 1,
+        "bonus": 2
+      },
+      {
+        "count": 1,
+        "bonus": 1
+      }
+    ],
+    "lenguage": "Idioma: Hablas Thri-kreen; entiendes el Común y el Habla del Vacío, pero los transmites por telepatía",
+    "yaHabla": [
+      "Común",
+      "Thri-kreen",
+      "Habla del Vacío"
+    ],
+    "descripcion": "Vigilan los osarios lunares donde descansan los primeros Dracónidos del Vacío.",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres una monstruosidad Mediana o Pequeña (lo eliges al crear el personaje).\n♻ Caparazón de penumbra. Mientras no lleves armadura, tu CA es 13 + tu modificador de Destreza. Tu caparazón oscuro, pulido por la noche lunar, te da ventaja en las pruebas de Destreza (Sigilo) para esconderte en luz tenue u oscuridad.\n♻ Visión en la Oscuridad. Puedes ver con luz tenue a 60 pies (12 casillas) o menos de ti como si hubiera luz brillante, y en la oscuridad como si hubiera luz tenue. En la oscuridad solo distingues tonos de gris.\n♻ Brazos secundarios. Tienes dos brazos secundarios, algo más pequeños, bajo los principales. Pueden manipular un objeto, abrir o cerrar una puerta o un recipiente, coger o dejar un objeto Diminuto, o empuñar un arma con la propiedad ligera.\n♻ Sin sueño. No necesitas dormir y puedes permanecer consciente durante un descanso largo, aunque debes evitar la actividad intensa para obtener sus beneficios.\n♻ Telepatía thri-kreen. Sin ayuda de la magia no puedes hablar los idiomas que no son thri-kreen, así que transmites tus pensamientos: puedes comunicarte mentalmente con criaturas voluntarias a 120 pies (24 casillas) o menos. No necesitan compartir un idioma contigo, pero deben entender al menos uno. El vínculo se rompe si os alejáis más de esa distancia, si alguno queda incapacitado o si cualquiera lo corta (sin acción).\n♻ Aliento contenido. Puedes aguantar la respiración hasta 1 hora.\n♻ Salto lunar. Criado en la gravedad baja de la Luna, la distancia de tus saltos (de longitud y de altura) se triplica.\n♻ Guardia del Osario. Eres competente en Percepción.",
+    "linaje": "thri-kreen",
+    "tipo": "Monstruosidad",
+    "tamano": "Pequeño o Mediano",
+    "origen": "La Luna (lado oscuro)"
+  },
+  "Thri-kreen del Vacío (Guardia de Senda)": {
+    "velocidad": 30,
+    "choices": [
+      {
+        "count": 1,
+        "bonus": 2
+      },
+      {
+        "count": 1,
+        "bonus": 1
+      }
+    ],
+    "lenguage": "Idioma: Hablas Thri-kreen; entiendes el Común y el Habla del Vacío, pero los transmites por telepatía",
+    "yaHabla": [
+      "Común",
+      "Thri-kreen",
+      "Habla del Vacío"
+    ],
+    "descripcion": "Guían y protegen a los viajeros entre la Luna y Agarias.",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres una monstruosidad Mediana o Pequeña (lo eliges al crear el personaje).\n♻ Caparazón de penumbra. Mientras no lleves armadura, tu CA es 13 + tu modificador de Destreza. Tu caparazón oscuro, pulido por la noche lunar, te da ventaja en las pruebas de Destreza (Sigilo) para esconderte en luz tenue u oscuridad.\n♻ Visión en la Oscuridad. Puedes ver con luz tenue a 60 pies (12 casillas) o menos de ti como si hubiera luz brillante, y en la oscuridad como si hubiera luz tenue. En la oscuridad solo distingues tonos de gris.\n♻ Brazos secundarios. Tienes dos brazos secundarios, algo más pequeños, bajo los principales. Pueden manipular un objeto, abrir o cerrar una puerta o un recipiente, coger o dejar un objeto Diminuto, o empuñar un arma con la propiedad ligera.\n♻ Sin sueño. No necesitas dormir y puedes permanecer consciente durante un descanso largo, aunque debes evitar la actividad intensa para obtener sus beneficios.\n♻ Telepatía thri-kreen. Sin ayuda de la magia no puedes hablar los idiomas que no son thri-kreen, así que transmites tus pensamientos: puedes comunicarte mentalmente con criaturas voluntarias a 120 pies (24 casillas) o menos. No necesitan compartir un idioma contigo, pero deben entender al menos uno. El vínculo se rompe si os alejáis más de esa distancia, si alguno queda incapacitado o si cualquiera lo corta (sin acción).\n♻ Aliento contenido. Puedes aguantar la respiración hasta 1 hora.\n♻ Salto lunar. Criado en la gravedad baja de la Luna, la distancia de tus saltos (de longitud y de altura) se triplica.\n♻ Guardia de Senda. Tu velocidad caminando aumenta en 5 pies.",
+    "linaje": "thri-kreen",
+    "tipo": "Monstruosidad",
+    "tamano": "Pequeño o Mediano",
+    "origen": "La Luna (lado oscuro)"
+  },
+  "Medusoide (Abisal)": {
+    "velocidad": 30,
+    "sabiduria": 2,
+    "constitucion": 1,
+    "swim": 30,
+    "lenguage": "Idioma: Entiendes el Común y el Cromático; te expresas con luz y color",
+    "yaHabla": [
+      "Común",
+      "Cromático"
+    ],
+    "descripcion": "De las profundidades de su océano natal: sus colores son fríos y lentos.",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres una aberración Mediana.\n♻ Flotación. Siempre flotas unos centímetros por encima del suelo: ignoras el terreno difícil formado por barro, hielo, arena o agua poco profunda. No es vuelo.\n♻ Planeo elevado. No sufres daño por caída. Al caer, puedes avanzar 2 pies en horizontal por cada pie que desciendes (no puedes ganar altura).\n♻ Doble respiración. Puedes respirar aire y agua.\n♻ Descarga. Conoces el truco Agarre electrizante. La Sabiduría es tu aptitud mágica para él.\n♻ Bioluminiscencia. Como acción adicional, emites luz brillante en un radio de 10 pies y luz tenue 10 pies más allá, o la apagas.\n♻ Lenguaje cromático. Hablas con colores y patrones de luz; para tu especie, hablar con sonidos es una forma muy primitiva de comunicación. Entiendes los idiomas hablados que conoces, pero no los pronuncias: cualquier criatura que pueda verte a 60 pies (12 casillas) o menos y entienda al menos un idioma comprende lo que le transmites. Los componentes verbales de tus conjuros son destellos rítmicos de luz.\n♻ Abisal. Tienes una velocidad nadando de 30 pies.",
+    "linaje": "medusoides",
+    "tipo": "Aberración",
+    "tamano": "Mediano",
+    "origen": "Un planeta oceánico de nubes densas"
+  },
+  "Medusoide (Celeste)": {
+    "velocidad": 30,
+    "sabiduria": 2,
+    "constitucion": 1,
+    "lenguage": "Idioma: Entiendes el Común y el Cromático; te expresas con luz y color",
+    "yaHabla": [
+      "Común",
+      "Cromático"
+    ],
+    "descripcion": "De las capas altas de su atmósfera: sus colores son vivos y rápidos.",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres una aberración Mediana.\n♻ Flotación. Siempre flotas unos centímetros por encima del suelo: ignoras el terreno difícil formado por barro, hielo, arena o agua poco profunda. No es vuelo.\n♻ Planeo elevado. No sufres daño por caída. Al caer, puedes avanzar 2 pies en horizontal por cada pie que desciendes (no puedes ganar altura).\n♻ Doble respiración. Puedes respirar aire y agua.\n♻ Descarga. Conoces el truco Agarre electrizante. La Sabiduría es tu aptitud mágica para él.\n♻ Bioluminiscencia. Como acción adicional, emites luz brillante en un radio de 10 pies y luz tenue 10 pies más allá, o la apagas.\n♻ Lenguaje cromático. Hablas con colores y patrones de luz; para tu especie, hablar con sonidos es una forma muy primitiva de comunicación. Entiendes los idiomas hablados que conoces, pero no los pronuncias: cualquier criatura que pueda verte a 60 pies (12 casillas) o menos y entienda al menos un idioma comprende lo que le transmites. Los componentes verbales de tus conjuros son destellos rítmicos de luz.\n♻ Celeste. Tu planeo avanza 4 pies en horizontal por cada pie que desciendes.",
+    "linaje": "medusoides",
+    "tipo": "Aberración",
+    "tamano": "Mediano",
+    "origen": "Un planeta oceánico de nubes densas"
+  },
+  "Miceliano (Colonia de las Profundidades)": {
+    "velocidad": 30,
+    "constitucion": 2,
+    "choice": {
+      "count": 1,
+      "bonus": 1,
+      "allowedChoices": [
+        "inteligencia",
+        "sabiduria"
+      ]
+    },
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común y comunicarte por la Red micelial",
+    "yaHabla": [
+      "Común"
+    ],
+    "languageElection": 1,
+    "efectos": [
+      {
+        "type": "resistencia",
+        "value": "veneno"
+      }
+    ],
+    "descripcion": "Colonias de cuevas y bosques sin sol.",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres un humanoide (planta) Pequeño o Mediano (lo eliges al crear el personaje).\n♻ Cuerpo fúngico. Tienes resistencia al daño de veneno y ventaja en las tiradas de salvación para no quedar envenenado.\n♻ Nube de esporas. Como acción, liberas esporas en un radio de 10 pies (2 casillas) a tu alrededor. Cada criatura de tu elección en el área debe superar una tirada de salvación de Constitución (CD 8 + tu modificador de Constitución + tu bonificador por competencia) o quedar envenenada hasta el final de tu siguiente turno. Puedes hacerlo tantas veces como tu bonificador por competencia y recuperas los usos al terminar un descanso largo.\n♻ Red micelial. Puedes conversar telepáticamente con una criatura a 30 pies (6 casillas) o menos que entienda al menos un idioma.\n♻ Memoria Micelial. Eres un fragmento de la colonia, que guarda pedazos de los que murieron. Al terminar un descanso largo, tira 1d6: con 5 o 6 recuperas un fragmento de memoria y eliges una competencia con un arma, una herramienta o una habilidad que tendrás hasta tu siguiente descanso largo.\n♻ Último superviviente. Cuando un ataque o efecto que no afecta a un área te deja a 0 puntos de golpe sin matarte en el acto, quedas a 1 punto de golpe. No puedes volver a usar este rasgo hasta que termines un descanso largo.\n♻ Colonia de las Profundidades. Visión en la Oscuridad. Puedes ver con luz tenue a 60 pies (12 casillas) o menos de ti como si hubiera luz brillante, y en la oscuridad como si hubiera luz tenue. En la oscuridad solo distingues tonos de gris.",
+    "linaje": "micelianos",
+    "tipo": "Humanoide (planta)",
+    "tamano": "Pequeño o Mediano",
+    "origen": "Jardín de los Sembradores"
+  },
+  "Miceliano (Colonia Errante)": {
+    "velocidad": 35,
+    "constitucion": 2,
+    "choice": {
+      "count": 1,
+      "bonus": 1,
+      "allowedChoices": [
+        "inteligencia",
+        "sabiduria"
+      ]
+    },
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común y comunicarte por la Red micelial",
+    "yaHabla": [
+      "Común"
+    ],
+    "languageElection": 1,
+    "efectos": [
+      {
+        "type": "resistencia",
+        "value": "veneno"
+      }
+    ],
+    "descripcion": "Esporas que viajan con el viento y germinan lejos de casa.",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres un humanoide (planta) Pequeño o Mediano (lo eliges al crear el personaje).\n♻ Cuerpo fúngico. Tienes resistencia al daño de veneno y ventaja en las tiradas de salvación para no quedar envenenado.\n♻ Nube de esporas. Como acción, liberas esporas en un radio de 10 pies (2 casillas) a tu alrededor. Cada criatura de tu elección en el área debe superar una tirada de salvación de Constitución (CD 8 + tu modificador de Constitución + tu bonificador por competencia) o quedar envenenada hasta el final de tu siguiente turno. Puedes hacerlo tantas veces como tu bonificador por competencia y recuperas los usos al terminar un descanso largo.\n♻ Red micelial. Puedes conversar telepáticamente con una criatura a 30 pies (6 casillas) o menos que entienda al menos un idioma.\n♻ Memoria Micelial. Eres un fragmento de la colonia, que guarda pedazos de los que murieron. Al terminar un descanso largo, tira 1d6: con 5 o 6 recuperas un fragmento de memoria y eliges una competencia con un arma, una herramienta o una habilidad que tendrás hasta tu siguiente descanso largo.\n♻ Último superviviente. Cuando un ataque o efecto que no afecta a un área te deja a 0 puntos de golpe sin matarte en el acto, quedas a 1 punto de golpe. No puedes volver a usar este rasgo hasta que termines un descanso largo.\n♻ Colonia Errante. Tu velocidad caminando aumenta en 5 pies.",
+    "linaje": "micelianos",
+    "tipo": "Humanoide (planta)",
+    "tamano": "Pequeño o Mediano",
+    "origen": "Jardín de los Sembradores"
+  },
+  "Cthulhiano (Sideral)": {
+    "velocidad": 30,
+    "inteligencia": 2,
+    "constitucion": 1,
+    "fly": 30,
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común y Abisal profundo",
+    "yaHabla": [
+      "Común",
+      "Abisal profundo"
+    ],
+    "efectos": [
+      {
+        "type": "competencia",
+        "kind": "habilidad",
+        "value": "Percepción"
+      }
+    ],
+    "descripcion": "Nómadas del espacio, con alas membranosas.",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres un humanoide Mediano.\n♻ Ojos múltiples. Tus varios ojos te dan visión en la oscuridad a 60 pies (12 casillas) y eres competente en Percepción.\n♻ Telepatía limitada. Puedes conversar mentalmente, sin hablar, con una criatura a 30 pies (6 casillas) o menos que entienda al menos un idioma. No sirve para leer mentes ni para imponer nada: sólo para conversar.\n♻ Tentáculos. Los tentáculos simples de tu cabeza te dan ventaja en las pruebas para mantener una presa y para que no te quiten un objeto que sujetas.\n♻ Sin magia innata. A diferencia de criaturas parecidas, tu especie no tiene magia propia: si usas magia, la aprendiste como cualquier otro.\n♻ Alas. Tienes una velocidad volando de 30 pies. Para usarla no puedes llevar armadura media ni pesada.",
+    "linaje": "cthulhianos",
+    "tipo": "Humanoide",
+    "tamano": "Mediano",
+    "origen": "Los océanos y el espacio (nómadas)"
+  },
+  "Cthulhiano (Oceánico)": {
+    "velocidad": 30,
+    "inteligencia": 2,
+    "constitucion": 1,
+    "swim": 30,
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común y Abisal profundo",
+    "yaHabla": [
+      "Común",
+      "Abisal profundo"
+    ],
+    "efectos": [
+      {
+        "type": "competencia",
+        "kind": "habilidad",
+        "value": "Percepción"
+      }
+    ],
+    "descripcion": "Nómadas de los océanos, sin alas.",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres un humanoide Mediano.\n♻ Ojos múltiples. Tus varios ojos te dan visión en la oscuridad a 60 pies (12 casillas) y eres competente en Percepción.\n♻ Telepatía limitada. Puedes conversar mentalmente, sin hablar, con una criatura a 30 pies (6 casillas) o menos que entienda al menos un idioma. No sirve para leer mentes ni para imponer nada: sólo para conversar.\n♻ Tentáculos. Los tentáculos simples de tu cabeza te dan ventaja en las pruebas para mantener una presa y para que no te quiten un objeto que sujetas.\n♻ Sin magia innata. A diferencia de criaturas parecidas, tu especie no tiene magia propia: si usas magia, la aprendiste como cualquier otro.\n♻ Oceánico. Tienes una velocidad nadando de 30 pies y puedes respirar aire y agua.",
+    "linaje": "cthulhianos",
+    "tipo": "Humanoide",
+    "tamano": "Mediano",
+    "origen": "Los océanos y el espacio (nómadas)"
+  },
+  "Crystali": {
+    "velocidad": 30,
+    "constitucion": 2,
+    "sabiduria": 1,
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común y Resonante",
+    "yaHabla": [
+      "Común",
+      "Resonante"
+    ],
+    "efectos": [
+      {
+        "type": "resistencia",
+        "value": "radiante"
+      },
+      {
+        "type": "vulnerabilidad",
+        "value": "trueno"
+      }
+    ],
+    "descripcion": "Seres de cristal vivo: archivos andantes de lo que han visto.",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres un humanoide Mediano.\n♻ Cuerpo cristalino. Tienes resistencia al daño radiante, pero vulnerabilidad al daño de trueno.\n♻ Refracción. Cuando lanzas un conjuro que hace daño radiante, puedes sumar tu bonificador por competencia a una de sus tiradas de daño. Puedes hacerlo tantas veces como tu bonificador por competencia y recuperas los usos al terminar un descanso largo.\n♻ Resonancia. Puedes comunicarte mediante vibraciones con criaturas que estén tocando la misma superficie sólida que tú a 30 pies (6 casillas) o menos y entiendan al menos un idioma.\n♻ Memoria cristalina. Tus cristales guardan lo que viviste: tienes ventaja en las pruebas de Inteligencia (Historia) sobre hechos que presenciaste.\n♻ Ramas de color. Tu color (transparente, blanco, negro u otro) indica tu rama familiar y tu cultura; no cambia tus rasgos.",
+    "linaje": "crystali",
+    "tipo": "Humanoide",
+    "tamano": "Mediano",
+    "origen": "Archivos vivientes de los Sembradores"
+  },
+  "Selenko (Kobold del Vacío)": {
+    "velocidad": 30,
+    "choices": [
+      {
+        "count": 1,
+        "bonus": 2
+      },
+      {
+        "count": 1,
+        "bonus": 1
+      }
+    ],
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común y Habla del Vacío",
+    "languageElection": 0,
+    "yaHabla": [
+      "Común",
+      "Habla del Vacío"
+    ],
+    "doteOpciones": [
+      "Legado Kobold: Astucia",
+      "Legado Kobold: Desafiante",
+      "Legado Kobold: Hechicería Dracónica"
+    ],
+    "descripcion": "Kobolds de escamas violáceas, sirvientes naturales de los Dracónidos del Vacío.",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres un humanoide Pequeño.\n♻ Grito Dracónico. Como acción adicional, lanzas un grito a tus enemigos a 10 pies (2 casillas) o menos de ti. Hasta el principio de tu siguiente turno, tus aliados y tú tenéis ventaja en las tiradas de ataque contra cualquiera de esos enemigos que haya podido oírte. Puedes usarlo tantas veces como tu bonificador por competencia y recuperas todos los usos al terminar un descanso largo.\n♻ Legado Kobold. Elige un legado en «Dote racial»: Astucia (Talento artesano), Desafiante (Tenacidad) o Hechicería Dracónica.\n♻ Visión en la Oscuridad. Puedes ver con luz tenue a 60 pies (12 casillas) o menos de ti como si hubiera luz brillante, y en la oscuridad como si hubiera luz tenue. En la oscuridad solo distingues tonos de gris.\n♻ Cultura selenka. Mecánicamente son kobolds como los de Monstruos del Multiverso; lo que cambia es su cultura (ver su historia).",
+    "linaje": "selenkos",
+    "tipo": "Humanoide",
+    "tamano": "Pequeño",
+    "origen": "La Luna (lado oscuro)"
   }
 }

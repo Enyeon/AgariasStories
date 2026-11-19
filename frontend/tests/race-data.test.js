@@ -74,3 +74,55 @@ describe('historia de las razas', () => {
     expect(raceProfile('Alto Elfo')).toMatchObject({ tipo: null, tamano: null });
   });
 });
+
+describe('Pt. V: Aliens (AgSt 1.31)', () => {
+  const aliens = catalog.find((g) => g.source === 'Razas de Agarias Pt. V: Aliens').races;
+  const bonus = (r) => {
+    const fixed = ['fuerza', 'destreza', 'constitucion', 'inteligencia', 'sabiduria', 'carisma']
+      .reduce((n, k) => n + (Number(r[k]) || 0), 0);
+    const ch = [...(r.choices || []), ...(r.choice ? [r.choice] : [])].reduce((n, c) => n + c.count * c.bonus, 0);
+    return fixed + ch;
+  };
+
+  it('todas las razas del grupo tienen historia, tipo, tamaño y origen', () => {
+    expect(aliens.length).toBeGreaterThanOrEqual(20);
+    for (const key of aliens) {
+      expect(getRaceLore(key), key).not.toBeNull();
+      const p = raceProfile(key);
+      expect(p.tipo && p.tamano && p.origen, key).toBeTruthy();
+    }
+  });
+
+  it('equilibrio: +3 de atributos, sin tamaño Grande ni inmunidades nuevas', () => {
+    for (const key of aliens) {
+      const r = races[key];
+      expect(bonus(r), key).toBe(3);
+      expect(r.tamano).not.toMatch(/Grande/);
+      expect((r.efectos || []).some((e) => e.type === 'inmunidad'), key).toBe(false);
+      if (r.fly) expect(r.info, key).toMatch(/armadura media ni pesada/);
+    }
+  });
+
+  it('las subrazas comparten la historia de su linaje', () => {
+    expect(getRaceLore('Varkai (Clan Sombra)').id).toBe('varkai');
+    expect(getRaceLore('Thri-kreen del Vacío (Guardia de Senda)').id).toBe('thri-kreen');
+    expect(getRaceLore('Thri-kreen').id).toBe('thri-kreen');
+    expect(getRaceLore('Selenko (Kobold del Vacío)').relacionadas).toContain('draconido-vacio');
+  });
+
+  it('los Dracónidos del Vacío resisten el Vacío y no se ven afectados por la gravedad', () => {
+    for (const key of ['Dracónido Erudito (Vacío)', 'Dracónido Superviviente (Vacío)']) {
+      expect(races[key].efectos).toContainEqual({ type: 'resistencia', value: 'vacio' });
+      expect(races[key].info).toMatch(/Anclaje gravitatorio/);
+      expect(races[key].info).toMatch(/no es un agujero negro/);
+      expect(raceHasDraconicAnatomy(key)).toBe(true);
+    }
+    expect(lore['draconido-vacio'].secciones.map((s) => s.texto).join(' ')).toMatch(/Ghragur Bael[\s\S]*Grhagur Enyeon Enerson/);
+  });
+
+  it('Crystali: resistencia radiante y vulnerabilidad al trueno', () => {
+    expect(races.Crystali.efectos).toEqual([
+      { type: 'resistencia', value: 'radiante' }, { type: 'vulnerabilidad', value: 'trueno' },
+    ]);
+  });
+});

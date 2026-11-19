@@ -1,3 +1,243 @@
 {
-  "$comment": "Historia de las razas (AgSt 1.30). Una entrada por LINAJE: todas las variantes y subrazas comparten la misma historia. Una raza la enlaza con el campo `linaje` en races.json. Formato: { nombre, resumen (una frase), secciones: [{ titulo, texto }], relacionadas?: [linaje…] }. El texto admite los mismos marcadores que los rasgos (♻, ❖, ::, —) y párrafos separados por líneas en blanco. Sólo existen las razas que tienen Lore: si una raza no tiene entrada, la app no muestra nada."
+  "$comment": "Historia de las razas (AgSt 1.30). Una entrada por LINAJE: todas las variantes y subrazas comparten la misma historia. Una raza la enlaza con el campo `linaje` en races.json. Formato: { nombre, resumen (una frase), secciones: [{ titulo, texto }], relacionadas?: [linaje…] }. El texto admite los mismos marcadores que los rasgos (♻, ❖, ::, —) y párrafos separados por líneas en blanco. Sólo existen las razas que tienen Lore: si una raza no tiene entrada, la app no muestra nada.",
+  "varkai": {
+    "nombre": "Varkai, los Cazadores de las Estrellas",
+    "resumen": "Una cultura de caza ritual y de honor que viaja entre mundos en busca de la presa digna.",
+    "secciones": [
+      {
+        "titulo": "Origen",
+        "texto": "Los Varkai nacieron en un planeta selvático iluminado por dos soles, donde todo lo que vivía cazaba o era cazado. Sus primeras ciudades no se levantaron para protegerse de los depredadores, sino para entrenarse contra ellos. Con el tiempo dominaron su mundo y, cuando ya no quedó presa a su altura, miraron al cielo.\n\nDesde entonces viajan entre planetas en naves pequeñas y silenciosas. No conquistan: cazan. Un mundo les interesa por lo que puede enseñarles una presa nueva, no por sus tierras."
+      },
+      {
+        "titulo": "Cultura y honor",
+        "texto": "La vida de un Varkai se mide en trofeos, pero no en cualquier trofeo. Matar a un ser desarmado, a una cría o a un enfermo es la mayor deshonra; abatir a una presa que podía haberte matado es la mayor gloria. Cada clan guarda su propio código, y romperlo convierte al cazador en presa de los suyos.\n\nSu tecnología —camuflaje óptico, lanzas retráctiles, armas de energía— es herencia de clan y prueba de mérito: un joven no la recibe al nacer, la gana en su primera gran cacería. Por eso un Varkai sin equipo no es menos Varkai, sólo uno que aún no ha demostrado nada."
+      },
+      {
+        "titulo": "Clanes",
+        "texto": "El Clan Colmillo busca el combate cuerpo a cuerpo; el Clan Sombra acecha durante días antes de dejarse ver; el Clan Lejano abate a su presa desde donde ella no puede responder, y por eso los otros clanes lo miran con cierta desconfianza."
+      },
+      {
+        "titulo": "En Agarias",
+        "texto": "Los Varkai son recién llegados y muy pocos. La mayoría caza en los pisos superiores de Lord 100, del 50 en adelante, donde las bestias están a su altura. Son neutrales: con los mortales que respetan la caza se muestran corteses, incluso generosos; con quien caza por placer o por crueldad, implacables. Algunos aventureros de Agarias se han ganado un trofeo de un Varkai como señal de respeto, y lo llevan con orgullo."
+      }
+    ],
+    "relacionadas": [
+      "vhorr"
+    ]
+  },
+  "vhorr": {
+    "nombre": "Vhorr, los Hijos de la Colmena",
+    "resumen": "La bioarma de los Sembradores: una colmena hostil de la que sólo unos pocos han despertado.",
+    "secciones": [
+      {
+        "titulo": "Origen",
+        "texto": "Los Sembradores crearon a los Vhorr como un arma viva: una especie que se adapta a cualquier mundo, se reproduce dentro de la colmena y obedece a una única mente. Cuando su civilización cayó, el arma siguió funcionando sin nadie que la controlase. Las colmenas se extendieron a los mundos donde los Sembradores habían sembrado vida, y allí donde llegan, devoran."
+      },
+      {
+        "titulo": "La Colmena",
+        "texto": "Un Vhorr de la colmena no tiene nombre ni voluntad propia: siente lo que siente la reina, sigue el rastro químico de sus hermanos y ataca lo que la colmena considera amenaza o alimento. Por eso la inmensa mayoría (unos ocho de cada diez) son hostiles a todo lo demás. No pueden tener hijos con otras especies: sólo la colmena engendra Vhorr.\n\nNo todos los Vhorr tienen todas las capacidades de la especie, igual que no todos los dracónidos tienen alas y cola: unos trepan y acechan, otros nacen con una cola que es un arma y otros con una sangre que corroe el metal."
+      },
+      {
+        "titulo": "Los Despiertos",
+        "texto": "A veces un Vhorr se separa de la colmena —por una herida, por la distancia, por algo que nadie entiende— y despierta. De pronto el silencio dentro de su cabeza es suyo. Muchos enloquecen; otros aprenden a pensar por sí mismos, a hablar con dificultad y a convivir con quienes antes habrían sido presa. Sólo los Despiertos pueden ser personajes.\n\nEl eco de la colmena nunca desaparece del todo: los protege de los encantamientos, pero también les recuerda de dónde vienen."
+      },
+      {
+        "titulo": "En Agarias",
+        "texto": "Las colmenas son raras y casi siempre están en los pisos más altos de Lord 100 o en ruinas de los Sembradores. Los Varkai las consideran la presa suprema. Un Vhorr Despierto será recibido con miedo en casi cualquier lugar, y tendrá que demostrar una y otra vez que ya no pertenece a la colmena."
+      }
+    ],
+    "relacionadas": [
+      "sembradores",
+      "varkai"
+    ]
+  },
+  "sembradores": {
+    "nombre": "Sembradores, los Escultores de la Vida",
+    "resumen": "Una civilización antigua que viajaba entre estrellas sembrando vida… y armas.",
+    "secciones": [
+      {
+        "titulo": "Origen",
+        "texto": "Antes de que muchas especies supieran que existían otros mundos, los Sembradores ya viajaban entre ellos. Eran altos, pálidos y pacientes, y su arte era la vida misma: tomaban un mundo yermo y lo llenaban de criaturas diseñadas por ellos. Algunas razas que hoy caminan por Agarias no saben que fueron, en origen, uno de sus jardines."
+      },
+      {
+        "titulo": "Lo que crearon",
+        "texto": "Entre sus obras más conocidas están los Micelianos, un jardín de memoria donde cada fragmento recuerda a los demás; los Crystali, archivos vivientes que guardan lo que ven; y los Vhorr, el arma que crearon para limpiar mundos y que terminó escapando de su control. Los Sram no son obra suya: son otra raza creadora, con su propia historia."
+      },
+      {
+        "titulo": "La caída",
+        "texto": "Nadie sabe con certeza qué acabó con su civilización. Algunos dicen que fueron los Vhorr; otros, que los Sembradores se dividieron entre los que querían seguir creando y los que querían deshacer lo creado. Hoy quedan muy pocos: los del Alba, eruditos que estudian lo que sus antepasados sembraron, y los de la Ceniza, guerreros que custodian las ruinas."
+      },
+      {
+        "titulo": "En Agarias",
+        "texto": "Los Sembradores que quedan son una minoría casi legendaria. Algunos viven en los pisos superiores de Lord 100; otros recorren el mundo buscando sus antiguos jardines. Miran a las razas que crearon con una mezcla de orgullo y culpa, y muchas de ellas no saben si agradecerles la vida o pedirles cuentas."
+      }
+    ],
+    "relacionadas": [
+      "vhorr",
+      "micelianos",
+      "crystali"
+    ]
+  },
+  "thri-kreen": {
+    "nombre": "Thri-kreen",
+    "resumen": "Insectoides de cuatro brazos que no duermen; en Agarias, algunos guardan la noche de la Luna.",
+    "secciones": [
+      {
+        "titulo": "Origen",
+        "texto": "Los thri-kreen son insectoides de cuatro brazos y caparazón quitinoso que han llegado a muchos mundos viajando por el mar astral. No duermen, hablan entre ellos con chasquidos y, con las demás especies, mediante telepatía. Su caparazón cambia de color para confundirse con el entorno."
+      },
+      {
+        "titulo": "Los Guardias del Vacío",
+        "texto": "En el lado oscuro de la Luna vive una rama propia de Agarias. Cuando Umbrael creó a los Dracónidos del Vacío, la noche lunar era larga y peligrosa, y los thri-kreen, que no necesitan dormir, se convirtieron en sus guardianes perfectos. Desde entonces su caparazón se oscureció hasta el morado de la penumbra, aprendieron a aguantar la respiración en la nada y a saltar lejos en la gravedad baja.\n\nNo son siervos: son guardias por elección y por tradición. Unos vigilan los osarios lunares donde descansan los primeros Dracónidos del Vacío; otros guían y protegen a quienes viajan entre la Luna y Agarias."
+      },
+      {
+        "titulo": "En Agarias",
+        "texto": "Los thri-kreen son raros y la mayoría de la gente nunca ha visto uno. Los Guardias del Vacío bajan a Agarias acompañando a los Dracónidos del Vacío o cumpliendo encargos de la Luna, y se les reconoce por el silencio con el que vigilan mientras los demás duermen."
+      }
+    ],
+    "relacionadas": [
+      "draconido-vacio"
+    ]
+  },
+  "medusoides": {
+    "nombre": "Medusoides",
+    "resumen": "Criaturas flotantes que hablan con la luz y consideran el sonido una forma primitiva de comunicarse.",
+    "secciones": [
+      {
+        "titulo": "Origen",
+        "texto": "Los Medusoides vienen de un planeta cubierto por un océano y por nubes tan densas que casi no se distingue dónde termina uno y empieza el otro. Evolucionaron flotando entre ambos, por eso respiran aire y agua y nunca tocan del todo el suelo. Sus cuerpos translúcidos acumulan electricidad, que usan para cazar y para defenderse."
+      },
+      {
+        "titulo": "Lenguaje cromático",
+        "texto": "Para un Medusoide, hablar con sonidos es una forma extremadamente primitiva de comunicarse: lenta, pobre y ruidosa. Ellos se expresan con cambios de color y patrones de luz que pueden transmitir varias ideas a la vez. Una conversación entre Medusoides parece, a ojos ajenos, una danza de luces.\n\nEntienden los idiomas hablados, pero no los pronuncian: con las demás especies se comunican con señales que cualquiera puede comprender si los ve. Algunos sienten cierta lástima por quienes sólo pueden hablar con la boca."
+      },
+      {
+        "titulo": "Sociedad",
+        "texto": "Los Abisales viven en las profundidades y sus colores son fríos y pausados; los Celestes, en las capas altas de la atmósfera, y sus luces son vivas y rápidas. Ambos se consideran el mismo pueblo y se reúnen en grandes asambleas luminosas."
+      },
+      {
+        "titulo": "En Agarias",
+        "texto": "Recién descubiertos y muy escasos, los Medusoides llegaron a Agarias por caminos que todavía no explican. Son neutrales y curiosos; las ciudades costeras y los pisos acuáticos de Lord 100 son los únicos lugares donde se los ve con cierta frecuencia."
+      }
+    ]
+  },
+  "micelianos": {
+    "nombre": "Micelianos, la Colonia que Recuerda",
+    "resumen": "No son individuos aislados: cada uno es un fragmento de una colonia que conserva la memoria de sus muertos.",
+    "secciones": [
+      {
+        "titulo": "Origen",
+        "texto": "Los Micelianos fueron un jardín de los Sembradores: una red de hongos diseñada para recordar. Bajo el suelo de su mundo natal se extiende la colonia, y de ella brotan los cuerpos que caminan, piensan y viajan. Cada Miceliano es un fragmento de esa red, con personalidad propia pero unido al resto por la Red micelial."
+      },
+      {
+        "titulo": "Memoria Micelial",
+        "texto": "Cuando un Miceliano muere, la colonia puede absorber parte de sus recuerdos. No lo devuelve a la vida ni guarda todo lo que fue: conserva fragmentos, y a veces otros Micelianos los recuperan al descansar —un oficio, una forma de luchar, una habilidad aprendida por otro—.\n\nPor eso, para ellos, morir no significa necesariamente desaparecer. Un Miceliano habla de sus muertos en presente, y sus funerales son devolver el cuerpo a la tierra para que la colonia lo recuerde."
+      },
+      {
+        "titulo": "Último superviviente",
+        "texto": "Cada fragmento lleva dentro la voluntad de la colonia de no perder a nadie más. Ante un golpe que debería acabar con él, un Miceliano se aferra a la vida aunque sea por un hilo; sólo lo que arrasa un área entera, como el fuego o una explosión, puede llevárselo de una vez. Por eso temen el fuego más que a ningún enemigo."
+      },
+      {
+        "titulo": "En Agarias",
+        "texto": "Las Colonias de las Profundidades crecen en cuevas y bosques sin sol; las Colonias Errantes viajan con el viento y germinan lejos de casa. En Agarias son pocos, neutrales y discretos, y muchos buscan restos de los Sembradores para entender para qué fueron creados."
+      }
+    ],
+    "relacionadas": [
+      "sembradores"
+    ]
+  },
+  "cthulhianos": {
+    "nombre": "Cthulhianos, los Nómadas de lo Profundo",
+    "resumen": "Una especie de aspecto cósmico y tentáculos que, en su cultura, es tan normal como cualquier otra.",
+    "secciones": [
+      {
+        "titulo": "Origen",
+        "texto": "Los Cthulhianos tienen un aspecto que a muchas especies les resulta inquietante: tentáculos que nacen de la cabeza, varios ojos y, en algunos, alas membranosas. Pero no son monstruos ni dioses dormidos: son un pueblo nómada que recorre los océanos y el espacio desde hace generaciones, sin un mundo fijo al que llamar hogar."
+      },
+      {
+        "titulo": "Cultura",
+        "texto": "A diferencia de otras criaturas con las que a veces se los confunde, los Cthulhianos no tienen magia propia ni dominan mentes. Su telepatía sólo sirve para conversar sin hablar, algo tan natural para ellos como para otros mover los labios. Son pacientes, observadores y muy dados a la conversación larga; sus tentáculos se mueven con lo que sienten, como las manos de quien gesticula."
+      },
+      {
+        "titulo": "Siderales y Oceánicos",
+        "texto": "Los Siderales viajan por el espacio con sus alas; los Oceánicos, sin ellas, recorren los mares nadando. Ambos se consideran un solo pueblo y se encuentran en lugares de paso, donde intercambian noticias de mundos lejanos."
+      },
+      {
+        "titulo": "En Agarias",
+        "texto": "Son recién descubiertos y escasos. La gente los mira con recelo por su aspecto, y muchos Cthulhianos han aprendido a presentarse con una calma y una cortesía que desarman cualquier prejuicio. Son neutrales y suelen ofrecerse como guías, intérpretes o navegantes."
+      }
+    ]
+  },
+  "crystali": {
+    "nombre": "Crystali, los Archivos Vivientes",
+    "resumen": "Seres de cristal que guardan en su cuerpo todo lo que han visto; su color marca su rama familiar.",
+    "secciones": [
+      {
+        "titulo": "Origen",
+        "texto": "Los Sembradores crearon a los Crystali para que recordaran por ellos: cuerpos de cristal vivo capaces de guardar lo que ven y de devolverlo intacto siglos después. Cuando sus creadores cayeron, los Crystali se quedaron con su memoria… y sin nadie que les dijera qué hacer con ella."
+      },
+      {
+        "titulo": "Luz y resonancia",
+        "texto": "Su cuerpo refracta la luz, y la magia luminosa se vuelve más intensa al atravesarlos. Entre ellos se comunican por vibraciones que viajan a través de la roca y el suelo. Esa misma naturaleza los hace frágiles ante el sonido violento: un trueno puede agrietarlos como a un cristal cualquiera."
+      },
+      {
+        "titulo": "Las ramas de color",
+        "texto": "Un Crystali puede ser blanco, negro, de cualquier color o transparente. El color no da poderes: indica la rama familiar a la que pertenece y, con ella, su cultura y su lugar en la sociedad. Los transparentes son los desahuciados: considerados «vacíos» por los demás, sufren el racismo de su propia especie y muchos abandonan a los suyos para buscar su lugar entre otros pueblos."
+      },
+      {
+        "titulo": "En Agarias",
+        "texto": "Son pocos y neutrales. Los eruditos de Agarias los buscan por lo que recuerdan, y no siempre con buenas intenciones; por eso muchos Crystali eligen con cuidado qué cuentan y a quién."
+      }
+    ],
+    "relacionadas": [
+      "sembradores"
+    ]
+  },
+  "draconido-vacio": {
+    "nombre": "Dracónidos del Vacío, los Hijos de Umbrael",
+    "resumen": "Una rama dracónica nacida en la Luna, creada por Umbrael para vivir donde otros sólo ven la nada.",
+    "secciones": [
+      {
+        "titulo": "Umbrael, el Señor de la Quietud",
+        "texto": "Umbrael es el dios del Vacío absoluto. Junto con Bahamut y Tiamat forma la trifecta dracónica: son hermanos, y como hermanos han peleado muchas veces y siempre han terminado perdonándose. Se le representa como un dragón de un morado tan oscuro que se confunde con el cielo sin estrellas.\n\nMientras sus hermanos llenaban el mundo con sus hijos, Umbrael miró a la Luna, a su lado oscuro, donde nada vivía. Su filosofía es la de sobrevivir en lo que otros consideran la nada: no destruir el vacío ni temerlo, sino habitarlo."
+      },
+      {
+        "titulo": "Origen",
+        "texto": "Umbrael creó a los Dracónidos del Vacío en el lado oscuro de la Luna. El primero de todos fue Ghragur Bael, que no pertenecía a ningún clan porque aún no existían las ramas que hoy dividen a su pueblo. Umbrael implantó en sus hijos una fisiología capaz de vivir y sobrevivir en gravedades muy distintas, por eso la gravedad apenas les afecta y no pueden ser arrastrados con facilidad.\n\nNo son dracónidos que vinieron del espacio: son otra rama evolutiva, nacida y diseñada para un mundo sin aire, y su aspecto morado oscuro los hace casi imperceptibles en su entorno."
+      },
+      {
+        "titulo": "El Vacío",
+        "texto": "Su aliento no es fuego, hielo ni ningún elemento: es Vacío. Y no es un agujero negro. El Vacío desplaza el aire y toda la materia a su paso; cuando ese Vacío se mueve, lo desplazado quiere volver a donde estaba, y por eso lo que está cerca es atraído hacia el centro. Su resistencia es el propio Vacío."
+      },
+      {
+        "titulo": "Clanes, fe y el profeta",
+        "texto": "Con el tiempo surgieron los clanes y sus ramas. Sus nombres se escriben con el apellido primero, luego el nombre y por último el clan. El más recordado es Grhagur Enyeon Enerson, profeta de Umbrael, que inició la senda de los Shadow Knight y devoró a la Sombra Primordial.\n\nHoy hay Eruditos, que guardan el saber de su pueblo, y Supervivientes, curtidos en los entornos más extremos. Los acompañan los Thri-kreen del Vacío, sus guardianes, y los Selenkos, sus sirvientes naturales. En Agarias son pocos y neutrales; algunos viven en los pisos superiores de Lord 100."
+      }
+    ],
+    "relacionadas": [
+      "thri-kreen",
+      "selenkos"
+    ]
+  },
+  "selenkos": {
+    "nombre": "Selenkos, los Kobolds del Vacío",
+    "resumen": "Kobolds de la Luna, sirvientes naturales de los Dracónidos del Vacío: iguales a los demás, con otra cultura.",
+    "secciones": [
+      {
+        "titulo": "Origen",
+        "texto": "Los Selenkos son kobolds que viven en el lado oscuro de la Luna desde que llegaron los primeros Dracónidos del Vacío. Sus escamas tienen reflejos violáceos y su cuerpo es el de cualquier kobold: lo que los distingue es su cultura."
+      },
+      {
+        "titulo": "Cultura",
+        "texto": "Para un Selenko, servir a los Dracónidos del Vacío no es una cadena, sino un orgullo heredado. Mantienen sus túneles, sus forjas y sus despensas, y presumen de que ningún Dracónido del Vacío sobreviviría a la noche lunar sin ellos. Celebran los eclipses como fiestas sagradas de Umbrael y cuentan los años por las visitas de los dracónidos a sus madrigueras."
+      },
+      {
+        "titulo": "En Agarias",
+        "texto": "Los Selenkos bajan a Agarias acompañando a sus señores, y muchos acaban quedándose por curiosidad. Son neutrales, ruidosos y trabajadores, y sienten un respeto casi reverencial por cualquier dracónido, sea de la rama que sea."
+      }
+    ],
+    "relacionadas": [
+      "draconido-vacio"
+    ]
+  }
 }
