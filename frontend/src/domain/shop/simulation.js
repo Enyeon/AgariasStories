@@ -302,7 +302,7 @@ function rotate(world, ctx, shop, state, rng, report) {
     }
     let used = Object.values(state.stock).filter((e) => e.rotating).length;
     while (used < slots && rng.chance(chance)) {
-        const pool = ctx.catalog.list.filter((item) => item.forSale && !item.quality && !state.stock[item.id] && !(shop.exclude ?? []).includes(item.id) && rules.some((r) => matchesRule(item, r)));
+        const pool = ctx.catalog.list.filter((item) => item.forSale && !item.quality && !state.stock[item.id] && !(shop.exclude ?? []).includes(item.id) && rules.some((r) => matchesRule(item, r) && (r.ids || !item.tags?.includes('exclusivo'))));
         const item = rng.weighted(pool, (i) => ROTATION_WEIGHT[i.rarity] ?? 1);
         if (!item) break;
         state.stock[item.id] = { qty: 1, target: 1, rotating: true, since: world.day, expires: world.day + rng.int(stayDays[0], stayDays[1]) };

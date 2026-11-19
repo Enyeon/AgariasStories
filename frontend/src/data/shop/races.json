@@ -1,5 +1,5 @@
 {
-  "$comment": "Familias de razas para las actitudes de los comerciantes. Las razas de la app (y las Homebrew) son nombres libres: se comparan sin tildes ni mayúsculas. match: si el nombre contiene alguno de estos textos; not: salvo que contenga alguno de estos. Una raza puede pertenecer a varias familias (un drow es «elfo» y «drow»).",
+  "$comment": "Familias de razas para las actitudes de los comerciantes. Las razas de la app (y las Homebrew) son nombres libres: se comparan sin tildes ni mayúsculas. match: si el nombre contiene alguno de estos textos; not: salvo que contenga alguno de estos. Una raza puede pertenecer a varias familias (un drow es «elfo» y «drow»). wariness: recelo general de los comerciantes hacia esa familia ({ value, label, icon }); no se aplica si el comerciante es de la misma familia.",
   "families": [
     { "id": "humano", "label": "Humanos", "match": ["humano"] },
     { "id": "enano", "label": "Enanos", "match": ["enano", "duergar"] },
@@ -21,6 +21,16 @@
     { "id": "gith", "label": "Gith", "match": ["gith"] },
     { "id": "forjado", "label": "Forjados", "match": ["forjado", "warforged"] },
     { "id": "cambiante", "label": "Cambiantes", "match": ["cambiante", "changeling"] },
-    { "id": "marino", "label": "Pueblos del mar", "match": ["triton", "sirena", "elfo del mar"] }
+    { "id": "marino", "label": "Pueblos del mar", "match": ["triton", "sirena", "elfo del mar"] },
+    { "id": "alien", "label": "Aliens (todas)", "match": ["varkai", "vhorr", "sembrador", "thri-kreen", "medusoide", "miceliano", "cthulhiano", "crystali", "selenko", "(vacio)"] },
+    { "id": "varkai", "label": "Varkai", "match": ["varkai"] },
+    { "id": "vhorr", "label": "Vhorr (Hijos de la Colmena)", "match": ["vhorr"], "wariness": {"value": -15, "label": "Teme a los Hijos de la Colmena", "icon": "🪳"} },
+    { "id": "sembrador", "label": "Sembradores", "match": ["sembrador"] },
+    { "id": "thri-kreen", "label": "Thri-kreen", "match": ["thri-kreen", "thri kreen"] },
+    { "id": "medusoide", "label": "Medusoides", "match": ["medusoide"] },
+    { "id": "miceliano", "label": "Micelianos", "match": ["miceliano"] },
+    { "id": "cthulhiano", "label": "Cthulhianos", "match": ["cthulhiano"] },
+    { "id": "crystali", "label": "Crystali", "match": ["crystali"] },
+    { "id": "selenko", "label": "Selenkos", "match": ["selenko"] }
   ]
 }

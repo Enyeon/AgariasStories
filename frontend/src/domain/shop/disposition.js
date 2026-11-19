@@ -20,6 +20,7 @@ import { perceivedProfile, matchesWhen } from './profile.js';
 import { memoryWeights } from './memory.js';
 import { activeEvents } from './world-events.js';
 import { keeperLocation, regionOfLocation } from './presence.js';
+import { RACE_WARINESS } from '../../data/shop/options.js';
 
 export const TIERS = Object.freeze([
     { id: 'hostil', label: 'Hostil', icon: '😠', max: -60, color: '#c0392b' },
@@ -133,6 +134,14 @@ export function evaluateDisposition(world, ctx, { keeper, charId = null, profile
         if (region.races?.length && perceived.race.families.some((f) => region.races.includes(f))) add('Eres de una raza habitual por aquí', 4, { icon: '🏘️', source: 'region' });
         else if (region.races?.length && danger >= 3) add('Forastero en tierra peligrosa', -4, { icon: '🧭', source: 'region' });
         if (danger >= 3 && flags.has('strangerWary') && isStranger(rel)) add('Con tanto peligro, no se fía de nadie nuevo', -(danger - 2) * 3, { icon: '⚠️', source: 'region' });
+    }
+
+    // 5b) Recelo general hacia algunas familias (p. ej. los Vhorr, cuya colmena es hostil).
+    //     No aplica si el comerciante es de la misma familia ni si ya tiene una actitud propia hacia ella.
+    for (const fam of perceived?.race.families ?? []) {
+        const w = RACE_WARINESS[fam];
+        if (!w || keeper.race === fam || (keeper.attitudes ?? []).some((a) => a?.when?.race === fam)) continue;
+        add(w.label, w.value, { icon: w.icon ?? '👎', source: 'raza' });
     }
 
     // 6) Memoria permanente

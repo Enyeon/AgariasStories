@@ -254,3 +254,12 @@ historia). Linajes: `varkai`, `vhorr`, `sembradores`, `thri-kreen` (oficial + Gu
 
 Reglas de equilibrio que comprueban los tests: +3 de atributos en total, sin tamaño Grande, sin inmunidades
 nuevas y vuelo sólo sin armadura media ni pesada. La tecnología de los Varkai es equipo de la Tienda.
+
+### Aliens en la Tienda (AgSt 1.32)
+
+- `data/shop/lord100.json` → `aliens`: `minFloor` (50) y los comerciantes aliens (piso, oficio, familia de raza,
+  nombre, retrato y objetos). `content/lord100.js` lanza un error si alguno queda por debajo de `minFloor`.
+- `data/shop/items.json`: la tecnología Varkai (camuflaje óptico, lanza retráctil, cañón de plasma) y otros objetos
+  aliens llevan la etiqueta `exclusivo`: sólo entran en una tienda por id (ni por categoría ni por rotación).
+- `data/shop/races.json`: familias `alien` y una por especie. Una familia puede tener `wariness` (recelo general de
+  los comerciantes); hoy sólo los Vhorr (−15), salvo comerciantes de su misma familia o con actitud propia hacia ella.

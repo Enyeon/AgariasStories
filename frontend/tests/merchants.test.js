@@ -391,3 +391,22 @@ describe('Comerciantes · Homebrew', () => {
     expect(dwarf.reasons.some((r) => r.hidden && r.value === -20)).toBe(true);
   });
 });
+
+describe('Aliens y comerciantes (AgSt 1.32)', () => {
+  it('las razas aliens tienen su familia (y la común «alien»)', () => {
+    expect(raceFamilies('Varkai (Clan Sombra)', racesData.families)).toEqual(['alien', 'varkai']);
+    expect(raceFamilies('Vhorr Despierto (Ácido)', racesData.families)).toEqual(['alien', 'vhorr']);
+    expect(raceFamilies('Thri-kreen del Vacío (Guardia de Senda)', racesData.families)).toEqual(['alien', 'thri-kreen']);
+    expect(raceFamilies('Dracónido Erudito (Vacío)', racesData.families)).toEqual(['draconido', 'alien']);
+  });
+
+  it('los comerciantes recelan de los Vhorr; del resto, no', () => {
+    const w = createWorld(ctx, { seed: 'v', warmupDays: 0 });
+    const id = [...ctx.keepers.keys()][0];
+    const vhorr = disp(w, id, hero({ race: 'Vhorr Despierto (Rastrero)' }));
+    const varkai = disp(w, id, hero({ race: 'Varkai (Clan Colmillo)' }));
+    expect(vhorr.reasons.find((r) => r.source === 'raza')).toMatchObject({ value: -15, label: 'Teme a los Hijos de la Colmena' });
+    expect(varkai.reasons.some((r) => r.source === 'raza')).toBe(false);
+    expect(vhorr.score).toBeLessThan(varkai.score);
+  });
+});

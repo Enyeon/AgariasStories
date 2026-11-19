@@ -142,3 +142,31 @@ describe('Campañas y condiciones', () => {
     expect(availability(w, c, keeper, { charId: 'pj' }).open).toBe(true);
   });
 });
+
+describe('Aliens en la Torre (AgSt 1.32)', () => {
+  const { mercader } = lord100Content();
+  const aliens = mercader.filter((m) => ['varkai', 'crystali', 'miceliano', 'cthulhiano', 'selenko'].includes(m.item.race));
+  const alienItems = ['camuflaje-optico-varkai', 'lanza-retractil-varkai', 'canon-plasma-varkai', 'cristal-memoria-crystali', 'esporas-micelianas'];
+
+  it('los comerciantes aliens sólo aparecen desde el piso 50', () => {
+    expect(aliens.length).toBe(tower.aliens.merchants.length);
+    for (const m of aliens) expect(m.item.floor).toBeGreaterThanOrEqual(50);
+    expect(tower.aliens.merchants.every((a) => a.floor >= tower.aliens.minFloor)).toBe(true);
+  });
+
+  it('su equipo es exclusivo: ninguna tienda lo tiene antes del piso 50', () => {
+    for (const id of alienItems) expect(ctx.item(id)?.tags).toContain('exclusivo');
+    const w = at(49);
+    const shops = Object.entries(w.shops);
+    expect(shops.length).toBeGreaterThan(100);
+    for (const [, s] of shops) expect(Object.keys(s.stock ?? {}).filter((id) => alienItems.includes(id))).toEqual([]);
+    const varkai = shopsOn(at(50), 50).find((s) => s.keeper.race === 'varkai');
+    expect(Object.keys(at(50).shops[varkai.shop.id].stock)).toEqual(expect.arrayContaining(alienItems.slice(0, 3)));
+  });
+
+  it('la Armería Varkai del piso 50 vende la tecnología Varkai', () => {
+    const varkai = aliens.find((m) => m.item.race === 'varkai');
+    expect(varkai.item.floor).toBe(50);
+    expect(varkai.item.floorItems.map((r) => r.item)).toEqual(['camuflaje-optico-varkai', 'lanza-retractil-varkai', 'canon-plasma-varkai']);
+  });
+});

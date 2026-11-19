@@ -91,15 +91,15 @@ function merchant(floor, zone, profId, n, extra = {}) {
     if (!prof) return null;
     const realm = realmOf(floor);
     const key = `${floor}|${zone.id}|${profId}|${n}`;
-    const name = `${pick(estate.names, key)} ${pick(estate.surnames, `${key}|s`)}`;
+    const name = extra.keeper ?? `${pick(estate.names, key)} ${pick(estate.surnames, `${key}|s`)}`;
     const t = (k) => hash(`${key}|${k}`) % 11;
     const shopLabel = extra.shopName ?? `${prof.label} · ${zone.name}`;
     const { item, errors } = validateContent('mercader', {
         name,
         title: extra.title ?? prof.label,
         description: extra.description ?? `${prof.description} Piso ${floor}, ${zone.name}.`,
-        portrait: pick(PORTRAITS, key),
-        race: pick(realm.races, `${key}|r`),
+        portrait: extra.portrait ?? pick(PORTRAITS, key),
+        race: extra.race ?? pick(realm.races, `${key}|r`),
         profession: profId,
         location: zoneLocationId(floor, zone.name),
         floor,
@@ -170,7 +170,28 @@ function floorMerchants(floor) {
         const zone = zones.at(-1);
         out.push(merchant(floor, zone, s.profession, 1, { shopName: s.name, title: s.name, requirement: s.requirement, special: true, items: s.items, description: `${s.name}: negocio especial del piso ${floor}. ${PROF.get(s.profession)?.description ?? ''}` }));
     }
+    out.push(...alienMerchants(floor, zones));
     return out.filter(Boolean);
+}
+
+/** Piso a partir del cual aparecen comerciantes aliens (nunca antes). */
+export const ALIEN_MIN_FLOOR = tower.aliens?.minFloor ?? 50;
+
+/**
+ * Comerciantes aliens (AgSt 1.32): especies recién descubiertas que sólo
+ * comercian en los pisos altos de la Torre. Venden su equipo exclusivo
+ * (por id) además de lo propio de su oficio.
+ */
+function alienMerchants(floor, zones) {
+    return (tower.aliens?.merchants ?? [])
+        .filter((a) => a.floor === floor)
+        .map((a) => {
+            if (a.floor < ALIEN_MIN_FLOOR) throw new Error(`Lord 100: comerciante alien «${a.name}» por debajo del piso ${ALIEN_MIN_FLOOR}.`);
+            return merchant(floor, zones.at(-1), a.profession, 2, {
+                keeper: a.keeper, race: a.race, portrait: a.portrait, shopName: a.name, title: a.name, items: a.items,
+                description: `${a.description} Piso ${floor}.`,
+            });
+        });
 }
 
 let cache = null;

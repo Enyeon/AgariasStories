@@ -17,6 +17,8 @@ export const PHASE_OPTIONS = map(world.phases, (p) => `${p.icon} ${p.label}`);
 export const FACTION_OPTIONS = map(factions.factions, (f) => `${f.icon} ${f.name}`);
 export const ARCHETYPE_OPTIONS = map(personalities.archetypes, (a) => `${a.icon} ${a.label}`);
 export const RACE_FAMILY_OPTIONS = map(races.families);
+/** Recelo general de los comerciantes hacia algunas familias: { familia: { value, label, icon } }. */
+export const RACE_WARINESS = Object.fromEntries(races.families.filter((f) => f.wariness).map((f) => [f.id, f.wariness]));
 export const TOPIC_OPTIONS = map(topics.topics, (t) => `${t.icon ?? ''} ${t.label}`.trim());
 export const VOICE_OPTIONS = { default: 'Neutra', 'gruñon': 'Gruñona', campechana: 'Campechana', erudito: 'Erudita', firme: 'Firme', sombrio: 'Sombría' };
 export const RUMOR_TOPIC_OPTIONS = { lugares: 'Lugares', personas: 'Personas', peligros: 'Peligros', rutas: 'Rutas', eventos: 'Sucesos', facciones: 'Facciones' };

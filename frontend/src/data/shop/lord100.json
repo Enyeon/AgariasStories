@@ -3843,5 +3843,74 @@
     }
    ]
   }
- ]
+ ],
+ "aliens": {
+  "$comment": "Comerciantes aliens: sólo desde el piso minFloor (nunca más abajo). Venden su equipo exclusivo además de lo de su oficio.",
+  "minFloor": 50,
+  "merchants": [
+   {
+    "floor": 50,
+    "profession": "exotico",
+    "race": "varkai",
+    "name": "Armería de caza Varkai",
+    "items": [
+     "camuflaje-optico-varkai",
+     "lanza-retractil-varkai",
+     "canon-plasma-varkai"
+    ],
+    "description": "Un cazador Varkai retirado vende el equipo de su clan… sólo a quien lo merece.",
+    "keeper": "Ka'thar del Clan Lejano",
+    "portrait": "👺"
+   },
+   {
+    "floor": 55,
+    "profession": "librero",
+    "race": "crystali",
+    "name": "Archivo de cristal",
+    "items": [
+     "cristal-memoria-crystali"
+    ],
+    "description": "Una Crystali transparente, apartada de los suyos, comercia con recuerdos y libros.",
+    "keeper": "Lysse la Transparente",
+    "portrait": "💎"
+   },
+   {
+    "floor": 60,
+    "profession": "herbolario",
+    "race": "miceliano",
+    "name": "Colonia de las esporas",
+    "items": [
+     "esporas-micelianas"
+    ],
+    "description": "Un fragmento de colonia miceliana cultiva remedios entre las raíces del piso.",
+    "keeper": "Ombu, fragmento de la Colonia",
+    "portrait": "🍄"
+   },
+   {
+    "floor": 83,
+    "profession": "exotico",
+    "race": "cthulhiano",
+    "name": "Rarezas de lo profundo",
+    "items": [
+     "cristal-memoria-crystali"
+    ],
+    "description": "Un Cthulhiano sideral trae curiosidades de otros mundos y conversa sin abrir la boca.",
+    "keeper": "Ythaal el Paciente",
+    "portrait": "🐙"
+   },
+   {
+    "floor": 92,
+    "profession": "exotico",
+    "race": "selenko",
+    "name": "Despensa selenka",
+    "items": [
+     "esporas-micelianas",
+     "lanza-retractil-varkai"
+    ],
+    "description": "Unos Selenkos ruidosos venden lo que traen de la Luna para sus señores, los Dracónidos del Vacío.",
+    "keeper": "Pikkat",
+    "portrait": "🦎"
+   }
+  ]
+ }
 }
