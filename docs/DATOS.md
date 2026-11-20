@@ -312,3 +312,16 @@ Los tests (`tests/ink.test.js`) comprueban que ninguna invocación ni hechizo ha
   los puntos ganados.
 - **Reglas:** el estado «Vacío» se quitó; queda el tipo de daño Vacío con la asfixia y el arrastre en su nota.
 - Todo se genera con `python3 tools/ink_adaptado.py` (y `tools/rules_reference.py` para las Reglas).
+
+### Pies con casillas, pericia fija y Selenko propio (AgSt 1.38)
+
+- **Casillas:** toda distancia en pies múltiplo de 5 lleva sus casillas (1 casilla = 5 pies): «30 pies (6 casillas)»,
+  «60/120 pies (12/24 casillas)», «15 × 5 pies (3 × 1 casillas)». Los datos se convierten con
+  `python3 tools/casillas.py` (idempotente; también lo usan los generadores al guardar) y la app lo aplica al mostrar
+  texto (`richText` y `domain/units.js`), así que también vale para el Homebrew. No se tocan volúmenes ni
+  superficies, medidas que no son múltiplos de 5 (alturas, grosores, «1 pie», proporciones) ni cifras con miles.
+  Un test comprueba que no quede ninguna distancia sin casillas en los datos.
+- **Pericia fija:** `{ "type": "pericia", "habilidad": "Persuasión" }` da pericia automática en esa habilidad (no
+  cuenta entre las pericias que el jugador marca a mano). La usa el Verdan (IA).
+- **Selenko:** ya no copia al kobold de Monstruos del Multiverso (sin Grito Dracónico ni Legado Kobold): resistencia
+  al Vacío, Patas lunares, Al servicio de los grandes (reacción, BC usos) y Oficio de madriguera.

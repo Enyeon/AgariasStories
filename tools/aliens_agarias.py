@@ -32,6 +32,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from casillas import con_casillas  # AgSt 1.38: toda distancia en pies lleva sus casillas
+
 DATA = Path(__file__).resolve().parent.parent / "frontend" / "src" / "data"
 GROUP = "Razas de Agarias Pt. V: Aliens"
 ALL = ["fuerza", "destreza", "constitucion", "inteligencia", "sabiduria", "carisma"]
@@ -288,20 +290,24 @@ def races_data():
                                      descripcion="Seres de cristal vivo: archivos andantes de lo que han visto.",
                                      info=info(*CRYSTALI), linaje="crystali", tipo="Humanoide", tamano="Mediano",
                                      origen="Archivos vivientes de los Sembradores"))
-    # Selenkos: kobolds de mecánica idéntica a los de Monstruos del Multiverso, con otra cultura.
+    # Selenkos (AgSt 1.38): parientes de los kobolds adaptados a la Luna, con rasgos propios
+    # (ya no copian al kobold de Monstruos del Multiverso).
     add("Selenko (Kobold del Vacío)", "selenkos", race(choices=[{"count": 1, "bonus": 2}, {"count": 1, "bonus": 1}],
         lenguage="Idioma: Puedes leer, escribir y hablar Común y Habla del Vacío", languageElection=0,
         yaHabla=["Común", "Habla del Vacío"],
-        doteOpciones=["Legado Kobold: Astucia", "Legado Kobold: Desafiante", "Legado Kobold: Hechicería Dracónica"],
-        descripcion="Kobolds de escamas violáceas, sirvientes naturales de los Dracónidos del Vacío.",
+        efectos=[{"type": "resistencia", "value": "vacio"},
+                 {"type": "recurso", "id": "al-servicio-de-los-grandes", "nombre": "Al servicio de los grandes", "max": {"bc": True}}],
+        descripcion="Parientes lunares de los kobolds, de escamas violáceas: sirvientes orgullosos de los Dracónidos del Vacío.",
         info=info(
             "♻ Tipo y tamaño. Eres un humanoide Pequeño.",
-            "♻ Grito Dracónico. Como acción adicional, lanzas un grito a tus enemigos a 10 pies (2 casillas) o menos de ti. Hasta el principio de tu "
-            "siguiente turno, tus aliados y tú tenéis ventaja en las tiradas de ataque contra cualquiera de esos enemigos que haya podido oírte. Puedes "
-            "usarlo tantas veces como tu bonificador por competencia y recuperas todos los usos al terminar un descanso largo.",
-            "♻ Legado Kobold. Elige un legado en «Dote racial»: Astucia (Talento artesano), Desafiante (Tenacidad) o Hechicería Dracónica.",
             DARKVISION,
-            "♻ Cultura selenka. Mecánicamente son kobolds como los de Monstruos del Multiverso; lo que cambia es su cultura (ver su historia)."),
+            "♻ Escamas del lado oscuro. Generaciones junto a los Dracónidos del Vacío te curtieron: tienes resistencia al daño de Vacío.",
+            "♻ Patas lunares. Criado en la gravedad baja de la Luna, la distancia de tus saltos se duplica y no sufres daño por caídas de "
+            "20 pies o menos.",
+            "♻ Al servicio de los grandes. Cuando un aliado a 5 pies de ti hace una prueba de característica o una tirada de ataque, puedes "
+            "usar tu reacción para ayudarle: tiene ventaja en esa tirada. Usos: tu bonificador de competencia por descanso largo.",
+            "♻ Oficio de madriguera. Eres competente con las herramientas de herrero, de albañil o de minero (elige una): son los oficios "
+            "con los que tu pueblo mantiene las madrigueras lunares."),
         linaje="selenkos", tipo="Humanoide", tamano="Pequeño", origen="La Luna (lado oscuro)"))
     return out, lore_of
 
@@ -491,10 +497,11 @@ def lore_data():
         },
         "selenkos": {
             "nombre": "Selenkos, los Kobolds del Vacío",
-            "resumen": "Kobolds de la Luna, sirvientes naturales de los Dracónidos del Vacío: iguales a los demás, con otra cultura.",
+            "resumen": "Parientes lunares de los kobolds, sirvientes naturales de los Dracónidos del Vacío.",
             "secciones": [
-                S("Origen", "Los Selenkos son kobolds que viven en el lado oscuro de la Luna desde que llegaron los primeros Dracónidos del Vacío. "
-                  "Sus escamas tienen reflejos violáceos y su cuerpo es el de cualquier kobold: lo que los distingue es su cultura."),
+                S("Origen", "Los Selenkos descienden de kobolds que llegaron al lado oscuro de la Luna con los primeros Dracónidos del Vacío. "
+                  "Generaciones bajo la gravedad lunar y junto al Vacío los cambiaron: sus escamas se volvieron violáceas y resisten el Vacío, "
+                  "sus patas saltan lejos y caen sin miedo, y ya no son del todo como sus primos de Agarias."),
                 S("Cultura", "Para un Selenko, servir a los Dracónidos del Vacío no es una cadena, sino un orgullo heredado. Mantienen sus túneles, "
                   "sus forjas y sus despensas, y presumen de que ningún Dracónido del Vacío sobreviviría a la noche lunar sin ellos. Celebran los "
                   "eclipses como fiestas sagradas de Umbrael y cuentan los años por las visitas de los dracónidos a sus madrigueras."),
@@ -553,9 +560,9 @@ def main():
     order = ["Dracónido Erudito (Vacío)", "Dracónido Superviviente (Vacío)", "Selenko (Kobold del Vacío)"]
     group["races"] = [r for r in order if r in races] + [r for r in keep if r not in order] + [r for r in new if r not in order]
 
-    races_path.write_text(json.dumps(races, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    races_path.write_text(con_casillas(json.dumps(races, ensure_ascii=False, indent=2)) + "\n", encoding="utf-8")
     cat_path.write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    lore_path.write_text(json.dumps(lore, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    lore_path.write_text(con_casillas(json.dumps(lore, ensure_ascii=False, indent=2)) + "\n", encoding="utf-8")
     print(f"ok: {len(new)} razas nuevas, {len(group['races'])} en «{GROUP}», {len(lore) - 1} historias")
 
 

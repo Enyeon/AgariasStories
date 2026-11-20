@@ -333,7 +333,7 @@
         "blockUno": {
           "name": "Desplazamiento",
           "titleName": "✦ DESPLAZAMIENTO ✦",
-          "descripcion": "Como acción adicional, dejas un rastro de biomasa de 15 × 5 pies sobre una superficie sólida contigua (suelo, pared o techo). Hasta el final de tu turno te mueves por él sin gastar velocidad ni provocar ataques de oportunidad. No sirve en el aire ni si tu velocidad es 0. Usos: tu modificador de Constitución (mínimo 1) por descanso largo.",
+          "descripcion": "Como acción adicional, dejas un rastro de biomasa de 15 × 5 pies (3 × 1 casillas) sobre una superficie sólida contigua (suelo, pared o techo). Hasta el final de tu turno te mueves por él sin gastar velocidad ni provocar ataques de oportunidad. No sirve en el aire ni si tu velocidad es 0. Usos: tu modificador de Constitución (mínimo 1) por descanso largo.",
           "efectos": [
             {
               "type": "recurso",
@@ -349,7 +349,7 @@
         "blockDos": {
           "name": "Desecho biológico",
           "titleName": "✦ DESECHO BIOLÓGICO ✦",
-          "descripcion": "Cuando manifiestas una invocación que no sea tu Sujeto o la Ruleta, o cuando una cae a 0 PG, queda un Desecho de 5 pies a su lado: terreno difícil, CA 10, 1 PG. Se disuelve al final de tu siguiente turno, si se aleja más de 30 pies de su invocación o de ti, o al terminar el combate. Con una acción adicional (o la acción de una invocación) puedes gestionarlo:<br>• <b>Reabsorber:</b> recuperas 1 de Esencia (una vez por turno).<br>• <b>Contener:</b> el Golem lo absorbe y gana 1d6 PG temporales.<br>• <b>Moldear</b> (1 minuto): barricada (cobertura media), charco adhesivo (terreno difícil; salvación de Destreza o apresado hasta el final de su siguiente turno) o puente o asidero.<br>Si lo ignoras un turno entero, se <b>descontrola</b>: se extiende y deja terreno difícil en un cuadrado de 10 pies hasta el final del combate. Nunca hace daño."
+          "descripcion": "Cuando manifiestas una invocación que no sea tu Sujeto o la Ruleta, o cuando una cae a 0 PG, queda un Desecho de 5 pies (1 casilla) a su lado: terreno difícil, CA 10, 1 PG. Se disuelve al final de tu siguiente turno, si se aleja más de 30 pies (6 casillas) de su invocación o de ti, o al terminar el combate. Con una acción adicional (o la acción de una invocación) puedes gestionarlo:<br>• <b>Reabsorber:</b> recuperas 1 de Esencia (una vez por turno).<br>• <b>Contener:</b> el Golem lo absorbe y gana 1d6 PG temporales.<br>• <b>Moldear</b> (1 minuto): barricada (cobertura media), charco adhesivo (terreno difícil; salvación de Destreza o apresado hasta el final de su siguiente turno) o puente o asidero.<br>Si lo ignoras un turno entero, se <b>descontrola</b>: se extiende y deja terreno difícil en un cuadrado de 10 pies (2 casillas) hasta el final del combate. Nunca hace daño."
         }
       }
     },
@@ -390,7 +390,7 @@
         "blockDos": {
           "name": "Contratista",
           "titleName": "✦ CONTRATISTA ✦",
-          "descripcion": "Fuera de combate puedes contratar a criaturas con Inteligencia 4 o más que puedan comunicarse contigo y estén dispuestas a negociar (guías, artesanos, guardias, mercenarios…; las poderosas o legendarias sólo si el DM lo permite). El precio depende del riesgo. Los contratistas <b>obedecen tus órdenes</b> mientras dure el contrato. Puedes mantener tantos contratos como tu bonificador de competencia.<br><b>Cuadrilla.</b> Al empezar un combate, todos tus contratistas se unifican en una sola entidad con un turno y una acción. Usa las estadísticas del más fuerte, cuyo FR no puede pasar de la mitad de tu nivel (mínimo 1/8). Cada contratista extra suma 5 PG y un talento de su oficio (guardia +1 CA, guía +10 pies de velocidad, curandero una curación de 1d8 por combate, explorador +5 a la Percepción pasiva…). La diriges tú. A 0 PG se dispersa: huyen heridos y pierdes sus servicios hasta renegociar. La Inhibición no se aplica a la Cuadrilla (son seres independientes), y no cuenta como invocación ni se beneficia de tus invocaciones."
+          "descripcion": "Fuera de combate puedes contratar a criaturas con Inteligencia 4 o más que puedan comunicarse contigo y estén dispuestas a negociar (guías, artesanos, guardias, mercenarios…; las poderosas o legendarias sólo si el DM lo permite). El precio depende del riesgo. Los contratistas <b>obedecen tus órdenes</b> mientras dure el contrato. Puedes mantener tantos contratos como tu bonificador de competencia.<br><b>Cuadrilla.</b> Al empezar un combate, todos tus contratistas se unifican en una sola entidad con un turno y una acción. Usa las estadísticas del más fuerte, cuyo FR no puede pasar de la mitad de tu nivel (mínimo 1/8). Cada contratista extra suma 5 PG y un talento de su oficio (guardia +1 CA, guía +10 pies (2 casillas) de velocidad, curandero una curación de 1d8 por combate, explorador +5 a la Percepción pasiva…). La diriges tú. A 0 PG se dispersa: huyen heridos y pierdes sus servicios hasta renegociar. La Inhibición no se aplica a la Cuadrilla (son seres independientes), y no cuenta como invocación ni se beneficia de tus invocaciones."
         }
       }
     },
@@ -453,7 +453,7 @@
         "blockTres": {
           "name": "Conducto",
           "titleName": "✦ CONDUCTO ✦",
-          "descripcion": "Tus rasgos y hechizos de toque pueden salir desde cualquiera de tus invocaciones manifestadas a 60 pies de ti."
+          "descripcion": "Tus rasgos y hechizos de toque pueden salir desde cualquiera de tus invocaciones manifestadas a 60 pies (12 casillas) de ti."
         }
       },
       "subClase": {
@@ -470,7 +470,7 @@
                 },
                 "subBlockDos": {
                   "subName": "Don: Disolver ataduras",
-                  "subDescripcion": "Disolver ataduras: como acción adicional, un aliado a 30 pies deja de estar agarrado o apresado (disuelves lo que lo sujeta, sin dañar a nadie). Usos: tu bonificador de competencia por descanso largo.",
+                  "subDescripcion": "Disolver ataduras: como acción adicional, un aliado a 30 pies (6 casillas) deja de estar agarrado o apresado (disuelves lo que lo sujeta, sin dañar a nadie). Usos: tu bonificador de competencia por descanso largo.",
                   "efectos": [
                     {
                       "type": "recurso",
@@ -500,7 +500,7 @@
               "infoSubBlock": {
                 "subBlockUno": {
                   "subName": "Dominio de Ácido",
-                  "subDescripcion": "Disolver ataduras libera a todos los aliados a 30 pies."
+                  "subDescripcion": "Disolver ataduras libera a todos los aliados a 30 pies (6 casillas)."
                 }
               }
             }
@@ -519,7 +519,7 @@
                 },
                 "subBlockDos": {
                   "subName": "Don: Conservar",
-                  "subDescripcion": "Conservar: como acción, un aliado a 0 PG a 30 pies se estabiliza y tiene ventaja en las salvaciones contra la muerte hasta que lo curen. Usos: tu bonificador de competencia por descanso largo.",
+                  "subDescripcion": "Conservar: como acción, un aliado a 0 PG a 30 pies (6 casillas) se estabiliza y tiene ventaja en las salvaciones contra la muerte hasta que lo curen. Usos: tu bonificador de competencia por descanso largo.",
                   "efectos": [
                     {
                       "type": "recurso",
@@ -541,7 +541,7 @@
               "infoSubBlock": {
                 "subBlockUno": {
                   "subName": "Afinidad de Frío",
-                  "subDescripcion": "Creas un puente o plataforma de hielo de hasta 20 pies durante 1 minuto."
+                  "subDescripcion": "Creas un puente o plataforma de hielo de hasta 20 pies (4 casillas) durante 1 minuto."
                 }
               }
             },
@@ -580,7 +580,7 @@
               "infoSubBlock": {
                 "subBlockUno": {
                   "subName": "Afinidad de Fuego",
-                  "subDescripcion": "Tú y tus aliados a 30 pies no sufréis el frío extremo; puedes emitir luz brillante en 20 pies."
+                  "subDescripcion": "Tú y tus aliados a 30 pies (6 casillas) no sufréis el frío extremo; puedes emitir luz brillante en 20 pies (4 casillas)."
                 }
               }
             },
@@ -588,7 +588,7 @@
               "infoSubBlock": {
                 "subBlockUno": {
                   "subName": "Dominio de Fuego",
-                  "subDescripcion": "Una vez por descanso largo, como acción, un aliado a 0 PG a 30 pies se levanta con PG iguales a tu nivel."
+                  "subDescripcion": "Una vez por descanso largo, como acción, un aliado a 0 PG a 30 pies (6 casillas) se levanta con PG iguales a tu nivel."
                 }
               }
             }
@@ -607,7 +607,7 @@
                 },
                 "subBlockDos": {
                   "subName": "Don: Escudo",
-                  "subDescripcion": "Escudo: como acción adicional, un aliado a 30 pies gana PG temporales iguales al doble de tu nivel. Usos: tu bonificador de competencia por descanso largo.",
+                  "subDescripcion": "Escudo: como acción adicional, un aliado a 30 pies (6 casillas) gana PG temporales iguales al doble de tu nivel. Usos: tu bonificador de competencia por descanso largo.",
                   "efectos": [
                     {
                       "type": "recurso",
@@ -637,7 +637,7 @@
               "infoSubBlock": {
                 "subBlockUno": {
                   "subName": "Dominio de Fuerza",
-                  "subDescripcion": "Una vez por descanso largo, levantas una barrera de fuerza de 10 × 10 pies durante 1 minuto (concentración) que nada atraviesa."
+                  "subDescripcion": "Una vez por descanso largo, levantas una barrera de fuerza de 10 × 10 pies (2 × 2 casillas) durante 1 minuto (concentración) que nada atraviesa."
                 }
               }
             }
@@ -656,7 +656,7 @@
                 },
                 "subBlockDos": {
                   "subName": "Don: Umbral",
-                  "subDescripcion": "Umbral: como reacción, un aliado a 30 pies que falle una salvación contra la muerte la repite. Usos: tu bonificador de competencia por descanso largo.",
+                  "subDescripcion": "Umbral: como reacción, un aliado a 30 pies (6 casillas) que falle una salvación contra la muerte la repite. Usos: tu bonificador de competencia por descanso largo.",
                   "efectos": [
                     {
                       "type": "recurso",
@@ -678,7 +678,7 @@
               "infoSubBlock": {
                 "subBlockUno": {
                   "subName": "Afinidad de Necrótico",
-                  "subDescripcion": "Sientes a los no muertos y a los vivos a 60 pies y sabes cuántos PG le quedan a una criatura que ves."
+                  "subDescripcion": "Sientes a los no muertos y a los vivos a 60 pies (12 casillas) y sabes cuántos PG le quedan a una criatura que ves."
                 }
               }
             },
@@ -705,7 +705,7 @@
                 },
                 "subBlockDos": {
                   "subName": "Don: Red mental",
-                  "subDescripcion": "Red mental: hasta tantos aliados como tu bonificador de competencia quedan vinculados contigo (telepatía a 60 pies). Si uno ve a un enemigo, todos saben dónde está."
+                  "subDescripcion": "Red mental: hasta tantos aliados como tu bonificador de competencia quedan vinculados contigo (telepatía a 60 pies (12 casillas)). Si uno ve a un enemigo, todos saben dónde está."
                 },
                 "subBlockTres": {
                   "subName": "Simbiosis elemental",
@@ -748,7 +748,7 @@
                 },
                 "subBlockTres": {
                   "subName": "Simbiosis elemental",
-                  "subDescripcion": "Mientras estás fundido con un aliado (Simbiosis): El aliado emite luz brillante en 20 pies y tiene ventaja contra quedar cegado."
+                  "subDescripcion": "Mientras estás fundido con un aliado (Simbiosis): El aliado emite luz brillante en 20 pies (4 casillas) y tiene ventaja contra quedar cegado."
                 }
               }
             },
@@ -756,7 +756,7 @@
               "infoSubBlock": {
                 "subBlockUno": {
                   "subName": "Afinidad de Radiante",
-                  "subDescripcion": "Cuando curas a un aliado, otro a 10 pies de él recupera la mitad."
+                  "subDescripcion": "Cuando curas a un aliado, otro a 10 pies (2 casillas) de él recupera la mitad."
                 }
               }
             },
@@ -764,7 +764,7 @@
               "infoSubBlock": {
                 "subBlockUno": {
                   "subName": "Dominio de Radiante",
-                  "subDescripcion": "Una vez por descanso largo, todos los aliados a 30 pies recuperan 4d8 PG."
+                  "subDescripcion": "Una vez por descanso largo, todos los aliados a 30 pies (6 casillas) recuperan 4d8 PG."
                 }
               }
             }
@@ -783,11 +783,11 @@
                 },
                 "subBlockDos": {
                   "subName": "Don: Chispa",
-                  "subDescripcion": "Chispa: tú y los aliados a 30 pies sumáis tu modificador de Sabiduría a la iniciativa."
+                  "subDescripcion": "Chispa: tú y los aliados a 30 pies (6 casillas) sumáis tu modificador de Sabiduría a la iniciativa."
                 },
                 "subBlockTres": {
                   "subName": "Simbiosis elemental",
-                  "subDescripcion": "Mientras estás fundido con un aliado (Simbiosis): El aliado gana +10 pies de velocidad y no provoca ataques de oportunidad."
+                  "subDescripcion": "Mientras estás fundido con un aliado (Simbiosis): El aliado gana +10 pies (2 casillas) de velocidad y no provoca ataques de oportunidad."
                 }
               }
             },
@@ -795,7 +795,7 @@
               "infoSubBlock": {
                 "subBlockUno": {
                   "subName": "Afinidad de Relámpago",
-                  "subDescripcion": "Puedes darle a un aliado a 30 pies tu Desplazamiento: lo usa él en su turno."
+                  "subDescripcion": "Puedes darle a un aliado a 30 pies (6 casillas) tu Desplazamiento: lo usa él en su turno."
                 }
               }
             },
@@ -822,7 +822,7 @@
                 },
                 "subBlockDos": {
                   "subName": "Don: Contrasonido",
-                  "subDescripcion": "Contrasonido: como reacción, cuando una criatura a 60 pies lanza un conjuro con componente verbal, tus aliados tienen ventaja en las salvaciones contra ese conjuro. Usos: tu bonificador de competencia por descanso largo.",
+                  "subDescripcion": "Contrasonido: como reacción, cuando una criatura a 60 pies (12 casillas) lanza un conjuro con componente verbal, tus aliados tienen ventaja en las salvaciones contra ese conjuro. Usos: tu bonificador de competencia por descanso largo.",
                   "efectos": [
                     {
                       "type": "recurso",
@@ -844,7 +844,7 @@
               "infoSubBlock": {
                 "subBlockUno": {
                   "subName": "Afinidad de Trueno",
-                  "subDescripcion": "Ecolocalización: visión ciega a 30 pies."
+                  "subDescripcion": "Ecolocalización: visión ciega a 30 pies (6 casillas)."
                 }
               }
             },
@@ -852,7 +852,7 @@
               "infoSubBlock": {
                 "subBlockUno": {
                   "subName": "Dominio de Trueno",
-                  "subDescripcion": "Una vez por descanso largo, creas una esfera de silencio de 20 pies durante 1 minuto (concentración)."
+                  "subDescripcion": "Una vez por descanso largo, creas una esfera de silencio de 20 pies (4 casillas) durante 1 minuto (concentración)."
                 }
               }
             }
@@ -871,7 +871,7 @@
                 },
                 "subBlockDos": {
                   "subName": "Don: Toxina sedante",
-                  "subDescripcion": "Toxina sedante: como acción, una criatura a 30 pies hace una salvación de Constitución (CD de clase) o su velocidad queda a 0 hasta el final de su siguiente turno. Sin daño. Usos: tu bonificador de competencia por descanso largo.",
+                  "subDescripcion": "Toxina sedante: como acción, una criatura a 30 pies (6 casillas) hace una salvación de Constitución (CD de clase) o su velocidad queda a 0 hasta el final de su siguiente turno. Sin daño. Usos: tu bonificador de competencia por descanso largo.",
                   "efectos": [
                     {
                       "type": "recurso",
@@ -901,7 +901,7 @@
               "infoSubBlock": {
                 "subBlockUno": {
                   "subName": "Dominio de Veneno",
-                  "subDescripcion": "Toxina sedante afecta a cada criatura que elijas en una esfera de 10 pies."
+                  "subDescripcion": "Toxina sedante afecta a cada criatura que elijas en una esfera de 10 pies (2 casillas)."
                 }
               }
             }
@@ -920,7 +920,7 @@
                 },
                 "subBlockDos": {
                   "subName": "Don: Maldición menor",
-                  "subDescripcion": "Maldición menor: como acción adicional, una criatura a 60 pies tiene desventaja en su siguiente tirada de salvación. Usos: tu bonificador de competencia por descanso largo.",
+                  "subDescripcion": "Maldición menor: como acción adicional, una criatura a 60 pies (12 casillas) tiene desventaja en su siguiente tirada de salvación. Usos: tu bonificador de competencia por descanso largo.",
                   "efectos": [
                     {
                       "type": "recurso",
@@ -969,7 +969,7 @@
                 },
                 "subBlockDos": {
                   "subName": "Don: Gracia",
-                  "subDescripcion": "Gracia: como acción adicional, un aliado a 30 pies suma 1d4 a sus tiradas de ataque y de salvación hasta el final de su siguiente turno. Usos: tu bonificador de competencia por descanso largo.",
+                  "subDescripcion": "Gracia: como acción adicional, un aliado a 30 pies (6 casillas) suma 1d4 a sus tiradas de ataque y de salvación hasta el final de su siguiente turno. Usos: tu bonificador de competencia por descanso largo.",
                   "efectos": [
                     {
                       "type": "recurso",
@@ -1018,7 +1018,7 @@
                 },
                 "subBlockDos": {
                   "subName": "Don: Burbuja de aire",
-                  "subDescripcion": "Burbuja de aire: un aliado a 30 pies puede respirar en cualquier lugar (agua, gas, sin aire) durante 1 hora y tiene ventaja contra los gases. Usos: tu bonificador de competencia por descanso largo.",
+                  "subDescripcion": "Burbuja de aire: un aliado a 30 pies (6 casillas) puede respirar en cualquier lugar (agua, gas, sin aire) durante 1 hora y tiene ventaja contra los gases. Usos: tu bonificador de competencia por descanso largo.",
                   "efectos": [
                     {
                       "type": "recurso",
@@ -1032,7 +1032,7 @@
                 },
                 "subBlockTres": {
                   "subName": "Simbiosis elemental",
-                  "subDescripcion": "Mientras estás fundido con un aliado (Simbiosis): El aliado flota: velocidad de vuelo de 20 pies (puede quedarse suspendido)."
+                  "subDescripcion": "Mientras estás fundido con un aliado (Simbiosis): El aliado flota: velocidad de vuelo de 20 pies (4 casillas) (puede quedarse suspendido)."
                 }
               }
             },
@@ -1040,7 +1040,7 @@
               "infoSubBlock": {
                 "subBlockUno": {
                   "subName": "Afinidad de Vacío",
-                  "subDescripcion": "Burbuja de aire alcanza a todos los aliados a 10 pies."
+                  "subDescripcion": "Burbuja de aire alcanza a todos los aliados a 10 pies (2 casillas)."
                 }
               }
             },
@@ -1278,7 +1278,7 @@
         "blockUno": {
           "name": "Escudo de Biomasa",
           "titleName": "✦ ESCUDO DE BIOMASA ✦",
-          "descripcion": "Como reacción, cuando un aliado a 30 pies hace una tirada de salvación, gastas 1 de Esencia y la hace con ventaja."
+          "descripcion": "Como reacción, cuando un aliado a 30 pies (6 casillas) hace una tirada de salvación, gastas 1 de Esencia y la hace con ventaja."
         }
       }
     },
@@ -1436,7 +1436,7 @@
         "blockUno": {
           "name": "Núcleo",
           "titleName": "✦ NÚCLEO ✦",
-          "descripcion": "Una vez por descanso largo, como acción, manifiestas todas tus invocaciones sin coste y sin límite de capacidad durante 1 minuto. Mientras dure, tú y tus aliados a 30 pies no podéis bajar de 1 PG por un único ataque o efecto.",
+          "descripcion": "Una vez por descanso largo, como acción, manifiestas todas tus invocaciones sin coste y sin límite de capacidad durante 1 minuto. Mientras dure, tú y tus aliados a 30 pies (6 casillas) no podéis bajar de 1 PG por un único ataque o efecto.",
           "efectos": [
             {
               "type": "recurso",

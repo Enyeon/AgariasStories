@@ -154,7 +154,7 @@
     "damage": "—— (Habilidad de disipación)",
     "hpPercent": 50,
     "attackName": "Purga de Sangre",
-    "attack": "Como acción adicional, eliges una criatura que puedas ver a 30 pies (6 Casilas) de distancia que esté encantada, asustada o poseída. La criatura objetivo es liberada de esos efectos inmediatamente. Si la criatura tenía uno de estos efectos, tú recuperas puntos de vida iguales a 1d8 + tu modificador de Sangre Arcana.",
+    "attack": "Como acción adicional, eliges una criatura que puedas ver a 30 pies (6 casillas) de distancia que esté encantada, asustada o poseída. La criatura objetivo es liberada de esos efectos inmediatamente. Si la criatura tenía uno de estos efectos, tú recuperas puntos de vida iguales a 1d8 + tu modificador de Sangre Arcana.",
     "amplification": "Cuando se usa la Amplificación, el ser responsable de encantar, asustar o poseer al objetivo sufre 3d6 de daño psíquico y debe realizar una tirada de salvación de Sabiduría. Si falla, queda aturdido hasta el final del siguiente turno del invocador.",
     "quirk": "Si el Exorcista Carmesí libera a una criatura de uno de estos efectos (encantamiento, miedo o posesión), el invocador recupera 1d8 puntos de vida. Además, si se purgan dos o más criaturas en un solo turno, el invocador gana ventaja en su siguiente tirada de ataque.",
     "requirement": "——"

@@ -130,7 +130,7 @@
         "blockUno": {
           "name": "Inspiración Bárdica",
           "titleName": "✦ INSPIRACIÓN BÁRDICA ✦",
-          "descripcion": "Puedes inspirar sobrenaturalmente a otros a través de palabras, música o danza. Esta inspiración se representa con tu dado de Inspiración Bárdica, que es un d6.\n\n<b>Usando Inspiración Bárdica.</b> Como Acción adicional, puedes inspirar a otra criatura que esté dentro de 60 pies de ti y que pueda verte o escucharte. Esa criatura recibe uno de tus dados de Inspiración Bárdica. Una criatura solo puede tener un dado de Inspiración Bárdica a la vez.\nUna vez dentro de la siguiente hora, cuando la criatura falle una prueba de d20, la criatura puede tirar el dado de Inspiración Bárdica y añadir el número obtenido al d20, lo que potencialmente convierte el fallo en un éxito. Un dado de Inspiración Bárdica se gasta cuando se tira.\n<b>Número de usos.</b> Puedes otorgar un dado de Inspiración Bárdica un número de veces igual a tu modificador de Carisma (mínimo una vez), y recuperas todos los usos gastados cuando terminas un Descanso Largo.\n<b>En niveles superiores.</b> Tu dado de Inspiración Bárdica cambia cuando alcanzas ciertos niveles de Bardo, como se muestra en la columna de Dado Bárdico de la tabla de Características del Bardo. El dado se convierte en un d8 en el nivel 5, un d10 en el nivel 10, y un d12 en el nivel 15.",
+          "descripcion": "Puedes inspirar sobrenaturalmente a otros a través de palabras, música o danza. Esta inspiración se representa con tu dado de Inspiración Bárdica, que es un d6.\n\n<b>Usando Inspiración Bárdica.</b> Como Acción adicional, puedes inspirar a otra criatura que esté dentro de 60 pies (12 casillas) de ti y que pueda verte o escucharte. Esa criatura recibe uno de tus dados de Inspiración Bárdica. Una criatura solo puede tener un dado de Inspiración Bárdica a la vez.\nUna vez dentro de la siguiente hora, cuando la criatura falle una prueba de d20, la criatura puede tirar el dado de Inspiración Bárdica y añadir el número obtenido al d20, lo que potencialmente convierte el fallo en un éxito. Un dado de Inspiración Bárdica se gasta cuando se tira.\n<b>Número de usos.</b> Puedes otorgar un dado de Inspiración Bárdica un número de veces igual a tu modificador de Carisma (mínimo una vez), y recuperas todos los usos gastados cuando terminas un Descanso Largo.\n<b>En niveles superiores.</b> Tu dado de Inspiración Bárdica cambia cuando alcanzas ciertos niveles de Bardo, como se muestra en la columna de Dado Bárdico de la tabla de Características del Bardo. El dado se convierte en un d8 en el nivel 5, un d10 en el nivel 10, y un d12 en el nivel 15.",
           "efectos": [
             {
               "type": "recurso",
@@ -245,12 +245,12 @@
                 "subBlockUno": {
                   "subName": "Movimiento Inspirador",
                   "subTitleName": "✦ MOVIMIENTO INSPIRADOR ✦",
-                  "subDescripcion": "Cuando un enemigo que puedes ver termina su turno a menos de 5 pies de ti, puedes tomar una Reacción y gastar un uso de tu Inspiración Bárdica para moverte hasta la mitad de tu Velocidad. Luego, un aliado a tu elección que esté dentro de 30 pies de ti también puede moverse hasta la mitad de su Velocidad usando su Reacción.\nNinguno de los movimientos de esta característica provoca Ataques de Oportunidad."
+                  "subDescripcion": "Cuando un enemigo que puedes ver termina su turno a menos de 5 pies (1 casilla) de ti, puedes tomar una Reacción y gastar un uso de tu Inspiración Bárdica para moverte hasta la mitad de tu Velocidad. Luego, un aliado a tu elección que esté dentro de 30 pies (6 casillas) de ti también puede moverse hasta la mitad de su Velocidad usando su Reacción.\nNinguno de los movimientos de esta característica provoca Ataques de Oportunidad."
                 },
                 "subBlockDos": {
                   "subName": "Pasos en Tándem",
                   "subTitleName": "✦ PASOS EN TÁNDEM ✦",
-                  "subDescripcion": "Cuando lances la Iniciativa, puedes gastar un uso de tu Inspiración Bárdica si no tienes la condición de Incapacitado. Al hacerlo, tira tu dado de Inspiración Bárdica; tú y cada aliado dentro de 30 pies de ti que pueda verte o escucharte reciben un bonificador a la Iniciativa igual al número que obtuviste en la tirada."
+                  "subDescripcion": "Cuando lances la Iniciativa, puedes gastar un uso de tu Inspiración Bárdica si no tienes la condición de Incapacitado. Al hacerlo, tira tu dado de Inspiración Bárdica; tú y cada aliado dentro de 30 pies (6 casillas) de ti que pueda verte o escucharte reciben un bonificador a la Iniciativa igual al número que obtuviste en la tirada."
                 }
               }
             },
@@ -259,7 +259,7 @@
                 "subBlockUno": {
                   "subName": "Evasión de Líder",
                   "subTitleName": "✦ EVASIÓN DE LÍDER ✦",
-                  "subDescripcion": "Cuando te someten a un efecto que te permite hacer una tirada de salvación de Destreza para recibir solo la mitad del daño, en su lugar, no recibes daño si tienes éxito en la tirada de salvación y solo la mitad del daño si fallas. Si cualquier criatura dentro de 5 pies de ti está haciendo la misma tirada de salvación de Destreza, puedes compartir este beneficio con ellas para esa salvación.\nNo puedes usar esta característica si tienes la condición de Incapacitado."
+                  "subDescripcion": "Cuando te someten a un efecto que te permite hacer una tirada de salvación de Destreza para recibir solo la mitad del daño, en su lugar, no recibes daño si tienes éxito en la tirada de salvación y solo la mitad del daño si fallas. Si cualquier criatura dentro de 5 pies (1 casilla) de ti está haciendo la misma tirada de salvación de Destreza, puedes compartir este beneficio con ellas para esa salvación.\nNo puedes usar esta característica si tienes la condición de Incapacitado."
                 }
               }
             }
@@ -275,7 +275,7 @@
                 "subBlockUno": {
                   "subName": "Magia Fascinante",
                   "subTitleName": "✦ MAGIA FASCINANTE ✦",
-                  "subDescripcion": "Siempre tienes preparados los conjuros Encantar Persona e Imagen Espejo.\nAdemás, inmediatamente después de lanzar un conjuro de Encantamiento o Ilusión usando un espacio de conjuro, puedes hacer que una criatura que puedes ver dentro de 60 pies de ti realice una tirada de salvación de Sabiduría contra tu CD de salvación de conjuro. En una tirada fallida, el objetivo tiene la condición de Encantado o Aterrorizado (a tu elección) durante 1 minuto. El objetivo repite la tirada al final de cada uno de sus turnos, terminando el efecto sobre sí mismo en caso de éxito.\nUna vez que uses este beneficio, no podrás usarlo de nuevo hasta que termines un Descanso Largo. También puedes restaurar su uso gastando un uso de tu Inspiración Bárdica (no se requiere acción).",
+                  "subDescripcion": "Siempre tienes preparados los conjuros Encantar Persona e Imagen Espejo.\nAdemás, inmediatamente después de lanzar un conjuro de Encantamiento o Ilusión usando un espacio de conjuro, puedes hacer que una criatura que puedes ver dentro de 60 pies (12 casillas) de ti realice una tirada de salvación de Sabiduría contra tu CD de salvación de conjuro. En una tirada fallida, el objetivo tiene la condición de Encantado o Aterrorizado (a tu elección) durante 1 minuto. El objetivo repite la tirada al final de cada uno de sus turnos, terminando el efecto sobre sí mismo en caso de éxito.\nUna vez que uses este beneficio, no podrás usarlo de nuevo hasta que termines un Descanso Largo. También puedes restaurar su uso gastando un uso de tu Inspiración Bárdica (no se requiere acción).",
                   "efectos": [
                     {
                       "type": "conjuro_preparado",
@@ -290,7 +290,7 @@
                 "subBlockDos": {
                   "subName": "Manto de Inspiración",
                   "subTitleName": "✦ MANTO DE INSPIRACIÓN ✦",
-                  "subDescripcion": "Puedes tejer magia fey en una canción o danza para llenar a otros con vigor. Como Acción Bonificada, puedes gastar un uso de Inspiración Bárdica, tirando un dado de Inspiración Bárdica. Cuando lo hagas, elige una cantidad de otras criaturas dentro de 60 pies de ti, hasta un número igual a tu modificador de Carisma (mínimo de una criatura). Cada una de esas criaturas gana una cantidad de Puntos de Golpe Temporales igual al doble del número obtenido en la tirada del dado de Inspiración Bárdica, y luego cada una puede usar su Reacción para moverse hasta su Velocidad sin provocar Ataques de Oportunidad."
+                  "subDescripcion": "Puedes tejer magia fey en una canción o danza para llenar a otros con vigor. Como Acción Bonificada, puedes gastar un uso de Inspiración Bárdica, tirando un dado de Inspiración Bárdica. Cuando lo hagas, elige una cantidad de otras criaturas dentro de 60 pies (12 casillas) de ti, hasta un número igual a tu modificador de Carisma (mínimo de una criatura). Cada una de esas criaturas gana una cantidad de Puntos de Golpe Temporales igual al doble del número obtenido en la tirada del dado de Inspiración Bárdica, y luego cada una puede usar su Reacción para moverse hasta su Velocidad sin provocar Ataques de Oportunidad."
                 }
               }
             },
@@ -359,7 +359,7 @@
                 "subBlockDos": {
                   "subName": "Palabras Cortantes",
                   "subTitleName": "✦ PALABRAS CORTANTES ✦",
-                  "subDescripcion": "Aprendes a usar tu ingenio para distraer, confundir y de otro modo minar la confianza y competencia de los demás de manera sobrenatural. Cuando una criatura que puedes ver dentro de 60 pies de ti realiza una tirada de daño o tiene éxito en una tirada de habilidad o de ataque, puedes tomar una Reacción para gastar un uso de tu Inspiración Bárdica; tira tu dado de Inspiración Bárdica y resta el número obtenido de la tirada de la criatura, reduciendo el daño o potencialmente convirtiendo el éxito en un fracaso."
+                  "subDescripcion": "Aprendes a usar tu ingenio para distraer, confundir y de otro modo minar la confianza y competencia de los demás de manera sobrenatural. Cuando una criatura que puedes ver dentro de 60 pies (12 casillas) de ti realiza una tirada de daño o tiene éxito en una tirada de habilidad o de ataque, puedes tomar una Reacción para gastar un uso de tu Inspiración Bárdica; tira tu dado de Inspiración Bárdica y resta el número obtenido de la tirada de la criatura, reduciendo el daño o potencialmente convirtiendo el éxito en un fracaso."
                 }
               }
             },
@@ -546,7 +546,7 @@
         "blockUno": {
           "name": "Contraencanto",
           "titleName": "✦ CONTRAENCANTO ✦",
-          "descripcion": "Puedes usar notas musicales o palabras de poder para interrumpir efectos que influyen en la mente. Si tú o una criatura a 30 pies de ti falla una tirada de salvación contra un efecto que aplica la condición de Encantado o Asustado, puedes usar una Reacción para que se repita la tirada, y la nueva tirada tiene Ventaja."
+          "descripcion": "Puedes usar notas musicales o palabras de poder para interrumpir efectos que influyen en la mente. Si tú o una criatura a 30 pies (6 casillas) de ti falla una tirada de salvación contra un efecto que aplica la condición de Encantado o Asustado, puedes usar una Reacción para que se repita la tirada, y la nueva tirada tiene Ventaja."
         }
       },
       "infoCubo": {
@@ -771,7 +771,7 @@
         "blockUno": {
           "name": "Palabras de Creación",
           "titleName": "✦ PALABRAS DE CREACIÓN ✦",
-          "descripcion": "Has dominado dos de las Palabras de Creación: las palabras de vida y muerte. Por lo tanto, siempre tienes preparados los conjuros Palabra de Poder: Curar y Palabra de Poder: Matar. Cuando lanzas uno de estos conjuros, puedes dirigirte a una segunda criatura con él si esa criatura está dentro de 10 pies del primer objetivo.",
+          "descripcion": "Has dominado dos de las Palabras de Creación: las palabras de vida y muerte. Por lo tanto, siempre tienes preparados los conjuros Palabra de Poder: Curar y Palabra de Poder: Matar. Cuando lanzas uno de estos conjuros, puedes dirigirte a una segunda criatura con él si esa criatura está dentro de 10 pies (2 casillas) del primer objetivo.",
           "efectos": [
             {
               "type": "conjuro_preparado",

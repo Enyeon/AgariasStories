@@ -105,7 +105,7 @@
         "blockDos": {
           "name": "Ataque Furtivo",
           "titleName": "✦ ATAQUE FURTIVO ✦",
-          "descripcion": "Sabes cómo golpear sutilmente y explotar la distracción de un oponente. Una vez por turno, puedes causar 1d6 de daño extra a una criatura que golpees con una tirada de ataque si tienes Ventaja en la tirada y el ataque usa un arma de Destreza o a Distancia. El tipo de daño extra es el mismo que el tipo del arma.\nNo necesitas Ventaja en la tirada de ataque si al menos uno de tus aliados está dentro de 5 pies del objetivo, el aliado no tiene la condición de Incapacitado y tú no tienes Desventaja en la tirada de ataque.\nEl daño extra aumenta a medida que obtienes niveles de Pícaro, como se muestra en la columna de Ataque Furtivo de la tabla de Características del Pícaro."
+          "descripcion": "Sabes cómo golpear sutilmente y explotar la distracción de un oponente. Una vez por turno, puedes causar 1d6 de daño extra a una criatura que golpees con una tirada de ataque si tienes Ventaja en la tirada y el ataque usa un arma de Destreza o a Distancia. El tipo de daño extra es el mismo que el tipo del arma.\nNo necesitas Ventaja en la tirada de ataque si al menos uno de tus aliados está dentro de 5 pies (1 casilla) del objetivo, el aliado no tiene la condición de Incapacitado y tú no tienes Desventaja en la tirada de ataque.\nEl daño extra aumenta a medida que obtienes niveles de Pícaro, como se muestra en la columna de Ataque Furtivo de la tabla de Características del Pícaro."
         },
         "blockTres": {
           "name": "Jerga de Ladrones",
@@ -192,7 +192,7 @@
                 "subBlockUno": {
                   "subName": "Trickster Versátil",
                   "subTitleName": "✦ TRICKSTER VERSÁTIL ✦",
-                  "subDescripcion": "Obtienes la habilidad de distraer a los objetivos con tu Mano Mágica. Cuando uses la opción de Tropezar de tu Ataque Astuto en una criatura, también puedes usar esa opción en otra criatura dentro de 5 pies de la mano espectral."
+                  "subDescripcion": "Obtienes la habilidad de distraer a los objetivos con tu Mano Mágica. Cuando uses la opción de Tropezar de tu Ataque Astuto en una criatura, también puedes usar esa opción en otra criatura dentro de 5 pies (1 casilla) de la mano espectral."
                 }
               }
             },
@@ -282,7 +282,7 @@
                 "subBlockDos": {
                   "subName": "Espadas Psíquicas",
                   "subTitleName": "✦ ESPADAS PSÍQUICAS ✦",
-                  "subDescripcion": "Puedes manifestar hojas brillantes de energía psíquica. Siempre que realices la acción de Ataque o hagas un Ataque de Oportunidad, puedes manifestar una Espada Psíquica en tu mano libre y realizar el ataque con esa hoja. La hoja mágica tiene las siguientes características:\n<b>Categoría de Arma:</b> Simple Cuerpo a Cuerpo\n<b>Daño al Impactar:</b> 1d6 Psíquico más el modificador de habilidad utilizado para la tirada de ataque\n<b>Propiedades:</b> Finura. Lanzada (alcance 60/120 pies)\n<b>Maestría:</b> Vex (puedes usar esta propiedad, y no cuenta contra el número de propiedades que puedes usar con Maestría en Armas)\nLa hoja desaparece inmediatamente después de golpear o fallar su objetivo, y no deja marcas si se inflige daño.\nDespués de atacar con la hoja en tu turno, puedes hacer un ataque cuerpo a cuerpo o a distancia con una segunda hoja psíquica como Acción de Bonificación en el mismo turno si tu otra mano está libre para crearla. El dado de daño de este ataque adicional es 1d4 en lugar de 1d6."
+                  "subDescripcion": "Puedes manifestar hojas brillantes de energía psíquica. Siempre que realices la acción de Ataque o hagas un Ataque de Oportunidad, puedes manifestar una Espada Psíquica en tu mano libre y realizar el ataque con esa hoja. La hoja mágica tiene las siguientes características:\n<b>Categoría de Arma:</b> Simple Cuerpo a Cuerpo\n<b>Daño al Impactar:</b> 1d6 Psíquico más el modificador de habilidad utilizado para la tirada de ataque\n<b>Propiedades:</b> Finura. Lanzada (alcance 60/120 pies (12/24 casillas))\n<b>Maestría:</b> Vex (puedes usar esta propiedad, y no cuenta contra el número de propiedades que puedes usar con Maestría en Armas)\nLa hoja desaparece inmediatamente después de golpear o fallar su objetivo, y no deja marcas si se inflige daño.\nDespués de atacar con la hoja en tu turno, puedes hacer un ataque cuerpo a cuerpo o a distancia con una segunda hoja psíquica como Acción de Bonificación en el mismo turno si tu otra mano está libre para crearla. El dado de daño de este ataque adicional es 1d4 en lugar de 1d6."
                 }
               }
             },

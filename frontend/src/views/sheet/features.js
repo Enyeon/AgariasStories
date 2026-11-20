@@ -1,6 +1,7 @@
 // Pestaña «Rasgos»: índice + buscador, rasgos raciales, dotes y, por clase,
 // fundamentos, subclase, tabla de progresión y línea temporal de rasgos.
 
+import { feetLabel } from '../../domain/units.js';
 import { html, raw, richText, setHtml } from '../../ui/dom.js';
 import { classFeatures, subclassInfo } from '../../domain/rules.js';
 import { parseTraitSections, parseClassBasics, proseToHtml, plainText } from '../../domain/text-format.js';
@@ -100,7 +101,7 @@ function raceSection(ctx) {
       actions: c.race.key ? editToggle(ctx, 'race', editing) : '',
     })}
     ${race ? html`<div class="chips chips--static">
-      ${speed.map((s) => html`<span class="badge">${s.label} ${s.value} pies</span>`)}
+      ${speed.map((s) => html`<span class="badge">${s.label} ${feetLabel(s.value)}</span>`)}
       ${ctx.sheet.languages.fixed.length ? html`<span class="badge">Idiomas: ${[...ctx.sheet.languages.fixed, ...ctx.sheet.languages.chosen].join(', ')}</span>` : ''}
       ${ctx.sheet.hp.tough ? html`<span class="badge badge--gold">${data.raceBadges[c.race.key]?.texto ?? 'Dureza'}</span>` : ''}
       ${raceProfileBadges(c.race.key)}

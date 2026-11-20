@@ -15,7 +15,7 @@
             "porNivel": 5
           },
           "hpTexto": "20 + 5 × tu nivel",
-          "speed": "20 pies",
+          "speed": "20 pies (4 casillas)",
           "abilities": {
             "fuerza": 16,
             "destreza": 6,
@@ -24,7 +24,7 @@
             "sabiduria": 14,
             "carisma": 1
           },
-          "senses": "Visión en la oscuridad 60 pies, Percepción pasiva 12",
+          "senses": "Visión en la oscuridad 60 pies (12 casillas), Percepción pasiva 12",
           "description": "Biomasa endurecida que protege. Ocupa Capacidad de Manifestación (no usa concentración). Inmune a asustado, encantado y paralizado.",
           "traits": [
             {
@@ -39,7 +39,7 @@
             },
             {
               "name": "Apartar",
-              "text": "Una criatura adyacente que haya atacado a un aliado este asalto hace una salvación de Fuerza (CD de clase) o es empujada 10 pies o derribada. Sin daño, y nunca hacia algo que la dañe."
+              "text": "Una criatura adyacente que haya atacado a un aliado este asalto hace una salvación de Fuerza (CD de clase) o es empujada 10 pies (2 casillas) o derribada. Sin daño, y nunca hacia algo que la dañe."
             },
             {
               "name": "Cobertura",
@@ -49,7 +49,7 @@
           "reactions": [
             {
               "name": "Interceptar",
-              "text": "Una vez por turno, si un aliado a 10 pies recibe un ataque, reduce su daño en 1d10 + tu bonificador de competencia (lo absorbe el Golem). Es su reacción, no la tuya."
+              "text": "Una vez por turno, si un aliado a 10 pies (2 casillas) recibe un ataque, reduce su daño en 1d10 + tu bonificador de competencia (lo absorbe el Golem). Es su reacción, no la tuya."
             }
           ],
           "mejoras": [
@@ -73,7 +73,7 @@
           "creatureType": "Bestia (biomasa del Exp. 043)",
           "ac": 13,
           "hp": 1,
-          "speed": "30 pies, vuelo 60 pies",
+          "speed": "30 pies (6 casillas), vuelo 60 pies (12 casillas)",
           "abilities": {
             "fuerza": 6,
             "destreza": 14,
@@ -82,13 +82,13 @@
             "sabiduria": 14,
             "carisma": 20
           },
-          "senses": "Visión en la oscuridad 60 pies, Percepción pasiva 12",
+          "senses": "Visión en la oscuridad 60 pies (12 casillas), Percepción pasiva 12",
           "languages": "Todos los idiomas (sólo insultos)",
-          "description": "Frágil, rapidísimo y ruidoso. Se manifiesta como acción adicional a 30 pies de ti y no usa concentración. Ocupa Capacidad de Manifestación.",
+          "description": "Frágil, rapidísimo y ruidoso. Se manifiesta como acción adicional a 30 pies (6 casillas) de ti y no usa concentración. Ocupa Capacidad de Manifestación.",
           "traits": [
             {
               "name": "Insulto Disonante",
-              "text": "Al manifestarse, cada criatura hostil a 20 pies del Loro hace una salvación de Sabiduría (CD de clase). Si falla, durante 1 minuto tiene desventaja en las tiradas de ataque contra cualquiera que no sea el Loro o tú, mientras el Loro siga vivo y a la vista. Repite la salvación al final de cada uno de sus turnos."
+              "text": "Al manifestarse, cada criatura hostil a 20 pies (4 casillas) del Loro hace una salvación de Sabiduría (CD de clase). Si falla, durante 1 minuto tiene desventaja en las tiradas de ataque contra cualquiera que no sea el Loro o tú, mientras el Loro siga vivo y a la vista. Repite la salvación al final de cada uno de sus turnos."
             }
           ],
           "mejoras": [
@@ -98,7 +98,7 @@
             },
             {
               "nivel": 11,
-              "texto": "Insulto Disonante alcanza 30 pies."
+              "texto": "Insulto Disonante alcanza 30 pies (6 casillas)."
             },
             {
               "nivel": 15,
@@ -111,7 +111,7 @@
           "size": "Mediano (mide lo que mide el INK)",
           "creatureType": "Biomasa del Exp. 043",
           "capacidad": false,
-          "description": "Gastas una acción y 2 de Esencia: la Ruleta aparece, gira, muestra el resultado y desaparece. No ocupa Capacidad de Manifestación. Una vez por descanso corto o largo. Eliges el objetivo (tú o una criatura a 30 pies) antes de tirar; los resultados negativos afectan a quien elegiste.",
+          "description": "Gastas una acción y 2 de Esencia: la Ruleta aparece, gira, muestra el resultado y desaparece. No ocupa Capacidad de Manifestación. Una vez por descanso corto o largo. Eliges el objetivo (tú o una criatura a 30 pies (6 casillas)) antes de tirar; los resultados negativos afectan a quien elegiste.",
           "traits": [
             {
               "name": "1 · Rebote biológico",
@@ -171,7 +171,7 @@
             "porNivel": 3
           },
           "hpTexto": "5 + 3 × tu nivel",
-          "speed": "20 pies, excavar 15 pies",
+          "speed": "20 pies (4 casillas), excavar 15 pies (3 casillas)",
           "abilities": {
             "fuerza": 12,
             "destreza": 12,
@@ -180,36 +180,36 @@
             "sabiduria": 12,
             "carisma": 6
           },
-          "senses": "Sentido sísmico 30 pies, Percepción pasiva 11",
+          "senses": "Sentido sísmico 30 pies (6 casillas), Percepción pasiva 11",
           "description": "Rol: terreno y túneles. Ocupa Capacidad de Manifestación.",
           "traits": [
             {
               "name": "Túneles",
-              "text": "Abre en tierra o arena un túnel de 5 pies de ancho por el que pueden pasar criaturas Medianas; sirve de refugio o salida."
+              "text": "Abre en tierra o arena un túnel de 5 pies (1 casilla) de ancho por el que pueden pasar criaturas Medianas; sirve de refugio o salida."
             }
           ],
           "actions": [
             {
               "name": "Socavón",
-              "text": "Hunde el suelo bajo una criatura a 5 pies: salvación de Destreza (CD de clase) o queda derribada. El suelo queda como terreno difícil hasta el final del combate."
+              "text": "Hunde el suelo bajo una criatura a 5 pies (1 casilla): salvación de Destreza (CD de clase) o queda derribada. El suelo queda como terreno difícil hasta el final del combate."
             },
             {
               "name": "Avisar",
-              "text": "Comparte su sentido sísmico: tú y un aliado no podéis ser sorprendidos por criaturas que toquen el suelo a 30 pies hasta tu siguiente turno."
+              "text": "Comparte su sentido sísmico: tú y un aliado no podéis ser sorprendidos por criaturas que toquen el suelo a 30 pies (6 casillas) hasta tu siguiente turno."
             }
           ],
           "mejoras": [
             {
               "nivel": 7,
-              "texto": "Socavón afecta a un cuadrado de 10 pies."
+              "texto": "Socavón afecta a un cuadrado de 10 pies (2 casillas)."
             },
             {
               "nivel": 11,
-              "texto": "Sentido sísmico 60 pies."
+              "texto": "Sentido sísmico 60 pies (12 casillas)."
             },
             {
               "nivel": 15,
-              "texto": "Excavar 30 pies; el túnel admite criaturas Grandes."
+              "texto": "Excavar 30 pies (6 casillas); el túnel admite criaturas Grandes."
             }
           ]
         },
@@ -223,7 +223,7 @@
             "porNivel": 3
           },
           "hpTexto": "5 + 3 × tu nivel",
-          "speed": "20 pies, trepar 20 pies, nadar 30 pies",
+          "speed": "20 pies (4 casillas), trepar 20 pies (4 casillas), nadar 30 pies (6 casillas)",
           "abilities": {
             "fuerza": 14,
             "destreza": 14,
@@ -232,26 +232,26 @@
             "sabiduria": 10,
             "carisma": 6
           },
-          "senses": "Visión en la oscuridad 60 pies, Percepción pasiva 10",
+          "senses": "Visión en la oscuridad 60 pies (12 casillas), Percepción pasiva 10",
           "description": "Rol: manipular y sujetar. Ocupa Capacidad de Manifestación.",
           "traits": [
             {
               "name": "Tentáculos",
-              "text": "Manipula objetos a 15 pies: abre puertas, recoge cosas o usa herramientas con tu competencia."
+              "text": "Manipula objetos a 15 pies (3 casillas): abre puertas, recoge cosas o usa herramientas con tu competencia."
             }
           ],
           "actions": [
             {
               "name": "Sujetar",
-              "text": "Agarra a una criatura a 15 pies (escapar: CD de clase). Mientras la sujeta, no puede usar Sujetar con otra."
+              "text": "Agarra a una criatura a 15 pies (3 casillas) (escapar: CD de clase). Mientras la sujeta, no puede usar Sujetar con otra."
             },
             {
               "name": "Desarmar",
-              "text": "Una criatura a 15 pies hace una salvación de Fuerza (CD de clase) o suelta un objeto que sostenga."
+              "text": "Una criatura a 15 pies (3 casillas) hace una salvación de Fuerza (CD de clase) o suelta un objeto que sostenga."
             },
             {
               "name": "Recoger",
-              "text": "Arrastra a un aliado caído hasta 15 pies hacia él sin provocar ataques de oportunidad."
+              "text": "Arrastra a un aliado caído hasta 15 pies (3 casillas) hacia él sin provocar ataques de oportunidad."
             }
           ],
           "mejoras": [
@@ -265,7 +265,7 @@
             },
             {
               "nivel": 15,
-              "texto": "Alcance de 30 pies."
+              "texto": "Alcance de 30 pies (6 casillas)."
             }
           ]
         },
@@ -279,7 +279,7 @@
             "porNivel": 1
           },
           "hpTexto": "1 + tu nivel",
-          "speed": "10 pies, vuelo 60 pies",
+          "speed": "10 pies (2 casillas), vuelo 60 pies (12 casillas)",
           "abilities": {
             "fuerza": 2,
             "destreza": 16,
@@ -288,7 +288,7 @@
             "sabiduria": 14,
             "carisma": 6
           },
-          "senses": "Visión ciega 30 pies, Percepción pasiva 14",
+          "senses": "Visión ciega 30 pies (6 casillas), Percepción pasiva 14",
           "description": "Rol: explorar y revelar. Ocupa Capacidad de Manifestación.",
           "traits": [
             {
@@ -299,7 +299,7 @@
           "actions": [
             {
               "name": "Revelar",
-              "text": "Una criatura invisible u oculta a 30 pies queda marcada hasta el final de tu siguiente turno: no se beneficia de ser invisible y no puede esconderse."
+              "text": "Una criatura invisible u oculta a 30 pies (6 casillas) queda marcada hasta el final de tu siguiente turno: no se beneficia de ser invisible y no puede esconderse."
             },
             {
               "name": "Tocar ilusión",
@@ -313,11 +313,11 @@
             },
             {
               "nivel": 11,
-              "texto": "Visión ciega 60 pies."
+              "texto": "Visión ciega 60 pies (12 casillas)."
             },
             {
               "nivel": 15,
-              "texto": "Revelar afecta a todas las criaturas en un radio de 15 pies."
+              "texto": "Revelar afecta a todas las criaturas en un radio de 15 pies (3 casillas)."
             }
           ]
         },
@@ -331,7 +331,7 @@
             "porNivel": 4
           },
           "hpTexto": "10 + 4 × tu nivel",
-          "speed": "40 pies",
+          "speed": "40 pies (8 casillas)",
           "abilities": {
             "fuerza": 16,
             "destreza": 12,
@@ -361,7 +361,7 @@
           "mejoras": [
             {
               "nivel": 7,
-              "texto": "Velocidad 50 pies."
+              "texto": "Velocidad 50 pies (10 casillas)."
             },
             {
               "nivel": 11,
@@ -383,7 +383,7 @@
             "porNivel": 3
           },
           "hpTexto": "5 + 3 × tu nivel",
-          "speed": "15 pies, nadar 15 pies",
+          "speed": "15 pies (3 casillas), nadar 15 pies (3 casillas)",
           "abilities": {
             "fuerza": 6,
             "destreza": 8,
@@ -397,11 +397,11 @@
           "actions": [
             {
               "name": "Absorber",
-              "text": "Un aliado a 5 pies termina el estado envenenado, o repite al instante una salvación contra una condición que le afecte."
+              "text": "Un aliado a 5 pies (1 casilla) termina el estado envenenado, o repite al instante una salvación contra una condición que le afecte."
             },
             {
               "name": "Filtro",
-              "text": "Hasta el inicio de su siguiente turno, los aliados a 10 pies tienen ventaja en las salvaciones contra veneno y enfermedad."
+              "text": "Hasta el inicio de su siguiente turno, los aliados a 10 pies (2 casillas) tienen ventaja en las salvaciones contra veneno y enfermedad."
             }
           ],
           "mejoras": [
@@ -411,7 +411,7 @@
             },
             {
               "nivel": 11,
-              "texto": "Filtro alcanza 20 pies."
+              "texto": "Filtro alcanza 20 pies (4 casillas)."
             },
             {
               "nivel": 15,
@@ -429,7 +429,7 @@
             "porNivel": 3
           },
           "hpTexto": "5 + 3 × tu nivel",
-          "speed": "30 pies, trepar 30 pies",
+          "speed": "30 pies (6 casillas), trepar 30 pies (6 casillas)",
           "abilities": {
             "fuerza": 10,
             "destreza": 16,
@@ -438,28 +438,28 @@
             "sabiduria": 12,
             "carisma": 4
           },
-          "senses": "Visión en la oscuridad 60 pies, Percepción pasiva 11",
+          "senses": "Visión en la oscuridad 60 pies (12 casillas), Percepción pasiva 11",
           "description": "Rol: anclar y sostener (caídas y desplazamientos). Ocupa Capacidad de Manifestación.",
           "traits": [
             {
               "name": "Hilos",
-              "text": "Tiende cuerdas y puentes de hasta 30 pies entre superficies."
+              "text": "Tiende cuerdas y puentes de hasta 30 pies (6 casillas) entre superficies."
             }
           ],
           "reactions": [
             {
               "name": "Anclar",
-              "text": "Cuando un aliado a 30 pies va a ser empujado, atraído o va a caer, evita hasta 15 pies de ese movimiento (y la caída correspondiente)."
+              "text": "Cuando un aliado a 30 pies (6 casillas) va a ser empujado, atraído o va a caer, evita hasta 15 pies (3 casillas) de ese movimiento (y la caída correspondiente)."
             }
           ],
           "mejoras": [
             {
               "nivel": 7,
-              "texto": "Anclar evita hasta 30 pies."
+              "texto": "Anclar evita hasta 30 pies (6 casillas)."
             },
             {
               "nivel": 11,
-              "texto": "Hilos de hasta 60 pies."
+              "texto": "Hilos de hasta 60 pies (12 casillas)."
             },
             {
               "nivel": 15,
@@ -477,7 +477,7 @@
             "porNivel": 2
           },
           "hpTexto": "1 + 2 × tu nivel",
-          "speed": "10 pies, vuelo 40 pies",
+          "speed": "10 pies (2 casillas), vuelo 40 pies (8 casillas)",
           "abilities": {
             "fuerza": 2,
             "destreza": 14,
@@ -491,19 +491,19 @@
           "traits": [
             {
               "name": "Farol",
-              "text": "Emite luz brillante en un radio de 20 pies y tenue 20 pies más (puede apagarla)."
+              "text": "Emite luz brillante en un radio de 20 pies (4 casillas) y tenue 20 pies (4 casillas) más (puede apagarla)."
             }
           ],
           "actions": [
             {
               "name": "Aliento de luz",
-              "text": "Un aliado a 30 pies que esté asustado o encantado repite al instante la salvación con ventaja."
+              "text": "Un aliado a 30 pies (6 casillas) que esté asustado o encantado repite al instante la salvación con ventaja."
             }
           ],
           "reactions": [
             {
               "name": "Valor",
-              "text": "Cuando un aliado a 30 pies hace una salvación contra quedar asustado, le da ventaja."
+              "text": "Cuando un aliado a 30 pies (6 casillas) hace una salvación contra quedar asustado, le da ventaja."
             }
           ],
           "mejoras": [
@@ -513,11 +513,11 @@
             },
             {
               "nivel": 11,
-              "texto": "Luz brillante de 40 pies."
+              "texto": "Luz brillante de 40 pies (8 casillas)."
             },
             {
               "nivel": 15,
-              "texto": "Los aliados a 10 pies son inmunes a quedar asustados."
+              "texto": "Los aliados a 10 pies (2 casillas) son inmunes a quedar asustados."
             }
           ]
         }
@@ -546,7 +546,7 @@
             "atributo": "sabiduria"
           },
           "hpTexto": "2 × tu nivel + tu mod. de Sabiduría",
-          "speed": "40 pies, salto 15 pies",
+          "speed": "40 pies (8 casillas), salto 15 pies (3 casillas)",
           "abilities": {
             "fuerza": 6,
             "destreza": 16,
@@ -555,19 +555,19 @@
             "sabiduria": 14,
             "carisma": 8
           },
-          "senses": "Visión en la oscuridad 60 pies",
+          "senses": "Visión en la oscuridad 60 pies (12 casillas)",
           "languages": "Entiende al Experimento 043",
           "description": "Tu Sujeto de origen. Cura y ayuda al aliado más cercano. Por qué: El primero de todos: el del 043-0. Los Sram buscaban su regeneración rápida y su instinto de cuidar de la camada. No ocupa Capacidad de Manifestación.",
           "traits": [
             {
               "name": "Parte de ti",
-              "text": "Se manifiesta o se reabsorbe como acción adicional. Actúa en tu iniciativa, justo después de ti. Si cae a 0 PG, vuelve a ti sin hacerte daño y no puede manifestarse hasta un descanso corto, o gastando 1 de Esencia. Deja de actuar a más de 60 pies de ti."
+              "text": "Se manifiesta o se reabsorbe como acción adicional. Actúa en tu iniciativa, justo después de ti. Si cae a 0 PG, vuelve a ti sin hacerte daño y no puede manifestarse hasta un descanso corto, o gastando 1 de Esencia. Deja de actuar a más de 60 pies (12 casillas) de ti."
             }
           ],
           "actions": [
             {
               "name": "Curita",
-              "text": "El aliado más cercano a 30 pies recupera 1d4 + tu modificador de Sabiduría PG. Usos: tu bonificador de competencia por descanso largo."
+              "text": "El aliado más cercano a 30 pies (6 casillas) recupera 1d4 + tu modificador de Sabiduría PG. Usos: tu bonificador de competencia por descanso largo."
             },
             {
               "name": "Ayudar",
@@ -582,7 +582,7 @@
             },
             {
               "nivel": 11,
-              "texto": "Curita llega a 60 pies."
+              "texto": "Curita llega a 60 pies (12 casillas)."
             },
             {
               "nivel": 17,
@@ -608,7 +608,7 @@
             "atributo": "sabiduria"
           },
           "hpTexto": "2 × tu nivel + tu mod. de Sabiduría",
-          "speed": "40 pies, trepar 30 pies",
+          "speed": "40 pies (8 casillas), trepar 30 pies (6 casillas)",
           "abilities": {
             "fuerza": 6,
             "destreza": 16,
@@ -617,13 +617,13 @@
             "sabiduria": 14,
             "carisma": 10
           },
-          "senses": "Visión en la oscuridad 60 pies",
+          "senses": "Visión en la oscuridad 60 pies (12 casillas)",
           "languages": "Entiende al Experimento 043",
           "description": "Tu Sujeto de origen. Mantiene en pie al aliado más cercano. Por qué: Los Sram estudiaban cómo cae siempre de pie y se levanta de lo que mataría a otros. No ocupa Capacidad de Manifestación.",
           "traits": [
             {
               "name": "Parte de ti",
-              "text": "Se manifiesta o se reabsorbe como acción adicional. Actúa en tu iniciativa, justo después de ti. Si cae a 0 PG, vuelve a ti sin hacerte daño y no puede manifestarse hasta un descanso corto, o gastando 1 de Esencia. Deja de actuar a más de 60 pies de ti."
+              "text": "Se manifiesta o se reabsorbe como acción adicional. Actúa en tu iniciativa, justo después de ti. Si cae a 0 PG, vuelve a ti sin hacerte daño y no puede manifestarse hasta un descanso corto, o gastando 1 de Esencia. Deja de actuar a más de 60 pies (12 casillas) de ti."
             }
           ],
           "actions": [
@@ -635,7 +635,7 @@
           "reactions": [
             {
               "name": "Siete vidas",
-              "text": "Cuando el aliado más cercano a 30 pies cae a 0 PG sin morir en el acto, queda a 1 PG. Una vez por descanso largo."
+              "text": "Cuando el aliado más cercano a 30 pies (6 casillas) cae a 0 PG sin morir en el acto, queda a 1 PG. Una vez por descanso largo."
             }
           ],
           "mejoras": [
@@ -645,7 +645,7 @@
             },
             {
               "nivel": 11,
-              "texto": "Caer de pie alcanza a todos los aliados a 10 pies."
+              "texto": "Caer de pie alcanza a todos los aliados a 10 pies (2 casillas)."
             },
             {
               "nivel": 17,
@@ -671,7 +671,7 @@
             "atributo": "sabiduria"
           },
           "hpTexto": "2 × tu nivel + tu mod. de Sabiduría",
-          "speed": "40 pies",
+          "speed": "40 pies (8 casillas)",
           "abilities": {
             "fuerza": 12,
             "destreza": 14,
@@ -686,7 +686,7 @@
           "traits": [
             {
               "name": "Parte de ti",
-              "text": "Se manifiesta o se reabsorbe como acción adicional. Actúa en tu iniciativa, justo después de ti. Si cae a 0 PG, vuelve a ti sin hacerte daño y no puede manifestarse hasta un descanso corto, o gastando 1 de Esencia. Deja de actuar a más de 60 pies de ti."
+              "text": "Se manifiesta o se reabsorbe como acción adicional. Actúa en tu iniciativa, justo después de ti. Si cae a 0 PG, vuelve a ti sin hacerte daño y no puede manifestarse hasta un descanso corto, o gastando 1 de Esencia. Deja de actuar a más de 60 pies (12 casillas) de ti."
             }
           ],
           "actions": [
@@ -696,7 +696,7 @@
             },
             {
               "name": "Olfato fiel",
-              "text": "Hasta tu siguiente turno, el aliado más cercano tiene ventaja en las pruebas de Sabiduría (Percepción) basadas en el olfato y no puede ser sorprendido por criaturas a 30 pies."
+              "text": "Hasta tu siguiente turno, el aliado más cercano tiene ventaja en las pruebas de Sabiduría (Percepción) basadas en el olfato y no puede ser sorprendido por criaturas a 30 pies (6 casillas)."
             }
           ],
           "reactions": [],
@@ -707,7 +707,7 @@
             },
             {
               "nivel": 11,
-              "texto": "Olfato fiel alcanza 60 pies."
+              "texto": "Olfato fiel alcanza 60 pies (12 casillas)."
             },
             {
               "nivel": 17,
@@ -733,7 +733,7 @@
             "atributo": "sabiduria"
           },
           "hpTexto": "2 × tu nivel + tu mod. de Sabiduría",
-          "speed": "10 pies, vuelo 50 pies",
+          "speed": "10 pies (2 casillas), vuelo 50 pies (10 casillas)",
           "abilities": {
             "fuerza": 4,
             "destreza": 16,
@@ -748,13 +748,13 @@
           "traits": [
             {
               "name": "Parte de ti",
-              "text": "Se manifiesta o se reabsorbe como acción adicional. Actúa en tu iniciativa, justo después de ti. Si cae a 0 PG, vuelve a ti sin hacerte daño y no puede manifestarse hasta un descanso corto, o gastando 1 de Esencia. Deja de actuar a más de 60 pies de ti."
+              "text": "Se manifiesta o se reabsorbe como acción adicional. Actúa en tu iniciativa, justo después de ti. Si cae a 0 PG, vuelve a ti sin hacerte daño y no puede manifestarse hasta un descanso corto, o gastando 1 de Esencia. Deja de actuar a más de 60 pies (12 casillas) de ti."
             }
           ],
           "actions": [
             {
               "name": "Mensajero",
-              "text": "Lleva un objeto ligero (como una poción) hasta un aliado a 60 pies; ese aliado puede usarlo como acción adicional en su siguiente turno."
+              "text": "Lleva un objeto ligero (como una poción) hasta un aliado a 60 pies (12 casillas); ese aliado puede usarlo como acción adicional en su siguiente turno."
             },
             {
               "name": "Recordar",
@@ -769,7 +769,7 @@
             },
             {
               "nivel": 11,
-              "texto": "Vuelo 80 pies."
+              "texto": "Vuelo 80 pies (16 casillas)."
             },
             {
               "nivel": 17,
@@ -795,7 +795,7 @@
             "atributo": "sabiduria"
           },
           "hpTexto": "2 × tu nivel + tu mod. de Sabiduría",
-          "speed": "5 pies, vuelo 60 pies",
+          "speed": "5 pies (1 casilla), vuelo 60 pies (12 casillas)",
           "abilities": {
             "fuerza": 4,
             "destreza": 14,
@@ -804,13 +804,13 @@
             "sabiduria": 16,
             "carisma": 8
           },
-          "senses": "Visión en la oscuridad 120 pies",
+          "senses": "Visión en la oscuridad 120 pies (24 casillas)",
           "languages": "Entiende al Experimento 043",
           "description": "Tu Sujeto de origen. Presta sus ojos nocturnos al aliado más cercano. Por qué: Vista en la oscuridad y silencio absoluto: lo que los Sram querían para moverse sin ser vistos. No ocupa Capacidad de Manifestación.",
           "traits": [
             {
               "name": "Parte de ti",
-              "text": "Se manifiesta o se reabsorbe como acción adicional. Actúa en tu iniciativa, justo después de ti. Si cae a 0 PG, vuelve a ti sin hacerte daño y no puede manifestarse hasta un descanso corto, o gastando 1 de Esencia. Deja de actuar a más de 60 pies de ti."
+              "text": "Se manifiesta o se reabsorbe como acción adicional. Actúa en tu iniciativa, justo después de ti. Si cae a 0 PG, vuelve a ti sin hacerte daño y no puede manifestarse hasta un descanso corto, o gastando 1 de Esencia. Deja de actuar a más de 60 pies (12 casillas) de ti."
             },
             {
               "name": "Vuelo silencioso",
@@ -820,7 +820,7 @@
           "actions": [
             {
               "name": "Ojos de la noche",
-              "text": "Hasta el final de tu siguiente turno, el aliado más cercano tiene visión en la oscuridad de 60 pies y no sufre desventaja por luz tenue."
+              "text": "Hasta el final de tu siguiente turno, el aliado más cercano tiene visión en la oscuridad de 60 pies (12 casillas) y no sufre desventaja por luz tenue."
             }
           ],
           "reactions": [],
@@ -857,7 +857,7 @@
             "atributo": "sabiduria"
           },
           "hpTexto": "2 × tu nivel + tu mod. de Sabiduría",
-          "speed": "30 pies, nadar 30 pies",
+          "speed": "30 pies (6 casillas), nadar 30 pies (6 casillas)",
           "abilities": {
             "fuerza": 10,
             "destreza": 16,
@@ -866,13 +866,13 @@
             "sabiduria": 12,
             "carisma": 6
           },
-          "senses": "Visión ciega 10 pies",
+          "senses": "Visión ciega 10 pies (2 casillas)",
           "languages": "Entiende al Experimento 043",
           "description": "Tu Sujeto de origen. Cubre la retirada del aliado más cercano. Por qué: Muda de piel: los Sram la usaron para aprender a renovar un cuerpo sin romperlo. No ocupa Capacidad de Manifestación.",
           "traits": [
             {
               "name": "Parte de ti",
-              "text": "Se manifiesta o se reabsorbe como acción adicional. Actúa en tu iniciativa, justo después de ti. Si cae a 0 PG, vuelve a ti sin hacerte daño y no puede manifestarse hasta un descanso corto, o gastando 1 de Esencia. Deja de actuar a más de 60 pies de ti."
+              "text": "Se manifiesta o se reabsorbe como acción adicional. Actúa en tu iniciativa, justo después de ti. Si cae a 0 PG, vuelve a ti sin hacerte daño y no puede manifestarse hasta un descanso corto, o gastando 1 de Esencia. Deja de actuar a más de 60 pies (12 casillas) de ti."
             },
             {
               "name": "Muda",
@@ -882,18 +882,18 @@
           "actions": [
             {
               "name": "Siseo",
-              "text": "Hasta el inicio de su siguiente turno, las criaturas a 5 pies de la Serpiente tienen desventaja en los ataques de oportunidad contra el aliado más cercano."
+              "text": "Hasta el inicio de su siguiente turno, las criaturas a 5 pies (1 casilla) de la Serpiente tienen desventaja en los ataques de oportunidad contra el aliado más cercano."
             }
           ],
           "reactions": [],
           "mejoras": [
             {
               "nivel": 5,
-              "texto": "Siseo alcanza 10 pies."
+              "texto": "Siseo alcanza 10 pies (2 casillas)."
             },
             {
               "nivel": 11,
-              "texto": "Siseo afecta a todos los aliados a 10 pies de la Serpiente."
+              "texto": "Siseo afecta a todos los aliados a 10 pies (2 casillas) de la Serpiente."
             },
             {
               "nivel": 17,
@@ -919,7 +919,7 @@
             "atributo": "sabiduria"
           },
           "hpTexto": "4 × tu nivel + tu mod. de Sabiduría",
-          "speed": "40 pies",
+          "speed": "40 pies (8 casillas)",
           "abilities": {
             "fuerza": 16,
             "destreza": 10,
@@ -934,7 +934,7 @@
           "traits": [
             {
               "name": "Parte de ti",
-              "text": "Se manifiesta o se reabsorbe como acción adicional. Actúa en tu iniciativa, justo después de ti. Si cae a 0 PG, vuelve a ti sin hacerte daño y no puede manifestarse hasta un descanso corto, o gastando 1 de Esencia. Deja de actuar a más de 60 pies de ti."
+              "text": "Se manifiesta o se reabsorbe como acción adicional. Actúa en tu iniciativa, justo después de ti. Si cae a 0 PG, vuelve a ti sin hacerte daño y no puede manifestarse hasta un descanso corto, o gastando 1 de Esencia. Deja de actuar a más de 60 pies (12 casillas) de ti."
             },
             {
               "name": "Corpulento",
@@ -981,7 +981,7 @@
             "atributo": "sabiduria"
           },
           "hpTexto": "3 × tu nivel + tu mod. de Sabiduría",
-          "speed": "50 pies",
+          "speed": "50 pies (10 casillas)",
           "abilities": {
             "fuerza": 14,
             "destreza": 16,
@@ -996,20 +996,20 @@
           "traits": [
             {
               "name": "Parte de ti",
-              "text": "Se manifiesta o se reabsorbe como acción adicional. Actúa en tu iniciativa, justo después de ti. Si cae a 0 PG, vuelve a ti sin hacerte daño y no puede manifestarse hasta un descanso corto, o gastando 1 de Esencia. Deja de actuar a más de 60 pies de ti."
+              "text": "Se manifiesta o se reabsorbe como acción adicional. Actúa en tu iniciativa, justo después de ti. Si cae a 0 PG, vuelve a ti sin hacerte daño y no puede manifestarse hasta un descanso corto, o gastando 1 de Esencia. Deja de actuar a más de 60 pies (12 casillas) de ti."
             }
           ],
           "actions": [
             {
               "name": "Salto de huida",
-              "text": "El aliado más cercano gana +10 pies de velocidad hasta el final de su siguiente turno."
+              "text": "El aliado más cercano gana +10 pies (2 casillas) de velocidad hasta el final de su siguiente turno."
             }
           ],
           "reactions": [],
           "mejoras": [
             {
               "nivel": 5,
-              "texto": "+15 pies."
+              "texto": "+15 pies (3 casillas)."
             },
             {
               "nivel": 11,

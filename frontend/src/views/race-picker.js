@@ -1,5 +1,6 @@
 // Selector de raza: buscador + catálogo agrupado por manual.
 
+import { feetLabel } from '../domain/units.js';
 import { html, setHtml, richText, raw } from '../ui/dom.js';
 import { openDialog } from '../ui/feedback.js';
 import { data, getRace, raceName, listHomebrewRaces, getRaceLore, getClass } from '../data/index.js';
@@ -50,7 +51,7 @@ export function openRacePicker(currentKey, allow = {}) {
         if (!race) return html`<p class="muted">Selecciona una raza para ver sus rasgos.</p>`;
         const lore = getRaceLore(selected);
         return html`<h3>${raceName(selected)}</h3>
-          <p class="row"><span class="badge badge--accent">${raceBonusText(race) || 'Sin bonificaciones'}</span> <span class="badge">Velocidad ${race.velocidad ?? 30} pies</span>${raceProfileBadges(selected)}</p>
+          <p class="row"><span class="badge badge--accent">${raceBonusText(race) || 'Sin bonificaciones'}</span> <span class="badge">Velocidad ${feetLabel(race.velocidad ?? 30)}</span>${raceProfileBadges(selected)}</p>
           ${race.claseRecomendada && getClass(race.claseRecomendada) ? html`<p class="row"><span class="badge badge--gold">★ Clase recomendada: ${getClass(race.claseRecomendada).nombre}</span></p>` : ''}
           ${race.descripcion ? html`<p class="race-description">${race.descripcion}</p>` : ''}
           <p class="muted">${race.lenguage ?? ''}</p>

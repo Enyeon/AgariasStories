@@ -297,7 +297,7 @@
                 "subBlockUno": {
                   "subName": "Escudo Proyectado",
                   "subTitleName": "✦ ESCUDO PROYECTADO ✦",
-                  "subDescripcion": "Cuando una criatura que puedes ver a 30 pies de ti recibe daño, puedes tomar una Reacción para hacer que tu Escudo Arcano absorba ese daño. Si este daño reduce el escudo a 0 Puntos de Golpe, la criatura protegida recibe cualquier daño restante. Si esa criatura tiene alguna Resistencia o Vulnerabilidad, aplícalas antes de reducir los Puntos de Golpe de la protección."
+                  "subDescripcion": "Cuando una criatura que puedes ver a 30 pies (6 casillas) de ti recibe daño, puedes tomar una Reacción para hacer que tu Escudo Arcano absorba ese daño. Si este daño reduce el escudo a 0 Puntos de Golpe, la criatura protegida recibe cualquier daño restante. Si esa criatura tiene alguna Resistencia o Vulnerabilidad, aplícalas antes de reducir los Puntos de Golpe de la protección."
                 }
               }
             },
@@ -453,7 +453,7 @@
                 "subBlockUno": {
                   "subName": "El Tercer Ojo",
                   "subTitleName": "✦ EL TERCER OJO ✦",
-                  "subDescripcion": "Puedes aumentar tus poderes de percepción. Como Acción Adicional, elige uno de los siguientes beneficios, que dura hasta que comiences un Descanso Corto o Largo. No puedes usar esta característica nuevamente hasta que termines un Descanso Corto o Largo.\n<b>Visión en la oscuridad.</b> Obtienes Visión en la oscuridad con un alcance de 120 pies.\n<b>Mayor comprensión.</b> Puedes leer cualquier idioma.\n<b>Ver invisibilidad.</b> Puedes lanzar Ver Invisibilidad sin gastar un espacio de conjuro."
+                  "subDescripcion": "Puedes aumentar tus poderes de percepción. Como Acción Adicional, elige uno de los siguientes beneficios, que dura hasta que comiences un Descanso Corto o Largo. No puedes usar esta característica nuevamente hasta que termines un Descanso Corto o Largo.\n<b>Visión en la oscuridad.</b> Obtienes Visión en la oscuridad con un alcance de 120 pies (24 casillas).\n<b>Mayor comprensión.</b> Puedes leer cualquier idioma.\n<b>Ver invisibilidad.</b> Puedes lanzar Ver Invisibilidad sin gastar un espacio de conjuro."
                 }
               }
             },
@@ -660,7 +660,7 @@
                 "subBlockDos": {
                   "subName": "Ilusiones Mejoradas",
                   "subTitleName": "✦ ILUSIONES MEJORADAS ✦",
-                  "subDescripcion": "Puedes lanzar conjuros de Ilusión sin proporcionar componentes Verbales, y si un conjuro de Ilusión que lanzas tiene un alcance de 10 pies, el alcance aumenta en 60 pies. También conoces el truco Ilusión Menor. Si ya lo conoces, aprendes un truco diferente de Mago de tu elección. El truco no cuenta contra el número de trucos que conoces. Puedes crear tanto un sonido como una imagen con una sola conjuración de Ilusión Menor, y puedes lanzarlo como una Acción Adicional.",
+                  "subDescripcion": "Puedes lanzar conjuros de Ilusión sin proporcionar componentes Verbales, y si un conjuro de Ilusión que lanzas tiene un alcance de 10 pies (2 casillas), el alcance aumenta en 60 pies (12 casillas). También conoces el truco Ilusión Menor. Si ya lo conoces, aprendes un truco diferente de Mago de tu elección. El truco no cuenta contra el número de trucos que conoces. Puedes crear tanto un sonido como una imagen con una sola conjuración de Ilusión Menor, y puedes lanzarlo como una Acción Adicional.",
                   "efectos": [
                     {
                       "type": "conjuro_preparado",

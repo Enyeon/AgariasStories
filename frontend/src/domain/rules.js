@@ -287,6 +287,8 @@ export function skillBonuses(c, scores, prof, sources = proficiencySources(c), f
   // «Experto en todos los oficios»: mitad del bono en pruebas sin competencia
   // (con `atributos`, sólo en las habilidades de esos atributos).
   const halfOf = (ability) => (hasHalfProficiency(fx, ability) ? Math.floor(prof / 2) : 0);
+  // Pericias fijas que dan los datos (efecto `pericia` con `habilidad`).
+  const fixedExpertise = new Set(fx.flatMap((s) => s.effects.filter((e) => e.type === 'pericia' && e.habilidad).map((e) => e.habilidad)));
   return SKILLS.map((s) => {
     const half = halfOf(s.ability);
     const src = sources.skills.get(s.name) ?? [];
@@ -294,7 +296,7 @@ export function skillBonuses(c, scores, prof, sources = proficiencySources(c), f
     const granted = isGranted(src);
     const fromBackground = src.some((x) => x.kind === 'trasfondo');
     // La pericia sólo cuenta si hay competencia (regla 5e).
-    const expert = proficient && (c.proficiencies.expertise ?? []).includes(s.name);
+    const expert = proficient && ((c.proficiencies.expertise ?? []).includes(s.name) || fixedExpertise.has(s.name));
     const bonus = scores[s.ability].modifier + (expert ? prof * 2 : proficient ? prof : half) + sumBonus(fx, `habilidad:${s.name}`, scores) + sumBonus(fx, `pruebas:${s.ability}`, scores);
     return {
       ...s, proficient, expert, granted, fromBackground, sources: src, halfProficiency: !proficient && half > 0,
@@ -322,7 +324,7 @@ export function expertiseAllowance(c) {
   }
   for (const t of c.traits ?? []) {
     if (!t.active) continue;
-    const n = (t.effects ?? []).filter((e) => e.type === 'pericia').reduce((a, e) => a + e.amount, 0);
+    const n = (t.effects ?? []).filter((e) => e.type === 'pericia' && !e.habilidad).reduce((a, e) => a + e.amount, 0);
     if (n) sources.push({ label: `Rasgo: ${t.name}`, amount: n });
   }
   return { total: sources.reduce((a, b) => a + b.amount, 0), sources };
@@ -683,7 +685,7 @@ export function computeSheet(c) {
   return {
     background: backgroundDefinition(c),
     pendingBackground: pendingBackgroundChoices(c),
-    expertise: { used: skills.filter((s) => s.expert).length, allowed: allowance.total, sources: allowance.sources },
+    expertise: { used: skills.filter((s) => s.expert && (c.proficiencies.expertise ?? []).includes(s.name)).length, allowed: allowance.total, sources: allowance.sources },
     level,
     classLevels: classLevels(c),
     proficiency: prof,

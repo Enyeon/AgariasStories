@@ -19,6 +19,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from casillas import con_casillas  # AgSt 1.38: toda distancia en pies lleva sus casillas
+
 ROOT = Path(__file__).resolve().parent.parent
 TARGET = ROOT / "frontend" / "src" / "data" / "rules-reference.json"
 BACKUP = ROOT / "docs" / "historial" / "rules-reference-v2.json"
@@ -227,7 +229,7 @@ def main():
         {"id": "danio", "kind": "danio", "title": "Tipos de daño", "intro": INTROS["danio"], "items": DAMAGE},
         {"id": "estados", "kind": "estado", "title": "Estados de Agarias", "intro": INTROS["estado"], "items": STATES},
     ]
-    TARGET.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    TARGET.write_text(con_casillas(json.dumps(out, ensure_ascii=False, indent=2)) + "\n", encoding="utf-8")
     print(f"ok: {sum(len(g['items']) for g in out)} entradas en {len(out)} grupos")
 
 

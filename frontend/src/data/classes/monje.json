@@ -143,7 +143,7 @@
         "blockDos": {
           "name": "Movimiento sin Armadura",
           "titleName": "✦ MOVIMIENTO SIN ARMADURA ✦",
-          "descripcion": "Tu velocidad aumenta en 10 pies mientras no estés usando armadura ni empuñes un Escudo. Este bono aumenta cuando alcanzas ciertos niveles de Monje, como se muestra en la tabla de Características del Monje.",
+          "descripcion": "Tu velocidad aumenta en 10 pies (2 casillas) mientras no estés usando armadura ni empuñes un Escudo. Este bono aumenta cuando alcanzas ciertos niveles de Monje, como se muestra en la tabla de Características del Monje.",
           "efectos": [
             {
               "type": "bono",
@@ -168,7 +168,7 @@
           [
             "1d6",
             "2",
-            "+10 pies"
+            "+10 pies (2 casillas)"
           ]
         ]
       }
@@ -178,7 +178,7 @@
         "blockUno": {
           "name": "Desvío de Ataques",
           "titleName": "✦ DESVÍO DE ATAQUES ✦",
-          "descripcion": "Cuando un rollo de ataque te golpea y su daño incluye daño por Contundente, Perforante o Cortante, puedes tomar una Reacción para reducir el daño total del ataque contra ti. La reducción es igual a 1d10 más tu modificador de Destreza y tu nivel de Monje.\n\nSi reduces el daño a 0, puedes gastar 1 Punto de Enfoque para redirigir parte de la fuerza del ataque. Si lo haces, elige una criatura que puedas ver dentro de 5 pies de ti si el ataque fue un ataque cuerpo a cuerpo, o una criatura que puedas ver dentro de 60 pies de ti que no esté detrás de una Cobertura Total si el ataque fue un ataque a distancia. Esa criatura debe realizar una tirada de salvación de Destreza o recibir daño igual a dos tiradas de tu dado de Artes Marciales más tu modificador de Destreza. El daño es del mismo tipo que el infligido por el ataque."
+          "descripcion": "Cuando un rollo de ataque te golpea y su daño incluye daño por Contundente, Perforante o Cortante, puedes tomar una Reacción para reducir el daño total del ataque contra ti. La reducción es igual a 1d10 más tu modificador de Destreza y tu nivel de Monje.\n\nSi reduces el daño a 0, puedes gastar 1 Punto de Enfoque para redirigir parte de la fuerza del ataque. Si lo haces, elige una criatura que puedas ver dentro de 5 pies (1 casilla) de ti si el ataque fue un ataque cuerpo a cuerpo, o una criatura que puedas ver dentro de 60 pies (12 casillas) de ti que no esté detrás de una Cobertura Total si el ataque fue un ataque a distancia. Esa criatura debe realizar una tirada de salvación de Destreza o recibir daño igual a dos tiradas de tu dado de Artes Marciales más tu modificador de Destreza. El daño es del mismo tipo que el infligido por el ataque."
         },
         "blockDos": {
           "name": "Subclase de Monje",
@@ -267,7 +267,7 @@
                 "subBlockUno": {
                   "subName": "Artes de la Sombra",
                   "subTitleName": "✦ ARTES DE LA SOMBRA ✦",
-                  "subDescripcion": "Has aprendido a aprovechar el poder de Shadowfell, obteniendo los siguientes beneficios:\n<b>Oscuridad.</b> Puedes gastar 1 Punto de Enfoque para lanzar el hechizo Oscuridad sin componentes mágicos. Puedes ver dentro del área del hechizo cuando lo lanzas con esta característica. Mientras el hechizo persista, puedes mover su área de Oscuridad a un espacio dentro de 60 pies de ti al inicio de cada uno de tus turnos.\n<b>Visión en la Oscuridad.</b> Obtienes Visión en la Oscuridad con un alcance de 60 pies. Si ya tienes Visión en la Oscuridad, su alcance aumenta en 60 pies.\n<b>Figuras Sombrías.</b> Conoces el hechizo Ilusión Menor. La Sabiduría es tu habilidad para lanzar hechizos con él."
+                  "subDescripcion": "Has aprendido a aprovechar el poder de Shadowfell, obteniendo los siguientes beneficios:\n<b>Oscuridad.</b> Puedes gastar 1 Punto de Enfoque para lanzar el hechizo Oscuridad sin componentes mágicos. Puedes ver dentro del área del hechizo cuando lo lanzas con esta característica. Mientras el hechizo persista, puedes mover su área de Oscuridad a un espacio dentro de 60 pies (12 casillas) de ti al inicio de cada uno de tus turnos.\n<b>Visión en la Oscuridad.</b> Obtienes Visión en la Oscuridad con un alcance de 60 pies (12 casillas). Si ya tienes Visión en la Oscuridad, su alcance aumenta en 60 pies (12 casillas).\n<b>Figuras Sombrías.</b> Conoces el hechizo Ilusión Menor. La Sabiduría es tu habilidad para lanzar hechizos con él."
                 }
               }
             },
@@ -276,7 +276,7 @@
                 "subBlockUno": {
                   "subName": "Paso Sombrío",
                   "subTitleName": "✦ PASO SOMBRÍO ✦",
-                  "subDescripcion": "Mientras estés completamente en Luz Tenue u Oscuridad, puedes usar una Acción Adicional para teletransportarte hasta 60 pies a un espacio desocupado que puedas ver y que también esté en Luz Tenue u Oscuridad. Luego, tienes Ventaja en el siguiente ataque cuerpo a cuerpo que hagas antes del final del turno actual."
+                  "subDescripcion": "Mientras estés completamente en Luz Tenue u Oscuridad, puedes usar una Acción Adicional para teletransportarte hasta 60 pies (12 casillas) a un espacio desocupado que puedas ver y que también esté en Luz Tenue u Oscuridad. Luego, tienes Ventaja en el siguiente ataque cuerpo a cuerpo que hagas antes del final del turno actual."
                 }
               }
             },
@@ -310,7 +310,7 @@
                 "subBlockUno": {
                   "subName": "Sintonización Elemental",
                   "subTitleName": "✦ SINTONIZACIÓN ELEMENTAL ✦",
-                  "subDescripcion": "Al inicio de tu turno, puedes gastar 1 Punto de Enfoque para imbuirte de energía elemental. La energía dura 10 minutos o hasta que tengas la condición de Incapacitado. Obtienes los siguientes beneficios mientras esta característica esté activa:\n<b>Alcance.</b> Cuando realizas un Golpe Desarmado, tu alcance es 10 pies mayor de lo normal, ya que la energía elemental se extiende desde ti.\n<b>Golpes Elementales.</b> Siempre que impactes con tu Golpe Desarmado, puedes hacer que cause tu elección de daño Ácido, Frío, Fuego, Rayo o Trueno en lugar de su tipo de daño normal. Cuando causes uno de estos tipos, también puedes forzar al objetivo a hacer una tirada de salvación de Fuerza. En caso de fallar, puedes mover al objetivo hasta 10 pies hacia ti o alejándolo de él, mientras la energía elemental gira alrededor de él."
+                  "subDescripcion": "Al inicio de tu turno, puedes gastar 1 Punto de Enfoque para imbuirte de energía elemental. La energía dura 10 minutos o hasta que tengas la condición de Incapacitado. Obtienes los siguientes beneficios mientras esta característica esté activa:\n<b>Alcance.</b> Cuando realizas un Golpe Desarmado, tu alcance es 10 pies (2 casillas) mayor de lo normal, ya que la energía elemental se extiende desde ti.\n<b>Golpes Elementales.</b> Siempre que impactes con tu Golpe Desarmado, puedes hacer que cause tu elección de daño Ácido, Frío, Fuego, Rayo o Trueno en lugar de su tipo de daño normal. Cuando causes uno de estos tipos, también puedes forzar al objetivo a hacer una tirada de salvación de Fuerza. En caso de fallar, puedes mover al objetivo hasta 10 pies (2 casillas) hacia ti o alejándolo de él, mientras la energía elemental gira alrededor de él."
                 },
                 "subBlockDos": {
                   "subName": "Manipular Elementos",
@@ -324,7 +324,7 @@
                 "subBlockUno": {
                   "subName": "Explosión Elemental",
                   "subTitleName": "✦ EXPLOSIÓN ELEMENTAL ✦",
-                  "subDescripcion": "Como acción mágica, puedes gastar 2 Puntos de Enfoque para causar que la energía elemental estalle en una esfera de radio de 20 pies centrada en un punto dentro de 120 pies de ti. Elige un tipo de daño: Ácido, Frío, Fuego, Rayo o Trueno.\n\nCada criatura en la esfera debe hacer una tirada de salvación de Destreza. En caso de fallar, la criatura recibe daño del tipo elegido igual a tres tiradas de tu dado de Artes Marciales. En caso de éxito, la criatura recibe la mitad de ese daño."
+                  "subDescripcion": "Como acción mágica, puedes gastar 2 Puntos de Enfoque para causar que la energía elemental estalle en una esfera de radio de 20 pies (4 casillas) centrada en un punto dentro de 120 pies (24 casillas) de ti. Elige un tipo de daño: Ácido, Frío, Fuego, Rayo o Trueno.\n\nCada criatura en la esfera debe hacer una tirada de salvación de Destreza. En caso de fallar, la criatura recibe daño del tipo elegido igual a tres tiradas de tu dado de Artes Marciales. En caso de éxito, la criatura recibe la mitad de ese daño."
                 }
               }
             },
@@ -342,7 +342,7 @@
                 "subBlockUno": {
                   "subName": "Epítome Elemental",
                   "subTitleName": "✦ EPÍTOME ELEMENTAL ✦",
-                  "subDescripcion": "Mientras tu Sintonización Elemental esté activa, también obtienes los siguientes beneficios:\n<b>Resistencia al Daño.</b> Obtienes Resistencia a uno de los siguientes tipos de daño de tu elección: Ácido, Frío, Fuego, Rayo o Trueno. Al inicio de cada uno de tus turnos, puedes cambiar esta elección.\n<b>Paso Destructivo.</b> Cuando usas tu Paso del Viento, tu Velocidad aumenta en 20 pies hasta el final del turno. Durante esa duración, cualquier criatura de tu elección recibe daño igual a una tirada de tu dado de Artes Marciales cuando entras en un espacio dentro de 5 pies de ella. El tipo de daño es tu elección entre Ácido, Frío, Fuego, Relámpago o Trueno. Una criatura solo puede recibir este daño una vez por turno.\n<b>Golpes Potenciados.</b> Una vez en cada uno de tus turnos, puedes causar daño adicional a un objetivo igual a una tirada de tu dado de Artes Marciales cuando lo golpeas con un Ataque Desarmado. El daño adicional es del mismo tipo que el causado por ese ataque."
+                  "subDescripcion": "Mientras tu Sintonización Elemental esté activa, también obtienes los siguientes beneficios:\n<b>Resistencia al Daño.</b> Obtienes Resistencia a uno de los siguientes tipos de daño de tu elección: Ácido, Frío, Fuego, Rayo o Trueno. Al inicio de cada uno de tus turnos, puedes cambiar esta elección.\n<b>Paso Destructivo.</b> Cuando usas tu Paso del Viento, tu Velocidad aumenta en 20 pies (4 casillas) hasta el final del turno. Durante esa duración, cualquier criatura de tu elección recibe daño igual a una tirada de tu dado de Artes Marciales cuando entras en un espacio dentro de 5 pies (1 casilla) de ella. El tipo de daño es tu elección entre Ácido, Frío, Fuego, Relámpago o Trueno. Una criatura solo puede recibir este daño una vez por turno.\n<b>Golpes Potenciados.</b> Una vez en cada uno de tus turnos, puedes causar daño adicional a un objetivo igual a una tirada de tu dado de Artes Marciales cuando lo golpeas con un Ataque Desarmado. El daño adicional es del mismo tipo que el causado por ese ataque."
                 }
               }
             }
@@ -358,7 +358,7 @@
                 "subBlockUno": {
                   "subName": "Técnica de Mano Abierta",
                   "subTitleName": "✦ TÉCNICA DE MANO ABIERTA ✦",
-                  "subDescripcion": "Siempre que golpees a una criatura con un ataque concedido por tu Lluvia de Golpes, puedes imponer uno de los siguientes efectos sobre ese objetivo.\n<b>Confusión.</b> El objetivo no puede realizar Ataques de Oportunidad hasta el inicio de su siguiente turno.\n<b>Empujar.</b> El objetivo debe tener éxito en una tirada de salvación de Fuerza o ser empujado hasta 15 pies lejos de ti.\n<b>Derribar.</b> El objetivo debe tener éxito en una tirada de salvación de Destreza o quedar en condición de Caído."
+                  "subDescripcion": "Siempre que golpees a una criatura con un ataque concedido por tu Lluvia de Golpes, puedes imponer uno de los siguientes efectos sobre ese objetivo.\n<b>Confusión.</b> El objetivo no puede realizar Ataques de Oportunidad hasta el inicio de su siguiente turno.\n<b>Empujar.</b> El objetivo debe tener éxito en una tirada de salvación de Fuerza o ser empujado hasta 15 pies (3 casillas) lejos de ti.\n<b>Derribar.</b> El objetivo debe tener éxito en una tirada de salvación de Destreza o quedar en condición de Caído."
                 }
               }
             },
@@ -400,7 +400,7 @@
                 "subBlockUno": {
                   "subName": "Senda del Néctar Sagrado",
                   "subTitleName": "✦ SENDA DEL NÉCTAR SAGRADO ✦",
-                  "subDescripcion": "A nivel 3, cuando usas Ráfaga de Golpes, puedes elegir ganar uno de los siguientes efectos hasta el final de tu turno:\n♻ Brisa del Bambú: Tu velocidad aumenta en 10 pies y puedes atravesar el espacio de criaturas sin provocar ataques de oportunidad.\n♻ Fortaleza del Licor: Ganas resistencia al daño contundente, cortante y perforante hasta el final del turno."
+                  "subDescripcion": "A nivel 3, cuando usas Ráfaga de Golpes, puedes elegir ganar uno de los siguientes efectos hasta el final de tu turno:\n♻ Brisa del Bambú: Tu velocidad aumenta en 10 pies (2 casillas) y puedes atravesar el espacio de criaturas sin provocar ataques de oportunidad.\n♻ Fortaleza del Licor: Ganas resistencia al daño contundente, cortante y perforante hasta el final del turno."
                 },
                 "subBlockDos": {
                   "subName": "Golpe al Ki Fluyente",
@@ -438,7 +438,7 @@
                 "subBlockUno": {
                   "subName": "Danza Celestial",
                   "subTitleName": "✦ DANZA CELESTIAL ✦",
-                  "subDescripcion": "A nivel 17, como acción, puedes gastar 4 puntos de Ki para entrar en un estado de trance borracho durante 1 minuto. Mientras dure este estado:\n♻ Puedes realizar un ataque adicional cuando tomes la acción de Ataque (tienes un Ataque Extra por turno).\n♻ Tu velocidad aumenta en +10 pies.\n♻ Obtienes ventaja en todas las tiradas de Destreza y de ataque cuerpo a cuerpo.\n♻ Al final de cada uno de tus turnos, recuperas 3 puntos de golpe si has realizado al menos un ataque ese turno.\n\nUna vez que uses esta característica, no puedes volver a usarla hasta que termines un descanso largo."
+                  "subDescripcion": "A nivel 17, como acción, puedes gastar 4 puntos de Ki para entrar en un estado de trance borracho durante 1 minuto. Mientras dure este estado:\n♻ Puedes realizar un ataque adicional cuando tomes la acción de Ataque (tienes un Ataque Extra por turno).\n♻ Tu velocidad aumenta en +10 pies (2 casillas).\n♻ Obtienes ventaja en todas las tiradas de Destreza y de ataque cuerpo a cuerpo.\n♻ Al final de cada uno de tus turnos, recuperas 3 puntos de golpe si has realizado al menos un ataque ese turno.\n\nUna vez que uses esta característica, no puedes volver a usarla hasta que termines un descanso largo."
                 }
               }
             }
@@ -455,7 +455,7 @@
           [
             "1d6",
             "3",
-            "+10 pies"
+            "+10 pies (2 casillas)"
           ]
         ]
       }
@@ -483,7 +483,7 @@
           [
             "1d6",
             "4",
-            "+10 pies"
+            "+10 pies (2 casillas)"
           ]
         ]
       }
@@ -511,7 +511,7 @@
           [
             "1d8",
             "5",
-            "+10 pies"
+            "+10 pies (2 casillas)"
           ]
         ]
       }
@@ -534,7 +534,7 @@
           [
             "1d8",
             "6",
-            "+15 pies"
+            "+15 pies (3 casillas)"
           ]
         ]
       }
@@ -557,7 +557,7 @@
           [
             "1d8",
             "7",
-            "+15 pies"
+            "+15 pies (3 casillas)"
           ]
         ]
       }
@@ -573,7 +573,7 @@
           [
             "1d8",
             "8",
-            "+15 pies"
+            "+15 pies (3 casillas)"
           ]
         ]
       }
@@ -596,7 +596,7 @@
           [
             "1d8",
             "9",
-            "+15 pies"
+            "+15 pies (3 casillas)"
           ]
         ]
       }
@@ -606,7 +606,7 @@
         "blockUno": {
           "name": "Enfoque Elevado",
           "titleName": "✦ ENFOQUE ELEVADO ✦",
-          "descripcion": "Tus características Flurry of Blows, Patient Defense y Step of the Wind obtienen los siguientes beneficios:\n<b>Flurry of Blows:</b> Puedes gastar 1 Punto de Enfoque para usar Flurry of Blows y hacer tres Ataques Desarmados con él en lugar de dos.\n<b>Patient Defense:</b> Cuando gastas un Punto de Enfoque para usar Patient Defense, obtienes una cantidad de Puntos de Golpe Temporales igual a dos tiradas de tu dado de Artes Marciales.\n<b>Step of the Wind:</b> Cuando gastas un Punto de Enfoque para usar Step of the Wind, puedes elegir una criatura dispuesta dentro de 5 pies de ti que sea Grande o más pequeña. Mueves la criatura contigo hasta el final de tu turno. El movimiento de la criatura no provoca Ataques de Oportunidad."
+          "descripcion": "Tus características Flurry of Blows, Patient Defense y Step of the Wind obtienen los siguientes beneficios:\n<b>Flurry of Blows:</b> Puedes gastar 1 Punto de Enfoque para usar Flurry of Blows y hacer tres Ataques Desarmados con él en lugar de dos.\n<b>Patient Defense:</b> Cuando gastas un Punto de Enfoque para usar Patient Defense, obtienes una cantidad de Puntos de Golpe Temporales igual a dos tiradas de tu dado de Artes Marciales.\n<b>Step of the Wind:</b> Cuando gastas un Punto de Enfoque para usar Step of the Wind, puedes elegir una criatura dispuesta dentro de 5 pies (1 casilla) de ti que sea Grande o más pequeña. Mueves la criatura contigo hasta el final de tu turno. El movimiento de la criatura no provoca Ataques de Oportunidad."
         },
         "blockDos": {
           "name": "Auto-Restauración",
@@ -624,7 +624,7 @@
           [
             "1d8",
             "10",
-            "+20 pies"
+            "+20 pies (4 casillas)"
           ]
         ]
       }
@@ -640,7 +640,7 @@
           [
             "1d10",
             "11",
-            "+20 pies"
+            "+20 pies (4 casillas)"
           ]
         ]
       }
@@ -656,7 +656,7 @@
           [
             "1d10",
             "12",
-            "+20 pies"
+            "+20 pies (4 casillas)"
           ]
         ]
       }
@@ -679,7 +679,7 @@
           [
             "1d10",
             "13",
-            "+20 pies"
+            "+20 pies (4 casillas)"
           ]
         ]
       }
@@ -734,7 +734,7 @@
           [
             "1d10",
             "14",
-            "+25 pies"
+            "+25 pies (5 casillas)"
           ]
         ]
       }
@@ -757,7 +757,7 @@
           [
             "1d10",
             "15",
-            "+25 pies"
+            "+25 pies (5 casillas)"
           ]
         ]
       }
@@ -773,7 +773,7 @@
           [
             "1d10",
             "16",
-            "+25 pies"
+            "+25 pies (5 casillas)"
           ]
         ]
       }
@@ -789,7 +789,7 @@
           [
             "1d12",
             "17",
-            "+25 pies"
+            "+25 pies (5 casillas)"
           ]
         ]
       }
@@ -812,7 +812,7 @@
           [
             "1d12",
             "18",
-            "+30 pies"
+            "+30 pies (6 casillas)"
           ]
         ]
       }
@@ -835,7 +835,7 @@
           [
             "1d12",
             "19",
-            "+30 pies"
+            "+30 pies (6 casillas)"
           ]
         ]
       }
@@ -871,7 +871,7 @@
           [
             "1d12",
             "20",
-            "+30 pies"
+            "+30 pies (6 casillas)"
           ]
         ]
       }

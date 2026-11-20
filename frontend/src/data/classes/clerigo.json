@@ -158,7 +158,7 @@
         {
           "id": "conjuros-potentes",
           "nombre": "Conjuros Potentes",
-          "descripcion": "Añade tu modificador de Sabiduría al daño que inflijas con cualquier truco de clérigo. A nivel 14, al dañar con un truco de clérigo otorgas Puntos de Golpe Temporales iguales al doble de tu modificador de Sabiduría a ti o a otra criatura a 60 pies."
+          "descripcion": "Añade tu modificador de Sabiduría al daño que inflijas con cualquier truco de clérigo. A nivel 14, al dañar con un truco de clérigo otorgas Puntos de Golpe Temporales iguales al doble de tu modificador de Sabiduría a ti o a otra criatura a 60 pies (12 casillas)."
         }
       ]
     }
@@ -212,7 +212,7 @@
         "blockUno": {
           "name": "Canalizar Divinidad",
           "titleName": "✦ CANALIZAR DIVINIDAD ✦",
-          "descripcion": "Puedes canalizar energía divina directamente de los Planos Exteriores para alimentar efectos mágicos. Comienzas con dos de estos efectos: Chispa Divina y Ahuyentar a los Muertos Vivientes, cada uno de los cuales se describe a continuación. Cada vez que uses Canalizar Divinidad de esta clase, elige qué efecto de Canalizar Divinidad de esta clase quieres crear. Obtienes opciones de efectos adicionales a niveles más altos de clérigo.\nPuedes usar Canalizar Divinidad de esta clase dos veces. Recuperas uno de sus usos gastados cuando terminas un Descanso Corto, y recuperas todos los usos gastados cuando terminas un Descanso Largo. Obtienes usos adicionales cuando alcanzas ciertos niveles de clérigo, como se muestra en la columna de Canalizar Divinidad de la tabla de Características del Clérigo.\nSi un efecto de Canalizar Divinidad requiere una tirada de salvación, la CD (Clase de Dificultad) es igual a la CD de salvación de conjuros de la característica Lanzamiento de Conjuros de esta clase.\n<b>Chispa Divina.</b> Como acción mágica, apuntas tu Símbolo Sagrado hacia otra criatura que puedas ver dentro de un rango de 30 pies y enfocas energía divina en ella. Lanza 1d8 y añade tu modificador de Sabiduría. Puedes o bien restaurar puntos de golpe a la criatura igual a ese total o bien forzar a la criatura a hacer una tirada de salvación de Constitución. Si falla la tirada de salvación, la criatura recibe daño necrótico o radiante (a tu elección) igual a ese total. Si tiene éxito en la tirada de salvación, la criatura recibe la mitad de daño (redondeado hacia abajo). Lanzas un d8 adicional cuando alcanzas los niveles 7 (2d8), 13 (3d8) y 18 (4d8) como clérigo.\n<b>Ahuyentar a los Muertos Vivientes.</b> Como acción mágica, presentas tu Símbolo Sagrado y reprendes a las criaturas no muertas. Cada no muerto de tu elección que esté a 30 pies de ti debe hacer una tirada de salvación de Sabiduría. Si la criatura falla su tirada de salvación, queda bajo las condiciones Asustado e Incapacitado durante 1 minuto. Durante esa duración, intentará alejarse de ti lo más que pueda en su turno. Este efecto termina antes en la criatura si recibe algún daño, si tú quedas bajo la condición de Incapacitado o si mueres."
+          "descripcion": "Puedes canalizar energía divina directamente de los Planos Exteriores para alimentar efectos mágicos. Comienzas con dos de estos efectos: Chispa Divina y Ahuyentar a los Muertos Vivientes, cada uno de los cuales se describe a continuación. Cada vez que uses Canalizar Divinidad de esta clase, elige qué efecto de Canalizar Divinidad de esta clase quieres crear. Obtienes opciones de efectos adicionales a niveles más altos de clérigo.\nPuedes usar Canalizar Divinidad de esta clase dos veces. Recuperas uno de sus usos gastados cuando terminas un Descanso Corto, y recuperas todos los usos gastados cuando terminas un Descanso Largo. Obtienes usos adicionales cuando alcanzas ciertos niveles de clérigo, como se muestra en la columna de Canalizar Divinidad de la tabla de Características del Clérigo.\nSi un efecto de Canalizar Divinidad requiere una tirada de salvación, la CD (Clase de Dificultad) es igual a la CD de salvación de conjuros de la característica Lanzamiento de Conjuros de esta clase.\n<b>Chispa Divina.</b> Como acción mágica, apuntas tu Símbolo Sagrado hacia otra criatura que puedas ver dentro de un rango de 30 pies (6 casillas) y enfocas energía divina en ella. Lanza 1d8 y añade tu modificador de Sabiduría. Puedes o bien restaurar puntos de golpe a la criatura igual a ese total o bien forzar a la criatura a hacer una tirada de salvación de Constitución. Si falla la tirada de salvación, la criatura recibe daño necrótico o radiante (a tu elección) igual a ese total. Si tiene éxito en la tirada de salvación, la criatura recibe la mitad de daño (redondeado hacia abajo). Lanzas un d8 adicional cuando alcanzas los niveles 7 (2d8), 13 (3d8) y 18 (4d8) como clérigo.\n<b>Ahuyentar a los Muertos Vivientes.</b> Como acción mágica, presentas tu Símbolo Sagrado y reprendes a las criaturas no muertas. Cada no muerto de tu elección que esté a 30 pies (6 casillas) de ti debe hacer una tirada de salvación de Sabiduría. Si la criatura falla su tirada de salvación, queda bajo las condiciones Asustado e Incapacitado durante 1 minuto. Durante esa duración, intentará alejarse de ti lo más que pueda en su turno. Este efecto termina antes en la criatura si recibe algún daño, si tú quedas bajo la condición de Incapacitado o si mueres."
         }
       },
       "infoCubo": {
@@ -279,7 +279,7 @@
                 "subBlockTres": {
                   "subName": "Preservar la Vida",
                   "subTitleName": "✦ PRESERVAR LA VIDA ✦",
-                  "subDescripcion": "Como acción mágica, presentas tu Símbolo Sagrado y gastas un uso de tu Canalizar Divinidad para invocar energía curativa que puede restaurar un número de puntos de golpe igual a cinco veces tu nivel de clérigo. Elige criaturas heridas dentro de un rango de 30 pies de ti (lo que puede incluirte a ti mismo) y divide esos puntos de golpe entre ellas. Esta característica puede restaurar a una criatura a no más de la mitad de su máximo de puntos de golpe."
+                  "subDescripcion": "Como acción mágica, presentas tu Símbolo Sagrado y gastas un uso de tu Canalizar Divinidad para invocar energía curativa que puede restaurar un número de puntos de golpe igual a cinco veces tu nivel de clérigo. Elige criaturas heridas dentro de un rango de 30 pies (6 casillas) de ti (lo que puede incluirte a ti mismo) y divide esos puntos de golpe entre ellas. Esta característica puede restaurar a una criatura a no más de la mitad de su máximo de puntos de golpe."
                 }
               }
             },
@@ -393,12 +393,12 @@
                 "subBlockDos": {
                   "subName": "Resplandor del Amanecer",
                   "subTitleName": "✦ RESPLANDOR DEL AMANECER ✦",
-                  "subDescripcion": "Como acción mágica, presentas tu Símbolo Sagrado y gastas un uso de tu Canalizar Divinidad para emitir un destello de luz en una emanación de 30 pies que se origina en ti mismo. Cualquier Oscuridad mágica —como la creada por el conjuro Oscuridad— en esa área es disipada. Además, cada criatura de tu elección en esa área debe hacer una tirada de salvación de Constitución, recibiendo daño radiante igual a 2d10 más tu nivel de clérigo en caso de fallo o la mitad de ese daño en caso de éxito."
+                  "subDescripcion": "Como acción mágica, presentas tu Símbolo Sagrado y gastas un uso de tu Canalizar Divinidad para emitir un destello de luz en una emanación de 30 pies (6 casillas) que se origina en ti mismo. Cualquier Oscuridad mágica —como la creada por el conjuro Oscuridad— en esa área es disipada. Además, cada criatura de tu elección en esa área debe hacer una tirada de salvación de Constitución, recibiendo daño radiante igual a 2d10 más tu nivel de clérigo en caso de fallo o la mitad de ese daño en caso de éxito."
                 },
                 "subBlockTres": {
                   "subName": "Destello Protector",
                   "subTitleName": "✦ DESTELLO PROTECTOR ✦",
-                  "subDescripcion": "Cuando una criatura que puedes ver dentro de 30 pies de ti haga una tirada de ataque, puedes tomar una Reacción para imponer Desventaja en la tirada de ataque, haciendo que la luz parpadee antes de que acierte o falle. Puedes usar esta característica un número de veces igual a tu modificador de Sabiduría (mínimo una vez). Recuperas todos los usos gastados cuando terminas un Descanso Largo."
+                  "subDescripcion": "Cuando una criatura que puedes ver dentro de 30 pies (6 casillas) de ti haga una tirada de ataque, puedes tomar una Reacción para imponer Desventaja en la tirada de ataque, haciendo que la luz parpadee antes de que acierte o falle. Puedes usar esta característica un número de veces igual a tu modificador de Sabiduría (mínimo una vez). Recuperas todos los usos gastados cuando terminas un Descanso Largo."
                 }
               }
             },
@@ -473,7 +473,7 @@
                 "subBlockUno": {
                   "subName": "Corona de Luz",
                   "subTitleName": "✦ CORONA DE LUZ ✦",
-                  "subDescripcion": "Como acción mágica, haces que emitas un aura de luz solar que dura 1 minuto o hasta que la disuelvas (sin acción requerida). Emite Luz Brillante en un radio de 60 pies y Luz Tenue por 30 pies adicionales. Tus enemigos en la Luz Brillante tienen Desventaja en las tiradas de salvación contra tu Resplandor del Amanecer y cualquier conjuro que cause daño de Fuego o Radiante. Puedes usar esta característica un número de veces igual a tu modificador de Sabiduría (mínimo una vez) y recuperas todos los usos gastados cuando terminas un Descanso Largo."
+                  "subDescripcion": "Como acción mágica, haces que emitas un aura de luz solar que dura 1 minuto o hasta que la disuelvas (sin acción requerida). Emite Luz Brillante en un radio de 60 pies (12 casillas) y Luz Tenue por 30 pies (6 casillas) adicionales. Tus enemigos en la Luz Brillante tienen Desventaja en las tiradas de salvación contra tu Resplandor del Amanecer y cualquier conjuro que cause daño de Fuego o Radiante. Puedes usar esta característica un número de veces igual a tu modificador de Sabiduría (mínimo una vez) y recuperas todos los usos gastados cuando terminas un Descanso Largo."
                 }
               }
             }
@@ -489,12 +489,12 @@
                 "subBlockUno": {
                   "subName": "Bendición del Embaucador",
                   "subTitleName": "✦ BENDICIÓN DEL EMBAUCADOR ✦",
-                  "subDescripcion": "Como acción mágica, puedes elegirte a ti mismo o a una criatura dispuesta dentro de 30 pies de ti para tener Ventaja en las pruebas de Destreza (Sigilo). Esta bendición dura hasta que termines un Descanso Largo o uses esta característica nuevamente."
+                  "subDescripcion": "Como acción mágica, puedes elegirte a ti mismo o a una criatura dispuesta dentro de 30 pies (6 casillas) de ti para tener Ventaja en las pruebas de Destreza (Sigilo). Esta bendición dura hasta que termines un Descanso Largo o uses esta característica nuevamente."
                 },
                 "subBlockDos": {
                   "subName": "Invocar Duplicidad",
                   "subTitleName": "✦ INVOCAR DUPLICIDAD ✦",
-                  "subDescripcion": "Como Acción de Bonificación, puedes gastar un uso de tu Canalizar Divinidad para crear una ilusión visual perfecta de ti mismo en un espacio desocupado que puedes ver dentro de 30 pies de ti. La ilusión es intangible y no ocupa su espacio. Dura 1 minuto, pero termina antes si la disuelves (sin acción requerida) o tienes la condición de Incapacitado. La ilusión está animada e imita tus expresiones y gestos. Mientras persiste, obtienes los siguientes beneficios.\n<b>Lanzar Conjuros.</b> Puedes lanzar conjuros como si estuvieras en el espacio de la ilusión, pero debes usar tus propios sentidos.\n<b>Distracción.</b> Cuando tanto tú como tu ilusión están dentro de 5 pies de una criatura que puede ver la ilusión, tienes Ventaja en las tiradas de ataque contra esa criatura, dado lo que distrae la ilusión al objetivo.\n<b>Mover.</b> Como Acción de Bonificación, puedes mover la ilusión hasta 30 pies a un espacio desocupado que puedas ver y que esté dentro de 120 pies de ti."
+                  "subDescripcion": "Como Acción de Bonificación, puedes gastar un uso de tu Canalizar Divinidad para crear una ilusión visual perfecta de ti mismo en un espacio desocupado que puedes ver dentro de 30 pies (6 casillas) de ti. La ilusión es intangible y no ocupa su espacio. Dura 1 minuto, pero termina antes si la disuelves (sin acción requerida) o tienes la condición de Incapacitado. La ilusión está animada e imita tus expresiones y gestos. Mientras persiste, obtienes los siguientes beneficios.\n<b>Lanzar Conjuros.</b> Puedes lanzar conjuros como si estuvieras en el espacio de la ilusión, pero debes usar tus propios sentidos.\n<b>Distracción.</b> Cuando tanto tú como tu ilusión están dentro de 5 pies (1 casilla) de una criatura que puede ver la ilusión, tienes Ventaja en las tiradas de ataque contra esa criatura, dado lo que distrae la ilusión al objetivo.\n<b>Mover.</b> Como Acción de Bonificación, puedes mover la ilusión hasta 30 pies (6 casillas) a un espacio desocupado que puedas ver y que esté dentro de 120 pies (24 casillas) de ti."
                 },
                 "subBlockTres": {
                   "subName": "Conjuros del Dominio de la Travesura",
@@ -592,7 +592,7 @@
                 "subBlockUno": {
                   "subName": "Duplicidad Mejorada",
                   "subTitleName": "✦ DUPLICIDAD MEJORADA ✦",
-                  "subDescripcion": "La ilusión de tu Invocar Duplicidad se ha vuelto más poderosa de las siguientes maneras.\n<b>Distracción Compartida.</b> Cuando tú y tus aliados hagan tiradas de ataque contra una criatura dentro de 5 pies de la ilusión, las tiradas de ataque tienen Ventaja.\n<b>Ilusión Sanadora.</b> Cuando la ilusión termina, tú o una criatura de tu elección dentro de 5 pies de ella recupera un número de Puntos de Golpe igual a tu nivel de Clérigo."
+                  "subDescripcion": "La ilusión de tu Invocar Duplicidad se ha vuelto más poderosa de las siguientes maneras.\n<b>Distracción Compartida.</b> Cuando tú y tus aliados hagan tiradas de ataque contra una criatura dentro de 5 pies (1 casilla) de la ilusión, las tiradas de ataque tienen Ventaja.\n<b>Ilusión Sanadora.</b> Cuando la ilusión termina, tú o una criatura de tu elección dentro de 5 pies (1 casilla) de ella recupera un número de Puntos de Golpe igual a tu nivel de Clérigo."
                 }
               }
             }
@@ -608,7 +608,7 @@
                 "subBlockUno": {
                   "subName": "Golpe Guiado",
                   "subTitleName": "✦ GOLPE GUIADO ✦",
-                  "subDescripcion": "Cuando tú o una criatura dentro de 30 pies de ti fallan con una tirada de ataque, puedes gastar un uso de tu Canalizar Divinidad y darle a esa tirada un bono de +10, lo que potencialmente podría hacer que acierte. Cuando uses esta característica para beneficiar la tirada de ataque de otra criatura, debes tomar una Reacción para hacerlo."
+                  "subDescripcion": "Cuando tú o una criatura dentro de 30 pies (6 casillas) de ti fallan con una tirada de ataque, puedes gastar un uso de tu Canalizar Divinidad y darle a esa tirada un bono de +10, lo que potencialmente podría hacer que acierte. Cuando uses esta característica para beneficiar la tirada de ataque de otra criatura, debes tomar una Reacción para hacerlo."
                 },
                 "subBlockDos": {
                   "subName": "Conjuros del Dominio de la Guerra",
@@ -970,7 +970,7 @@
         "blockUno": {
           "name": "Mejora de Golpes Benditos",
           "titleName": "✦ MEJORA DE GOLPES BENDITOS ✦",
-          "descripcion": "La opción que elegiste para Golpes Benditos se vuelve más poderosa.\n<b>Golpe Divino.</b> El daño adicional de tu Golpe Divino aumenta a 2d8.\n<b>Conjuros Potentes.</b> Cuando lanzas un truco de clérigo e infliges daño a una criatura con él, puedes otorgar vitalidad a ti mismo o a otra criatura dentro de un rango de 60 pies, otorgando un número de Puntos de Golpe Temporales igual al doble de tu modificador de Sabiduría."
+          "descripcion": "La opción que elegiste para Golpes Benditos se vuelve más poderosa.\n<b>Golpe Divino.</b> El daño adicional de tu Golpe Divino aumenta a 2d8.\n<b>Conjuros Potentes.</b> Cuando lanzas un truco de clérigo e infliges daño a una criatura con él, puedes otorgar vitalidad a ti mismo o a otra criatura dentro de un rango de 60 pies (12 casillas), otorgando un número de Puntos de Golpe Temporales igual al doble de tu modificador de Sabiduría."
         }
       }
     },

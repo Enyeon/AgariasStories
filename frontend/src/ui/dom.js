@@ -3,6 +3,8 @@
 
 const ESCAPES = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
 
+import { withCells } from '../domain/units.js';
+
 export function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>"']/g, (ch) => ESCAPES[ch]);
 }
@@ -69,6 +71,8 @@ export function richText(text) {
   const walker = doc.createTreeWalker(root, 4);
   const texts = [];
   while (walker.nextNode()) texts.push(walker.currentNode);
+  // Toda distancia en pies con sus casillas (AgSt 1.38), también en el texto de los usuarios.
+  for (const t of texts) t.nodeValue = withCells(t.nodeValue);
   for (const t of texts) {
     if (!t.nodeValue.includes('\n') || t.parentElement.closest('table')) continue;
     const frag = doc.createDocumentFragment();

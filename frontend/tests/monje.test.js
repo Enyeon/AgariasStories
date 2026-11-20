@@ -68,7 +68,7 @@ describe('Monje', () => {
     expect(s20.sabiduria.cap).toBe(25);
     const f = classFeatures(c20)[0];
     expect(f.table.columns).toEqual(['Artes Marciales', 'Puntos de Enfoque', 'Movimiento sin Armadura']);
-    expect(f.table.rows[19]).toMatchObject({ 'Artes Marciales': '1d12', 'Puntos de Enfoque': '20', 'Movimiento sin Armadura': '+30 pies' });
+    expect(f.table.rows[19]).toMatchObject({ 'Artes Marciales': '1d12', 'Puntos de Enfoque': '20', 'Movimiento sin Armadura': '+30 pies (6 casillas)' });
     expect(f.classDc.name).toBe('CD de Enfoque');
     expect(c20.levels.filter((l) => l.improvement).length).toBe(4); // 4, 8, 12, 16 (19 es Hito Épico)
   });

@@ -221,11 +221,11 @@
   },
   "selenkos": {
     "nombre": "Selenkos, los Kobolds del Vacío",
-    "resumen": "Kobolds de la Luna, sirvientes naturales de los Dracónidos del Vacío: iguales a los demás, con otra cultura.",
+    "resumen": "Parientes lunares de los kobolds, sirvientes naturales de los Dracónidos del Vacío.",
     "secciones": [
       {
         "titulo": "Origen",
-        "texto": "Los Selenkos son kobolds que viven en el lado oscuro de la Luna desde que llegaron los primeros Dracónidos del Vacío. Sus escamas tienen reflejos violáceos y su cuerpo es el de cualquier kobold: lo que los distingue es su cultura."
+        "texto": "Los Selenkos descienden de kobolds que llegaron al lado oscuro de la Luna con los primeros Dracónidos del Vacío. Generaciones bajo la gravedad lunar y junto al Vacío los cambiaron: sus escamas se volvieron violáceas y resisten el Vacío, sus patas saltan lejos y caen sin miedo, y ya no son del todo como sus primos de Agarias."
       },
       {
         "titulo": "Cultura",

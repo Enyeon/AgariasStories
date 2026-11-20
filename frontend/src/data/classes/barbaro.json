@@ -139,7 +139,7 @@
                 "subBlockDos": {
                   "subName": "Furia de los Salvajes",
                   "subTitleName": "✦ Furia de los Salvajes ✦",
-                  "subDescripcion": "Tu Furia accede al poder primordial de los animales. Siempre que actives tu Furia, obtienes una de las siguientes opciones de tu elección:\n<b class=\"content_subrayado\">— Oso:</b> Mientras tu Furia esté activa, tienes Resistencia a todos los tipos de daño, excepto Fuerza, Necrótico, Psíquico y Radiante.\n<b class=\"content_subrayado\">— Ágila:</b> Cuando activas tu Furia, puedes tomar las acciones de Desengancharse y Correr como parte de esa misma Acción Adicional. Mientras tu Furia esté activa, puedes tomar una Acción Adicional para realizar ambas acciones.\n<b class=\"content_subrayado\">— Lobo:</b> Mientras tu Furia esté activa, tus aliados tienen Ventaja en las tiradas de ataque contra contra cualquier enemigo tuyo dentro de 5 pies (1 Casilla) de ti."
+                  "subDescripcion": "Tu Furia accede al poder primordial de los animales. Siempre que actives tu Furia, obtienes una de las siguientes opciones de tu elección:\n<b class=\"content_subrayado\">— Oso:</b> Mientras tu Furia esté activa, tienes Resistencia a todos los tipos de daño, excepto Fuerza, Necrótico, Psíquico y Radiante.\n<b class=\"content_subrayado\">— Ágila:</b> Cuando activas tu Furia, puedes tomar las acciones de Desengancharse y Correr como parte de esa misma Acción Adicional. Mientras tu Furia esté activa, puedes tomar una Acción Adicional para realizar ambas acciones.\n<b class=\"content_subrayado\">— Lobo:</b> Mientras tu Furia esté activa, tus aliados tienen Ventaja en las tiradas de ataque contra contra cualquier enemigo tuyo dentro de 5 pies (1 casilla) de ti."
                 }
               }
             },
@@ -166,7 +166,7 @@
                 "subBlockUno": {
                   "subName": "Poder de los Salvajes",
                   "subTitleName": "✦ Poder de los Salvajes ✦",
-                  "subDescripcion": "Siempre que actives tu Furia, obtienes una de las siguientes opciones a tu elección:\n<b class=\"content_subrayado\">— Halcón:</b> Mientras tu Furia esté activa, tienes una Velocidad de Vuelo igual a tu Velocidad si no llevas armadura.\n<b class=\"content_subrayado\">— León:</b> Mientras tu Furia esté activa, cualquier enemigo tuyo que esté a 5 pies (1 Casilla) de ti tiene Desventaja en las tiradas de ataque contra objetivos distintos a ti u otro Bárbaro que tenga esta opción activa.\n<b class=\"content_subrayado\">— Carnero:</b> Mientras tu Furia esté activa, puedes hacer que una criatura Grande o más pequeña tenga la ondición de \"Derribado\" cuando lo golpeas cuerpo a cuerpo."
+                  "subDescripcion": "Siempre que actives tu Furia, obtienes una de las siguientes opciones a tu elección:\n<b class=\"content_subrayado\">— Halcón:</b> Mientras tu Furia esté activa, tienes una Velocidad de Vuelo igual a tu Velocidad si no llevas armadura.\n<b class=\"content_subrayado\">— León:</b> Mientras tu Furia esté activa, cualquier enemigo tuyo que esté a 5 pies (1 casilla) de ti tiene Desventaja en las tiradas de ataque contra objetivos distintos a ti u otro Bárbaro que tenga esta opción activa.\n<b class=\"content_subrayado\">— Carnero:</b> Mientras tu Furia esté activa, puedes hacer que una criatura Grande o más pequeña tenga la ondición de \"Derribado\" cuando lo golpeas cuerpo a cuerpo."
                 }
               }
             }
@@ -190,7 +190,7 @@
                 "subBlockUno": {
                   "subName": "Ramas del Árbol",
                   "subTitleName": "✦ Ramas del Árbol ✦",
-                  "subDescripcion": "Siempre que una criatura que puedas ver comience su turno dentro de 30 pies (6 casillas) de ti, mientras tu Furia esté activa, puedes usar una Reacción para convocar ramas espectrales del Árbol del Mundo a su alrededor. El objetivo debe tener éxito en una tirada de salvación de Fuerza (CD 8 más tu bonificador de Fuerza + tu Bonificación de Competencia) o ser teletrasportado a un espacio desocupado que puedas ver dentro de 5 pies (1 Casilla) de ti o en el espacio desocupado más cercano que puedas ver. Después de que el objetivo se teletrasporte, puedes reducir su velocidad a 0 hasta el final del turno actual."
+                  "subDescripcion": "Siempre que una criatura que puedas ver comience su turno dentro de 30 pies (6 casillas) de ti, mientras tu Furia esté activa, puedes usar una Reacción para convocar ramas espectrales del Árbol del Mundo a su alrededor. El objetivo debe tener éxito en una tirada de salvación de Fuerza (CD 8 más tu bonificador de Fuerza + tu Bonificación de Competencia) o ser teletrasportado a un espacio desocupado que puedas ver dentro de 5 pies (1 casilla) de ti o en el espacio desocupado más cercano que puedas ver. Después de que el objetivo se teletrasporte, puedes reducir su velocidad a 0 hasta el final del turno actual."
                 }
               }
             },

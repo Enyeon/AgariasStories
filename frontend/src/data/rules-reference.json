@@ -48,7 +48,7 @@
       {
         "id": "accion-help",
         "name": "Ayudar (Help)",
-        "text": "Concedes ventaja a una criatura aliada en una tarea (ataque, habilidad, etc.) si está a 5 pies de ti.",
+        "text": "Concedes ventaja a una criatura aliada en una tarea (ataque, habilidad, etc.) si está a 5 pies (1 casilla) de ti.",
         "kind": "accion",
         "origin": "oficial"
       },
@@ -76,7 +76,7 @@
       {
         "id": "accion-shove",
         "name": "Empujar (Shove)",
-        "text": "Intentas empujar a una criatura 5 pies lejos de ti o derribarla al suelo (tirada de Atletismo contra Atletismo o Acrobacias).",
+        "text": "Intentas empujar a una criatura 5 pies (1 casilla) lejos de ti o derribarla al suelo (tirada de Atletismo contra Atletismo o Acrobacias).",
         "kind": "accion",
         "origin": "oficial"
       }
@@ -245,7 +245,7 @@
         "effect": [
           "Sólo puedes desplazarte arrastrándote (cada pie cuesta un pie extra), salvo que te levantes.",
           "Tienes desventaja en tus tiradas de ataque.",
-          "Los ataques contra ti tienen ventaja si el atacante está a 5 pies o menos; si está más lejos, tienen desventaja."
+          "Los ataques contra ti tienen ventaja si el atacante está a 5 pies (1 casilla) o menos; si está más lejos, tienen desventaja."
         ],
         "applies": "Puedes tirarte al suelo voluntariamente. También al caer Inconsciente, con un empujón (acción de Empujar) o por efectos que lo indiquen.",
         "ends": "Levantándote: te cuesta la mitad de tu velocidad. No puedes si tu velocidad es 0.",
@@ -325,7 +325,7 @@
           "Sueltas lo que sostengas y caes Derribado.",
           "Fallas automáticamente las tiradas de salvación de Fuerza y Destreza.",
           "Las tiradas de ataque contra ti tienen ventaja.",
-          "Cualquier ataque que te impacte es un crítico si el atacante está a 5 pies o menos."
+          "Cualquier ataque que te impacte es un crítico si el atacante está a 5 pies (1 casilla) o menos."
         ],
         "applies": "Al quedar a 0 puntos de golpe sin morir, por el sueño mágico y por otros efectos que lo indiquen.",
         "ends": "Al recuperar al menos 1 punto de golpe, al estabilizarte y despertar (1d4 horas después), o cuando termine el efecto que te dejó inconsciente.",
@@ -360,7 +360,7 @@
           "Estás Incapacitado y no puedes moverte ni hablar.",
           "Fallas automáticamente las tiradas de salvación de Fuerza y Destreza.",
           "Las tiradas de ataque contra ti tienen ventaja.",
-          "Cualquier ataque que te impacte es un crítico si el atacante está a 5 pies o menos."
+          "Cualquier ataque que te impacte es un crítico si el atacante está a 5 pies (1 casilla) o menos."
         ],
         "applies": "Cuando lo indique el rasgo, conjuro, criatura u objeto que lo provoca.",
         "ends": "Cuando termina el efecto que la causó, o como indique ese efecto (por ejemplo, superando una tirada de salvación).",
@@ -688,7 +688,7 @@
         "ends": null,
         "related": [],
         "flavor": "Una energía sofocante que drena el aliento y comprime parcialmente la materia a su alrededor, como un agujero negro sin llegar a serlo.",
-        "note": "Tipo de daño propio de Agarias (dragones y dracónidos del Vacío, cierta magia). Además del daño, quien lo recibe se asfixia mientras dura, y los ataques de Vacío, aunque fallen, pueden atraer al objetivo 5 pies hacia la fuente. Dura unos segundos, hasta que el aire vuelve a llenar el área. No es un agujero negro, sino un desplazamiento: el Vacío aparta el aire y toda la materia a su paso. Cuando ese Vacío se mueve, lo desplazado quiere volver a donde estaba; por eso lo que está cerca es atraído hacia el centro."
+        "note": "Tipo de daño propio de Agarias (dragones y dracónidos del Vacío, cierta magia). Además del daño, quien lo recibe se asfixia mientras dura, y los ataques de Vacío, aunque fallen, pueden atraer al objetivo 5 pies (1 casilla) hacia la fuente. Dura unos segundos, hasta que el aire vuelve a llenar el área. No es un agujero negro, sino un desplazamiento: el Vacío aparta el aire y toda la materia a su paso. Cuando ese Vacío se mueve, lo desplazado quiere volver a donde estaba; por eso lo que está cerca es atraído hacia el centro."
       }
     ]
   },

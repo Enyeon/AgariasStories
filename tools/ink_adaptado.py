@@ -37,6 +37,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from casillas import con_casillas  # AgSt 1.38: toda distancia en pies lleva sus casillas
+
 DATA = Path(__file__).resolve().parent.parent / "frontend" / "src" / "data"
 GROUP = "Razas de Agarias Pt. V: Aliens"
 BASE = "Experimento 043"
@@ -50,7 +52,7 @@ def load(p: Path):
 
 
 def save(p: Path, d, indent=2):
-    p.write_text(json.dumps(d, ensure_ascii=False, indent=indent) + "\n", encoding="utf-8")
+    p.write_text(con_casillas(json.dumps(d, ensure_ascii=False, indent=indent)) + "\n", encoding="utf-8")
 
 
 T = lambda name, text: {"name": name, "text": text}

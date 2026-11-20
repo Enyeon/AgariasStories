@@ -247,7 +247,7 @@
         "tipo": "arma",
         "dado": "2d6",
         "tipoDano": "perforante",
-        "propiedades": "Munición, Recarga, A dos manos, Dispersión (desventaja más allá de 15 pies)",
+        "propiedades": "Munición, Recarga, A dos manos, Dispersión (desventaja más allá de 15 pies (3 casillas))",
         "competencia": "Armas de fuego",
         "atributo": "destreza",
         "alcance": "15/45",
@@ -350,7 +350,7 @@
         "alcance": "80/240",
         "peso": "8 lb"
       },
-      "descripcion": "<b>Ráfaga.</b> Como acción, gastas 10 balas para rociar un cubo de 10 pies a su alcance normal: cada criatura del área supera una salvación de Destreza CD 15 o recibe el daño del arma."
+      "descripcion": "<b>Ráfaga.</b> Como acción, gastas 10 balas para rociar un cubo de 10 pies (2 casillas) a su alcance normal: cada criatura del área supera una salvación de Destreza CD 15 o recibe el daño del arma."
     },
     {
       "id": "puno-hidraulico",
@@ -636,7 +636,7 @@
       ],
       "resultado": {
         "tipo": "objeto",
-        "nota": "Lanza un garfio con 50 pies de cuerda (acción)."
+        "nota": "Lanza un garfio con 50 pies (10 casillas) de cuerda (acción)."
       },
       "descripcion": "Un arpón de muelle con cuerda enrollada."
     },
@@ -656,7 +656,7 @@
       "ranuras": [],
       "resultado": {
         "tipo": "objeto",
-        "nota": "Acción: lánzala a 60 pies. Explota en un radio de 20 pies: salvación de Destreza CD 15; 5d6 de daño perforante si falla, la mitad si tiene éxito. Un solo uso."
+        "nota": "Acción: lánzala a 60 pies (12 casillas). Explota en un radio de 20 pies (4 casillas): salvación de Destreza CD 15; 5d6 de daño perforante si falla, la mitad si tiene éxito. Un solo uso."
       },
       "descripcion": "Como la granada de fragmentación de la Guía del Dungeon Master."
     },
@@ -683,7 +683,7 @@
       ],
       "resultado": {
         "tipo": "objeto",
-        "nota": "Vehículo Grande para 2 personas: velocidad 60 pies, CA 15, 40 PG. Consume combustible (1 de Reactivos alquímicos por 8 horas)."
+        "nota": "Vehículo Grande para 2 personas: velocidad 60 pies (12 casillas), CA 15, 40 PG. Consume combustible (1 de Reactivos alquímicos por 8 horas)."
       },
       "descripcion": "Dos ruedas, una caldera y mucho ruido."
     }
@@ -729,7 +729,7 @@
         "tuberias": 1,
         "tela": 1
       },
-      "efecto": "El disparo solo se oye a 10 pies."
+      "efecto": "El disparo solo se oye a 10 pies (2 casillas)."
     },
     {
       "id": "canon-doble",
@@ -770,7 +770,7 @@
         "lentes": 2,
         "cableado": 1
       },
-      "efecto": "A través de la mira ves en la oscuridad hasta 60 pies."
+      "efecto": "A través de la mira ves en la oscuridad hasta 60 pies (12 casillas)."
     },
     {
       "id": "carga-rapida",
@@ -985,7 +985,7 @@
         "quimicos": 2,
         "nucleo": 1
       },
-      "efecto": "4 Energía: velocidad de vuelo de 30 pies durante 1 minuto."
+      "efecto": "4 Energía: velocidad de vuelo de 30 pies (6 casillas) durante 1 minuto."
     },
     {
       "id": "generador-de-escudo",

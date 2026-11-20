@@ -164,7 +164,7 @@
         {
           "id": "lanzamiento-potente",
           "nombre": "Lanzamiento Potente",
-          "descripcion": "Añade tu modificador de Sabiduría al daño que infliges con cualquier cantrip de Druida. A nivel 15, el alcance de tus cantrips de Druida de 10 pies o más aumenta en 300 pies."
+          "descripcion": "Añade tu modificador de Sabiduría al daño que infliges con cualquier cantrip de Druida. A nivel 15, el alcance de tus cantrips de Druida de 10 pies (2 casillas) o más aumenta en 300 pies (60 casillas)."
         },
         {
           "id": "golpe-primal",
@@ -462,7 +462,7 @@
                 "subBlockDos": {
                   "subName": "Ayuda de la Tierra",
                   "subTitleName": "✦ AYUDA DE LA TIERRA ✦",
-                  "subDescripcion": "Como una acción mágica, puedes gastar un uso de tu Forma Salvaje y elegir un punto dentro de 60 pies de ti. Flores que otorgan vitalidad y espinas que drenan la vida aparecen por un momento en una esfera de 10 pies de radio centrada en ese punto. Cada criatura de tu elección en la esfera debe realizar una tirada de salvación de Constitución contra tu DC de salvación de hechizo, sufriendo 2d6 de daño Necrótico en una salvación fallida o la mitad en una salvación exitosa. Una criatura de tu elección en esa área recupera 2d6 de Puntos de Golpe. El daño y la curación aumentan en 1d6 cuando alcanzas los niveles 10 (3d6) y 14 (4d6)."
+                  "subDescripcion": "Como una acción mágica, puedes gastar un uso de tu Forma Salvaje y elegir un punto dentro de 60 pies (12 casillas) de ti. Flores que otorgan vitalidad y espinas que drenan la vida aparecen por un momento en una esfera de 10 pies (2 casillas) de radio centrada en ese punto. Cada criatura de tu elección en la esfera debe realizar una tirada de salvación de Constitución contra tu DC de salvación de hechizo, sufriendo 2d6 de daño Necrótico en una salvación fallida o la mitad en una salvación exitosa. Una criatura de tu elección en esa área recupera 2d6 de Puntos de Golpe. El daño y la curación aumentan en 1d6 cuando alcanzas los niveles 10 (3d6) y 14 (4d6)."
                 }
               }
             },
@@ -495,7 +495,7 @@
                 "subBlockUno": {
                   "subName": "Santuario de la Naturaleza",
                   "subTitleName": "✦ SANTUARIO DE LA NATURALEZA ✦",
-                  "subDescripcion": "Como acción mágica, puedes gastar un uso de tu Forma Salvaje y hacer que aparezcan árboles y vides espectrales en un cubo de 15 pies en el suelo a una distancia de hasta 120 pies de ti. Duran 1 minuto o hasta que tengas la condición de Incapacitado o mueras. Tú y tus aliados tienen media cobertura mientras estén en esa área, y tus aliados obtienen la resistencia actual de tu Protección de la Naturaleza mientras estén allí.\nComo acción adicional, puedes mover el cubo hasta 60 pies a una distancia de hasta 120 pies de ti."
+                  "subDescripcion": "Como acción mágica, puedes gastar un uso de tu Forma Salvaje y hacer que aparezcan árboles y vides espectrales en un cubo de 15 pies (3 casillas) en el suelo a una distancia de hasta 120 pies (24 casillas) de ti. Duran 1 minuto o hasta que tengas la condición de Incapacitado o mueras. Tú y tus aliados tienen media cobertura mientras estén en esa área, y tus aliados obtienen la resistencia actual de tu Protección de la Naturaleza mientras estén allí.\nComo acción adicional, puedes mover el cubo hasta 60 pies (12 casillas) a una distancia de hasta 120 pies (24 casillas) de ti."
                 }
               }
             }
@@ -593,7 +593,7 @@
                 "subBlockUno": {
                   "subName": "Paso de Luz Lunar",
                   "subTitleName": "✦ PASO DE LUZ LUNAR ✦",
-                  "subDescripcion": "Te transportas mágicamente, reapareciendo en medio de una ráfaga de luz lunar. Como acción adicional, te teletransportas hasta 30 pies a un espacio desocupado que puedes ver, y tienes Ventaja en el siguiente tiro de ataque que realices antes del final de este turno.\nPuedes usar esta característica un número de veces igual a tu modificador de Sabiduría (mínimo una vez), y recuperas todos los usos gastados cuando terminas un Descanso Largo. También puedes recuperar usos gastando un espacio de hechizo de nivel 2 o superior por cada uso que quieras restaurar (no se requiere acción)."
+                  "subDescripcion": "Te transportas mágicamente, reapareciendo en medio de una ráfaga de luz lunar. Como acción adicional, te teletransportas hasta 30 pies (6 casillas) a un espacio desocupado que puedes ver, y tienes Ventaja en el siguiente tiro de ataque que realices antes del final de este turno.\nPuedes usar esta característica un número de veces igual a tu modificador de Sabiduría (mínimo una vez), y recuperas todos los usos gastados cuando terminas un Descanso Largo. También puedes recuperar usos gastando un espacio de hechizo de nivel 2 o superior por cada uso que quieras restaurar (no se requiere acción)."
                 }
               }
             },
@@ -602,7 +602,7 @@
                 "subBlockUno": {
                   "subName": "Forma Lunar",
                   "subTitleName": "✦ FORMA LUNAR ✦",
-                  "subDescripcion": "El poder de la luna te infunde, otorgándote los siguientes beneficios:\n<b>Radiante Lunar Mejorado:</b> Una vez por turno, puedes causar 2d10 de daño Radiante adicional a un objetivo que hayas golpeado con un ataque de forma de Cambio Salvaje.\n<b>Luz Compartida:</b> Siempre que uses Paso de Luz Lunar, también puedes teletransportar a una criatura dispuesta. Esa criatura debe estar dentro de 10 pies de ti, y la teletransportas a un espacio desocupado que puedas ver dentro de 10 pies de tu espacio de destino."
+                  "subDescripcion": "El poder de la luna te infunde, otorgándote los siguientes beneficios:\n<b>Radiante Lunar Mejorado:</b> Una vez por turno, puedes causar 2d10 de daño Radiante adicional a un objetivo que hayas golpeado con un ataque de forma de Cambio Salvaje.\n<b>Luz Compartida:</b> Siempre que uses Paso de Luz Lunar, también puedes teletransportar a una criatura dispuesta. Esa criatura debe estar dentro de 10 pies (2 casillas) de ti, y la teletransportas a un espacio desocupado que puedas ver dentro de 10 pies (2 casillas) de tu espacio de destino."
                 }
               }
             }
@@ -645,7 +645,7 @@
                 "subBlockDos": {
                   "subName": "Ira del Mar",
                   "subTitleName": "✦ IRA DEL MAR ✦",
-                  "subDescripcion": "Como acción adicional, puedes gastar un uso de tu Forma Salvaje para manifestar una Emanación de 5 pies que toma la forma de un rocío oceánico que te rodea durante 10 minutos. Termina antes si la desechas (sin acción requerida), la manifiestas de nuevo o estás Incapacitado.\nCuando manifiestes la Emanación y como acción adicional en tus turnos siguientes, puedes elegir otra criatura que puedas ver dentro de la Emanación. El objetivo debe tener éxito en una tirada de salvación de Constitución contra tu DC de salvación de hechizos o recibir daño de Frío y, si la criatura es Grande o más pequeña, ser empujada hasta 15 pies lejos de ti. Para determinar este daño, tira un número de d6s igual a tu modificador de Sabiduría (mínimo de un dado)."
+                  "subDescripcion": "Como acción adicional, puedes gastar un uso de tu Forma Salvaje para manifestar una Emanación de 5 pies (1 casilla) que toma la forma de un rocío oceánico que te rodea durante 10 minutos. Termina antes si la desechas (sin acción requerida), la manifiestas de nuevo o estás Incapacitado.\nCuando manifiestes la Emanación y como acción adicional en tus turnos siguientes, puedes elegir otra criatura que puedas ver dentro de la Emanación. El objetivo debe tener éxito en una tirada de salvación de Constitución contra tu DC de salvación de hechizos o recibir daño de Frío y, si la criatura es Grande o más pequeña, ser empujada hasta 15 pies (3 casillas) lejos de ti. Para determinar este daño, tira un número de d6s igual a tu modificador de Sabiduría (mínimo de un dado)."
                 }
               }
             },
@@ -673,7 +673,7 @@
                 "subBlockUno": {
                   "subName": "Afinidad Acuática",
                   "subTitleName": "✦ AFINIDAD ACUÁTICA ✦",
-                  "subDescripcion": "El tamaño de la Emanación creada por tu Ira del Mar aumenta a 10 pies.\nAdemás, obtienes una Velocidad de Nadar igual a tu Velocidad."
+                  "subDescripcion": "El tamaño de la Emanación creada por tu Ira del Mar aumenta a 10 pies (2 casillas).\nAdemás, obtienes una Velocidad de Nadar igual a tu Velocidad."
                 }
               }
             },
@@ -729,7 +729,7 @@
                 "subBlockUno": {
                   "subName": "Regalo Oceánico",
                   "subTitleName": "✦ REGALO OCEÁNICO ✦",
-                  "subDescripcion": "En lugar de manifestar la Emanación de Ira del Mar alrededor de ti, puedes manifestarla alrededor de una criatura dispuesta dentro de un radio de 60 pies de ti. Esa criatura recibe todos los beneficios de la Emanación y usa tu DC de salvación de hechizos y tu modificador de Sabiduría para ella.\nAdemás, puedes manifestar la Emanación alrededor de la otra criatura y de ti mismo si gastas dos usos de tu Forma Salvaje en lugar de uno al manifestarla."
+                  "subDescripcion": "En lugar de manifestar la Emanación de Ira del Mar alrededor de ti, puedes manifestarla alrededor de una criatura dispuesta dentro de un radio de 60 pies (12 casillas) de ti. Esa criatura recibe todos los beneficios de la Emanación y usa tu DC de salvación de hechizos y tu modificador de Sabiduría para ella.\nAdemás, puedes manifestar la Emanación alrededor de la otra criatura y de ti mismo si gastas dos usos de tu Forma Salvaje en lugar de uno al manifestarla."
                 }
               }
             }
@@ -760,7 +760,7 @@
                 "subBlockDos": {
                   "subName": "Forma Estelar",
                   "subTitleName": "✦ FORMA ESTELAR ✦",
-                  "subDescripcion": "Como una acción adicional, puedes gastar un uso de tu habilidad de Forma Salvaje para adoptar una forma estelar en lugar de cambiar de forma.\nMientras estés en tu forma estelar, mantienes tus estadísticas de juego, pero tu cuerpo se vuelve luminoso, tus articulaciones brillan como estrellas y líneas resplandecientes las conectan como en un mapa estelar. Esta forma emite Luz Brillante en un radio de 3 metros (10 pies) y Luz Tenue en un radio adicional de 3 metros (10 pies). La forma dura 10 minutos. Termina si te vuelves Incapacitado o mueres, o si decides terminarla (sin necesidad de acción), te vuelves Incapacitado o usas esta habilidad nuevamente.\nSiempre que asumas tu forma estelar, elige cuál de las siguientes constelaciones brilla en tu cuerpo; tu elección te otorga ciertos beneficios mientras estés en la forma.\n<b>Arquero:</b> Una constelación de un arquero aparece en ti. Cuando actives esta forma y como Acción Bonificada en tus turnos subsecuentes mientras dure, puedes hacer un ataque de hechizo a distancia, lanzando una flecha luminosa que tiene como objetivo a una criatura dentro de 18 metros (60 pies) de ti. Si aciertas, el ataque hace daño Radiante igual a 1d8 más tu modificador de Sabiduría.\n<b>Cáliz:</b> Una constelación de un cáliz que da vida aparece en ti. Siempre que lances un hechizo usando un espacio de hechizo que restaure Puntos de Golpe a una criatura, tú o otra criatura dentro de 9 metros (30 pies) de ti pueden recuperar Puntos de Golpe igual a 1d8 más tu modificador de Sabiduría.\n<b>Dragón:</b> Una constelación de un sabio dragón aparece en ti. Cuando hagas una prueba de Inteligencia o Sabiduría o una tirada de salvación de Constitución para mantener Concentración, puedes tratar una tirada de 9 o menos en el d20 como un 10."
+                  "subDescripcion": "Como una acción adicional, puedes gastar un uso de tu habilidad de Forma Salvaje para adoptar una forma estelar en lugar de cambiar de forma.\nMientras estés en tu forma estelar, mantienes tus estadísticas de juego, pero tu cuerpo se vuelve luminoso, tus articulaciones brillan como estrellas y líneas resplandecientes las conectan como en un mapa estelar. Esta forma emite Luz Brillante en un radio de 3 metros (10 pies (2 casillas)) y Luz Tenue en un radio adicional de 3 metros (10 pies (2 casillas)). La forma dura 10 minutos. Termina si te vuelves Incapacitado o mueres, o si decides terminarla (sin necesidad de acción), te vuelves Incapacitado o usas esta habilidad nuevamente.\nSiempre que asumas tu forma estelar, elige cuál de las siguientes constelaciones brilla en tu cuerpo; tu elección te otorga ciertos beneficios mientras estés en la forma.\n<b>Arquero:</b> Una constelación de un arquero aparece en ti. Cuando actives esta forma y como Acción Bonificada en tus turnos subsecuentes mientras dure, puedes hacer un ataque de hechizo a distancia, lanzando una flecha luminosa que tiene como objetivo a una criatura dentro de 18 metros (60 pies (12 casillas)) de ti. Si aciertas, el ataque hace daño Radiante igual a 1d8 más tu modificador de Sabiduría.\n<b>Cáliz:</b> Una constelación de un cáliz que da vida aparece en ti. Siempre que lances un hechizo usando un espacio de hechizo que restaure Puntos de Golpe a una criatura, tú o otra criatura dentro de 9 metros (30 pies (6 casillas)) de ti pueden recuperar Puntos de Golpe igual a 1d8 más tu modificador de Sabiduría.\n<b>Dragón:</b> Una constelación de un sabio dragón aparece en ti. Cuando hagas una prueba de Inteligencia o Sabiduría o una tirada de salvación de Constitución para mantener Concentración, puedes tratar una tirada de 9 o menos en el d20 como un 10."
                 }
               }
             },
@@ -769,7 +769,7 @@
                 "subBlockUno": {
                   "subName": "Omen Cósmico",
                   "subTitleName": "✦ OMEN CÓSMICO ✦",
-                  "subDescripcion": "Siempre que termines un Descanso Largo, puedes consultar tu Mapa Estelar para obtener presagios y lanzar un dado. Hasta que termines tu siguiente Descanso Largo, obtienes acceso a una Reacción especial basada en si lanzaste un número par o impar en el dado:\n\n<b>Beneficio (Par):</b> Siempre que una criatura que puedas ver dentro de 9 metros (30 pies) de ti esté a punto de hacer una Prueba con un d20, puedes tomar una Reacción para lanzar 1d6 y sumar el número obtenido al total.\n<b>Perjuicio (Impar):</b> Siempre que una criatura que puedas ver dentro de 9 metros (30 pies) de ti esté a punto de hacer una Prueba con un d20, puedes tomar una Reacción para lanzar 1d6 y restar el número obtenido del total.\n\nPuedes usar esta Reacción un número de veces igual a tu modificador de Sabiduría (mínimo una vez), y recuperas todos los usos gastados cuando terminas un Descanso Largo."
+                  "subDescripcion": "Siempre que termines un Descanso Largo, puedes consultar tu Mapa Estelar para obtener presagios y lanzar un dado. Hasta que termines tu siguiente Descanso Largo, obtienes acceso a una Reacción especial basada en si lanzaste un número par o impar en el dado:\n\n<b>Beneficio (Par):</b> Siempre que una criatura que puedas ver dentro de 9 metros (30 pies (6 casillas)) de ti esté a punto de hacer una Prueba con un d20, puedes tomar una Reacción para lanzar 1d6 y sumar el número obtenido al total.\n<b>Perjuicio (Impar):</b> Siempre que una criatura que puedas ver dentro de 9 metros (30 pies (6 casillas)) de ti esté a punto de hacer una Prueba con un d20, puedes tomar una Reacción para lanzar 1d6 y restar el número obtenido del total.\n\nPuedes usar esta Reacción un número de veces igual a tu modificador de Sabiduría (mínimo una vez), y recuperas todos los usos gastados cuando terminas un Descanso Largo."
                 }
               }
             },
@@ -778,7 +778,7 @@
                 "subBlockUno": {
                   "subName": "Constelaciones Brillantes",
                   "subTitleName": "✦ CONSTELACIONES BRILLANTES ✦",
-                  "subDescripcion": "Las constelaciones de tu Forma Estelar mejoran. El 1d8 del Arquero y del Cáliz se convierte en 2d8, y mientras el Dragón está activo, tienes una Velocidad de Vuelo de 6 metros (20 pies) y puedes flotar.\nAdemás, al inicio de cada uno de tus turnos mientras estés en tu Forma Estelar, puedes cambiar cuál constelación brilla en tu cuerpo."
+                  "subDescripcion": "Las constelaciones de tu Forma Estelar mejoran. El 1d8 del Arquero y del Cáliz se convierte en 2d8, y mientras el Dragón está activo, tienes una Velocidad de Vuelo de 6 metros (20 pies (4 casillas)) y puedes flotar.\nAdemás, al inicio de cada uno de tus turnos mientras estés en tu Forma Estelar, puedes cambiar cuál constelación brilla en tu cuerpo."
                 }
               }
             },
@@ -1015,7 +1015,7 @@
         "blockUno": {
           "name": "Furias Elementales Mejoradas",
           "titleName": "✦ FURIAS ELEMENTALES MEJORADAS ✦",
-          "descripcion": "La opción que elegiste para Furias Elementales se vuelve más poderosa, como se detalla a continuación.\n<b>Lanzamiento Potente.</b> Cuando lances un cantrip de Druida con un alcance de 10 pies o más, el alcance del hechizo aumenta en 300 pies.\n<b>Golpe Primal.</b> El daño adicional de tu Golpe Primal aumenta a 2d8."
+          "descripcion": "La opción que elegiste para Furias Elementales se vuelve más poderosa, como se detalla a continuación.\n<b>Lanzamiento Potente.</b> Cuando lances un cantrip de Druida con un alcance de 10 pies (2 casillas) o más, el alcance del hechizo aumenta en 300 pies (60 casillas).\n<b>Golpe Primal.</b> El daño adicional de tu Golpe Primal aumenta a 2d8."
         }
       },
       "infoCubo": {

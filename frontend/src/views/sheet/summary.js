@@ -8,6 +8,7 @@ import { sourcesLabel } from '../../domain/proficiencies.js';
 import { DAMAGE_LABEL } from '../../domain/effects.js';
 import { alignmentStyle } from '../../domain/alignment.js';
 import { resourcesCard, resourceActions } from './resources.js';
+import { feetLabel } from '../../domain/units.js';
 import { candyCard, candyActions } from './candy.js';
 import { textField, numberField, selectField, out, mod, actionButton, sectionCard, bindAttrs } from './common.js';
 
@@ -83,7 +84,7 @@ function combatStrip(ctx) {
           ${unarmoredHint(ctx)}
         </div>
         <div class="stat-box"><span class="stat-box__label">Iniciativa</span><span class="stat-box__value">${out('initiative', mod(sheet.initiative))}</span></div>
-        <div class="stat-box"><span class="stat-box__label">Velocidad</span><span class="stat-box__value">${walk?.value ?? 30}<small> pies</small></span></div>
+        <div class="stat-box"><span class="stat-box__label">Velocidad</span><span class="stat-box__value">${walk?.value ?? 30}<small> pies (${Math.round((walk?.value ?? 30) / 5)} cas.)</small></span></div>
         <div class="stat-box"><span class="stat-box__label">Competencia</span><span class="stat-box__value">${out('proficiency', mod(sheet.proficiency))}</span></div>
         <div class="stat-box"><span class="stat-box__label">Percepción pasiva</span><span class="stat-box__value">${out('passivePerception', sheet.passivePerception)}</span></div>
         <div class="stat-box">
@@ -187,7 +188,7 @@ function otherProficiencies(ctx) {
 function speedsCard(ctx) {
   const extra = ctx.sheet.speeds.filter((s) => s.key !== 'velocidad' && s.value !== null);
   return html`<details class="disclosure">
-    <summary>Velocidades ${extra.length ? html`<span class="badge">${extra.map((s) => `${s.label} ${s.value}`).join(' · ')}</span>` : ''}</summary>
+    <summary>Velocidades ${extra.length ? html`<span class="badge">${extra.map((s) => `${s.label} ${feetLabel(s.value)}`).join(' · ')}</span>` : ''}</summary>
     <div class="disclosure__body">
       <p>Los valores vienen de la raza. Escribe un número para sobrescribirlo o déjalo vacío para usar el de la raza.</p>
       <div class="form-grid">

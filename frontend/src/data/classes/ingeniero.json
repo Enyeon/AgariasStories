@@ -112,7 +112,7 @@
         {
           "id": "extintor",
           "nombre": "Extintor",
-          "descripcion": "<b>Trivial</b> · Guantes · 1 acción · 1 Energía.\nRocías espuma ignífuga en un cono de 15 pies. Apaga las llamas no mágicas descubiertas y se adhiere a las criaturas del área, que tienen ventaja en las salvaciones contra el daño de fuego. La espuma se evapora tras 3 asaltos. Se recarga con un descanso corto o largo.",
+          "descripcion": "<b>Trivial</b> · Guantes · 1 acción · 1 Energía.\nRocías espuma ignífuga en un cono de 15 pies (3 casillas). Apaga las llamas no mágicas descubiertas y se adhiere a las criaturas del área, que tienen ventaja en las salvaciones contra el daño de fuego. La espuma se evapora tras 3 asaltos. Se recarga con un descanso corto o largo.",
           "requisitos": {
             "nivel": 1
           },
@@ -122,7 +122,7 @@
         {
           "id": "dispositivo-de-flotacion",
           "nombre": "Dispositivo de flotación",
-          "descripcion": "<b>Trivial</b> · Cinturón de herramientas · 1 acción · 1 Energía.\nTu cinturón flota durante 1 hora: te mantienes a flote en cualquier líquido en calma y tienes ventaja en las pruebas de Fuerza (Atletismo) para nadar. Si lo activas sumergido, te sube a la superficie a 60 pies por asalto. Puedes desactivarlo con otra interacción.",
+          "descripcion": "<b>Trivial</b> · Cinturón de herramientas · 1 acción · 1 Energía.\nTu cinturón flota durante 1 hora: te mantienes a flote en cualquier líquido en calma y tienes ventaja en las pruebas de Fuerza (Atletismo) para nadar. Si lo activas sumergido, te sube a la superficie a 60 pies (12 casillas) por asalto. Puedes desactivarlo con otra interacción.",
           "requisitos": {
             "nivel": 1
           },
@@ -142,7 +142,7 @@
         {
           "id": "lampara-frontal",
           "nombre": "Lámpara frontal",
-          "descripcion": "<b>Trivial</b> · Tocado · 1 acción · 1 Energía.\nEmite luz brillante en un cono de 30 pies y luz tenue 30 pies más, hacia donde mires. No da calor ni necesita combustible. Se enciende o apaga con una acción.",
+          "descripcion": "<b>Trivial</b> · Tocado · 1 acción · 1 Energía.\nEmite luz brillante en un cono de 30 pies (6 casillas) y luz tenue 30 pies (6 casillas) más, hacia donde mires. No da calor ni necesita combustible. Se enciende o apaga con una acción.",
           "requisitos": {
             "nivel": 1
           },
@@ -192,7 +192,7 @@
         {
           "id": "pistola-de-bengalas",
           "nombre": "Pistola de bengalas",
-          "descripcion": "<b>Trivial</b> · Arma de fuego · 1 acción + 1 ataque · 1 Energía.\nJunto con una acción de Ataque con el arma de fuego que lo lleva, disparas una bengala que arde 1 minuto. En exteriores da luz tenue en 120 pies de radio y se ve a 3 millas; en interiores, luz brillante en 30 pies y tenue 30 más. Si atacas a una criatura con ella, causa 1d4 de daño de fuego en lugar del daño del arma.",
+          "descripcion": "<b>Trivial</b> · Arma de fuego · 1 acción + 1 ataque · 1 Energía.\nJunto con una acción de Ataque con el arma de fuego que lo lleva, disparas una bengala que arde 1 minuto. En exteriores da luz tenue en 120 pies (24 casillas) de radio y se ve a 3 millas; en interiores, luz brillante en 30 pies (6 casillas) y tenue 30 más. Si atacas a una criatura con ella, causa 1d4 de daño de fuego en lugar del daño del arma.",
           "requisitos": {
             "nivel": 1
           },
@@ -230,7 +230,7 @@
         {
           "id": "magitector",
           "nombre": "Magitector",
-          "descripcion": "<b>Trivial</b> · Gafas · Continuo.\nPercibes la presencia de magia a 30 pies de ti. Como acción, ves un aura tenue alrededor de cada criatura u objeto mágico visible del área y sabes su escuela de magia.\n<b>Identificar magia.</b> Aprendes las propiedades de un objeto mágico, si hay conjuros afectándolo y, si lo creó un conjuro, cuál fue.",
+          "descripcion": "<b>Trivial</b> · Gafas · Continuo.\nPercibes la presencia de magia a 30 pies (6 casillas) de ti. Como acción, ves un aura tenue alrededor de cada criatura u objeto mágico visible del área y sabes su escuela de magia.\n<b>Identificar magia.</b> Aprendes las propiedades de un objeto mágico, si hay conjuros afectándolo y, si lo creó un conjuro, cuál fue.",
           "requisitos": {
             "nivel": 1
           },
@@ -260,7 +260,7 @@
         {
           "id": "desfibrilador",
           "nombre": "Desfibrilador",
-          "descripcion": "<b>Simple</b> · Guantes · 1 acción · 2 Energía.\nUna criatura inconsciente y moribunda a 10 pies de ti recupera 1 punto de golpe. Se recarga con un descanso corto o largo.",
+          "descripcion": "<b>Simple</b> · Guantes · 1 acción · 2 Energía.\nUna criatura inconsciente y moribunda a 10 pies (2 casillas) de ti recupera 1 punto de golpe. Se recarga con un descanso corto o largo.",
           "requisitos": {
             "nivel": 1
           },
@@ -270,7 +270,7 @@
         {
           "id": "irradiador-de-alimentos",
           "nombre": "Irradiador de alimentos",
-          "descripcion": "<b>Simple</b> · Guantes · 1 acción · 2 Energía.\nToda la comida y bebida no mágica en una esfera de 5 pies de radio centrada en ti queda purificada, libre de veneno y enfermedad.",
+          "descripcion": "<b>Simple</b> · Guantes · 1 acción · 2 Energía.\nToda la comida y bebida no mágica en una esfera de 5 pies (1 casilla) de radio centrada en ti queda purificada, libre de veneno y enfermedad.",
           "requisitos": {
             "nivel": 1
           },
@@ -290,7 +290,7 @@
         {
           "id": "amortiguador-inercial",
           "nombre": "Amortiguador inercial",
-          "descripcion": "<b>Simple</b> · Calzado · 1 reacción · 2 Energía.\nCuando un efecto te empuja, arrastra o desplaza contra tu voluntad, reduces la distancia hasta 10 pies (20 pies desde el nivel 11 y 30 desde el nivel 17).",
+          "descripcion": "<b>Simple</b> · Calzado · 1 reacción · 2 Energía.\nCuando un efecto te empuja, arrastra o desplaza contra tu voluntad, reduces la distancia hasta 10 pies (2 casillas) (20 pies (4 casillas) desde el nivel 11 y 30 desde el nivel 17).",
           "requisitos": {
             "nivel": 1
           },
@@ -310,7 +310,7 @@
         {
           "id": "gafas-de-vision-nocturna",
           "nombre": "Gafas de visión nocturna",
-          "descripcion": "<b>Simple</b> · Gafas · Continuo.\nTienes visión en la oscuridad a 60 pies; si ya la tenías, su alcance aumenta 15 pies.\n<b>Visión electroscópica.</b> Con una interacción, durante 1 minuto ves las criaturas y objetos invisibles como si fueran visibles.",
+          "descripcion": "<b>Simple</b> · Gafas · Continuo.\nTienes visión en la oscuridad a 60 pies (12 casillas); si ya la tenías, su alcance aumenta 15 pies (3 casillas).\n<b>Visión electroscópica.</b> Con una interacción, durante 1 minuto ves las criaturas y objetos invisibles como si fueran visibles.",
           "requisitos": {
             "nivel": 1
           },
@@ -340,7 +340,7 @@
         {
           "id": "campo-de-recuperacion",
           "nombre": "Campo de recuperación",
-          "descripcion": "<b>Simple</b> · Cinturón de herramientas · Continuo.\nSi tú o una criatura amiga a 60 pies recuperáis puntos de golpe al final de un descanso corto, cada una recupera 1d4 PG adicionales (1d6 desde el nivel 11 y 1d8 desde el 17).",
+          "descripcion": "<b>Simple</b> · Cinturón de herramientas · Continuo.\nSi tú o una criatura amiga a 60 pies (12 casillas) recuperáis puntos de golpe al final de un descanso corto, cada una recupera 1d4 PG adicionales (1d6 desde el nivel 11 y 1d8 desde el 17).",
           "requisitos": {
             "nivel": 1
           },
@@ -350,7 +350,7 @@
         {
           "id": "guantes-taser",
           "nombre": "Guantes táser",
-          "descripcion": "<b>Simple</b> · Guantes · 1 acción · 2 Energía.\nJunto con una acción de Ataque, haces un ataque desarmado contra una criatura a 5 pies, con ventaja si lleva armadura metálica. Si impacta, causa tu daño desarmado más 1d8 de relámpago y no puede realizar reacciones hasta el inicio de su siguiente turno. El daño de relámpago sube a 2d8 en el nivel 11 y a 3d8 en el 17.",
+          "descripcion": "<b>Simple</b> · Guantes · 1 acción · 2 Energía.\nJunto con una acción de Ataque, haces un ataque desarmado contra una criatura a 5 pies (1 casilla), con ventaja si lleva armadura metálica. Si impacta, causa tu daño desarmado más 1d8 de relámpago y no puede realizar reacciones hasta el inicio de su siguiente turno. El daño de relámpago sube a 2d8 en el nivel 11 y a 3d8 en el 17.",
           "requisitos": {
             "nivel": 1
           },
@@ -360,7 +360,7 @@
         {
           "id": "encendedor",
           "nombre": "Encendedor",
-          "descripcion": "<b>Simple</b> · Guantes · Interacción con objeto · 2 Energía.\nProduce una pequeña llama para encender una vela, una antorcha o una fogata.\n<b>Manos calientes.</b> Como acción, lanzas un cono de llamas de 15 pies: cada criatura hace una salvación de Destreza; 2d6 de fuego si falla, la mitad si tiene éxito. Prende los objetos inflamables que nadie lleve. El daño sube a 3d6 en el nivel 11 y a 4d6 en el 17.",
+          "descripcion": "<b>Simple</b> · Guantes · Interacción con objeto · 2 Energía.\nProduce una pequeña llama para encender una vela, una antorcha o una fogata.\n<b>Manos calientes.</b> Como acción, lanzas un cono de llamas de 15 pies (3 casillas): cada criatura hace una salvación de Destreza; 2d6 de fuego si falla, la mitad si tiene éxito. Prende los objetos inflamables que nadie lleve. El daño sube a 3d6 en el nivel 11 y a 4d6 en el 17.",
           "requisitos": {
             "nivel": 1
           },
@@ -370,7 +370,7 @@
         {
           "id": "rociador-de-vapor",
           "nombre": "Rociador de vapor",
-          "descripcion": "<b>Simple</b> · Cinturón de herramientas · 1 reacción · 2 Energía.\nImpones desventaja en la tirada de ataque de una criatura a 5 pies de ti. No afecta a quien no puede quedar Cegado.",
+          "descripcion": "<b>Simple</b> · Cinturón de herramientas · 1 reacción · 2 Energía.\nImpones desventaja en la tirada de ataque de una criatura a 5 pies (1 casilla) de ti. No afecta a quien no puede quedar Cegado.",
           "requisitos": {
             "nivel": 1
           },
@@ -450,7 +450,7 @@
         {
           "id": "escaner-de-vida",
           "nombre": "Escáner de formas de vida",
-          "descripcion": "<b>Avanzado</b> · Cinturón de herramientas · 1 acción · 4 Energía.\nDetectas cuántas criaturas Pequeñas o mayores hay a 100 pies de ti, su tamaño y su distancia y dirección aproximadas. No detecta constructos ni muertos vivientes.",
+          "descripcion": "<b>Avanzado</b> · Cinturón de herramientas · 1 acción · 4 Energía.\nDetectas cuántas criaturas Pequeñas o mayores hay a 100 pies (20 casillas) de ti, su tamaño y su distancia y dirección aproximadas. No detecta constructos ni muertos vivientes.",
           "requisitos": {
             "nivel": 6
           },
@@ -460,7 +460,7 @@
         {
           "id": "protoplasmador",
           "nombre": "Protoplasmador masivo",
-          "descripcion": "<b>Avanzado</b> · Guantes · 1 acción · 4 Energía.\nHasta tres criaturas que puedas ver a 50 pies recuperan 3d6 + tu modificador de Inteligencia PG (4d6 en el nivel 11 y 6d6 en el 17). Funciona en seres vivos y constructos, no en muertos vivientes.",
+          "descripcion": "<b>Avanzado</b> · Guantes · 1 acción · 4 Energía.\nHasta tres criaturas que puedas ver a 50 pies (10 casillas) recuperan 3d6 + tu modificador de Inteligencia PG (4d6 en el nivel 11 y 6d6 en el 17). Funciona en seres vivos y constructos, no en muertos vivientes.",
           "requisitos": {
             "nivel": 6
           },
@@ -510,7 +510,7 @@
         {
           "id": "optivisor-avanzado",
           "nombre": "Optivisor avanzado",
-          "descripcion": "<b>Intrincado</b> · Gafas · 1 acción · 6 Energía.\nObtienes visión verdadera hasta 120 pies: ves puertas ocultas y secretas y la región fronteriza del Plano Etéreo. Se recarga con un descanso corto o largo.",
+          "descripcion": "<b>Intrincado</b> · Gafas · 1 acción · 6 Energía.\nObtienes visión verdadera hasta 120 pies (24 casillas): ves puertas ocultas y secretas y la región fronteriza del Plano Etéreo. Se recarga con un descanso corto o largo.",
           "requisitos": {
             "nivel": 11
           },
@@ -520,7 +520,7 @@
         {
           "id": "generador-de-invisibilidad",
           "nombre": "Generador de invisibilidad",
-          "descripcion": "<b>Intrincado</b> · Cinturón de herramientas · 1 acción · 6 Energía.\nProyectas una esfera de 10 pies de radio que se mueve contigo: tú y las criaturas dentro sois invisibles para quien esté fuera (con lo que lleváis encima). Dura 1 minuto o hasta que la canceles con una interacción.",
+          "descripcion": "<b>Intrincado</b> · Cinturón de herramientas · 1 acción · 6 Energía.\nProyectas una esfera de 10 pies (2 casillas) de radio que se mueve contigo: tú y las criaturas dentro sois invisibles para quien esté fuera (con lo que lleváis encima). Dura 1 minuto o hasta que la canceles con una interacción.",
           "requisitos": {
             "nivel": 11
           },
@@ -530,7 +530,7 @@
         {
           "id": "mochila-propulsora",
           "nombre": "Mochila propulsora",
-          "descripcion": "<b>Intrincado</b> · Capa · 1 acción · 6 Energía.\nDurante 1 minuto tienes una velocidad de vuelo de 45 pies. Si sigues en el aire al terminar, caes.",
+          "descripcion": "<b>Intrincado</b> · Capa · 1 acción · 6 Energía.\nDurante 1 minuto tienes una velocidad de vuelo de 45 pies (9 casillas). Si sigues en el aire al terminar, caes.",
           "requisitos": {
             "nivel": 11
           },
@@ -540,7 +540,7 @@
         {
           "id": "taladro-minero",
           "nombre": "Taladro minero",
-          "descripcion": "<b>Intrincado</b> · Guantes · 1 acción · 6 Energía.\nObtienes una velocidad de excavar de 15 pies hasta el final de tu segundo turno siguiente, dejando un túnel de 5 pies de ancho y tan alto como tú.",
+          "descripcion": "<b>Intrincado</b> · Guantes · 1 acción · 6 Energía.\nObtienes una velocidad de excavar de 15 pies (3 casillas) hasta el final de tu segundo turno siguiente, dejando un túnel de 5 pies (1 casilla) de ancho y tan alto como tú.",
           "requisitos": {
             "nivel": 11
           },
@@ -550,7 +550,7 @@
         {
           "id": "teletransportador",
           "nombre": "Teletransportador",
-          "descripcion": "<b>Intrincado</b> · Cinturón de herramientas · 1 acción · 6 Energía.\nTe teletransportas con lo que llevas a un punto que veas a 100 pies. En tus dos turnos siguientes puedes repetirlo una vez por turno como acción adicional. Si el destino está ocupado, recibes 4d6 de daño de fuerza y no te teletransportas.",
+          "descripcion": "<b>Intrincado</b> · Cinturón de herramientas · 1 acción · 6 Energía.\nTe teletransportas con lo que llevas a un punto que veas a 100 pies (20 casillas). En tus dos turnos siguientes puedes repetirlo una vez por turno como acción adicional. Si el destino está ocupado, recibes 4d6 de daño de fuerza y no te teletransportas.",
           "requisitos": {
             "nivel": 11
           },
@@ -560,7 +560,7 @@
         {
           "id": "maquina-sismica",
           "nombre": "Máquina sísmica",
-          "descripcion": "<b>Intrincado</b> · Cinturón de herramientas · 1 acción · 6 Energía.\nColocas un reactor sísmico a 10 pies. Al inicio de tu siguiente turno provoca un temblor en un círculo de 50 pies de radio: el suelo se vuelve terreno difícil, cada criatura en el suelo supera una salvación de Destreza o queda Derribada y cada estructura en contacto con el suelo recibe 50 de daño contundente (si cae a 0 PG, se derrumba y puede dañar a las criaturas cercanas). Se repite al inicio de tus dos turnos siguientes, salvo que lo detengas con una acción. Se recarga con un descanso corto o largo.",
+          "descripcion": "<b>Intrincado</b> · Cinturón de herramientas · 1 acción · 6 Energía.\nColocas un reactor sísmico a 10 pies (2 casillas). Al inicio de tu siguiente turno provoca un temblor en un círculo de 50 pies (10 casillas) de radio: el suelo se vuelve terreno difícil, cada criatura en el suelo supera una salvación de Destreza o queda Derribada y cada estructura en contacto con el suelo recibe 50 de daño contundente (si cae a 0 PG, se derrumba y puede dañar a las criaturas cercanas). Se repite al inicio de tus dos turnos siguientes, salvo que lo detengas con una acción. Se recarga con un descanso corto o largo.",
           "requisitos": {
             "nivel": 11
           },
@@ -570,7 +570,7 @@
         {
           "id": "zona-de-dilatacion-temporal",
           "nombre": "Zona de dilatación temporal",
-          "descripcion": "<b>Intrincado</b> · Cinturón de herramientas · 1 acción · 6 Energía.\nEliges un punto a 60 pies: durante 1 minuto, en una esfera de 20 pies de radio el tiempo se ralentiza. Moverse cuesta el doble, hay −2 a las salvaciones de Destreza y ninguna criatura puede hacer más de un ataque en su turno. Puedes terminarlo con una interacción. Se recarga con un descanso corto o largo.",
+          "descripcion": "<b>Intrincado</b> · Cinturón de herramientas · 1 acción · 6 Energía.\nEliges un punto a 60 pies (12 casillas): durante 1 minuto, en una esfera de 20 pies (4 casillas) de radio el tiempo se ralentiza. Moverse cuesta el doble, hay −2 a las salvaciones de Destreza y ninguna criatura puede hacer más de un ataque en su turno. Puedes terminarlo con una interacción. Se recarga con un descanso corto o largo.",
           "requisitos": {
             "nivel": 11
           },
@@ -606,27 +606,27 @@
         {
           "id": "lanzallamas",
           "nombre": "Lanzallamas",
-          "descripcion": "Una máquina que imita el aliento de un dragón: un depósito de combustible alquímico a la espalda y una boquilla que lo proyecta y enciende en una línea de 40 pies. Una criatura que recibe daño del lanzallamas arde: 1d4 de daño de fuego al inicio de cada uno de sus turnos (no se acumula), hasta que use una acción y supere una prueba de Destreza CD 15 para apagarse.\n<b>Llamarada (3 Energía).</b> Como acción, disparas un chorro continuo: haz una tirada de ataque a distancia contra cada criatura de la línea; cada impacto causa 1d6 + tu modificador de Inteligencia de daño de fuego (2d6 en el nivel 7, 3d6 en el 13 y 4d6 en el 19).\n<b>Cortina de humo (2 Energía).</b> Como acción adicional, una nube de brasas de 20 pies de radio a tu alrededor crea una zona muy oscura para todos salvo tú durante 1d6 asaltos, o hasta que un viento fuerte la disperse.\n<b>Napalm (6 Energía).</b> Lanzas un proyectil a un punto a 60 pies: un área de 20 pies de radio se vuelve terreno difícil y los materiales inflamables que nadie lleve se prenden. Las criaturas del área reciben 1d8 de daño de fuego cada asalto (2d8 en el nivel 7, 3d8 en el 13 y 4d8 en el 19) durante 2 asaltos.\n<b>Respiradero (4 Energía).</b> Un chorro de vapor empuja a una criatura u objeto 10 pies sin dañarlo (15 en el nivel 7, 20 en el 13 y 25 en el 19). Apaga velas y antorchas, y las llamas protegidas (faroles) tienen un 50 % de probabilidad de apagarse."
+          "descripcion": "Una máquina que imita el aliento de un dragón: un depósito de combustible alquímico a la espalda y una boquilla que lo proyecta y enciende en una línea de 40 pies (8 casillas). Una criatura que recibe daño del lanzallamas arde: 1d4 de daño de fuego al inicio de cada uno de sus turnos (no se acumula), hasta que use una acción y supere una prueba de Destreza CD 15 para apagarse.\n<b>Llamarada (3 Energía).</b> Como acción, disparas un chorro continuo: haz una tirada de ataque a distancia contra cada criatura de la línea; cada impacto causa 1d6 + tu modificador de Inteligencia de daño de fuego (2d6 en el nivel 7, 3d6 en el 13 y 4d6 en el 19).\n<b>Cortina de humo (2 Energía).</b> Como acción adicional, una nube de brasas de 20 pies (4 casillas) de radio a tu alrededor crea una zona muy oscura para todos salvo tú durante 1d6 asaltos, o hasta que un viento fuerte la disperse.\n<b>Napalm (6 Energía).</b> Lanzas un proyectil a un punto a 60 pies (12 casillas): un área de 20 pies (4 casillas) de radio se vuelve terreno difícil y los materiales inflamables que nadie lleve se prenden. Las criaturas del área reciben 1d8 de daño de fuego cada asalto (2d8 en el nivel 7, 3d8 en el 13 y 4d8 en el 19) durante 2 asaltos.\n<b>Respiradero (4 Energía).</b> Un chorro de vapor empuja a una criatura u objeto 10 pies (2 casillas) sin dañarlo (15 en el nivel 7, 20 en el 13 y 25 en el 19). Apaga velas y antorchas, y las llamas protegidas (faroles) tienen un 50 % de probabilidad de apagarse."
         },
         {
           "id": "llave-inglesa-multiple",
           "nombre": "Llave inglesa múltiple",
-          "descripcion": "Es una llave, un arma y un artefacto. Una gran llave con una carcasa metálica giratoria en la punta que sirve como maza (1d6 de daño contundente) y como herramienta: +2 a las tiradas de ataque y daño con ella, y +2 a las pruebas para construir o reparar algo mientras la llevas.\n<b>Rebote (2 Energía).</b> Como acción, la lanzas (alcance 20/60): ataque a distancia que causa su daño más 1d4 + tu modificador de Inteligencia de relámpago, y cuenta como mágico para superar resistencias. Vuelve a tu mano, y sin coste puede golpear también a una segunda criatura a 10 pies de la primera. El dado de relámpago sube a 2d4 en el nivel 7, 3d4 en el 13 y 4d4 en el 19.\n<b>Reparación eficiente.</b> Reparas un objeto dañado de piedra, metal o madera a 30 pies. Como acción adicional, reparas a un constructo a 10 pies (con al menos 1 PG) 1d6 + tu modificador de Inteligencia PG (2d6 en el nivel 7, 3d6 en el 13 y 4d6 en el 19); puedes gastar hasta 4 Energía para sumar 1d6 por punto.\n<b>Pulso de fuerza (4 Energía).</b> Como acción, cada criatura de tamaño Diminuto a Grande a 10 pies hace una salvación de Fuerza; si falla, queda Ensordecida y Derribada hasta el final de tu siguiente turno. El radio sube a 15 pies en el nivel 7, 20 en el 13 y 25 en el 19.\n<b>Ganzúa (3 Energía).</b> Intentas abrir una cerradura mecánica o desactivar una trampa mecánica que veas y sumas 1d4 + tu bonificador por competencia a la prueba (2d4 en el nivel 7, 3d4 en el 13 y 4d4 en el 19). Si hay varias cerraduras, solo abre una."
+          "descripcion": "Es una llave, un arma y un artefacto. Una gran llave con una carcasa metálica giratoria en la punta que sirve como maza (1d6 de daño contundente) y como herramienta: +2 a las tiradas de ataque y daño con ella, y +2 a las pruebas para construir o reparar algo mientras la llevas.\n<b>Rebote (2 Energía).</b> Como acción, la lanzas (alcance 20/60): ataque a distancia que causa su daño más 1d4 + tu modificador de Inteligencia de relámpago, y cuenta como mágico para superar resistencias. Vuelve a tu mano, y sin coste puede golpear también a una segunda criatura a 10 pies (2 casillas) de la primera. El dado de relámpago sube a 2d4 en el nivel 7, 3d4 en el 13 y 4d4 en el 19.\n<b>Reparación eficiente.</b> Reparas un objeto dañado de piedra, metal o madera a 30 pies (6 casillas). Como acción adicional, reparas a un constructo a 10 pies (2 casillas) (con al menos 1 PG) 1d6 + tu modificador de Inteligencia PG (2d6 en el nivel 7, 3d6 en el 13 y 4d6 en el 19); puedes gastar hasta 4 Energía para sumar 1d6 por punto.\n<b>Pulso de fuerza (4 Energía).</b> Como acción, cada criatura de tamaño Diminuto a Grande a 10 pies (2 casillas) hace una salvación de Fuerza; si falla, queda Ensordecida y Derribada hasta el final de tu siguiente turno. El radio sube a 15 pies (3 casillas) en el nivel 7, 20 en el 13 y 25 en el 19.\n<b>Ganzúa (3 Energía).</b> Intentas abrir una cerradura mecánica o desactivar una trampa mecánica que veas y sumas 1d4 + tu bonificador por competencia a la prueba (2d4 en el nivel 7, 3d4 en el 13 y 4d4 en el 19). Si hay varias cerraduras, solo abre una."
         },
         {
           "id": "omnibaculo-magitecnico",
           "nombre": "Omnibáculo magitécnico",
-          "descripcion": "Un bastón con un cristal de arcanita que almacena energía. Funciona como bastón (1d6 contundente, versátil 1d8). Sus impactos cuerpo a cuerpo contra constructos u objetos mecánicos causan 1d4 de relámpago adicional. Cuando recibes daño de relámpago, puedes usar tu reacción para recuperar 1d4 Energía (hasta tres veces; se renueva con un descanso corto o largo).\n<b>Deflector de conjuros (4 Energía).</b> Hasta tu siguiente turno sumas 1d4 a tus salvaciones contra conjuros (2d4 en el nivel 7, 3d4 en el 13 y 4d4 en el 19). Si superas la salvación contra un conjuro que solo te tenía a ti como objetivo, puedes devolverlo a su lanzador con su nivel, CD, bonificador y atributo.\n<b>Pararrayos (Energía variable).</b> Como acción, gastas hasta tu bonificador por competencia en Energía: cada criatura a 20 pies de ti hace una salvación de Destreza; si falla, recibe 1d4 de relámpago por cada punto gastado (2d4 por punto en el nivel 7, 3d4 en el 13 y 4d4 en el 19); si tiene éxito, no puede realizar reacciones hasta el inicio de su siguiente turno."
+          "descripcion": "Un bastón con un cristal de arcanita que almacena energía. Funciona como bastón (1d6 contundente, versátil 1d8). Sus impactos cuerpo a cuerpo contra constructos u objetos mecánicos causan 1d4 de relámpago adicional. Cuando recibes daño de relámpago, puedes usar tu reacción para recuperar 1d4 Energía (hasta tres veces; se renueva con un descanso corto o largo).\n<b>Deflector de conjuros (4 Energía).</b> Hasta tu siguiente turno sumas 1d4 a tus salvaciones contra conjuros (2d4 en el nivel 7, 3d4 en el 13 y 4d4 en el 19). Si superas la salvación contra un conjuro que solo te tenía a ti como objetivo, puedes devolverlo a su lanzador con su nivel, CD, bonificador y atributo.\n<b>Pararrayos (Energía variable).</b> Como acción, gastas hasta tu bonificador por competencia en Energía: cada criatura a 20 pies (4 casillas) de ti hace una salvación de Destreza; si falla, recibe 1d4 de relámpago por cada punto gastado (2d4 por punto en el nivel 7, 3d4 en el 13 y 4d4 en el 19); si tiene éxito, no puede realizar reacciones hasta el inicio de su siguiente turno."
         },
         {
           "id": "guantelete-steam",
           "nombre": "Guantelete S.T.E.A.M.",
-          "descripcion": "Un guante enorme impulsado por vapor (S.T.E.A.M.: «Super Tenaz y Ejemplar Amplificador Mecánico») que cubre tu brazo principal. +2 a las pruebas para forzar puertas atascadas, cerradas o atrancadas. Cuenta como una pieza de armadura pesada parcial. Sus impactos cuerpo a cuerpo causan 1d4 + tu modificador de Fuerza + tu bonificador por competencia de daño de fuerza.\n<b>Agarre cohete (2 Energía).</b> Como acción, el puño se separa y hace un ataque de agarre a distancia contra una criatura a 10 pies y la atrae hacia ti; mientras no intente escapar, mantienes el agarre sin esfuerzo. También puedes agarrar objetos lejanos y tirar de ti hacia ellos. Alcance: 15 pies en el nivel 7, 20 en el 13 y 25 en el 19.\n<b>Rompeyelmos (4 Energía).</b> Un ataque que causa 1d6 + tu modificador de Fuerza de daño contundente (2d6 en el nivel 7, 3d6 en el 13 y 4d6 en el 19), empuja al objetivo 5 pies por cada punto de tu modificador de Fuerza y lo deja Derribado.\n<b>Barrera de vapor (6 Energía).</b> Una barrera semisólida de vapor absorbe 2d8 + tu modificador de Constitución de daño antes de deshacerse (3d8 en el nivel 7, 4d8 en el 13 y 5d8 en el 19). No puedes atacar mientras la mantienes. Como reacción, empujas 5 pies a un enemigo que se acerque; si un enemigo llega a tu alcance, puedes descargar los PG restantes de la barrera como daño contra él."
+          "descripcion": "Un guante enorme impulsado por vapor (S.T.E.A.M.: «Super Tenaz y Ejemplar Amplificador Mecánico») que cubre tu brazo principal. +2 a las pruebas para forzar puertas atascadas, cerradas o atrancadas. Cuenta como una pieza de armadura pesada parcial. Sus impactos cuerpo a cuerpo causan 1d4 + tu modificador de Fuerza + tu bonificador por competencia de daño de fuerza.\n<b>Agarre cohete (2 Energía).</b> Como acción, el puño se separa y hace un ataque de agarre a distancia contra una criatura a 10 pies (2 casillas) y la atrae hacia ti; mientras no intente escapar, mantienes el agarre sin esfuerzo. También puedes agarrar objetos lejanos y tirar de ti hacia ellos. Alcance: 15 pies (3 casillas) en el nivel 7, 20 en el 13 y 25 en el 19.\n<b>Rompeyelmos (4 Energía).</b> Un ataque que causa 1d6 + tu modificador de Fuerza de daño contundente (2d6 en el nivel 7, 3d6 en el 13 y 4d6 en el 19), empuja al objetivo 5 pies (1 casilla) por cada punto de tu modificador de Fuerza y lo deja Derribado.\n<b>Barrera de vapor (6 Energía).</b> Una barrera semisólida de vapor absorbe 2d8 + tu modificador de Constitución de daño antes de deshacerse (3d8 en el nivel 7, 4d8 en el 13 y 5d8 en el 19). No puedes atacar mientras la mantienes. Como reacción, empujas 5 pies (1 casilla) a un enemigo que se acerque; si un enemigo llega a tu alcance, puedes descargar los PG restantes de la barrera como daño contra él."
         },
         {
           "id": "dispositivo-granadas-elixir",
           "nombre": "Dispositivo de granadas de elixir (D.G.E.)",
-          "descripcion": "Una mochila que es un laboratorio químico móvil: los viales de las correas se rellenan dentro con jeringas de químicos explosivos. Crear una granada es una acción adicional y lanzarla, una acción. Se lanzan a un punto a 20 pies y explotan en un radio de 10 pies (el DM puede permitir lanzarlas por otros medios).\n<b>Granada elemental.</b> Las criaturas del radio superan una salvación de Destreza o reciben 1d6 de daño; cada punto de Energía gastado añade 1d6 (hasta 3 Energía; 4 en el nivel 7, 5 en el 13 y 6 en el 19). Tipos: <i>ácido</i> (quien falle recibe además daño de ácido igual a tu modificador de Inteligencia al inicio de tu siguiente turno), <i>frío</i> (su velocidad se reduce a la mitad hasta el final de tu siguiente turno, salvo inmunidad al frío), <i>fuego</i> (arde: 1d4 de fuego al inicio de cada turno hasta que se apague) o <i>relámpago</i> (si está a la mitad de sus PG o menos, queda Aturdida 1 asalto).\n<b>Polvo de destello (3 Energía).</b> Cada criatura en el radio supera una salvación de Constitución o queda Cegada hasta el final de tu siguiente turno. El radio sube a 15 pies en el nivel 7, 20 en el 13 y 25 en el 19.\n<b>Humo denso (3 Energía).</b> Con una acción lanzas hasta tres granadas de humo; cada nube dura 1d4 asaltos (2d4 en el nivel 7, 3d4 en el 13 y 4d4 en el 19) y ciega a quien empiece su turno dentro.\n<b>Doble lanzamiento (4 Energía).</b> Creas dos granadas con una acción adicional y las lanzas con una sola acción, a objetivos distintos y con 5 pies más de alcance (10 en el nivel 7, 15 en el 13 y 20 en el 19)."
+          "descripcion": "Una mochila que es un laboratorio químico móvil: los viales de las correas se rellenan dentro con jeringas de químicos explosivos. Crear una granada es una acción adicional y lanzarla, una acción. Se lanzan a un punto a 20 pies (4 casillas) y explotan en un radio de 10 pies (2 casillas) (el DM puede permitir lanzarlas por otros medios).\n<b>Granada elemental.</b> Las criaturas del radio superan una salvación de Destreza o reciben 1d6 de daño; cada punto de Energía gastado añade 1d6 (hasta 3 Energía; 4 en el nivel 7, 5 en el 13 y 6 en el 19). Tipos: <i>ácido</i> (quien falle recibe además daño de ácido igual a tu modificador de Inteligencia al inicio de tu siguiente turno), <i>frío</i> (su velocidad se reduce a la mitad hasta el final de tu siguiente turno, salvo inmunidad al frío), <i>fuego</i> (arde: 1d4 de fuego al inicio de cada turno hasta que se apague) o <i>relámpago</i> (si está a la mitad de sus PG o menos, queda Aturdida 1 asalto).\n<b>Polvo de destello (3 Energía).</b> Cada criatura en el radio supera una salvación de Constitución o queda Cegada hasta el final de tu siguiente turno. El radio sube a 15 pies (3 casillas) en el nivel 7, 20 en el 13 y 25 en el 19.\n<b>Humo denso (3 Energía).</b> Con una acción lanzas hasta tres granadas de humo; cada nube dura 1d4 asaltos (2d4 en el nivel 7, 3d4 en el 13 y 4d4 en el 19) y ciega a quien empiece su turno dentro.\n<b>Doble lanzamiento (4 Energía).</b> Creas dos granadas con una acción adicional y las lanzas con una sola acción, a objetivos distintos y con 5 pies (1 casilla) más de alcance (10 en el nivel 7, 15 en el 13 y 20 en el 19)."
         }
       ]
     }
@@ -1229,7 +1229,7 @@
                 "subBlockUno": {
                   "subName": "Caballero de relojería",
                   "subTitleName": "✦ CABALLERO DE RELOJERÍA ✦",
-                  "subDescripcion": "A nivel 3 inventas el constructo más eficiente y versátil: un Caballero de relojería. Construirlo cuesta 4 horas y 100 po en metal, hilos raros y otras materias primas. Regístralo en la pestaña Criaturas.\n<table><thead><tr><th>Rasgo</th><th>Valor</th></tr></thead><tbody><tr><td>Tipo</td><td>Constructo Mediano</td></tr><tr><td>CA</td><td>15</td></tr><tr><td>PG</td><td>25 + 1d4 por cada nivel de Ingeniero por encima del 3</td></tr><tr><td>Velocidad</td><td>30 pies</td></tr><tr><td>Armas</td><td>Armas simples cuerpo a cuerpo y escudos</td></tr><tr><td>Atributos</td><td>FUE 15 (+2), DES 13 (+1), CON 15 (+2), INT 7 (−2), SAB 10 (+0), CAR 3 (−4)</td></tr><tr><td>Idiomas</td><td>Entiende los de su creador, pero no habla</td></tr><tr><td>VD</td><td>3/4</td></tr></tbody></table>\nEs amistoso contigo y tus compañeros y obedece tus órdenes verbales (sin gastar acción). Si no le das órdenes, te protege. Cuando una criatura hostil entra a 10 pies de él en un turno o empieza su turno ahí, hace una salvación de Destreza: 1d6 de daño contundente si falla, la mitad si tiene éxito. A 0 PG deja de funcionar; repararlo cuesta la mitad del tiempo y de los materiales. No necesita respirar, comer, beber ni dormir."
+                  "subDescripcion": "A nivel 3 inventas el constructo más eficiente y versátil: un Caballero de relojería. Construirlo cuesta 4 horas y 100 po en metal, hilos raros y otras materias primas. Regístralo en la pestaña Criaturas.\n<table><thead><tr><th>Rasgo</th><th>Valor</th></tr></thead><tbody><tr><td>Tipo</td><td>Constructo Mediano</td></tr><tr><td>CA</td><td>15</td></tr><tr><td>PG</td><td>25 + 1d4 por cada nivel de Ingeniero por encima del 3</td></tr><tr><td>Velocidad</td><td>30 pies (6 casillas)</td></tr><tr><td>Armas</td><td>Armas simples cuerpo a cuerpo y escudos</td></tr><tr><td>Atributos</td><td>FUE 15 (+2), DES 13 (+1), CON 15 (+2), INT 7 (−2), SAB 10 (+0), CAR 3 (−4)</td></tr><tr><td>Idiomas</td><td>Entiende los de su creador, pero no habla</td></tr><tr><td>VD</td><td>3/4</td></tr></tbody></table>\nEs amistoso contigo y tus compañeros y obedece tus órdenes verbales (sin gastar acción). Si no le das órdenes, te protege. Cuando una criatura hostil entra a 10 pies (2 casillas) de él en un turno o empieza su turno ahí, hace una salvación de Destreza: 1d6 de daño contundente si falla, la mitad si tiene éxito. A 0 PG deja de funcionar; repararlo cuesta la mitad del tiempo y de los materiales. No necesita respirar, comer, beber ni dormir."
                 }
               }
             },
@@ -1238,7 +1238,7 @@
                 "subBlockUno": {
                   "subName": "Insecto mecánico",
                   "subTitleName": "✦ INSECTO MECÁNICO ✦",
-                  "subDescripcion": "A nivel 5 construyes un artefacto con forma de insecto Diminuto (escarabajo, cucaracha, mariposa, grillo…) que vuela, tiene 1 PG y no ataca. Como acción, percibes a través de sus sentidos hasta 100 pies. Puedes construir uno tras un descanso corto o largo, y solo puedes tener uno.\n<b>Transmisión (4 Energía).</b> Viaja hasta 24 horas hacia un lugar que hayas visitado o una persona que describas y le entrega un mensaje con tu voz. Si no la encuentra en 24 horas, se destruye."
+                  "subDescripcion": "A nivel 5 construyes un artefacto con forma de insecto Diminuto (escarabajo, cucaracha, mariposa, grillo…) que vuela, tiene 1 PG y no ataca. Como acción, percibes a través de sus sentidos hasta 100 pies (20 casillas). Puedes construir uno tras un descanso corto o largo, y solo puedes tener uno.\n<b>Transmisión (4 Energía).</b> Viaja hasta 24 horas hacia un lugar que hayas visitado o una persona que describas y le entrega un mensaje con tu voz. Si no la encuentra en 24 horas, se destruye."
                 }
               }
             },
@@ -1278,7 +1278,7 @@
                 "subBlockUno": {
                   "subName": "Corcel de engranajes",
                   "subTitleName": "✦ CORCEL DE ENGRANAJES ✦",
-                  "subDescripcion": "A nivel 19, como acción, tus Caballeros de relojería se fusionan en un caballo de guerra mecánico que te obedece y te sirve de montura dentro y fuera del combate. Mientras lo montas, los efectos que te afectan solo a ti también le afectan a él. Sin órdenes, se protege lo mejor que puede. Como acción, puede desmontarse en dos Caballeros de relojería. Solo puedes tener uno.\n<table><thead><tr><th>Rasgo</th><th>Valor</th></tr></thead><tbody><tr><td>Tipo</td><td>Constructo Grande</td></tr><tr><td>CA</td><td>18</td></tr><tr><td>PG</td><td>50 + 2d4 por cada nivel de Ingeniero por encima del 19</td></tr><tr><td>Velocidad</td><td>60 pies</td></tr><tr><td>Atributos</td><td>FUE 18 (+4), DES 13 (+1), CON 17 (+3), INT 2 (−4), SAB 13 (+1), CAR 6 (−2)</td></tr><tr><td>Idiomas</td><td>Entiende los de su creador, pero no habla</td></tr></tbody></table>\n<i>(El texto original daba CA 30 y modificadores incorrectos; se corrigieron.)</i>"
+                  "subDescripcion": "A nivel 19, como acción, tus Caballeros de relojería se fusionan en un caballo de guerra mecánico que te obedece y te sirve de montura dentro y fuera del combate. Mientras lo montas, los efectos que te afectan solo a ti también le afectan a él. Sin órdenes, se protege lo mejor que puede. Como acción, puede desmontarse en dos Caballeros de relojería. Solo puedes tener uno.\n<table><thead><tr><th>Rasgo</th><th>Valor</th></tr></thead><tbody><tr><td>Tipo</td><td>Constructo Grande</td></tr><tr><td>CA</td><td>18</td></tr><tr><td>PG</td><td>50 + 2d4 por cada nivel de Ingeniero por encima del 19</td></tr><tr><td>Velocidad</td><td>60 pies (12 casillas)</td></tr><tr><td>Atributos</td><td>FUE 18 (+4), DES 13 (+1), CON 17 (+3), INT 2 (−4), SAB 13 (+1), CAR 6 (−2)</td></tr><tr><td>Idiomas</td><td>Entiende los de su creador, pero no habla</td></tr></tbody></table>\n<i>(El texto original daba CA 30 y modificadores incorrectos; se corrigieron.)</i>"
                 }
               }
             }
@@ -1290,12 +1290,12 @@
                 {
                   "id": "modo-centinela",
                   "nombre": "Modo centinela",
-                  "descripcion": "6 Energía: el caballero se transforma en una torreta en un espacio junto a ti y no puede moverse.\n<b>Ataque automatizado.</b> Las criaturas enemigas que entran en un radio de 25 pies de la torreta o empiezan su turno ahí hacen una salvación de Destreza: 1d4 + tu modificador de Inteligencia de daño perforante si fallan, la mitad si tienen éxito (2d4 en el nivel 15, 3d4 en el 17 y 4d4 en el 19)."
+                  "descripcion": "6 Energía: el caballero se transforma en una torreta en un espacio junto a ti y no puede moverse.\n<b>Ataque automatizado.</b> Las criaturas enemigas que entran en un radio de 25 pies (5 casillas) de la torreta o empiezan su turno ahí hacen una salvación de Destreza: 1d4 + tu modificador de Inteligencia de daño perforante si fallan, la mitad si tienen éxito (2d4 en el nivel 15, 3d4 en el 17 y 4d4 en el 19)."
                 },
                 {
                   "id": "modo-giro",
                   "nombre": "Modo giro",
-                  "descripcion": "4 Energía: el caballero se transforma en un dron volador (vuelo 30 pies, +2 a las salvaciones de Destreza y a Sigilo) que no puede alejarse más de 120 pies de ti.\n<b>Guardia aérea.</b> +1d4 a sus pruebas de Percepción, incluso si lo sorprenden o lo ataca alguien invisible (2d4 en el nivel 15, 3d4 en el 17 y 4d4 en el 19); lo pierde si está inmovilizado. Las criaturas enemigas a 25 pies del dron superan una salvación de Destreza o quedan Apresadas por su red y no pueden realizar acciones hasta liberarse."
+                  "descripcion": "4 Energía: el caballero se transforma en un dron volador (vuelo 30 pies (6 casillas), +2 a las salvaciones de Destreza y a Sigilo) que no puede alejarse más de 120 pies (24 casillas) de ti.\n<b>Guardia aérea.</b> +1d4 a sus pruebas de Percepción, incluso si lo sorprenden o lo ataca alguien invisible (2d4 en el nivel 15, 3d4 en el 17 y 4d4 en el 19); lo pierde si está inmovilizado. Las criaturas enemigas a 25 pies (5 casillas) del dron superan una salvación de Destreza o quedan Apresadas por su red y no pueden realizar acciones hasta liberarse."
                 }
               ]
             }
@@ -1317,7 +1317,7 @@
                 "subBlockUno": {
                   "subName": "Circuitos rúnicos",
                   "subTitleName": "✦ CIRCUITOS RÚNICOS ✦",
-                  "subDescripcion": "Al nivel 3 obtienes competencia en Conocimiento Arcano.\n<b>Descarga rúnica (1 Energía).</b> Como acción, haces un ataque a distancia con Inteligencia contra una criatura a 60 pies: 1d6 + tu modificador de Inteligencia de daño de fuerza (1d8 en el nivel 5, 2d6 en el 11 y 2d8 en el 17).\n<b>Sensor taumatúrgico (1 Energía).</b> Como acción, durante 10 minutos percibes la magia a 30 pies y su escuela, como el conjuro Detectar magia (pero no es un conjuro)."
+                  "subDescripcion": "Al nivel 3 obtienes competencia en Conocimiento Arcano.\n<b>Descarga rúnica (1 Energía).</b> Como acción, haces un ataque a distancia con Inteligencia contra una criatura a 60 pies (12 casillas): 1d6 + tu modificador de Inteligencia de daño de fuerza (1d8 en el nivel 5, 2d6 en el 11 y 2d8 en el 17).\n<b>Sensor taumatúrgico (1 Energía).</b> Como acción, durante 10 minutos percibes la magia a 30 pies (6 casillas) y su escuela, como el conjuro Detectar magia (pero no es un conjuro)."
                 }
               }
             },
@@ -1326,7 +1326,7 @@
                 "subBlockUno": {
                   "subName": "Interferencia arcana",
                   "subTitleName": "✦ INTERFERENCIA ARCANA ✦",
-                  "subDescripcion": "A nivel 6, cuando una criatura que puedes ver a 60 pies lanza un conjuro, puedes usar tu reacción y gastar 3 Energía: hace una salvación de Inteligencia contra tu CD de artefacto. Si falla y el conjuro es de nivel igual o inferior a la mitad de tu nivel de Ingeniero (redondeando hacia abajo), falla y el espacio se gasta. Puedes hacerlo tantas veces como tu modificador de Inteligencia (mínimo 1) por descanso largo."
+                  "subDescripcion": "A nivel 6, cuando una criatura que puedes ver a 60 pies (12 casillas) lanza un conjuro, puedes usar tu reacción y gastar 3 Energía: hace una salvación de Inteligencia contra tu CD de artefacto. Si falla y el conjuro es de nivel igual o inferior a la mitad de tu nivel de Ingeniero (redondeando hacia abajo), falla y el espacio se gasta. Puedes hacerlo tantas veces como tu modificador de Inteligencia (mínimo 1) por descanso largo."
                 }
               }
             },
@@ -1371,7 +1371,7 @@
                 "subBlockUno": {
                   "subName": "Autómata compañero",
                   "subTitleName": "✦ AUTÓMATA COMPAÑERO ✦",
-                  "subDescripcion": "Al nivel 3 construyes un autómata Mediano (constructo). Regístralo en la pestaña Criaturas.\n<table><thead><tr><th>Rasgo</th><th>Valor</th></tr></thead><tbody><tr><td>CA</td><td>14 + tu bonificador por competencia</td></tr><tr><td>PG</td><td>5 × tu nivel de Ingeniero + su modificador de Constitución</td></tr><tr><td>Velocidad</td><td>30 pies</td></tr><tr><td>Atributos</td><td>FUE 14, DES 12, CON 14, INT 6, SAB 10, CAR 3</td></tr><tr><td>Golpe</td><td>Tu ataque de artefacto; 1d6 + tu modificador de Inteligencia contundente (1d8 en el nivel 5, 2d6 en el 11, 2d8 en el 17)</td></tr><tr><td>Inmunidades</td><td>Veneno; Envenenado, Hechizado y Agotamiento</td></tr></tbody></table>\nActúa en tu turno; si no le das órdenes (acción adicional), esquiva. A 0 PG lo reparas con 1 hora y 25 po en piezas; si es destruido, reconstruirlo cuesta 8 horas y 100 po."
+                  "subDescripcion": "Al nivel 3 construyes un autómata Mediano (constructo). Regístralo en la pestaña Criaturas.\n<table><thead><tr><th>Rasgo</th><th>Valor</th></tr></thead><tbody><tr><td>CA</td><td>14 + tu bonificador por competencia</td></tr><tr><td>PG</td><td>5 × tu nivel de Ingeniero + su modificador de Constitución</td></tr><tr><td>Velocidad</td><td>30 pies (6 casillas)</td></tr><tr><td>Atributos</td><td>FUE 14, DES 12, CON 14, INT 6, SAB 10, CAR 3</td></tr><tr><td>Golpe</td><td>Tu ataque de artefacto; 1d6 + tu modificador de Inteligencia contundente (1d8 en el nivel 5, 2d6 en el 11, 2d8 en el 17)</td></tr><tr><td>Inmunidades</td><td>Veneno; Envenenado, Hechizado y Agotamiento</td></tr></tbody></table>\nActúa en tu turno; si no le das órdenes (acción adicional), esquiva. A 0 PG lo reparas con 1 hora y 25 po en piezas; si es destruido, reconstruirlo cuesta 8 horas y 100 po."
                 }
               }
             },
@@ -1380,7 +1380,7 @@
                 "subBlockUno": {
                   "subName": "Protocolos de combate",
                   "subTitleName": "✦ PROTOCOLOS DE COMBATE ✦",
-                  "subDescripcion": "A nivel 6 tu autómata ataca dos veces cuando le ordenas atacar y, como reacción, impone desventaja al ataque de una criatura a 5 pies de él contra alguien que no sea él."
+                  "subDescripcion": "A nivel 6 tu autómata ataca dos veces cuando le ordenas atacar y, como reacción, impone desventaja al ataque de una criatura a 5 pies (1 casilla) de él contra alguien que no sea él."
                 }
               }
             },
@@ -1389,7 +1389,7 @@
                 "subBlockUno": {
                   "subName": "Enlace sensorial",
                   "subTitleName": "✦ ENLACE SENSORIAL ✦",
-                  "subDescripcion": "Desde el nivel 10 ves y oyes a través de tu autómata a cualquier distancia en el mismo plano (acción adicional para activarlo o desactivarlo). Como acción, gastando 2 Energía, le reparas 2d8 + tu modificador de Inteligencia PG a 60 pies."
+                  "subDescripcion": "Desde el nivel 10 ves y oyes a través de tu autómata a cualquier distancia en el mismo plano (acción adicional para activarlo o desactivarlo). Como acción, gastando 2 Energía, le reparas 2d8 + tu modificador de Inteligencia PG a 60 pies (12 casillas)."
                 }
               }
             },

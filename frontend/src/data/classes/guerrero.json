@@ -163,7 +163,7 @@
                 {
                   "id": "trampa-y-cambio",
                   "nombre": "Trampa y Cambio",
-                  "descripcion": "Cuando estés dentro de 5 pies de una criatura en tu turno, puedes gastar un Dado de Superioridad y cambiar lugares con esa criatura, siempre que gastes al menos 5 pies de movimiento y la criatura esté dispuesta y no tenga la condición de Incapacitado. Este movimiento no provoca Ataques de Oportunidad. Lanza el Dado de Superioridad. Hasta el inicio de tu próximo turno, tú o la otra criatura (a tu elección) ganan un bono a la CA igual al número obtenido."
+                  "descripcion": "Cuando estés dentro de 5 pies (1 casilla) de una criatura en tu turno, puedes gastar un Dado de Superioridad y cambiar lugares con esa criatura, siempre que gastes al menos 5 pies (1 casilla) de movimiento y la criatura esté dispuesta y no tenga la condición de Incapacitado. Este movimiento no provoca Ataques de Oportunidad. Lanza el Dado de Superioridad. Hasta el inicio de tu próximo turno, tú o la otra criatura (a tu elección) ganan un bono a la CA igual al número obtenido."
                 },
                 {
                   "id": "ataque-del-comandante",
@@ -193,7 +193,7 @@
                 {
                   "id": "ataque-enganoso",
                   "nombre": "Ataque Engañoso",
-                  "descripcion": "Como Acción Adicional, puedes gastar un Dado de Superioridad para hacer un engaño, eligiendo una criatura dentro de 5 pies de ti como tu objetivo. Tienes Ventaja en tu siguiente tirada de ataque contra ese objetivo en este turno. Si ese ataque acierta, añade el Dado de Superioridad a la tirada de daño del ataque."
+                  "descripcion": "Como Acción Adicional, puedes gastar un Dado de Superioridad para hacer un engaño, eligiendo una criatura dentro de 5 pies (1 casilla) de ti como tu objetivo. Tienes Ventaja en tu siguiente tirada de ataque contra ese objetivo en este turno. Si ese ataque acierta, añade el Dado de Superioridad a la tirada de daño del ataque."
                 },
                 {
                   "id": "ataque-provocador",
@@ -203,7 +203,7 @@
                 {
                   "id": "ataque-lunging",
                   "nombre": "Ataque Lunging",
-                  "descripcion": "Como Acción Adicional, puedes gastar un Dado de Superioridad y tomar la acción de Correr. Si te mueves al menos 5 pies en línea recta inmediatamente antes de golpear con un ataque cuerpo a cuerpo como parte de la acción de Ataque en este turno, puedes añadir el Dado de Superioridad a la tirada de daño del ataque."
+                  "descripcion": "Como Acción Adicional, puedes gastar un Dado de Superioridad y tomar la acción de Correr. Si te mueves al menos 5 pies (1 casilla) en línea recta inmediatamente antes de golpear con un ataque cuerpo a cuerpo como parte de la acción de Ataque en este turno, puedes añadir el Dado de Superioridad a la tirada de daño del ataque."
                 },
                 {
                   "id": "ataque-maniobrador",
@@ -228,12 +228,12 @@
                 {
                   "id": "ataque-empujador",
                   "nombre": "Ataque Empujador",
-                  "descripcion": "Cuando aciertes a una criatura con una tirada de ataque usando un arma o un Golpe Desarmado, puedes gastar un Dado de Superioridad para intentar empujar al objetivo hacia atrás. Añade el Dado de Superioridad a la tirada de daño del ataque. Si el objetivo es Grande o más pequeño, debe superar una tirada de salvación de Fuerza o ser empujado hasta 15 pies directamente lejos de ti."
+                  "descripcion": "Cuando aciertes a una criatura con una tirada de ataque usando un arma o un Golpe Desarmado, puedes gastar un Dado de Superioridad para intentar empujar al objetivo hacia atrás. Añade el Dado de Superioridad a la tirada de daño del ataque. Si el objetivo es Grande o más pequeño, debe superar una tirada de salvación de Fuerza o ser empujado hasta 15 pies (3 casillas) directamente lejos de ti."
                 },
                 {
                   "id": "rally",
                   "nombre": "Rally",
-                  "descripcion": "Como Acción Adicional, puedes gastar un Dado de Superioridad para reforzar la determinación de un compañero. Elige a un aliado dentro de 30 pies de ti que pueda verte o escucharte. Esa criatura gana Puntos de Golpe Temporales igual al número del dado de Superioridad más la mitad de tu nivel de Guerrero (redondeado hacia abajo)."
+                  "descripcion": "Como Acción Adicional, puedes gastar un Dado de Superioridad para reforzar la determinación de un compañero. Elige a un aliado dentro de 30 pies (6 casillas) de ti que pueda verte o escucharte. Esa criatura gana Puntos de Golpe Temporales igual al número del dado de Superioridad más la mitad de tu nivel de Guerrero (redondeado hacia abajo)."
                 },
                 {
                   "id": "riposte",
@@ -243,7 +243,7 @@
                 {
                   "id": "ataque-barrido",
                   "nombre": "Ataque Barrido",
-                  "descripcion": "Cuando aciertes a una criatura con una tirada de ataque cuerpo a cuerpo usando un arma o un Golpe Desarmado, puedes gastar un Dado de Superioridad para intentar dañar a otra criatura. Elige otra criatura dentro de 5 pies del objetivo original y dentro de tu alcance. Si la tirada de ataque original acertaría a la segunda criatura, esta recibe daño igual al número que obtuviste en tu Dado de Superioridad. El daño es del mismo tipo que el causado por el ataque original."
+                  "descripcion": "Cuando aciertes a una criatura con una tirada de ataque cuerpo a cuerpo usando un arma o un Golpe Desarmado, puedes gastar un Dado de Superioridad para intentar dañar a otra criatura. Elige otra criatura dentro de 5 pies (1 casilla) del objetivo original y dentro de tu alcance. Si la tirada de ataque original acertaría a la segunda criatura, esta recibe daño igual al número que obtuviste en tu Dado de Superioridad. El daño es del mismo tipo que el causado por el ataque original."
                 },
                 {
                   "id": "evaluacion-tactica",
@@ -317,7 +317,7 @@
                 "subBlockUno": {
                   "subName": "Conoce a tu Enemigo",
                   "subTitleName": "✦ CONOCE A TU ENEMIGO ✦",
-                  "subDescripcion": "Como Acción Adicional, puedes discernir ciertas fortalezas y debilidades de una criatura que puedes ver dentro de 30 pies de ti; sabes si esa criatura tiene alguna Inmunidad, Resistencia o Vulnerabilidad, y si la criatura tiene alguna, sabes cuáles son. Una vez que uses esta característica, no puedes volver a hacerlo hasta que termines un Descanso Largo. También puedes restaurar un uso de la característica gastando un Dado de Superioridad (sin necesidad de acción)."
+                  "subDescripcion": "Como Acción Adicional, puedes discernir ciertas fortalezas y debilidades de una criatura que puedes ver dentro de 30 pies (6 casillas) de ti; sabes si esa criatura tiene alguna Inmunidad, Resistencia o Vulnerabilidad, y si la criatura tiene alguna, sabes cuáles son. Una vez que uses esta característica, no puedes volver a hacerlo hasta que termines un Descanso Largo. También puedes restaurar un uso de la característica gastando un Dado de Superioridad (sin necesidad de acción)."
                 }
               },
               "elegir": {
@@ -566,7 +566,7 @@
                 "subBlockUno": {
                   "subName": "Carga Arcana",
                   "subTitleName": "✦ CARGA ARCANA ✦",
-                  "subDescripcion": "Cuando uses tu Impulso de Acción, puedes teletransportarte hasta 30 pies a un espacio desocupado que puedas ver. Puedes teletransportarte antes o después de la acción adicional."
+                  "subDescripcion": "Cuando uses tu Impulso de Acción, puedes teletransportarte hasta 30 pies (6 casillas) a un espacio desocupado que puedas ver. Puedes teletransportarte antes o después de la acción adicional."
                 }
               }
             },
@@ -615,7 +615,7 @@
                 "subBlockUno": {
                   "subName": "Poder Psíquico",
                   "subTitleName": "✦ PODER PSÍQUICO ✦",
-                  "subDescripcion": "Albergas una fuente de energía psíquica dentro de ti. Se representa mediante tus Dados de Energía Psíquica, que alimentan los poderes que tienes de esta subclase. La tabla de Dados de Energía del Guerrero Psíquico muestra el tamaño de dado y el número de estos dados que tienes cuando alcanzas ciertos niveles de Guerrero.\n\n<b>Dados de Energía del Guerrero Psíquico</b>\n<table><thead><tr><th>Nivel de guerrero</th><th>Dado</th><th>Número</th></tr></thead><tbody><tr><td>3</td><td>D6</td><td>4</td></tr><tr><td>5</td><td>D8</td><td>6</td></tr><tr><td>9</td><td>D8</td><td>8</td></tr><tr><td>11</td><td>D10</td><td>8</td></tr><tr><td>13</td><td>D10</td><td>10</td></tr><tr><td>17</td><td>D12</td><td>12</td></tr></tbody></table>\n\nCualquier característica en esta subclase que use un Dado de Energía Psíquica utiliza solo los dados de esta subclase. Algunos de tus poderes gastan el Dado de Energía Psíquica, según se especifica en la descripción de un poder, y no puedes usar un poder si requiere que uses un dado cuando todos tus Dados de Energía Psíquica están agotados. Recuperas uno de tus Dados de Energía Psíquica gastados cuando terminas un Descanso Corto, y recuperas todos ellos cuando terminas un Descanso Largo.\n<b>Campo Protector.</b> Cuando tú u otra criatura que puedas ver a 30 pies de ti recibe daño, puedes usar una Reacción para gastar un Dado de Energía Psíquica, lanzarlo y reducir el daño recibido por el número obtenido más tu modificador de Inteligencia (reducción mínima de 1), ya que creas un escudo momentáneo de fuerza telequinética.\n<b>Golpe Psíquico.</b> Puedes impulsar tus armas con fuerza psíquica. Una vez en cada uno de tus turnos, inmediatamente después de que golpees a un objetivo a 30 pies de ti con un ataque y le hagas daño con un arma, puedes gastar un Dado de Energía Psíquica, lanzarlo y hacerle daño de Fuerza al objetivo igual al número obtenido más tu modificador de Inteligencia.\n<b>Movimiento Telequinético.</b> Puedes mover un objeto o una criatura con tu mente. Como una acción mágica, elige un objetivo que puedas ver a 30 pies de ti; el objetivo debe ser un objeto suelto que sea Grande o más pequeño o una criatura dispuesta distinta a ti. Transportas al objetivo hasta 30 pies a un lugar desocupado que puedas ver. Alternativamente, si el objetivo es un objeto diminuto, puedes transportarlo hacia o desde tu mano. Una vez que realices esta acción, no podrás hacerlo nuevamente hasta que termines un Descanso Corto o Largo, a menos que gastes un Dado de Energía Psiónica (no se requiere acción) para restaurar su uso."
+                  "subDescripcion": "Albergas una fuente de energía psíquica dentro de ti. Se representa mediante tus Dados de Energía Psíquica, que alimentan los poderes que tienes de esta subclase. La tabla de Dados de Energía del Guerrero Psíquico muestra el tamaño de dado y el número de estos dados que tienes cuando alcanzas ciertos niveles de Guerrero.\n\n<b>Dados de Energía del Guerrero Psíquico</b>\n<table><thead><tr><th>Nivel de guerrero</th><th>Dado</th><th>Número</th></tr></thead><tbody><tr><td>3</td><td>D6</td><td>4</td></tr><tr><td>5</td><td>D8</td><td>6</td></tr><tr><td>9</td><td>D8</td><td>8</td></tr><tr><td>11</td><td>D10</td><td>8</td></tr><tr><td>13</td><td>D10</td><td>10</td></tr><tr><td>17</td><td>D12</td><td>12</td></tr></tbody></table>\n\nCualquier característica en esta subclase que use un Dado de Energía Psíquica utiliza solo los dados de esta subclase. Algunos de tus poderes gastan el Dado de Energía Psíquica, según se especifica en la descripción de un poder, y no puedes usar un poder si requiere que uses un dado cuando todos tus Dados de Energía Psíquica están agotados. Recuperas uno de tus Dados de Energía Psíquica gastados cuando terminas un Descanso Corto, y recuperas todos ellos cuando terminas un Descanso Largo.\n<b>Campo Protector.</b> Cuando tú u otra criatura que puedas ver a 30 pies (6 casillas) de ti recibe daño, puedes usar una Reacción para gastar un Dado de Energía Psíquica, lanzarlo y reducir el daño recibido por el número obtenido más tu modificador de Inteligencia (reducción mínima de 1), ya que creas un escudo momentáneo de fuerza telequinética.\n<b>Golpe Psíquico.</b> Puedes impulsar tus armas con fuerza psíquica. Una vez en cada uno de tus turnos, inmediatamente después de que golpees a un objetivo a 30 pies (6 casillas) de ti con un ataque y le hagas daño con un arma, puedes gastar un Dado de Energía Psíquica, lanzarlo y hacerle daño de Fuerza al objetivo igual al número obtenido más tu modificador de Inteligencia.\n<b>Movimiento Telequinético.</b> Puedes mover un objeto o una criatura con tu mente. Como una acción mágica, elige un objetivo que puedas ver a 30 pies (6 casillas) de ti; el objetivo debe ser un objeto suelto que sea Grande o más pequeño o una criatura dispuesta distinta a ti. Transportas al objetivo hasta 30 pies (6 casillas) a un lugar desocupado que puedas ver. Alternativamente, si el objetivo es un objeto diminuto, puedes transportarlo hacia o desde tu mano. Una vez que realices esta acción, no podrás hacerlo nuevamente hasta que termines un Descanso Corto o Largo, a menos que gastes un Dado de Energía Psiónica (no se requiere acción) para restaurar su uso."
                 }
               }
             },
@@ -624,7 +624,7 @@
                 "subBlockUno": {
                   "subName": "Adepto Telequinético",
                   "subTitleName": "✦ ADEPTO TELEQUINÉTICO ✦",
-                  "subDescripcion": "Has dominado nuevas formas de utilizar tus habilidades telequinéticas, detalladas a continuación.\n<b>Salto Impulsado por Psiónica.</b> Como Acción Bónus, obtienes una Velocidad de Vuelo igual al doble de tu Velocidad hasta el final del turno actual. Una vez que realices esta Acción Bónus, no podrás hacerlo nuevamente hasta que termines un Descanso Corto o Largo, a menos que gastes un Dado de Energía Psiónica (no se requiere acción) para restaurar su uso.\n<b>Empuje Telequinético.</b> Cuando haces daño a un objetivo con tu Golpe Psíquico, puedes forzar al objetivo a hacer una tirada de salvación de Fuerza (DC 8 más tu modificador de Inteligencia y tu Bonificación de Competencia). En una salvación fallida, puedes darle al objetivo la condición Derribado o transportarlo hasta 10 pies horizontalmente."
+                  "subDescripcion": "Has dominado nuevas formas de utilizar tus habilidades telequinéticas, detalladas a continuación.\n<b>Salto Impulsado por Psiónica.</b> Como Acción Bónus, obtienes una Velocidad de Vuelo igual al doble de tu Velocidad hasta el final del turno actual. Una vez que realices esta Acción Bónus, no podrás hacerlo nuevamente hasta que termines un Descanso Corto o Largo, a menos que gastes un Dado de Energía Psiónica (no se requiere acción) para restaurar su uso.\n<b>Empuje Telequinético.</b> Cuando haces daño a un objetivo con tu Golpe Psíquico, puedes forzar al objetivo a hacer una tirada de salvación de Fuerza (DC 8 más tu modificador de Inteligencia y tu Bonificación de Competencia). En una salvación fallida, puedes darle al objetivo la condición Derribado o transportarlo hasta 10 pies (2 casillas) horizontalmente."
                 }
               }
             },
@@ -648,7 +648,7 @@
                 "subBlockUno": {
                   "subName": "Muro de Fuerza",
                   "subTitleName": "✦ MURO DE FUERZA ✦",
-                  "subDescripcion": "Puedes protegerte a ti mismo y a otros con fuerza telequinética. Como Acción Bónus, puedes elegir criaturas, incluyéndote a ti, dentro de 30 pies de ti, hasta un número de criaturas igual a tu modificador de Inteligencia (mínimo una criatura). Cada una de las criaturas elegidas tiene Media Cobertura durante 1 minuto o hasta que tenga la condición Incapacitado.\nUna vez que uses esta característica, no podrás hacerlo nuevamente hasta que termines un Descanso Largo, a menos que gastes un Dado de Energía Psiónica (no se requiere acción) para restaurar su uso."
+                  "subDescripcion": "Puedes protegerte a ti mismo y a otros con fuerza telequinética. Como Acción Bónus, puedes elegir criaturas, incluyéndote a ti, dentro de 30 pies (6 casillas) de ti, hasta un número de criaturas igual a tu modificador de Inteligencia (mínimo una criatura). Cada una de las criaturas elegidas tiene Media Cobertura durante 1 minuto o hasta que tenga la condición Incapacitado.\nUna vez que uses esta característica, no podrás hacerlo nuevamente hasta que termines un Descanso Largo, a menos que gastes un Dado de Energía Psiónica (no se requiere acción) para restaurar su uso."
                 }
               }
             },

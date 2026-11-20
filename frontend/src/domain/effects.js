@@ -108,6 +108,10 @@ export function normalizeEffect(raw) {
       return { type: 'competencia', kind, value };
     }
     case 'pericia': {
+      // Con `habilidad` (AgSt 1.38) la pericia es fija y automática en esa
+      // habilidad (p. ej. Persuasión del Verdan); sin ella, es un número de
+      // pericias que el jugador marca a mano.
+      if (SKILL_NAMES.includes(raw.habilidad)) return { type: 'pericia', amount: 1, habilidad: raw.habilidad };
       const amount = Math.trunc(Number(raw.amount ?? 1));
       return amount >= 1 && amount <= 6 ? { type: 'pericia', amount } : null;
     }
@@ -191,7 +195,7 @@ export function normalizeEffects(list, max = 20) {
 export function describeEffect(e) {
   switch (e.type) {
     case 'competencia': return `Competencia: ${e.kind === 'salvacion' ? `salvación de ${e.value}` : e.value}`;
-    case 'pericia': return `+${e.amount} pericia${e.amount > 1 ? 's' : ''}`;
+    case 'pericia': return e.habilidad ? `Pericia en ${e.habilidad}` : `+${e.amount} pericia${e.amount > 1 ? 's' : ''}`;
     case 'bono': return e.desdeNivel ? `${BONUS_TARGETS[e.target]}: + tu nivel en la clase${e.mas ? ` ${e.mas > 0 ? '+' : '−'} ${Math.abs(e.mas)}` : ''}`
       : e.desdeAtributo ? `${BONUS_TARGETS[e.target]}: + mod. de ${ABILITY_LABEL[e.desdeAtributo]}${e.minimo != null ? ` (mínimo ${e.minimo > 0 ? '+' : ''}${e.minimo})` : ''}`
       : e.desdeTabla ? `${BONUS_TARGETS[e.target]}: según «${e.desdeTabla}»` : `${e.value > 0 ? '+' : ''}${e.value} ${BONUS_TARGETS[e.target]}${e.maximo ? ` (máximo ${e.maximo})` : ''}`;
