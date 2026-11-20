@@ -96,9 +96,10 @@ describe('Pt. V: Aliens (AgSt 1.31)', () => {
   it('equilibrio: +3 de atributos, sin tamaño Grande ni inmunidades nuevas', () => {
     for (const key of aliens) {
       const r = races[key];
-      // El INK es frágil por diseño del autor: +1 a dos atributos.
-      expect(bonus(r), key).toBe(key === 'INK' ? 2 : 3);
-      expect(r.tamano).not.toMatch(/Grande/);
+      // El Experimento 043 es frágil por diseño del autor: +1 a dos atributos.
+      expect(bonus(r), key).toBe(key.startsWith('Experimento 043') ? 2 : 3);
+      // Sólo el Experimento 043 puede ser Grande (lo decide su Sujeto de origen).
+      if (!key.startsWith('Experimento 043')) expect(r.tamano).not.toMatch(/Grande/);
       expect((r.efectos || []).some((e) => e.type === 'inmunidad'), key).toBe(false);
       if (r.fly) expect(r.info, key).toMatch(/armadura media ni pesada/);
     }

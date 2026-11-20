@@ -113,9 +113,9 @@ export function renderCompanions(ctx) {
 
 // ── Diálogo ──────────────────────────────────────────────────────────────
 
-function openCompanionEditor(initial, { blood, catalog, groups: creatureGroups = [] }) {
+function openCompanionEditor(initial, { blood, catalog, groups: creatureGroups = [], raceKey = null }) {
   const comp = initial ?? { bond: 'companero', name: '', creatureRef: null, custom: null, origin: 'dm', originDetail: '', notes: '' };
-  const options = creatureOptions({ blood, catalog, groups: creatureGroups });
+  const options = creatureOptions({ blood, catalog, groups: creatureGroups, raceKey });
   const groups = [...new Set(options.map((o) => o.group))];
   let mode = comp.creatureRef ? 'catalogo' : comp.custom ? 'propio' : options.length ? 'catalogo' : 'propio';
   const x = comp.custom ?? {};
@@ -208,7 +208,7 @@ const amountOf = (ed, id) => Math.max(1, Math.trunc(Number(ed.root.querySelector
 
 export const companionActions = {
   async 'comp-add'(ed) {
-    const raw = await openCompanionEditor(null, { blood: ed.sheet.bloodSummoning, catalog: catalogFor(ed), groups: ed.sheet.creatureGroups });
+    const raw = await openCompanionEditor(null, { blood: ed.sheet.bloodSummoning, catalog: catalogFor(ed), groups: ed.sheet.creatureGroups, raceKey: ed.character.race?.key });
     if (!raw) return;
     // Las invocaciones de clase entran como «invocación»; si la capacidad está
     // llena, entran dentro (sin manifestar) en lugar de pasarse del límite.
@@ -232,7 +232,7 @@ export const companionActions = {
   async 'comp-edit'(ed, el) {
     const current = ed.character.companions.find((x) => x.id === el.dataset.id);
     if (!current) return;
-    const raw = await openCompanionEditor(structuredClone(current), { blood: ed.sheet.bloodSummoning, catalog: catalogFor(ed), groups: ed.sheet.creatureGroups });
+    const raw = await openCompanionEditor(structuredClone(current), { blood: ed.sheet.bloodSummoning, catalog: catalogFor(ed), groups: ed.sheet.creatureGroups, raceKey: ed.character.race?.key });
     if (!raw) return;
     const res = updateCompanion(ed.character, current.id, raw);
     if (res.errors.length) return toast(res.errors.join(' '), { type: 'error' });

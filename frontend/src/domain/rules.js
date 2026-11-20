@@ -446,6 +446,9 @@ export function spellcasting(c, scores, prof, fx = effectSources(c)) {
       known: cfg?.spellsKnown?.[idx] ?? null,
       prepared,
       spellbook: cfg?.spellbook ? cfg.spellbook(level) : null,
+      // Lanzamiento por puntos (sin espacios): nivel máximo y nombre del recurso.
+      maxSpellLevel: cfg?.progression === 'puntos' ? cfg.maxSpellLevel[idx] : null,
+      points: cfg?.progression === 'puntos' ? cfg.points : null,
     });
   }
 

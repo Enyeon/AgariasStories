@@ -3,89 +3,105 @@ import races from '../src/data/races.json';
 import catalog from '../src/data/race-catalog.json';
 import lore from '../src/data/race-lore.json';
 import creatures from '../src/data/class-creatures.json';
+import spells from '../src/data/spells.json';
 import adaptado from '../src/data/classes/adaptado.json';
-import { createCharacter } from '../src/domain/schema.js';
+import { createCharacter, createDocument } from '../src/domain/schema.js';
+import { parseDocument } from '../src/domain/validation.js';
 import { computeSheet } from '../src/domain/rules.js';
 import { creatureOptions, creatureBlock } from '../src/domain/companions.js';
 import { validateClassData } from '../src/content/class-data.js';
 
-const ink = (level, { race = 'INK', sub = null } = {}) => {
+const EXP = (s) => `Experimento 043 (${s})`;
+const exp = (level, { race = EXP('Conejo') } = {}) => {
   const c = createCharacter();
   c.race.key = race;
   c.abilities.sabiduria = 16;
   c.levels = Array.from({ length: level }, () => ({ classKey: 'adaptado', hpRoll: 5, improvement: null, featureChoices: {} }));
-  if (sub) c.subclasses = { adaptado: sub };
   return c;
 };
 
-describe('raza INK', () => {
-  it('está en Pt. V con su historia y recomienda la clase Adaptado', () => {
-    expect(catalog.find((g) => g.source === 'Razas de Agarias Pt. V: Aliens').races).toContain('INK');
-    expect(races.INK).toMatchObject({ linaje: 'ink', claseRecomendada: 'adaptado', tipo: 'Aberración', tamano: 'Mediano' });
-    expect(lore.ink.secciones.length).toBeGreaterThanOrEqual(3);
+describe('raza Experimento 043', () => {
+  const keys = Object.keys(races).filter((k) => k.startsWith('Experimento 043'));
+
+  it('una entrada por Sujeto de origen, en Pt. V, con su tamaño (hasta Grande)', () => {
+    expect(keys).toEqual(['Conejo', 'Gato', 'Perro', 'Cuervo', 'Búho', 'Serpiente', 'Oso', 'Ciervo'].map(EXP));
+    expect(catalog.find((g) => g.source === 'Razas de Agarias Pt. V: Aliens').races).toEqual(expect.arrayContaining(keys));
+    expect(races[EXP('Conejo')].tamano).toBe('Pequeño');
+    expect(races[EXP('Oso')].tamano).toBe('Grande');
+    for (const k of keys) expect(races[k]).toMatchObject({ linaje: 'experimento-043', claseRecomendada: 'adaptado', tipo: 'Aberración' });
+    expect(races.INK).toBeUndefined();
   });
 
-  it('el lore público no revela el secreto de Vacío (Experimento 048): la cura es sólo un rumor', () => {
-    const text = JSON.stringify([lore.ink, races.INK, adaptado, creatures.grupos.ink]);
-    expect(text).not.toMatch(/048|Experimento 0|Vacío consigue|cero cuarenta/i);
-    expect(lore.ink.secciones.map((s) => s.texto).join(' ')).toMatch(/rumor[\s\S]*cura/);
-  });
-
-  it('sin clase: Conejo, caramelos, Poliforme y Contracción; sin Inhibición', () => {
+  it('la clave vieja «INK» se abre como Experimento 043 (Conejo)', () => {
     const c = createCharacter();
     c.race.key = 'INK';
-    c.levels = [{ classKey: 'guerrero', hpRoll: 10, improvement: null, featureChoices: {} }];
+    expect(parseDocument(JSON.parse(JSON.stringify(createDocument(c)))).character.race.key).toBe(EXP('Conejo'));
+  });
+
+  it('lore corregido: decenas, 43 experimentos, sin «millones» ni «escaparon/liberados», sin nombrar a Vacío', () => {
+    const text = lore['experimento-043'].secciones.map((s) => s.texto).join(' ');
+    expect(text).toMatch(/43 experimentos/);
+    expect(text).toMatch(/decenas/i);
+    expect(text).toMatch(/«Sram»/);
+    expect(text).not.toMatch(/millones|liberados|siguen naciendo|reconocimiento e infiltración|048/);
+    expect(JSON.stringify(races[EXP('Conejo')])).not.toMatch(/Expresividad/);
+  });
+
+  it('cada Sujeto es sólo de su raza, no ocupa capacidad y hace algo distinto', () => {
+    const c = exp(1, { race: EXP('Gato') });
     const s = computeSheet(c);
-    expect(s).toMatchObject({ candyMaker: true, inhibited: false, creatureGroups: ['ink'] });
-    expect(s.resources.map((r) => r.id)).toEqual(['poliforme', 'contraccion-defensiva']);
+    expect(s.creatureGroups.sort()).toEqual(['ink', 'sujetos']);
+    const opts = creatureOptions({ groups: s.creatureGroups, raceKey: c.race.key }).map((o) => o.ref);
+    expect(opts.filter((r) => r.startsWith('clase:sujetos'))).toEqual(['clase:sujetos:gato']);
+    const names = Object.values(creatures.grupos.sujetos.criaturas).map((x) => x.name);
+    const repertoire = Object.values(creatures.grupos.ink.criaturas).map((x) => x.name);
+    expect(names.filter((n) => repertoire.includes(n))).toEqual([]);
+    expect(creatureBlock({ creatureRef: 'clase:sujetos:conejo' }, exp(5))).toMatchObject({ capacity: false, ac: 15 });
   });
 });
 
 describe('clase Adaptado', () => {
-  it('es válida y no da armas', () => {
+  it('es válida, sin armas, con hechizos por puntos de Esencia en la pestaña Conjuros', () => {
     expect(validateClassData(adaptado).errors ?? []).toEqual([]);
     expect(adaptado.competencias.armas).toEqual([]);
-    expect(adaptado.razaRecomendada).toEqual(['INK']);
+    expect(adaptado.lanzamiento).toMatchObject({ progression: 'puntos', puntos: 'Esencia' });
+    const sc = computeSheet(exp(9)).spellcasting;
+    expect(sc.isCaster).toBe(true);
+    expect(sc.entries[0]).toMatchObject({ classKey: 'adaptado', maxSpellLevel: 3, points: 'Esencia', cantrips: 3, known: 7 });
+    expect(sc.slots.every((n) => n === 0)).toBe(true);
+    // Ya no se eligen en la subida de nivel.
+    expect(JSON.stringify(adaptado.niveles)).not.toMatch(/hechizos-ink|trucos-ink/);
+    for (const n of adaptado.listaConjuros) expect(spells[n], n).toBeTruthy();
   });
 
   it('Inhibición, Esencia y Capacidad de Manifestación según el nivel', () => {
-    const at = (n) => computeSheet(ink(n));
+    const at = (n) => computeSheet(exp(n));
     expect(at(1)).toMatchObject({ inhibited: true, summonCapacity: 0 });
     expect(at(1).resources.find((r) => r.id === 'esencia')).toMatchObject({ max: 4, shortRegain: 3 });
     expect(at(3).summonCapacity).toBe(1);
     expect(at(7).summonCapacity).toBe(2);
     expect(at(13).summonCapacity).toBe(3);
-    expect(at(20).resources.find((r) => r.id === 'esencia').max).toBe(20);
   });
 
-  it('otra raza con la clase: invocaciones por el Injerto Sram (el Conejo es racial, sólo en el texto)', () => {
-    const s = computeSheet(ink(3, { race: 'Humano' }));
-    expect(s.creatureGroups).toEqual(['ink']);
-    expect(s.candyMaker).toBe(false);
+  it('Curas elementales a nivel 5 (sin Sendas): 14 elementos, Tinta incluida, sin daño', () => {
+    expect(adaptado.niveles['3'].subClase).toBeUndefined();
+    const subs = adaptado.niveles['5'].subClase;
+    expect(Object.keys(subs)).toEqual(['acido', 'frio', 'fuego', 'fuerza', 'necrotico', 'psiquico', 'radiante', 'relampago', 'trueno', 'veneno', 'profano', 'sagrado', 'vacio', 'tinta']);
+    expect(subs.fuerza.subNivel['5'].infoSubBlock.subBlockDos.subDescripcion).toMatch(/doble de tu nivel/);
+    expect(adaptado.niveles['5'].infoBlock.blockUno.descripcion).toMatch(/Habla con tu DM/);
   });
 
-  it('repertorio: 10 invocaciones + Conejo; Conejo y Ruleta no ocupan capacidad; escalan con el nivel', () => {
-    const refs = creatureOptions({ groups: ['ink'] }).map((o) => o.ref.split(':').at(-1));
-    expect(refs).toEqual(['conejo', 'golem', 'loro', 'ruleta', 'topo', 'pulpo', 'polilla', 'montura', 'esponja', 'arana', 'luciernaga']);
-    const c = ink(5);
-    expect(creatureBlock({ creatureRef: 'clase:ink:conejo' }, c)).toMatchObject({ capacity: false, ac: 15, hpMax: 13 });
-    expect(creatureBlock({ creatureRef: 'clase:ink:ruleta' }, c).capacity).toBe(false);
-    expect(creatureBlock({ creatureRef: 'clase:ink:golem' }, c)).toMatchObject({ capacity: true, hpMax: 45 });
+  it('repertorio: tres a nivel 3 y cambios en 7, 11 y 15', () => {
+    expect(adaptado.niveles['3'].infoBlock.blockUno.elegir).toEqual({ lista: 'repertorio', cantidad: 3 });
+    for (const lv of ['7', '11', '15']) expect(adaptado.niveles[lv].infoBlock.blockUno.elegir).toMatchObject({ cantidad: 0, reemplazar: 1 });
   });
 
-  it('ninguna invocación ni hechizo hace daño', () => {
+  it('ninguna invocación, Sujeto, Cura ni hechizo hace daño', () => {
     const texts = [
-      ...Object.values(creatures.grupos.ink.criaturas).flatMap((b) => [...(b.actions ?? []), ...(b.reactions ?? []), ...(b.traits ?? [])].map((t) => t.text)),
-      ...Object.values(adaptado.listasDeEleccion).flatMap((l) => l.opciones.map((o) => o.descripcion)),
+      ...Object.values(creatures.grupos).flatMap((g) => Object.values(g.criaturas)).flatMap((b) => [...(b.actions ?? []), ...(b.reactions ?? []), ...(b.traits ?? [])].map((t) => t.text)),
+      ...Object.values(adaptado.niveles['5'].subClase).flatMap((s) => Object.values(s.subNivel).flatMap((n) => Object.values(n.infoSubBlock).map((b) => b.subDescripcion))),
+      ...adaptado.listaConjuros.map((n) => spells[n].origen === 'Agarias' ? spells[n].descripcion : ''),
     ];
-    for (const t of texts) expect(t).not.toMatch(/\d+d\d+[^.]*de daño (contundente|perforante|cortante|de fuego|de frío|de ácido|de veneno|de rayo|de trueno|necrótico|psíquico|radiante|de fuerza)/);
-  });
-
-  it('cada Senda da su invocación o deja elegir una más (tres en total)', () => {
-    const subs = adaptado.niveles['3'].subClase;
-    const picks = Object.fromEntries(Object.entries(subs).map(([k, s]) => [k, s.subNivel['3'].infoSubBlock.subBlockUno.elegir.cantidad]));
-    expect(picks).toEqual({ refugio: 2, insulto: 2, espejo: 3, azar: 2, enjambre: 3 });
-    expect(subs.refugio.listasDeEleccion.repertorio.opciones.map((o) => o.id)).not.toContain('golem');
-    for (const s of Object.values(subs)) for (const lv of ['7', '11', '15']) expect(s.subNivel[lv].elegir).toMatchObject({ cantidad: 0, reemplazar: 1 });
+    for (const t of texts) expect(t).not.toMatch(/\d+d\d+[^.]*de daño (contundente|perforante|cortante|de fuego|de frío|de ácido|de veneno|de rayo|de relámpago|de trueno|necrótico|psíquico|radiante|de fuerza)/);
   });
 });

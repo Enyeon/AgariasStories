@@ -69,6 +69,8 @@ export function grantsAt(classKey, level, subKey) {
 
 /** Nivel de conjuro más alto con espacios para la clase a un nivel dado (0 si ninguno). */
 function highestSlotLevel(classKey, level) {
+  const cfg = castingConfig(classKey);
+  if (cfg?.progression === 'puntos') return cfg.maxSpellLevel[Math.min(20, Math.max(1, level)) - 1] ?? 0;
   const row = castingConfig(classKey)?.table?.[Math.min(20, Math.max(1, level))] ?? [];
   let max = 0;
   row.forEach((n, i) => { if (n > 0) max = i + 1; });

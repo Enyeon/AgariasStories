@@ -2,79 +2,9 @@
   "$comment": "Invocaciones y criaturas de clase o raza (AgSt 1.35). Cada grupo se habilita con el efecto «habilita: invocaciones_<grupo>» y aparece en «Añadir criatura → De un catálogo». Formato de cada criatura: name, size, creatureType, ac (número o { base, bc: true }), hp ({ base, porNivel, atributo? }; nivel = nivel total del personaje), speed, abilities, senses, languages, capacidad (false = no ocupa la Capacidad de Manifestación), traits/actions/reactions [{ name, text }] y mejoras [{ nivel, texto }]. Ver docs/DATOS.md.",
   "grupos": {
     "ink": {
-      "nombre": "Invocaciones Ink",
-      "fuente": "Invocación Ink (raza INK · clase Adaptado)",
+      "nombre": "Repertorio del Adaptado",
+      "fuente": "Invocación del Adaptado",
       "criaturas": {
-        "conejo": {
-          "name": "Conejo",
-          "size": "Pequeño",
-          "creatureType": "Bestia (biomasa Ink)",
-          "capacidad": false,
-          "ac": {
-            "base": 12,
-            "bc": true
-          },
-          "hp": {
-            "base": 0,
-            "porNivel": 2,
-            "atributo": "sabiduria"
-          },
-          "hpTexto": "2 × tu nivel + tu mod. de Sabiduría",
-          "speed": "40 pies, salto 15 pies",
-          "abilities": {
-            "fuerza": 6,
-            "destreza": 16,
-            "constitucion": 10,
-            "inteligencia": 4,
-            "sabiduria": 14,
-            "carisma": 8
-          },
-          "senses": "Visión en la oscuridad 60 pies, Percepción pasiva 14",
-          "languages": "Entiende al INK",
-          "description": "El primer ser que los Sram unieron al linaje del INK. Es racial: sólo lo tiene la raza INK. No ocupa Capacidad de Manifestación.",
-          "traits": [
-            {
-              "name": "Parte de ti",
-              "text": "Se manifiesta o se reabsorbe como acción adicional del INK. Actúa en tu iniciativa, justo después de ti. Si cae a 0 PG, vuelve a ti sin hacerte daño y no puede manifestarse hasta un descanso corto, o gastando 1 de Esencia."
-            },
-            {
-              "name": "Conexión",
-              "text": "Deja de actuar si se aleja más de 60 pies de ti; si sigue así 1 minuto, se reabsorbe."
-            },
-            {
-              "name": "Si quedas inconsciente",
-              "text": "No desaparece: sólo puede usar Ayudar y se coloca a tu lado si puede."
-            }
-          ],
-          "actions": [
-            {
-              "name": "Ayudar",
-              "text": "Da ventaja a un aliado en su siguiente prueba o tirada de ataque antes del inicio del siguiente turno del Conejo."
-            },
-            {
-              "name": "Conducto",
-              "text": "(Adaptado) Tus rasgos y hechizos de toque (Toque Estabilizador, Segundo Aliento Prestado…) pueden salir desde el Conejo, a 60 pies de ti."
-            },
-            {
-              "name": "Rescate",
-              "text": "Arrastra a un aliado inconsciente o caído hasta 15 pies sin provocar ataques de oportunidad."
-            }
-          ],
-          "mejoras": [
-            {
-              "nivel": 5,
-              "texto": "Ayudar puede darse a un aliado a 30 pies del Conejo sin moverse."
-            },
-            {
-              "nivel": 11,
-              "texto": "Conducto llega a 120 pies."
-            },
-            {
-              "nivel": 17,
-              "texto": "Una vez por ronda puede usar Ayudar como reacción."
-            }
-          ]
-        },
         "golem": {
           "name": "Golem",
           "size": "Grande",
@@ -140,7 +70,7 @@
         "loro": {
           "name": "Loro insultador",
           "size": "Diminuto",
-          "creatureType": "Bestia (biomasa Ink)",
+          "creatureType": "Bestia (biomasa del Exp. 043)",
           "ac": 13,
           "hp": 1,
           "speed": "30 pies, vuelo 60 pies",
@@ -179,7 +109,7 @@
         "ruleta": {
           "name": "Ruleta",
           "size": "Mediano (mide lo que mide el INK)",
-          "creatureType": "Biomasa Ink",
+          "creatureType": "Biomasa del Exp. 043",
           "capacidad": false,
           "description": "Gastas una acción y 2 de Esencia: la Ruleta aparece, gira, muestra el resultado y desaparece. No ocupa Capacidad de Manifestación. Una vez por descanso corto o largo. Eliges el objetivo (tú o una criatura a 30 pies) antes de tirar; los resultados negativos afectan a quien elegiste.",
           "traits": [
@@ -234,7 +164,7 @@
         "topo": {
           "name": "Topo",
           "size": "Pequeño",
-          "creatureType": "Bestia (biomasa Ink)",
+          "creatureType": "Bestia (biomasa del Exp. 043)",
           "ac": 13,
           "hp": {
             "base": 5,
@@ -286,7 +216,7 @@
         "pulpo": {
           "name": "Pulpo",
           "size": "Mediano",
-          "creatureType": "Bestia (biomasa Ink)",
+          "creatureType": "Bestia (biomasa del Exp. 043)",
           "ac": 12,
           "hp": {
             "base": 5,
@@ -342,7 +272,7 @@
         "polilla": {
           "name": "Polilla",
           "size": "Diminuto",
-          "creatureType": "Bestia (biomasa Ink)",
+          "creatureType": "Bestia (biomasa del Exp. 043)",
           "ac": 13,
           "hp": {
             "base": 1,
@@ -394,7 +324,7 @@
         "montura": {
           "name": "Montura",
           "size": "Grande",
-          "creatureType": "Bestia (biomasa Ink)",
+          "creatureType": "Bestia (biomasa del Exp. 043)",
           "ac": 13,
           "hp": {
             "base": 10,
@@ -446,7 +376,7 @@
         "esponja": {
           "name": "Esponja",
           "size": "Pequeño",
-          "creatureType": "Biomasa Ink",
+          "creatureType": "Biomasa del Exp. 043",
           "ac": 11,
           "hp": {
             "base": 5,
@@ -492,7 +422,7 @@
         "arana": {
           "name": "Araña",
           "size": "Pequeño",
-          "creatureType": "Bestia (biomasa Ink)",
+          "creatureType": "Bestia (biomasa del Exp. 043)",
           "ac": 13,
           "hp": {
             "base": 5,
@@ -540,7 +470,7 @@
         "luciernaga": {
           "name": "Luciérnaga",
           "size": "Diminuto",
-          "creatureType": "Bestia (biomasa Ink)",
+          "creatureType": "Bestia (biomasa del Exp. 043)",
           "ac": 13,
           "hp": {
             "base": 1,
@@ -588,6 +518,506 @@
             {
               "nivel": 15,
               "texto": "Los aliados a 10 pies son inmunes a quedar asustados."
+            }
+          ]
+        }
+      }
+    },
+    "sujetos": {
+      "nombre": "Sujeto de origen",
+      "fuente": "Sujeto de origen (Experimento 043)",
+      "porRaza": true,
+      "criaturas": {
+        "conejo": {
+          "name": "Conejo",
+          "size": "Pequeño",
+          "creatureType": "Sujeto (biomasa del Exp. 043)",
+          "capacidad": false,
+          "razas": [
+            "Experimento 043 (Conejo)"
+          ],
+          "ac": {
+            "base": 12,
+            "bc": true
+          },
+          "hp": {
+            "base": 0,
+            "porNivel": 2,
+            "atributo": "sabiduria"
+          },
+          "hpTexto": "2 × tu nivel + tu mod. de Sabiduría",
+          "speed": "40 pies, salto 15 pies",
+          "abilities": {
+            "fuerza": 6,
+            "destreza": 16,
+            "constitucion": 10,
+            "inteligencia": 4,
+            "sabiduria": 14,
+            "carisma": 8
+          },
+          "senses": "Visión en la oscuridad 60 pies",
+          "languages": "Entiende al Experimento 043",
+          "description": "Tu Sujeto de origen. Cura y ayuda al aliado más cercano. Por qué: El primero de todos: el del 043-0. Los Sram buscaban su regeneración rápida y su instinto de cuidar de la camada. No ocupa Capacidad de Manifestación.",
+          "traits": [
+            {
+              "name": "Parte de ti",
+              "text": "Se manifiesta o se reabsorbe como acción adicional. Actúa en tu iniciativa, justo después de ti. Si cae a 0 PG, vuelve a ti sin hacerte daño y no puede manifestarse hasta un descanso corto, o gastando 1 de Esencia. Deja de actuar a más de 60 pies de ti."
+            }
+          ],
+          "actions": [
+            {
+              "name": "Curita",
+              "text": "El aliado más cercano a 30 pies recupera 1d4 + tu modificador de Sabiduría PG. Usos: tu bonificador de competencia por descanso largo."
+            },
+            {
+              "name": "Ayudar",
+              "text": "Da ventaja al aliado más cercano en su siguiente prueba o tirada de ataque."
+            }
+          ],
+          "reactions": [],
+          "mejoras": [
+            {
+              "nivel": 5,
+              "texto": "Curita cura 2d4 + Sabiduría."
+            },
+            {
+              "nivel": 11,
+              "texto": "Curita llega a 60 pies."
+            },
+            {
+              "nivel": 17,
+              "texto": "Puede usar Ayudar como reacción una vez por ronda."
+            }
+          ]
+        },
+        "gato": {
+          "name": "Gato",
+          "size": "Pequeño",
+          "creatureType": "Sujeto (biomasa del Exp. 043)",
+          "capacidad": false,
+          "razas": [
+            "Experimento 043 (Gato)"
+          ],
+          "ac": {
+            "base": 12,
+            "bc": true
+          },
+          "hp": {
+            "base": 0,
+            "porNivel": 2,
+            "atributo": "sabiduria"
+          },
+          "hpTexto": "2 × tu nivel + tu mod. de Sabiduría",
+          "speed": "40 pies, trepar 30 pies",
+          "abilities": {
+            "fuerza": 6,
+            "destreza": 16,
+            "constitucion": 10,
+            "inteligencia": 4,
+            "sabiduria": 14,
+            "carisma": 10
+          },
+          "senses": "Visión en la oscuridad 60 pies",
+          "languages": "Entiende al Experimento 043",
+          "description": "Tu Sujeto de origen. Mantiene en pie al aliado más cercano. Por qué: Los Sram estudiaban cómo cae siempre de pie y se levanta de lo que mataría a otros. No ocupa Capacidad de Manifestación.",
+          "traits": [
+            {
+              "name": "Parte de ti",
+              "text": "Se manifiesta o se reabsorbe como acción adicional. Actúa en tu iniciativa, justo después de ti. Si cae a 0 PG, vuelve a ti sin hacerte daño y no puede manifestarse hasta un descanso corto, o gastando 1 de Esencia. Deja de actuar a más de 60 pies de ti."
+            }
+          ],
+          "actions": [
+            {
+              "name": "Caer de pie",
+              "text": "El aliado más cercano no sufre daño por caída en su siguiente caída antes del inicio del siguiente turno del Gato."
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Siete vidas",
+              "text": "Cuando el aliado más cercano a 30 pies cae a 0 PG sin morir en el acto, queda a 1 PG. Una vez por descanso largo."
+            }
+          ],
+          "mejoras": [
+            {
+              "nivel": 5,
+              "texto": "Siete vidas: dos veces por descanso largo."
+            },
+            {
+              "nivel": 11,
+              "texto": "Caer de pie alcanza a todos los aliados a 10 pies."
+            },
+            {
+              "nivel": 17,
+              "texto": "Siete vidas deja al aliado con PG igual a tu nivel."
+            }
+          ]
+        },
+        "perro": {
+          "name": "Perro",
+          "size": "Mediano",
+          "creatureType": "Sujeto (biomasa del Exp. 043)",
+          "capacidad": false,
+          "razas": [
+            "Experimento 043 (Perro)"
+          ],
+          "ac": {
+            "base": 12,
+            "bc": true
+          },
+          "hp": {
+            "base": 0,
+            "porNivel": 2,
+            "atributo": "sabiduria"
+          },
+          "hpTexto": "2 × tu nivel + tu mod. de Sabiduría",
+          "speed": "40 pies",
+          "abilities": {
+            "fuerza": 12,
+            "destreza": 14,
+            "constitucion": 12,
+            "inteligencia": 4,
+            "sabiduria": 12,
+            "carisma": 8
+          },
+          "senses": "Olfato agudo, Percepción pasiva 13",
+          "languages": "Entiende al Experimento 043",
+          "description": "Tu Sujeto de origen. Levanta y acompaña al aliado más cercano. Por qué: Lealtad: los Sram querían una biomasa que no abandonara nunca a quien protege. No ocupa Capacidad de Manifestación.",
+          "traits": [
+            {
+              "name": "Parte de ti",
+              "text": "Se manifiesta o se reabsorbe como acción adicional. Actúa en tu iniciativa, justo después de ti. Si cae a 0 PG, vuelve a ti sin hacerte daño y no puede manifestarse hasta un descanso corto, o gastando 1 de Esencia. Deja de actuar a más de 60 pies de ti."
+            }
+          ],
+          "actions": [
+            {
+              "name": "Levántate",
+              "text": "El aliado más cercano, si está derribado, se levanta sin gastar movimiento."
+            },
+            {
+              "name": "Olfato fiel",
+              "text": "Hasta tu siguiente turno, el aliado más cercano tiene ventaja en las pruebas de Sabiduría (Percepción) basadas en el olfato y no puede ser sorprendido por criaturas a 30 pies."
+            }
+          ],
+          "reactions": [],
+          "mejoras": [
+            {
+              "nivel": 5,
+              "texto": "Levántate también termina el estado agarrado si lo sujeta una criatura Mediana o menor."
+            },
+            {
+              "nivel": 11,
+              "texto": "Olfato fiel alcanza 60 pies."
+            },
+            {
+              "nivel": 17,
+              "texto": "Levántate puede usarse como reacción."
+            }
+          ]
+        },
+        "cuervo": {
+          "name": "Cuervo",
+          "size": "Pequeño",
+          "creatureType": "Sujeto (biomasa del Exp. 043)",
+          "capacidad": false,
+          "razas": [
+            "Experimento 043 (Cuervo)"
+          ],
+          "ac": {
+            "base": 12,
+            "bc": true
+          },
+          "hp": {
+            "base": 0,
+            "porNivel": 2,
+            "atributo": "sabiduria"
+          },
+          "hpTexto": "2 × tu nivel + tu mod. de Sabiduría",
+          "speed": "10 pies, vuelo 50 pies",
+          "abilities": {
+            "fuerza": 4,
+            "destreza": 16,
+            "constitucion": 10,
+            "inteligencia": 8,
+            "sabiduria": 14,
+            "carisma": 8
+          },
+          "senses": "Percepción pasiva 14",
+          "languages": "Entiende al Experimento 043",
+          "description": "Tu Sujeto de origen. Lleva lo que haga falta al aliado que lo necesita. Por qué: Memoria e ingenio: los Sram lo usaron para estudiar cómo guardar recuerdos en la biomasa. No ocupa Capacidad de Manifestación.",
+          "traits": [
+            {
+              "name": "Parte de ti",
+              "text": "Se manifiesta o se reabsorbe como acción adicional. Actúa en tu iniciativa, justo después de ti. Si cae a 0 PG, vuelve a ti sin hacerte daño y no puede manifestarse hasta un descanso corto, o gastando 1 de Esencia. Deja de actuar a más de 60 pies de ti."
+            }
+          ],
+          "actions": [
+            {
+              "name": "Mensajero",
+              "text": "Lleva un objeto ligero (como una poción) hasta un aliado a 60 pies; ese aliado puede usarlo como acción adicional en su siguiente turno."
+            },
+            {
+              "name": "Recordar",
+              "text": "Repite palabra por palabra algo que oyó en la última hora."
+            }
+          ],
+          "reactions": [],
+          "mejoras": [
+            {
+              "nivel": 5,
+              "texto": "Mensajero: el aliado puede usar el objeto como reacción."
+            },
+            {
+              "nivel": 11,
+              "texto": "Vuelo 80 pies."
+            },
+            {
+              "nivel": 17,
+              "texto": "Puede llevar dos objetos a dos aliados distintos."
+            }
+          ]
+        },
+        "buho": {
+          "name": "Búho",
+          "size": "Pequeño",
+          "creatureType": "Sujeto (biomasa del Exp. 043)",
+          "capacidad": false,
+          "razas": [
+            "Experimento 043 (Búho)"
+          ],
+          "ac": {
+            "base": 12,
+            "bc": true
+          },
+          "hp": {
+            "base": 0,
+            "porNivel": 2,
+            "atributo": "sabiduria"
+          },
+          "hpTexto": "2 × tu nivel + tu mod. de Sabiduría",
+          "speed": "5 pies, vuelo 60 pies",
+          "abilities": {
+            "fuerza": 4,
+            "destreza": 14,
+            "constitucion": 10,
+            "inteligencia": 4,
+            "sabiduria": 16,
+            "carisma": 8
+          },
+          "senses": "Visión en la oscuridad 120 pies",
+          "languages": "Entiende al Experimento 043",
+          "description": "Tu Sujeto de origen. Presta sus ojos nocturnos al aliado más cercano. Por qué: Vista en la oscuridad y silencio absoluto: lo que los Sram querían para moverse sin ser vistos. No ocupa Capacidad de Manifestación.",
+          "traits": [
+            {
+              "name": "Parte de ti",
+              "text": "Se manifiesta o se reabsorbe como acción adicional. Actúa en tu iniciativa, justo después de ti. Si cae a 0 PG, vuelve a ti sin hacerte daño y no puede manifestarse hasta un descanso corto, o gastando 1 de Esencia. Deja de actuar a más de 60 pies de ti."
+            },
+            {
+              "name": "Vuelo silencioso",
+              "text": "No provoca ataques de oportunidad al salir del alcance de una criatura."
+            }
+          ],
+          "actions": [
+            {
+              "name": "Ojos de la noche",
+              "text": "Hasta el final de tu siguiente turno, el aliado más cercano tiene visión en la oscuridad de 60 pies y no sufre desventaja por luz tenue."
+            }
+          ],
+          "reactions": [],
+          "mejoras": [
+            {
+              "nivel": 5,
+              "texto": "Ojos de la noche dura 1 minuto."
+            },
+            {
+              "nivel": 11,
+              "texto": "Afecta a dos aliados."
+            },
+            {
+              "nivel": 17,
+              "texto": "El aliado también ve a través de la oscuridad mágica."
+            }
+          ]
+        },
+        "serpiente": {
+          "name": "Serpiente",
+          "size": "Mediano",
+          "creatureType": "Sujeto (biomasa del Exp. 043)",
+          "capacidad": false,
+          "razas": [
+            "Experimento 043 (Serpiente)"
+          ],
+          "ac": {
+            "base": 12,
+            "bc": true
+          },
+          "hp": {
+            "base": 0,
+            "porNivel": 2,
+            "atributo": "sabiduria"
+          },
+          "hpTexto": "2 × tu nivel + tu mod. de Sabiduría",
+          "speed": "30 pies, nadar 30 pies",
+          "abilities": {
+            "fuerza": 10,
+            "destreza": 16,
+            "constitucion": 12,
+            "inteligencia": 2,
+            "sabiduria": 12,
+            "carisma": 6
+          },
+          "senses": "Visión ciega 10 pies",
+          "languages": "Entiende al Experimento 043",
+          "description": "Tu Sujeto de origen. Cubre la retirada del aliado más cercano. Por qué: Muda de piel: los Sram la usaron para aprender a renovar un cuerpo sin romperlo. No ocupa Capacidad de Manifestación.",
+          "traits": [
+            {
+              "name": "Parte de ti",
+              "text": "Se manifiesta o se reabsorbe como acción adicional. Actúa en tu iniciativa, justo después de ti. Si cae a 0 PG, vuelve a ti sin hacerte daño y no puede manifestarse hasta un descanso corto, o gastando 1 de Esencia. Deja de actuar a más de 60 pies de ti."
+            },
+            {
+              "name": "Muda",
+              "text": "Una vez por descanso largo, la Serpiente vuelve a sus PG máximos al quedar a 0 PG en lugar de volver a ti."
+            }
+          ],
+          "actions": [
+            {
+              "name": "Siseo",
+              "text": "Hasta el inicio de su siguiente turno, las criaturas a 5 pies de la Serpiente tienen desventaja en los ataques de oportunidad contra el aliado más cercano."
+            }
+          ],
+          "reactions": [],
+          "mejoras": [
+            {
+              "nivel": 5,
+              "texto": "Siseo alcanza 10 pies."
+            },
+            {
+              "nivel": 11,
+              "texto": "Siseo afecta a todos los aliados a 10 pies de la Serpiente."
+            },
+            {
+              "nivel": 17,
+              "texto": "Muda: dos veces por descanso largo."
+            }
+          ]
+        },
+        "oso": {
+          "name": "Oso",
+          "size": "Grande",
+          "creatureType": "Sujeto (biomasa del Exp. 043)",
+          "capacidad": false,
+          "razas": [
+            "Experimento 043 (Oso)"
+          ],
+          "ac": {
+            "base": 12,
+            "bc": true
+          },
+          "hp": {
+            "base": 0,
+            "porNivel": 4,
+            "atributo": "sabiduria"
+          },
+          "hpTexto": "4 × tu nivel + tu mod. de Sabiduría",
+          "speed": "40 pies",
+          "abilities": {
+            "fuerza": 16,
+            "destreza": 10,
+            "constitucion": 16,
+            "inteligencia": 2,
+            "sabiduria": 12,
+            "carisma": 6
+          },
+          "senses": "Olfato agudo, Percepción pasiva 13",
+          "languages": "Entiende al Experimento 043",
+          "description": "Tu Sujeto de origen. Da calor y firmeza al aliado más cercano. Por qué: Fuerza y aguante: los Sram estudiaban cómo ahorra energía al hibernar. No ocupa Capacidad de Manifestación.",
+          "traits": [
+            {
+              "name": "Parte de ti",
+              "text": "Se manifiesta o se reabsorbe como acción adicional. Actúa en tu iniciativa, justo después de ti. Si cae a 0 PG, vuelve a ti sin hacerte daño y no puede manifestarse hasta un descanso corto, o gastando 1 de Esencia. Deja de actuar a más de 60 pies de ti."
+            },
+            {
+              "name": "Corpulento",
+              "text": "Un aliado Mediano o más pequeño puede ocupar el espacio del Oso sin contar como terreno difícil."
+            }
+          ],
+          "actions": [
+            {
+              "name": "Calor de la osera",
+              "text": "Hasta el inicio de su siguiente turno, el aliado más cercano tiene ventaja en las salvaciones de Constitución para mantener la concentración."
+            }
+          ],
+          "reactions": [],
+          "mejoras": [
+            {
+              "nivel": 5,
+              "texto": "Calor de la osera dura 1 minuto."
+            },
+            {
+              "nivel": 11,
+              "texto": "También ventaja en las salvaciones contra agotamiento."
+            },
+            {
+              "nivel": 17,
+              "texto": "Afecta a dos aliados."
+            }
+          ]
+        },
+        "ciervo": {
+          "name": "Ciervo",
+          "size": "Grande",
+          "creatureType": "Sujeto (biomasa del Exp. 043)",
+          "capacidad": false,
+          "razas": [
+            "Experimento 043 (Ciervo)"
+          ],
+          "ac": {
+            "base": 12,
+            "bc": true
+          },
+          "hp": {
+            "base": 0,
+            "porNivel": 3,
+            "atributo": "sabiduria"
+          },
+          "hpTexto": "3 × tu nivel + tu mod. de Sabiduría",
+          "speed": "50 pies",
+          "abilities": {
+            "fuerza": 14,
+            "destreza": 16,
+            "constitucion": 12,
+            "inteligencia": 2,
+            "sabiduria": 14,
+            "carisma": 6
+          },
+          "senses": "Percepción pasiva 14",
+          "languages": "Entiende al Experimento 043",
+          "description": "Tu Sujeto de origen. Da impulso al aliado más cercano. Por qué: Velocidad y alerta: los Sram querían un cuerpo que reaccionara antes que el peligro. No ocupa Capacidad de Manifestación.",
+          "traits": [
+            {
+              "name": "Parte de ti",
+              "text": "Se manifiesta o se reabsorbe como acción adicional. Actúa en tu iniciativa, justo después de ti. Si cae a 0 PG, vuelve a ti sin hacerte daño y no puede manifestarse hasta un descanso corto, o gastando 1 de Esencia. Deja de actuar a más de 60 pies de ti."
+            }
+          ],
+          "actions": [
+            {
+              "name": "Salto de huida",
+              "text": "El aliado más cercano gana +10 pies de velocidad hasta el final de su siguiente turno."
+            }
+          ],
+          "reactions": [],
+          "mejoras": [
+            {
+              "nivel": 5,
+              "texto": "+15 pies."
+            },
+            {
+              "nivel": 11,
+              "texto": "El aliado tampoco sufre terreno difícil natural."
+            },
+            {
+              "nivel": 17,
+              "texto": "Afecta a dos aliados."
             }
           ]
         }

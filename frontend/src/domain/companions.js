@@ -34,11 +34,15 @@ function evalHp(hp, owner) {
 }
 
 /** Opciones de criatura para un personaje: [{ ref, name, group }] */
-export function creatureOptions({ blood = false, catalog = [], groups = [] } = {}) {
+export function creatureOptions({ blood = false, catalog = [], groups = [], raceKey = null } = {}) {
   const out = catalog.map((e) => ({ ref: e.ref, name: e.item.name, group: e.packName ?? 'Homebrew' }));
   for (const g of groups) {
     const grp = data.classCreatures[g];
-    for (const [id, cr] of Object.entries(grp?.criaturas ?? {})) out.push({ ref: `${CLASS_PREFIX}${g}:${id}`, name: cr.name, group: grp.nombre ?? g });
+    for (const [id, cr] of Object.entries(grp?.criaturas ?? {})) {
+      // Grupos «porRaza» (Sujetos de origen): sólo la criatura de tu raza.
+      if (grp.porRaza && !(cr.razas ?? []).includes(raceKey)) continue;
+      out.push({ ref: `${CLASS_PREFIX}${g}:${id}`, name: cr.name, group: grp.nombre ?? g });
+    }
   }
   if (blood) {
     for (const [id, c] of Object.entries(data.bloodCreatures)) out.push({ ref: `${BLOOD_PREFIX}${id}`, name: c.name, group: 'Criaturas de sangre' });

@@ -295,3 +295,20 @@ Loro, Ruleta, Topo, Pulpo, Polilla, Montura, Esponja, Araña y Luciérnaga) y `c
 El diseño completo y las decisiones del autor están en el doc del proyecto `claude/ink-diagnostico.md`.
 Importante: el secreto de la cura (Vacío, Experimento 048) **no** se publica en la app; en el lore sólo hay un rumor.
 Los tests (`tests/ink.test.js`) comprueban que ninguna invocación ni hechizo hace daño y que el secreto no aparece.
+
+### Experimento 043, Curas elementales y lanzamiento por puntos (AgSt 1.37)
+
+- La raza «INK» pasa a ser el **Experimento 043**, con una entrada por **Sujeto de origen** (Conejo, Gato, Perro,
+  Cuervo, Búho, Serpiente, Oso y Ciervo). El Sujeto decide el tamaño (hasta Grande) y es su primera invocación
+  (grupo `sujetos` de `class-creatures.json`, con `porRaza: true`: cada criatura sólo aparece para su raza, por
+  `razas`). Se habilita con `habilita: invocaciones_sujetos`. Las fichas con la raza «INK» se abren como
+  «Experimento 043 (Conejo)» (`RACE_RENAMES` en `domain/validation.js`).
+- **Adaptado:** sin Sendas. La subclase es la **Cura elemental** (nivel 5): 13 elementos de las Reglas (sin los
+  físicos) más la Tinta, con rasgos en los niveles 5, 10 y 15. Ninguno hace daño.
+- **Lanzamiento por puntos** (`lanzamiento.progression: "puntos"`): sin espacios de conjuro; `puntos` nombra el recurso
+  (Esencia) y `nivelMaximo` (20 números) da el nivel de conjuro más alto. No cuenta para la multiclase. Los hechizos
+  se eligen en la pestaña Conjuros (`listaConjuros` + `conjuradorTrue.adaptado` en `spells.json`).
+- **Caramelos:** el +1 ya no caduca; el botón «Recibí curación» quita el drenaje, devuelve lo drenado y se lleva
+  los puntos ganados.
+- **Reglas:** el estado «Vacío» se quitó; queda el tipo de daño Vacío con la asfixia y el arrastre en su nota.
+- Todo se genera con `python3 tools/ink_adaptado.py` (y `tools/rules_reference.py` para las Reglas).

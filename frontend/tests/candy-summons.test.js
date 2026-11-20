@@ -4,7 +4,7 @@ import { parseDocument } from '../src/domain/validation.js';
 import { computeSheet } from '../src/domain/rules.js';
 import { data } from '../src/data/index.js';
 import {
-  createCandy, recoverCeded, eatCandy, endCandy, drainTick, cureDrain,
+  createCandy, recoverCeded, eatCandy, endCandy, drainTick, healCandy,
 } from '../src/domain/candy.js';
 import {
   creatureOptions, creatureBlock, addCompanion, summonUsage, canManifest, updateCompanion,
@@ -30,7 +30,7 @@ describe('caramelos de atributo', () => {
     expect(computeSheet(c).scores.fuerza.total).toBe(before - 1);
   });
 
-  it('comer: +1 durante la hora; el drenaje empieza con el segundo y se triplica de golpe', () => {
+  it('comer: +1 sin límite de tiempo; el drenaje empieza con el segundo y se triplica de golpe', () => {
     let c = base();
     c.equipment.items.push({ name: 'Caramelo de Fuerza', quantity: 4, notes: '', consumable: true, candy: 'fuerza' });
     const idx = c.equipment.items.length - 1;
@@ -51,10 +51,13 @@ describe('caramelos de atributo', () => {
     // Nunca baja de 1 (no mata).
     for (let i = 0; i < 20; i++) c = drainTick(c).character;
     expect(computeSheet(c).hp.max).toBe(1);
-    c = cureDrain(c).character;
-    expect(computeSheet(c).hp.max).toBe(hp);
     c = endCandy(c, c.candy.active[0].id).character;
     expect(c.candy.active).toHaveLength(3);
+    // Cualquier curación se lo lleva todo: drenaje, lo drenado y los puntos.
+    c = healCandy(c).character;
+    expect(computeSheet(c).hp.max).toBe(hp);
+    expect(computeSheet(c).scores.fuerza.total).toBe(14);
+    expect(c.candy).toMatchObject({ active: [], drain: null });
   });
 
   it('el estado y el objeto caramelo sobreviven a guardar y abrir', () => {

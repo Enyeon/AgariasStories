@@ -23,6 +23,9 @@ import { normalizeResourcesState } from './resources.js';
 import { normalizeCandyState } from './candy.js';
 import { getClass, getRace, getFeat, getEpicBoon, getOfficialBackground } from '../data/index.js';
 
+/** Claves de raza renombradas (vieja → nueva). AgSt 1.37: «INK» pasa a ser el Experimento 043 de Vacío (Sujeto: Conejo). */
+const RACE_RENAMES = Object.freeze({ INK: 'Experimento 043 (Conejo)' });
+
 export class InvalidDocumentError extends Error {
   constructor(userMessage, detail) {
     super(userMessage);
@@ -244,7 +247,8 @@ export function normalizeCharacter(raw) {
 
   // Raza
   const race = isObject(src.race) ? src.race : {};
-  const raceKey = text(race.key);
+  // Razas renombradas: la clave vieja se traduce a la nueva al abrir la ficha.
+  const raceKey = RACE_RENAMES[text(race.key)] ?? text(race.key);
   if (raceKey) {
     d.race.key = raceKey;
     if (!getRace(raceKey)) warnings.push(`La raza «${raceKey}» no existe en los datos actuales; se conserva sin bonificaciones.`);

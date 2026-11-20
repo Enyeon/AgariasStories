@@ -7330,5 +7330,260 @@
       "druida": true
     },
     "descripcion": "Se crea una enorme nube de tormenta cuyo centro es un punto que puedas ver y se expande en un radio de 110m. Los rayos iluminan el área, los truenos estallan y el viento de la tormenta ruge. Todas las criaturas que se encuentran bajo la nube (no más de 1.5km por debajo de la misma) deben hacer una tirada de salvación de Constitución cuando esta aparece. Si fallan, reciben 2d6 puntos de daño por trueno y quedan ensordecidas durante 5 minutos.\n\nCada ronda que mantengas la concentración en este conjuro, la tormenta produce efectos adicionales en tu turno.\n\n<b class=\"content_conjures-c\">♻ Ronda 2.</b> Cae lluvia ácida de la nube. Todas las criaturas y objetos que haya debajo la nube reciben 1d6 puntos de daño por ácido.\n\n<b class=\"content_conjures-c\">♻ Ronda 3.</b> Puedes convocar seis rayos de luz de la nube para que golpeen a seis criaturas u objetos de tu elección que se encuentren debajo de la nube. Cada uno no puede ser golpeado por más de un rayo. Una criatura que ha sido golpeada debe hacer una tirada de salvación de Destreza: si falla, recibe 10d6 puntos de daño por relámpago y, si tiene éxito, la mitad.\n\n<b class=\"content_conjures-c\">♻ Ronda 4.</b> Cae granizo de la nube. Todas las criaturas que se encuentren debajo de ella reciben 2d6 puntos de daño contundente.\n\n<b class=\"content_conjures-c\">♻ Ronda 5-10.</b> Ráfagas y lluvia gélida embisten la zona que se encuentra debajo de la nube. El área se convierte en terreno difícil y está muy resguardada. Todas las criaturas que se encuentren en ella reciben 1d6 puntos de daño por frío. Es imposible realizar ataques a distancia en el área. El viento y la lluvia cuentan como distracciones graves a la hora de mantener la concentración en los conjuros. Por último, una ráfaga de viento fuerte (de 32km a 80km por hora) dispersa automáticamente la niebla, la bruma y los fenómenos similares en el área, independientemente de que sean mundanos o mágicos."
+  },
+  "Gota de tinta": {
+    "tipo": [
+      "Ayuda"
+    ],
+    "escuela": "Transmutación",
+    "nivel": "Truco",
+    "origen": "Agarias",
+    "componentes": "S",
+    "tiempoLanzamiento": "1 acción adicional",
+    "alcance": "30 pies",
+    "duracion": "Hasta el final de tu siguiente turno",
+    "listaConjurador": "Conjuros de Adaptado.",
+    "conjuradorTrue": {
+      "adaptado": true
+    },
+    "descripcion": "Marcas a una criatura con una gota de biomasa: el siguiente ataque de un aliado contra ella tiene +1. Sin daño."
+  },
+  "Vínculo Reconfortante": {
+    "tipo": [
+      "Ayuda"
+    ],
+    "escuela": "Abjuración",
+    "nivel": 1,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "60 pies",
+    "duracion": "Concentración, 1 minuto",
+    "listaConjurador": "Conjuros de Adaptado.",
+    "conjuradorTrue": {
+      "adaptado": true
+    },
+    "descripcion": "Un aliado (no tú) gana resistencia a un tipo de daño que elijas (contundente, perforante, cortante, fuego, frío, ácido, veneno, rayo o trueno). A nivel superior: +1 aliado por cada nivel por encima de 1.\n\nCoste para el Adaptado: 1 de Esencia."
+  },
+  "Piel Reactiva": {
+    "tipo": [
+      "Ayuda"
+    ],
+    "escuela": "Transmutación",
+    "nivel": 1,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción adicional",
+    "alcance": "Toque",
+    "duracion": "Concentración, 1 minuto",
+    "listaConjurador": "Conjuros de Adaptado.",
+    "conjuradorTrue": {
+      "adaptado": true
+    },
+    "descripcion": "Una criatura voluntaria gana +2 a la CA y ventaja en las salvaciones para no ser derribada.\n\nCoste para el Adaptado: 1 de Esencia."
+  },
+  "Espora Confusora": {
+    "tipo": [
+      "Ayuda"
+    ],
+    "escuela": "Encantamiento",
+    "nivel": 1,
+    "origen": "Agarias",
+    "componentes": "V",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "30 pies",
+    "duracion": "Instantánea",
+    "listaConjurador": "Conjuros de Adaptado.",
+    "conjuradorTrue": {
+      "adaptado": true
+    },
+    "descripcion": "Una criatura hace una salvación de Sabiduría o tiene desventaja en su siguiente tirada de ataque antes del final de su siguiente turno. No afecta a quien es inmune al veneno o no respira. A nivel superior: +1 criatura por nivel.\n\nCoste para el Adaptado: 1 de Esencia."
+  },
+  "Máscara de Otro": {
+    "tipo": [
+      "Ayuda"
+    ],
+    "escuela": "Ilusión",
+    "nivel": 1,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción adicional",
+    "alcance": "Toque",
+    "duracion": "1 hora",
+    "listaConjurador": "Conjuros de Adaptado.",
+    "conjuradorTrue": {
+      "adaptado": true
+    },
+    "descripcion": "Una criatura voluntaria (puedes ser tú) tiene ventaja en todas sus pruebas de Carisma (Engaño) durante una misma interacción social.\n\nCoste para el Adaptado: 1 de Esencia."
+  },
+  "Segundo Aliento Prestado": {
+    "tipo": [
+      "Ayuda"
+    ],
+    "escuela": "Abjuración",
+    "nivel": 2,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "Toque",
+    "duracion": "Instantánea",
+    "listaConjurador": "Conjuros de Adaptado.",
+    "conjuradorTrue": {
+      "adaptado": true
+    },
+    "descripcion": "Una criatura recupera 2d8 + tu modificador de Sabiduría PG, sin gastar sus Dados de Golpe.\n\nCoste para el Adaptado: 2 de Esencia."
+  },
+  "Enredo Adhesivo": {
+    "tipo": [
+      "Ayuda"
+    ],
+    "escuela": "Conjuración",
+    "nivel": 2,
+    "origen": "Agarias",
+    "componentes": "V, S, M (una gota de tu biomasa)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "60 pies",
+    "duracion": "Concentración, 1 minuto",
+    "listaConjurador": "Conjuros de Adaptado.",
+    "conjuradorTrue": {
+      "adaptado": true
+    },
+    "descripcion": "Un cuadrado de 10 pies se vuelve terreno difícil. Quien empiece su turno en él o entre por primera vez hace una salvación de Fuerza o queda apresado hasta que use su acción y la supere.\n\nCoste para el Adaptado: 2 de Esencia."
+  },
+  "Disolución Parcial": {
+    "tipo": [
+      "Ayuda"
+    ],
+    "escuela": "Transmutación",
+    "nivel": 2,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "Toque",
+    "duracion": "1 minuto",
+    "listaConjurador": "Conjuros de Adaptado.",
+    "conjuradorTrue": {
+      "adaptado": true
+    },
+    "descripcion": "Una criatura voluntaria ignora el terreno difícil y puede atravesar el espacio de criaturas Medianas o mayores como terreno difícil (sin terminar ahí). No atraviesa objetos ni paredes.\n\nCoste para el Adaptado: 2 de Esencia."
+  },
+  "Miasma Debilitante": {
+    "tipo": [
+      "Ayuda"
+    ],
+    "escuela": "Nigromancia",
+    "nivel": 3,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "60 pies",
+    "duracion": "Concentración, 1 minuto",
+    "listaConjurador": "Conjuros de Adaptado.",
+    "conjuradorTrue": {
+      "adaptado": true
+    },
+    "descripcion": "Hasta tres criaturas a 20 pies entre sí hacen una salvación de Constitución o tienen desventaja en sus tiradas de ataque. Repiten la salvación al final de cada uno de sus turnos.\n\nCoste para el Adaptado: 3 de Esencia."
+  },
+  "Zona de Regeneración": {
+    "tipo": [
+      "Ayuda"
+    ],
+    "escuela": "Abjuración",
+    "nivel": 3,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "30 pies",
+    "duracion": "Concentración, 1 minuto",
+    "listaConjurador": "Conjuros de Adaptado.",
+    "conjuradorTrue": {
+      "adaptado": true
+    },
+    "descripcion": "Un área de 15 pies de radio: cada aliado que termine su turno dentro recupera 1d6 PG (una vez por ronda).\n\nCoste para el Adaptado: 3 de Esencia."
+  },
+  "Santuario Ink": {
+    "tipo": [
+      "Ayuda"
+    ],
+    "escuela": "Abjuración",
+    "nivel": 3,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción adicional",
+    "alcance": "30 pies",
+    "duracion": "Concentración, 1 minuto",
+    "listaConjurador": "Conjuros de Adaptado.",
+    "conjuradorTrue": {
+      "adaptado": true
+    },
+    "descripcion": "Un aliado queda envuelto en biomasa: quien quiera atacarle o afectarle con un conjuro dañino hace antes una salvación de Sabiduría o elige otro objetivo. Termina si ese aliado ataca o lanza un conjuro que afecte a un enemigo.\n\nCoste para el Adaptado: 3 de Esencia."
+  },
+  "Espejo de Carne": {
+    "tipo": [
+      "Ayuda"
+    ],
+    "escuela": "Abjuración",
+    "nivel": 4,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 reacción (un aliado a 30 pies es alcanzado por un ataque)",
+    "alcance": "30 pies",
+    "duracion": "Instantánea",
+    "listaConjurador": "Conjuros de Adaptado.",
+    "conjuradorTrue": {
+      "adaptado": true
+    },
+    "descripcion": "Recibes tú el ataque en lugar de tu aliado, con tus resistencias. El daño lo causa el enemigo, no tu raza. Una vez por combate.\n\nCoste para el Adaptado: 4 de Esencia."
+  },
+  "Paralización Simbiótica": {
+    "tipo": [
+      "Ayuda"
+    ],
+    "escuela": "Transmutación",
+    "nivel": 4,
+    "origen": "Agarias",
+    "componentes": "V, S, M (una porción de tu biomasa)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "30 pies",
+    "duracion": "Concentración, 1 minuto",
+    "listaConjurador": "Conjuros de Adaptado.",
+    "conjuradorTrue": {
+      "adaptado": true
+    },
+    "descripcion": "Una criatura hace una salvación de Constitución o queda apresada y con desventaja en las salvaciones de Fuerza y Destreza. Repite la salvación al final de cada uno de sus turnos. No afecta a criaturas Enormes o mayores.\n\nCoste para el Adaptado: 4 de Esencia."
+  },
+  "Pulso de Calma": {
+    "tipo": [
+      "Ayuda"
+    ],
+    "escuela": "Encantamiento",
+    "nivel": 4,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "60 pies",
+    "duracion": "Instantánea",
+    "listaConjurador": "Conjuros de Adaptado.",
+    "conjuradorTrue": {
+      "adaptado": true
+    },
+    "descripcion": "Cada criatura que elijas en una esfera de 20 pies hace una salvación de Sabiduría o no puede atacar hasta el final de su siguiente turno.\n\nCoste para el Adaptado: 4 de Esencia."
+  },
+  "Reconfiguración Mayor": {
+    "tipo": [
+      "Ayuda"
+    ],
+    "escuela": "Abjuración",
+    "nivel": 5,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "30 pies",
+    "duracion": "Instantánea",
+    "listaConjurador": "Conjuros de Adaptado.",
+    "conjuradorTrue": {
+      "adaptado": true
+    },
+    "descripcion": "Hasta seis criaturas que puedas ver recuperan cada una 5d8 + tu modificador de Sabiduría PG.\n\nCoste para el Adaptado: 5 de Esencia."
   }
 }

@@ -66,7 +66,8 @@ export const BONUS_TARGETS = Object.freeze({
 export const RESOURCES = Object.freeze({
   criaturas_de_sangre: 'Invocación de criaturas de sangre',
   companero: 'Compañero o criatura vinculada',
-  invocaciones_ink: 'Invocaciones Ink (catálogo de criaturas)',
+  invocaciones_ink: 'Repertorio de invocaciones del Adaptado (catálogo de criaturas)',
+  invocaciones_sujetos: 'Sujeto de origen del Experimento 043 (sólo el de tu raza)',
   caramelos: 'Caramelos de atributo (enfermedad de las estadísticas)',
   inhibicion: 'Inhibición: nada de lo que haces causa daño',
 });

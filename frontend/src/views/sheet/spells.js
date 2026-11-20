@@ -62,7 +62,9 @@ function statsCards(ctx) {
         ${e.known !== null ? html`<div><span>Conocidos</span><strong>${e.known}</strong></div>` : ''}
         ${e.prepared !== null ? html`<div><span>Preparables</span><strong>${out(`cast.${e.classKey}.prepared`, e.prepared)}</strong></div>` : ''}
         ${e.spellbook !== null ? html`<div><span>Libro (mín.)</span><strong>${e.spellbook}</strong></div>` : ''}
+        ${e.maxSpellLevel !== null ? html`<div><span>Nivel máx.</span><strong>${e.maxSpellLevel}.º</strong></div>` : ''}
       </div>
+      ${e.points ? html`<p class="field__hint">Sin espacios de conjuro: cada conjuro cuesta tantos puntos de ${e.points} como su nivel (los trucos no cuestan). Gástalos en la tarjeta «Recursos» del Resumen.</p>` : ''}
     </div>`);
   if (sc.featGranted) {
     const f = sc.featGranted;

@@ -14,7 +14,7 @@ import { normalizeEffect } from '../domain/effects.js';
 import { checkChoiceData } from './class-choices-format.js';
 
 const SECTIONS = ['manual', 'tasha', 'agarias', 'homebrew'];
-const PROGRESSIONS = ['full', 'half', 'half_up', 'artificer', 'pact'];
+const PROGRESSIONS = ['full', 'half', 'half_up', 'artificer', 'pact', 'puntos'];
 const isObject = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
 const isText = (v) => typeof v === 'string';
 
@@ -89,6 +89,9 @@ export function validateClassData(cls, { file = '' } = {}) {
       if (l?.espaciosPacto !== undefined && (l.progression !== 'pact' || !Array.isArray(l.espaciosPacto) || l.espaciosPacto.length !== 20
         || l.espaciosPacto.some((p) => !Array.isArray(p) || !Number.isInteger(p[0]) || p[0] < 0 || !Number.isInteger(p[1]) || p[1] < 1 || p[1] > 9))) {
         err('lanzamiento.espaciosPacto', 'con "progression": "pact", 20 pares [cantidad, nivel de los espacios]');
+      }
+      if (l?.progression === 'puntos' && (!Array.isArray(l.nivelMaximo) || l.nivelMaximo.length !== 20 || l.nivelMaximo.some((n) => !Number.isInteger(n) || n < 0 || n > 9))) {
+        err('lanzamiento.nivelMaximo', 'con "progression": "puntos", 20 números (nivel de conjuro máximo por nivel de clase)');
       }
       for (const k of ['cantripsKnown', 'spellsKnown', 'preparedTable']) {
         if (l?.[k] !== undefined && (!Array.isArray(l[k]) || l[k].length !== 20)) err(`lanzamiento.${k}`, 'lista de 20 números (uno por nivel)');

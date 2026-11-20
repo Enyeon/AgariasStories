@@ -3324,7 +3324,7 @@
     "tamano": "Pequeño",
     "origen": "La Luna (lado oscuro)"
   },
-  "INK": {
+  "Experimento 043 (Conejo)": {
     "velocidad": 30,
     "choices": [
       {
@@ -3340,19 +3340,11 @@
     "efectos": [
       {
         "type": "habilita",
-        "value": "invocaciones_ink"
+        "value": "invocaciones_sujetos"
       },
       {
         "type": "habilita",
         "value": "caramelos"
-      },
-      {
-        "type": "recurso",
-        "id": "poliforme",
-        "nombre": "Poliforme",
-        "max": {
-          "bc": true
-        }
       },
       {
         "type": "recurso",
@@ -3363,11 +3355,284 @@
         }
       }
     ],
-    "descripcion": "Experimentos de biomasa de los Sram, que ellos llaman «Fracasos»: frágiles, maleables y con varias vidas dentro.",
-    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres una aberración Mediana: biológicamente sintética, con metabolismo y necesidades orgánicas. No eres un constructo.\n♻ La raza no te daña. Ningún rasgo de tu raza puede causarte daño ni matarte.\n♻ Poliforme. Como acción, adoptas el aspecto de una criatura Pequeña o Mediana que hayas visto, o vuelves a tu forma natural. Copias la forma, la voz (si la oíste al menos 1 minuto) y un olor superficial; nunca sus estadísticas, sentidos, velocidades, ataques ni rasgos. Tu tamaño real no cambia. Dura hasta que la cambies o quedes inconsciente. Usos: tu bonificador de competencia por descanso largo. Suplantar a alguien concreto sigue pidiendo Carisma (Engaño) contra Sabiduría (Perspicacia); quien lo conoce de cerca tiene ventaja, y un olfato de rastreo puede notar que algo no cuadra.\n♻ Reserva de oxígeno. Dependes del oxígeno, pero lo almacenas: puedes contener la respiración 10 × (1 + tu modificador de Constitución) minutos (mínimo 10). Al agotarla empiezas a asfixiarte con las reglas normales. Recuperas la reserva tras respirar aire 10 minutos. No te protege de gases venenosos, de la asfixia mágica ni del daño de Vacío.\n♻ Contracción defensiva. Cuando una criatura que puedes ver ataca a un aliado a 10 pies (2 casillas) o menos de ti, puedes usar tu reacción para darle +2 a la CA contra ese ataque. Usos: tu bonificador de competencia por descanso largo.\n♻ Calma del Ink. Tienes ventaja en las tiradas de salvación para no quedar asustado ni encantado.\n♻ Conejo. Desde que naces te acompaña el Conejo, el primer ser que los Sram unieron a tu linaje. Lo manifiestas o reabsorbes como acción adicional y no ocupa Capacidad de Manifestación (sus estadísticas están en Criaturas → Añadir criatura → De un catálogo).\n♻ Enfermedad de las estadísticas. Puedes quitarte 1 punto de un atributo para crear un caramelo que lo replica (10 minutos). Quien se lo come gana +1 a ese atributo durante 1 hora (sin pasar de 20). Tienes como máximo tantos puntos cedidos como tu bonificador de competencia; recuperas cada punto 1 hora después de que se coman su caramelo o si se pierde. Desde el segundo caramelo en 24 horas, la vida de quien los come se drena: pierde 1 PG máximo cada 10 minutos, o 3 si se comió dos o más de golpe, sin bajar nunca de 1. Sólo lo detiene la cura de la enfermedad o la magia divina o sagrada, que devuelve lo drenado. (Ficha: tarjeta «Caramelos».)\n♻ Expresividad. Tus rasgos faciales son «sugeridos» y se mueven solos; es puramente estético y no da ventajas.",
-    "linaje": "ink",
+    "descripcion": "Experimento 043 de los Sram. Sujeto de origen: Conejo (cura y ayuda al aliado más cercano.)",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres una aberración Pequeño (el tamaño de tu Sujeto de origen): biomasa sintética de los Sram, con metabolismo y necesidades orgánicas. No eres un constructo.\n♻ Sujeto de origen: Conejo. Cura y ayuda al aliado más cercano. Es tu primera invocación: la manifiestas o reabsorbes como acción adicional y no ocupa Capacidad de Manifestación (estadísticas en Criaturas → Añadir criatura → De un catálogo).\n♻ La raza no te daña. Ningún rasgo de tu raza puede causarte daño ni matarte.\n♻ Sin rostro. Eres biomasa sin cara: tu rostro se forma por primera vez cuando recibes una Cura elemental (habla con tu DM; normalmente llega a nivel 5).\n♻ Poliforme. A voluntad, como acción, adoptas el aspecto de una criatura que recuerdes o vuelves a tu forma natural. Para recordarla tienes que dibujarla en un libro, papel o papiro: tira d20 + Inteligencia (Historia) o Destreza (Juego de Manos) contra la CD que fije el DM. Mientras conserves el dibujo, puedes adoptar esa forma. Copias la forma, la voz (si la oíste al menos 1 minuto) y un olor superficial; nunca sus estadísticas, sentidos, velocidades, ataques ni rasgos, y tu tamaño real no cambia. Suplantar a alguien concreto sigue pidiendo Carisma (Engaño) contra Sabiduría (Perspicacia); quien lo conoce de cerca tiene ventaja, y un olfato de rastreo puede notar que algo no cuadra.\n♻ Reserva de oxígeno. Dependes del oxígeno, pero lo almacenas: puedes contener la respiración 10 × (1 + tu modificador de Constitución) minutos (mínimo 10). Al agotarla empiezas a asfixiarte con las reglas normales. Recuperas la reserva tras respirar aire 10 minutos. No te protege de gases venenosos, de la asfixia mágica ni del daño de Vacío.\n♻ Contracción defensiva. Cuando una criatura que puedes ver ataca a un aliado a 10 pies (2 casillas) o menos de ti, puedes usar tu reacción para darle +2 a la CA contra ese ataque. Usos: tu bonificador de competencia por descanso largo.\n♻ Calma. Tienes ventaja en las tiradas de salvación para no quedar asustado ni encantado.\n♻ Enfermedad de las estadísticas. Puedes quitarte 1 punto de un atributo para crear un caramelo que lo replica (10 minutos). Quien se lo come gana +1 a ese atributo, sin límite de tiempo (sin pasar de 20). Tienes como máximo tantos puntos cedidos como tu bonificador de competencia; recuperas cada punto 1 hora después de que se coman su caramelo o si se pierde. Desde el segundo caramelo en 24 horas, la vida de quien los come se drena: pierde 1 PG máximo cada 10 minutos, o 3 si se comió dos o más de golpe, sin bajar nunca de 1. Cualquier curación se lo lleva todo: el drenaje, lo drenado y los puntos ganados. (Ficha: tarjeta «Caramelos».)",
+    "linaje": "experimento-043",
+    "tipo": "Aberración",
+    "tamano": "Pequeño",
+    "origen": "Instalaciones orbitales de los Sram",
+    "claseRecomendada": "adaptado"
+  },
+  "Experimento 043 (Gato)": {
+    "velocidad": 30,
+    "choices": [
+      {
+        "count": 2,
+        "bonus": 1
+      }
+    ],
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común y Sram",
+    "yaHabla": [
+      "Común",
+      "Sram"
+    ],
+    "efectos": [
+      {
+        "type": "habilita",
+        "value": "invocaciones_sujetos"
+      },
+      {
+        "type": "habilita",
+        "value": "caramelos"
+      },
+      {
+        "type": "recurso",
+        "id": "contraccion-defensiva",
+        "nombre": "Contracción defensiva",
+        "max": {
+          "bc": true
+        }
+      }
+    ],
+    "descripcion": "Experimento 043 de los Sram. Sujeto de origen: Gato (mantiene en pie al aliado más cercano.)",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres una aberración Pequeño (el tamaño de tu Sujeto de origen): biomasa sintética de los Sram, con metabolismo y necesidades orgánicas. No eres un constructo.\n♻ Sujeto de origen: Gato. Mantiene en pie al aliado más cercano. Es tu primera invocación: la manifiestas o reabsorbes como acción adicional y no ocupa Capacidad de Manifestación (estadísticas en Criaturas → Añadir criatura → De un catálogo).\n♻ La raza no te daña. Ningún rasgo de tu raza puede causarte daño ni matarte.\n♻ Sin rostro. Eres biomasa sin cara: tu rostro se forma por primera vez cuando recibes una Cura elemental (habla con tu DM; normalmente llega a nivel 5).\n♻ Poliforme. A voluntad, como acción, adoptas el aspecto de una criatura que recuerdes o vuelves a tu forma natural. Para recordarla tienes que dibujarla en un libro, papel o papiro: tira d20 + Inteligencia (Historia) o Destreza (Juego de Manos) contra la CD que fije el DM. Mientras conserves el dibujo, puedes adoptar esa forma. Copias la forma, la voz (si la oíste al menos 1 minuto) y un olor superficial; nunca sus estadísticas, sentidos, velocidades, ataques ni rasgos, y tu tamaño real no cambia. Suplantar a alguien concreto sigue pidiendo Carisma (Engaño) contra Sabiduría (Perspicacia); quien lo conoce de cerca tiene ventaja, y un olfato de rastreo puede notar que algo no cuadra.\n♻ Reserva de oxígeno. Dependes del oxígeno, pero lo almacenas: puedes contener la respiración 10 × (1 + tu modificador de Constitución) minutos (mínimo 10). Al agotarla empiezas a asfixiarte con las reglas normales. Recuperas la reserva tras respirar aire 10 minutos. No te protege de gases venenosos, de la asfixia mágica ni del daño de Vacío.\n♻ Contracción defensiva. Cuando una criatura que puedes ver ataca a un aliado a 10 pies (2 casillas) o menos de ti, puedes usar tu reacción para darle +2 a la CA contra ese ataque. Usos: tu bonificador de competencia por descanso largo.\n♻ Calma. Tienes ventaja en las tiradas de salvación para no quedar asustado ni encantado.\n♻ Enfermedad de las estadísticas. Puedes quitarte 1 punto de un atributo para crear un caramelo que lo replica (10 minutos). Quien se lo come gana +1 a ese atributo, sin límite de tiempo (sin pasar de 20). Tienes como máximo tantos puntos cedidos como tu bonificador de competencia; recuperas cada punto 1 hora después de que se coman su caramelo o si se pierde. Desde el segundo caramelo en 24 horas, la vida de quien los come se drena: pierde 1 PG máximo cada 10 minutos, o 3 si se comió dos o más de golpe, sin bajar nunca de 1. Cualquier curación se lo lleva todo: el drenaje, lo drenado y los puntos ganados. (Ficha: tarjeta «Caramelos».)",
+    "linaje": "experimento-043",
+    "tipo": "Aberración",
+    "tamano": "Pequeño",
+    "origen": "Instalaciones orbitales de los Sram",
+    "claseRecomendada": "adaptado"
+  },
+  "Experimento 043 (Perro)": {
+    "velocidad": 30,
+    "choices": [
+      {
+        "count": 2,
+        "bonus": 1
+      }
+    ],
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común y Sram",
+    "yaHabla": [
+      "Común",
+      "Sram"
+    ],
+    "efectos": [
+      {
+        "type": "habilita",
+        "value": "invocaciones_sujetos"
+      },
+      {
+        "type": "habilita",
+        "value": "caramelos"
+      },
+      {
+        "type": "recurso",
+        "id": "contraccion-defensiva",
+        "nombre": "Contracción defensiva",
+        "max": {
+          "bc": true
+        }
+      }
+    ],
+    "descripcion": "Experimento 043 de los Sram. Sujeto de origen: Perro (levanta y acompaña al aliado más cercano.)",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres una aberración Mediano (el tamaño de tu Sujeto de origen): biomasa sintética de los Sram, con metabolismo y necesidades orgánicas. No eres un constructo.\n♻ Sujeto de origen: Perro. Levanta y acompaña al aliado más cercano. Es tu primera invocación: la manifiestas o reabsorbes como acción adicional y no ocupa Capacidad de Manifestación (estadísticas en Criaturas → Añadir criatura → De un catálogo).\n♻ La raza no te daña. Ningún rasgo de tu raza puede causarte daño ni matarte.\n♻ Sin rostro. Eres biomasa sin cara: tu rostro se forma por primera vez cuando recibes una Cura elemental (habla con tu DM; normalmente llega a nivel 5).\n♻ Poliforme. A voluntad, como acción, adoptas el aspecto de una criatura que recuerdes o vuelves a tu forma natural. Para recordarla tienes que dibujarla en un libro, papel o papiro: tira d20 + Inteligencia (Historia) o Destreza (Juego de Manos) contra la CD que fije el DM. Mientras conserves el dibujo, puedes adoptar esa forma. Copias la forma, la voz (si la oíste al menos 1 minuto) y un olor superficial; nunca sus estadísticas, sentidos, velocidades, ataques ni rasgos, y tu tamaño real no cambia. Suplantar a alguien concreto sigue pidiendo Carisma (Engaño) contra Sabiduría (Perspicacia); quien lo conoce de cerca tiene ventaja, y un olfato de rastreo puede notar que algo no cuadra.\n♻ Reserva de oxígeno. Dependes del oxígeno, pero lo almacenas: puedes contener la respiración 10 × (1 + tu modificador de Constitución) minutos (mínimo 10). Al agotarla empiezas a asfixiarte con las reglas normales. Recuperas la reserva tras respirar aire 10 minutos. No te protege de gases venenosos, de la asfixia mágica ni del daño de Vacío.\n♻ Contracción defensiva. Cuando una criatura que puedes ver ataca a un aliado a 10 pies (2 casillas) o menos de ti, puedes usar tu reacción para darle +2 a la CA contra ese ataque. Usos: tu bonificador de competencia por descanso largo.\n♻ Calma. Tienes ventaja en las tiradas de salvación para no quedar asustado ni encantado.\n♻ Enfermedad de las estadísticas. Puedes quitarte 1 punto de un atributo para crear un caramelo que lo replica (10 minutos). Quien se lo come gana +1 a ese atributo, sin límite de tiempo (sin pasar de 20). Tienes como máximo tantos puntos cedidos como tu bonificador de competencia; recuperas cada punto 1 hora después de que se coman su caramelo o si se pierde. Desde el segundo caramelo en 24 horas, la vida de quien los come se drena: pierde 1 PG máximo cada 10 minutos, o 3 si se comió dos o más de golpe, sin bajar nunca de 1. Cualquier curación se lo lleva todo: el drenaje, lo drenado y los puntos ganados. (Ficha: tarjeta «Caramelos».)",
+    "linaje": "experimento-043",
     "tipo": "Aberración",
     "tamano": "Mediano",
+    "origen": "Instalaciones orbitales de los Sram",
+    "claseRecomendada": "adaptado"
+  },
+  "Experimento 043 (Cuervo)": {
+    "velocidad": 30,
+    "choices": [
+      {
+        "count": 2,
+        "bonus": 1
+      }
+    ],
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común y Sram",
+    "yaHabla": [
+      "Común",
+      "Sram"
+    ],
+    "efectos": [
+      {
+        "type": "habilita",
+        "value": "invocaciones_sujetos"
+      },
+      {
+        "type": "habilita",
+        "value": "caramelos"
+      },
+      {
+        "type": "recurso",
+        "id": "contraccion-defensiva",
+        "nombre": "Contracción defensiva",
+        "max": {
+          "bc": true
+        }
+      }
+    ],
+    "descripcion": "Experimento 043 de los Sram. Sujeto de origen: Cuervo (lleva lo que haga falta al aliado que lo necesita.)",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres una aberración Pequeño (el tamaño de tu Sujeto de origen): biomasa sintética de los Sram, con metabolismo y necesidades orgánicas. No eres un constructo.\n♻ Sujeto de origen: Cuervo. Lleva lo que haga falta al aliado que lo necesita. Es tu primera invocación: la manifiestas o reabsorbes como acción adicional y no ocupa Capacidad de Manifestación (estadísticas en Criaturas → Añadir criatura → De un catálogo).\n♻ La raza no te daña. Ningún rasgo de tu raza puede causarte daño ni matarte.\n♻ Sin rostro. Eres biomasa sin cara: tu rostro se forma por primera vez cuando recibes una Cura elemental (habla con tu DM; normalmente llega a nivel 5).\n♻ Poliforme. A voluntad, como acción, adoptas el aspecto de una criatura que recuerdes o vuelves a tu forma natural. Para recordarla tienes que dibujarla en un libro, papel o papiro: tira d20 + Inteligencia (Historia) o Destreza (Juego de Manos) contra la CD que fije el DM. Mientras conserves el dibujo, puedes adoptar esa forma. Copias la forma, la voz (si la oíste al menos 1 minuto) y un olor superficial; nunca sus estadísticas, sentidos, velocidades, ataques ni rasgos, y tu tamaño real no cambia. Suplantar a alguien concreto sigue pidiendo Carisma (Engaño) contra Sabiduría (Perspicacia); quien lo conoce de cerca tiene ventaja, y un olfato de rastreo puede notar que algo no cuadra.\n♻ Reserva de oxígeno. Dependes del oxígeno, pero lo almacenas: puedes contener la respiración 10 × (1 + tu modificador de Constitución) minutos (mínimo 10). Al agotarla empiezas a asfixiarte con las reglas normales. Recuperas la reserva tras respirar aire 10 minutos. No te protege de gases venenosos, de la asfixia mágica ni del daño de Vacío.\n♻ Contracción defensiva. Cuando una criatura que puedes ver ataca a un aliado a 10 pies (2 casillas) o menos de ti, puedes usar tu reacción para darle +2 a la CA contra ese ataque. Usos: tu bonificador de competencia por descanso largo.\n♻ Calma. Tienes ventaja en las tiradas de salvación para no quedar asustado ni encantado.\n♻ Enfermedad de las estadísticas. Puedes quitarte 1 punto de un atributo para crear un caramelo que lo replica (10 minutos). Quien se lo come gana +1 a ese atributo, sin límite de tiempo (sin pasar de 20). Tienes como máximo tantos puntos cedidos como tu bonificador de competencia; recuperas cada punto 1 hora después de que se coman su caramelo o si se pierde. Desde el segundo caramelo en 24 horas, la vida de quien los come se drena: pierde 1 PG máximo cada 10 minutos, o 3 si se comió dos o más de golpe, sin bajar nunca de 1. Cualquier curación se lo lleva todo: el drenaje, lo drenado y los puntos ganados. (Ficha: tarjeta «Caramelos».)",
+    "linaje": "experimento-043",
+    "tipo": "Aberración",
+    "tamano": "Pequeño",
+    "origen": "Instalaciones orbitales de los Sram",
+    "claseRecomendada": "adaptado"
+  },
+  "Experimento 043 (Búho)": {
+    "velocidad": 30,
+    "choices": [
+      {
+        "count": 2,
+        "bonus": 1
+      }
+    ],
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común y Sram",
+    "yaHabla": [
+      "Común",
+      "Sram"
+    ],
+    "efectos": [
+      {
+        "type": "habilita",
+        "value": "invocaciones_sujetos"
+      },
+      {
+        "type": "habilita",
+        "value": "caramelos"
+      },
+      {
+        "type": "recurso",
+        "id": "contraccion-defensiva",
+        "nombre": "Contracción defensiva",
+        "max": {
+          "bc": true
+        }
+      }
+    ],
+    "descripcion": "Experimento 043 de los Sram. Sujeto de origen: Búho (presta sus ojos nocturnos al aliado más cercano.)",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres una aberración Pequeño (el tamaño de tu Sujeto de origen): biomasa sintética de los Sram, con metabolismo y necesidades orgánicas. No eres un constructo.\n♻ Sujeto de origen: Búho. Presta sus ojos nocturnos al aliado más cercano. Es tu primera invocación: la manifiestas o reabsorbes como acción adicional y no ocupa Capacidad de Manifestación (estadísticas en Criaturas → Añadir criatura → De un catálogo).\n♻ La raza no te daña. Ningún rasgo de tu raza puede causarte daño ni matarte.\n♻ Sin rostro. Eres biomasa sin cara: tu rostro se forma por primera vez cuando recibes una Cura elemental (habla con tu DM; normalmente llega a nivel 5).\n♻ Poliforme. A voluntad, como acción, adoptas el aspecto de una criatura que recuerdes o vuelves a tu forma natural. Para recordarla tienes que dibujarla en un libro, papel o papiro: tira d20 + Inteligencia (Historia) o Destreza (Juego de Manos) contra la CD que fije el DM. Mientras conserves el dibujo, puedes adoptar esa forma. Copias la forma, la voz (si la oíste al menos 1 minuto) y un olor superficial; nunca sus estadísticas, sentidos, velocidades, ataques ni rasgos, y tu tamaño real no cambia. Suplantar a alguien concreto sigue pidiendo Carisma (Engaño) contra Sabiduría (Perspicacia); quien lo conoce de cerca tiene ventaja, y un olfato de rastreo puede notar que algo no cuadra.\n♻ Reserva de oxígeno. Dependes del oxígeno, pero lo almacenas: puedes contener la respiración 10 × (1 + tu modificador de Constitución) minutos (mínimo 10). Al agotarla empiezas a asfixiarte con las reglas normales. Recuperas la reserva tras respirar aire 10 minutos. No te protege de gases venenosos, de la asfixia mágica ni del daño de Vacío.\n♻ Contracción defensiva. Cuando una criatura que puedes ver ataca a un aliado a 10 pies (2 casillas) o menos de ti, puedes usar tu reacción para darle +2 a la CA contra ese ataque. Usos: tu bonificador de competencia por descanso largo.\n♻ Calma. Tienes ventaja en las tiradas de salvación para no quedar asustado ni encantado.\n♻ Enfermedad de las estadísticas. Puedes quitarte 1 punto de un atributo para crear un caramelo que lo replica (10 minutos). Quien se lo come gana +1 a ese atributo, sin límite de tiempo (sin pasar de 20). Tienes como máximo tantos puntos cedidos como tu bonificador de competencia; recuperas cada punto 1 hora después de que se coman su caramelo o si se pierde. Desde el segundo caramelo en 24 horas, la vida de quien los come se drena: pierde 1 PG máximo cada 10 minutos, o 3 si se comió dos o más de golpe, sin bajar nunca de 1. Cualquier curación se lo lleva todo: el drenaje, lo drenado y los puntos ganados. (Ficha: tarjeta «Caramelos».)",
+    "linaje": "experimento-043",
+    "tipo": "Aberración",
+    "tamano": "Pequeño",
+    "origen": "Instalaciones orbitales de los Sram",
+    "claseRecomendada": "adaptado"
+  },
+  "Experimento 043 (Serpiente)": {
+    "velocidad": 30,
+    "choices": [
+      {
+        "count": 2,
+        "bonus": 1
+      }
+    ],
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común y Sram",
+    "yaHabla": [
+      "Común",
+      "Sram"
+    ],
+    "efectos": [
+      {
+        "type": "habilita",
+        "value": "invocaciones_sujetos"
+      },
+      {
+        "type": "habilita",
+        "value": "caramelos"
+      },
+      {
+        "type": "recurso",
+        "id": "contraccion-defensiva",
+        "nombre": "Contracción defensiva",
+        "max": {
+          "bc": true
+        }
+      }
+    ],
+    "descripcion": "Experimento 043 de los Sram. Sujeto de origen: Serpiente (cubre la retirada del aliado más cercano.)",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres una aberración Mediano (el tamaño de tu Sujeto de origen): biomasa sintética de los Sram, con metabolismo y necesidades orgánicas. No eres un constructo.\n♻ Sujeto de origen: Serpiente. Cubre la retirada del aliado más cercano. Es tu primera invocación: la manifiestas o reabsorbes como acción adicional y no ocupa Capacidad de Manifestación (estadísticas en Criaturas → Añadir criatura → De un catálogo).\n♻ La raza no te daña. Ningún rasgo de tu raza puede causarte daño ni matarte.\n♻ Sin rostro. Eres biomasa sin cara: tu rostro se forma por primera vez cuando recibes una Cura elemental (habla con tu DM; normalmente llega a nivel 5).\n♻ Poliforme. A voluntad, como acción, adoptas el aspecto de una criatura que recuerdes o vuelves a tu forma natural. Para recordarla tienes que dibujarla en un libro, papel o papiro: tira d20 + Inteligencia (Historia) o Destreza (Juego de Manos) contra la CD que fije el DM. Mientras conserves el dibujo, puedes adoptar esa forma. Copias la forma, la voz (si la oíste al menos 1 minuto) y un olor superficial; nunca sus estadísticas, sentidos, velocidades, ataques ni rasgos, y tu tamaño real no cambia. Suplantar a alguien concreto sigue pidiendo Carisma (Engaño) contra Sabiduría (Perspicacia); quien lo conoce de cerca tiene ventaja, y un olfato de rastreo puede notar que algo no cuadra.\n♻ Reserva de oxígeno. Dependes del oxígeno, pero lo almacenas: puedes contener la respiración 10 × (1 + tu modificador de Constitución) minutos (mínimo 10). Al agotarla empiezas a asfixiarte con las reglas normales. Recuperas la reserva tras respirar aire 10 minutos. No te protege de gases venenosos, de la asfixia mágica ni del daño de Vacío.\n♻ Contracción defensiva. Cuando una criatura que puedes ver ataca a un aliado a 10 pies (2 casillas) o menos de ti, puedes usar tu reacción para darle +2 a la CA contra ese ataque. Usos: tu bonificador de competencia por descanso largo.\n♻ Calma. Tienes ventaja en las tiradas de salvación para no quedar asustado ni encantado.\n♻ Enfermedad de las estadísticas. Puedes quitarte 1 punto de un atributo para crear un caramelo que lo replica (10 minutos). Quien se lo come gana +1 a ese atributo, sin límite de tiempo (sin pasar de 20). Tienes como máximo tantos puntos cedidos como tu bonificador de competencia; recuperas cada punto 1 hora después de que se coman su caramelo o si se pierde. Desde el segundo caramelo en 24 horas, la vida de quien los come se drena: pierde 1 PG máximo cada 10 minutos, o 3 si se comió dos o más de golpe, sin bajar nunca de 1. Cualquier curación se lo lleva todo: el drenaje, lo drenado y los puntos ganados. (Ficha: tarjeta «Caramelos».)",
+    "linaje": "experimento-043",
+    "tipo": "Aberración",
+    "tamano": "Mediano",
+    "origen": "Instalaciones orbitales de los Sram",
+    "claseRecomendada": "adaptado"
+  },
+  "Experimento 043 (Oso)": {
+    "velocidad": 30,
+    "choices": [
+      {
+        "count": 2,
+        "bonus": 1
+      }
+    ],
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común y Sram",
+    "yaHabla": [
+      "Común",
+      "Sram"
+    ],
+    "efectos": [
+      {
+        "type": "habilita",
+        "value": "invocaciones_sujetos"
+      },
+      {
+        "type": "habilita",
+        "value": "caramelos"
+      },
+      {
+        "type": "recurso",
+        "id": "contraccion-defensiva",
+        "nombre": "Contracción defensiva",
+        "max": {
+          "bc": true
+        }
+      }
+    ],
+    "descripcion": "Experimento 043 de los Sram. Sujeto de origen: Oso (da calor y firmeza al aliado más cercano.)",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres una aberración Grande (el tamaño de tu Sujeto de origen): biomasa sintética de los Sram, con metabolismo y necesidades orgánicas. No eres un constructo.\n♻ Sujeto de origen: Oso. Da calor y firmeza al aliado más cercano. Es tu primera invocación: la manifiestas o reabsorbes como acción adicional y no ocupa Capacidad de Manifestación (estadísticas en Criaturas → Añadir criatura → De un catálogo).\n♻ La raza no te daña. Ningún rasgo de tu raza puede causarte daño ni matarte.\n♻ Sin rostro. Eres biomasa sin cara: tu rostro se forma por primera vez cuando recibes una Cura elemental (habla con tu DM; normalmente llega a nivel 5).\n♻ Poliforme. A voluntad, como acción, adoptas el aspecto de una criatura que recuerdes o vuelves a tu forma natural. Para recordarla tienes que dibujarla en un libro, papel o papiro: tira d20 + Inteligencia (Historia) o Destreza (Juego de Manos) contra la CD que fije el DM. Mientras conserves el dibujo, puedes adoptar esa forma. Copias la forma, la voz (si la oíste al menos 1 minuto) y un olor superficial; nunca sus estadísticas, sentidos, velocidades, ataques ni rasgos, y tu tamaño real no cambia. Suplantar a alguien concreto sigue pidiendo Carisma (Engaño) contra Sabiduría (Perspicacia); quien lo conoce de cerca tiene ventaja, y un olfato de rastreo puede notar que algo no cuadra.\n♻ Reserva de oxígeno. Dependes del oxígeno, pero lo almacenas: puedes contener la respiración 10 × (1 + tu modificador de Constitución) minutos (mínimo 10). Al agotarla empiezas a asfixiarte con las reglas normales. Recuperas la reserva tras respirar aire 10 minutos. No te protege de gases venenosos, de la asfixia mágica ni del daño de Vacío.\n♻ Contracción defensiva. Cuando una criatura que puedes ver ataca a un aliado a 10 pies (2 casillas) o menos de ti, puedes usar tu reacción para darle +2 a la CA contra ese ataque. Usos: tu bonificador de competencia por descanso largo.\n♻ Calma. Tienes ventaja en las tiradas de salvación para no quedar asustado ni encantado.\n♻ Enfermedad de las estadísticas. Puedes quitarte 1 punto de un atributo para crear un caramelo que lo replica (10 minutos). Quien se lo come gana +1 a ese atributo, sin límite de tiempo (sin pasar de 20). Tienes como máximo tantos puntos cedidos como tu bonificador de competencia; recuperas cada punto 1 hora después de que se coman su caramelo o si se pierde. Desde el segundo caramelo en 24 horas, la vida de quien los come se drena: pierde 1 PG máximo cada 10 minutos, o 3 si se comió dos o más de golpe, sin bajar nunca de 1. Cualquier curación se lo lleva todo: el drenaje, lo drenado y los puntos ganados. (Ficha: tarjeta «Caramelos».)",
+    "linaje": "experimento-043",
+    "tipo": "Aberración",
+    "tamano": "Grande",
+    "origen": "Instalaciones orbitales de los Sram",
+    "claseRecomendada": "adaptado"
+  },
+  "Experimento 043 (Ciervo)": {
+    "velocidad": 30,
+    "choices": [
+      {
+        "count": 2,
+        "bonus": 1
+      }
+    ],
+    "lenguage": "Idioma: Puedes leer, escribir y hablar Común y Sram",
+    "yaHabla": [
+      "Común",
+      "Sram"
+    ],
+    "efectos": [
+      {
+        "type": "habilita",
+        "value": "invocaciones_sujetos"
+      },
+      {
+        "type": "habilita",
+        "value": "caramelos"
+      },
+      {
+        "type": "recurso",
+        "id": "contraccion-defensiva",
+        "nombre": "Contracción defensiva",
+        "max": {
+          "bc": true
+        }
+      }
+    ],
+    "descripcion": "Experimento 043 de los Sram. Sujeto de origen: Ciervo (da impulso al aliado más cercano.)",
+    "info": "Rasgos de Raza:\n♻ Tipo y tamaño. Eres una aberración Grande (el tamaño de tu Sujeto de origen): biomasa sintética de los Sram, con metabolismo y necesidades orgánicas. No eres un constructo.\n♻ Sujeto de origen: Ciervo. Da impulso al aliado más cercano. Es tu primera invocación: la manifiestas o reabsorbes como acción adicional y no ocupa Capacidad de Manifestación (estadísticas en Criaturas → Añadir criatura → De un catálogo).\n♻ La raza no te daña. Ningún rasgo de tu raza puede causarte daño ni matarte.\n♻ Sin rostro. Eres biomasa sin cara: tu rostro se forma por primera vez cuando recibes una Cura elemental (habla con tu DM; normalmente llega a nivel 5).\n♻ Poliforme. A voluntad, como acción, adoptas el aspecto de una criatura que recuerdes o vuelves a tu forma natural. Para recordarla tienes que dibujarla en un libro, papel o papiro: tira d20 + Inteligencia (Historia) o Destreza (Juego de Manos) contra la CD que fije el DM. Mientras conserves el dibujo, puedes adoptar esa forma. Copias la forma, la voz (si la oíste al menos 1 minuto) y un olor superficial; nunca sus estadísticas, sentidos, velocidades, ataques ni rasgos, y tu tamaño real no cambia. Suplantar a alguien concreto sigue pidiendo Carisma (Engaño) contra Sabiduría (Perspicacia); quien lo conoce de cerca tiene ventaja, y un olfato de rastreo puede notar que algo no cuadra.\n♻ Reserva de oxígeno. Dependes del oxígeno, pero lo almacenas: puedes contener la respiración 10 × (1 + tu modificador de Constitución) minutos (mínimo 10). Al agotarla empiezas a asfixiarte con las reglas normales. Recuperas la reserva tras respirar aire 10 minutos. No te protege de gases venenosos, de la asfixia mágica ni del daño de Vacío.\n♻ Contracción defensiva. Cuando una criatura que puedes ver ataca a un aliado a 10 pies (2 casillas) o menos de ti, puedes usar tu reacción para darle +2 a la CA contra ese ataque. Usos: tu bonificador de competencia por descanso largo.\n♻ Calma. Tienes ventaja en las tiradas de salvación para no quedar asustado ni encantado.\n♻ Enfermedad de las estadísticas. Puedes quitarte 1 punto de un atributo para crear un caramelo que lo replica (10 minutos). Quien se lo come gana +1 a ese atributo, sin límite de tiempo (sin pasar de 20). Tienes como máximo tantos puntos cedidos como tu bonificador de competencia; recuperas cada punto 1 hora después de que se coman su caramelo o si se pierde. Desde el segundo caramelo en 24 horas, la vida de quien los come se drena: pierde 1 PG máximo cada 10 minutos, o 3 si se comió dos o más de golpe, sin bajar nunca de 1. Cualquier curación se lo lleva todo: el drenaje, lo drenado y los puntos ganados. (Ficha: tarjeta «Caramelos».)",
+    "linaje": "experimento-043",
+    "tipo": "Aberración",
+    "tamano": "Grande",
     "origen": "Instalaciones orbitales de los Sram",
     "claseRecomendada": "adaptado"
   }

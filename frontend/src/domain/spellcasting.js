@@ -121,9 +121,23 @@ export function castingConfig(classKey) {
     && decl.espaciosPacto.every((p) => Array.isArray(p) && Number.isInteger(p[0]) && Number.isInteger(p[1]) && p[1] >= 1 && p[1] <= 9)
     ? [null, ...decl.espaciosPacto.map(([n, lvl]) => Array.from({ length: 9 }, (_, i) => (i === lvl - 1 ? n : 0)))]
     : null;
+  const perLevel = (arr) => (Array.isArray(arr) && arr.length === 20 && arr.every((n) => Number.isInteger(n) && n >= 0) ? arr : null);
+  // `puntos` (AgSt 1.37): sin espacios; cada conjuro cuesta tantos puntos de un
+  // recurso (p. ej. la Esencia del Adaptado) como su nivel. `nivelMaximo` da el
+  // nivel de conjuro más alto por nivel de clase. No cuenta para la multiclase.
+  if (decl.progression === 'puntos') {
+    return {
+      progression: 'puntos',
+      table: null,
+      maxSpellLevel: perLevel(decl.nivelMaximo) ?? Array(20).fill(1),
+      points: typeof decl.puntos === 'string' && decl.puntos.trim() ? decl.puntos.trim() : 'puntos',
+      cantripsKnown: perLevel(decl.cantripsKnown) ?? CANTRIPS_2,
+      spellsKnown: perLevel(decl.spellsKnown) ?? undefined,
+      preparedFrom: null,
+    };
+  }
   const table = pact ?? TABLE_BY_PROGRESSION[decl.progression] ?? official?.table;
   if (!table) return null;
-  const perLevel = (arr) => (Array.isArray(arr) && arr.length === 20 && arr.every((n) => Number.isInteger(n) && n >= 0) ? arr : null);
   // Lo que declara el JSON de la clase manda (p. ej. tablas 2024); lo que no
   // declara se toma de la tabla oficial del código, si la hay.
   const preparedTable = perLevel(decl.preparedTable);
@@ -147,7 +161,8 @@ export function castingConfig(classKey) {
  * @param {Array<{classKey: string, level: number}>} casters
  */
 export function computeSpellSlots(casters) {
-  const withTable = casters.filter((c) => castingConfig(c.classKey));
+  // Las clases por puntos no tienen espacios (ni cuentan en la multiclase).
+  const withTable = casters.filter((c) => castingConfig(c.classKey)?.table);
   if (withTable.length === 0) return { slots: [...EMPTY_SLOTS], pactSlots: null };
 
   if (withTable.length === 1) {

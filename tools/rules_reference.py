@@ -170,7 +170,9 @@ DAMAGE = [
         note="No existe como tipo de daño en D&D 5e; lo más cercano es Radiante. En Agarias es un tipo propio: resistir el daño Radiante no protege del Sagrado salvo que la criatura lo diga."),
     dmg("vacio", "Vacío", "Void", "Energía sofocante del Vacío absoluto: desplaza el aire y la materia.",
         "Una energía sofocante que drena el aliento y comprime parcialmente la materia a su alrededor, como un agujero negro sin llegar a serlo.", origin="agarias",
-        note="Tipo de daño propio de Agarias (dragones y dracónidos del Vacío, cierta magia). Puede provocar el estado Vacío. " + VACIO_DESPLAZAMIENTO),
+        note=("Tipo de daño propio de Agarias (dragones y dracónidos del Vacío, cierta magia). Además del daño, quien lo recibe se asfixia "
+              "mientras dura, y los ataques de Vacío, aunque fallen, pueden atraer al objetivo 5 pies hacia la fuente. Dura unos segundos, "
+              "hasta que el aire vuelve a llenar el área. " + VACIO_DESPLAZAMIENTO)),
 ]
 
 
@@ -185,13 +187,6 @@ STATES = [
      "effect": ["Provoca en el cuerpo del objetivo un dolor extremo, con desgarro de músculos y calambres incontrolables (el DM decide su efecto en la escena)."],
      "applies": "Lo causan criaturas muy específicas y la magia.",
      "ends": "Con magia curativa, o después de unos segundos (uno o dos turnos).", "related": []},
-    {"id": "estado-vacio", "kind": "estado", "origin": "agarias", "name": "Vacío", "en": "Void",
-     "summary": "Energía sofocante que drena el aliento y comprime parcialmente la materia.",
-     "effect": ["Las criaturas afectadas sufren asfixia mientras dura.",
-                "Los ataques con este efecto, aunque fallen, pueden atraer al objetivo 5 pies hacia la fuente.",
-                VACIO_DESPLAZAMIENTO],
-     "applies": "Con el daño de Vacío: magia, el aliento de un dragón o dracónido del Vacío, o criaturas con características similares.",
-     "ends": "Dura unos segundos, hasta que el aire vuelve a llenar el área.", "related": ["Vacío (tipo de daño)"]},
 ]
 
 INTROS = {

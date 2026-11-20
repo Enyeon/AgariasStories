@@ -6,7 +6,7 @@ import { openDialog, toast } from '../../ui/feedback.js';
 import { ABILITIES, ABILITY_LABEL } from '../../domain/constants.js';
 import { sectionCard } from './common.js';
 import {
-  createCandy, recoverCeded, eatCandy, endCandy, drainTick, cureDrain, candyName,
+  createCandy, recoverCeded, eatCandy, endCandy, drainTick, healCandy, candyName,
 } from '../../domain/candy.js';
 
 const candyItems = (c) => (c.equipment.items ?? []).map((it, i) => [it, i]).filter(([it]) => it.candy && it.quantity > 0);
@@ -26,7 +26,7 @@ export function candyCard(ctx) {
   const btn = (action, label, attrs = '') => (ro ? '' : html`<button type="button" class="btn btn--ghost btn--sm" data-action="${action}" ${raw(attrs)}>${label}</button>`);
   return sectionCard({
     title: '🍬 Caramelos',
-    subtitle: 'Enfermedad de las estadísticas: el creador cede 1 punto de un atributo; quien se come el caramelo gana +1 durante 1 hora. Desde el segundo caramelo en 24 horas, la vida de quien los come se drena.',
+    subtitle: 'Enfermedad de las estadísticas: el creador cede 1 punto de un atributo; quien se come el caramelo gana +1 sin límite de tiempo. Desde el segundo caramelo en 24 horas, la vida de quien los come se drena. Cualquier curación se lo lleva todo: el drenaje y los puntos ganados.',
     className: 'candy-card',
     body: html`
       ${ctx.sheet.candyMaker ? html`<div class="candy-block">
@@ -50,20 +50,18 @@ export function candyCard(ctx) {
         </li>`)}</ul>
       </div>` : ''}
       ${st.active.length ? html`<div class="candy-block">
-        <h4 class="candy-block__title">Efecto activo (1 hora)</h4>
+        <h4 class="candy-block__title">Puntos ganados (hasta que te curen)</h4>
         <ul class="candy-list" role="list">${st.active.map((x) => html`<li>
           <span>+1 ${ABILITY_LABEL[x.attr]}</span>
-          ${btn('candy-end', 'Pasó la hora', `data-id="${x.id}"`)}
+          ${btn('candy-end', 'Quitar', `data-id="${x.id}" title="Quitar este punto a mano"`)}
         </li>`)}</ul>
       </div>` : ''}
       ${st.drain ? html`<div class="callout callout--danger candy-drain" role="status">
         <p><strong>Drenaje activo:</strong> pierdes ${st.drain.rate} PG máximo${st.drain.rate > 1 ? 's' : ''} cada 10 minutos. Llevas <strong>−${st.drain.amount}</strong>. Nunca baja de 1 PG máximo.</p>
-        <p class="muted">Sólo lo detiene la cura de la enfermedad o la magia divina o sagrada (un conjuro de curación de Clérigo o Paladín de nivel 2 o más, como <em>Restablecimiento menor</em>, o un efecto Sagrado). Al detenerlo recuperas lo drenado.</p>
-        ${ro ? '' : html`<div class="row">
-          ${btn('candy-tick', 'Pasan 10 minutos')}
-          ${btn('candy-cure', 'Curar el drenaje')}
-        </div>`}
-      </div>` : ''}`,
+        ${ro ? '' : html`<div class="row">${btn('candy-tick', 'Pasan 10 minutos')}</div>`}
+      </div>` : ''}
+      ${(st.drain || st.active.length) && !ro ? html`<p class="row candy-heal">${btn('candy-heal', '💧 Recibí curación')}
+        <span class="field__hint">Cualquier curación (conjuro, poción, Toque Estabilizador…) quita el drenaje, devuelve lo drenado y se lleva los puntos ganados.</span></p>` : ''}`,
   });
 }
 
@@ -114,9 +112,9 @@ export const candyActions = {
     const opts = await eatDialog(item);
     if (!opts) return;
     const res = eatCandy(ed.character, index, opts);
-    apply(ed, res, res.drainRate ? `+1 ${ABILITY_LABEL[item.candy]} durante 1 hora. Drenaje activo: ${res.drainRate} PG máx. cada 10 minutos.` : `+1 ${ABILITY_LABEL[item.candy]} durante 1 hora.`);
+    apply(ed, res, res.drainRate ? `+1 ${ABILITY_LABEL[item.candy]} hasta que te curen. Drenaje activo: ${res.drainRate} PG máx. cada 10 minutos.` : `+1 ${ABILITY_LABEL[item.candy]} hasta que te curen.`);
   },
   'candy-end': (ed, el) => apply(ed, endCandy(ed.character, el.dataset.id), 'El efecto del caramelo terminó.'),
   'candy-tick': (ed) => apply(ed, drainTick(ed.character)),
-  'candy-cure': (ed) => apply(ed, cureDrain(ed.character), 'Drenaje detenido: recuperas los PG máximos drenados.'),
+  'candy-heal': (ed) => apply(ed, healCandy(ed.character), 'Curación: se fueron el drenaje y los puntos de los caramelos.'),
 };

@@ -6,13 +6,14 @@
 //    cedidos como su bonificador de competencia. El punto vuelve cuando el
 //    jugador lo marca («Recuperar»: el caramelo se comió hace más de 1 hora o
 //    se perdió).
-//  * Quien se come un caramelo gana +1 a ese atributo durante 1 hora (sin pasar
-//    de 20; la app avisa si se pasa).
+//  * Quien se come un caramelo gana +1 a ese atributo, sin límite de tiempo
+//    (sin pasar de 20; la app avisa si se pasa).
 //  * Efecto secundario: desde el segundo caramelo en 24 horas, quien los come
 //    pierde 1 PG máximo cada 10 minutos; si se come dos o más de golpe, 3.
 //    No es daño (no rompe la Inhibición ni «la raza no puede dañarte»): reduce
-//    los PG máximos, nunca por debajo de 1. Sólo lo detiene la cura de la
-//    enfermedad o la magia divina o sagrada, que devuelve lo drenado.
+//    los PG máximos, nunca por debajo de 1.
+//  * Cualquier curación (AgSt 1.37, decisión del autor) se lo lleva todo: el
+//    drenaje, lo drenado y los puntos ganados. «Nada se queda».
 //
 // La app no lleva el reloj de la partida: el jugador marca cuándo pasan los 10
 // minutos o la hora. Todo es puro: devuelve personajes nuevos.
@@ -77,7 +78,7 @@ export function createCandy(character, attr, { limit }) {
   else {
     items.push({
       name: candyName(attr), quantity: 1, consumable: true, candy: attr, weight: 0.01,
-      notes: `+1 a ${ABILITY_LABEL[attr]} durante 1 hora (sin pasar de 20). Desde el segundo caramelo en 24 horas drena la vida de quien lo come.`,
+      notes: `+1 a ${ABILITY_LABEL[attr]} sin límite de tiempo (sin pasar de 20). Desde el segundo caramelo en 24 horas drena la vida de quien lo come. Cualquier curación quita el drenaje y el punto.`,
     });
   }
   return { character: c };
@@ -117,7 +118,7 @@ export function eatCandy(character, index, { count = 1, earlierToday = false } =
   };
 }
 
-/** Termina el efecto de un caramelo comido (pasó la hora). */
+/** Quita a mano el efecto de un caramelo comido (p. ej. lo decidió el DM). */
 export function endCandy(character, id) {
   const c = clone(character);
   const st = state(c);
@@ -134,10 +135,19 @@ export function drainTick(character) {
   return { character: c };
 }
 
-/** La cura de la enfermedad o la magia divina o sagrada detienen el drenaje y devuelven lo drenado. */
-export function cureDrain(character) {
-  if (!character.candy?.drain) return { error: 'No hay drenaje activo.' };
+/**
+ * Cualquier curación: se pierden el drenaje (y se devuelve lo drenado) y los
+ * puntos ganados con caramelos. Los puntos cedidos por el creador no cambian.
+ */
+export function healCandy(character) {
+  const st = character.candy;
+  if (!st?.drain && !st?.active?.length) return { error: 'No tienes efectos de caramelos.' };
   const c = clone(character);
-  state(c).drain = null;
+  const s = state(c);
+  s.drain = null;
+  s.active = [];
   return { character: c };
 }
+
+/** @deprecated Usa healCandy (desde 1.37 cualquier curación lo quita todo). */
+export const cureDrain = healCandy;
