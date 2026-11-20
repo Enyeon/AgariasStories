@@ -143,6 +143,11 @@ export function createCharacter() {
     /** Vínculos con criaturas (mascota, familiar, montura...). Ver createCompanion. */
     companions: [],
     /**
+     * Recursos con recarga (domain/resources.js): usos gastados por id y
+     * contadores propios del jugador. Los máximos se calculan, no se guardan.
+     */
+    resources: { used: {}, custom: [] },
+    /**
      * Taller del Ingeniero (ver domain/workshop.js): Energía actual (null = llena),
      * artefactos equipados, materiales { id: cantidad }, creaciones y diseños propios.
      */
@@ -171,6 +176,8 @@ export function createCharacter() {
       inspiration: false,
       currentHp: null,
       tempHp: 0,
+      /** PG máximos perdidos por drenaje (enfermedades, maldiciones…); se recuperan a mano. */
+      hpMaxReduction: 0,
       /** Sobrescrituras manuales de velocidades de la raza: { fly: 60, ... } */
       speedOverrides: {},
     },

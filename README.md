@@ -416,8 +416,6 @@ archivos dañados/ajenos/de versión futura y la interfaz a 390, 820 y 1366 px.
 - Completar los niveles de clase pendientes y exportar la ficha a PDF.
 
 ## Mejoras futuras (anotadas, no implementadas)
-- **Recursos con recarga** (Furia, Ki, usos por descanso): contador en la ficha y
-  descanso corto/largo; la tabla `infoCubo` ya tiene los números por nivel.
 - **Acciones y reacciones** como datos (disparador → condición → efecto), para
   automatizar rasgos como «Reducción de daño como reacción».
 - **CA calculada** a partir de la armadura equipada y efectos.

@@ -6,6 +6,7 @@
 // tipos de este catálogo; cualquier otra cosa se rechaza al validar y el texto
 // del rasgo queda como descripción, sin automatizar.
 
+import { normalizeResourceEffect, describeResourceEffect } from './resources.js';
 import { ABILITY_KEYS, ABILITY_LABEL, SKILL_NAMES } from './constants.js';
 
 export const DAMAGE_TYPES = Object.freeze([
@@ -80,6 +81,7 @@ export const EFFECT_TYPES = Object.freeze({
   conjuro_preparado: 'Conjuro siempre preparado',
   lista_conjuros: 'Lista de conjuros adicional',
   conjuro_libro: 'Conjuro en el libro de conjuros',
+  recurso: 'Recurso con usos (se recupera al descansar)',
 });
 
 const str = (v, max = 80) => (typeof v === 'string' ? v.trim().slice(0, max) : '');
@@ -168,6 +170,8 @@ export function normalizeEffect(raw) {
       if (!atributos.length || !Number.isFinite(base) || base < 0 || base > 30) return null;
       return { type: 'ca_sin_armadura', base, atributos, escudo: raw.escudo === true };
     }
+    case 'recurso':
+      return normalizeResourceEffect(raw);
     default:
       return null;
   }
@@ -195,6 +199,7 @@ export function describeEffect(e) {
     case 'conjuro_preparado': return `Siempre preparado: ${e.value}`;
     case 'conjuro_libro': return `En tu libro de conjuros: ${e.value}`;
     case 'lista_conjuros': return `Puede preparar conjuros de la lista de ${e.value}`;
+    case 'recurso': return describeResourceEffect(e);
     case 'ca_sin_armadura': return `CA sin armadura: ${e.base} + ${e.atributos.map((a) => ABILITY_LABEL[a]).join(' + ')}${e.escudo ? ' (admite escudo)' : ''}`;
     default: return '';
   }

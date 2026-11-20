@@ -127,7 +127,18 @@
         "blockUno": {
           "name": "Enfoque del Monje",
           "titleName": "✦ ENFOQUE DEL MONJE ✦",
-          "descripcion": "Tu enfoque y entrenamiento marcial te permiten aprovechar un pozo de energía extraordinaria dentro de ti. Esta energía está representada por Puntos de Enfoque. Tu nivel de Monje determina la cantidad de puntos que tienes, como se muestra en la columna de Puntos de Enfoque de la tabla de Características del Monje.\n\nPuedes gastar estos puntos para mejorar o alimentar ciertas características del Monje. Comienzas conociendo tres de estas características: Ataque Furtivo, Defensa Paciente y Paso del Viento, cada una de las cuales se detalla a continuación. Cuando gastas un Punto de Enfoque, no está disponible hasta que termines un Descanso Corto o Largo, al final del cual recuperas todos tus puntos gastados.\n\nAlgunas características que usan Puntos de Enfoque requieren que tu objetivo realice una tirada de salvación. La DC de la salvación es igual a 8 más tu modificador de Sabiduría y tu Bonificación de Competencia.\n\n<b>Ataque Furtivo.</b> Puedes gastar 1 Punto de Enfoque para realizar dos de los Golpes sin Armas como una Acción de Bonificación.\n<b>Defensa Paciente.</b> Puedes tomar la acción de Desenganche como una Acción de Bonificación. Alternativamente, puedes gastar 1 Punto de Enfoque para tomar tanto la acción de Desenganche como la acción de Esquivar como una Acción de Bonificación.\n<b>Paso del Viento.</b> Puedes tomar la acción de Carrera como una Acción de Bonificación. Alternativamente, puedes gastar 1 Punto de Enfoque para tomar tanto la acción de Desenganche como la de Carrera como una Acción de Bonificación, y la distancia de tu salto se duplica durante el turno."
+          "descripcion": "Tu enfoque y entrenamiento marcial te permiten aprovechar un pozo de energía extraordinaria dentro de ti. Esta energía está representada por Puntos de Enfoque. Tu nivel de Monje determina la cantidad de puntos que tienes, como se muestra en la columna de Puntos de Enfoque de la tabla de Características del Monje.\n\nPuedes gastar estos puntos para mejorar o alimentar ciertas características del Monje. Comienzas conociendo tres de estas características: Ataque Furtivo, Defensa Paciente y Paso del Viento, cada una de las cuales se detalla a continuación. Cuando gastas un Punto de Enfoque, no está disponible hasta que termines un Descanso Corto o Largo, al final del cual recuperas todos tus puntos gastados.\n\nAlgunas características que usan Puntos de Enfoque requieren que tu objetivo realice una tirada de salvación. La DC de la salvación es igual a 8 más tu modificador de Sabiduría y tu Bonificación de Competencia.\n\n<b>Ataque Furtivo.</b> Puedes gastar 1 Punto de Enfoque para realizar dos de los Golpes sin Armas como una Acción de Bonificación.\n<b>Defensa Paciente.</b> Puedes tomar la acción de Desenganche como una Acción de Bonificación. Alternativamente, puedes gastar 1 Punto de Enfoque para tomar tanto la acción de Desenganche como la acción de Esquivar como una Acción de Bonificación.\n<b>Paso del Viento.</b> Puedes tomar la acción de Carrera como una Acción de Bonificación. Alternativamente, puedes gastar 1 Punto de Enfoque para tomar tanto la acción de Desenganche como la de Carrera como una Acción de Bonificación, y la distancia de tu salto se duplica durante el turno.",
+          "efectos": [
+            {
+              "type": "recurso",
+              "id": "puntos-de-enfoque",
+              "nombre": "Puntos de Enfoque",
+              "max": {
+                "tabla": "Puntos de Enfoque"
+              },
+              "corto": "todo"
+            }
+          ]
         },
         "blockDos": {
           "name": "Movimiento sin Armadura",

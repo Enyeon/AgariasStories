@@ -130,7 +130,18 @@
         "blockUno": {
           "name": "Inspiración Bárdica",
           "titleName": "✦ INSPIRACIÓN BÁRDICA ✦",
-          "descripcion": "Puedes inspirar sobrenaturalmente a otros a través de palabras, música o danza. Esta inspiración se representa con tu dado de Inspiración Bárdica, que es un d6.\n\n<b>Usando Inspiración Bárdica.</b> Como Acción adicional, puedes inspirar a otra criatura que esté dentro de 60 pies de ti y que pueda verte o escucharte. Esa criatura recibe uno de tus dados de Inspiración Bárdica. Una criatura solo puede tener un dado de Inspiración Bárdica a la vez.\nUna vez dentro de la siguiente hora, cuando la criatura falle una prueba de d20, la criatura puede tirar el dado de Inspiración Bárdica y añadir el número obtenido al d20, lo que potencialmente convierte el fallo en un éxito. Un dado de Inspiración Bárdica se gasta cuando se tira.\n<b>Número de usos.</b> Puedes otorgar un dado de Inspiración Bárdica un número de veces igual a tu modificador de Carisma (mínimo una vez), y recuperas todos los usos gastados cuando terminas un Descanso Largo.\n<b>En niveles superiores.</b> Tu dado de Inspiración Bárdica cambia cuando alcanzas ciertos niveles de Bardo, como se muestra en la columna de Dado Bárdico de la tabla de Características del Bardo. El dado se convierte en un d8 en el nivel 5, un d10 en el nivel 10, y un d12 en el nivel 15."
+          "descripcion": "Puedes inspirar sobrenaturalmente a otros a través de palabras, música o danza. Esta inspiración se representa con tu dado de Inspiración Bárdica, que es un d6.\n\n<b>Usando Inspiración Bárdica.</b> Como Acción adicional, puedes inspirar a otra criatura que esté dentro de 60 pies de ti y que pueda verte o escucharte. Esa criatura recibe uno de tus dados de Inspiración Bárdica. Una criatura solo puede tener un dado de Inspiración Bárdica a la vez.\nUna vez dentro de la siguiente hora, cuando la criatura falle una prueba de d20, la criatura puede tirar el dado de Inspiración Bárdica y añadir el número obtenido al d20, lo que potencialmente convierte el fallo en un éxito. Un dado de Inspiración Bárdica se gasta cuando se tira.\n<b>Número de usos.</b> Puedes otorgar un dado de Inspiración Bárdica un número de veces igual a tu modificador de Carisma (mínimo una vez), y recuperas todos los usos gastados cuando terminas un Descanso Largo.\n<b>En niveles superiores.</b> Tu dado de Inspiración Bárdica cambia cuando alcanzas ciertos niveles de Bardo, como se muestra en la columna de Dado Bárdico de la tabla de Características del Bardo. El dado se convierte en un d8 en el nivel 5, un d10 en el nivel 10, y un d12 en el nivel 15.",
+          "efectos": [
+            {
+              "type": "recurso",
+              "id": "inspiracion-bardica",
+              "nombre": "Inspiración Bárdica",
+              "max": {
+                "atributo": "carisma",
+                "minimo": 1
+              }
+            }
+          ]
         },
         "blockDos": {
           "name": "Conjuración",
@@ -480,7 +491,19 @@
         "blockUno": {
           "name": "Fuente de Inspiración",
           "titleName": "✦ FUENTE DE INSPIRACIÓN ✦",
-          "descripcion": "Ahora recuperas todos los usos gastados de Inspiración Bárdica cuando terminas un Descanso Corto o Largo.\nAdemás, puedes gastar un espacio de conjuro (no requiere acción) para recuperar un uso gastado de Inspiración Bárdica."
+          "descripcion": "Ahora recuperas todos los usos gastados de Inspiración Bárdica cuando terminas un Descanso Corto o Largo.\nAdemás, puedes gastar un espacio de conjuro (no requiere acción) para recuperar un uso gastado de Inspiración Bárdica.",
+          "efectos": [
+            {
+              "type": "recurso",
+              "id": "inspiracion-bardica",
+              "nombre": "Inspiración Bárdica",
+              "max": {
+                "atributo": "carisma",
+                "minimo": 1
+              },
+              "corto": "todo"
+            }
+          ]
         }
       },
       "infoCubo": {

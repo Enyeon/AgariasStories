@@ -19,6 +19,7 @@ import { normalizeEffects, CONDITIONS } from './effects.js';
 import { registerSnapshots, engineOf } from '../content/registry.js';
 import { migrateDocument } from './migrations.js';
 import { normalizeWorkshop } from './workshop.js';
+import { normalizeResourcesState } from './resources.js';
 import { getClass, getRace, getFeat, getEpicBoon, getOfficialBackground } from '../data/index.js';
 
 export class InvalidDocumentError extends Error {
@@ -344,6 +345,7 @@ export function normalizeCharacter(raw) {
   d.combat.inspiration = combat.inspiration === true;
   d.combat.currentHp = optionalInt(combat.currentHp, { min: -999, max: 9999 });
   d.combat.tempHp = int(combat.tempHp, { min: 0, max: 9999, fallback: 0 });
+  d.combat.hpMaxReduction = int(combat.hpMaxReduction, { min: 0, max: 999, fallback: 0 });
   if (isObject(combat.speedOverrides)) {
     for (const key of SPEED_KEYS) {
       const v = optionalInt(combat.speedOverrides[key], { min: 0, max: 999 });
@@ -421,6 +423,7 @@ export function normalizeCharacter(raw) {
   if (affiliations) d.affiliations = affiliations;
   d.companions = list(src.companions, (x) => normalizeCompanion(x), 30);
   d.workshop = normalizeWorkshop(src.workshop);
+  d.resources = normalizeResourcesState(src.resources);
 
   if (isObject(src.campaign) && text(src.campaign.id, 40)) {
     d.campaign = { id: text(src.campaign.id, 40), name: text(src.campaign.name) };

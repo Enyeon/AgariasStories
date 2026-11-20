@@ -254,6 +254,7 @@ Lo que la ficha **calcula sola**. Todo lo demás se muestra como texto.
 | `conjuro_preparado` | `value`: nombre del conjuro **como en el catálogo** | `{ "type": "conjuro_preparado", "value": "Hechizar persona" }` (si no está en el catálogo se muestra igual, marcado «No está en el catálogo») |
 | `lista_conjuros` | `value`: clave de clase | `{ "type": "lista_conjuros", "value": "clerigo" }` (Secretos Mágicos: la biblioteca, con «Sólo de mis clases», incluye esa lista) |
 | `ca_sin_armadura` | `atributos` (1–3), `base` (10 por defecto), `escudo` (si admite escudo) | `{ "type": "ca_sin_armadura", "base": 10, "atributos": ["destreza", "sabiduria"], "escudo": false }` |
+| `recurso` | `id`, `nombre`, `max` (`{ "valor": n }`, `{ "bc": true }`, `{ "atributo": k, "minimo": 1 }`, `{ "nivel": true, "mas": n }` o `{ "tabla": "Columna" }`) · `corto` (`"nada"`, `"todo"`, `{ "valor": n }` o `{ "atributo": k }`) | `{ "type": "recurso", "id": "furia", "nombre": "Furia", "max": { "tabla": "Furia" }, "corto": { "valor": 1 } }` |
 
 **`ca_sin_armadura`** (Defensa sin Armadura del Monje o del Bárbaro): la ficha calcula
 esa CA y la muestra bajo «Clase de armadura» con un botón «Usar». La CA sigue siendo
@@ -284,6 +285,16 @@ toma el número del texto («+15 pies» → 15; «-» → 0). Ej. del Monje:
 `{ "type": "bono", "target": "velocidad", "desdeTabla": "Movimiento sin Armadura" }`.
 Sólo funciona en rasgos de clase y subclase; el validador comprueba que la columna exista.
 
+**Recursos con recarga** (`recurso`, AgSt 1.34): usos que se gastan y vuelven al descansar
+(Furia, Ki, Esencia, «tantas veces como tu BC»…). La ficha los muestra en la tarjeta
+**Recursos** del Resumen, con botones de descanso corto y largo. El descanso largo siempre
+lo recupera todo; `corto` dice qué vuelve con el corto. El máximo se calcula, así que
+crece solo al subir de nivel; el personaje sólo guarda lo gastado (`resources.used`).
+`nivel` y `tabla` cuentan los niveles **de la clase que da el rasgo**. Si dos fuentes
+declaran el mismo `id` (multiclase o un rasgo que mejora la recarga, como la Fuente de
+Inspiración del Bardo), vale el máximo mayor y, a igualdad, la mejor recarga corta.
+El jugador también puede crear **contadores propios** para lo que los datos no declaran.
+
 ## Qué automatiza hoy el motor
 
 Para la segunda etapa (comparar las clases completas con el motor):
@@ -298,6 +309,7 @@ Para la segunda etapa (comparar las clases completas con el motor):
 | Espacios de conjuro (completo, medio, artífice, pacto), CD y ataque de conjuro, preparados | ✅ Implementada |
 | Aumentos de atributo y máximos (Bárbaro 20, Shadow Knight 20) | ✅ Implementada |
 | Competencias, resistencias, inmunidades, bonos a iniciativa/velocidad/PG/salvaciones/atributos | ✅ Implementada (con `efectos`) |
+| Recursos con recarga (Furia, Ki, Puntos de Hechicería, Inspiración Bárdica…) | ✅ Implementada (`recurso`; Bárbaro, Bardo, Hechicero y Monje ya los declaran) |
 | Tablas de lanzamiento 2024 (trucos y preparados fijos por nivel) | ✅ Implementada (`lanzamiento.preparedTable`) |
 | Conjuros siempre preparados por rasgos | ✅ Implementada (`conjuro_preparado` y listas con `siemprePreparados`) |
 | Listas de conjuros de otras clases (Secretos Mágicos) | ✅ Implementada (`lista_conjuros`) |
@@ -313,11 +325,10 @@ Para la segunda etapa (comparar las clases completas con el motor):
 | Libro de conjuros y conjuros por escuela (Mago) | ✅ Implementada (`libroConjuros`, `escuela` en listas de conjuros) |
 | Mitad de competencia (Experto en todos los oficios), también sólo para unos atributos (Enciclopedia andante) | ✅ Implementada (`medio_competencia`, con `atributos` opcional) |
 | Conjuros de una subclase (Caballero Arcano, Embaucador Arcano) | ⚠️ Los trucos y hechizos se eligen y se guardan (elecciones); los espacios se muestran como tabla en el rasgo, sin pestaña de conjuros propia |
-| Tabla de progresión (usos, dados, etc.) | ⚠️ Se muestra, pero no hay contador de usos |
+| Tabla de progresión (usos, dados, etc.) | ✅ Se muestra; sus usos se cuentan si un rasgo declara un `recurso` con `tabla` |
 | Ataque extra, Acción adicional, Reacciones | ⚠️ Sólo texto |
 | CA (armaduras, Defensa sin armadura) | ⚠️ La CA es manual; la Defensa sin armadura se calcula y se ofrece (`ca_sin_armadura`) |
 | Bonos que crecen con la tabla (Movimiento sin armadura) | ✅ Implementada (`bono` con `desdeTabla`) |
-| Recursos con recarga (descanso corto/largo: Furia, Ki, Canalizar divinidad…) | ❌ No implementada |
 | Reacciones/acciones con disparador → condición → efecto | ❌ No implementada |
 | Daño adicional condicionado (Ataque furtivo, Castigo divino) | ❌ No implementada |
 

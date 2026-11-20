@@ -2,6 +2,7 @@
 // Funciones puras, sin DOM y sin estado global, para poder testearlas y
 // reutilizarlas (ficha, vista compartida, futuras exportaciones a PDF...).
 
+import { computeResources } from './resources.js';
 import { cubeRow, sameCube } from './class-table.js';
 import {
   ABILITY_KEYS, SKILLS, SPEEDS, MAX_LEVEL, BASE_ABILITY_CAP, EPIC_ABILITY_CAP, XP_BY_LEVEL,
@@ -366,8 +367,10 @@ export function hitPoints(c, scores) {
     const extra = (tough ? 1 : 0) + perLevelBonus;
     return { level: i + 1, classKey: l.classKey, die, roll, conMod, extra, total: Math.max(1, roll + conMod + extra) };
   });
-  const max = perLevel.length ? perLevel.reduce((s, p) => s + p.total, 0) + flatBonus : 0;
-  return { max, perLevel, tough, flatBonus, bonusLabels, duro: bonusLabels.includes('Duro') };
+  const full = perLevel.length ? perLevel.reduce((s, p) => s + p.total, 0) + flatBonus : 0;
+  // Drenaje: reduce el máximo, nunca por debajo de 1 (no puede matar por sí solo).
+  const reduction = full > 0 ? Math.min(full - 1, Math.max(0, c.combat?.hpMaxReduction ?? 0)) : 0;
+  return { max: full - reduction, full, reduction, perLevel, tough, flatBonus, bonusLabels, duro: bonusLabels.includes('Duro') };
 }
 
 // ── Velocidades ──────────────────────────────────────────────────────────
@@ -702,5 +705,6 @@ export function computeSheet(c) {
     bloodSummoning: hasBloodSummoning(c),
     pendingRaceChoices: pendingRaceChoices(c),
     xpLevel: levelForExperience(c.experience),
+    resources: computeResources(c, fx, { scores, prof, level }),
   };
 }

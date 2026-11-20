@@ -21,7 +21,20 @@
         "blockUno": {
           "name": "Furia",
           "titleName": "✦ FURIA ✦",
-          "descripcion": "En combate, luchas con una ferocidad primitiva. En tu turno, puedes entrar en Furia como Acción Adicional igual a la cantidad de veces que se muestra en el cuadro de abajo.\n\nMientras estás en Furia ganas los siguientes beneficios si no llevas armadura pesada:\n<b class=\"content_subrayado\">♻ Resistencia al daño.</b> Tienes resistencia al daño contundente, perforante y cortante.\n<b class=\"content_subrayado\">♻ Daño de Furia.</b> Cuando realizas un ataque de cuerpo a cuerpo usando tu Fuerza, ganas un bonificador al daño que aumenta a medida que subes tu nivel de bárbaro: +2 (a nivel 1), +3 (a nivel 4) y +4 (a nivel 10).\n<b class=\"content_subrayado\">♻ Ventaja en Fuerza.</b> Tienes ventaja en las pruebas y tiradas de salvación de Fuerza.\n<b class=\"content_subrayado\">♻ Sin concentración y sin conjuros.</b> Si tienes la capacidad de lanzar hechizos, no puedes lanzarlos o concentrarte en ellos.\n<b class=\"content_subrayado\">♻ Duración.</b> Tu Furia tiene una duración de 10 minuto máximo. Termina antes si caes inconsciente o si acaba tu turno y no has atacado a ninguna criatura hostil desde tu último turno, o no has recibido daño desde entonces. También puedes cancelar o extender tu Furia en tu turno como acción adicional.\n\nUna vez has entrado en Furia un número de veces igual a la tabla de arriba, debes realizar un descanso prolongado antes de poder entrar en Furia de nuevo."
+          "descripcion": "En combate, luchas con una ferocidad primitiva. En tu turno, puedes entrar en Furia como Acción Adicional igual a la cantidad de veces que se muestra en el cuadro de abajo.\n\nMientras estás en Furia ganas los siguientes beneficios si no llevas armadura pesada:\n<b class=\"content_subrayado\">♻ Resistencia al daño.</b> Tienes resistencia al daño contundente, perforante y cortante.\n<b class=\"content_subrayado\">♻ Daño de Furia.</b> Cuando realizas un ataque de cuerpo a cuerpo usando tu Fuerza, ganas un bonificador al daño que aumenta a medida que subes tu nivel de bárbaro: +2 (a nivel 1), +3 (a nivel 4) y +4 (a nivel 10).\n<b class=\"content_subrayado\">♻ Ventaja en Fuerza.</b> Tienes ventaja en las pruebas y tiradas de salvación de Fuerza.\n<b class=\"content_subrayado\">♻ Sin concentración y sin conjuros.</b> Si tienes la capacidad de lanzar hechizos, no puedes lanzarlos o concentrarte en ellos.\n<b class=\"content_subrayado\">♻ Duración.</b> Tu Furia tiene una duración de 10 minuto máximo. Termina antes si caes inconsciente o si acaba tu turno y no has atacado a ninguna criatura hostil desde tu último turno, o no has recibido daño desde entonces. También puedes cancelar o extender tu Furia en tu turno como acción adicional.\n\nUna vez has entrado en Furia un número de veces igual a la tabla de arriba, debes realizar un descanso prolongado antes de poder entrar en Furia de nuevo.",
+          "efectos": [
+            {
+              "type": "recurso",
+              "id": "furia",
+              "nombre": "Furia",
+              "max": {
+                "tabla": "Furia"
+              },
+              "corto": {
+                "valor": 1
+              }
+            }
+          ]
         },
         "blockDos": {
           "name": "Defensa sin Armadura",

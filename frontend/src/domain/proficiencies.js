@@ -5,6 +5,7 @@
 // resultado para calcular bonificadores, mostrar de dónde viene cada cosa y
 // detectar duplicados, sin contar nada dos veces.
 
+import { resolveClassResource } from './resources.js';
 import { choiceEffectSources } from './class-choices.js';
 import { ABILITY_KEYS, ABILITY_LABEL, SKILL_NAMES } from './constants.js';
 import { getClass, getFeat, getRace } from '../data/index.js';
@@ -122,9 +123,10 @@ export function effectSources(c) {
     const cls = getClass(classKey);
     const subKey = c.subclasses?.[classKey];
     const sub = subKey ? Object.values(cls?.niveles ?? {}).find((l) => l.subClase)?.subClase?.[subKey] : null;
-    const fromTable = (fx) => fx.map((e) => (e.desdeTabla ? { type: e.type, target: e.target, value: tableNumber(cls, level, e.desdeTabla) }
+    const fromTable = (fx) => fx.map((e) => (e.type === 'recurso' ? resolveClassResource(e, e.max.tabla ? tableNumber(cls, level, e.max.tabla) : null, level)
+      : e.desdeTabla ? { type: e.type, target: e.target, value: tableNumber(cls, level, e.desdeTabla) }
       : e.desdeNivel ? { type: e.type, target: e.target, value: level + (e.mas ?? 0) } : e))
-      .filter((e) => e.type !== 'bono' || e.desdeAtributo || (Number.isFinite(e.value) && e.value !== 0));
+      .filter((e) => e && (e.type !== 'bono' || e.desdeAtributo || (Number.isFinite(e.value) && e.value !== 0)));
     for (let n = 1; n <= level; n++) {
       for (const b of Object.values(cls?.niveles?.[n]?.infoBlock ?? {})) {
         const fx = fromTable(normalizeEffects(b?.efectos));

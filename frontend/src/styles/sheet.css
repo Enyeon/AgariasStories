@@ -583,3 +583,16 @@
 .trait-card.is-locked { opacity: 0.75; }
 .trait-card__source { margin: var(--space-1) 0 0; font-size: var(--fs-xs); }
 .race-anatomy legend small { font-weight: 400; }
+
+/* Recursos con recarga (AgSt 1.34) */
+.res-list { list-style: none; margin: 0 0 var(--space-3); padding: 0; display: grid; gap: var(--space-2); }
+.res-item { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-2) var(--space-3);
+  padding: var(--space-2) var(--space-3); border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-2); }
+.res-item__head { display: grid; min-width: 0; }
+.res-item__name { font-weight: 600; }
+.res-item__meta { font-size: var(--fs-xs); color: var(--text-muted); }
+.res-item__controls { display: flex; align-items: center; gap: var(--space-1); }
+.res-pips { display: inline-flex; flex-wrap: wrap; gap: 4px; margin-right: var(--space-2); max-width: 14rem; }
+.res-pip { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--accent); }
+.res-pip.is-on { background: var(--accent); }
+.res-count { margin-right: var(--space-2); font-variant-numeric: tabular-nums; }

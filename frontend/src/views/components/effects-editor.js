@@ -49,6 +49,16 @@ function valueField(e) {
       return html`<span class="muted">10 +</span>${attr('attr1', a1 ?? 'destreza', 'Primer atributo')}<span class="muted">+</span>${attr('attr2', a2 ?? '', 'Segundo atributo')}
         <label class="row field__inline"><input type="checkbox" data-ef="escudo" ${e.escudo ? raw('checked') : ''}> Admite escudo</label>`;
     }
+    case 'recurso': {
+      const m = e.max ?? { valor: 3 };
+      const kind = m.bc ? 'bc' : m.atributo ? 'atributo' : m.nivel ? 'nivel' : 'valor';
+      const corto = e.corto === 'todo' ? 'todo' : e.corto?.valor ? 'uno' : e.corto?.atributo ? 'atributo' : 'nada';
+      return html`<input class="input" data-ef="nombre" maxlength="60" value="${e.nombre ?? ''}" placeholder="Nombre (p. ej. Furia)" aria-label="Nombre del recurso">
+        <select class="select" data-ef="maxKind" aria-label="Usos máximos">${opt('valor', 'Número fijo', kind)}${opt('bc', 'Bonificador de competencia', kind)}${opt('atributo', 'Mod. de atributo (mín. 1)', kind)}${opt('nivel', 'Nivel', kind)}</select>
+        <input class="input input--num" type="number" min="1" max="99" data-ef="maxValor" value="${m.valor ?? 3}" aria-label="Número de usos">
+        <select class="select" data-ef="maxAtributo" aria-label="Atributo">${ABILITY_KEYS.map((x) => opt(x, ABILITY_LABEL[x], m.atributo ?? 'sabiduria'))}</select>
+        <select class="select" data-ef="corto" aria-label="Descanso corto">${opt('nada', 'Corto: no recupera', corto)}${opt('uno', 'Corto: recupera 1', corto)}${opt('atributo', 'Corto: recupera el mod. del atributo', corto)}${opt('todo', 'Corto: recupera todo', corto)}</select>`;
+    }
     default:
       return '';
   }
@@ -76,6 +86,14 @@ function readRow(r) {
   const type = get('type');
   if (type === 'ca_sin_armadura') {
     return { type, atributos: [get('attr1'), get('attr2')].filter(Boolean), escudo: Boolean(r.querySelector('[data-ef="escudo"]')?.checked) };
+  }
+  if (type === 'recurso') {
+    const kind = get('maxKind');
+    const atributo = get('maxAtributo');
+    const max = kind === 'bc' ? { bc: true } : kind === 'atributo' ? { atributo } : kind === 'nivel' ? { nivel: true } : { valor: Number(get('maxValor')) };
+    const c = get('corto');
+    const corto = c === 'todo' ? 'todo' : c === 'uno' ? { valor: 1 } : c === 'atributo' ? { atributo } : 'nada';
+    return { type, nombre: get('nombre'), max, corto };
   }
   return { type, kind: get('kind'), value: get('value'), target: get('target'), amount: get('amount') };
 }

@@ -7,6 +7,7 @@ import { getClass, raceName } from '../../data/index.js';
 import { sourcesLabel } from '../../domain/proficiencies.js';
 import { DAMAGE_LABEL } from '../../domain/effects.js';
 import { alignmentStyle } from '../../domain/alignment.js';
+import { resourcesCard, resourceActions } from './resources.js';
 import { textField, numberField, selectField, out, mod, actionButton, sectionCard, bindAttrs } from './common.js';
 
 function identityStrip(ctx) {
@@ -91,9 +92,11 @@ function combatStrip(ctx) {
         </div>
       </div>
       <div class="hp-row">
-        <div class="stat-box stat-box--hp"><span class="stat-box__label">PG máximos</span><span class="stat-box__value">${out('hpMax', sheet.hp.max)}</span></div>
+        <div class="stat-box stat-box--hp"><span class="stat-box__label">PG máximos</span><span class="stat-box__value">${out('hpMax', sheet.hp.max)}</span>
+          ${sheet.hp.reduction ? html`<span class="stat-box__hint" title="Sin drenaje: ${sheet.hp.full}">−${sheet.hp.reduction} por drenaje</span>` : ''}</div>
         ${numberField(ctx, { label: 'PG actuales', path: 'combat.currentHp', min: -999, max: 9999, optional: true, placeholder: String(sheet.hp.max) })}
         ${numberField(ctx, { label: 'PG temporales', path: 'combat.tempHp', min: 0, max: 9999 })}
+        ${numberField(ctx, { label: 'PG máx. drenados', path: 'combat.hpMaxReduction', min: 0, max: 999, hint: 'Lo que te quite una enfermedad, un drenaje o una maldición. Nunca baja de 1.' })}
         ${current !== null && current <= 0 && sheet.level ? html`<p class="callout callout--danger">A 0 PG: tiradas de salvación contra la muerte (3 éxitos estabilizan, 3 fallos…).</p>` : ''}
       </div>
     </section>`;
@@ -210,6 +213,7 @@ export function renderSummary(ctx) {
         body: html`<div class="abilities">${ABILITIES.map((a) => abilityCard(ctx, a))}</div>`,
       })}
       ${combatStrip(ctx)}
+      ${resourcesCard(ctx)}
       ${speedsCard(ctx)}
       <div class="grid-2 grid-2--skills">
         ${savesList(ctx)}
@@ -220,6 +224,7 @@ export function renderSummary(ctx) {
 }
 
 export const summaryActions = {
+  ...resourceActions,
   'toggle-skill': (ed, el) => ed.update((c) => {
     const list = c.proficiencies.skills;
     const i = list.indexOf(el.dataset.key);
