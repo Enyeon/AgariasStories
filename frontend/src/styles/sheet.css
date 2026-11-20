@@ -596,3 +596,11 @@
 .res-pip { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--accent); }
 .res-pip.is-on { background: var(--accent); }
 .res-count { margin-right: var(--space-2); font-variant-numeric: tabular-nums; }
+
+/* Caramelos, capacidad de invocaciones e Inhibición (AgSt 1.35) */
+.candy-block + .candy-block { margin-top: var(--space-3); padding-top: var(--space-3); border-top: 1px solid var(--border); }
+.candy-block__title { margin: 0 0 var(--space-2); font-size: var(--fs-sm); display: flex; gap: var(--space-2); align-items: center; }
+.candy-list { list-style: none; margin: 0 0 var(--space-2); padding: 0; display: grid; gap: var(--space-1); }
+.candy-list li { display: flex; justify-content: space-between; align-items: center; gap: var(--space-2); }
+.candy-drain { margin-top: var(--space-3); }
+.inhibition-note { margin-bottom: var(--space-3); }

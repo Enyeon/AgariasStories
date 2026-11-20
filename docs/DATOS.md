@@ -263,3 +263,26 @@ nuevas y vuelo sólo sin armadura media ni pesada. La tecnología de los Varkai 
   aliens llevan la etiqueta `exclusivo`: sólo entran en una tienda por id (ni por categoría ni por rotación).
 - `data/shop/races.json`: familias `alien` y una por especie. Una familia puede tener `wariness` (recelo general de
   los comerciantes); hoy sólo los Vhorr (−15), salvo comerciantes de su misma familia o con actitud propia hacia ella.
+
+### Invocaciones de clase, caramelos, Inhibición y raza recomendada (AgSt 1.35)
+
+- **`data/class-creatures.json`** → `grupos.<id>.criaturas`: bloques de invocaciones de una clase o raza. Un
+  grupo se habilita con `{ "type": "habilita", "value": "invocaciones_<id>" }` (hoy existe `invocaciones_ink`) y
+  aparece en *Añadir criatura → De un catálogo* (referencia `clase:<grupo>:<id>`). Campos: `name`, `size`,
+  `creatureType`, `ac` (número o `{ "base", "bc": true }`), `hp` (`{ "base", "porNivel", "atributo"? }`, con el
+  nivel total del personaje; `hpTexto` explica la fórmula), `speed`, `abilities`, `senses`, `languages`,
+  `capacidad` (`false` = no ocupa capacidad), `traits`/`actions`/`reactions` (`[{ name, text }]`) y
+  `mejoras` (`[{ nivel, texto }]`, se muestran al alcanzar el nivel).
+- **Capacidad de Manifestación:** `bono` con `target: "invocaciones"` (admite `desdeTabla`). Cuentan los vínculos de
+  tipo «invocación» presentes que ocupan capacidad; la pestaña Criaturas muestra «n / máx.» e impide pasarse.
+- **Caramelos** (`habilita: caramelos`, `domain/candy.js`): el creador cede 1 punto (hasta su BC) y recibe un
+  objeto consumible con `candy: <atributo>`, que se puede dar a otro PJ. Comerlo da +1 durante 1 hora; desde el
+  segundo en 24 horas, drenaje de 1 PG máximo cada 10 minutos (3 si se comen dos o más de golpe), nunca por debajo
+  de 1. Lo detiene «Curar el drenaje» (cura de la enfermedad o magia divina/sagrada), que devuelve lo drenado.
+  Estado en `character.candy = { ceded, active, drain }`.
+- **Inhibición** (`habilita: inhibicion`): la ficha avisa en Resumen, Armas y Conjuros de que nada de lo que hace el
+  personaje causa daño.
+- **Raza y clase recomendadas:** `razaRecomendada` (lista de claves de raza) en una clase y `claseRecomendada`
+  (clave de clase) en una raza. Sólo son avisos en el asistente de nivel y en el selector de raza.
+- **PG máximos drenados** (`combat.hpMaxReduction`, AgSt 1.34) y el drenaje de los caramelos se suman, sin bajar
+  nunca de 1 PG máximo.

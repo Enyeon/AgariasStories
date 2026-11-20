@@ -38,7 +38,7 @@ export const TABS = [
     attention: ({ character }) => pendingDeferredChoices(character, 'taller').length > 0,
   },
   { id: 'equipo', label: 'Equipo', render: renderEquipment },
-  { id: 'criaturas', label: 'Criaturas', render: renderCompanions, visible: ({ character, sheet, readOnly }) => !readOnly || sheet.bloodSummoning || (character.companions ?? []).length > 0 },
+  { id: 'criaturas', label: 'Criaturas', render: renderCompanions, visible: ({ character, sheet, readOnly }) => !readOnly || sheet.bloodSummoning || sheet.creatureGroups.length > 0 || (character.companions ?? []).length > 0 },
   { id: 'historia', label: 'Historia', render: renderStory },
   { id: 'dm', label: 'Campaña', render: renderDm, visible: ({ character, readOnly }) => !readOnly || character.epicBoons.length > 0 || Boolean(character.campaign),
     attention: ({ character }) => contentStatus(character).some((i) => i.state === 'retirado' || i.state === 'desconocido') },

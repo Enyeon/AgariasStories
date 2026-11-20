@@ -72,6 +72,8 @@ export function validateClassData(cls, { file = '' } = {}) {
   };
   checkProfBlock('competencias', cls.competencias, { primary: true });
   checkProfBlock('competenciasMulticlase', cls.competenciasMulticlase, { primary: false });
+  // Raza recomendada (AgSt 1.35): sólo un aviso al elegir la clase, nunca un requisito.
+  if (cls.razaRecomendada !== undefined && (!Array.isArray(cls.razaRecomendada) || cls.razaRecomendada.some((x) => !isText(x) || !x.trim()))) err('razaRecomendada', 'lista de claves de raza (como en races.json)');
   if (cls.equipoInicial !== undefined && (!Array.isArray(cls.equipoInicial) || cls.equipoInicial.some((x) => !isText(x)))) err('equipoInicial', 'lista de textos');
 
   // ── Conjuros ──

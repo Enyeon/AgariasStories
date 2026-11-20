@@ -13,6 +13,7 @@ function weaponsTable(ctx) {
   return sectionCard({
     title: 'Armas y ataques',
     actions: actionButton(ctx, { action: 'add-weapon', label: '＋ Añadir arma', variant: 'btn--ghost btn--sm' }),
+    subtitle: ctx.sheet.inhibited ? 'Inhibición: tus ataques no causan daño (hacen 0). Puedes agarrar, empujar o derribar sin peligro.' : '',
     body: html`${weapons.length ? html`<div class="table-wrap"><table class="table table--edit">
         <thead><tr><th>Arma</th><th class="num">Bonif. ataque</th><th>Daño / tipo</th><th><span class="visually-hidden">Acciones</span></th></tr></thead>
         <tbody>${weapons.map((w, i) => html`<tr>
@@ -98,7 +99,8 @@ function itemsList(ctx) {
         <div class="inv-item__actions">
           ${flagButton(ctx, it, i, 'equipped')}${flagButton(ctx, it, i, 'attuned')}${flagButton(ctx, it, i, 'consumable')}
           ${ctx.readOnly ? '' : html`<span class="inv-item__spacer"></span>
-            ${it.consumable ? html`<button type="button" class="btn btn--ghost btn--sm" data-action="use-item" data-index="${i}" ${it.quantity > 0 ? '' : raw('disabled')}>Usar</button>` : ''}
+            ${it.candy ? html`<button type="button" class="btn btn--ghost btn--sm" data-action="candy-eat" data-index="${i}" ${it.quantity > 0 ? '' : raw('disabled')}>Comer</button>`
+              : it.consumable ? html`<button type="button" class="btn btn--ghost btn--sm" data-action="use-item" data-index="${i}" ${it.quantity > 0 ? '' : raw('disabled')}>Usar</button>` : ''}
             ${ctx.canGive ? html`<button type="button" class="btn btn--ghost btn--sm" data-action="give-item" data-index="${i}" ${it.quantity > 0 && it.name.trim() ? '' : raw('disabled')}>🤝 Dar</button>` : ''}
             <button type="button" class="icon-btn icon-btn--danger" data-action="remove-item" data-index="${i}" aria-label="Quitar ${it.name || `objeto ${i + 1}`}">×</button>`}
         </div>

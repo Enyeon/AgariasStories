@@ -244,6 +244,7 @@ export function renderSpells(ctx) {
     return html`<div class="loading" role="status"><span class="spinner"></span> Cargando conjuros…</div>`;
   }
   return html`<div class="stack">
+    ${ctx.sheet.inhibited ? html`<p class="callout callout--accent">Inhibición: tus conjuros no causan daño. Si un conjuro hace daño, hace 0 (el resto de su efecto se aplica con normalidad).</p>` : ''}
     ${allowanceCallout(ctx)}
     ${sc.isCaster ? sectionCard({ title: 'Lanzamiento de conjuros', body: html`${statsCards(ctx)}${slotsTable(ctx)}` }) : html`<div class="callout"><p>Tu personaje no tiene una clase lanzadora de conjuros. Puedes anotar igualmente conjuros obtenidos por objetos o rasgos.</p></div>`}
     ${alwaysPrepared(ctx)}

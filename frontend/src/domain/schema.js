@@ -148,6 +148,11 @@ export function createCharacter() {
      */
     resources: { used: {}, custom: [] },
     /**
+     * Caramelos de atributo (domain/candy.js): puntos cedidos por el creador,
+     * caramelos comidos con efecto activo y drenaje de PG máximos.
+     */
+    candy: { ceded: [], active: [], drain: null },
+    /**
      * Taller del Ingeniero (ver domain/workshop.js): Energía actual (null = llena),
      * artefactos equipados, materiales { id: cantidad }, creaciones y diseños propios.
      */

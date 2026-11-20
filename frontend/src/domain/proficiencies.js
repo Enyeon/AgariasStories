@@ -5,6 +5,7 @@
 // resultado para calcular bonificadores, mostrar de dónde viene cada cosa y
 // detectar duplicados, sin contar nada dos veces.
 
+import { candyEffectSources } from './candy.js';
 import { resolveClassResource } from './resources.js';
 import { choiceEffectSources } from './class-choices.js';
 import { ABILITY_KEYS, ABILITY_LABEL, SKILL_NAMES } from './constants.js';
@@ -146,6 +147,8 @@ export function effectSources(c) {
   }
   // Elecciones de rasgos (p. ej. una habilidad o herramienta elegida).
   out.push(...choiceEffectSources(c));
+  // Caramelos de atributo (AgSt 1.35): −1 cedido por el creador, +1 a quien lo come.
+  out.push(...candyEffectSources(c));
   for (const f of allFeats(c)) {
     const effects = normalizeEffects(getFeat(f.name)?.efectos);
     if (effects.length) out.push({ kind: 'dote', label: getFeat(f.name)?.nombre ?? f.name, effects });

@@ -11,6 +11,7 @@ import { TRAIT_ORIGINS } from '../../domain/proficiencies.js';
 import { abilityModifier, formatModifier } from '../../domain/rules.js';
 import {
   creatureOptions, creatureBlock, companionHp, addCompanion, updateCompanion, removeCompanion, damageCompanion,
+  summonUsage, canManifest,
 } from '../../domain/companions.js';
 import { listEntries } from '../../content/registry.js';
 import { renderBloodCreatures } from './extras.js';
@@ -48,7 +49,8 @@ function companionCard(ctx, comp) {
         <div class="chips chips--static">
           <span class="badge badge--accent">${BOND_TYPES[comp.bond]}</span>
           ${comp.name && b.name && comp.name !== b.name ? html`<span class="badge">${b.name}</span>` : ''}
-          ${comp.present ? '' : html`<span class="badge badge--warning">No presente</span>`}
+          ${comp.present ? '' : html`<span class="badge badge--warning">${comp.bond === 'invocacion' ? 'Dentro (no manifestada)' : 'No presente'}</span>`}
+          ${comp.bond === 'invocacion' && b.capacity === false ? html`<span class="badge">No ocupa capacidad</span>` : ''}
           ${b.missing ? html`<span class="badge badge--danger">Criatura no disponible</span>` : ''}
         </div>
       </div>
@@ -67,7 +69,7 @@ function companionCard(ctx, comp) {
       <button type="button" class="btn btn--ghost btn--sm" data-action="comp-damage" data-id="${comp.id}">− Daño</button>
       <button type="button" class="btn btn--ghost btn--sm" data-action="comp-heal" data-id="${comp.id}">+ Curar</button>
       <button type="button" class="btn btn--ghost btn--sm" data-action="comp-temp" data-id="${comp.id}">PG temporales</button>
-      <button type="button" class="btn btn--ghost btn--sm" data-action="comp-present" data-id="${comp.id}">${comp.present ? 'Marcar ausente' : 'Marcar presente'}</button>
+      <button type="button" class="btn btn--ghost btn--sm" data-action="comp-present" data-id="${comp.id}">${comp.bond === 'invocacion' ? (comp.present ? 'Reabsorber' : 'Manifestar') : comp.present ? 'Marcar ausente' : 'Marcar presente'}</button>
     </div>`}
     <div class="chips" role="group" aria-label="Condiciones">${(ro ? comp.conditions : CONDITIONS).map((cond) => {
       const on = comp.conditions.includes(cond);
@@ -82,9 +84,20 @@ function companionCard(ctx, comp) {
   </article>`;
 }
 
+function capacityLine(ctx) {
+  const cap = ctx.sheet.summonCapacity;
+  if (!cap) return '';
+  const u = summonUsage(ctx.character, cap);
+  return html`<p class="callout ${u.over ? 'callout--warning' : ''} summon-capacity" role="status">
+    <strong>Capacidad de Manifestación: ${u.used} / ${cap}</strong> invocaciones fuera a la vez.
+    ${u.over ? ' Tienes más de las permitidas: reabsorbe alguna.' : ' Las que no ocupan capacidad (como el Conejo o la Ruleta) no cuentan.'}
+  </p>`;
+}
+
 export function renderCompanions(ctx) {
   const list = ctx.character.companions ?? [];
   return html`<div class="stack">
+    ${capacityLine(ctx)}
     ${sectionCard({
       title: 'Criaturas vinculadas',
       subtitle: 'Mascotas, compañeros, familiares, monturas, invocaciones… El tipo de vínculo es una etiqueta: las reglas concretas las da el rasgo o conjuro que la origina.',
@@ -100,9 +113,9 @@ export function renderCompanions(ctx) {
 
 // ── Diálogo ──────────────────────────────────────────────────────────────
 
-function openCompanionEditor(initial, { blood, catalog }) {
+function openCompanionEditor(initial, { blood, catalog, groups: creatureGroups = [] }) {
   const comp = initial ?? { bond: 'companero', name: '', creatureRef: null, custom: null, origin: 'dm', originDetail: '', notes: '' };
-  const options = creatureOptions({ blood, catalog });
+  const options = creatureOptions({ blood, catalog, groups: creatureGroups });
   const groups = [...new Set(options.map((o) => o.group))];
   let mode = comp.creatureRef ? 'catalogo' : comp.custom ? 'propio' : options.length ? 'catalogo' : 'propio';
   const x = comp.custom ?? {};
@@ -195,16 +208,27 @@ const amountOf = (ed, id) => Math.max(1, Math.trunc(Number(ed.root.querySelector
 
 export const companionActions = {
   async 'comp-add'(ed) {
-    const raw = await openCompanionEditor(null, { blood: ed.sheet.bloodSummoning, catalog: catalogFor(ed) });
+    const raw = await openCompanionEditor(null, { blood: ed.sheet.bloodSummoning, catalog: catalogFor(ed), groups: ed.sheet.creatureGroups });
     if (!raw) return;
-    const res = addCompanion(ed.character, raw);
+    // Las invocaciones de clase entran como «invocación»; si la capacidad está
+    // llena, entran dentro (sin manifestar) en lugar de pasarse del límite.
+    const isClass = raw.creatureRef?.startsWith('clase:');
+    const pre = isClass ? { bond: 'invocacion', ...raw, ...(raw.bond === 'companero' ? { bond: 'invocacion' } : {}) } : raw;
+    const res = addCompanion(ed.character, pre);
     if (res.errors.length) return toast(res.errors.join(' '), { type: 'error' });
-    ed.replace(res.character, { keepScroll: true, message: 'Criatura añadida.' });
+    let next = res.character;
+    const added = next.companions.at(-1);
+    const cap = ed.sheet.summonCapacity;
+    if (cap && added.bond === 'invocacion' && summonUsage(next, cap).over) {
+      next = updateCompanion(next, added.id, { present: false }).character;
+      return ed.replace(next, { keepScroll: true, message: 'Invocación añadida sin manifestar: tu capacidad está llena.' });
+    }
+    ed.replace(next, { keepScroll: true, message: 'Criatura añadida.' });
   },
   async 'comp-edit'(ed, el) {
     const current = ed.character.companions.find((x) => x.id === el.dataset.id);
     if (!current) return;
-    const raw = await openCompanionEditor(structuredClone(current), { blood: ed.sheet.bloodSummoning, catalog: catalogFor(ed) });
+    const raw = await openCompanionEditor(structuredClone(current), { blood: ed.sheet.bloodSummoning, catalog: catalogFor(ed), groups: ed.sheet.creatureGroups });
     if (!raw) return;
     const res = updateCompanion(ed.character, current.id, raw);
     if (res.errors.length) return toast(res.errors.join(' '), { type: 'error' });
@@ -227,6 +251,10 @@ export const companionActions = {
   'comp-temp': (ed, el) => ed.replace(updateCompanion(ed.character, el.dataset.id, { tempHp: amountOf(ed, el.dataset.id) }).character, { keepScroll: true }),
   'comp-present': (ed, el) => {
     const comp = ed.character.companions.find((x) => x.id === el.dataset.id);
+    if (!canManifest(ed.character, comp.id, ed.sheet.summonCapacity)) {
+      toast(`Ya tienes ${ed.sheet.summonCapacity} invocaciones fuera (tu Capacidad de Manifestación). Reabsorbe una antes.`, { type: 'warning' });
+      return;
+    }
     ed.replace(updateCompanion(ed.character, el.dataset.id, { present: !comp.present }).character, { keepScroll: true });
   },
   'comp-condition': (ed, el) => {

@@ -1,0 +1,4 @@
+{
+  "$comment": "Invocaciones y criaturas de clase o raza (AgSt 1.35). Cada grupo se habilita con el efecto «habilita: invocaciones_<grupo>» y aparece en «Añadir criatura → De un catálogo». Formato de cada criatura: name, size, creatureType, ac (número o { base, bc: true }), hp ({ base, porNivel, atributo? }; nivel = nivel total del personaje), speed, abilities, senses, languages, capacidad (false = no ocupa la Capacidad de Manifestación), traits/actions/reactions [{ name, text }] y mejoras [{ nivel, texto }]. Ver docs/DATOS.md.",
+  "grupos": {}
+}

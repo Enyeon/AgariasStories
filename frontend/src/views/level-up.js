@@ -102,6 +102,18 @@ function mountFeatChooser(root, character, { initial, onChange, excludeRaceFeat,
   render();
 }
 
+/**
+ * Raza recomendada de una clase (`razaRecomendada` en sus datos, AgSt 1.35).
+ * Es sólo un aviso: nunca impide elegirla.
+ */
+function recommendedBadge(cls, character) {
+  const races = Array.isArray(cls.razaRecomendada) ? cls.razaRecomendada : [];
+  if (!races.length) return '';
+  return races.includes(character.race?.key)
+    ? html`<span class="badge badge--accent" title="Esta clase está pensada para tu raza">★ Recomendada para tu raza</span>`
+    : html`<span class="badge" title="Se recomienda con esta raza, pero puedes elegirla igual">Pensada para: ${races.join(', ')}</span>`;
+}
+
 export function openFeatPicker(character, { title = 'Elige una dote', excludeRaceFeat = false, allow = null, only = null } = {}) {
   return openDialog({
     title,
@@ -227,7 +239,7 @@ export function openLevelUpWizard(character, opts = {}) {
           ${groups.map((g) => html`<h3 class="wizard__group">${g.label}</h3>
             <div class="class-grid">${g.classes.map((c) => html`<button type="button" class="class-card ${state.classKey === c.claseName ? 'is-selected' : ''}" data-class="${c.claseName}" aria-pressed="${state.classKey === c.claseName}">
               <span class="class-card__name">${c.nombre}</span>
-              <span class="class-card__meta"><span class="badge">d${c.dadoDeGolpe}</span>${c.conjurador ? html`<span class="badge badge--accent">Conjurador</span>` : ''}${current[c.claseName] ? html`<span class="badge badge--gold">Nivel ${current[c.claseName]} → ${current[c.claseName] + 1}</span>` : ''}</span>
+              <span class="class-card__meta"><span class="badge">d${c.dadoDeGolpe}</span>${c.conjurador ? html`<span class="badge badge--accent">Conjurador</span>` : ''}${current[c.claseName] ? html`<span class="badge badge--gold">Nivel ${current[c.claseName]} → ${current[c.claseName] + 1}</span>` : ''}${recommendedBadge(c, character)}</span>
               <span class="class-card__desc">${c.niveles?.[1]?.descripcion ?? ''}</span>
             </button>`)}</div>`)}`;
       }

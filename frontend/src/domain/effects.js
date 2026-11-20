@@ -55,6 +55,7 @@ export const BONUS_TARGETS = Object.freeze({
   velocidad: 'Velocidad al caminar',
   salvaciones: 'Todas las tiradas de salvación',
   trucos: 'Trucos conocidos de la clase',
+  invocaciones: 'Invocaciones manifestadas a la vez (Capacidad)',
   ...Object.fromEntries(ABILITY_KEYS.map((k) => [`atributo:${k}`, `Puntuación de ${ABILITY_LABEL[k]}`])),
   ...Object.fromEntries(SKILL_NAMES.map((n) => [`habilidad:${n}`, `Pruebas de ${n}`])),
   // Todas las pruebas de característica de un atributo (p. ej. Glamour de Otro Mundo: Carisma).
@@ -65,6 +66,9 @@ export const BONUS_TARGETS = Object.freeze({
 export const RESOURCES = Object.freeze({
   criaturas_de_sangre: 'Invocación de criaturas de sangre',
   companero: 'Compañero o criatura vinculada',
+  invocaciones_ink: 'Invocaciones Ink (catálogo de criaturas)',
+  caramelos: 'Caramelos de atributo (enfermedad de las estadísticas)',
+  inhibicion: 'Inhibición: nada de lo que haces causa daño',
 });
 
 export const EFFECT_TYPES = Object.freeze({

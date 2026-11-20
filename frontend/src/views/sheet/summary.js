@@ -8,6 +8,7 @@ import { sourcesLabel } from '../../domain/proficiencies.js';
 import { DAMAGE_LABEL } from '../../domain/effects.js';
 import { alignmentStyle } from '../../domain/alignment.js';
 import { resourcesCard, resourceActions } from './resources.js';
+import { candyCard, candyActions } from './candy.js';
 import { textField, numberField, selectField, out, mod, actionButton, sectionCard, bindAttrs } from './common.js';
 
 function identityStrip(ctx) {
@@ -74,6 +75,7 @@ function combatStrip(ctx) {
   const current = c.combat.currentHp;
   return html`
     <section class="card">
+      ${sheet.inhibited ? html`<p class="callout callout--accent inhibition-note"><strong>Inhibición.</strong> Nada de lo que haces causa daño: tus ataques, conjuros, rasgos, invocaciones y objetos hacen 0. Tampoco puedes mover a una criatura hacia algo que la dañe.</p>` : ''}
       <div class="combat-grid">
         <div class="stat-box">
           <label class="stat-box__label" for="ac-input">Clase de armadura</label>
@@ -214,6 +216,7 @@ export function renderSummary(ctx) {
       })}
       ${combatStrip(ctx)}
       ${resourcesCard(ctx)}
+      ${candyCard(ctx)}
       ${speedsCard(ctx)}
       <div class="grid-2 grid-2--skills">
         ${savesList(ctx)}
@@ -225,6 +228,7 @@ export function renderSummary(ctx) {
 
 export const summaryActions = {
   ...resourceActions,
+  ...candyActions,
   'toggle-skill': (ed, el) => ed.update((c) => {
     const list = c.proficiencies.skills;
     const i = list.indexOf(el.dataset.key);

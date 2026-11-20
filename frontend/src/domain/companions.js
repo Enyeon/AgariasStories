@@ -15,10 +15,31 @@ import { normalizeCompanion } from './validation.js';
 import { hitPoints, abilityScores } from './rules.js';
 
 const BLOOD_PREFIX = 'sangre:';
+const CLASS_PREFIX = 'clase:';
+
+/** Grupos de invocaciones de clase o raza habilitados (efecto `habilita: invocaciones_<grupo>`). */
+export function enabledCreatureGroups(enabled) {
+  return Object.keys(data.classCreatures).filter((g) => enabled?.has?.(`invocaciones_${g}`));
+}
+
+const evalAc = (ac, prof) => (typeof ac === 'number' ? ac : ac && typeof ac === 'object' ? (ac.base ?? 10) + (ac.bc ? prof : 0) : null);
+
+function evalHp(hp, owner) {
+  if (typeof hp === 'number') return hp;
+  if (!hp || typeof hp !== 'object' || !owner) return null;
+  const level = Math.max(1, owner.levels?.length ?? 0);
+  const scores = abilityScores(owner);
+  const mod = hp.atributo ? scores[hp.atributo]?.modifier ?? 0 : 0;
+  return Math.max(1, (hp.base ?? 0) + (hp.porNivel ?? 0) * level + mod);
+}
 
 /** Opciones de criatura para un personaje: [{ ref, name, group }] */
-export function creatureOptions({ blood = false, catalog = [] } = {}) {
+export function creatureOptions({ blood = false, catalog = [], groups = [] } = {}) {
   const out = catalog.map((e) => ({ ref: e.ref, name: e.item.name, group: e.packName ?? 'Homebrew' }));
+  for (const g of groups) {
+    const grp = data.classCreatures[g];
+    for (const [id, cr] of Object.entries(grp?.criaturas ?? {})) out.push({ ref: `${CLASS_PREFIX}${g}:${id}`, name: cr.name, group: grp.nombre ?? g });
+  }
   if (blood) {
     for (const [id, c] of Object.entries(data.bloodCreatures)) out.push({ ref: `${BLOOD_PREFIX}${id}`, name: c.name, group: 'Criaturas de sangre' });
   }
@@ -48,6 +69,32 @@ export function creatureBlock(companion, owner) {
         ...(b.requirement && b.requirement !== '——' ? [{ label: 'Requisito', text: b.requirement }] : []),
       ],
       traits: [], actions: [], reactions: [],
+    };
+  }
+  if (ref?.startsWith(CLASS_PREFIX)) {
+    const [g, id] = ref.slice(CLASS_PREFIX.length).split(':');
+    const grp = data.classCreatures[g];
+    const b = grp?.criaturas?.[id];
+    if (!b) return { name: companion.name, source: grp?.nombre ?? 'Invocación', missing: true, lines: [], traits: [], actions: [], reactions: [] };
+    const level = Math.max(1, owner?.levels?.length ?? 0);
+    const prof = 2 + Math.floor((level - 1) / 4);
+    const mejoras = (b.mejoras ?? []).filter((m) => level >= m.nivel);
+    return {
+      name: b.name,
+      source: grp.fuente ?? grp.nombre,
+      size: b.size, creatureType: b.creatureType,
+      ac: evalAc(b.ac, prof), hpMax: evalHp(b.hp, owner),
+      hpNote: b.hp && typeof b.hp === 'object' ? b.hpTexto : undefined,
+      speed: b.speed, abilities: b.abilities,
+      capacity: b.capacidad !== false,
+      lines: [
+        ...(b.senses ? [{ label: 'Sentidos', text: b.senses }] : []),
+        ...(b.languages ? [{ label: 'Idiomas', text: b.languages }] : []),
+        ...(b.capacidad === false ? [{ label: 'Capacidad', text: 'No ocupa la Capacidad de Manifestación' }] : []),
+      ],
+      description: b.description,
+      traits: [...(b.traits ?? []), ...mejoras.map((m) => ({ name: `Mejora (nivel ${m.nivel})`, text: m.texto }))],
+      actions: b.actions ?? [], reactions: b.reactions ?? [],
     };
   }
   if (ref) {
@@ -80,6 +127,24 @@ export function creatureBlock(companion, owner) {
 }
 
 /** PG actuales (si no se han tocado, los máximos). */
+/**
+ * Capacidad de Manifestación: cuántas invocaciones están fuera y cuántas se
+ * permiten (bono `invocaciones`). Sólo cuentan los vínculos de tipo
+ * «invocación» presentes cuya criatura ocupa capacidad.
+ */
+export function summonUsage(c, capacity) {
+  const out = (c.companions ?? []).filter((x) => x.bond === 'invocacion' && x.present && creatureBlock(x, c).capacity !== false);
+  return { used: out.length, capacity, over: capacity > 0 && out.length > capacity };
+}
+
+/** ¿Se puede manifestar (marcar presente) esta criatura sin pasar la capacidad? */
+export function canManifest(c, id, capacity) {
+  const comp = (c.companions ?? []).find((x) => x.id === id);
+  if (!comp || comp.present || comp.bond !== 'invocacion' || !(capacity > 0)) return true;
+  if (creatureBlock(comp, c).capacity === false) return true;
+  return summonUsage(c, capacity).used < capacity;
+}
+
 export function companionHp(companion, block) {
   return companion.currentHp ?? block.hpMax ?? null;
 }

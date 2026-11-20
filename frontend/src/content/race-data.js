@@ -17,7 +17,7 @@ const ABILITIES = ['fuerza', 'destreza', 'constitucion', 'inteligencia', 'sabidu
 const SIZES = ['Diminuto', 'Pequeño', 'Mediano', 'Pequeño o Mediano', 'Grande'];
 const isText = (v) => typeof v === 'string' && v.trim().length > 0;
 
-export function validateRaceData({ races, catalog, lore }) {
+export function validateRaceData({ races, catalog, lore, classKeys = null }) {
   const errors = [];
   const warnings = [];
   const loreIds = new Set(Object.keys(lore).filter((k) => !k.startsWith('$')));
@@ -46,6 +46,7 @@ export function validateRaceData({ races, catalog, lore }) {
     if (r.anatomiaDraconica != null && typeof r.anatomiaDraconica !== 'boolean') errors.push(`${where}: anatomiaDraconica debe ser true/false.`);
     if (r.pisoMinimo != null && !(Number.isInteger(r.pisoMinimo) && r.pisoMinimo >= 1 && r.pisoMinimo <= 100)) errors.push(`${where}: pisoMinimo debe ser un piso de 1 a 100.`);
     if (!isText(r.info)) warnings.push(`${where}: sin texto de rasgos (info).`);
+    if (r.claseRecomendada != null && (!isText(r.claseRecomendada) || (classKeys && !classKeys.includes(r.claseRecomendada)))) errors.push(`${where}: claseRecomendada «${r.claseRecomendada}» no es una clase.`);
   }
 
   for (const id of loreIds) {

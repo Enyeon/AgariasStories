@@ -11,6 +11,7 @@ import feats from './feats.json';
 import epicBoons from './epic-boons.json';
 import languages from './languages.json';
 import bloodCreatures from './blood-creatures.json';
+import classCreaturesData from './class-creatures.json';
 import rulesReference from './rules-reference.json';
 import backgrounds from './backgrounds.json';
 import backgroundFeatures from './background-features.json';
@@ -52,6 +53,8 @@ export const data = Object.freeze({
   epicBoons,
   languages,
   bloodCreatures,
+  /** Invocaciones de clase o raza por grupo (AgSt 1.35). */
+  classCreatures: classCreaturesData.grupos ?? {},
   rulesReference,
   backgrounds,
   backgroundFeatures,

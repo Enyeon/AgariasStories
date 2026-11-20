@@ -2,6 +2,7 @@
 // Funciones puras, sin DOM y sin estado global, para poder testearlas y
 // reutilizarlas (ficha, vista compartida, futuras exportaciones a PDF...).
 
+import { candyDrain } from './candy.js';
 import { computeResources } from './resources.js';
 import { cubeRow, sameCube } from './class-table.js';
 import {
@@ -369,8 +370,9 @@ export function hitPoints(c, scores) {
   });
   const full = perLevel.length ? perLevel.reduce((s, p) => s + p.total, 0) + flatBonus : 0;
   // Drenaje: reduce el máximo, nunca por debajo de 1 (no puede matar por sí solo).
-  const reduction = full > 0 ? Math.min(full - 1, Math.max(0, c.combat?.hpMaxReduction ?? 0)) : 0;
-  return { max: full - reduction, full, reduction, perLevel, tough, flatBonus, bonusLabels, duro: bonusLabels.includes('Duro') };
+  const drained = candyDrain(c);
+  const reduction = full > 0 ? Math.min(full - 1, Math.max(0, c.combat?.hpMaxReduction ?? 0) + drained) : 0;
+  return { max: full - reduction, full, reduction, drained, perLevel, tough, flatBonus, bonusLabels, duro: bonusLabels.includes('Duro') };
 }
 
 // ── Velocidades ──────────────────────────────────────────────────────────
@@ -665,6 +667,7 @@ export function computeSheet(c) {
   const prof = proficiencyBonus(Math.max(1, level));
   const scores = abilityScores(c);
   const fx = effectSources(c);
+  const enabled = new Set(fx.flatMap((s) => s.effects.filter((e) => e.type === 'habilita').map((e) => e.value)));
   const casting = spellcasting(c, scores, prof, fx);
   const hp = hitPoints(c, scores);
   const sources = proficiencySources(c);
@@ -706,5 +709,10 @@ export function computeSheet(c) {
     pendingRaceChoices: pendingRaceChoices(c),
     xpLevel: levelForExperience(c.experience),
     resources: computeResources(c, fx, { scores, prof, level }),
+    // AgSt 1.35: invocaciones de clase, capacidad, caramelos e Inhibición.
+    creatureGroups: Object.keys(data.classCreatures).filter((g) => enabled.has(`invocaciones_${g}`)),
+    summonCapacity: Math.max(0, sumBonus(fx, 'invocaciones', scores)),
+    candyMaker: enabled.has('caramelos'),
+    inhibited: enabled.has('inhibicion'),
   };
 }

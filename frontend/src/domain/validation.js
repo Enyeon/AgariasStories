@@ -20,6 +20,7 @@ import { registerSnapshots, engineOf } from '../content/registry.js';
 import { migrateDocument } from './migrations.js';
 import { normalizeWorkshop } from './workshop.js';
 import { normalizeResourcesState } from './resources.js';
+import { normalizeCandyState } from './candy.js';
 import { getClass, getRace, getFeat, getEpicBoon, getOfficialBackground } from '../data/index.js';
 
 export class InvalidDocumentError extends Error {
@@ -376,6 +377,8 @@ export function normalizeCharacter(raw) {
       ...(it.equipped === true ? { equipped: true } : {}),
       ...(it.attuned === true ? { attuned: true } : {}),
       ...(it.consumable === true ? { consumable: true } : {}),
+      // (1.35) Caramelo de atributo: qué atributo da (ver domain/candy.js).
+      ...(ABILITY_KEYS.includes(it.candy) ? { candy: it.candy } : {}),
       ...(Number.isFinite(Number(it.weight)) && Number(it.weight) > 0 ? { weight: Math.min(9999, Math.round(Number(it.weight) * 100) / 100) } : {}),
     })
     : null));
@@ -424,6 +427,7 @@ export function normalizeCharacter(raw) {
   d.companions = list(src.companions, (x) => normalizeCompanion(x), 30);
   d.workshop = normalizeWorkshop(src.workshop);
   d.resources = normalizeResourcesState(src.resources);
+  d.candy = normalizeCandyState(src.candy);
 
   if (isObject(src.campaign) && text(src.campaign.id, 40)) {
     d.campaign = { id: text(src.campaign.id, 40), name: text(src.campaign.name) };
