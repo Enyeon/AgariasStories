@@ -213,7 +213,11 @@ export const companionActions = {
     // Las invocaciones de clase entran como «invocación»; si la capacidad está
     // llena, entran dentro (sin manifestar) en lugar de pasarse del límite.
     const isClass = raw.creatureRef?.startsWith('clase:');
-    const pre = isClass ? { bond: 'invocacion', ...raw, ...(raw.bond === 'companero' ? { bond: 'invocacion' } : {}) } : raw;
+    const pre = isClass ? {
+      bond: 'invocacion', ...raw,
+      ...(raw.bond === 'companero' ? { bond: 'invocacion' } : {}),
+      ...(raw.origin === 'dm' && !raw.originDetail ? { origin: 'otro', originDetail: 'Invocación de tu raza o clase' } : {}),
+    } : raw;
     const res = addCompanion(ed.character, pre);
     if (res.errors.length) return toast(res.errors.join(' '), { type: 'error' });
     let next = res.character;

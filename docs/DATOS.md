@@ -286,3 +286,12 @@ nuevas y vuelo sólo sin armadura media ni pesada. La tecnología de los Varkai 
   (clave de clase) en una raza. Sólo son avisos en el asistente de nivel y en el selector de raza.
 - **PG máximos drenados** (`combat.hpMaxReduction`, AgSt 1.34) y el drenaje de los caramelos se suman, sin bajar
   nunca de 1 PG máximo.
+
+### Raza INK y clase Adaptado (AgSt 1.36)
+
+Se generan con `python3 tools/ink_adaptado.py` (idempotente): la raza `INK` (Pt. V: Aliens, linaje `ink`), su
+historia pública, el grupo de invocaciones `ink` de `class-creatures.json` (Conejo racial y el repertorio: Golem,
+Loro, Ruleta, Topo, Pulpo, Polilla, Montura, Esponja, Araña y Luciérnaga) y `classes/adaptado.json`.
+El diseño completo y las decisiones del autor están en el doc del proyecto `claude/ink-diagnostico.md`.
+Importante: el secreto de la cura (Vacío, Experimento 048) **no** se publica en la app; en el lore sólo hay un rumor.
+Los tests (`tests/ink.test.js`) comprueban que ninguna invocación ni hechizo hace daño y que el secreto no aparece.

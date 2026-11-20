@@ -1,0 +1,1536 @@
+{
+  "nombre": "Adaptado",
+  "claseName": "adaptado",
+  "seccion": "agarias",
+  "icono": "🫧",
+  "fuenteReglas": "Agarias (diseño del autor, revisado el 19-nov-2026)",
+  "razaRecomendada": [
+    "INK"
+  ],
+  "dadoDeGolpe": 8,
+  "nivelesDeAumento": [
+    4,
+    8,
+    12,
+    16,
+    19
+  ],
+  "conjurador": false,
+  "subclaseNombre": "Senda de Tinta",
+  "cdClase": {
+    "nombre": "CD de clase (Adaptado)",
+    "atributos": [
+      "sabiduria"
+    ]
+  },
+  "competencias": {
+    "salvaciones": [
+      "sabiduria",
+      "carisma"
+    ],
+    "armaduras": [
+      "Armadura ligera",
+      "Escudos"
+    ],
+    "armas": [],
+    "herramientas": [],
+    "habilidades": {
+      "elegir": 2,
+      "de": [
+        "Perspicacia",
+        "Persuasión",
+        "Medicina",
+        "Investigación",
+        "Engaño",
+        "Naturaleza",
+        "Trato con Animales"
+      ]
+    },
+    "notaArmadura": "Sin armas: la Inhibición impide causar daño."
+  },
+  "competenciasMulticlase": {
+    "armaduras": [
+      "Armadura ligera"
+    ],
+    "armas": [],
+    "herramientas": [],
+    "habilidades": null
+  },
+  "equipoInicial": [
+    "Armadura de cuero.",
+    "Un escudo.",
+    "Un kit de herbolario o una herramienta de artesano.",
+    "Un paquete de diplomático o de explorador."
+  ],
+  "oroInicial": "4d4 × 10",
+  "listasDeEleccion": {
+    "trucos-ink": {
+      "titulo": "Trucos Ink",
+      "ayuda": "Trucos sin daño.",
+      "opciones": [
+        {
+          "id": "orientacion",
+          "nombre": "Orientación",
+          "descripcion": "<i>Truco · Adivinación</i> · 1 acción · Toque · V, S · Concentración, 1 minuto.<br>Una criatura voluntaria suma 1d4 a una prueba de característica de su elección antes de que acabe el conjuro."
+        },
+        {
+          "id": "resistencia",
+          "nombre": "Resistencia",
+          "descripcion": "<i>Truco · Abjuración</i> · 1 acción · Toque · V, S · Concentración, 1 minuto.<br>Una criatura voluntaria suma 1d4 a una tirada de salvación de su elección antes de que acabe el conjuro."
+        },
+        {
+          "id": "perdonar-moribundos",
+          "nombre": "Perdonar a los moribundos",
+          "descripcion": "<i>Truco · Nigromancia</i> · 1 acción · Toque · V, S · Instantánea.<br>Estabilizas a una criatura viva a 0 PG."
+        },
+        {
+          "id": "mensaje",
+          "nombre": "Mensaje",
+          "descripcion": "<i>Truco · Transmutación</i> · 1 acción · 120 pies · V, S · 1 ronda.<br>Susurras un mensaje a una criatura y sólo ella lo oye; puede responder en un susurro."
+        },
+        {
+          "id": "remendar",
+          "nombre": "Remendar",
+          "descripcion": "<i>Truco · Transmutación</i> · 1 minuto · Toque · V, S · Instantánea.<br>Reparas una rotura o desgarro de un objeto."
+        },
+        {
+          "id": "mano-de-mago",
+          "nombre": "Mano de mago",
+          "descripcion": "<i>Truco · Conjuración</i> · 1 acción · 30 pies · V, S · 1 minuto.<br>Una mano espectral manipula objetos ligeros (no ataca ni activa objetos mágicos)."
+        },
+        {
+          "id": "taumaturgia",
+          "nombre": "Taumaturgia",
+          "descripcion": "<i>Truco · Transmutación</i> · 1 acción · 30 pies · V · Hasta 1 minuto.<br>Una pequeña maravilla: tu voz retumba, las llamas parpadean, se oyen golpes, se abre una puerta…"
+        },
+        {
+          "id": "gota-de-tinta",
+          "nombre": "Gota de tinta",
+          "descripcion": "<i>Truco · Transmutación</i> · 1 acción adicional · 30 pies · S · Hasta el final de tu siguiente turno.<br>Marcas a una criatura con una gota de biomasa: el siguiente ataque de un aliado contra ella tiene +1. Sin daño."
+        }
+      ],
+      "reemplazarAlSubir": true
+    },
+    "hechizos-ink": {
+      "titulo": "Hechizos Ink",
+      "ayuda": "Cuestan tanta Esencia como su nivel. El nivel máximo sale de tu tabla.",
+      "opciones": [
+        {
+          "id": "vinculo-reconfortante",
+          "nombre": "Vínculo Reconfortante",
+          "descripcion": "<i>Nivel 1 · Abjuración</i> · 1 acción · 60 pies · V, S · Concentración, 1 minuto. Coste: 1 de Esencia.<br>Un aliado (no tú) gana resistencia a un tipo de daño que elijas (contundente, perforante, cortante, fuego, frío, ácido, veneno, rayo o trueno). <b>A nivel superior:</b> +1 aliado por cada nivel por encima de 1."
+        },
+        {
+          "id": "piel-reactiva",
+          "nombre": "Piel Reactiva",
+          "descripcion": "<i>Nivel 1 · Transmutación</i> · 1 acción adicional · Toque · V, S · Concentración, 1 minuto. Coste: 1 de Esencia.<br>Una criatura voluntaria gana +2 a la CA y ventaja en las salvaciones para no ser derribada."
+        },
+        {
+          "id": "espora-confusora",
+          "nombre": "Espora Confusora",
+          "descripcion": "<i>Nivel 1 · Encantamiento</i> · 1 acción · 30 pies · V · Instantánea. Coste: 1 de Esencia.<br>Una criatura hace una salvación de Sabiduría o tiene desventaja en su siguiente tirada de ataque antes del final de su siguiente turno. No afecta a quien es inmune al veneno o no respira. <b>A nivel superior:</b> +1 criatura por nivel."
+        },
+        {
+          "id": "mascara-de-otro",
+          "nombre": "Máscara de Otro",
+          "descripcion": "<i>Nivel 1 · Ilusión</i> · 1 acción adicional · Toque · V, S · 1 hora. Coste: 1 de Esencia.<br>Una criatura voluntaria (puedes ser tú) tiene ventaja en todas sus pruebas de Carisma (Engaño) durante una misma interacción social."
+        },
+        {
+          "id": "segundo-aliento-prestado",
+          "nombre": "Segundo Aliento Prestado",
+          "descripcion": "<i>Nivel 2 · Abjuración</i> · 1 acción · Toque · V, S · Instantánea. Coste: 2 de Esencia.<br>Una criatura recupera 2d8 + tu modificador de Sabiduría PG, sin gastar sus Dados de Golpe.",
+          "requisitos": {
+            "nivel": 5
+          }
+        },
+        {
+          "id": "enredo-adhesivo",
+          "nombre": "Enredo Adhesivo",
+          "descripcion": "<i>Nivel 2 · Conjuración</i> · 1 acción · 60 pies · V, S, M (una gota de tu biomasa) · Concentración, 1 minuto. Coste: 2 de Esencia.<br>Un cuadrado de 10 pies se vuelve terreno difícil. Quien empiece su turno en él o entre por primera vez hace una salvación de Fuerza o queda apresado hasta que use su acción y la supere.",
+          "requisitos": {
+            "nivel": 5
+          }
+        },
+        {
+          "id": "disolucion-parcial",
+          "nombre": "Disolución Parcial",
+          "descripcion": "<i>Nivel 2 · Transmutación</i> · 1 acción · Toque · V, S · 1 minuto. Coste: 2 de Esencia.<br>Una criatura voluntaria ignora el terreno difícil y puede atravesar el espacio de criaturas Medianas o mayores como terreno difícil (sin terminar ahí). No atraviesa objetos ni paredes.",
+          "requisitos": {
+            "nivel": 5
+          }
+        },
+        {
+          "id": "miasma-debilitante",
+          "nombre": "Miasma Debilitante",
+          "descripcion": "<i>Nivel 3 · Nigromancia</i> · 1 acción · 60 pies · V, S · Concentración, 1 minuto. Coste: 3 de Esencia.<br>Hasta tres criaturas a 20 pies entre sí hacen una salvación de Constitución o tienen desventaja en sus tiradas de ataque. Repiten la salvación al final de cada uno de sus turnos.",
+          "requisitos": {
+            "nivel": 9
+          }
+        },
+        {
+          "id": "zona-de-regeneracion",
+          "nombre": "Zona de Regeneración",
+          "descripcion": "<i>Nivel 3 · Abjuración</i> · 1 acción · 30 pies · V, S · Concentración, 1 minuto. Coste: 3 de Esencia.<br>Un área de 15 pies de radio: cada aliado que termine su turno dentro recupera 1d6 PG (una vez por ronda).",
+          "requisitos": {
+            "nivel": 9
+          }
+        },
+        {
+          "id": "santuario-ink",
+          "nombre": "Santuario Ink",
+          "descripcion": "<i>Nivel 3 · Abjuración</i> · 1 acción adicional · 30 pies · V, S · Concentración, 1 minuto. Coste: 3 de Esencia.<br>Un aliado queda envuelto en biomasa: quien quiera atacarle o afectarle con un conjuro dañino hace antes una salvación de Sabiduría o elige otro objetivo. Termina si ese aliado ataca o lanza un conjuro que afecte a un enemigo.",
+          "requisitos": {
+            "nivel": 9
+          }
+        },
+        {
+          "id": "espejo-de-carne",
+          "nombre": "Espejo de Carne",
+          "descripcion": "<i>Nivel 4 · Abjuración</i> · 1 reacción (un aliado a 30 pies es alcanzado por un ataque) · 30 pies · V, S · Instantánea. Coste: 4 de Esencia.<br>Recibes tú el ataque en lugar de tu aliado, con tus resistencias. El daño lo causa el enemigo, no tu raza. Una vez por combate.",
+          "requisitos": {
+            "nivel": 13
+          }
+        },
+        {
+          "id": "paralizacion-simbiotica",
+          "nombre": "Paralización Simbiótica",
+          "descripcion": "<i>Nivel 4 · Transmutación</i> · 1 acción · 30 pies · V, S, M (una porción de tu biomasa) · Concentración, 1 minuto. Coste: 4 de Esencia.<br>Una criatura hace una salvación de Constitución o queda apresada y con desventaja en las salvaciones de Fuerza y Destreza. Repite la salvación al final de cada uno de sus turnos. No afecta a criaturas Enormes o mayores.",
+          "requisitos": {
+            "nivel": 13
+          }
+        },
+        {
+          "id": "pulso-de-calma",
+          "nombre": "Pulso de Calma",
+          "descripcion": "<i>Nivel 4 · Encantamiento</i> · 1 acción · 60 pies · V, S · Instantánea. Coste: 4 de Esencia.<br>Cada criatura que elijas en una esfera de 20 pies hace una salvación de Sabiduría o no puede atacar hasta el final de su siguiente turno.",
+          "requisitos": {
+            "nivel": 13
+          }
+        },
+        {
+          "id": "reconfiguracion-mayor",
+          "nombre": "Reconfiguración Mayor",
+          "descripcion": "<i>Nivel 5 · Abjuración</i> · 1 acción · 30 pies · V, S · Instantánea. Coste: 5 de Esencia.<br>Hasta seis criaturas que puedas ver recuperan cada una 5d8 + tu modificador de Sabiduría PG.",
+          "requisitos": {
+            "nivel": 17
+          }
+        }
+      ]
+    }
+  },
+  "niveles": {
+    "1": {
+      "descripcion": "Soporte biológico experimental: saca de su cuerpo las vidas que lleva dentro para proteger, rescatar y desordenar el combate, sin herir jamás a nadie.",
+      "descripcionLarga": "El Adaptado es cómo un INK entrena su biología maleable hasta convertirla en un kit de soporte, control y supervivencia. No es la clase que más daño hace: no hace ninguno. Es la clase que hace que el resto del grupo rinda más. Cada turno decides a quién proteges, qué invocación sale y dónde, si te expones para salvar a otro o si arriesgas la Ruleta. Se recomienda para la raza INK, pero cualquier raza puede tomarla.",
+      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: Sabiduría y Carisma.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d8.\n    :: Nivel 1: 8 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d8 (o 5) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Armadura ligera y escudos.\n    :: Armas: Ninguna (Inhibición).\n    :: Herramientas: una herramienta de artesano o un kit de herbolario.\n    :: Habilidades: escoge dos entre Perspicacia, Persuasión, Medicina, Investigación, Engaño, Naturaleza y Trato con Animales.\n❖ Fuente: Agarias.",
+      "infoCubo": {
+        "columnas": [
+          "Esencia",
+          "Hechizos conocidos",
+          "Nivel máx. de hechizo",
+          "Invocaciones fuera"
+        ],
+        "filas": [
+          [
+            "4",
+            "2",
+            "1.º",
+            "-"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Inhibición",
+          "titleName": "✦ INHIBICIÓN ✦",
+          "descripcion": "Nada de lo que haces causa daño: ni tus ataques, ni tus conjuros, ni tus rasgos, ni tus invocaciones, ni los objetos que actives. Si un efecto tuyo fuese a causar daño, causa 0. Tampoco puedes mover a una criatura (empujar, atraer, derribar, teletransportar) hacia algo que le vaya a causar daño: ese desplazamiento no ocurre.<br>Sí puedes agarrar, empujar o derribar sin peligro, proteger, curar, dar ventajas, imponer desventajas o condiciones que no causan daño y ayudar a otros a actuar. Ayudar a aliados que sí hacen daño está permitido. Se aplica mientras tengas al menos un nivel de Adaptado, también en multiclase.",
+          "efectos": [
+            {
+              "type": "habilita",
+              "value": "inhibicion"
+            }
+          ]
+        },
+        "blockDos": {
+          "name": "Esencia Adaptativa",
+          "titleName": "✦ ESENCIA ADAPTATIVA ✦",
+          "descripcion": "La biomasa que puedes reconfigurar antes de descansar. Tienes los puntos de Esencia de la tabla; los recuperas todos con un descanso largo y, con uno corto, tu modificador de Sabiduría (mínimo 1). La gastas en hechizos (coste = nivel del hechizo), en la Ruleta y en volver a manifestar invocaciones caídas.",
+          "efectos": [
+            {
+              "type": "recurso",
+              "id": "esencia",
+              "nombre": "Esencia Adaptativa",
+              "max": {
+                "tabla": "Esencia"
+              },
+              "corto": {
+                "atributo": "sabiduria"
+              }
+            }
+          ]
+        },
+        "blockTres": {
+          "name": "Toque Estabilizador",
+          "titleName": "✦ TOQUE ESTABILIZADOR ✦",
+          "descripcion": "Como acción, tocas a una criatura: si está a 0 PG, se estabiliza sin tirada; si no, recupera 1d8 + tu modificador de Sabiduría PG. Usos gratuitos: tu modificador de Sabiduría (mínimo 1) por descanso largo; los siguientes cuestan 1 de Esencia cada uno.",
+          "efectos": [
+            {
+              "type": "recurso",
+              "id": "toque-estabilizador",
+              "nombre": "Toque Estabilizador (gratis)",
+              "max": {
+                "atributo": "sabiduria",
+                "minimo": 1
+              }
+            }
+          ]
+        },
+        "blockCuatro": {
+          "name": "Hechizos Ink",
+          "titleName": "✦ HECHIZOS INK ✦",
+          "descripcion": "Lanzas hechizos con Sabiduría (CD de clase = 8 + tu bonificador de competencia + tu modificador de Sabiduría). No tienes espacios de conjuro: cada hechizo cuesta tantos puntos de Esencia como su nivel. Conoces los trucos y hechizos que elijas de la lista Ink (columnas «Hechizos conocidos» y «Nivel máx. de hechizo»). Ninguno hace daño. Al subir de nivel puedes cambiar uno.",
+          "elegir": [
+            {
+              "lista": "trucos-ink",
+              "cantidad": 2
+            },
+            {
+              "lista": "hechizos-ink",
+              "cantidad": 2
+            }
+          ]
+        },
+        "blockCinco": {
+          "name": "Injerto Sram",
+          "titleName": "✦ INJERTO SRAM ✦",
+          "descripcion": "Si no eres un INK, tus invocaciones salen de un injerto de biomasa Sram que recibiste al tomar esta clase. Tienes todo lo de la clase, pero no el Conejo, que es de la raza INK.",
+          "efectos": [
+            {
+              "type": "habilita",
+              "value": "invocaciones_ink"
+            }
+          ]
+        }
+      }
+    },
+    "2": {
+      "infoCubo": {
+        "columnas": [
+          "Esencia",
+          "Hechizos conocidos",
+          "Nivel máx. de hechizo",
+          "Invocaciones fuera"
+        ],
+        "filas": [
+          [
+            "5",
+            "3",
+            "1.º",
+            "-"
+          ]
+        ]
+      },
+      "elegir": [
+        {
+          "lista": "hechizos-ink",
+          "cantidad": 1,
+          "reemplazar": 1
+        }
+      ],
+      "infoBlock": {
+        "blockUno": {
+          "name": "Desplazamiento",
+          "titleName": "✦ DESPLAZAMIENTO ✦",
+          "descripcion": "Como acción adicional, dejas un rastro de biomasa de 15 × 5 pies sobre una superficie sólida contigua (suelo, pared o techo). Hasta el final de tu turno te mueves por él sin gastar velocidad ni provocar ataques de oportunidad. No sirve en el aire ni si tu velocidad es 0. Usos: tu modificador de Constitución (mínimo 1) por descanso largo.",
+          "efectos": [
+            {
+              "type": "recurso",
+              "id": "desplazamiento",
+              "nombre": "Desplazamiento",
+              "max": {
+                "atributo": "constitucion",
+                "minimo": 1
+              }
+            }
+          ]
+        },
+        "blockDos": {
+          "name": "Desecho biológico",
+          "titleName": "✦ DESECHO BIOLÓGICO ✦",
+          "descripcion": "Cuando manifiestas una invocación que no sea el Conejo o la Ruleta, o cuando una cae a 0 PG, queda un Desecho de 5 pies a su lado: terreno difícil, CA 10, 1 PG. Se disuelve al final de tu siguiente turno, si se aleja más de 30 pies de su invocación o de ti, o al terminar el combate. Con una acción adicional (o la acción de una invocación) puedes gestionarlo:<br>• <b>Reabsorber:</b> recuperas 1 de Esencia (una vez por turno).<br>• <b>Contener:</b> el Golem lo absorbe y gana 1d6 PG temporales.<br>• <b>Moldear</b> (1 minuto): barricada (cobertura media), charco adhesivo (terreno difícil; salvación de Destreza o apresado hasta el final de su siguiente turno) o puente o asidero.<br>Si lo ignoras un turno entero, se <b>descontrola</b>: se extiende y deja terreno difícil en un cuadrado de 10 pies hasta el final del combate. Nunca hace daño."
+        }
+      }
+    },
+    "3": {
+      "infoCubo": {
+        "columnas": [
+          "Esencia",
+          "Hechizos conocidos",
+          "Nivel máx. de hechizo",
+          "Invocaciones fuera"
+        ],
+        "filas": [
+          [
+            "6",
+            "3",
+            "1.º",
+            "1"
+          ]
+        ]
+      },
+      "elegir": [
+        {
+          "lista": "hechizos-ink",
+          "cantidad": 0,
+          "reemplazar": 1
+        }
+      ],
+      "infoBlock": {
+        "blockUno": {
+          "name": "Repertorio de invocaciones",
+          "titleName": "✦ REPERTORIO DE INVOCACIONES ✦",
+          "descripcion": "Las vidas que llevas dentro aprenden a salir. Conoces tres invocaciones del repertorio; la de tu Senda (si te da una) cuenta entre las tres y la eliges en el paso de la Senda. Se manifiestan con una acción (salvo que su bloque diga otra cosa) y, si caen a 0 PG, vuelven a ti sin hacerte daño; no pueden volver a manifestarse hasta un descanso corto o gastando 2 de Esencia. <b>Capacidad de Manifestación:</b> cuántas pueden estar fuera a la vez (columna «Invocaciones fuera»); el Conejo y la Ruleta no cuentan. Sus estadísticas están en Criaturas → Añadir criatura → De un catálogo.",
+          "efectos": [
+            {
+              "type": "bono",
+              "target": "invocaciones",
+              "desdeTabla": "Invocaciones fuera"
+            }
+          ]
+        },
+        "blockDos": {
+          "name": "Contratista",
+          "titleName": "✦ CONTRATISTA ✦",
+          "descripcion": "Fuera de combate puedes contratar a criaturas con Inteligencia 4 o más que puedan comunicarse contigo y estén dispuestas a negociar (guías, artesanos, guardias, mercenarios…; las poderosas o legendarias sólo si el DM lo permite). El precio depende del riesgo. Los contratistas <b>obedecen tus órdenes</b> mientras dure el contrato. Puedes mantener tantos contratos como tu bonificador de competencia.<br><b>Cuadrilla.</b> Al empezar un combate, todos tus contratistas se unifican en una sola entidad con un turno y una acción. Usa las estadísticas del más fuerte, cuyo FR no puede pasar de la mitad de tu nivel (mínimo 1/8). Cada contratista extra suma 5 PG y un talento de su oficio (guardia +1 CA, guía +10 pies de velocidad, curandero una curación de 1d8 por combate, explorador +5 a la Percepción pasiva…). La diriges tú. A 0 PG se dispersa: huyen heridos y pierdes sus servicios hasta renegociar. La Inhibición no se aplica a la Cuadrilla (son seres independientes), y no cuenta como invocación ni se beneficia de tus invocaciones."
+        },
+        "blockTres": {
+          "name": "Senda de Tinta",
+          "titleName": "✦ SENDA DE TINTA ✦",
+          "descripcion": "Eliges una Senda de Tinta: tu especialización. Las Sendas del Refugio, del Insulto y del Azar te dan su invocación (cuenta entre tus tres); las del Espejo y del Enjambre te dejan elegir una más."
+        }
+      },
+      "subClase": {
+        "refugio": {
+          "subNombre": "Senda del Refugio",
+          "fuente": "Agarias",
+          "subDescripcion": "✦ SENDA DEL REFUGIO ✦\nProtección: el Golem es tu núcleo. Tu invocación de Senda es Golem.",
+          "listasDeEleccion": {
+            "repertorio": {
+              "titulo": "Repertorio de invocaciones",
+              "ayuda": "Tus invocaciones conocidas: tres en total, contando la que te da tu Senda. Cada una hace cosas distintas.",
+              "opciones": [
+                {
+                  "id": "loro",
+                  "nombre": "Loro insultador",
+                  "descripcion": "Atraer: Insulto Disonante obliga a atacarle a él o a ti. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "ruleta",
+                  "nombre": "Ruleta",
+                  "descripcion": "Azar: aparece, gira y desaparece (no ocupa capacidad). Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "topo",
+                  "nombre": "Topo",
+                  "descripcion": "Terreno: túneles, socavones y aviso sísmico. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "pulpo",
+                  "nombre": "Pulpo",
+                  "descripcion": "Manipular: sujetar, desarmar y recoger aliados. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "polilla",
+                  "nombre": "Polilla",
+                  "descripcion": "Explorar: ves por ella y revela lo invisible. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "montura",
+                  "nombre": "Montura",
+                  "descripcion": "Transporte: lleva y evacua aliados. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "esponja",
+                  "nombre": "Esponja",
+                  "descripcion": "Estados: absorbe venenos y condiciones. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "arana",
+                  "nombre": "Araña",
+                  "descripcion": "Anclaje: hilos y evitar empujones o caídas. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "luciernaga",
+                  "nombre": "Luciérnaga",
+                  "descripcion": "Ánimo y luz: contra el miedo y el encantamiento. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                }
+              ]
+            }
+          },
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Caparazón Compartido",
+                  "subDescripcion": "Tu invocación de Senda es el Golem. Cuando tu Golem usa Interceptar, una vez por turno puedes reducir a la mitad el daño que recibes tú de otro ataque ese mismo turno.",
+                  "elegir": {
+                    "lista": "repertorio",
+                    "cantidad": 2
+                  }
+                }
+              }
+            },
+            "6": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Biomasa densa",
+                  "subDescripcion": "Los PG del Golem aumentan en 3 × tu nivel."
+                }
+              }
+            },
+            "10": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Doble intercepción",
+                  "subDescripcion": "El Golem puede Interceptar dos veces por ronda, a aliados distintos."
+                }
+              }
+            },
+            "14": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Muralla viva",
+                  "subDescripcion": "Cuando un aliado detrás del Golem hace una salvación contra un efecto de área, la hace con ventaja."
+                }
+              }
+            },
+            "7": {
+              "elegir": {
+                "lista": "repertorio",
+                "cantidad": 0,
+                "reemplazar": 1,
+                "rasgo": "Mejora del Repertorio"
+              }
+            },
+            "11": {
+              "elegir": {
+                "lista": "repertorio",
+                "cantidad": 0,
+                "reemplazar": 1,
+                "rasgo": "Mejora del Repertorio"
+              }
+            },
+            "15": {
+              "elegir": {
+                "lista": "repertorio",
+                "cantidad": 0,
+                "reemplazar": 1,
+                "rasgo": "Mejora del Repertorio"
+              }
+            }
+          }
+        },
+        "insulto": {
+          "subNombre": "Senda del Insulto",
+          "fuente": "Agarias",
+          "subDescripcion": "✦ SENDA DEL INSULTO ✦\nProvocación: el Loro es tu núcleo. Tu invocación de Senda es Loro insultador.",
+          "listasDeEleccion": {
+            "repertorio": {
+              "titulo": "Repertorio de invocaciones",
+              "ayuda": "Tus invocaciones conocidas: tres en total, contando la que te da tu Senda. Cada una hace cosas distintas.",
+              "opciones": [
+                {
+                  "id": "golem",
+                  "nombre": "Golem",
+                  "descripcion": "Protección: interponerse, apartar, cobertura e interceptar daño. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "ruleta",
+                  "nombre": "Ruleta",
+                  "descripcion": "Azar: aparece, gira y desaparece (no ocupa capacidad). Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "topo",
+                  "nombre": "Topo",
+                  "descripcion": "Terreno: túneles, socavones y aviso sísmico. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "pulpo",
+                  "nombre": "Pulpo",
+                  "descripcion": "Manipular: sujetar, desarmar y recoger aliados. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "polilla",
+                  "nombre": "Polilla",
+                  "descripcion": "Explorar: ves por ella y revela lo invisible. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "montura",
+                  "nombre": "Montura",
+                  "descripcion": "Transporte: lleva y evacua aliados. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "esponja",
+                  "nombre": "Esponja",
+                  "descripcion": "Estados: absorbe venenos y condiciones. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "arana",
+                  "nombre": "Araña",
+                  "descripcion": "Anclaje: hilos y evitar empujones o caídas. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "luciernaga",
+                  "nombre": "Luciérnaga",
+                  "descripcion": "Ánimo y luz: contra el miedo y el encantamiento. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                }
+              ]
+            }
+          },
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Lengua afilada",
+                  "subDescripcion": "Tu invocación de Senda es el Loro. Su Insulto Disonante impone además desventaja en las salvaciones contra el miedo.",
+                  "elegir": {
+                    "lista": "repertorio",
+                    "cantidad": 2
+                  }
+                }
+              }
+            },
+            "6": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Loro gratis",
+                  "subDescripcion": "Una vez por descanso corto o largo, manifiestas el Loro sin coste."
+                }
+              }
+            },
+            "10": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Burla paralizante",
+                  "subDescripcion": "Las criaturas afectadas por el Insulto no pueden hacer ataques de oportunidad."
+                }
+              }
+            },
+            "14": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Coro de insultos",
+                  "subDescripcion": "Puedes tener dos Loros fuera a la vez (comparten el límite de usos)."
+                }
+              }
+            },
+            "7": {
+              "elegir": {
+                "lista": "repertorio",
+                "cantidad": 0,
+                "reemplazar": 1,
+                "rasgo": "Mejora del Repertorio"
+              }
+            },
+            "11": {
+              "elegir": {
+                "lista": "repertorio",
+                "cantidad": 0,
+                "reemplazar": 1,
+                "rasgo": "Mejora del Repertorio"
+              }
+            },
+            "15": {
+              "elegir": {
+                "lista": "repertorio",
+                "cantidad": 0,
+                "reemplazar": 1,
+                "rasgo": "Mejora del Repertorio"
+              }
+            }
+          }
+        },
+        "espejo": {
+          "subNombre": "Senda del Espejo",
+          "fuente": "Agarias",
+          "subDescripcion": "✦ SENDA DEL ESPEJO ✦\nEngaño: Poliforme es tu herramienta.",
+          "listasDeEleccion": {
+            "repertorio": {
+              "titulo": "Repertorio de invocaciones",
+              "ayuda": "Tus invocaciones conocidas: tres en total, contando la que te da tu Senda. Cada una hace cosas distintas.",
+              "opciones": [
+                {
+                  "id": "golem",
+                  "nombre": "Golem",
+                  "descripcion": "Protección: interponerse, apartar, cobertura e interceptar daño. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "loro",
+                  "nombre": "Loro insultador",
+                  "descripcion": "Atraer: Insulto Disonante obliga a atacarle a él o a ti. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "ruleta",
+                  "nombre": "Ruleta",
+                  "descripcion": "Azar: aparece, gira y desaparece (no ocupa capacidad). Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "topo",
+                  "nombre": "Topo",
+                  "descripcion": "Terreno: túneles, socavones y aviso sísmico. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "pulpo",
+                  "nombre": "Pulpo",
+                  "descripcion": "Manipular: sujetar, desarmar y recoger aliados. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "polilla",
+                  "nombre": "Polilla",
+                  "descripcion": "Explorar: ves por ella y revela lo invisible. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "montura",
+                  "nombre": "Montura",
+                  "descripcion": "Transporte: lleva y evacua aliados. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "esponja",
+                  "nombre": "Esponja",
+                  "descripcion": "Estados: absorbe venenos y condiciones. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "arana",
+                  "nombre": "Araña",
+                  "descripcion": "Anclaje: hilos y evitar empujones o caídas. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "luciernaga",
+                  "nombre": "Luciérnaga",
+                  "descripcion": "Ánimo y luz: contra el miedo y el encantamiento. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                }
+              ]
+            }
+          },
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Rostro ajeno",
+                  "subDescripcion": "Ventaja en Engaño mientras usas Poliforme para hacerte pasar por otro. Además, eliges una invocación más del repertorio y conoces Máscara de Otro sin que cuente.",
+                  "elegir": {
+                    "lista": "repertorio",
+                    "cantidad": 3
+                  }
+                }
+              }
+            },
+            "6": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Cambio veloz",
+                  "subDescripcion": "Puedes usar Poliforme como acción adicional."
+                }
+              }
+            },
+            "10": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Lengua prestada",
+                  "subDescripcion": "Si oyes un idioma durante 1 minuto, lo hablas hasta tu siguiente descanso largo."
+                }
+              }
+            },
+            "14": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Doble",
+                  "subDescripcion": "Una de tus invocaciones adopta tu forma durante 1 minuto (una ilusión física: no copia tus rasgos)."
+                }
+              }
+            },
+            "7": {
+              "elegir": {
+                "lista": "repertorio",
+                "cantidad": 0,
+                "reemplazar": 1,
+                "rasgo": "Mejora del Repertorio"
+              }
+            },
+            "11": {
+              "elegir": {
+                "lista": "repertorio",
+                "cantidad": 0,
+                "reemplazar": 1,
+                "rasgo": "Mejora del Repertorio"
+              }
+            },
+            "15": {
+              "elegir": {
+                "lista": "repertorio",
+                "cantidad": 0,
+                "reemplazar": 1,
+                "rasgo": "Mejora del Repertorio"
+              }
+            }
+          }
+        },
+        "azar": {
+          "subNombre": "Senda del Azar",
+          "fuente": "Agarias",
+          "subDescripcion": "✦ SENDA DEL AZAR ✦\nRiesgo: la Ruleta es tu núcleo. Tu invocación de Senda es Ruleta.",
+          "listasDeEleccion": {
+            "repertorio": {
+              "titulo": "Repertorio de invocaciones",
+              "ayuda": "Tus invocaciones conocidas: tres en total, contando la que te da tu Senda. Cada una hace cosas distintas.",
+              "opciones": [
+                {
+                  "id": "golem",
+                  "nombre": "Golem",
+                  "descripcion": "Protección: interponerse, apartar, cobertura e interceptar daño. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "loro",
+                  "nombre": "Loro insultador",
+                  "descripcion": "Atraer: Insulto Disonante obliga a atacarle a él o a ti. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "topo",
+                  "nombre": "Topo",
+                  "descripcion": "Terreno: túneles, socavones y aviso sísmico. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "pulpo",
+                  "nombre": "Pulpo",
+                  "descripcion": "Manipular: sujetar, desarmar y recoger aliados. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "polilla",
+                  "nombre": "Polilla",
+                  "descripcion": "Explorar: ves por ella y revela lo invisible. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "montura",
+                  "nombre": "Montura",
+                  "descripcion": "Transporte: lleva y evacua aliados. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "esponja",
+                  "nombre": "Esponja",
+                  "descripcion": "Estados: absorbe venenos y condiciones. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "arana",
+                  "nombre": "Araña",
+                  "descripcion": "Anclaje: hilos y evitar empujones o caídas. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "luciernaga",
+                  "nombre": "Luciérnaga",
+                  "descripcion": "Ánimo y luz: contra el miedo y el encantamiento. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                }
+              ]
+            }
+          },
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Jugador nato",
+                  "subDescripcion": "Tu invocación de Senda es la Ruleta, ya desde el nivel 3.",
+                  "elegir": {
+                    "lista": "repertorio",
+                    "cantidad": 2
+                  }
+                }
+              }
+            },
+            "6": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Segunda tirada",
+                  "subDescripcion": "Cuando te apliques la Ruleta a ti mismo con un resultado de 1 a 7, puedes repetir la tirada y quedarte con la segunda."
+                }
+              }
+            },
+            "10": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Mesa caliente",
+                  "subDescripcion": "Puedes girar la Ruleta dos veces por descanso largo (sigue siendo una por descanso corto)."
+                }
+              }
+            },
+            "14": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Suerte dirigida",
+                  "subDescripcion": "Una vez por descanso largo, eliges un resultado de 18 a 20 en lugar de tirar. No se combina con Segunda tirada."
+                }
+              }
+            },
+            "7": {
+              "elegir": {
+                "lista": "repertorio",
+                "cantidad": 0,
+                "reemplazar": 1,
+                "rasgo": "Mejora del Repertorio"
+              }
+            },
+            "11": {
+              "elegir": {
+                "lista": "repertorio",
+                "cantidad": 0,
+                "reemplazar": 1,
+                "rasgo": "Mejora del Repertorio"
+              }
+            },
+            "15": {
+              "elegir": {
+                "lista": "repertorio",
+                "cantidad": 0,
+                "reemplazar": 1,
+                "rasgo": "Mejora del Repertorio"
+              }
+            }
+          }
+        },
+        "enjambre": {
+          "subNombre": "Senda del Enjambre",
+          "fuente": "Agarias",
+          "subDescripcion": "✦ SENDA DEL ENJAMBRE ✦\nFragmentación: más piezas, más pequeñas.",
+          "listasDeEleccion": {
+            "repertorio": {
+              "titulo": "Repertorio de invocaciones",
+              "ayuda": "Tus invocaciones conocidas: tres en total, contando la que te da tu Senda. Cada una hace cosas distintas.",
+              "opciones": [
+                {
+                  "id": "golem",
+                  "nombre": "Golem",
+                  "descripcion": "Protección: interponerse, apartar, cobertura e interceptar daño. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "loro",
+                  "nombre": "Loro insultador",
+                  "descripcion": "Atraer: Insulto Disonante obliga a atacarle a él o a ti. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "ruleta",
+                  "nombre": "Ruleta",
+                  "descripcion": "Azar: aparece, gira y desaparece (no ocupa capacidad). Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "topo",
+                  "nombre": "Topo",
+                  "descripcion": "Terreno: túneles, socavones y aviso sísmico. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "pulpo",
+                  "nombre": "Pulpo",
+                  "descripcion": "Manipular: sujetar, desarmar y recoger aliados. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "polilla",
+                  "nombre": "Polilla",
+                  "descripcion": "Explorar: ves por ella y revela lo invisible. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "montura",
+                  "nombre": "Montura",
+                  "descripcion": "Transporte: lleva y evacua aliados. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "esponja",
+                  "nombre": "Esponja",
+                  "descripcion": "Estados: absorbe venenos y condiciones. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "arana",
+                  "nombre": "Araña",
+                  "descripcion": "Anclaje: hilos y evitar empujones o caídas. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                },
+                {
+                  "id": "luciernaga",
+                  "nombre": "Luciérnaga",
+                  "descripcion": "Ánimo y luz: contra el miedo y el encantamiento. Estadísticas: Criaturas → Añadir criatura → De un catálogo."
+                }
+              ]
+            }
+          },
+          "subNivel": {
+            "3": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Fragmentos",
+                  "subDescripcion": "Eliges una invocación más del repertorio. Además, tu invocación fuera más pequeña no ocupa Capacidad de Manifestación.",
+                  "elegir": {
+                    "lista": "repertorio",
+                    "cantidad": 3
+                  }
+                }
+              }
+            },
+            "6": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Desecho duradero",
+                  "subDescripcion": "El Desecho que moldeas dura 10 minutos."
+                }
+              }
+            },
+            "10": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Miniatura",
+                  "subDescripcion": "Al manifestar una invocación, puedes gastar 1 de Esencia para que salga con una versión en miniatura (mitad de PG, sin reacción). Sólo una miniatura a la vez."
+                }
+              }
+            },
+            "14": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Doble miniatura",
+                  "subDescripcion": "Puedes tener dos miniaturas a la vez."
+                }
+              }
+            },
+            "7": {
+              "elegir": {
+                "lista": "repertorio",
+                "cantidad": 0,
+                "reemplazar": 1,
+                "rasgo": "Mejora del Repertorio"
+              }
+            },
+            "11": {
+              "elegir": {
+                "lista": "repertorio",
+                "cantidad": 0,
+                "reemplazar": 1,
+                "rasgo": "Mejora del Repertorio"
+              }
+            },
+            "15": {
+              "elegir": {
+                "lista": "repertorio",
+                "cantidad": 0,
+                "reemplazar": 1,
+                "rasgo": "Mejora del Repertorio"
+              }
+            }
+          }
+        }
+      }
+    },
+    "4": {
+      "infoCubo": {
+        "columnas": [
+          "Esencia",
+          "Hechizos conocidos",
+          "Nivel máx. de hechizo",
+          "Invocaciones fuera"
+        ],
+        "filas": [
+          [
+            "7",
+            "4",
+            "1.º",
+            "1"
+          ]
+        ]
+      },
+      "elegir": [
+        {
+          "lista": "hechizos-ink",
+          "cantidad": 1,
+          "reemplazar": 1
+        },
+        {
+          "lista": "trucos-ink",
+          "cantidad": 1
+        }
+      ]
+    },
+    "5": {
+      "infoCubo": {
+        "columnas": [
+          "Esencia",
+          "Hechizos conocidos",
+          "Nivel máx. de hechizo",
+          "Invocaciones fuera"
+        ],
+        "filas": [
+          [
+            "8",
+            "5",
+            "2.º",
+            "1"
+          ]
+        ]
+      },
+      "elegir": [
+        {
+          "lista": "hechizos-ink",
+          "cantidad": 1,
+          "reemplazar": 1
+        }
+      ],
+      "infoBlock": {
+        "blockUno": {
+          "name": "Conducto",
+          "titleName": "✦ CONDUCTO ✦",
+          "descripcion": "Tus rasgos y hechizos de toque pueden salir desde cualquiera de tus invocaciones manifestadas a 60 pies de ti."
+        }
+      }
+    },
+    "6": {
+      "infoCubo": {
+        "columnas": [
+          "Esencia",
+          "Hechizos conocidos",
+          "Nivel máx. de hechizo",
+          "Invocaciones fuera"
+        ],
+        "filas": [
+          [
+            "9",
+            "5",
+            "2.º",
+            "1"
+          ]
+        ]
+      },
+      "elegir": [
+        {
+          "lista": "hechizos-ink",
+          "cantidad": 0,
+          "reemplazar": 1
+        }
+      ]
+    },
+    "7": {
+      "infoCubo": {
+        "columnas": [
+          "Esencia",
+          "Hechizos conocidos",
+          "Nivel máx. de hechizo",
+          "Invocaciones fuera"
+        ],
+        "filas": [
+          [
+            "10",
+            "6",
+            "2.º",
+            "2"
+          ]
+        ]
+      },
+      "elegir": [
+        {
+          "lista": "hechizos-ink",
+          "cantidad": 1,
+          "reemplazar": 1
+        }
+      ],
+      "infoBlock": {
+        "blockUno": {
+          "name": "Mejora del Repertorio",
+          "titleName": "✦ MEJORA DEL REPERTORIO ✦",
+          "descripcion": "Tus invocaciones mejoran (ver «Mejora (nivel 7)» en sus estadísticas) y puedes cambiar una de las que conoces por otra del repertorio (no la de tu Senda)."
+        }
+      }
+    },
+    "8": {
+      "infoCubo": {
+        "columnas": [
+          "Esencia",
+          "Hechizos conocidos",
+          "Nivel máx. de hechizo",
+          "Invocaciones fuera"
+        ],
+        "filas": [
+          [
+            "11",
+            "6",
+            "2.º",
+            "2"
+          ]
+        ]
+      },
+      "elegir": [
+        {
+          "lista": "hechizos-ink",
+          "cantidad": 0,
+          "reemplazar": 1
+        }
+      ]
+    },
+    "9": {
+      "infoCubo": {
+        "columnas": [
+          "Esencia",
+          "Hechizos conocidos",
+          "Nivel máx. de hechizo",
+          "Invocaciones fuera"
+        ],
+        "filas": [
+          [
+            "12",
+            "7",
+            "3.º",
+            "2"
+          ]
+        ]
+      },
+      "elegir": [
+        {
+          "lista": "hechizos-ink",
+          "cantidad": 1,
+          "reemplazar": 1
+        }
+      ],
+      "infoBlock": {
+        "blockUno": {
+          "name": "Instinto Preeminente",
+          "titleName": "✦ INSTINTO PREEMINENTE ✦",
+          "descripcion": "Tienes ventaja en las tiradas de iniciativa y no puedes ser sorprendido mientras estés consciente."
+        }
+      }
+    },
+    "10": {
+      "infoCubo": {
+        "columnas": [
+          "Esencia",
+          "Hechizos conocidos",
+          "Nivel máx. de hechizo",
+          "Invocaciones fuera"
+        ],
+        "filas": [
+          [
+            "13",
+            "7",
+            "3.º",
+            "2"
+          ]
+        ]
+      },
+      "elegir": [
+        {
+          "lista": "hechizos-ink",
+          "cantidad": 0,
+          "reemplazar": 1
+        },
+        {
+          "lista": "trucos-ink",
+          "cantidad": 1
+        }
+      ]
+    },
+    "11": {
+      "infoCubo": {
+        "columnas": [
+          "Esencia",
+          "Hechizos conocidos",
+          "Nivel máx. de hechizo",
+          "Invocaciones fuera"
+        ],
+        "filas": [
+          [
+            "14",
+            "8",
+            "3.º",
+            "2"
+          ]
+        ]
+      },
+      "elegir": [
+        {
+          "lista": "hechizos-ink",
+          "cantidad": 1,
+          "reemplazar": 1
+        }
+      ],
+      "infoBlock": {
+        "blockUno": {
+          "name": "Mejora del Repertorio",
+          "titleName": "✦ MEJORA DEL REPERTORIO ✦",
+          "descripcion": "Tus invocaciones mejoran otra vez (nivel 11) y puedes cambiar una de las que conoces."
+        },
+        "blockDos": {
+          "name": "Reflejo Táctico",
+          "titleName": "✦ REFLEJO TÁCTICO ✦",
+          "descripcion": "Cuando manifiestas una invocación, un aliado que puedas ver puede usar su reacción para moverse la mitad de su velocidad sin provocar ataques de oportunidad."
+        }
+      }
+    },
+    "12": {
+      "infoCubo": {
+        "columnas": [
+          "Esencia",
+          "Hechizos conocidos",
+          "Nivel máx. de hechizo",
+          "Invocaciones fuera"
+        ],
+        "filas": [
+          [
+            "15",
+            "8",
+            "3.º",
+            "2"
+          ]
+        ]
+      },
+      "elegir": [
+        {
+          "lista": "hechizos-ink",
+          "cantidad": 0,
+          "reemplazar": 1
+        }
+      ]
+    },
+    "13": {
+      "infoCubo": {
+        "columnas": [
+          "Esencia",
+          "Hechizos conocidos",
+          "Nivel máx. de hechizo",
+          "Invocaciones fuera"
+        ],
+        "filas": [
+          [
+            "16",
+            "9",
+            "4.º",
+            "3"
+          ]
+        ]
+      },
+      "elegir": [
+        {
+          "lista": "hechizos-ink",
+          "cantidad": 1,
+          "reemplazar": 1
+        }
+      ],
+      "infoBlock": {
+        "blockUno": {
+          "name": "Escudo de Biomasa",
+          "titleName": "✦ ESCUDO DE BIOMASA ✦",
+          "descripcion": "Como reacción, cuando un aliado a 30 pies hace una tirada de salvación, gastas 1 de Esencia y la hace con ventaja."
+        }
+      }
+    },
+    "14": {
+      "infoCubo": {
+        "columnas": [
+          "Esencia",
+          "Hechizos conocidos",
+          "Nivel máx. de hechizo",
+          "Invocaciones fuera"
+        ],
+        "filas": [
+          [
+            "17",
+            "9",
+            "4.º",
+            "3"
+          ]
+        ]
+      },
+      "elegir": [
+        {
+          "lista": "hechizos-ink",
+          "cantidad": 0,
+          "reemplazar": 1
+        }
+      ]
+    },
+    "15": {
+      "infoCubo": {
+        "columnas": [
+          "Esencia",
+          "Hechizos conocidos",
+          "Nivel máx. de hechizo",
+          "Invocaciones fuera"
+        ],
+        "filas": [
+          [
+            "18",
+            "10",
+            "4.º",
+            "3"
+          ]
+        ]
+      },
+      "elegir": [
+        {
+          "lista": "hechizos-ink",
+          "cantidad": 1,
+          "reemplazar": 1
+        }
+      ],
+      "infoBlock": {
+        "blockUno": {
+          "name": "Mejora del Repertorio",
+          "titleName": "✦ MEJORA DEL REPERTORIO ✦",
+          "descripcion": "Tus invocaciones mejoran por última vez (nivel 15) y puedes cambiar una de las que conoces."
+        },
+        "blockDos": {
+          "name": "Biomasa Resiliente",
+          "titleName": "✦ BIOMASA RESILIENTE ✦",
+          "descripcion": "Tus invocaciones tienen resistencia a todo el daño salvo el de fuerza."
+        }
+      }
+    },
+    "16": {
+      "infoCubo": {
+        "columnas": [
+          "Esencia",
+          "Hechizos conocidos",
+          "Nivel máx. de hechizo",
+          "Invocaciones fuera"
+        ],
+        "filas": [
+          [
+            "19",
+            "10",
+            "4.º",
+            "3"
+          ]
+        ]
+      },
+      "elegir": [
+        {
+          "lista": "hechizos-ink",
+          "cantidad": 0,
+          "reemplazar": 1
+        }
+      ]
+    },
+    "17": {
+      "infoCubo": {
+        "columnas": [
+          "Esencia",
+          "Hechizos conocidos",
+          "Nivel máx. de hechizo",
+          "Invocaciones fuera"
+        ],
+        "filas": [
+          [
+            "19",
+            "11",
+            "5.º",
+            "3"
+          ]
+        ]
+      },
+      "elegir": [
+        {
+          "lista": "hechizos-ink",
+          "cantidad": 1,
+          "reemplazar": 1
+        }
+      ],
+      "infoBlock": {
+        "blockUno": {
+          "name": "Sincronía de Invocaciones",
+          "titleName": "✦ SINCRONÍA DE INVOCACIONES ✦",
+          "descripcion": "Una vez por ronda, una de tus invocaciones puede usar su acción como reacción."
+        }
+      }
+    },
+    "18": {
+      "infoCubo": {
+        "columnas": [
+          "Esencia",
+          "Hechizos conocidos",
+          "Nivel máx. de hechizo",
+          "Invocaciones fuera"
+        ],
+        "filas": [
+          [
+            "20",
+            "11",
+            "5.º",
+            "3"
+          ]
+        ]
+      },
+      "elegir": [
+        {
+          "lista": "hechizos-ink",
+          "cantidad": 0,
+          "reemplazar": 1
+        }
+      ],
+      "infoBlock": {
+        "blockUno": {
+          "name": "Dulce Remedio",
+          "titleName": "✦ DULCE REMEDIO ✦",
+          "descripcion": "Una vez por descanso largo, tocando a una criatura, detienes el drenaje de los caramelos que sufre y le devuelves lo drenado. No cura la enfermedad: sólo la frena.",
+          "efectos": [
+            {
+              "type": "recurso",
+              "id": "dulce-remedio",
+              "nombre": "Dulce Remedio",
+              "max": {
+                "valor": 1
+              }
+            }
+          ]
+        }
+      }
+    },
+    "19": {
+      "infoCubo": {
+        "columnas": [
+          "Esencia",
+          "Hechizos conocidos",
+          "Nivel máx. de hechizo",
+          "Invocaciones fuera"
+        ],
+        "filas": [
+          [
+            "20",
+            "12",
+            "5.º",
+            "3"
+          ]
+        ]
+      },
+      "elegir": [
+        {
+          "lista": "hechizos-ink",
+          "cantidad": 1,
+          "reemplazar": 1
+        }
+      ]
+    },
+    "20": {
+      "elegir": [
+        {
+          "lista": "hechizos-ink",
+          "cantidad": 0,
+          "reemplazar": 1
+        }
+      ],
+      "infoBlock": {
+        "blockUno": {
+          "name": "Núcleo Ink",
+          "titleName": "✦ NÚCLEO INK ✦",
+          "descripcion": "Una vez por descanso largo, como acción, manifiestas todas tus invocaciones sin coste y sin límite de capacidad durante 1 minuto. Mientras dure, tú y tus aliados a 30 pies no podéis bajar de 1 PG por un único ataque o efecto.",
+          "efectos": [
+            {
+              "type": "recurso",
+              "id": "nucleo-ink",
+              "nombre": "Núcleo Ink",
+              "max": {
+                "valor": 1
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

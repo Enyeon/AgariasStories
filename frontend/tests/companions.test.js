@@ -40,7 +40,7 @@ describe('criaturas y vínculos', () => {
     expect(b).toMatchObject({ name: 'Lobo', ac: 13, hpMax: 11, resistances: ['frio'] });
     // El mismo lobo puede ser la montura de otro personaje con otro estado.
     const other = addCompanion(createCharacter(), { bond: 'montura', creatureRef: WOLF }).character;
-    expect(other.companions[0].name).toBe('Criatura');
+    expect(other.companions[0].name).toBe('Lobo'); // sin nombre propio: el de la criatura (AgSt 1.36)
   });
 
   it('daño y curación respetan PG temporales, 0 y el máximo', () => {

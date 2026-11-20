@@ -1,4 +1,597 @@
 {
   "$comment": "Invocaciones y criaturas de clase o raza (AgSt 1.35). Cada grupo se habilita con el efecto «habilita: invocaciones_<grupo>» y aparece en «Añadir criatura → De un catálogo». Formato de cada criatura: name, size, creatureType, ac (número o { base, bc: true }), hp ({ base, porNivel, atributo? }; nivel = nivel total del personaje), speed, abilities, senses, languages, capacidad (false = no ocupa la Capacidad de Manifestación), traits/actions/reactions [{ name, text }] y mejoras [{ nivel, texto }]. Ver docs/DATOS.md.",
-  "grupos": {}
+  "grupos": {
+    "ink": {
+      "nombre": "Invocaciones Ink",
+      "fuente": "Invocación Ink (raza INK · clase Adaptado)",
+      "criaturas": {
+        "conejo": {
+          "name": "Conejo",
+          "size": "Pequeño",
+          "creatureType": "Bestia (biomasa Ink)",
+          "capacidad": false,
+          "ac": {
+            "base": 12,
+            "bc": true
+          },
+          "hp": {
+            "base": 0,
+            "porNivel": 2,
+            "atributo": "sabiduria"
+          },
+          "hpTexto": "2 × tu nivel + tu mod. de Sabiduría",
+          "speed": "40 pies, salto 15 pies",
+          "abilities": {
+            "fuerza": 6,
+            "destreza": 16,
+            "constitucion": 10,
+            "inteligencia": 4,
+            "sabiduria": 14,
+            "carisma": 8
+          },
+          "senses": "Visión en la oscuridad 60 pies, Percepción pasiva 14",
+          "languages": "Entiende al INK",
+          "description": "El primer ser que los Sram unieron al linaje del INK. Es racial: sólo lo tiene la raza INK. No ocupa Capacidad de Manifestación.",
+          "traits": [
+            {
+              "name": "Parte de ti",
+              "text": "Se manifiesta o se reabsorbe como acción adicional del INK. Actúa en tu iniciativa, justo después de ti. Si cae a 0 PG, vuelve a ti sin hacerte daño y no puede manifestarse hasta un descanso corto, o gastando 1 de Esencia."
+            },
+            {
+              "name": "Conexión",
+              "text": "Deja de actuar si se aleja más de 60 pies de ti; si sigue así 1 minuto, se reabsorbe."
+            },
+            {
+              "name": "Si quedas inconsciente",
+              "text": "No desaparece: sólo puede usar Ayudar y se coloca a tu lado si puede."
+            }
+          ],
+          "actions": [
+            {
+              "name": "Ayudar",
+              "text": "Da ventaja a un aliado en su siguiente prueba o tirada de ataque antes del inicio del siguiente turno del Conejo."
+            },
+            {
+              "name": "Conducto",
+              "text": "(Adaptado) Tus rasgos y hechizos de toque (Toque Estabilizador, Segundo Aliento Prestado…) pueden salir desde el Conejo, a 60 pies de ti."
+            },
+            {
+              "name": "Rescate",
+              "text": "Arrastra a un aliado inconsciente o caído hasta 15 pies sin provocar ataques de oportunidad."
+            }
+          ],
+          "mejoras": [
+            {
+              "nivel": 5,
+              "texto": "Ayudar puede darse a un aliado a 30 pies del Conejo sin moverse."
+            },
+            {
+              "nivel": 11,
+              "texto": "Conducto llega a 120 pies."
+            },
+            {
+              "nivel": 17,
+              "texto": "Una vez por ronda puede usar Ayudar como reacción."
+            }
+          ]
+        },
+        "golem": {
+          "name": "Golem",
+          "size": "Grande",
+          "creatureType": "Constructo de biomasa",
+          "ac": 15,
+          "hp": {
+            "base": 20,
+            "porNivel": 5
+          },
+          "hpTexto": "20 + 5 × tu nivel",
+          "speed": "20 pies",
+          "abilities": {
+            "fuerza": 16,
+            "destreza": 6,
+            "constitucion": 20,
+            "inteligencia": 10,
+            "sabiduria": 14,
+            "carisma": 1
+          },
+          "senses": "Visión en la oscuridad 60 pies, Percepción pasiva 12",
+          "description": "Biomasa endurecida que protege. Ocupa Capacidad de Manifestación (no usa concentración). Inmune a asustado, encantado y paralizado.",
+          "traits": [
+            {
+              "name": "Recuperación",
+              "text": "Al final de su turno puede recuperar 1d4 + su modificador de Constitución PG. Dos veces por descanso corto o largo."
+            }
+          ],
+          "actions": [
+            {
+              "name": "Interponerse",
+              "text": "Se coloca junto a un aliado: el siguiente ataque cuerpo a cuerpo de un enemigo contra ese aliado, antes del próximo turno del Golem, tiene desventaja."
+            },
+            {
+              "name": "Apartar",
+              "text": "Una criatura adyacente que haya atacado a un aliado este asalto hace una salvación de Fuerza (CD de clase) o es empujada 10 pies o derribada. Sin daño, y nunca hacia algo que la dañe."
+            },
+            {
+              "name": "Cobertura",
+              "text": "Se planta: un aliado detrás de él tiene cobertura media (+2 CA) contra ataques a distancia."
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Interceptar",
+              "text": "Una vez por turno, si un aliado a 10 pies recibe un ataque, reduce su daño en 1d10 + tu bonificador de competencia (lo absorbe el Golem). Es su reacción, no la tuya."
+            }
+          ],
+          "mejoras": [
+            {
+              "nivel": 7,
+              "texto": "CA 16; Cobertura da cobertura de tres cuartos (+5 CA)."
+            },
+            {
+              "nivel": 11,
+              "texto": "Apartar alcanza a dos criaturas adyacentes."
+            },
+            {
+              "nivel": 15,
+              "texto": "CA 17; Interceptar reduce 2d10 + tu bonificador de competencia."
+            }
+          ]
+        },
+        "loro": {
+          "name": "Loro insultador",
+          "size": "Diminuto",
+          "creatureType": "Bestia (biomasa Ink)",
+          "ac": 13,
+          "hp": 1,
+          "speed": "30 pies, vuelo 60 pies",
+          "abilities": {
+            "fuerza": 6,
+            "destreza": 14,
+            "constitucion": 1,
+            "inteligencia": 10,
+            "sabiduria": 14,
+            "carisma": 20
+          },
+          "senses": "Visión en la oscuridad 60 pies, Percepción pasiva 12",
+          "languages": "Todos los idiomas (sólo insultos)",
+          "description": "Frágil, rapidísimo y ruidoso. Se manifiesta como acción adicional a 30 pies de ti y no usa concentración. Ocupa Capacidad de Manifestación.",
+          "traits": [
+            {
+              "name": "Insulto Disonante",
+              "text": "Al manifestarse, cada criatura hostil a 20 pies del Loro hace una salvación de Sabiduría (CD de clase). Si falla, durante 1 minuto tiene desventaja en las tiradas de ataque contra cualquiera que no sea el Loro o tú, mientras el Loro siga vivo y a la vista. Repite la salvación al final de cada uno de sus turnos."
+            }
+          ],
+          "mejoras": [
+            {
+              "nivel": 7,
+              "texto": "Sus PG pasan a ser tu nivel."
+            },
+            {
+              "nivel": 11,
+              "texto": "Insulto Disonante alcanza 30 pies."
+            },
+            {
+              "nivel": 15,
+              "texto": "Si el Loro cae, el Insulto dura hasta el final de la siguiente ronda."
+            }
+          ]
+        },
+        "ruleta": {
+          "name": "Ruleta",
+          "size": "Mediano (mide lo que mide el INK)",
+          "creatureType": "Biomasa Ink",
+          "capacidad": false,
+          "description": "Gastas una acción y 2 de Esencia: la Ruleta aparece, gira, muestra el resultado y desaparece. No ocupa Capacidad de Manifestación. Una vez por descanso corto o largo. Eliges el objetivo (tú o una criatura a 30 pies) antes de tirar; los resultados negativos afectan a quien elegiste.",
+          "traits": [
+            {
+              "name": "1 · Rebote biológico",
+              "text": "Pierdes 1 punto de Esencia adicional y tienes desventaja en tu siguiente tirada de salvación. Sin daño."
+            },
+            {
+              "name": "2–4 · Sobrecarga negativa",
+              "text": "El objetivo tiene desventaja en su siguiente tirada de ataque."
+            },
+            {
+              "name": "5–7 · Inestabilidad menor",
+              "text": "La velocidad del objetivo se reduce a la mitad hasta el final de su siguiente turno."
+            },
+            {
+              "name": "8–11 · Destello",
+              "text": "Cualquier criatura que elijas tiene ventaja en su siguiente prueba de característica."
+            },
+            {
+              "name": "12–14 · Impulso menor",
+              "text": "El objetivo tiene ventaja en su siguiente tirada de ataque o prueba de característica."
+            },
+            {
+              "name": "15–17 · Refuerzo",
+              "text": "El objetivo gana 1d8 PG temporales."
+            },
+            {
+              "name": "18–19 · Golpe de suerte",
+              "text": "El objetivo tiene ventaja en su siguiente ataque, prueba o salvación, y gana 1d6 PG temporales."
+            },
+            {
+              "name": "20 · Resonancia perfecta",
+              "text": "Eliges: el objetivo obtiene un turno adicional justo después del actual (sólo movimiento y una acción), o un enemigo tiene desventaja en sus dos siguientes tiradas."
+            }
+          ],
+          "mejoras": [
+            {
+              "nivel": 7,
+              "texto": "Refuerzo da 2d8 PG temporales y Golpe de suerte 2d6."
+            },
+            {
+              "nivel": 11,
+              "texto": "Puedes elegir el objetivo después de ver el resultado una vez por descanso largo."
+            },
+            {
+              "nivel": 15,
+              "texto": "Cuesta 1 de Esencia."
+            }
+          ]
+        },
+        "topo": {
+          "name": "Topo",
+          "size": "Pequeño",
+          "creatureType": "Bestia (biomasa Ink)",
+          "ac": 13,
+          "hp": {
+            "base": 5,
+            "porNivel": 3
+          },
+          "hpTexto": "5 + 3 × tu nivel",
+          "speed": "20 pies, excavar 15 pies",
+          "abilities": {
+            "fuerza": 12,
+            "destreza": 12,
+            "constitucion": 14,
+            "inteligencia": 4,
+            "sabiduria": 12,
+            "carisma": 6
+          },
+          "senses": "Sentido sísmico 30 pies, Percepción pasiva 11",
+          "description": "Rol: terreno y túneles. Ocupa Capacidad de Manifestación.",
+          "traits": [
+            {
+              "name": "Túneles",
+              "text": "Abre en tierra o arena un túnel de 5 pies de ancho por el que pueden pasar criaturas Medianas; sirve de refugio o salida."
+            }
+          ],
+          "actions": [
+            {
+              "name": "Socavón",
+              "text": "Hunde el suelo bajo una criatura a 5 pies: salvación de Destreza (CD de clase) o queda derribada. El suelo queda como terreno difícil hasta el final del combate."
+            },
+            {
+              "name": "Avisar",
+              "text": "Comparte su sentido sísmico: tú y un aliado no podéis ser sorprendidos por criaturas que toquen el suelo a 30 pies hasta tu siguiente turno."
+            }
+          ],
+          "mejoras": [
+            {
+              "nivel": 7,
+              "texto": "Socavón afecta a un cuadrado de 10 pies."
+            },
+            {
+              "nivel": 11,
+              "texto": "Sentido sísmico 60 pies."
+            },
+            {
+              "nivel": 15,
+              "texto": "Excavar 30 pies; el túnel admite criaturas Grandes."
+            }
+          ]
+        },
+        "pulpo": {
+          "name": "Pulpo",
+          "size": "Mediano",
+          "creatureType": "Bestia (biomasa Ink)",
+          "ac": 12,
+          "hp": {
+            "base": 5,
+            "porNivel": 3
+          },
+          "hpTexto": "5 + 3 × tu nivel",
+          "speed": "20 pies, trepar 20 pies, nadar 30 pies",
+          "abilities": {
+            "fuerza": 14,
+            "destreza": 14,
+            "constitucion": 12,
+            "inteligencia": 6,
+            "sabiduria": 10,
+            "carisma": 6
+          },
+          "senses": "Visión en la oscuridad 60 pies, Percepción pasiva 10",
+          "description": "Rol: manipular y sujetar. Ocupa Capacidad de Manifestación.",
+          "traits": [
+            {
+              "name": "Tentáculos",
+              "text": "Manipula objetos a 15 pies: abre puertas, recoge cosas o usa herramientas con tu competencia."
+            }
+          ],
+          "actions": [
+            {
+              "name": "Sujetar",
+              "text": "Agarra a una criatura a 15 pies (escapar: CD de clase). Mientras la sujeta, no puede usar Sujetar con otra."
+            },
+            {
+              "name": "Desarmar",
+              "text": "Una criatura a 15 pies hace una salvación de Fuerza (CD de clase) o suelta un objeto que sostenga."
+            },
+            {
+              "name": "Recoger",
+              "text": "Arrastra a un aliado caído hasta 15 pies hacia él sin provocar ataques de oportunidad."
+            }
+          ],
+          "mejoras": [
+            {
+              "nivel": 7,
+              "texto": "Puede sujetar a dos criaturas a la vez."
+            },
+            {
+              "nivel": 11,
+              "texto": "La criatura sujeta queda además apresada."
+            },
+            {
+              "nivel": 15,
+              "texto": "Alcance de 30 pies."
+            }
+          ]
+        },
+        "polilla": {
+          "name": "Polilla",
+          "size": "Diminuto",
+          "creatureType": "Bestia (biomasa Ink)",
+          "ac": 13,
+          "hp": {
+            "base": 1,
+            "porNivel": 1
+          },
+          "hpTexto": "1 + tu nivel",
+          "speed": "10 pies, vuelo 60 pies",
+          "abilities": {
+            "fuerza": 2,
+            "destreza": 16,
+            "constitucion": 8,
+            "inteligencia": 6,
+            "sabiduria": 14,
+            "carisma": 6
+          },
+          "senses": "Visión ciega 30 pies, Percepción pasiva 14",
+          "description": "Rol: explorar y revelar. Ocupa Capacidad de Manifestación.",
+          "traits": [
+            {
+              "name": "Ojos prestados",
+              "text": "Como acción adicional, ves y oyes lo que ella hasta el inicio de tu siguiente turno."
+            }
+          ],
+          "actions": [
+            {
+              "name": "Revelar",
+              "text": "Una criatura invisible u oculta a 30 pies queda marcada hasta el final de tu siguiente turno: no se beneficia de ser invisible y no puede esconderse."
+            },
+            {
+              "name": "Tocar ilusión",
+              "text": "Al tocar una ilusión, sabes que es una ilusión."
+            }
+          ],
+          "mejoras": [
+            {
+              "nivel": 7,
+              "texto": "Revelar dura 1 minuto."
+            },
+            {
+              "nivel": 11,
+              "texto": "Visión ciega 60 pies."
+            },
+            {
+              "nivel": 15,
+              "texto": "Revelar afecta a todas las criaturas en un radio de 15 pies."
+            }
+          ]
+        },
+        "montura": {
+          "name": "Montura",
+          "size": "Grande",
+          "creatureType": "Bestia (biomasa Ink)",
+          "ac": 13,
+          "hp": {
+            "base": 10,
+            "porNivel": 4
+          },
+          "hpTexto": "10 + 4 × tu nivel",
+          "speed": "40 pies",
+          "abilities": {
+            "fuerza": 16,
+            "destreza": 12,
+            "constitucion": 14,
+            "inteligencia": 4,
+            "sabiduria": 10,
+            "carisma": 6
+          },
+          "senses": "Percepción pasiva 10",
+          "description": "Rol: transporte. Lleva a una criatura Mediana o más pequeña. Ocupa Capacidad de Manifestación.",
+          "traits": [
+            {
+              "name": "Pisada firme",
+              "text": "Ignora el terreno difícil del Desecho, de Enredo Adhesivo y del Socavón."
+            }
+          ],
+          "actions": [
+            {
+              "name": "Evacuar",
+              "text": "Se mueve hasta su velocidad con su jinete sin provocar ataques de oportunidad."
+            },
+            {
+              "name": "Recoger al vuelo",
+              "text": "Durante su movimiento sube a un aliado voluntario como jinete."
+            }
+          ],
+          "mejoras": [
+            {
+              "nivel": 7,
+              "texto": "Velocidad 50 pies."
+            },
+            {
+              "nivel": 11,
+              "texto": "Lleva dos jinetes."
+            },
+            {
+              "nivel": 15,
+              "texto": "Gana velocidad de trepar igual a su velocidad."
+            }
+          ]
+        },
+        "esponja": {
+          "name": "Esponja",
+          "size": "Pequeño",
+          "creatureType": "Biomasa Ink",
+          "ac": 11,
+          "hp": {
+            "base": 5,
+            "porNivel": 3
+          },
+          "hpTexto": "5 + 3 × tu nivel",
+          "speed": "15 pies, nadar 15 pies",
+          "abilities": {
+            "fuerza": 6,
+            "destreza": 8,
+            "constitucion": 16,
+            "inteligencia": 3,
+            "sabiduria": 12,
+            "carisma": 6
+          },
+          "senses": "Percepción pasiva 11",
+          "description": "Rol: absorber estados (venenos, enfermedades, condiciones). Ocupa Capacidad de Manifestación.",
+          "actions": [
+            {
+              "name": "Absorber",
+              "text": "Un aliado a 5 pies termina el estado envenenado, o repite al instante una salvación contra una condición que le afecte."
+            },
+            {
+              "name": "Filtro",
+              "text": "Hasta el inicio de su siguiente turno, los aliados a 10 pies tienen ventaja en las salvaciones contra veneno y enfermedad."
+            }
+          ],
+          "mejoras": [
+            {
+              "nivel": 7,
+              "texto": "Absorber también termina cegado o ensordecido."
+            },
+            {
+              "nivel": 11,
+              "texto": "Filtro alcanza 20 pies."
+            },
+            {
+              "nivel": 15,
+              "texto": "Absorber termina también paralizado (no si lo causa un hechizo de nivel 6 o más)."
+            }
+          ]
+        },
+        "arana": {
+          "name": "Araña",
+          "size": "Pequeño",
+          "creatureType": "Bestia (biomasa Ink)",
+          "ac": 13,
+          "hp": {
+            "base": 5,
+            "porNivel": 3
+          },
+          "hpTexto": "5 + 3 × tu nivel",
+          "speed": "30 pies, trepar 30 pies",
+          "abilities": {
+            "fuerza": 10,
+            "destreza": 16,
+            "constitucion": 12,
+            "inteligencia": 4,
+            "sabiduria": 12,
+            "carisma": 4
+          },
+          "senses": "Visión en la oscuridad 60 pies, Percepción pasiva 11",
+          "description": "Rol: anclar y sostener (caídas y desplazamientos). Ocupa Capacidad de Manifestación.",
+          "traits": [
+            {
+              "name": "Hilos",
+              "text": "Tiende cuerdas y puentes de hasta 30 pies entre superficies."
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Anclar",
+              "text": "Cuando un aliado a 30 pies va a ser empujado, atraído o va a caer, evita hasta 15 pies de ese movimiento (y la caída correspondiente)."
+            }
+          ],
+          "mejoras": [
+            {
+              "nivel": 7,
+              "texto": "Anclar evita hasta 30 pies."
+            },
+            {
+              "nivel": 11,
+              "texto": "Hilos de hasta 60 pies."
+            },
+            {
+              "nivel": 15,
+              "texto": "Anclar puede usarse dos veces por ronda."
+            }
+          ]
+        },
+        "luciernaga": {
+          "name": "Luciérnaga",
+          "size": "Diminuto",
+          "creatureType": "Bestia (biomasa Ink)",
+          "ac": 13,
+          "hp": {
+            "base": 1,
+            "porNivel": 2
+          },
+          "hpTexto": "1 + 2 × tu nivel",
+          "speed": "10 pies, vuelo 40 pies",
+          "abilities": {
+            "fuerza": 2,
+            "destreza": 14,
+            "constitucion": 10,
+            "inteligencia": 4,
+            "sabiduria": 14,
+            "carisma": 12
+          },
+          "senses": "Percepción pasiva 12",
+          "description": "Rol: luz y ánimo. Ocupa Capacidad de Manifestación.",
+          "traits": [
+            {
+              "name": "Farol",
+              "text": "Emite luz brillante en un radio de 20 pies y tenue 20 pies más (puede apagarla)."
+            }
+          ],
+          "actions": [
+            {
+              "name": "Aliento de luz",
+              "text": "Un aliado a 30 pies que esté asustado o encantado repite al instante la salvación con ventaja."
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Valor",
+              "text": "Cuando un aliado a 30 pies hace una salvación contra quedar asustado, le da ventaja."
+            }
+          ],
+          "mejoras": [
+            {
+              "nivel": 7,
+              "texto": "Aliento de luz da además 1d6 PG temporales."
+            },
+            {
+              "nivel": 11,
+              "texto": "Luz brillante de 40 pies."
+            },
+            {
+              "nivel": 15,
+              "texto": "Los aliados a 10 pies son inmunes a quedar asustados."
+            }
+          ]
+        }
+      }
+    }
+  }
 }

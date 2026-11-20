@@ -96,7 +96,8 @@ describe('Pt. V: Aliens (AgSt 1.31)', () => {
   it('equilibrio: +3 de atributos, sin tamaño Grande ni inmunidades nuevas', () => {
     for (const key of aliens) {
       const r = races[key];
-      expect(bonus(r), key).toBe(3);
+      // El INK es frágil por diseño del autor: +1 a dos atributos.
+      expect(bonus(r), key).toBe(key === 'INK' ? 2 : 3);
       expect(r.tamano).not.toMatch(/Grande/);
       expect((r.efectos || []).some((e) => e.type === 'inmunidad'), key).toBe(false);
       if (r.fly) expect(r.info, key).toMatch(/armadura media ni pesada/);

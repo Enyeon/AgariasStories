@@ -152,7 +152,9 @@ export function companionHp(companion, block) {
 // ── Cambios (devuelven un personaje NUEVO) ───────────────────────────────
 
 export function addCompanion(c, raw) {
-  const comp = normalizeCompanion({ ...createCompanion(), ...raw });
+  // Sin nombre propio, la criatura de catálogo se llama como su bloque (no «Criatura»).
+  const named = !raw?.name?.trim() && raw?.creatureRef ? { ...raw, name: creatureBlock({ creatureRef: raw.creatureRef, name: '' }, c).name ?? '' } : raw;
+  const comp = normalizeCompanion({ ...createCompanion(), ...named });
   if (!comp) return { character: c, errors: ['Indica al menos un nombre o elige una criatura.'] };
   if ((c.companions ?? []).length >= 30) return { character: c, errors: ['Máximo 30 criaturas por personaje.'] };
   const next = structuredClone(c);

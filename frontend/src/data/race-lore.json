@@ -239,5 +239,27 @@
     "relacionadas": [
       "draconido-vacio"
     ]
+  },
+  "ink": {
+    "nombre": "INK, los Fracasos de los Sram",
+    "resumen": "Experimentos de biomasa que debían ser herramientas y terminaron siendo personas.",
+    "secciones": [
+      {
+        "titulo": "El Sujeto",
+        "texto": "Los Sram son una civilización dedicada a la experimentación biológica a gran escala. Uno de sus proyectos fue el Sujeto: una criatura de biomasa maleable, pensada para reconocimiento e infiltración. En las primeras etapas de su evolución, los Sram empezaron a unirlo con otros seres vivos cuando aún era joven, y esos seres pasaron a formar parte de él.\n\nA esa evolución adelantada y experimental la llamaron «Ink». Fabricaron miles, quizá millones, en sus instalaciones orbitales."
+      },
+      {
+        "titulo": "Fracasos",
+        "texto": "Para los Sram, los INK son un fracaso. La plasticidad de su cuerpo vino acompañada de algo que nadie había pedido: personalidad, voluntad, vínculos y la capacidad de negarse. Su química no está hecha para el conflicto, sino para resolver problemas.\n\nAlgunos escaparon, otros fueron liberados y otros siguen naciendo en instalaciones activas sin conocer otra vida. Todos comparten lo mismo: un cuerpo sin forma fija y varias vidas dentro, que pueden salir de él como invocaciones: el Conejo, el primero de todas, y las que cada INK aprende a manifestar."
+      },
+      {
+        "titulo": "La enfermedad de las estadísticas",
+        "texto": "Las capacidades de un INK nunca terminaron de asentarse. Puede arrancarse un pedazo de sí mismo —su fuerza, sus reflejos, su memoria— y darle forma de caramelo para que otro lo use. Pero la enfermedad viaja con el caramelo: quien abusa de ellos siente cómo la vida se le escapa poco a poco, y sólo la magia divina consigue frenarlo.\n\nPor eso no tienen una esperanza de vida fija: un INK vive mientras su cuerpo pueda sostener sus estadísticas. Entre ellos corre un rumor que nadie ha podido confirmar: que existe una cura."
+      },
+      {
+        "titulo": "En Agarias",
+        "texto": "Los INK que se asientan entre otras razas suelen ser diplomáticos, sanadores, espías, artistas o mediadores. Rara vez guerreros, y cuando lo son, prefieren ganar sin que el enemigo llegue a entender cómo perdió. Muchos siguen el camino del Adaptado, que convierte su biología en protección para los demás. Por su aspecto húmedo y sus rasgos que se mueven solos, más de uno los mira con recelo hasta que los conoce."
+      }
+    ]
   }
 }
