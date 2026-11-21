@@ -98,7 +98,7 @@ describe('clase Adaptado', () => {
 
   it('ninguna invocación, Sujeto, Cura ni hechizo hace daño', () => {
     const texts = [
-      ...Object.values(creatures.grupos).flatMap((g) => Object.values(g.criaturas)).flatMap((b) => [...(b.actions ?? []), ...(b.reactions ?? []), ...(b.traits ?? [])].map((t) => t.text)),
+      ...['ink', 'sujetos'].flatMap((g) => Object.values(creatures.grupos[g].criaturas)).flatMap((b) => [...(b.actions ?? []), ...(b.reactions ?? []), ...(b.traits ?? [])].map((t) => t.text)),
       ...Object.values(adaptado.niveles['5'].subClase).flatMap((s) => Object.values(s.subNivel).flatMap((n) => Object.values(n.infoSubBlock).map((b) => b.subDescripcion))),
       ...adaptado.listaConjuros.map((n) => spells[n].origen === 'Agarias' ? spells[n].descripcion : ''),
     ];

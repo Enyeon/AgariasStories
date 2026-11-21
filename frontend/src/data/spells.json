@@ -7585,5 +7585,954 @@
       "adaptado": true
     },
     "descripcion": "Hasta seis criaturas que puedas ver recuperan cada una 5d8 + tu modificador de Sabiduría PG.\n\nCoste para el Adaptado: 5 de Esencia."
+  },
+  "Contraer la Realidad": {
+    "tipo": [
+      "Utilidad",
+      "Cambiaformas"
+    ],
+    "escuela": "Transmutación",
+    "nivel": "Truco",
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "Toque",
+    "duracion": "Concentración, hasta 10 minutos",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Tú o una criatura voluntaria que toques encogéis hasta una escala entre vuestra altura normal y 10 cm (la eliges al lanzarlo). Mientras dure, el objetivo tiene ventaja en las pruebas de Destreza (Sigilo) y puede pasar por huecos diminutos; las criaturas más grandes que él tienen desventaja en sus ataques contra él; tiene desventaja en las pruebas de Fuerza y en los ataques cuerpo a cuerpo, y no puede manipular objetos grandes ni empujar criaturas. Al terminar recupera su tamaño al instante (en el espacio libre más cercano si el suyo está ocupado).\n\n⟡ Versión de Agarias de «Agrandar/Reducir» (Manual del Jugador). Cambios: es un truco, sólo reduce, no cambia el daño y afecta a un solo objetivo."
+  },
+  "Mano de la Falla": {
+    "tipo": [
+      "Utilidad"
+    ],
+    "escuela": "Conjuración",
+    "nivel": "Truco",
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "30 pies (6 casillas)",
+    "duracion": "Concentración, hasta 1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Aparece una mano etérea y temblorosa hecha de esencia anómala. Puede manipular objetos de hasta 10 libras (4,5 kg), abrir recipientes y accionar cerraduras, interruptores y mecanismos sencillos. No puede atacar ni activar objetos mágicos. Como acción la mueves hasta 30 pies (6 casillas); desaparece si se aleja más de 30 pies (6 casillas) de ti.\n\n⟡ Versión de Agarias de «Mano de mago» (Reglas básicas). Cambios: requiere concentración y tiene aspecto anómalo."
+  },
+  "Visión Anómala": {
+    "tipo": [
+      "Detección"
+    ],
+    "escuela": "Adivinación",
+    "nivel": "Truco",
+    "origen": "Agarias",
+    "componentes": "V, S, M (un fragmento de cristal distorsionado)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "Personal (radio de 30 pies (6 casillas))",
+    "duracion": "Concentración, hasta 10 minutos",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Ves la estructura caótica de la realidad: notas la magia a 30 pies (6 casillas), como con <i>Detectar magia</i>, y tienes ventaja en las pruebas de Sabiduría (Percepción) e Inteligencia (Investigación) para encontrar puertas ocultas, trampas, estructuras inestables, objetos mágicos o anomalías.\n\n⟡ Versión de Agarias de «Detectar magia» (Reglas básicas). Cambios: es un truco con radio de 30 pies (6 casillas) y da ventaja para buscar."
+  },
+  "Catástrofe / Apocalipsis": {
+    "tipo": [
+      "Daño",
+      "Contundente",
+      "Psíquico"
+    ],
+    "escuela": "Evocación",
+    "nivel": "Truco",
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "60 pies (12 casillas)",
+    "duracion": "Instantánea",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Dos caras de un mismo poder: al aprender este truco conoces las dos y eliges cuál lanzas cada vez.\n• <b>Catástrofe:</b> una criatura que puedas ver hace una salvación de Constitución o recibe 1d8 de daño contundente.\n• <b>Apocalipsis:</b> una criatura que puedas ver hace una salvación de Sabiduría o recibe 1d8 de daño psíquico.\nEl daño sube a 2d8 a nivel 5, 3d8 a nivel 11 y 4d8 a nivel 17. Son un eco del Armagedón, un Secreto del Plano Anómalo."
+  },
+  "Toque del Anómalo": {
+    "tipo": [
+      "Protección"
+    ],
+    "escuela": "Transmutación",
+    "nivel": "Truco",
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "Toque",
+    "duracion": "1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Reconfiguras la estructura vital de una criatura: gana 1d6 + tu modificador de Sabiduría PG temporales durante 1 minuto (no se suman a otros PG temporales). Sube a 2d6 a nivel 5, 3d6 a nivel 11 y 4d6 a nivel 17. No afecta a muertos vivientes ni constructos."
+  },
+  "Descarga del caos": {
+    "tipo": [
+      "Daño"
+    ],
+    "escuela": "Evocación",
+    "nivel": 1,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "120 pies (24 casillas)",
+    "duracion": "Instantánea",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Haz un ataque de conjuro a distancia. Si impacta, el objetivo recibe 2d8 de daño de uno de los tipos que indican los dos d8 (eliges): 1 ácido, 2 frío, 3 fuego, 4 vacío, 5 relámpago, 6 veneno, 7 psíquico, 8 trueno. Si los dos d8 sacan el mismo número, la energía salta a otra criatura a 30 pies (6 casillas) del objetivo: nuevo ataque y nuevo daño (puede volver a saltar). Cada criatura sólo puede ser objetivo una vez por lanzamiento.\n<b>A niveles superiores.</b> +1d6 por cada nivel por encima del 1.\n\n⟡ Versión de Agarias de «Descarga de caos» (Guía de Xanathar). Cambios: no suma 1d6 extra y la tabla cambia fuerza por vacío (el daño de Vacío asfixia y puede atraer 5 pies (1 casilla); ver Reglas)."
+  },
+  "Brazos de Hadar": {
+    "tipo": [
+      "Daño",
+      "Necrótico",
+      "Control"
+    ],
+    "escuela": "Conjuración",
+    "nivel": 1,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "30 pies (6 casillas)",
+    "duracion": "Instantánea",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Brazos tentaculares surgen del suelo en un punto: cada criatura a 10 pies (2 casillas) de él hace una salvación de Fuerza. Si falla, recibe 2d6 de daño necrótico y queda apresada hasta el inicio de tu siguiente turno (puede usar su acción para repetir la salvación y soltarse). Si la supera, la mitad y no queda apresada.\n<b>A niveles superiores.</b> +1d6 por cada nivel por encima del 1.\nEn Agarias, Hadar es un fragmento del Plano Anómalo (ver «Oficial vs. Agarias» en la Anomalía).\n\n⟡ Versión de Agarias de «Brazos de Hadar» (Manual del Jugador). Cambios: aparece en un punto a 30 pies (6 casillas) (no centrado en ti) y apresa en lugar de quitar la reacción."
+  },
+  "Susurros disonantes": {
+    "tipo": [
+      "Daño",
+      "Psíquico"
+    ],
+    "escuela": "Encantamiento",
+    "nivel": 1,
+    "origen": "Manual del Jugador",
+    "componentes": "V",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "60 pies (12 casillas)",
+    "duracion": "Instantánea",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Una criatura que elijas oye una melodía disonante que sólo ella percibe y hace una salvación de Sabiduría. Si falla, recibe 3d6 de daño psíquico y debe usar su reacción, si la tiene, para alejarse de ti tanto como pueda (sin meterse en peligros evidentes). Si la supera, la mitad y no se mueve. Una criatura ensordecida la supera automáticamente.\n<b>A niveles superiores.</b> +1d6 por cada nivel por encima del 1."
+  },
+  "Causar miedo": {
+    "tipo": [
+      "Control"
+    ],
+    "escuela": "Nigromancia",
+    "nivel": 1,
+    "origen": "Guía de Xanathar",
+    "componentes": "V",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "60 pies (12 casillas)",
+    "duracion": "Concentración, hasta 1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Una criatura que puedas ver hace una salvación de Sabiduría o queda asustada de ti mientras dure; repite la salvación al final de cada uno de sus turnos. Los constructos y los muertos vivientes son inmunes.\n<b>A niveles superiores.</b> +1 criatura por cada nivel por encima del 1 (a 30 pies (6 casillas) entre sí)."
+  },
+  "Vida falsa": {
+    "tipo": [
+      "Protección"
+    ],
+    "escuela": "Nigromancia",
+    "nivel": 1,
+    "origen": "Agarias",
+    "componentes": "V, S, M (un poco de alcohol o licor destilado)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "Personal",
+    "duracion": "1 hora",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Te refuerzas con una armadura nigromántica de vida: ganas 1d8 + 4 PG temporales mientras dure.\n<b>A niveles superiores.</b> +5 PG temporales por cada nivel por encima del 1.\n\n⟡ Versión de Agarias de «Vida falsa» (Manual del Jugador). Cambios: da 1d8 + 4 PG temporales en lugar de 1d4 + 4."
+  },
+  "Huracán Arcoíris": {
+    "tipo": [
+      "Daño",
+      "Contundente",
+      "Control"
+    ],
+    "escuela": "Evocación",
+    "nivel": 1,
+    "origen": "Agarias",
+    "componentes": "V, S, M (polvo o arena roja, amarilla y azul)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "Línea de 30 pies (6 casillas) o cono de 15 pies (3 casillas) (eliges)",
+    "duracion": "Instantánea",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Un torrente iridiscente de energía anómala: cada criatura en el área hace una salvación de Constitución. Si falla, recibe 2d6 de daño contundente y queda derribada. Si la supera, la mitad y no cae.\n<b>A niveles superiores.</b> +1d6 por cada nivel por encima del 1."
+  },
+  "Caos pulsante": {
+    "tipo": [
+      "Daño"
+    ],
+    "escuela": "Evocación",
+    "nivel": 2,
+    "origen": "Agarias",
+    "componentes": "V, S, M (un trozo de cristal fracturado)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "60 pies (12 casillas)",
+    "duracion": "Instantánea",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Haz un ataque de conjuro a distancia. Si impacta, el objetivo recibe 3d8 de daño de un tipo al azar (1d4): 1 psíquico, 2 trueno, 3 relámpago, 4 necrótico.\n<b>A niveles superiores.</b> +1d8 por cada nivel por encima del 2."
+  },
+  "Bocas Hambrientas de Hadar": {
+    "tipo": [
+      "Daño",
+      "Necrótico",
+      "Control"
+    ],
+    "escuela": "Conjuración",
+    "nivel": 2,
+    "origen": "Agarias",
+    "componentes": "V, S, M (un fragmento de carbón)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "60 pies (12 casillas)",
+    "duracion": "Concentración, hasta 1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Una esfera de oscuridad anómala de 10 pies (2 casillas) de radio aparece en un punto: es oscuridad mágica, terreno difícil, y dentro se oyen susurros, mordidas y chillidos. Cada criatura hostil que empiece su turno dentro hace una salvación de Destreza: si falla, recibe 2d6 de daño necrótico y tiene desventaja en su siguiente tirada de ataque; si la supera, la mitad. Una criatura que muere dentro no puede ser resucitada durante 1 minuto.\n<b>A niveles superiores.</b> +1d6 por cada nivel por encima del 2.\nEn Agarias, Hadar es un fragmento del Plano Anómalo (ver «Oficial vs. Agarias» en la Anomalía).\n\n⟡ Versión de Agarias de «Hambre de Hadar» (Manual del Jugador). Cambios: es de nivel 2 con 10 pies (2 casillas) de radio (no 20) y hace un solo daño necrótico al empezar el turno."
+  },
+  "Disrupción temporal": {
+    "tipo": [
+      "Control"
+    ],
+    "escuela": "Transmutación",
+    "nivel": 2,
+    "origen": "Agarias",
+    "componentes": "V, S, M (una esfera de cristal rota)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "30 pies (6 casillas)",
+    "duracion": "Concentración, hasta 1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Una criatura hace una salvación de Sabiduría. Si falla, al inicio de cada uno de sus turnos pierde 5 pies (1 casilla) de velocidad (se acumula); si llega a 0, queda paralizada mientras dure. Repite la salvación al final de cada uno de sus turnos y, si la supera, termina.\n<b>A niveles superiores.</b> +1 criatura por cada nivel por encima del 2."
+  },
+  "Escudo de distorsión": {
+    "tipo": [
+      "Protección"
+    ],
+    "escuela": "Abjuración",
+    "nivel": 2,
+    "origen": "Agarias",
+    "componentes": "V, S, M (un espejo roto)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "Personal",
+    "duracion": "Concentración, hasta 1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "El espacio a tu alrededor fluctúa. Cuando te impacta un ataque, tira 1d4: con un 4, el ataque falla."
+  },
+  "Fallo de realidad": {
+    "tipo": [
+      "Control",
+      "Engaño"
+    ],
+    "escuela": "Ilusión",
+    "nivel": 2,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "60 pies (12 casillas)",
+    "duracion": "Concentración, hasta 1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Una zona de 10 pies (2 casillas) de radio se vuelve inestable. Cada criatura que entre en ella o empiece ahí su turno hace una salvación de Sabiduría. Si falla, hasta el final de su turno tiene desventaja en los ataques contra criaturas dentro de la zona y en las salvaciones contra efectos que salgan de ella.\n<b>A niveles superiores.</b> +10 pies (2 casillas) de radio por cada nivel por encima del 2."
+  },
+  "Alterarse a sí mismo": {
+    "tipo": [
+      "Cambiaformas",
+      "Utilidad"
+    ],
+    "escuela": "Transmutación",
+    "nivel": 2,
+    "origen": "Manual del Jugador",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "Personal",
+    "duracion": "Concentración, hasta 1 hora",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Eliges una forma; con una acción puedes cambiar a otra mientras dure:\n• <b>Adaptación acuática:</b> respiras bajo el agua y tienes velocidad de nado igual a la de caminar.\n• <b>Cambiar de apariencia:</b> cambias tu aspecto (altura, peso, rasgos, voz…) sin cambiar de tamaño ni de forma básica.\n• <b>Armas naturales:</b> tus golpes sin armas hacen 1d6 de daño contundente, perforante o cortante (según el arma natural), eres competente con ellos y son mágicos con +1 al ataque y al daño."
+  },
+  "Virus de la Realidad": {
+    "tipo": [
+      "Daño",
+      "Psíquico"
+    ],
+    "escuela": "Conjuración",
+    "nivel": 3,
+    "origen": "Agarias",
+    "componentes": "V, S, M (un trozo de cristal roto)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "30 pies (6 casillas)",
+    "duracion": "1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Una criatura hace una salvación de Constitución. Si falla, recibe 4d8 de daño psíquico y queda <b>infectada</b> durante 1 minuto: desventaja en las salvaciones de concentración y no puede recuperar PG con magia. Repite la salvación al final de cada uno de sus turnos. Si la supera, la mitad y no se infecta. Con la Hebra Virus, cuenta como tu Infección (sólo una criatura a la vez).\n<b>A niveles superiores.</b> +1d8 por cada nivel por encima del 3."
+  },
+  "Desfase Digital": {
+    "tipo": [
+      "Control"
+    ],
+    "escuela": "Transmutación",
+    "nivel": 3,
+    "origen": "Agarias",
+    "componentes": "V, S, M (un trozo de código escrito en papel)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "30 pies (6 casillas)",
+    "duracion": "Concentración, hasta 1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Una criatura hace una salvación de Constitución. Si falla, su cuerpo parpadea entre fases: tiene desventaja en las tiradas de ataque y no puede usar reacciones, aunque tiene ventaja en las salvaciones de Destreza. Repite la salvación al final de cada uno de sus turnos.\n<b>A niveles superiores.</b> +1 criatura por cada nivel por encima del 3."
+  },
+  "Paradoja Espectral": {
+    "tipo": [
+      "Control"
+    ],
+    "escuela": "Adivinación",
+    "nivel": 3,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "60 pies (12 casillas)",
+    "duracion": "Concentración, hasta 1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Una criatura que puedas ver hace una salvación de Sabiduría. Si falla, queda atrapada en una versión espectral de sí misma: no puede hacer ni recibir daño contundente, perforante ni cortante y no puede mover objetos ni criaturas. Repite la salvación al final de cada uno de sus turnos.\n<b>A niveles superiores.</b> +1 criatura por cada nivel por encima del 3."
+  },
+  "Corona de Hadar": {
+    "tipo": [
+      "Control",
+      "Social"
+    ],
+    "escuela": "Encantamiento",
+    "nivel": 3,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "30 pies (6 casillas)",
+    "duracion": "Concentración, hasta 1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Una corona de tentáculos negros flota sobre un humanoide que puedas ver. Hace una salvación de Sabiduría o queda encantado por ti y obedece órdenes verbales sencillas (abrir puertas, entregar objetos, activar mecanismos, protegerte…). No puede atacar, lanzar conjuros dañinos ni dañar a nadie, ni hacer nada evidentemente peligroso para él o contrario a su naturaleza. Repite la salvación al final de cada uno de sus turnos.\n<b>A niveles superiores.</b> +1 criatura por cada nivel por encima del 3.\nEn Agarias, Hadar es un fragmento del Plano Anómalo (ver «Oficial vs. Agarias» en la Anomalía)."
+  },
+  "Reparación de código": {
+    "tipo": [
+      "Curación"
+    ],
+    "escuela": "Nigromancia",
+    "nivel": 3,
+    "origen": "Agarias",
+    "componentes": "V, S, M (una astilla iridiscente de cristal ancestral de 300 po, que se consume)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "Toque",
+    "duracion": "Instantánea",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Tocas a una criatura que haya muerto en el último minuto. Si su alma quiere volver y nada se lo impide, reescribes su «código vital» y vuelve a la vida con 1 PG. No funciona con quien murió de vejez ni devuelve partes del cuerpo perdidas.\n\n⟡ Versión de Agarias de «Revivir» (Reglas básicas). Cambios: el mismo efecto con otro componente."
+  },
+  "Rebobinar Destino": {
+    "tipo": [
+      "Ayuda"
+    ],
+    "escuela": "Adivinación",
+    "nivel": 4,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 reacción, cuando una criatura que puedas ver a 60 pies (12 casillas) falla una tirada de ataque, una salvación o una prueba",
+    "alcance": "60 pies (12 casillas)",
+    "duracion": "Instantánea",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "La criatura repite la tirada fallida y usa el nuevo resultado. Tú recibes 2d6 de daño psíquico que no se puede reducir de ninguna forma.\n<b>A niveles superiores.</b> con un espacio de nivel 5 recibes 1d6; con uno de nivel 6 o superior, nada."
+  },
+  "Errores de Fase": {
+    "tipo": [
+      "Daño",
+      "Psíquico",
+      "Control"
+    ],
+    "escuela": "Transmutación",
+    "nivel": 4,
+    "origen": "Agarias",
+    "componentes": "V, S, M (un fragmento de espejo roto)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "60 pies (12 casillas)",
+    "duracion": "Concentración, hasta 1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Una criatura hace una salvación de Sabiduría. Si falla, recibe 2d10 de daño psíquico y entra y sale de fase: tiene desventaja en sus tiradas de ataque, ventaja en Destreza (Sigilo), y los ataques contra ella tienen ventaja. Repite la salvación al final de cada uno de sus turnos. Si la supera, la mitad del daño y nada más.\n<b>A niveles superiores.</b> +1d10 por cada nivel por encima del 4."
+  },
+  "Inyección de Realidad": {
+    "tipo": [
+      "Daño",
+      "Fuerza"
+    ],
+    "escuela": "Conjuración",
+    "nivel": 4,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "90 pies (18 casillas)",
+    "duracion": "Concentración, hasta 1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Una criatura hace una salvación de Constitución. Si falla, recibe 3d10 de daño de fuerza y su cuerpo se vuelve borroso: la primera vez que recibe daño en cada turno, recibe 1d10 de daño de fuerza adicional. Repite la salvación al final de cada uno de sus turnos. Si la supera, la mitad del daño y nada más.\n<b>A niveles superiores.</b> +1d10 al daño inicial por cada nivel por encima del 4."
+  },
+  "Ciclo de Restauración Anómala": {
+    "tipo": [
+      "Curación"
+    ],
+    "escuela": "Transmutación",
+    "nivel": 4,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "30 pies (6 casillas)",
+    "duracion": "Concentración, hasta 1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Una criatura que puedas ver tira 1d6 al inicio de cada uno de sus turnos: 1, nada; 2–4, recupera 2d6 PG; 5, recupera 4d6 PG; 6, recupera 4d6 PG y termina una de estas: cegado, ensordecido, envenenado, asustado o bajo <i>Ralentizar</i>. El conjuro termina tras cinco tiradas. Una criatura sólo puede tener un Ciclo a la vez. No afecta a muertos vivientes ni constructos."
+  },
+  "Ojos de Hadar": {
+    "tipo": [
+      "Detección"
+    ],
+    "escuela": "Adivinación",
+    "nivel": 4,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "Personal",
+    "duracion": "Concentración, hasta 10 minutos",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Tus ojos se llenan de pupilas flotantes. A 60 pies (12 casillas) ves criaturas y objetos invisibles, reconoces las ilusiones como falsas y ves las puertas y trampas ocultas por magia. Tienes ventaja en las pruebas de Sabiduría (Percepción) que usan la vista.\n<b>A niveles superiores.</b> con un espacio de nivel 6 o superior, ganas visión verdadera a 120 pies (24 casillas) durante 1 hora, sin concentración.\nEn Agarias, Hadar es un fragmento del Plano Anómalo (ver «Oficial vs. Agarias» en la Anomalía).\n\n⟡ Versión de Agarias de «Visión verdadera» (Reglas básicas). Cambios: es de nivel 4 con concentración y 60 pies (12 casillas), y no ve las formas originales ni el Plano Etéreo (salvo a nivel 6+)."
+  },
+  "Contactar otro plano": {
+    "tipo": [
+      "Comunicación",
+      "Ritual"
+    ],
+    "escuela": "Adivinación",
+    "nivel": 5,
+    "origen": "Agarias",
+    "componentes": "V",
+    "tiempoLanzamiento": "1 minuto (ritual)",
+    "alcance": "Personal",
+    "duracion": "1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Contactas mentalmente con Zzeryxia. Haz una salvación de Inteligencia CD 15. Si fallas, recibes 6d6 de daño psíquico y quedas loco hasta terminar un descanso largo: no puedes realizar acciones, no entiendes a nadie, no puedes leer y sólo hablas en galimatías (<i>Restablecimiento mayor</i> lo termina). Si la superas, puedes hacerle hasta cinco preguntas antes de que termine: el DM responde con una palabra («sí», «no», «tal vez», «nunca», «irrelevante» o «poco claro»), o con una frase corta si una palabra engañaría. Zzeryxia es críptica.\n\n⟡ Versión de Agarias de «Contactar otro plano» (Manual del Jugador). Cambios: siempre contacta con Zzeryxia, la Diosa anómala."
+  },
+  "Reflejo Distorsionado": {
+    "tipo": [
+      "Daño",
+      "Control"
+    ],
+    "escuela": "Ilusión",
+    "nivel": 5,
+    "origen": "Agarias",
+    "componentes": "V, S, M (un espejo de mano de plata)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "60 pies (12 casillas)",
+    "duracion": "Instantánea",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Una criatura que puedas ver se enfrenta a un eco de sí misma y hace una salvación de Sabiduría. Si falla, repite su última acción contra sí misma: si era un ataque, se impacta automáticamente; si afectaba a varios objetivos, sólo la afecta a ella. No se refleja (y sólo sufre lo del éxito) una acción legendaria, de guarida, con Recarga (como un aliento) o un conjuro de nivel superior al espacio que usaste. Si supera la salvación, tiene desventaja en su siguiente tirada de ataque o prueba."
+  },
+  "Bucle de Caos": {
+    "tipo": [
+      "Control"
+    ],
+    "escuela": "Transmutación",
+    "nivel": 5,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "120 pies (24 casillas)",
+    "duracion": "Concentración, hasta 1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Una criatura hace una salvación de Sabiduría. Si falla, queda atrapada en un bucle: en cada uno de sus turnos debe repetir el mismo movimiento y la misma acción que en su turno anterior, contra el mismo objetivo si sigue siendo posible; si no puede, pierde esa acción. Repite la salvación al final de cada uno de sus turnos.\n<b>A niveles superiores.</b> +1 criatura por cada nivel por encima del 5."
+  },
+  "Palabra de Hadar": {
+    "tipo": [
+      "Control",
+      "Social"
+    ],
+    "escuela": "Encantamiento",
+    "nivel": 5,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "30 pies (6 casillas)",
+    "duracion": "Concentración, hasta 1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Una criatura que puedas ver hace una salvación de Sabiduría. Si falla, mientras dure puedes usar una acción para declarar una <b>Afirmación de Hadar</b> (hasta tres por lanzamiento):\n• obligarla a una acción concreta («te arrodillas», «entrega tu arma»);\n• alterar su percepción («tu piel es ceniza»);\n• un efecto menor en el entorno, sólo para ella («las paredes se desmoronan»).\nCada vez, haz una salvación de Carisma contra tu propia CD. Si la superas, ocurre (nunca causa daño directo ni muerte inmediata). Si fallas, el DM elige: recibes 4d10 de daño necrótico; quedas cegado, ensordecido o bajo <i>Confusión</i> durante 1 minuto; o la afirmación afecta a un aliado cercano. Nada puede igualar un conjuro de nivel 6 o superior.\nEn Agarias, Hadar es un fragmento del Plano Anómalo (ver «Oficial vs. Agarias» en la Anomalía)."
+  },
+  "Paradoja Invertida": {
+    "tipo": [
+      "Control"
+    ],
+    "escuela": "Transmutación",
+    "nivel": 5,
+    "origen": "Agarias",
+    "componentes": "V, S, M (un reloj de arena roto)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "60 pies (12 casillas)",
+    "duracion": "Concentración, hasta 1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Dos criaturas que puedas ver hacen una salvación de Sabiduría (una voluntaria puede fallarla). Si las dos fallan, mientras dure el daño que reciba una lo recibe la otra en su lugar, y al revés. Si una muere, la otra cae a 0 PG.\n<b>A niveles superiores.</b> +1 criatura por cada nivel por encima del 5 (el daño pasa a la siguiente en el orden que elijas al lanzarlo)."
+  },
+  "Virus de Memoria": {
+    "tipo": [
+      "Control",
+      "Daño",
+      "Psíquico"
+    ],
+    "escuela": "Encantamiento",
+    "nivel": 5,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "60 pies (12 casillas)",
+    "duracion": "Concentración, hasta 1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Una criatura hace una salvación de Inteligencia. Si falla, olvida un conjuro, rasgo o ataque que elijas (si no sabes cuál tiene, el DM elige el último que usó). Cada vez que intente usarlo, recibe 4d6 de daño psíquico y el intento falla. Repite la salvación al final de cada uno de sus turnos.\n<b>A niveles superiores.</b> +1 capacidad olvidada por cada nivel por encima del 5."
+  },
+  "Grito del Núcleo Ancestral": {
+    "tipo": [
+      "Daño",
+      "Necrótico",
+      "Control"
+    ],
+    "escuela": "Evocación",
+    "nivel": 6,
+    "origen": "Agarias",
+    "componentes": "V, S, M (una astilla de obsidiana negra de 400 po)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "120 pies (24 casillas)",
+    "duracion": "Instantánea",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Un círculo de sonido distorsionado de 30 pies (6 casillas) de radio. Cada criatura dentro hace una salvación de Constitución: si falla, recibe 8d8 de daño necrótico y queda cegada y ensordecida durante 1 minuto (repite la salvación al final de cada uno de sus turnos); si la supera, la mitad y nada más. Las criaturas sordas tienen ventaja. Los objetos no mágicos que nadie lleve y tengan 20 PG o menos se desintegran."
+  },
+  "Alas de Hadar": {
+    "tipo": [
+      "Movimiento",
+      "Daño",
+      "Necrótico"
+    ],
+    "escuela": "Transmutación",
+    "nivel": 6,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "Personal",
+    "duracion": "Concentración, hasta 10 minutos",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Te brotan alas de tentáculos negros: velocidad de vuelo de 60 pies (12 casillas), sin daño por caídas y ventaja en las salvaciones de Fuerza y Constitución. Una vez por turno, como acción adicional, azotas con ellas: cada criatura a 10 pies (2 casillas) hace una salvación de Destreza o recibe 3d6 de daño necrótico y cae derribada (la mitad y sin caer si la supera). Si el conjuro termina en un lugar sagrado o consagrado, haz una salvación de Carisma CD 16 o quedas aturdido hasta el final de tu siguiente turno.\nEn Agarias, Hadar es un fragmento del Plano Anómalo (ver «Oficial vs. Agarias» en la Anomalía)."
+  },
+  "Mirada de la Anomalía": {
+    "tipo": [
+      "Control",
+      "Detección"
+    ],
+    "escuela": "Adivinación",
+    "nivel": 6,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "60 pies (12 casillas)",
+    "duracion": "Concentración, hasta 1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Un ojo de Zzeryxia aparece sobre una criatura, que hace una salvación de Sabiduría. Si falla, queda desorientada: desventaja en las tiradas de ataque y no puede usar reacciones. Al inicio de su siguiente turno repite la salvación: si vuelve a fallar, queda aturdida hasta el final de ese turno. Después repite la salvación al final de cada uno de sus turnos para terminar el efecto. Mientras dure, ves a través de sus ojos, aunque esté en otro plano o en oscuridad mágica."
+  },
+  "Fauces del Plano Anómalo": {
+    "tipo": [
+      "Daño",
+      "Necrótico",
+      "Control"
+    ],
+    "escuela": "Conjuración",
+    "nivel": 6,
+    "origen": "Agarias",
+    "componentes": "V, S, M (dientes de una criatura extraplanar)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "90 pies (18 casillas)",
+    "duracion": "Concentración, hasta 1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Una mandíbula espectral flota sobre un punto. Cada criatura que empiece su turno a 10 pies (2 casillas) de ella hace una salvación de Fuerza: si falla, es arrastrada 10 pies (2 casillas) hacia ella y recibe 6d6 de daño necrótico; si la supera, la mitad. Como acción adicional puedes moverla hasta 20 pies (4 casillas)."
+  },
+  "Tormenta de Vidrioceniza": {
+    "tipo": [
+      "Daño",
+      "Fuego",
+      "Control"
+    ],
+    "escuela": "Evocación",
+    "nivel": 6,
+    "origen": "Agarias",
+    "componentes": "V, S, M (ceniza mezclada con cristal molido)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "150 pies (30 casillas)",
+    "duracion": "Concentración, hasta 1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Una tormenta de ceniza negra y cristal gira en un radio de 20 pies (4 casillas). Es terreno difícil y no se ve más allá de 10 pies (2 casillas) dentro. Cada criatura que entre por primera vez en un turno o empiece ahí su turno hace una salvación de Constitución: si falla, recibe 3d6 de daño de fuego y 3d6 de daño cortante y queda cegada hasta el inicio de su siguiente turno; si la supera, la mitad y no se ciega."
+  },
+  "Barrera Psiónica": {
+    "tipo": [
+      "Protección",
+      "Daño"
+    ],
+    "escuela": "Abjuración",
+    "nivel": 6,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 reacción, cuando eres objetivo de un conjuro o de un ataque mágico",
+    "alcance": "Personal",
+    "duracion": "1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Un escudo de pura voluntad: tienes resistencia al daño psíquico, eres inmune a quedar encantado o asustado y sumas +3 a tus salvaciones de Inteligencia, Sabiduría y Carisma. Quien intente leer tu mente o detectarte con magia recibe 2d10 de daño psíquico."
+  },
+  "Reescribir la Carne": {
+    "tipo": [
+      "Curación"
+    ],
+    "escuela": "Transmutación",
+    "nivel": 6,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "60 pies (12 casillas)",
+    "duracion": "Instantánea",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Reescribes el código de los cuerpos: hasta seis criaturas que elijas recuperan 4d8 + tu modificador de Sabiduría PG cada una. Tira 1d4: 1, una de ellas (la elige el DM) pierde 2d8 PG en lugar de curarse; 2–3, normal; 4, una que elijas recupera el doble. No afecta a muertos vivientes ni constructos.\n\n⟡ Versión de Agarias de «Curar heridas en masa» (Reglas básicas). Cambios: es de nivel 6, cura 4d8 en lugar de 3d8 y añade la tirada de caos."
+  },
+  "Capa de Hadar": {
+    "tipo": [
+      "Protección",
+      "Teletransporte",
+      "Daño"
+    ],
+    "escuela": "Transmutación",
+    "nivel": 7,
+    "origen": "Agarias",
+    "componentes": "V, S, M (una pluma negra y un trozo de tela quemada)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "Personal",
+    "duracion": "Concentración, hasta 1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Una capa viva de sombra líquida te cubre: resistencia al daño de fuerza, necrótico y psíquico. La primera vez en cada turno que una criatura te impacta cuerpo a cuerpo, recibe 2d8 de daño necrótico. Una vez por ronda, como reacción, te disipas en humo y te teletransportas 30 pies (6 casillas) a un espacio que veas. Al terminar, haz una salvación de Sabiduría CD 16 o quedas bajo <i>Confusión</i> hasta el final de tu siguiente turno.\nEn Agarias, Hadar es un fragmento del Plano Anómalo (ver «Oficial vs. Agarias» en la Anomalía)."
+  },
+  "Puerta de Sangreal": {
+    "tipo": [
+      "Teletransporte"
+    ],
+    "escuela": "Conjuración",
+    "nivel": 7,
+    "origen": "Agarias",
+    "componentes": "V, S, M (un anillo de sangre solidificada)",
+    "tiempoLanzamiento": "1 minuto",
+    "alcance": "10 pies (2 casillas)",
+    "duracion": "1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Una puerta vertical lleva a un lugar de cualquier plano donde hayas estado al menos una vez. Tú y hasta diez criaturas voluntarias podéis cruzarla en ambos sentidos mientras dure. Quien la cruza queda marcado con el símbolo de Sangreal: ventaja en las salvaciones contra encantamientos y maldiciones durante 1 hora."
+  },
+  "Llamarada del Pacto Final": {
+    "tipo": [
+      "Daño",
+      "Fuego",
+      "Psíquico"
+    ],
+    "escuela": "Evocación",
+    "nivel": 7,
+    "origen": "Agarias",
+    "componentes": "V, S, M (una calavera calcinada en miniatura)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "150 pies (30 casillas)",
+    "duracion": "Instantánea",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Fuego verde espectral en una esfera de 20 pies (4 casillas) de radio. Cada criatura hace una salvación de Destreza: si falla, recibe 10d6 de daño de fuego y 2d6 de daño psíquico y no puede recuperar PG con magia hasta el final de su siguiente turno; si la supera, la mitad y nada más. Termina los conjuros de nivel 3 o inferior activos en el área. No daña objetos no mágicos."
+  },
+  "Reverso del Tiempo Menor": {
+    "tipo": [
+      "Curación",
+      "Ayuda"
+    ],
+    "escuela": "Transmutación",
+    "nivel": 7,
+    "origen": "Agarias",
+    "componentes": "V, S",
+    "tiempoLanzamiento": "1 reacción, cuando una criatura a 60 pies (12 casillas) muere o queda incapacitada",
+    "alcance": "60 pies (12 casillas)",
+    "duracion": "Instantánea",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Tiras de los hilos del destino: la criatura vuelve a como estaba al inicio de su último turno (posición, PG y condiciones). Queda aturdida hasta el final de su siguiente turno, desorientada por el flujo temporal. No sirve contra la muerte por vejez. Sólo puedes lanzarlo una vez por descanso largo."
+  },
+  "Orbe del Juicio Estático": {
+    "tipo": [
+      "Daño",
+      "Radiante",
+      "Control"
+    ],
+    "escuela": "Evocación",
+    "nivel": 7,
+    "origen": "Agarias",
+    "componentes": "V, S, M (una perla rota y un alfiler)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "120 pies (24 casillas)",
+    "duracion": "Concentración, hasta 1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Un orbe de energía estática de 20 pies (4 casillas) de radio flota en un punto. Cada criatura hostil que empiece su turno dentro hace una salvación de Constitución: si falla, recibe 4d10 de daño radiante y no puede lanzar conjuros hasta el final de su siguiente turno; si la supera, la mitad. Como acción adicional puedes moverlo hasta 30 pies (6 casillas)."
+  },
+  "Requiem del Vacío": {
+    "tipo": [
+      "Daño",
+      "Necrótico",
+      "Protección"
+    ],
+    "escuela": "Nigromancia",
+    "nivel": 8,
+    "origen": "Agarias",
+    "componentes": "V, S, M (una cuerda cortada en tres partes)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "60 pies (12 casillas)",
+    "duracion": "Concentración, hasta 1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Un canto prohibido atrae a las almas moribundas. Cada vez que una criatura muere a 60 pies (12 casillas) de ti mientras dure, ganas 40 PG temporales (no se suman a otros) y puedes usar tu reacción para que su cadáver estalle: cada criatura a 10 pies (2 casillas) hace una salvación de Constitución o recibe 5d10 de daño necrótico (la mitad si la supera). Como mucho tres explosiones."
+  },
+  "Ojo de la Eternidad": {
+    "tipo": [
+      "Detección"
+    ],
+    "escuela": "Adivinación",
+    "nivel": 8,
+    "origen": "Agarias",
+    "componentes": "V, S, M (un cristal azul profundo)",
+    "tiempoLanzamiento": "1 minuto",
+    "alcance": "El mismo plano",
+    "duracion": "Concentración, hasta 10 minutos",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Un gran ojo de luz cósmica aparece en un lugar de este plano que hayas visto, te hayan descrito o donde hayas estado. Ves y oyes desde él como si estuvieras allí, también a través de barreras (salvo 1 pulgada de plomo o 3 pies de piedra), y puedes lanzar conjuros de adivinación a través de él. Las criaturas con visión verdadera ven el ojo."
+  },
+  "Lienzo de Realidad Fluida": {
+    "tipo": [
+      "Control",
+      "Engaño"
+    ],
+    "escuela": "Ilusión",
+    "nivel": 8,
+    "origen": "Agarias",
+    "componentes": "V, S, M (una gota de tinta mágica y un espejo de 950 po)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "90 pies (18 casillas)",
+    "duracion": "Concentración, hasta 1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Un cubo de 60 pies (12 casillas) de lado se vuelve un espacio ilusorio y maleable: creas paredes, huecos, escaleras o plataformas ilusorias, y como acción adicional recoloreas o mueves sus elementos. Cada criatura que empiece su turno dentro hace una salvación de Sabiduría o tiene desventaja en las tiradas de ataque y pruebas de característica hasta el inicio de su siguiente turno. Una prueba de Inteligencia (Investigación) contra tu CD revela que un elemento concreto es ilusorio."
+  },
+  "Llamas del Comienzo del Mundo": {
+    "tipo": [
+      "Daño",
+      "Fuego"
+    ],
+    "escuela": "Evocación",
+    "nivel": 8,
+    "origen": "Agarias",
+    "componentes": "V, S, M (un fragmento de magma solidificado)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "150 pies (30 casillas)",
+    "duracion": "Instantánea",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Llamas primordiales en una esfera de 40 pies (8 casillas) de radio. Cada criatura hace una salvación de Destreza: si falla, recibe 10d10 de daño de fuego que ignora la resistencia al fuego (no la inmunidad); si la supera, la mitad. El área queda carbonizada y es terreno difícil hasta que se enfría (1d4 horas)."
+  },
+  "Desgarro del Tiempo": {
+    "tipo": [
+      "Control"
+    ],
+    "escuela": "Transmutación",
+    "nivel": 9,
+    "origen": "Agarias",
+    "componentes": "V, S, M (un reloj de arena sin arena)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "300 pies (60 casillas)",
+    "duracion": "Concentración, hasta 1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Abres una grieta en el tiempo. Hasta seis criaturas que elijas a 60 pies (12 casillas) del punto hacen una salvación de Constitución. Si fallan, quedan fuera del tiempo durante 1d4 rondas: no actúan, no se mueven, no pueden ser objetivo ni recibir daño y luego vuelven a su espacio. Si la superan, quedan bajo <i>Ralentizar</i> y con desventaja en los ataques y salvaciones mientras dure. Mientras te concentres, puedes usar una acción para acelerar o revertir el tiempo en la zona con fines narrativos (envejecer una fortaleza, rejuvenecer un cadáver), nunca para hacer daño, a juicio del DM."
+  },
+  "Eclipse del Alma": {
+    "tipo": [
+      "Daño",
+      "Necrótico",
+      "Control"
+    ],
+    "escuela": "Nigromancia",
+    "nivel": 9,
+    "origen": "Agarias",
+    "componentes": "V, S, M (una máscara funeraria)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "150 pies (30 casillas)",
+    "duracion": "Instantánea",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Un eclipse oscurece el campo por un instante. Hasta seis criaturas enemigas a 60 pies (12 casillas) del punto hacen una salvación de Carisma: si fallan, reciben 10d10 de daño necrótico y hacen una salvación de Sabiduría; si fallan esta segunda, su alma se arranca en parte: quedan aturdidas y sin acciones legendarias, resistencias al daño ni curación mágica hasta el final de su siguiente turno. Si superan la primera, la mitad y nada más. No afecta a muertos vivientes ni constructos."
+  },
+  "Tormenta Primordial": {
+    "tipo": [
+      "Daño",
+      "Fuego",
+      "Frío",
+      "Relámpago"
+    ],
+    "escuela": "Evocación",
+    "nivel": 9,
+    "origen": "Agarias",
+    "componentes": "V, S, M (una gema de cada color del arcoíris)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "500 pies (100 casillas)",
+    "duracion": "Concentración, hasta 1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Una tormenta elemental cubre una esfera de 60 pies (12 casillas) de radio. Al inicio de cada uno de tus turnos eliges un efecto (puedes cambiarlo cada turno):\n• <b>Fuego etéreo:</b> cada enemigo en el área hace una salvación de Destreza o recibe 6d10 de daño de fuego (la mitad si la supera).\n• <b>Tormenta de hielo:</b> cada enemigo hace una salvación de Constitución o recibe 4d10 de daño de frío (la mitad si la supera); el área es terreno difícil hasta tu siguiente turno.\n• <b>Relámpagos:</b> hasta tres criaturas que elijas hacen una salvación de Destreza o reciben 8d8 de daño de relámpago (la mitad si la superan).\n• <b>Viento cortante:</b> cada criatura hace una salvación de Fuerza o es empujada 30 pies (6 casillas); nadie puede volar en el área hasta tu siguiente turno."
+  },
+  "Cántico del Vacío Insondable": {
+    "tipo": [
+      "Control"
+    ],
+    "escuela": "Encantamiento",
+    "nivel": 9,
+    "origen": "Agarias",
+    "componentes": "V, S, M (una lengua conservada y una gema púrpura)",
+    "tiempoLanzamiento": "1 acción",
+    "alcance": "60 pies (12 casillas)",
+    "duracion": "Concentración, hasta 1 minuto",
+    "listaConjurador": "Conjuros de Anomalía.",
+    "conjuradorTrue": {
+      "anomalia": true
+    },
+    "descripcion": "Hasta seis criaturas que elijas hacen una salvación de Inteligencia o quedan atrapadas en una visión alienígena: no distinguen amigos de enemigos, tienen desventaja en las tiradas de ataque, salvaciones y pruebas, y no pueden lanzar conjuros de concentración. Repiten la salvación al final de cada uno de sus turnos. Si una la falla tres veces seguidas, su mente colapsa: queda incapacitada y bajo <i>Confusión</i> hasta que termine un descanso largo o reciba <i>Restablecimiento mayor</i>."
   }
 }

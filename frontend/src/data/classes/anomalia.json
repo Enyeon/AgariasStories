@@ -2,6 +2,8 @@
   "nombre": "Anomalía",
   "claseName": "anomalia",
   "seccion": "agarias",
+  "icono": "🌀",
+  "fuenteReglas": "Agarias (diseño del autor, revisado el 20-nov-2026)",
   "dadoDeGolpe": 6,
   "nivelesDeAumento": [
     4,
@@ -11,310 +13,1168 @@
     19
   ],
   "conjurador": true,
-  "attribute": "inteligencia",
+  "attribute": "sabiduria",
+  "lanzamiento": {
+    "progression": "full",
+    "preparedFrom": "full",
+    "cantripsKnown": [
+      2,
+      2,
+      2,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ]
+  },
+  "listaConjuros": [
+    "Perdición",
+    "Escudo",
+    "Armadura de mago",
+    "Clarividencia",
+    "Invocar aberración",
+    "Contraer la Realidad",
+    "Mano de la Falla",
+    "Visión Anómala",
+    "Catástrofe / Apocalipsis",
+    "Toque del Anómalo",
+    "Descarga del caos",
+    "Brazos de Hadar",
+    "Susurros disonantes",
+    "Causar miedo",
+    "Vida falsa",
+    "Huracán Arcoíris",
+    "Caos pulsante",
+    "Bocas Hambrientas de Hadar",
+    "Disrupción temporal",
+    "Escudo de distorsión",
+    "Fallo de realidad",
+    "Alterarse a sí mismo",
+    "Virus de la Realidad",
+    "Desfase Digital",
+    "Paradoja Espectral",
+    "Corona de Hadar",
+    "Reparación de código",
+    "Rebobinar Destino",
+    "Errores de Fase",
+    "Inyección de Realidad",
+    "Ciclo de Restauración Anómala",
+    "Ojos de Hadar",
+    "Contactar otro plano",
+    "Reflejo Distorsionado",
+    "Bucle de Caos",
+    "Palabra de Hadar",
+    "Paradoja Invertida",
+    "Virus de Memoria",
+    "Grito del Núcleo Ancestral",
+    "Alas de Hadar",
+    "Mirada de la Anomalía",
+    "Fauces del Plano Anómalo",
+    "Tormenta de Vidrioceniza",
+    "Barrera Psiónica",
+    "Reescribir la Carne",
+    "Capa de Hadar",
+    "Puerta de Sangreal",
+    "Llamarada del Pacto Final",
+    "Reverso del Tiempo Menor",
+    "Orbe del Juicio Estático",
+    "Requiem del Vacío",
+    "Ojo de la Eternidad",
+    "Lienzo de Realidad Fluida",
+    "Llamas del Comienzo del Mundo",
+    "Desgarro del Tiempo",
+    "Eclipse del Alma",
+    "Tormenta Primordial",
+    "Cántico del Vacío Insondable"
+  ],
+  "subclaseNombre": "Hebra anómala",
+  "competencias": {
+    "salvaciones": [
+      "inteligencia",
+      "sabiduria"
+    ],
+    "armaduras": [],
+    "armas": [
+      "Armas simples"
+    ],
+    "herramientas": [],
+    "habilidades": {
+      "elegir": 2,
+      "de": [
+        "Conocimiento Arcano",
+        "Historia",
+        "Religión",
+        "Engaño",
+        "Persuasión",
+        "Investigación",
+        "Perspicacia"
+      ]
+    }
+  },
+  "competenciasMulticlase": {
+    "armaduras": [],
+    "armas": [],
+    "herramientas": [],
+    "habilidades": null
+  },
+  "equipoInicial": [
+    "(a) Un bastón o (b) una daga.",
+    "(a) Un paquete de erudito o (b) un paquete de explorador.",
+    "Un foco anómalo (funciona como foco arcano)."
+  ],
+  "oroInicial": "5d4 × 10",
   "niveles": {
     "1": {
-      "descripcion": "Ser alterado por fallos de la realidad que manifiesta anomalías como si fueran magia.",
-      "descripcionLarga": "Animalía no lanza conjuros: la realidad se desajusta a su alrededor. Su cuerpo es una grieta viviente, un error persistente en las leyes naturales. Extremidades que cambian, energía que se filtra, fenómenos imposibles que brotan como reflejos instintivos. No estudia, no pacta, no hereda: es una anomalía consciente.",
-      "atributoInicial": "Atributos de clase:\n❖ Tiradas de Salvación: pendiente de definir por el autor de la clase.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d6.\n    :: Nivel 1: 6 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d6 (o 4) + tu modificador de Constitución por nivel.\n❖ Competencias: pendientes de definir por el autor de la clase.\n❖ Equipo: pendiente de definir por el autor de la clase.\n❖ Nota: los datos anteriores eran una copia del Bárbaro y se retiraron para no mostrar reglas incorrectas.",
-      "infoBlock": {
-        "blockUno": {
-          "name": "",
-          "titleName": "✦  ✦",
-          "descripcion": ""
-        },
-        "blockDos": {
-          "name": "",
-          "titleName": "✦  ✦",
-          "descripcion": ""
-        },
-        "blockTres": {
-          "name": "",
-          "titleName": "✦  ✦",
-          "descripcion": "",
-          "tablaClase": {
-            "encabezado": [
-              "",
-              "",
-              ""
-            ],
-            "filas": [
-              [
-                ""
-              ],
-              [
-                ""
-              ],
-              [
-                ""
-              ],
-              [
-                ""
-              ],
-              [
-                ""
-              ],
-              [
-                ""
-              ],
-              [
-                ""
-              ],
-              [
-                ""
-              ]
-            ]
-          }
-        }
-      },
+      "descripcion": "Un fallo consciente de la realidad: lanza magia caótica del Plano Anómalo que siempre está al borde del colapso.",
+      "descripcionLarga": "A̡̞̼͚̟̞̤̓ͥn̯̳ͯ̇ͫͤͥ͗ͨo͖̟̼̅̍͌ͫ̓m̬̲ͯ͑ͤa̲͉̖̳̻̋͋l̻̠ͭ̇̆ͥ͊i͓̺̩͓̼̯͛ͫͨa͍͈͛̏ͧ̏͊ͧ͋, la criatura condenada. No estudia como un mago ni pacta como un brujo: ha tocado el Plano Anómalo y la realidad le obedece mal. Cada conjuro es una apuesta y cada rasgo fuerte acerca el Colapso. Elige una Hebra (Paradoja, Error, Virus o .exe) que define qué tipo de fallo es.",
+      "atributoInicial": "Atributos de clase:\n❖ Habilidad principal: Sabiduría.\n❖ Tiradas de Salvación: Inteligencia y Sabiduría.\n❖ Puntos de golpe:\n    :: Dado de golpe: 1d6.\n    :: Nivel 1: 6 + tu modificador de Constitución.\n    :: Niveles siguientes: 1d6 (o 4) + tu modificador de Constitución por nivel.\n❖ Competencias:\n    :: Armadura: Ninguna.\n    :: Armas: Armas simples y tu foco anómalo (como arma improvisada).\n    :: Herramientas: Herramientas de hojalatero (Afinidad con la relojería).\n    :: Habilidades: elige 2 entre Conocimiento Arcano, Historia, Religión, Engaño, Persuasión, Investigación y Perspicacia.\n❖ Multiclase: requiere Sabiduría 13; no da competencias.\n❖ Equipo inicial: (a) un bastón o (b) una daga; (a) un paquete de erudito o (b) un paquete de explorador; un foco anómalo; 5d4 × 10 PO.\n❖ Fuente: Agarias.",
       "infoCubo": {
         "columnas": [
-          "",
-          ""
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
         ],
         "filas": [
           [
-            "",
-            ""
+            "2",
+            "1+Sab",
+            "2"
           ]
         ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Magia Anómala",
+          "titleName": "✦ MAGIA ANÓMALA ✦",
+          "descripcion": "Lanzas conjuros con <b>Sabiduría</b>: CD = 8 + tu bonificador de competencia + tu modificador de Sabiduría; ataque de conjuro = tu bonificador de competencia + tu modificador de Sabiduría. Tienes los espacios de la tabla (como un lanzador completo) y los recuperas con un descanso largo; no tienes recuperación en descansos cortos.\n<b>Trucos.</b> Conoces dos trucos de Anomalía; aprendes otro a nivel 4 y otro a nivel 10.\n<b>Conjuros preparados.</b> Al terminar un descanso largo preparas tantos conjuros de la lista de Anomalía como tu nivel de Anomalía + tu modificador de Sabiduría (mínimo 1), de niveles para los que tengas espacios. Los eliges en la pestaña <b>Conjuros</b>.\n<b>Foco.</b> Usas un foco anómalo: un objeto deformado (un reloj sin agujas, un espejo roto, un dado con caras imposibles) que funciona como foco arcano. Eres competente con él como arma improvisada.\n<b>Multiclase.</b> Para tomar o dejar niveles de Anomalía necesitas Sabiduría 13. No ganas competencias al entrar por multiclase."
+        },
+        "blockDos": {
+          "name": "La condena: Estabilidad",
+          "titleName": "✦ LA CONDENA: ESTABILIDAD ✦",
+          "descripcion": "Tu conexión con el Plano Anómalo te sostiene y te consume. Tienes una reserva de <b>Estabilidad</b> igual a tu bonificador de competencia + tu modificador de Sabiduría (la verás en Recursos). Cada punto de <b>Inestabilidad</b> que ganas gasta un punto de Estabilidad. Ganas Inestabilidad:\n• +1 al usar Reacción Improbable, Portal Anómalo, Ayuda Anómala, Realidad Inestable o Error Profetizado;\n• +2 al usar Paradox o Avatar de Zzeryxia; Eco Imposible te deja sin Estabilidad;\n• +1 al lanzar un conjuro con un espacio de nivel 6 o superior;\n• +1 cuando te afecta un <i>Contrahechizo</i> o un <i>Disipar magia</i> (a ti o a un conjuro tuyo), y al empezar tu turno dentro de un <i>Campo antimagia</i>.\n<b>Colapso.</b> Cuando te quedas sin Estabilidad, quedas <b>Corrupto</b> (estado de Agarias) hasta el final de tu siguiente turno y tiras en la tabla de Colapso.\n<b>Más allá del límite.</b> Sin Estabilidad, cada punto de Inestabilidad que ganarías te cuesta un Dado de Golpe (lo pierdes sin tirarlo). Si no te quedan, no puedes usar el rasgo ni lanzar el conjuro que la causaría; si la Inestabilidad no la eliges tú (un Contrahechizo), no pasa nada más.\nRecuperas toda la Estabilidad con un descanso largo.\n\n<table><thead><tr><th>d10</th><th>Colapso</th></tr></thead><tbody><tr><td>1</td><td><b>Desincronía.</b> Pierdes tu acción adicional y tu reacción hasta el final de tu siguiente turno.</td></tr><tr><td>2</td><td><b>Eco hueco.</b> Durante 1 minuto, los objetivos de tus conjuros tienen ventaja en las salvaciones contra ellos y tú desventaja en tus ataques con conjuros.</td></tr><tr><td>3</td><td><b>Teletransporte errático.</b> Te teletransportas en una dirección al azar 10 pies (2 casillas) por cada punto de 1d4, al espacio libre más cercano.</td></tr><tr><td>4</td><td><b>Grieta.</b> Recibes 2d6 de daño psíquico que no se puede reducir.</td></tr><tr><td>5</td><td><b>Ruido.</b> Quedas ensordecido y tu voz sale distorsionada: no puedes lanzar conjuros con componente verbal hasta el final de tu siguiente turno.</td></tr><tr><td>6</td><td><b>Fallo de renderizado.</b> Te vuelves translúcido hasta el final de tu siguiente turno: los ataques contra ti tienen desventaja y tus tiradas de ataque también.</td></tr><tr><td>7</td><td><b>Lag.</b> Tu velocidad es 0 hasta el final de tu siguiente turno.</td></tr><tr><td>8</td><td><b>Fuga anómala.</b> Cada criatura a 10 pies (2 casillas) de ti, aliados incluidos, hace una salvación de Sabiduría contra tu CD de conjuros o queda asustada de ti hasta el final de su siguiente turno.</td></tr><tr><td>9</td><td><b>Tic-tac.</b> Oyes el reloj del Plano Anómalo: tienes desventaja en las salvaciones de concentración hasta el final de tu siguiente turno.</td></tr><tr><td>10</td><td><b>Mirada de Zzeryxia.</b> Zzeryxia te mira y el Colapso no ocurre: no quedas Corrupto y recuperas 1d4 de Estabilidad.</td></tr></tbody></table>",
+          "efectos": [
+            {
+              "type": "recurso",
+              "id": "estabilidad",
+              "nombre": "Estabilidad",
+              "max": {
+                "bc": true,
+                "atributo": "sabiduria"
+              }
+            }
+          ]
+        },
+        "blockTres": {
+          "name": "Conexión Caótica",
+          "titleName": "✦ CONEXIÓN CAÓTICA ✦",
+          "descripcion": "Una vez por descanso largo puedes comunicarte telepáticamente con Zzeryxia durante unos instantes. Su respuesta es críptica: símbolos, imágenes oníricas o frases desconectadas. Elige uno:\n• obtienes una pista vaga sobre un evento futuro, una decisión o una amenaza;\n• justo después de ver una tirada de d20 tuya, la repites y eliges cuál de las dos tiradas usas.",
+          "efectos": [
+            {
+              "type": "recurso",
+              "id": "conexion-caotica",
+              "nombre": "Conexión Caótica",
+              "max": {
+                "valor": 1
+              }
+            }
+          ]
+        },
+        "blockCuatro": {
+          "name": "Afinidad con la relojería",
+          "titleName": "✦ AFINIDAD CON LA RELOJERÍA ✦",
+          "descripcion": "Las Anomalías ven el mundo en engranajes y resortes, como un reloj que sólo ellas oyen. Eres competente con las herramientas de hojalatero, tienes ventaja en las pruebas para entender, abrir, reparar o desactivar mecanismos (cerraduras, relojes, trampas mecánicas, artefactos) y ventaja en las salvaciones contra trampas mecánicas: sientes cuándo algo va a fallar.",
+          "efectos": [
+            {
+              "type": "competencia",
+              "kind": "herramienta",
+              "value": "Herramientas de hojalatero"
+            }
+          ]
+        },
+        "blockCinco": {
+          "name": "Efectos Anómalos",
+          "titleName": "✦ EFECTOS ANÓMALOS ✦",
+          "descripcion": "Algunos rasgos y conjuros te piden tirar en estas tablas. Las criaturas hacen la salvación contra tu CD de conjuros.\n\n<b>Efecto Anómalo menor</b> (en ti o a 30 pies (6 casillas))\n<table><thead><tr><th>d10</th><th>Tipo</th><th>Efecto</th></tr></thead><tbody><tr><td>1</td><td>Glitch</td><td><b>Píxel muerto.</b> Una criatura a 30 pies (6 casillas) hace una salvación de Constitución o queda cegada hasta el final de su siguiente turno.</td></tr><tr><td>2</td><td>Glitch</td><td><b>Clip.</b> Te teletransportas a un espacio libre que puedas ver a 15 pies (3 casillas).</td></tr><tr><td>3</td><td>Tiempo</td><td><b>Tic.</b> Tú o un aliado a 30 pies (6 casillas) ganáis +10 pies (2 casillas) de velocidad hasta el final de su siguiente turno.</td></tr><tr><td>4</td><td>Tiempo</td><td><b>Tac.</b> Una criatura a 30 pies (6 casillas) hace una salvación de Sabiduría o pierde 10 pies (2 casillas) de velocidad hasta el final de su siguiente turno.</td></tr><tr><td>5</td><td>Virus</td><td><b>Contagio leve.</b> Una criatura a 30 pies (6 casillas) hace una salvación de Constitución o tiene desventaja en su siguiente tirada de salvación.</td></tr><tr><td>6</td><td>Virus</td><td><b>Anticuerpo.</b> Tú o un aliado a 30 pies (6 casillas) ganáis 1d6 + tu modificador de Sabiduría PG temporales.</td></tr><tr><td>7</td><td>.exe</td><td><b>Susurro.</b> Una criatura a 30 pies (6 casillas) hace una salvación de Sabiduría o queda asustada de ti hasta el final de su siguiente turno.</td></tr><tr><td>8</td><td>.exe</td><td><b>Pantalla congelada.</b> Una criatura a 30 pies (6 casillas) hace una salvación de Sabiduría o no puede usar reacciones hasta el inicio de su siguiente turno.</td></tr><tr><td>9</td><td>—</td><td><b>Retorno.</b> Recuperas un uso de Ondas de Distorsión.</td></tr><tr><td>10</td><td>—</td><td><b>Elección.</b> Eliges cualquier resultado de esta tabla.</td></tr></tbody></table>\n<b>Efecto Anómalo mayor</b> (en una esfera de 20 pies (4 casillas) de radio centrada en el punto del efecto)\n<table><thead><tr><th>d10</th><th>Tipo</th><th>Efecto</th></tr></thead><tbody><tr><td>1</td><td>Glitch</td><td><b>Textura rota.</b> Durante 1 minuto el área es terreno difícil y oscuridad mágica que la visión en la oscuridad no atraviesa.</td></tr><tr><td>2</td><td>Glitch</td><td><b>Retroceso de posición.</b> Cada criatura que elijas en el área vuelve al espacio donde empezó su último turno (o al libre más cercano).</td></tr><tr><td>3</td><td>Tiempo</td><td><b>Pausa.</b> Cada criatura hostil en el área hace una salvación de Sabiduría o queda incapacitada hasta el final de su siguiente turno.</td></tr><tr><td>4</td><td>Tiempo</td><td><b>Aceleración.</b> Tú y cada aliado en el área tenéis, en vuestro siguiente turno, una acción extra limitada: Atacar (un solo ataque), Correr, Destrabarse, Esconderse o Usar un objeto.</td></tr><tr><td>5</td><td>Virus</td><td><b>Brote.</b> Cada criatura hostil en el área hace una salvación de Constitución o no puede recuperar PG y tiene desventaja en su siguiente salvación hasta el final de tu siguiente turno.</td></tr><tr><td>6</td><td>Virus</td><td><b>Inmunidad compartida.</b> Tú y cada aliado en el área ganáis resistencia a un tipo de daño que elijas hasta el final de tu siguiente turno.</td></tr><tr><td>7</td><td>.exe</td><td><b>Proceso fantasma.</b> Cada criatura hostil en el área hace una salvación de Sabiduría o queda asustada de ti durante 1 minuto; repite la salvación al final de cada uno de sus turnos.</td></tr><tr><td>8</td><td>.exe</td><td><b>Pantallazo.</b> Cada criatura hostil en el área hace una salvación de Inteligencia o pierde su reacción y tiene desventaja en su siguiente tirada de ataque.</td></tr><tr><td>9</td><td>—</td><td><b>Fuga de memoria.</b> Recuperas un espacio de conjuro gastado de nivel 3 o inferior.</td></tr><tr><td>10</td><td>—</td><td><b>Elección.</b> Eliges cualquier resultado de esta tabla.</td></tr></tbody></table>"
+        },
+        "blockSeis": {
+          "name": "El Plano Anómalo",
+          "titleName": "✦ EL PLANO ANÓMALO ✦",
+          "descripcion": "<b>El Plano Anómalo.</b> Es un plano completamente separado de los planos terrenales: una dimensión caótica donde las leyes de la magia, la física y la realidad se distorsionan. Las Anomalías son quienes han entrado en contacto con él y canalizan su energía para alterar la realidad con conjuros extraños e inestables. Una Anomalía puede aparecer de cualquier forma (un accidente, un contagio, un encuentro, un nacimiento extraño) y ser de cualquier raza.\n\n<b>Zzeryxia, la Diosa anómala.</b> También llamada la Dama de las anomalías, reina en el Plano Anómalo: entropía creativa, errores divinos y posibilidades improbables. Es neutral caótica: no se inclina hacia el bien ni hacia el mal. Su comprensión de las anomalías la convierte en una fuente de conocimiento única, pero su mente opera a un nivel de complejidad y caos que puede llevar a la locura a quien la contacta, y sus respuestas son vagas, crípticas o incomprensibles. En el Plano divino, Zzeryxia y Umbrael, el dios del Vacío, son muy grandes amigos.\n\n<b>Animalía.</b> La creación de Zzeryxia: una entidad divina casi tan poderosa como su creadora, capaz de alterar la realidad a voluntad. Por su poder desmedido y su naturaleza impredecible, las entidades pseudo-divinas y cuasi-divinas la encerraron en una prisión dimensional de la que no puede escapar. Al principio el aislamiento no le perturbó; con el tiempo, la soledad corrompió su mente. Animalía no odia a ninguna criatura, pero se ha vuelto cruel: los gritos de dolor y las súplicas de piedad son lo único que alimenta su placer mientras maquina su escape.\n\n<b>La condena.</b> Su poder es inmenso, pero siempre está al borde del colapso. Cuanto más alto llega una Anomalía, más siente que el Plano Anómalo la está reclamando. Cómo termina esa historia lo decide la mesa."
+        },
+        "blockSiete": {
+          "name": "Oficial vs. Agarias",
+          "titleName": "✦ OFICIAL VS. AGARIAS ✦",
+          "descripcion": "La Anomalía es una clase de Agarias. Algunos de sus nombres coinciden con los de D&D oficial; en Agarias significan esto:\n• <b>Hadar.</b> En D&D oficial es un Gran Antiguo, una estrella oscura (los conjuros oficiales <i>Brazos de Hadar</i> y <i>Hambre de Hadar</i>, y el patrón Gran Antiguo del Brujo). En Agarias, lo que los brujos llaman Hadar es un fragmento del Plano Anómalo. Los conjuros oficiales siguen funcionando igual; los de la Anomalía que llevan «Hadar» en el nombre son de Agarias.\n• <b>Conjuros oficiales.</b> La lista incluye conjuros oficiales tal cual (Perdición, Escudo, Armadura de mago, Clarividencia, Invocar aberración y otros) y algunos modificados: estos últimos dicen al final «Versión de Agarias» y qué cambia respecto al oficial.\n• <b>Vacío.</b> Es un tipo de daño propio de Agarias (ver Reglas). Lo que el documento original llamaba «daño verdadero» es daño de Vacío.\n• <b>Corrupto.</b> Es un estado de Agarias (ver Reglas): la Anomalía lo sufre al Colapsar.\n• <b>Condiciones.</b> La Anomalía usa las condiciones oficiales. «Aterrado» es asustado; «confundido», el efecto del conjuro Confusión; «ralentizado», el del conjuro Ralentizar; «desorientado», desventaja en tiradas de ataque y pruebas durante 1 turno; «loco», bajo Confusión durante 1 minuto (salvo que el conjuro diga otra cosa)."
+        }
       }
     },
     "2": {
-      "informacionNivel": "✦  ✦"
-    },
-    "3": {
+      "infoCubo": {
+        "columnas": [
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "2",
+            "2+Sab",
+            "3"
+          ]
+        ]
+      },
       "infoBlock": {
         "blockUno": {
-          "name": "",
-          "titleName": "✦  ✦",
-          "descripcion": ""
-        },
-        "blockDos": {
-          "name": "",
-          "titleName": "✦  ✦",
-          "descripcion": ""
-        },
-        "blockTres": {
-          "name": "",
-          "titleName": "✦  ✦",
-          "descripcion": "",
-          "tablaClase": {
-            "encabezado": [
-              "",
-              "",
-              ""
-            ],
-            "filas": [
-              [
-                ""
-              ],
-              [
-                ""
-              ],
-              [
-                ""
-              ],
-              [
-                ""
-              ],
-              [
-                ""
-              ],
-              [
-                ""
-              ],
-              [
-                ""
-              ],
-              [
-                ""
-              ]
-            ]
-          }
+          "name": "Ondas de Distorsión",
+          "titleName": "✦ ONDAS DE DISTORSIÓN ✦",
+          "descripcion": "Como acción adicional liberas una onda del Plano Anómalo. Elige un efecto:\n• te teletransportas hasta 10 pies (2 casillas) a un espacio libre que puedas ver;\n• creas una ilusión menor (como el truco <i>Ilusión menor</i>);\n• el entorno se distorsiona: los ataques contra ti tienen desventaja hasta el inicio de tu siguiente turno;\n• <b>Glitch:</b> tiras en la tabla de Efecto Anómalo menor.\nUsos: tu modificador de Sabiduría (mínimo 1) por descanso largo.",
+          "efectos": [
+            {
+              "type": "recurso",
+              "id": "ondas-distorsion",
+              "nombre": "Ondas de Distorsión",
+              "max": {
+                "atributo": "sabiduria",
+                "minimo": 1
+              }
+            }
+          ]
+        }
+      }
+    },
+    "3": {
+      "infoCubo": {
+        "columnas": [
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "2",
+            "3+Sab",
+            "4 · 2"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Anomalía en Evolución",
+          "titleName": "✦ ANOMALÍA EN EVOLUCIÓN ✦",
+          "descripcion": "Eliges tu Hebra: <b>Paradoja</b>, <b>Error</b>, <b>Virus</b> o <b>.exe</b>. Te da rasgos a los niveles 3, 6, 10 y 14."
         }
       },
       "subClase": {
         "senda1": {
           "subNombre": "Hebra Paradoja",
-          "subDescripcion": "✦  ✦",
+          "fuente": "Agarias",
+          "subDescripcion": "✦ HEBRA PARADOJA ✦\nCaminas como una paradoja viviente: existes a la vez en varias líneas temporales, duplicas tu ser y pliegas la causalidad.",
           "subNivel": {
             "3": {
-              "infoSubNivel": "✦  ✦"
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Espejismo alterado",
+                  "subDescripcion": "Como reacción, cuando una criatura que puedas ver a 30 pies (6 casillas) te impacta a ti o a un aliado con un ataque con arma (no mágico), intercambias tu posición con la del atacante: el ataque le impacta a él y recibe su propio daño. No sirve contra conjuros ni ataques mágicos. Usos: tu bonificador de competencia por descanso largo.",
+                  "efectos": [
+                    {
+                      "type": "recurso",
+                      "id": "espejismo-alterado",
+                      "nombre": "Espejismo alterado",
+                      "max": {
+                        "bc": true
+                      }
+                    }
+                  ]
+                }
+              }
             },
             "6": {
-              "infoSubNivel": "✦  ✦"
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Ciclo invertido",
+                  "subDescripcion": "Actúas un poco fuera de fase. Como reacción, te mueves 10 pies (2 casillas) sin provocar ataques de oportunidad. Usos: tu modificador de Sabiduría (mínimo 1) por descanso largo.",
+                  "efectos": [
+                    {
+                      "type": "recurso",
+                      "id": "ciclo-invertido",
+                      "nombre": "Ciclo invertido",
+                      "max": {
+                        "atributo": "sabiduria",
+                        "minimo": 1
+                      }
+                    }
+                  ]
+                }
+              }
             },
             "10": {
-              "infoSubNivel": "✦  ✦"
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Doble consecuencia",
+                  "subDescripcion": "Una vez por descanso largo, cuando lanzas un conjuro de nivel 1 o superior que afecta a una sola criatura y no tiene alcance personal, puedes afectar también a una segunda criatura dentro del alcance. Además, una vez por descanso largo puedes repetir una tirada en la tabla de Efecto Anómalo menor y elegir cuál de los dos resultados usas.",
+                  "efectos": [
+                    {
+                      "type": "recurso",
+                      "id": "doble-consecuencia",
+                      "nombre": "Doble consecuencia",
+                      "max": {
+                        "valor": 1
+                      }
+                    },
+                    {
+                      "type": "recurso",
+                      "id": "doble-consecuencia-tabla",
+                      "nombre": "Doble consecuencia (repetir tabla)",
+                      "max": {
+                        "valor": 1
+                      }
+                    }
+                  ]
+                }
+              }
             },
             "14": {
-              "infoSubNivel": "✦  ✦"
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Paradox",
+                  "subDescripcion": "Como acción, te desdoblas en una segunda versión de ti durante 1 minuto. La copia aparece en un espacio libre a 30 pies (6 casillas) y actúa justo después de ti en la iniciativa.\n• Las dos versiones <b>comparten</b> los PG, los espacios de conjuro, los usos de los rasgos y la concentración.\n• Entre las dos, sólo se lanza <b>un conjuro con espacio por ronda</b>; la otra puede lanzar trucos, usar rasgos, moverse y atacar.\n• Si una de las dos cae a 0 PG, la copia desaparece.\nGanas 2 de Inestabilidad. No puedes usar Doble Anomalía mientras dura. Una vez por descanso largo.",
+                  "efectos": [
+                    {
+                      "type": "recurso",
+                      "id": "paradox",
+                      "nombre": "Paradox",
+                      "max": {
+                        "valor": 1
+                      }
+                    }
+                  ]
+                }
+              }
             }
           }
         },
         "senda2": {
           "subNombre": "Hebra Error",
-          "subDescripcion": "✦  ✦",
+          "fuente": "Agarias",
+          "subDescripcion": "✦ HEBRA ERROR ✦\nNo canalizas el caos: lo encarnas como el error de un sistema mal optimizado. La realidad se comporta de forma absurda a tu alrededor, como si fueras un personaje atrapado en un videojuego fallido.",
           "subNivel": {
             "3": {
-              "infoSubNivel": "✦  ✦"
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Colisión",
+                  "subDescripcion": "Como acción adicional activas Colisión hasta el final de tu turno: caminas por el aire, por las paredes y por el techo como si fueran suelo, ignoras el terreno difícil, no provocas ataques de oportunidad y puedes atravesar una criatura o un objeto de hasta 5 pies (1 casilla) de grosor (no puedes terminar dentro). Si terminas el turno en el aire, caes. Usos: tu modificador de Sabiduría (mínimo 1) por descanso largo.",
+                  "efectos": [
+                    {
+                      "type": "recurso",
+                      "id": "colision",
+                      "nombre": "Colisión",
+                      "max": {
+                        "atributo": "sabiduria",
+                        "minimo": 1
+                      }
+                    }
+                  ]
+                }
+              }
             },
             "6": {
-              "infoSubNivel": "✦  ✦"
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Física Bugeada",
+                  "subDescripcion": "Como reacción, cuando sufrirías daño por una caída o por un ataque con arma, dices «fuera del mapa»: no recibes ese daño, desapareces y reapareces en un espacio libre que puedas ver a 30 pies (6 casillas). Una vez por descanso corto o largo.",
+                  "efectos": [
+                    {
+                      "type": "recurso",
+                      "id": "fisica-bugeada",
+                      "nombre": "Física Bugeada",
+                      "max": {
+                        "valor": 1
+                      },
+                      "corto": "todo"
+                    }
+                  ]
+                }
+              }
             },
             "10": {
-              "infoSubNivel": "✦  ✦"
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Realidades Divergentes",
+                  "subDescripcion": "Tu mente explora futuros alternos. Cuando fallas una salvación, puedes repetirla y elegir el resultado: una vez por turno, y tu modificador de Sabiduría (mínimo 1) veces por descanso largo. Además, al terminar un descanso largo eliges un tipo de tirada (ataque, salvación o prueba): hasta tu siguiente descanso largo, una vez puedes repetir una tirada de ese tipo y quedarte con la mejor.",
+                  "efectos": [
+                    {
+                      "type": "recurso",
+                      "id": "realidades-divergentes",
+                      "nombre": "Realidades Divergentes",
+                      "max": {
+                        "atributo": "sabiduria",
+                        "minimo": 1
+                      }
+                    },
+                    {
+                      "type": "recurso",
+                      "id": "realidad-elegida",
+                      "nombre": "Realidad elegida",
+                      "max": {
+                        "valor": 1
+                      }
+                    }
+                  ]
+                }
+              }
             },
             "14": {
-              "infoSubNivel": "✦  ✦"
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Error Profetizado",
+                  "subDescripcion": "Una vez por descanso largo, cuando lanzas un conjuro de nivel 6 o inferior, declaras un «error inevitable» en un enemigo: su siguiente salvación contra ese conjuro falla sin tirar («la realidad parpadea… y decide no cargar la voluntad de tu enemigo»). Una criatura con Resistencia legendaria puede gastar un uso para superarla igualmente. Ganas 1 de Inestabilidad.",
+                  "efectos": [
+                    {
+                      "type": "recurso",
+                      "id": "error-profetizado",
+                      "nombre": "Error Profetizado",
+                      "max": {
+                        "valor": 1
+                      }
+                    }
+                  ]
+                }
+              }
             }
           }
         },
         "senda3": {
           "subNombre": "Hebra Virus",
-          "subDescripcion": "✦  ✦",
+          "fuente": "Agarias",
+          "subDescripcion": "✦ HEBRA VIRUS ✦\nEres portador de un ente anómalo que se comporta como un virus mágico: corrompe y se replica en las mentes y los cuerpos de otros, como una mente colmena.",
           "subNivel": {
             "3": {
-              "infoSubNivel": "✦  ✦"
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Infección",
+                  "subDescripcion": "Cuando una criatura falla una salvación contra uno de tus conjuros, puedes marcarla como <b>infectada</b> durante 1 minuto. Mientras lo esté, tiene desventaja en las salvaciones de concentración y en las salvaciones contra tus conjuros, y no puede recuperar PG con magia (sí pierde los caramelos de un Experimento 043, porque cualquier curación se los lleva). Sólo puedes tener <b>una</b> criatura infectada a la vez: infectar a otra cura a la anterior. Reinfectar reinicia la duración."
+                }
+              }
             },
             "6": {
-              "infoSubNivel": "✦  ✦"
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Replicación",
+                  "subDescripcion": "Cuando lanzas un truco o un conjuro de nivel 1 que afecta a una sola criatura, puede replicarse a una segunda criatura a 10 pies (2 casillas) de la primera: hace la misma salvación (o recibe el mismo ataque). Una vez por turno. Si las dos fallan, eliges cuál queda infectada. Usos: tu bonificador de competencia por descanso largo.",
+                  "efectos": [
+                    {
+                      "type": "recurso",
+                      "id": "replicacion",
+                      "nombre": "Replicación",
+                      "max": {
+                        "bc": true
+                      }
+                    }
+                  ]
+                }
+              }
             },
             "10": {
-              "infoSubNivel": "✦  ✦"
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Ejecución Remota",
+                  "subDescripcion": "Puedes lanzar un conjuro desde dentro de tu criatura infectada si está a 60 pies (12 casillas) o menos, sin necesitar verla ni tener alcance. El conjuro sólo puede tener un objetivo (aunque su efecto se extienda) y, si tiene área, se centra en la infectada. Cuando una criatura muere mientras está infectada, recuperas 1d12 PG."
+                }
+              }
             },
             "14": {
-              "infoSubNivel": "✦  ✦"
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Devorador de conjuros",
+                  "subDescripcion": "Como reacción, cuando una criatura hostil lanza un conjuro de nivel 4 o inferior que sólo te afecta a ti, hace una salvación de Inteligencia: si la falla, el conjuro se cancela y recuperas PG iguales a la mitad del daño que habría hecho. Usos: tu modificador de Sabiduría (mínimo 1) por descanso largo.\n<b>Autopurga.</b> Una vez por descanso largo, como acción adicional, tu criatura infectada hace una salvación de Constitución: recibe 4d10 de daño psíquico y queda aturdida hasta el final de su siguiente turno, o la mitad sin aturdimiento si la supera. Pierde la infección.",
+                  "efectos": [
+                    {
+                      "type": "recurso",
+                      "id": "devorador-conjuros",
+                      "nombre": "Devorador de conjuros",
+                      "max": {
+                        "atributo": "sabiduria",
+                        "minimo": 1
+                      }
+                    },
+                    {
+                      "type": "recurso",
+                      "id": "autopurga",
+                      "nombre": "Autopurga",
+                      "max": {
+                        "valor": 1
+                      }
+                    }
+                  ]
+                }
+              }
             }
           }
         },
         "senda4": {
           "subNombre": "Hebra .exe",
-          "subDescripcion": "✦  ✦",
+          "fuente": "Agarias",
+          "subDescripcion": "✦ HEBRA .EXE ✦\nNo eres una criatura: eres un concepto corrompido por el Plano Anómalo, una presencia memética hecha para infundir terror.",
           "subNivel": {
             "3": {
-              "infoSubNivel": "✦  ✦"
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Cualidad Mutante",
+                  "subDescripcion": "Cruzas el umbral entre lo físico y lo imposible. Eliges dos Cualidades Mutantes, del Terror, del Código Roto o una de cada. A nivel 15 eliges otras dos.",
+                  "elegir": {
+                    "lista": "cualidades",
+                    "cantidad": 2
+                  }
+                }
+              }
             },
             "6": {
-              "infoSubNivel": "✦  ✦"
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Paquete de Corrupción",
+                  "subDescripcion": "Cuando caerías a 0 PG sin morir en el acto, quedas con 1 PG y te teletransportas hasta 10 pies (2 casillas) a un espacio libre que puedas ver, sin provocar ataques. Una vez por descanso largo.",
+                  "efectos": [
+                    {
+                      "type": "recurso",
+                      "id": "paquete-corrupcion",
+                      "nombre": "Paquete de Corrupción",
+                      "max": {
+                        "valor": 1
+                      }
+                    }
+                  ]
+                }
+              }
             },
             "10": {
-              "infoSubNivel": "✦  ✦"
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Deformación",
+                  "subDescripcion": "Como acción, adoptas una forma terrorífica durante 1 minuto: tus miembros se duplican, tu boca se abre demasiado, tus extremidades se alargan. Cada criatura que te vea por primera vez en ese minuto hace una salvación de Sabiduría o queda paralizada hasta el final de su turno (una vez por criatura). Mientras dura, puedes lanzar <i>Imagen mayor</i> una vez sin gastar espacio. Una vez por descanso largo.",
+                  "efectos": [
+                    {
+                      "type": "recurso",
+                      "id": "deformacion",
+                      "nombre": "Deformación",
+                      "max": {
+                        "valor": 1
+                      }
+                    }
+                  ]
+                }
+              }
             },
             "14": {
-              "infoSubNivel": "✦  ✦"
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Fragmentación Letal",
+                  "subDescripcion": "Como reacción, cuando una criatura te daña con un ataque o un conjuro, hace una salvación de Inteligencia: si la falla, recibe 6d6 de daño psíquico y queda aturdida hasta el final de su siguiente turno. Una vez por descanso largo.",
+                  "efectos": [
+                    {
+                      "type": "recurso",
+                      "id": "fragmentacion-letal",
+                      "nombre": "Fragmentación Letal",
+                      "max": {
+                        "valor": 1
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            "15": {
+              "infoSubBlock": {
+                "subBlockUno": {
+                  "subName": "Cualidad Mutante (nivel 15)",
+                  "subDescripcion": "Eliges otras dos Cualidades Mutantes.",
+                  "elegir": {
+                    "lista": "cualidades",
+                    "cantidad": 2
+                  }
+                }
+              }
+            }
+          },
+          "listasDeEleccion": {
+            "cualidades": {
+              "titulo": "Cualidades Mutantes",
+              "ayuda": "Dos a nivel 3 y otras dos a nivel 15, del Terror o del Código Roto (puedes mezclarlas).",
+              "opciones": [
+                {
+                  "id": "risa-danada",
+                  "nombre": "Terror: Risa Dañada",
+                  "descripcion": "Como acción adicional, una risa inquietante: cada criatura a 10 pies (2 casillas) hace una salvación de Sabiduría o queda asustada de ti hasta el final de tu siguiente turno. Una vez por descanso corto o largo.",
+                  "efectos": [
+                    {
+                      "type": "recurso",
+                      "id": "risa-danada",
+                      "nombre": "Risa Dañada",
+                      "max": {
+                        "valor": 1
+                      },
+                      "corto": "todo"
+                    }
+                  ]
+                },
+                {
+                  "id": "mandibula-desencajada",
+                  "nombre": "Terror: Mandíbula Desencajada",
+                  "descripcion": "Como acción, un grito sobrenatural en un cono de 15 pies (3 casillas): cada criatura hace una salvación de Sabiduría o queda asustada de ti durante 1 minuto; repite la salvación al final de cada uno de sus turnos. Una vez por descanso largo.",
+                  "efectos": [
+                    {
+                      "type": "recurso",
+                      "id": "mandibula-desencajada",
+                      "nombre": "Mandíbula Desencajada",
+                      "max": {
+                        "valor": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "presencia-inquietante",
+                  "nombre": "Terror: Presencia Inquietante",
+                  "descripcion": "Ventaja en las pruebas de Carisma (Intimidación). Una vez por descanso largo puedes lanzar <i>Causar miedo</i> sin gastar espacio.",
+                  "efectos": [
+                    {
+                      "type": "recurso",
+                      "id": "presencia-inquietante",
+                      "nombre": "Causar miedo (Presencia Inquietante)",
+                      "max": {
+                        "valor": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "cuerpo-distorsionado",
+                  "nombre": "Terror: Cuerpo Distorsionado",
+                  "descripcion": "Te contorsionas de forma antinatural: ventaja en las pruebas de Destreza (Sigilo) y en las pruebas para escapar de ataduras o de un agarre."
+                },
+                {
+                  "id": "torsion-rapida",
+                  "nombre": "Terror: Torsión Rápida",
+                  "descripcion": "Como reacción, cuando una criatura te ataca, te mueves 10 pies (2 casillas) sin provocar ataques de oportunidad, dejando un rastro de glitch. Usos: tu bonificador de competencia por descanso largo.",
+                  "efectos": [
+                    {
+                      "type": "recurso",
+                      "id": "torsion-rapida",
+                      "nombre": "Torsión Rápida",
+                      "max": {
+                        "bc": true
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "te-siguen",
+                  "nombre": "Terror: Te Siguen...",
+                  "descripcion": "Cuando estás en oscuridad, puedes intentar esconderte aunque te estén observando."
+                },
+                {
+                  "id": "desfase-visual",
+                  "nombre": "Código Roto: Desfase Visual",
+                  "descripcion": "Puedes moverte a través de objetos sólidos hasta 10 pies (2 casillas), como si fueras etéreo (no puedes terminar el movimiento dentro). Una vez por descanso corto o largo.",
+                  "efectos": [
+                    {
+                      "type": "recurso",
+                      "id": "desfase-visual",
+                      "nombre": "Desfase Visual",
+                      "max": {
+                        "valor": 1
+                      },
+                      "corto": "todo"
+                    }
+                  ]
+                },
+                {
+                  "id": "error-de-realidad",
+                  "nombre": "Código Roto: Error de Realidad",
+                  "descripcion": "Una vez por descanso largo puedes lanzar <i>Desplazamiento</i> sin gastar espacio. Mientras dura, tu imagen parpadea erráticamente.",
+                  "efectos": [
+                    {
+                      "type": "recurso",
+                      "id": "error-de-realidad",
+                      "nombre": "Desplazamiento (Error de Realidad)",
+                      "max": {
+                        "valor": 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  "id": "ruido-blanco-mental",
+                  "nombre": "Código Roto: Ruido Blanco Mental",
+                  "descripcion": "Nadie puede leer tu mente: quien lo intente (<i>Detectar pensamientos</i> o similar) sólo oye ruido y recibe daño psíquico igual a tu modificador de Sabiduría. Los conjuros de adivinación que te buscan (<i>Localizar criatura</i>, <i>Escudriñar</i>…) fallan si su lanzador no supera una salvación de Sabiduría contra tu CD de conjuros."
+                },
+                {
+                  "id": "presencia-corrupta",
+                  "nombre": "Código Roto: Presencia Corrupta",
+                  "descripcion": "Te mueves a saltos y sacudidas: ignoras el terreno difícil y puedes atravesar el espacio de otras criaturas, pero no terminar tu turno en él."
+                },
+                {
+                  "id": "mente-desvinculada",
+                  "nombre": "Código Roto: Mente Desvinculada",
+                  "descripcion": "Tienes ventaja en las salvaciones para no quedar encantado o asustado."
+                },
+                {
+                  "id": "donde-estoy",
+                  "nombre": "Código Roto: ¿Dónde estoy?",
+                  "descripcion": "Tu existencia cambia constantemente: <i>Localizar criatura</i> y otros conjuros de rastreo no te encuentran."
+                }
+              ]
             }
           }
         }
       }
     },
     "4": {
-      "infoBlock": {
-        "blockUno": {
-          "name": "",
-          "titleName": "✦  ✦",
-          "descripcion": ""
-        },
-        "blockDos": {
-          "name": "",
-          "titleName": "✦  ✦",
-          "descripcion": ""
-        },
-        "blockTres": {
-          "name": "",
-          "titleName": "✦  ✦",
-          "descripcion": "",
-          "tablaClase": {
-            "encabezado": [
-              "",
-              "",
-              ""
-            ],
-            "filas": [
-              [
-                ""
-              ],
-              [
-                ""
-              ],
-              [
-                ""
-              ],
-              [
-                ""
-              ],
-              [
-                ""
-              ],
-              [
-                ""
-              ],
-              [
-                ""
-              ],
-              [
-                ""
-              ]
-            ]
-          }
-        }
+      "infoCubo": {
+        "columnas": [
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "4+Sab",
+            "4 · 3"
+          ]
+        ]
       }
     },
     "5": {
-      "informacionNivel": "✦  ✦"
+      "infoCubo": {
+        "columnas": [
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "5+Sab",
+            "4 · 3 · 2"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Reacción Improbable",
+          "titleName": "✦ REACCIÓN IMPROBABLE ✦",
+          "descripcion": "Como reacción, cuando una criatura a 60 pies (12 casillas) hace una tirada de ataque, una salvación o una prueba de característica (no hace falta que seas el objetivo), alteras el destino. Elige:\n• <b>Repetir:</b> la criatura repite la tirada y usa el nuevo resultado;\n• <b>Invertir:</b> un ataque que impacta falla y uno que falla impacta (sin crítico); una salvación o prueba superada se falla, y al revés.\nGanas 1 de Inestabilidad. Una vez por descanso corto o largo.",
+          "efectos": [
+            {
+              "type": "recurso",
+              "id": "reaccion-improbable",
+              "nombre": "Reacción Improbable",
+              "max": {
+                "valor": 1
+              },
+              "corto": "todo"
+            }
+          ]
+        }
+      }
     },
     "6": {
-      "informacionNivel": "✦  ✦"
+      "infoCubo": {
+        "columnas": [
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "6+Sab",
+            "4 · 3 · 3"
+          ]
+        ]
+      }
     },
     "7": {
-      "informacionNivel": "✦  ✦"
+      "infoCubo": {
+        "columnas": [
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "7+Sab",
+            "4 · 3 · 3 · 1"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Zona Inestable",
+          "titleName": "✦ ZONA INESTABLE ✦",
+          "descripcion": "Como acción, creas un aura de caos de 10 pies (2 casillas) de radio centrada en ti durante 1 minuto (sin concentración). Al crearla, eliges qué criaturas quedan <b>sintonizadas</b> (tú siempre lo estás). Cada vez que una criatura lanza un conjuro dentro del aura tira 1d6 (las sintonizadas tiran 2d6 y eligen uno):\n• 1: el conjuro falla sin gastar el espacio;\n• 6: el conjuro hace el máximo en sus dados de daño o curación;\n• 2–5: nada.\nUna vez por descanso largo.",
+          "efectos": [
+            {
+              "type": "recurso",
+              "id": "zona-inestable",
+              "nombre": "Zona Inestable",
+              "max": {
+                "valor": 1
+              }
+            }
+          ]
+        }
+      }
     },
     "8": {
-      "informacionNivel": "✦  ✦"
+      "infoCubo": {
+        "columnas": [
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "8+Sab",
+            "4 · 3 · 3 · 2"
+          ]
+        ]
+      }
     },
     "9": {
-      "informacionNivel": "✦  ✦"
+      "infoCubo": {
+        "columnas": [
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "3",
+            "9+Sab",
+            "4 · 3 · 3 · 3 · 1"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Tormenta de Errores",
+          "titleName": "✦ TORMENTA DE ERRORES ✦",
+          "descripcion": "Cuando lanzas un conjuro de nivel 3 o superior, puedes liberar la energía sobrante: cada criatura hostil a 10 pies (2 casillas) de ti hace una salvación de Sabiduría o queda cegada y bajo el efecto de <i>Confusión</i> hasta el final de su siguiente turno. Una vez por descanso largo.",
+          "efectos": [
+            {
+              "type": "recurso",
+              "id": "tormenta-errores",
+              "nombre": "Tormenta de Errores",
+              "max": {
+                "valor": 1
+              }
+            }
+          ]
+        }
+      }
     },
     "10": {
-      "informacionNivel": "✦  ✦"
+      "infoCubo": {
+        "columnas": [
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "4",
+            "10+Sab",
+            "4 · 3 · 3 · 3 · 2"
+          ]
+        ]
+      }
     },
     "11": {
-      "informacionNivel": "✦  ✦"
+      "infoCubo": {
+        "columnas": [
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "4",
+            "11+Sab",
+            "4 · 3 · 3 · 3 · 2 · 1"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Portal Anómalo",
+          "titleName": "✦ PORTAL ANÓMALO ✦",
+          "descripcion": "Como acción, abres un portal de 15 pies (3 casillas) de diámetro entre tu posición y un lugar de <b>este mismo plano</b> donde hayas estado al menos una vez. Dura 1 minuto o hasta que lo cierres (sin acción). Cualquier criatura puede cruzarlo en ambos sentidos. Se ve bizarro: niebla con tentáculos, geometrías imposibles. Ganas 1 de Inestabilidad. Una vez por descanso largo.",
+          "efectos": [
+            {
+              "type": "recurso",
+              "id": "portal-anomalo",
+              "nombre": "Portal Anómalo",
+              "max": {
+                "valor": 1
+              }
+            }
+          ]
+        }
+      }
     },
     "12": {
-      "informacionNivel": "✦  ✦"
+      "infoCubo": {
+        "columnas": [
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "4",
+            "12+Sab",
+            "4 · 3 · 3 · 3 · 2 · 1"
+          ]
+        ]
+      }
     },
     "13": {
-      "informacionNivel": "✦  ✦"
+      "infoCubo": {
+        "columnas": [
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "4",
+            "13+Sab",
+            "4 · 3 · 3 · 3 · 2 · 1 · 1"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Ayuda Anómala",
+          "titleName": "✦ AYUDA ANÓMALA ✦",
+          "descripcion": "Como acción, con concentración (hasta 1 minuto), traes dos <b>Manifestaciones anómalas</b>, criaturas a medias del Plano Anómalo. Elige la forma de cada una (pueden repetirse): Globo de espejos, Figura pixelada o Sombra de voces. Aparecen en espacios libres a 30 pies (6 casillas), actúan justo después de ti en la iniciativa y obedecen tus órdenes telepáticas (sin acción). Si no les das órdenes, se defienden. Desaparecen a 0 PG o al terminar el rasgo. Ganas 1 de Inestabilidad. Una vez por descanso largo.\nSus estadísticas están en Criaturas → Añadir criatura → De un catálogo.",
+          "efectos": [
+            {
+              "type": "recurso",
+              "id": "ayuda-anomala",
+              "nombre": "Ayuda Anómala",
+              "max": {
+                "valor": 1
+              }
+            },
+            {
+              "type": "habilita",
+              "value": "invocaciones_anomalia"
+            }
+          ]
+        }
+      }
     },
     "14": {
-      "informacionNivel": "✦  ✦"
+      "infoCubo": {
+        "columnas": [
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "4",
+            "14+Sab",
+            "4 · 3 · 3 · 3 · 2 · 1 · 1"
+          ]
+        ]
+      }
     },
     "15": {
-      "informacionNivel": "✦  ✦"
+      "infoCubo": {
+        "columnas": [
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "4",
+            "15+Sab",
+            "4 · 3 · 3 · 3 · 2 · 1 · 1 · 1"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Realidad Inestable",
+          "titleName": "✦ REALIDAD INESTABLE ✦",
+          "descripcion": "Como acción adicional, fuerzas a la realidad a aceptar tu voluntad: hasta el final de tu siguiente turno tienes ventaja en todas tus tiradas de ataque, salvaciones y pruebas de característica. Tu forma parpadea y deja ecos contradictorios. Ganas 1 de Inestabilidad. Una vez por descanso largo.",
+          "efectos": [
+            {
+              "type": "recurso",
+              "id": "realidad-inestable",
+              "nombre": "Realidad Inestable",
+              "max": {
+                "valor": 1
+              }
+            }
+          ]
+        },
+        "blockDos": {
+          "name": "Eco Imposible",
+          "titleName": "✦ ECO IMPOSIBLE ✦",
+          "descripcion": "Cuando morirías (fallas tu tercera salvación contra la muerte o un efecto te mata al instante), una versión alternativa de ti que sí sobrevivió te reemplaza: apareces en el espacio donde empezaste tu último turno, con los PG, espacios de conjuro y usos que tenías al empezar ese turno. El resto del mundo no retrocede. Te quedas sin Estabilidad (Colapso). Una vez por descanso largo, y no funciona si ya usaste Avatar de Zzeryxia desde tu último descanso largo.",
+          "efectos": [
+            {
+              "type": "recurso",
+              "id": "eco-imposible",
+              "nombre": "Eco Imposible",
+              "max": {
+                "valor": 1
+              }
+            }
+          ]
+        }
+      }
     },
     "16": {
-      "informacionNivel": "✦  ✦"
+      "infoCubo": {
+        "columnas": [
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "4",
+            "16+Sab",
+            "4 · 3 · 3 · 3 · 2 · 1 · 1 · 1"
+          ]
+        ]
+      }
     },
     "17": {
-      "informacionNivel": "✦  ✦"
+      "infoCubo": {
+        "columnas": [
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "4",
+            "17+Sab",
+            "4 · 3 · 3 · 3 · 2 · 1 · 1 · 1 · 1"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Singularidad",
+          "titleName": "✦ SINGULARIDAD ✦",
+          "descripcion": "Cuando lanzas un conjuro de nivel 9, puedes abrir una Singularidad Anómala en una esfera de 20 pies (4 casillas) de radio centrada en el punto del conjuro (o en ti, si es personal). Cada criatura que elijas en el área hace una salvación de Constitución: recibe 8d10 de daño de fuerza, o la mitad si la supera. Cada criatura que falle se teletransporta en una dirección al azar 10 pies (2 casillas) por cada punto de 1d6 (al espacio libre más cercano). Después tiras en la tabla de Efecto Anómalo mayor. Una vez por descanso largo.",
+          "efectos": [
+            {
+              "type": "recurso",
+              "id": "singularidad",
+              "nombre": "Singularidad",
+              "max": {
+                "valor": 1
+              }
+            }
+          ]
+        }
+      }
     },
     "18": {
-      "informacionNivel": "✦  ✦"
+      "infoCubo": {
+        "columnas": [
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "4",
+            "18+Sab",
+            "4 · 3 · 3 · 3 · 3 · 1 · 1 · 1 · 1"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Doble Anomalía",
+          "titleName": "✦ DOBLE ANOMALÍA ✦",
+          "descripcion": "Puedes mantener la concentración en dos conjuros de Anomalía a la vez, si uno de los dos es de nivel 3 o inferior. Cada vez que empiezas a mantener dos, ganas 1 de Inestabilidad. Si pierdes la concentración, pierdes los dos. No puedes hacerlo mientras Paradox está activo: cada versión sigue limitada a una concentración (que comparten)."
+        }
+      }
     },
     "19": {
-      "informacionNivel": "✦  ✦"
+      "infoCubo": {
+        "columnas": [
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "4",
+            "19+Sab",
+            "4 · 3 · 3 · 3 · 3 · 2 · 1 · 1 · 1"
+          ]
+        ]
+      }
     },
     "20": {
-      "informacionNivel": "✦  ✦"
+      "infoCubo": {
+        "columnas": [
+          "Trucos",
+          "Conjuros preparados",
+          "Espacios (nv. 1.º–9.º)"
+        ],
+        "filas": [
+          [
+            "4",
+            "20+Sab",
+            "4 · 3 · 3 · 3 · 3 · 2 · 2 · 1 · 1"
+          ]
+        ]
+      },
+      "infoBlock": {
+        "blockUno": {
+          "name": "Avatar de Zzeryxia",
+          "titleName": "✦ AVATAR DE ZZERYXIA ✦",
+          "descripcion": "Como reacción, cuando vas a caer a 0 PG, fallas una salvación contra la muerte o eres objetivo de un efecto que podría destruirte o borrarte de la existencia, Zzeryxia toma tu cuerpo hasta el final de tu siguiente turno:\n• eres inmune al daño y a las condiciones;\n• cada criatura que intente afectarte hace una salvación de Sabiduría CD 20 o queda aturdida hasta el final de su siguiente turno;\n• recuperas un espacio de conjuro gastado de nivel 6 o inferior, o terminas una condición que te afecte.\nDespués, hasta el final de tu siguiente turno, tienes desventaja en tiradas de ataque y salvaciones y no puedes lanzar conjuros de nivel 6 o superior. Ganas 2 de Inestabilidad. Una vez por descanso largo, y no funciona si ya usaste Eco Imposible desde tu último descanso largo.",
+          "efectos": [
+            {
+              "type": "recurso",
+              "id": "avatar-zzeryxia",
+              "nombre": "Avatar de Zzeryxia",
+              "max": {
+                "valor": 1
+              }
+            }
+          ]
+        }
+      }
     }
-  },
-  "competencias": {
-    "pendiente": true
-  },
-  "competenciasMulticlase": {
-    "pendiente": true
-  },
-  "fuenteReglas": "Agarias"
+  }
 }

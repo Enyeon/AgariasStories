@@ -182,7 +182,7 @@ STATES = [
     {"id": "estado-corrupto", "kind": "estado", "origin": "agarias", "name": "Corrupto", "en": "Corrupted",
      "summary": "Distorsiona el cuerpo, la mente o un área, como un virus informático.",
      "effect": ["Distorsiona el cuerpo, la mente o el área afectada, como si fuera un virus de computadora: puede causar mucho daño al área u objetivo y, a veces, efectos irreversibles (los decide el DM)."],
-     "applies": "Cuando una anomalía intenta corromper la realidad o una entidad.",
+     "applies": "Cuando una anomalía intenta corromper la realidad o una entidad. La clase Anomalía queda Corrupta al sufrir un Colapso (cuando se queda sin Estabilidad).",
      "ends": "Desaparece después de unos segundos (un turno).", "related": []},
     {"id": "estado-dolor", "kind": "estado", "origin": "agarias", "name": "Dolor", "en": "Pain",
      "summary": "Dolor corporal extremo: desgarro muscular y calambres incontrolables.",

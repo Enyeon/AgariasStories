@@ -41,6 +41,8 @@ export function resourceIdFrom(name) {
 function normalizeMax(raw) {
   if (!raw || typeof raw !== 'object') return null;
   if (raw.valor !== undefined) { const valor = clampInt(raw.valor, 1, 99); return valor ? { valor } : null; }
+  // BC + modificador de un atributo (AgSt 1.39: Estabilidad de la Anomalía, BC + Sabiduría).
+  if (raw.bc === true && ABILITY_KEYS.includes(raw.atributo)) return { bc: true, atributo: raw.atributo, minimo: raw.minimo === undefined ? 0 : (clampInt(raw.minimo, 0, 10) ?? 0) };
   if (raw.bc === true) return { bc: true };
   if (ABILITY_KEYS.includes(raw.atributo)) {
     const minimo = raw.minimo === undefined ? 1 : clampInt(raw.minimo, 0, 10);
@@ -71,6 +73,7 @@ export function normalizeResourceEffect(raw) {
 
 function describeMax(max) {
   if (max.valor) return String(max.valor);
+  if (max.bc && max.atributo) return `tu bonificador de competencia + tu mod. de ${ABILITY_LABEL[max.atributo]}`;
   if (max.bc) return 'tu bonificador de competencia';
   if (max.atributo) return `tu mod. de ${ABILITY_LABEL[max.atributo]}${max.minimo ? ` (mínimo ${max.minimo})` : ''}`;
   if (max.nivel) return `tu nivel${max.mas ? ` ${max.mas > 0 ? '+' : '−'} ${Math.abs(max.mas)}` : ''}`;
@@ -106,6 +109,7 @@ export function resolveClassResource(e, tableValue, classLevel) {
 
 function maxValue(max, { scores, prof, level }) {
   if (max.valor) return max.valor;
+  if (max.bc && max.atributo) return prof + Math.max(max.minimo ?? 0, scores?.[max.atributo]?.modifier ?? 0);
   if (max.bc) return prof;
   if (max.atributo) return Math.max(max.minimo ?? 1, scores?.[max.atributo]?.modifier ?? 0);
   if (max.nivel) return Math.max(1, level + (max.mas ?? 0));

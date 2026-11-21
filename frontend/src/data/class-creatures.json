@@ -1022,6 +1022,132 @@
           ]
         }
       }
+    },
+    "anomalia": {
+      "nombre": "Manifestaciones anómalas",
+      "fuente": "Ayuda Anómala (Anomalía)",
+      "criaturas": {
+        "globo-espejos": {
+          "name": "Globo de espejos",
+          "size": "Mediano",
+          "creatureType": "Aberración (manifestación anómala)",
+          "ac": {
+            "base": 13,
+            "bc": true
+          },
+          "hp": {
+            "base": 20,
+            "porNivel": 3
+          },
+          "hpTexto": "20 + 3 × tu nivel",
+          "speed": "0 pies, volar 40 pies (8 casillas) (levitar)",
+          "abilities": {
+            "fuerza": 10,
+            "destreza": 14,
+            "constitucion": 14,
+            "inteligencia": 12,
+            "sabiduria": 14,
+            "carisma": 8
+          },
+          "senses": "Visión en la oscuridad 60 pies (12 casillas), Percepción pasiva 12",
+          "capacidad": false,
+          "description": "Un globo flotante de espejos y tentáculos. Dura lo que la Ayuda Anómala (concentración, hasta 1 minuto). Inmune a cegado y psíquico.",
+          "actions": [
+            {
+              "name": "Multiataque",
+              "text": "Hace dos ataques de Reflejo."
+            },
+            {
+              "name": "Reflejo",
+              "text": "Ataque de conjuro a distancia (tu bonificador de ataque con conjuros), 120 pies (24 casillas), un objetivo. Impacto: 2d8 de daño radiante."
+            }
+          ],
+          "reactions": [
+            {
+              "name": "Espejo",
+              "text": "Cuando una criatura a 30 pies (6 casillas) te ataca a ti o a un aliado tuyo, el atacante tiene desventaja en ese ataque."
+            }
+          ]
+        },
+        "figura-pixelada": {
+          "name": "Figura pixelada",
+          "size": "Mediano",
+          "creatureType": "Aberración (manifestación anómala)",
+          "ac": {
+            "base": 14,
+            "bc": true
+          },
+          "hp": {
+            "base": 20,
+            "porNivel": 3
+          },
+          "hpTexto": "20 + 3 × tu nivel",
+          "speed": "40 pies (8 casillas)",
+          "abilities": {
+            "fuerza": 14,
+            "destreza": 16,
+            "constitucion": 12,
+            "inteligencia": 10,
+            "sabiduria": 10,
+            "carisma": 6
+          },
+          "senses": "Visión en la oscuridad 60 pies (12 casillas), Percepción pasiva 10",
+          "capacidad": false,
+          "description": "Una figura humana hecha de píxeles que cambia constantemente. Dura lo que la Ayuda Anómala. Inmune a apresado y derribado.",
+          "traits": [
+            {
+              "name": "Salto de fotograma",
+              "text": "Al inicio de su turno puede teletransportarse hasta 20 pies (4 casillas) a un espacio libre que vea."
+            }
+          ],
+          "actions": [
+            {
+              "name": "Multiataque",
+              "text": "Hace dos ataques de Corte de datos."
+            },
+            {
+              "name": "Corte de datos",
+              "text": "Ataque de conjuro cuerpo a cuerpo (tu bonificador de ataque con conjuros), 5 pies (1 casilla). Impacto: 1d10 + tu modificador de Sabiduría de daño psíquico."
+            }
+          ]
+        },
+        "sombra-voces": {
+          "name": "Sombra de voces",
+          "size": "Mediano",
+          "creatureType": "Aberración (manifestación anómala)",
+          "ac": {
+            "base": 12,
+            "bc": true
+          },
+          "hp": {
+            "base": 25,
+            "porNivel": 3
+          },
+          "hpTexto": "25 + 3 × tu nivel",
+          "speed": "30 pies (6 casillas), volar 30 pies (6 casillas)",
+          "abilities": {
+            "fuerza": 6,
+            "destreza": 14,
+            "constitucion": 14,
+            "inteligencia": 12,
+            "sabiduria": 14,
+            "carisma": 16
+          },
+          "senses": "Visión en la oscuridad 120 pies (24 casillas), Percepción pasiva 12",
+          "capacidad": false,
+          "description": "Una sombra que habla con muchas voces a la vez. Dura lo que la Ayuda Anómala. Puede atravesar criaturas y objetos como terreno difícil.",
+          "actions": [
+            {
+              "name": "Toque helado",
+              "text": "Ataque de conjuro cuerpo a cuerpo (tu bonificador de ataque con conjuros), 5 pies (1 casilla). Impacto: 2d8 de daño necrótico."
+            },
+            {
+              "name": "Coro",
+              "text": "Cada criatura que elija a 15 pies (3 casillas) hace una salvación de Sabiduría contra tu CD de conjuros o queda asustada hasta el final de su siguiente turno. Recarga 5–6."
+            }
+          ]
+        }
+      }
     }
   }
 }

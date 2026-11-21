@@ -42,7 +42,8 @@ describe('datos de competencias de clase', () => {
         expect(p.salvaciones.length + (p.saveChoice?.count ?? 0), cls.claseName).toBe(2);
       }
     }
-    expect(classProficiencies('anomalia').pending).toBe(true);
+    // La Anomalía ya tiene sus competencias (AgSt 1.39).
+    expect(classProficiencies('anomalia').pending).toBe(false);
   });
 
   it('las habilidades de clase existen en la lista de habilidades', () => {

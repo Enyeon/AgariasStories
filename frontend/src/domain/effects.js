@@ -68,6 +68,7 @@ export const RESOURCES = Object.freeze({
   companero: 'Compañero o criatura vinculada',
   invocaciones_ink: 'Repertorio de invocaciones del Adaptado (catálogo de criaturas)',
   invocaciones_sujetos: 'Sujeto de origen del Experimento 043 (sólo el de tu raza)',
+  invocaciones_anomalia: 'Manifestaciones de Ayuda Anómala (catálogo de criaturas)',
   caramelos: 'Caramelos de atributo (enfermedad de las estadísticas)',
   inhibicion: 'Inhibición: nada de lo que haces causa daño',
 });
